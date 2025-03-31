@@ -1,0 +1,156 @@
+{
+	"ancestry": [
+		{
+			"name": "Leshy",
+			"source": "PC1",
+			"remaster": true,
+			"page": 66,
+			"hp": 8,
+			"size": [
+				"small"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"boosts": [
+				"constitution",
+				"wisdom",
+				"free"
+			],
+			"flaw": [
+				"intelligence"
+			],
+			"languages": [
+				"{@language Common|PC1}",
+				"{@language Fey|PC1}",
+				"Additional languages equal to your Intelligence modifier (if it's positive). Choose from {@language Draconic|PC1}, {@language Elven|PC1}, {@language Gnomish|PC1}, {@language Goblin|PC1}, {@language Halfling|PC1}, {@language Sakvroth|PC1}, and any other languages to which you have access (such as the languages prevalent in your region)."
+			],
+			"traits": [
+				"leshy",
+				"plant"
+			],
+			"features": [
+				{
+					"name": "Low-Light Vision",
+					"entries": [
+						"You can see in dim light as though it were bright light, and you ignore the {@condition concealed|PC1} condition due to dim light."
+					]
+				},
+				{
+					"name": "Plant Nourishment",
+					"entries": [
+						"You gain nourishment in the same way that the plants or fungi that match your body type normally do, through some combination of photosynthesis, absorbing minerals with your roots, or scavenging decaying matter. You typically do not need to pay for food. If you normally rely on photosynthesis and go without sunlight for 1 week, you begin to starve. You can derive nourishment from specially formulated bottles of sunlight instead of natural sunlight, but these bottles cost 10 times as much as standard rations (or 40 sp)."
+					]
+				}
+			],
+			"flavor": [
+				"Leshies are immortal spirits of nature temporarily granted physical forms. As guardians and emissaries of the environment, leshies are “born” when a skilled druid or other master of primal magic conducts a ritual to create a suitable vessel, and then a spirit chooses that vessel to be their temporary home. Leshies are self-sufficient from the moment the ritual ends, though it isn’t uncommon for leshies to maintain lifelong bonds with their creators. Many leshies relish the opportunity to interact with the physical world. While most leshy spirits are ancient, they rarely recall past lifetimes and see their new life as a chance to experience the wonders of the world once more.",
+				"If you want to play a character who is curious and connected to nature, you should play a leshy."
+			],
+			"heritageInfo": [
+				"A leshy’s heritage represents the benefits they gain from their body. Choose one of the following leshy heritages at 1st level."
+			],
+			"heritage": [
+				{
+					"name": "Cactus Leshy",
+					"shortName": "Cactus",
+					"source": "PC1",
+					"remaster": true,
+					"page": 67,
+					"entries": [
+						"Spines cover your body. You gain a spine unarmed attack that deals {@damage 1d6} piercing damage. Your spines are in the {@group brawling} group and have the {@trait finesse} and {@trait unarmed} traits."
+					]
+				},
+				{
+					"name": "Fruit Leshy",
+					"shortName": "Fruit",
+					"source": "PC1",
+					"remaster": true,
+					"page": 67,
+					"entries": [
+						"Your body continually produces small fruits imbued with primal magic. At dawn each day, a new fruit ripens. You or an ally can remove this fruit as an {@action Interact|PC1} action. If a living creature that can derive sustenance from fruit consumes it as an {@action Interact|PC1} action within the next hour, they regain {@dice 1d8} Hit Points, plus an additional {@dice 1d8} Hit Points for every 2 of your levels beyond 1st. This effect has the {@trait healing} and {@trait vitality|PC1} traits."
+					]
+				},
+				{
+					"name": "Fungus Leshy",
+					"shortName": "Fungus",
+					"source": "PC1",
+					"remaster": true,
+					"page": 67,
+					"entries": [
+						"Your body was made from fungi that grows in the shade of caves and trees, and you are at home in dark caverns and warrens. You gain darkvision. You lose the {@trait plant} trait and gain the {@trait fungus} trait."
+					]
+				},
+				{
+					"name": "Gourd Leshy",
+					"shortName": "Gourd",
+					"source": "PC1",
+					"remaster": true,
+					"page": 67,
+					"entries": [
+						"You have a large gourd for a skull, and since you don’t have a physical brain, you can use the space inside your head. You can store a collection of up to 1 Bulk of objects within your head. The DC of checks to {@action Steal|PC1} objects from inside your head increases by 4. Additionally, if you store only one object within your head, you can draw it effortlessly into your hand as part of another action to use the object. Drawing the item grants this other action the {@trait manipulate} trait."
+					]
+				},
+				{
+					"name": "Leaf Leshy",
+					"shortName": "Leaf",
+					"source": "PC1",
+					"remaster": true,
+					"page": 67,
+					"entries": [
+						"Your body is made mostly from natural foliage, and like a leaf tumbling from a tree, you land from falls with particular grace. You take no damage from falling, regardless of the distance you fall."
+					]
+				},
+				{
+					"name": "Lotus Leshy",
+					"shortName": "Lotus",
+					"source": "PC1",
+					"remaster": true,
+					"page": 67,
+					"entries": [
+						"You effortlessly float on the surface of water. You can walk on the surface of still water and other non-damaging liquids, moving at half your normal Speed. You can also attempt to {@action Balance|PC1} to move across the surface of flowing water, using the DC of a {@action Swim|PC1} check to move through the water. When you do this, you can’t move faster than half your Speed, and if you fail or critically fail, you fall into the water rather than the normal effects."
+					]
+				},
+				{
+					"name": "Root Leshy",
+					"shortName": "Root",
+					"source": "PC1",
+					"remaster": true,
+					"page": 67,
+					"entries": [
+						"Your body is made from hardy roots that attach you firmly to the ground. You gain 10 Hit Points from your ancestry instead of 8. You can go without sunlight for 2 weeks before you begin to starve. You gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to {@action Reposition|PC1}, {@action Shove|PC1}, or {@action Trip|PC1} you. This bonus also applies to saving throws against spells or effects that attempt to move you or knock you {@condition prone|PC1}."
+					]
+				},
+				{
+					"name": "Seaweed Leshy",
+					"shortName": "Vine",
+					"source": "PC1",
+					"remaster": true,
+					"page": 67,
+					"entries": [
+						"Your body is made from woven seaweed, and you’re just as comfortable underwater as on land. You gain a swim Speed of 20 feet, and you can always breathe underwater. However, your land Speed is reduced by 5 feet (to 20 feet for most seaweed leshies)."
+					]
+				},
+				{
+					"name": "Vine Leshy",
+					"shortName": "Vine",
+					"source": "PC1",
+					"remaster": true,
+					"page": 68,
+					"entries": [
+						"Your prehensile vines grant you unmatched skill at climbing. You do not need to have any hands free to {@action Climb|PC1}. Additionally, if you roll a success on an {@skill Athletics|PC1} check to {@action Climb|PC1}, you get a critical success instead."
+					]
+				}
+			],
+			"summary": {
+				"text": "Spirits granted a plant body by magic, many leshies prefer to remain within the wild realms that they came from, but more and more of them are being created in response to rising threats affecting the outside world. While some leshies dedicate their lives to protecting precious natural sites and communing with their spiritual roots, others seek to explore, drifting like seeds on the wind. Leshies are still odd sights within cities or among adventuring organizations, but they are beginning to shyly set foot into these new and strange environments. As immortal spirits of nature, leshies have a long life span, and as a result their population is rising despite the dangers they face. Each time these spirits infuse a new body, they set aside most memories of their previous existences, and thus leshies believe that each new life provides a unique opportunity for growth and discovery.",
+				"images": [
+					"https://2e.aonprd.com/Images/Ancestries/Leshy01.png",
+					"https://2e.aonprd.com/Images/Ancestries/Leshy02.png",
+					"https://2e.aonprd.com/Images/Ancestries/Leshy03.png",
+					"https://2e.aonprd.com/Images/Ancestries/Leshy04.png"
+				]
+			}
+		}
+	]
+}
