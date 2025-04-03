@@ -25,7 +25,7 @@ class DeitiesPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(g.source);
 		const hash = UrlUtil.autoEncodeHash(g);
 		const alignment = g.alignment?.alignment ? g.alignment.alignment.map(x => x.length > 2 ? x : x.toUpperCase()).join("") : "\u2014";
-		const domains = g._fDomains ? g._fDomains.join(", ") : "\u2014";
+		const domains = g._fDomains ? g._fDomains.map(domain => domain.split("|")[0]).join(", ") : "\u2014";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3 pl-0">${g.name}</span>
@@ -69,7 +69,7 @@ class DeitiesPage extends ListPage {
 	getSublistItem (g, pinId) {
 		const hash = UrlUtil.autoEncodeHash(g);
 
-		const alignment = g.alignment?.alignment ? g.alignment.alignment.join("") : "\u2014";
+		const alignment = g.alignment?.alignment ? g.alignment.alignment.join("").toUpperCase() : "\u2014";
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">

@@ -73,7 +73,6 @@ class PageFilterSpells extends PageFilter {
 		});
 		this._domainFilter = new Filter({
 			header: "Domains",
-			displayFn: (it) => it.toTitleCase(),
 			items: [],
 		});
 		this._multiFocusFilter = new MultiFilter({
@@ -268,6 +267,15 @@ class PageFilterSpells extends PageFilter {
 			)
 		) { spell._fMisc.push("Possible Elementalist Spells"); }
 
+		// Domains
+		if (spell.domains) {
+			spell._fDomains = spell.domains.map((domain) => {
+				const split = domain.split("|");
+				if (split.length === 1) return split[0].toTitleCase();
+				return `${split[0].toTitleCase()} (${split[1]})`;
+			});
+		}
+
 		// Remaster hack
 		if (spell.remaster) spell._fMisc.push("Remaster");
 	}
@@ -282,7 +290,7 @@ class PageFilterSpells extends PageFilter {
 		if (spell._fSchool) this._schoolFilter.addItem(spell._fSchool);
 		this._spellTypeFilter.addItem(spell._fSpellType);
 		this._classFilter.addItem(spell._fClasses);
-		this._domainFilter.addItem(spell.domains);
+		this._domainFilter.addItem(spell._fDomains);
 		this._componentsFilter.addItem(spell._fComponents);
 		spell._fSubClasses.forEach((sc) => {
 			this._subClassFilter.addNest(sc.nest, { isHidden: true });
@@ -327,7 +335,7 @@ class PageFilterSpells extends PageFilter {
 			s._areaTypes,
 			s._fRange,
 			s._fSavingThrow,
-			[s.domains, s._fClasses, s._fSubClasses],
+			[s._fDomains, s._fClasses, s._fSubClasses],
 			s._fTraits,
 			s._fMisc,
 		);
