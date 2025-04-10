@@ -5,8 +5,13 @@ class PageFilterLanguages extends PageFilter {
 		super();
 
 		this._sourceFilter = new SourceFilter();
-		this._typeFilter = new Filter({header: "Type", items: ["Common", "Uncommon", "Secret"], itemSortFn: null, displayFn: StrUtil.uppercaseFirst});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Has Fonts"]});
+		this._typeFilter = new Filter({
+			header: "Type",
+			items: ["Common", "Uncommon", "Rare", "Regional", "Secret"],
+			itemSortFn: null,
+			displayFn: StrUtil.uppercaseFirst,
+		});
+		this._miscFilter = new Filter({ header: "Miscellaneous", items: ["Has Fonts"] });
 	}
 
 	mutateForFilters (it) {
@@ -21,19 +26,10 @@ class PageFilterLanguages extends PageFilter {
 	}
 
 	async _pPopulateBoxOptions (opts) {
-		opts.filters = [
-			this._sourceFilter,
-			this._typeFilter,
-			this._miscFilter,
-		];
+		opts.filters = [this._sourceFilter, this._typeFilter, this._miscFilter];
 	}
 
 	toDisplay (values, it) {
-		return this._filterBox.toDisplay(
-			values,
-			it._fSources,
-			it.type,
-			it._fMisc,
-		)
+		return this._filterBox.toDisplay(values, it._fSources, it.type, it._fMisc);
 	}
 }
