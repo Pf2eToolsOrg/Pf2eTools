@@ -4132,7 +4132,7 @@ Renderer.companion = {
 		${Renderer.creature.getAttacks(companion)}
 		${Renderer.creature.getAbilityMods(companion.abilityMods)}
 		<p class="pf2-stat pf2-stat__section"><strong>Hit Points&nbsp;</strong>${companion.hp}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Skill&nbsp;</strong>${renderer.render(`{@skill ${companion.skill.toTitleCase()}}`)}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Skill&nbsp;</strong>${renderer.render(`{@skill ${companion.skill.toTitleCase()}${companion.remaster ? "|PC1" : ""}}`)}</p>
 		${Renderer.companionfamiliar.getRenderedSenses(companion)}
 		${Renderer.creature.getSpeed(companion)}
 		${companion.special ? `<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${renderer.render(companion.special)}</p>` : ""}
@@ -4193,7 +4193,7 @@ Renderer.eidolon = {
 		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name || ""}&nbsp;</strong>${Object.entries(s.abilityScores).map(([k, v]) => `<i>${k.toTitleCase()}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`).join("")}
 		<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>${renderer.render(eidolon.skills.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>
 		${Renderer.companionfamiliar.getRenderedSenses(eidolon)}
-		<p class="pf2-stat pf2-stat__section"><strong>Language&nbsp;</strong>${renderer.render(eidolon.languages.map(l => `{@language ${l}}`).join(", "))}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Language&nbsp;</strong>${renderer.render(eidolon.languages.join(", "))}</p>
 		${Renderer.creature.getSpeed(eidolon)}
 		${Renderer.utils.getDividerDiv()}
 		<p class="pf2-stat pf2-stat__section"><strong>Eidolon Abilities&nbsp;</strong>${eidolon.abilities.map(a => `<i>${a.type.toTitleCase()}</i> ${a.name}`).join("; ")}</p>
