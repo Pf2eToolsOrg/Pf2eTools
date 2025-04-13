@@ -4112,10 +4112,11 @@ Renderer.companionfamiliar = {
 
 	getRenderedSenses (it) {
 		const renderer = Renderer.get();
-		if (!it.senses) return ""
-		return `<p class="pf2-stat pf2-stat__section"><strong>Senses&nbsp;</strong>${Object.entries(it.senses).map(([k, v]) => {
-			return v.map(s => `${renderer.render(s)}${k === "other" ? "" : ` (${k})`}`)
-		}).flat().join(", ")}</p>`
+		if (!it.senses) return "";
+		const senses = [];
+		if (it.senses.other) senses.push(...it.senses.other);
+		if (it.senses.imprecise) senses.push(...it.senses.imprecise);
+		return `<p class="pf2-stat pf2-stat__section"><strong>Senses&nbsp;</strong>${renderer.render(senses.join(", "))}</p>`
 	},
 };
 Renderer.companion = {
