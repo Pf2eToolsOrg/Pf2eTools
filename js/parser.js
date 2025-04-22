@@ -356,6 +356,7 @@ Parser.priceToFull = function (price, noPlatinum) {
 	if (price == null) return "\u2014";
 	if (typeof price === "object") {
 		if (price.amount == null || price.coin == null) return "\u2014";
+		if (price.amount === 0) return "0";
 		return `${Parser._addCommas(price.amount)} ${price.coin}${price.note ? ` ${price.note}` : ""
 		}`;
 	} else if (typeof price === "number" && !isNaN(price)) {
