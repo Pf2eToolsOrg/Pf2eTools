@@ -5226,7 +5226,7 @@ Renderer.item = {
 	item.footers
 		? item.footers.map((footer) => {
 			const renderer = Renderer.get();
-			return `<p class="pf2-stat pf2-stat__section"><strong>${footer.name}&nbsp;</strong>${renderer.render(footer.entries)}`
+			return `<p class="pf2-stat pf2-stat__section"><strong>${footer.name}&nbsp;</strong>${renderer.render(footer.entries ?? [])}`
 		}).join("")
 		: ""
 }
@@ -5546,7 +5546,7 @@ Renderer.item = {
 			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}${v.bulkNote ? ` (${v.bulkNote})` : ""}`);
 			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
 			renderStack.push(`</p>`);
-			if (v.entries != null && v.entries.length) {
+			if (v.entries && v.entries.length) {
 				renderer.recursiveRender(v.entries, renderStack, { prefix: "<p class='pf2-stat pf2-stat__section--wide'>", suffix: "</p>" });
 			}
 			if (v.shieldData != null) renderStack.push(`<p class='pf2-stat pf2-stat__section--wide'>The shield has Hardness ${v.shieldData.hardness}, HP ${v.shieldData.hp}, and BT ${v.shieldData.bt}.</p>`);
