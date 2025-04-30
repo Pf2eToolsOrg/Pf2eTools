@@ -65,13 +65,7 @@
 					"$ref": "#/definitions/armorTrait"
 				},
 				{
-					"$ref": "#/definitions/generalTrait"
-				},
-				{
 					"$ref": "#/definitions/planarTrait"
-				},
-				{
-					"$ref": "#/definitions/energyElementTrait"
 				},
 				{
 					"$ref": "#/definitions/classTrait"
@@ -92,19 +86,91 @@
 					"$ref": "#/definitions/spellTrait"
 				},
 				{
-					"$ref": "#/definitions/ancestryHeritageTrait"
-				},
-				{
 					"$ref": "#/definitions/creatureTypeTrait"
 				},
 				{
 					"$ref": "#/definitions/personaTrait"
 				},
 				{
+					"$ref": "#/definitions/energyElementTrait"
+				},
+				{
+					"$ref": "#/definitions/generalTrait"
+				},
+				{
 					"$ref": "#/definitions/creatureTrait"
+				},
+				{
+					"$ref": "#/definitions/ancestryHeritageTrait"
 				}
 			],
 			"uniqueItems": true
+		},
+		"ancestryHeritageTrait": {
+			"type": "string",
+			"description": "A list of all Ancestry & Heritage traits.",
+			"enum": [
+				"aasimar",
+				"aiuvarin",
+				"anadi",
+				"android",
+				"aphorite",
+				"ardande",
+				"automaton",
+				"azarketi",
+				"beastkin",
+				"catfolk",
+				"changeling",
+				"conrasu",
+				"dhampir",
+				"dromaar",
+				"duskwalker",
+				"dwarf",
+				"elf",
+				"fetchling",
+				"fleshwarp",
+				"ganzi",
+				"geniekin",
+				"ghoran",
+				"gnoll",
+				"gnome",
+				"goblin",
+				"goloma",
+				"grippli",
+				"half-elf",
+				"half-orc",
+				"halfling",
+				"hobgoblin",
+				"hryngar",
+				"human",
+				"ifrit",
+				"kashrishi",
+				"kitsune",
+				"kobold",
+				"leshy",
+				"lizardfolk",
+				"nagaji",
+				"nephilim",
+				"orc",
+				"oread",
+				"poppet",
+				"ratfolk",
+				"reflection",
+				"reincarnated",
+				"shisk",
+				"shoony",
+				"skeleton",
+				"sprite",
+				"strix",
+				"suli",
+				"sylph",
+				"talos",
+				"tengu",
+				"tiefling",
+				"undine",
+				"vanara",
+				"vishkanya"
+			]
 		},
 		"creatureTrait": {
 			"type": "string",
@@ -112,6 +178,7 @@
 			"enum": [
 				"aasimar",
 				"aeon",
+				"aiuvarin",
 				"amphibious",
 				"anadi",
 				"angel",
@@ -132,6 +199,7 @@
 				"devil",
 				"dhampir",
 				"dinosaur",
+				"dromaar",
 				"drow",
 				"duergar",
 				"duskwalker",
@@ -158,6 +226,7 @@
 				"halfling",
 				"herald",
 				"hobgoblin",
+				"hryngar",
 				"human",
 				"ifrit",
 				"incorporeal",
@@ -172,6 +241,7 @@
 				"morlock",
 				"mummy",
 				"mutant",
+				"nephilim",
 				"nymph",
 				"oni",
 				"orc",
@@ -211,6 +281,51 @@
 				"wraith",
 				"xulgath",
 				"zombie"
+			]
+		},
+		"generalTrait": {
+			"type": "string",
+			"description": "A list of all General traits.",
+			"enum": [
+				"academic",
+				"holy",
+				"manipulate",
+				"metamagic",
+				"militaristic",
+				"pervasive magic",
+				"revolutionary",
+				"secret",
+				"shadow",
+				"spellshape",
+				"structure",
+				"subtle",
+				"true name",
+				"unholy",
+				"vitality",
+				"void",
+				"wayfaring"
+			]
+		},
+		"energyElementTrait": {
+			"type": "string",
+			"description": "A list of all Energy & Element traits.",
+			"enum": [
+				"acid",
+				"air",
+				"cold",
+				"earth",
+				"electricity",
+				"energy",
+				"fire",
+				"force",
+				"metal",
+				"negative",
+				"positive",
+				"sonic",
+				"vitality",
+				"void",
+				"water",
+				"wood"
 			]
 		},
 		"personaTrait": {
@@ -256,68 +371,6 @@
 				"spirit",
 				"time",
 				"undead"
-			]
-		},
-		"ancestryHeritageTrait": {
-			"type": "string",
-			"description": "A list of all Ancestry & Heritage traits.",
-			"enum": [
-				"aasimar",
-				"anadi",
-				"android",
-				"aphorite",
-				"ardande",
-				"automaton",
-				"azarketi",
-				"beastkin",
-				"catfolk",
-				"changeling",
-				"conrasu",
-				"dhampir",
-				"duskwalker",
-				"dwarf",
-				"elf",
-				"fetchling",
-				"fleshwarp",
-				"ganzi",
-				"geniekin",
-				"ghoran",
-				"gnoll",
-				"gnome",
-				"goblin",
-				"goloma",
-				"grippli",
-				"half-elf",
-				"half-orc",
-				"halfling",
-				"hobgoblin",
-				"human",
-				"ifrit",
-				"kashrishi",
-				"kitsune",
-				"kobold",
-				"leshy",
-				"lizardfolk",
-				"nagaji",
-				"orc",
-				"oread",
-				"poppet",
-				"ratfolk",
-				"reflection",
-				"reincarnated",
-				"shisk",
-				"shoony",
-				"skeleton",
-				"sprite",
-				"strix",
-				"suli",
-				"sylph",
-				"talos",
-				"tengu",
-				"tiefling",
-				"undine",
-				"vanara",
-				"vishkanya"
 			]
 		},
 		"spellTrait": {
@@ -474,28 +527,6 @@
 				"wizard"
 			]
 		},
-		"energyElementTrait": {
-			"type": "string",
-			"description": "A list of all Energy & Element traits.",
-			"enum": [
-				"acid",
-				"air",
-				"cold",
-				"earth",
-				"electricity",
-				"energy",
-				"fire",
-				"force",
-				"metal",
-				"negative",
-				"positive",
-				"sonic",
-				"vitality",
-				"void",
-				"water",
-				"wood"
-			]
-		},
 		"planarTrait": {
 			"type": "string",
 			"description": "A list of all Planar traits.",
@@ -523,24 +554,6 @@
 				"unbounded",
 				"water",
 				"wood"
-			]
-		},
-		"generalTrait": {
-			"type": "string",
-			"description": "A list of all General traits.",
-			"enum": [
-				"academic",
-				"manipulate",
-				"metamagic",
-				"militaristic",
-				"pervasive magic",
-				"revolutionary",
-				"secret",
-				"shadow",
-				"spellshape",
-				"structure",
-				"true name",
-				"wayfaring"
 			]
 		},
 		"armorTrait": {
