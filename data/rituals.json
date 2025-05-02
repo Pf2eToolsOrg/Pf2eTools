@@ -1,7 +1,51 @@
 {
 	"ritual": [
 		{
-			"name": "Drain Planar connection",
+			"name": "Retreat Among the Rains",
+			"source": "LORA",
+			"page": 78,
+			"level": 4,
+			"traits": [
+				"rare",
+				"mental",
+				"water"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day"
+			},
+			"cost": "at least 5 drops of water from a naturally occurring source (such as rainfall, rivers, or the seas) placed on the primary caster’s face",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"skills": [
+					"Nature",
+					"Occultism"
+				],
+				"prof": "master"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Cooking Lore",
+					"Survival"
+				]
+			},
+			"entries": [
+				"Ganhil developed this ritual to emulate the epiphanies and flowing mental states he experienced during 4718’s Challenge of Sky and Heaven: intense focus, emotional acceptance, dilated perceptions, and growing awareness of elemental perfection. During the casting of this ritual, your thoughts enter a mindscape whose subjective flow of time is different, allowing you to perform retraining that would take a least a week of downtime. Your physical body still requires food or shelter during this time, so the secondary caster must nourish you with milk porridge or protect you from the elements with a raised parasol or similar item.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "At the end of the ritual, you can retrain a class feature, feat, or skill.",
+						"Success": "At the end of the ritual, you can retrain a feat or skill.",
+						"Failure": "At the end of the ritual, you gain the {@condition fatigued|PC1} condition.",
+						"Critical Failure": "As failure, and you also suffer from starvation and thirst as if you hadn’t eaten for a week, taking {@damage 10d4+7} damage that cannot be healed until you eat and drink."
+					}
+				}
+			]
+		},
+		{
+			"name": "Drain Planar Connection",
 			"source": "WoW2",
 			"page": 60,
 			"level": 5,

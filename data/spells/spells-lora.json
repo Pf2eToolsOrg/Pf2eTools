@@ -575,8 +575,7 @@
 							"The target is unaffected."
 						],
 						"Failure": [
-							"The target's memories of their ability grow foggy.",
-							"The first time they use the chosen ability each round, they take {@damage 3d8} mental damage. This ability is less effective if you choose an ability almost anyone can use; the target takes {@damage 3d4} mental damage instead if you choose a basic action (such as {@action Strike}, {@action Stride}, or {@action Raise a Shield}) or a skill action that can be used untrained (such as {@action Demoralize} or {@action Hide})."
+							"The target's memories of their ability grow foggy. The first time they use the chosen ability each round, they take {@damage 3d8} mental damage. This ability is less effective if you choose an ability almost anyone can use; the target takes {@damage 3d4} mental damage instead if you choose a basic action (such as {@action Strike}, {@action Stride}, or {@action Raise a Shield}) or a skill action that can be used untrained (such as {@action Demoralize} or {@action Hide})."
 						],
 						"Critical Failure": [
 							"As failure, and the target takes a \u20132 status penalty to any check or DC for the ability the first time they use it each round."
@@ -643,6 +642,629 @@
 						],
 						"Critical Failure": [
 							"As failure, and if the target attempts a {@skill Deception} or {@skill Stealth} check, their {@condition sickened} value increases by 1 (to a maximum of {@condition sickened||sickened 4})."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Halcyon Mists",
+			"source": "LORA",
+			"remaster": true,
+			"page": 68,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"water"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 willing living creature",
+			"entries": [
+				"In a moment of dire need, you call upon ancestral power to strengthen and sustain. A soothing mist gathers around the target, granting {@dice 1d8} temporary Hit Points and ending one source of {@condition persistent damage|PC1|persistent acid, bleed, fire, poison, or void damage} affecting it. If the creature has {@condition persistent damage|PC1} from more than one of these sources, you choose the one that ends.",
+				"The mists linger around the target, making them {@condition concealed|PC1} until the beginning of their next turn, though this obvious concealment can't be used to {@action Hide|PC1}."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The temporary Hit Points increase by {@dice 1d8}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Call the Ten",
+			"source": "LORA",
+			"remaster": true,
+			"page": 68,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "up to 10 creatures, including yourself",
+			"entries": [
+				"The Ten Magic Warriors were the first of the Magaambya's students, and they come to your aid even now. An indistinct spirit appears near each target, each wearing a different mask of the Ten Magic Warriors. The spirits then either strike their designated targets with magical energy, dealing each one {@damage 4d6} spirit damage with a basic Fortitude save, or shield them, granting their target resistance 3 to physical and spirit damage until the beginning of your next turn. You designate which targets are attacked and which are shielded."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The amount of damage increases by {@damage 1d6} and the amount of resistance increases by 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Domora's Defense",
+			"source": "LORA",
+			"remaster": true,
+			"page": 70,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"concentrate",
+				"linguistic",
+				"manipulate",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"targets": "up to 3 creatures",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Domora Hume is considered by most to be the first god caller, conjuring a god from the Plane of Water named Dyzad to protect his town from Mammoth Lord raiders. A lost story of this defense claims that Dyzad appeared to be in three places at once, blocking the raiders' spears, swords, and torches. The intended lesson is that Dyzad will overcome any barrier to protect the people of Sarkoris. This spell gives that intention physical form, allowing the caster to protect their people.",
+				"When you Cast this Spell, a watery replica of the eidolon Dyzad appears in front of each of the targets, granting them a +1 circumstance bonus to AC and fire resistance 5. While the replica persists, a target can use the {@feat Shield Block|PC1} reaction with the replica. The replica has Hardness 15 (or Hardness 20 against fire damage). They can use this reaction to reduce damage from any spell or {@trait magical} effect, even if it doesn't deal physical damage. After a target uses {@feat Shield Block|PC1}, the replica dissipates. The spell ends when you no longer {@action Sustain|PC1} it or if all three replicas have dissipated, whichever happens first."
+			]
+		},
+		{
+			"name": "The Four Hunters",
+			"source": "LORA",
+			"remaster": true,
+			"page": 70,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"concentrate",
+				"linguistic",
+				"manipulate"
+			],
+			"traditions": [
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"entry": "{@as 1} to {@as 3}",
+				"unit": "varies"
+			},
+			"range": {
+				"unit": "varies",
+				"entry": "varies"
+			},
+			"targets": "1 or more creatures",
+			"entries": [
+				"This is a story of four evenly matched hunters who sought to capture a falling star. Each hunter was known by the region they came from, and this spell focuses on one of their attributes. When you cast this spell, you must choose East, North, South, or West.",
+				{
+					"type": "list",
+					"items": [
+						"{@b East} was steady and optimistic. The target gains 5 temporary Hit Points and a +1 status bonus to {@skill Athletics|PC1} for 1 round.",
+						"{@b North} was careful and cautious. The target can {@action Step|PC1} as a free action and gains a +1 status bonus to {@skill Survival|PC1} for 1 round.",
+						"{@b South} was clever and cunning. The target becomes {@condition concealed|PC1} and gains a +1 status bonus to {@skill Stealth|PC1} for 1 round.",
+						"{@b West} was bold and competitive. The target gains a +10-foot status bonus to their land Speed and a +1 status bonus to {@skill Acrobatics|PC1} for 1 round."
+					]
+				},
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "{@as 1}",
+							"entries": [
+								"You quickly remind yourself of the story, granting only yourself the benefit."
+							]
+						},
+						{
+							"type": "item",
+							"name": "{@as 2}",
+							"entries": [
+								"You tell a trusted ally within 30 feet this story, granting them the benefit."
+							]
+						},
+						{
+							"type": "item",
+							"name": "{@as 3}",
+							"entries": [
+								"You impart this tale on all of your allies within 30 feet, granting them the benefit."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ibex's Harvest",
+			"source": "LORA",
+			"remaster": true,
+			"page": 70,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"concentrate",
+				"linguistic",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"entry": "{@as 1} to {@as 3}",
+				"unit": "varies"
+			},
+			"range": {
+				"unit": "varies",
+				"entry": "varies"
+			},
+			"targets": "1 or more creatures",
+			"entries": [
+				"In the tale \"Ibex's Harvest,\" Ibex turns from the path of a warrior to the path of a farmer, building up their community by working hard and sharing a bountiful harvest not just with their humanoid neighbors but also with their animal neighbors. Ibex initially focuses on distributing equally among the animals but learns that true equality requires knowing what each being needs. The number of actions you spend when Casting this Spell and telling the story determine its targets and effects.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "{@as 1}",
+							"entries": [
+								"You give a brief description of Ibex's first bounty. One willing target you can touch gains 10 temporary Hit Points that last 1 minute."
+							]
+						},
+						{
+							"type": "item",
+							"name": "{@as 2}",
+							"entries": [
+								"You tell the tale of how Ibex shared their harvest equally between Hippo and Ant. Two willing targets within 20 feet each gain 10 temporary Hit Points that last 1 minute."
+							]
+						},
+						{
+							"type": "item",
+							"name": "{@as 3}",
+							"entries": [
+								"You impart Ibex's lesson about how to prevent others from taking advantage of generosity. All creatures within a 10-foot emanation are affected by the tale. Choose one creature in the emanation to take {@damage 2d8} mental damage (basic Will save), while each other creature in the emanation gains 5 temporary Hit Points that last 1 minute."
+							]
+						}
+					]
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The temporary Hit Points increase by 3 and the mental damage for the 3-action version increases by {@damage 1d8}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Kgalaserke's Axes",
+			"source": "LORA",
+			"remaster": true,
+			"page": 71,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"concentrate",
+				"linguistic",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"entry": "{@as 1} to {@as 2}",
+				"unit": "varies"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"The folklore and tales surrounding the legendary hero Kgalaserke are so widespread and well known that a hundred lifetimes would not be enough to have accomplished everything she is reputed to have done. Nevertheless, the stories all contain a unifying theme of her martial prowess despite the odds being stacked against her.",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "{@as 1}",
+							"entries": [
+								"You briefly describe Kgalaserke's signature axes and how she came to receive them. The target gains a +1 status bonus to attack rolls for the spell's duration."
+							]
+						},
+						{
+							"type": "item",
+							"name": "{@as 2}",
+							"entries": [
+								"You revel in a tale of Kgalaserke striking down a foe after a struggle. For the spell's duration, when the target is damaged by a creature's attack, the target gains a +2 circumstance bonus to damage against that target for 1 round."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Parrot's Whisper",
+			"source": "LORA",
+			"remaster": true,
+			"page": 71,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You call forth an echo of the gossiping parrot from the tale of the Witch and the Weaver to whisper the secrets of a creature you can see within range. The garrulous parrot is known to chatter on for some time while deciphering the information you seek. The target must attempt a Will saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The parrot chatters about various random topics for 1 round and reveals no relevant information."
+						],
+						"Success": [
+							"The parrot tells you the target's highest weakness at the start of your next turn. In the meantime, the parrot chatters about various random topics."
+						],
+						"Failure": [
+							"The parrot tells you the target's highest weakness immediately, but sticks around for 1 round to chatter."
+						],
+						"Critical Failure": [
+							"The parrot tells you the target's highest weakness immediately, and you can ask the parrot one question. You might need to collaborate with the GM to narrow down the question. At the start of your next turn, the parrot answers the question truthfully."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "The Queen's Rainbow",
+			"source": "LORA",
+			"remaster": true,
+			"page": 71,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "60-foot line",
+				"types": [
+					"Line"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You tell the story of the Queen of Bees and her retinue trying to pass through a rainbow on their way to visit the King of Spiders. You conjure forth a large, transparent rainbow. Creatures who enter or begin their turn in the rainbow's space must succeed at a Fortitude saving throw or become {@condition dazzled|PC1} for 1 round (or {@condition blinded|PC1} for 1 round on a critical failure)."
+			]
+		},
+		{
+			"name": "Ranage's Circle",
+			"source": "LORA",
+			"remaster": true,
+			"page": 71,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"concentrate",
+				"earth",
+				"linguistic",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"duration": {
+				"unit": "varies",
+				"entry": "varies"
+			},
+			"entries": [
+				"Many stories tell of a clearing deep in the Mwangi jungle, surrounded by ancient cypress trees. At the center stands an ancient baobab tree growing around a large sphere of black basalt. Legends say that two spirit brothers, Ranage and Golokango, dwelled there long ago until Golokango's evil ways forced the virtuous Ranage to encase his brother in stone. Ranage then transformed himself into a tree to surround and protect the rock for all time. By telling this tale, you condemn an enemy to a stony fate similar to Golokango's and summon plants to surround them.",
+				"When you Cast this Spell, every square adjacent to the target becomes difficult terrain from the sudden eruption of plant life for 1 minute. The target also attempts a Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition clumsy|PC1|clumsy 1} as their feet are bound within stone. This condition lasts until they move from their current position."
+						],
+						"Failure": [
+							"The target is {@condition clumsy|PC1|clumsy 2} and {@condition immobilized|PC1} as their legs are encased in rock. The {@condition clumsy|PC1} condition lasts until they move from their current position, and they can {@action Escape|PC1} from being {@condition immobilized|PC1} with a check against your spell DC."
+						],
+						"Critical Failure": [
+							"The target is {@condition clumsy|PC1|clumsy 2} and {@condition restrained} as nearly their entire body is covered in basalt. The {@condition clumsy|PC1} condition lasts until they move from their current position, and they can {@action Escape|PC1} from being {@condition restrained} with a successful check against your spell DC."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Turbulent Tide",
+			"source": "LORA",
+			"remaster": true,
+			"page": 82,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"magus",
+				"water"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"requirements": "You're wielding an improvised weapon.",
+			"entries": [
+				"You cause the sheath of water and the improvised weapon it surrounds to surge outward with stupendous force as you attack. Make a melee {@action Strike|PC1} with your improvised weapon. The weapon then breaks, and each creature adjacent to you must succeed at a Fortitude saving throw against your spell DC or be pushed 5 feet away from you (10 feet on a critical failure). You can {@action Stride|PC1} after the target of your {@action Strike|PC1} if they are pushed but you must move the same distance and in the same direction.",
+				"If the item has a Hardness greater than your level, or if it's an artifact, {@trait cursed} item, or other item that's difficult to break or destroy, it doesn't break and adjacent creatures don't need to attempt Fortitude saves."
+			]
+		},
+		{
+			"name": "Threefold Limb",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"attack",
+				"concentrate",
+				"manipulate",
+				"morph",
+				"water"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"AC"
+				]
+			},
+			"entries": [
+				"You temporarily transform one of your limbs into water, taking the form of ice, liquid water, or steam as you desire. Make a melee spell attack roll. On a hit, the target takes {@dice 2d6} damage; the type of damage dealt and any additional effect depends on the form you choose. On a critical hit, double the damage.",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "item",
+							"name": "Ice",
+							"entries": [
+								"The limb deals cold damage, and the target takes a \u221210-foot status penalty to its Speeds until the start of your next turn. This spell gains the {@trait cold} trait."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Liquid Water",
+							"entries": [
+								"The limb deals bludgeoning damage and you can {@action Reposition|PC1} the target up to 10 feet."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Steam",
+							"entries": [
+								"The limb deals fire damage and steam clings to the target, making all creatures {@condition concealed|PC1} to them until the start of your next turn or they perform an {@action Interact|PC1} action to wave the steam away. This spell gains the {@trait fire} trait."
+							]
+						}
+					]
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 2d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Unbroken Panoply",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"nonlethal"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 {@condition broken|PC1} weapon that is unattended or held by a willing creature",
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"As tools of violence undone by violence, {@condition broken|PC1} weapons contain potent symbolic magic that faydhaans often call upon when forming alliances. Images of similar legendary weapons overlay the target, and the weapon's {@condition broken|PC1} condition is suppressed for the duration. The weapon gains the {@trait nonlethal} trait during this time. The weapon's wielder can apply the weapon's item bonus to attack rolls, if any, to their {@skill Diplomacy|PC1} checks.",
+				"If the weapon would be damaged or {@condition broken|PC1} again, this spell ends."
+			]
+		},
+		{
+			"name": "Annunciation of the Outer Gate",
+			"source": "LORA",
+			"remaster": true,
+			"page": 90,
+			"level": 3,
+			"traits": [
+				"rare",
+				"auditory",
+				"concentrate",
+				"mental"
+			],
+			"traditions": [
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "30-feet emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "10 minutes (see text)"
+			},
+			"entries": [
+				"You announce yourself in the name of certain grim pacts that predate mortal life. This is not a compulsion, but rather an invitation of sorts. The invitation is understood by creatures in the area with telepathy and any who understand {@language Aklo|PC1}, {@language Chthonian|PC1}, {@language Empyrean|PC1}, {@language Fey|PC1}, or {@language Utopian|PC1}. Those who accept the invitation cannot take {@condition hostile|PC1} action against others who agreed until 10 minutes pass and can communicate telepathically with them during that time. This effect ends immediately if any {@condition hostile|PC1} action is taken against a creature that agreed.",
+				"Those creatures who decline the choice or do not understand it must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"Nothing happens."
+						],
+						"Success": [
+							"The creature is {@condition frightened|PC1|frightened 1}. If it understood the invitation, its {@condition frightened|PC1} status doesn't decrease at the end of any turn in which it damaged a creature that agreed to the invitation."
+						],
+						"Failure": [
+							"As success, but the creature is {@condition frightened|PC1|frightened 2}."
+						],
+						"Critical Failure": [
+							"As success, but the creature is {@condition frightened|PC1|frightened 3}."
 						]
 					}
 				}

@@ -764,6 +764,447 @@
 			"entries": [
 				"You were once cast in the role of Daronlyr XII, one of Taldor's most ambitious rulers who slew his cousin to seize the crown, yet somehow still managed to convince the entire Ulfen Guard to swear loyalty to him simply through his powers of oration. You attempt a {@skill Performance|PC1} check to launch into a powerful monologue, pulling lines from Daronlyr's playbook to win respect from everyone around you, even your enemies. The DC of this check is a hard difficulty DC of your level. On a success, any {@condition hostile|PC1} creatures within 20 feet take a \u22122 circumstance penalty to attack rolls and spell attack rolls that target you until the beginning of your next turn, and any allies within 20 feet are {@condition quickened|PC1} until the beginning of your next turn. The additional action can be only used to {@action Strike|PC1} or {@action Stride|PC1}."
 			]
+		},
+		{
+			"name": "Flood Stance",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"monk",
+				"stance",
+				"water"
+			],
+			"entries": [
+				"The lessons of the flood teach a stance that distributes and circulates a single breath through the body and allows your punches to contain the focused power of a torrent of water. While in this stance, you hold your breath for up to 10 minutes and leave the stance if you stop holding your breath. You do not lose additional air if you attack, are critically hit, or critically fail a save. You still lose all remaining air if you speak, including to Cast a Spell. The only {@action Strike|PC1|Strikes} you can make are flooded river unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the {@group brawling|PC1} group; have the {@trait nonlethal}, {@trait trip}, {@trait unarmed}, and {@trait water} traits; and don't take the normal penalty for being used underwater. They also gain the {@trait forceful} trait while you're underwater."
+			]
+		},
+		{
+			"name": "Reflective Ripple Stance",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 1,
+			"traits": [
+				"monk",
+				"stance",
+				"water"
+			],
+			"requirements": "You're unarmored.",
+			"entries": [
+				"You enter a stance of fluid grace as small amounts of water flow with your movements and attacks. You can make flowing wave attacks that deal {@damage 1d6} bludgeoning damage. They are in the {@group brawling} group and have the {@trait agile}, {@trait disarm}, {@trait finesse}, {@trait nonlethal}, {@trait trip}, {@trait unarmed}, and {@trait water} traits.",
+				"While in Reflective Ripple Stance, you gain a +1 circumstance bonus to {@skill Athletics|PC1} checks to {@action Disarm}, {@action Swim|PC1}, or {@action Trip|PC1}, and you gain a +2 circumstance bonus to your Reflex DC to avoid being {@action Disarm|PC1|Disarmed} and {@action Trip|PC1|Tripped}."
+			],
+			"special": [
+				"This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your qi spell tradition if possible."
+			]
+		},
+		{
+			"name": "Student of Water",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"monk",
+				"water"
+			],
+			"entries": [
+				"Following your studies of water, your qi stirs the water of the natural world. If you're underwater, you have cover against creatures outside of the water. As soon as you meet the prerequisites for {@feat Underwater Marauder|PC2} and {@feat Water Sprint|PC2}, you gain those feats."
+			]
+		},
+		{
+			"name": "Waterfowl Stance",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"monk",
+				"stance",
+				"water"
+			],
+			"prerequisites": "{@feat Monastic Weaponry|PC2}",
+			"entries": [
+				"In your hands, swords dance like rainfall over the waves; who can tell where the storm ends and the sea begins? Developed by Swordmaster Ganhil to compete with the House of Untwisting Iron, this stance integrates fluid swordplay into even the simplest movements.",
+				"While in Waterfowl Stance, the {@item dandpatta|LOIL}, {@item scimitar|LOIL}, {@item talwar|LOIL}, and {@item zulfikar|LOIL} gain the {@trait monk} trait for you. When you {@action Tumble Through|PC1} a creature's space or {@action Leap|PC1} over a creature while wielding one of these weapons, you can deal that creature {@damage 1d6} slashing damage. This damage is increased to {@dice 2d6} if the weapon has a greater striking rune and {@dice 3d6} if it has a major striking rune."
+			],
+			"special": [
+				"You gain access to the {@item dandpatta|LOIL}, {@item talwar|LOIL}, and {@item zulfikar|LOIL}."
+			]
+		},
+		{
+			"name": "Divert Streamflow",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"monk"
+			],
+			"trigger": "You're damaged by a melee {@action Strike|PC1} by a creature in your reach.",
+			"entries": [
+				"With a brief gesture, you adapt swiftly to an attack like a flowing stream. Attempt an {@skill Athletics|PC1} check to {@action Reposition|PC1} the creature who dealt the triggering damage. If you're successful, you can {@action Step|PC1} as a free action."
+			]
+		},
+		{
+			"name": "Tributary Circulation",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"entry": "{@as 1} or {@as 2}",
+				"unit": "varies"
+			},
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"monk",
+				"occult",
+				"water"
+			],
+			"entries": [
+				"Never distant from water's succoring presence, your refined breathing techniques focus your awareness and control of water inward. You gain a +2 circumstance bonus to Will saves and saves against poison until the beginning of your next turn. If you spent two actions on Tributary Circulation, you can also attempt a flat check to end {@condition persistent damage|PC1|persistent poison damage} you're suffering, reducing the DC to 10 as if you had gained the benefits of assisted recovery."
+			]
+		},
+		{
+			"name": "Culvert's Collapse",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"monk",
+				"water"
+			],
+			"prerequisites": "{@feat Flood Stance|LORA}",
+			"requirements": "You are in {@feat Flood Stance|LORA} and were damaged by an enemy since your previous turn.",
+			"entries": [
+				"Under your foes' onslaught, the water within your violent blood stirs. Your killing intent swells, your agonies marshaling your inevitable resurgence. Make a flooded river {@action Strike|PC1} against the enemy who dealt damage to you since your previous turn. That {@action Strike|PC1} deals an additional {@damage 1d8} {@condition persistent damage|PC1|persistent bleed damage}."
+			]
+		},
+		{
+			"name": "Rippling Spin",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 8,
+			"traits": [
+				"flourish",
+				"monk",
+				"occult",
+				"water"
+			],
+			"prerequisites": "{@feat Reflective Ripple Stance|LORA}",
+			"trigger": "You're hit by a physical melee attack by an attacker you can see that's in reach.",
+			"requirements": "You're in {@feat Reflective Ripple Stance|LORA}.",
+			"entries": [
+				"After the triggering attack is done, {@action Step|PC1}. You must end this {@action Step|PC1} within the attacker's reach. Then, you can attempt an {@skill Athletics|PC1} check to {@action Disarm|PC1} or {@action Trip|PC1} the attacker."
+			]
+		},
+		{
+			"name": "Snakebird's Shadow",
+			"source": "LORA",
+			"remaster": true,
+			"page": 81,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"flourish",
+				"monk",
+				"occult",
+				"water"
+			],
+			"prerequisites": "{@feat Waterfowl Stance|LORA}",
+			"requirements": "You are in {@feat Waterfowl Stance|LORA} and are wielding a {@trait monk} weapon from the {@group sword} group.",
+			"entries": [
+				"Ganhil developed this technique through observing the sharp-beaked darters fishing Prada Hanam's waters, seeking to match their speed and suppleness with the elemental flash of his blade. Make a melee {@action Strike|PC1} with the required weapon against each enemy in a 15-foot line as razor-sharp shadows of water surge from your blade. Each attack counts toward your multiple attack penalty, but you do not increase your penalty until you have made all your attacks."
+			]
+		},
+		{
+			"name": "Wake to Strife",
+			"source": "LORA",
+			"remaster": true,
+			"page": 81,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"monk",
+				"occult",
+				"water"
+			],
+			"requirements": "A creature within your reach is {@condition prone|PC1} or swimming.",
+			"entries": [
+				"You summon the explosive power of a geyser beneath a foe. The required creature must attempt a Fortitude save against your class DC as elemental water confounds their senses; if the creature is {@condition prone|PC1}, they can {@action Stand|PC1} as a free action.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition sickened|PC1|sickened 1}."
+						],
+						"Failure": [
+							"The target is {@condition sickened|PC1|sickened 2}. If you have a free hand and they are not larger than you, you can attempt an {@skill Athletics|PC1} check to {@action Grapple|PC1} them as a free action."
+						],
+						"Critical Failure": [
+							"As failure, but if you succeed at the {@skill Athletics|PC1} check to {@action Grapple|PC1} them, you get a critical success instead."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Lessons of Flux",
+			"source": "LORA",
+			"remaster": true,
+			"page": 81,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"fortune",
+				"monk"
+			],
+			"frequency": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"trigger": "You fail a skill check to {@action Grab|PC1}, {@action Reposition|PC1}, {@action Shove|PC1}, {@action Trip|PC1}, or {@action Tumble Through|PC1}.",
+			"entries": [
+				"You apply the persistence and permutation taught by faydhaans to your failures. You reroll the check and take the second result. If it still fails or critically fails, you can ask a question about the creature you were attempting to {@action Grab|PC1}, {@action Reposition|PC1}, {@action Shove|PC1}, {@action Trip|PC1}, or {@action Tumble Through|PC1} as if you had succeeded at a check to {@action Recall Knowledge|PC1}."
+			]
+		},
+		{
+			"name": "Wave Dashes Rocks",
+			"source": "LORA",
+			"remaster": true,
+			"page": 81,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"monk",
+				"water"
+			],
+			"requirements": "You have a creature {@condition grabbed|PC1} or {@condition restrained|PC1}.",
+			"entries": [
+				"You slam an unlucky foe with the tremendous power of a plunging wave. Make a melee {@action Strike|PC1} against the required creature, after which they are no longer {@condition grabbed|PC1} or {@condition restrained|PC1} by you. This {@action Strike|PC1} must be made with an unarmed attack or a {@trait monk} weapon. If you deal damage with this {@action Strike|PC1}, the target is knocked {@condition prone|PC1} and is {@condition clumsy|PC1|clumsy 1} and {@condition enfeebled|PC1|enfeebled 1} until the end of its next turn."
+			]
+		},
+		{
+			"name": "Wave Spiral",
+			"source": "LORA",
+			"remaster": true,
+			"page": 81,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 12,
+			"traits": [
+				"flourish",
+				"monk",
+				"occult",
+				"water"
+			],
+			"prerequisites": "{@feat Reflective Ripple Stance|LORA}",
+			"frequency": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"requirements": "You're in {@feat Reflective Ripple Stance|LORA}.",
+			"entries": [
+				"You dip and spin, unleashing a wide whirlpool of water. Make an {@skill Athletics|PC1} check to {@action Trip|PC1} each creature standing on the ground in a 10-foot emanation. These attacks all count toward your multiple attack penalty, but the penalty doesn't increase until after you make all the attacks."
+			]
+		},
+		{
+			"name": "Onvergent Tides",
+			"source": "LORA",
+			"remaster": true,
+			"page": 82,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"magus",
+				"water"
+			],
+			"prerequisites": "{@action Arcane Cascade|SoM}",
+			"entries": [
+				"Your footwork is like the convergence of tides, granting your body supernatural power and fluidity. While you're in {@action Arcane Cascade|SoM} stance, you ignore difficult terrain caused by water, such as walking along a flooded path or swimming in rough water."
+			]
+		},
+		{
+			"name": "Shattering Spellstrike",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"force",
+				"magus"
+			],
+			"prerequisites": "resurgent maelstrom hybrid study, {@action Spellstrike|SoM}",
+			"requirements": "You're in {@action Arcane Cascade|SoM} stance and wielding an improvised weapon.",
+			"entries": [
+				"You intentionally channel a rampaging cascade of magic through your weapon, breaking it to deal more damage. Make a {@action Spellstrike|SoM} against a target with your improvised weapon. If the attack hits, it deals an additional {@damage 2d6} force damage as your improvised weapon breaks. If the spell used with the {@action Spellstrike|SoM} wasn't a {@trait cantrip} or {@trait focus} spell, increase this additional damage by the spell's rank.",
+				"If the item has a Hardness greater than your level, or if it's an artifact, {@trait cursed} item, or other item that's difficult to break or destroy, it doesn't break and you don't deal additional damage."
+			]
+		},
+		{
+			"name": "Surface Tension",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"magus",
+				"water"
+			],
+			"prerequisites": "resurgent maelstrom hybrid study",
+			"requirements": "You're wielding a {@condition broken|PC1} weapon.",
+			"entries": [
+				"You encase the pieces of your {@condition broken|PC1} weapon together with water you pull from the surrounding environment. The weapon's {@condition broken|PC1} condition is temporarily suppressed, and the weapon deals an additional amount of bludgeoning damage equal to twice the number of weapon damage dice; this damage can't be changed to any other type. The weapon also gains the deadly d8 trait; if the weapon already had the {@trait deadly} trait, the damage die increases by one step or to d8, whichever is higher. The first time you use this weapon to {@action Spellstrike|SoM} or get a critical success on an attack with it, the weapon is completely destroyed.",
+				"If the weapon has a Hardness greater than your level, or if it's an artifact, {@trait cursed} item, or other item that's difficult to break or destroy, it is not destroyed, and this ability only lasts until the end of your turn."
+			]
+		},
+		{
+			"name": "Crosscurrent Counter",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"magus",
+				"water"
+			],
+			"trigger": "You become {@condition grabbed|PC1} or {@condition restrained|PC1} by a creature.",
+			"entries": [
+				"You counter the creature with the power of elemental water, a tendril of it encasing your limb or weapon. You attempt an {@skill Athletics|PC1} check to {@action Grapple|PC1} the triggering creature, even if it's outside your reach or you don't have a free hand. If you succeed, you also remove the triggering condition, and the tendril of water pulls the creature adjacent to you before dissipating."
+			]
+		},
+		{
+			"name": "Whirlpool's Pull",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"magus"
+			],
+			"prerequisites": "resurgent maelstrom hybrid study",
+			"entries": [
+				"You briefly conjure a tendril of water that allows you to grab an improvised weapon and then subsume that water to power your magic. You {@action Interact|PC1} to pick up an unattended object within 15 feet you could use as an improvised weapon and then {@action Cast a Spell|PC1} that is a cantrip or conflux spell that takes 1 action to cast."
+			]
+		},
+		{
+			"name": "Maelstrom Flow",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"magus"
+			],
+			"prerequisites": "resurgent maelstrom hybrid study",
+			"frequency": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"requirements": "You're wielding an improvised weapon.",
+			"entries": [
+				"You pour energy into an improvised weapon, speeding its destruction to grant it power. The overloaded energy grants your improvised weapon the effect of the astral, corrosive, extending, or frost rune for 1 minute, after which the item is destroyed. If the item has a Hardness greater than your level, or if it's an {@trait artifact}, {@trait cursed} item, or other item that's difficult to break or destroy, it is not destroyed, and this ability only lasts until the end of your turn.",
+				"This effect doesn't count against the number of property runes a weapon can have based on its potency rune, but a given weapon can only have one application of Maelstrom Flow at a time."
+			]
+		},
+		{
+			"name": "Performer's Treatment",
+			"source": "LORA",
+			"remaster": true,
+			"page": 91,
+			"level": 2,
+			"traits": [
+				"rare",
+				"general",
+				"skill"
+			],
+			"prerequisites": "expert in {@skill Medicine}, expert in {@skill Performance}",
+			"entries": [
+				"With your experience as a performer, you can keep a set of medical tools handy at all times. You can wear a {@item healer's toolkit|PC1} as part of any costume or disguise. Creatures will generally only notice the toolkit it if they use a {@action Seek|PC1} action and succeed at a {@skill Perception|PC1} check against your {@skill Performance|PC1} DC.",
+				"In addition, you can realize at the last moment when you should just be pretending to avoid doing any lasting harm. When you critically fail a {@skill Medicine} check to {@action Administer First Aid|PC1}, {@action Treat Disease|PC1}, {@action Treat Poison|PC1}, or {@action Treat Wounds|PC1}, you can attempt a {@skill Performance|PC1} check against the patient's {@skill Perception|PC1} DC. On a success, your critical failure at the {@skill Medicine|PC1} check becomes a failure."
+			]
 		}
 	]
 }

@@ -5,6 +5,7 @@
 			"source": "LORA",
 			"remaster": true,
 			"page": 29,
+			"bulk": "—",
 			"type": "Item",
 			"level": 1,
 			"traits": [
@@ -34,6 +35,7 @@
 		{
 			"name": "Spiced Demonade",
 			"source": "LORA",
+			"bulk": "—",
 			"remaster": true,
 			"page": 29,
 			"type": "Item",
@@ -67,6 +69,7 @@
 		{
 			"name": "Conspirator's Cookie",
 			"source": "LORA",
+			"bulk": "—",
 			"remaster": true,
 			"page": 30,
 			"type": "Item",
@@ -102,6 +105,7 @@
 		{
 			"name": "Shaping Sweet",
 			"source": "LORA",
+			"bulk": "—",
 			"remaster": true,
 			"page": 41,
 			"type": "Item",
@@ -157,6 +161,7 @@
 		{
 			"name": "Mnemonic Feather",
 			"type": "Item",
+			"bulk": "—",
 			"source": "LORA",
 			"page": 43,
 			"remaster": true,
@@ -166,6 +171,7 @@
 			],
 			"usage": "held in 1 hand",
 			"level": 3,
+			"category": "Held",
 			"entries": [
 				"Murrou crafted these feathers to assist in remembering information. A {@i mnemonic feather} is an emu feather imbued with magical energies. You can place the {@i mnemonic feather} in a book with an {@action Interact|PC1} action. As long as the {@i mnemonic feather} remains within the book, you recall information contained within that book perfectly, as if you were reading the page, as long as the book is on the same plane as you. When you attempt to {@action Recall Knowledge|PC1} about a topic contained within the book, you gain a +1 status bonus to the check.",
 				{
@@ -195,6 +201,7 @@
 			"type": "Item",
 			"name": "Illusory Program",
 			"level": 1,
+			"bulk": "—",
 			"source": "LORA",
 			"page": 53,
 			"remaster": true,
@@ -217,6 +224,7 @@
 			"type": "Item",
 			"name": "Theater Enhancers",
 			"level": 1,
+			"bulk": "—",
 			"source": "LORA",
 			"page": 53,
 			"remaster": true,
@@ -236,6 +244,7 @@
 			"type": "Item",
 			"name": "Vocal Shells",
 			"level": 3,
+			"bulk": "—",
 			"source": "LORA",
 			"page": 54,
 			"remaster": true,
@@ -251,6 +260,717 @@
 			"category": "Consumable",
 			"entries": [
 				"Used by more technologically inclined bards, ventriloquists, and other performers to throw their voices, this gadget consists of two button-sized conch shells, each containing a miniaturized mechanism designed to pick up and transmit sound. One of the shells is designated the sending shell and contains a tiny indentation. When this indentation is pressed and the shell is close to a source of sound (such as on an actor's necklace), any sound that reaches it is transmitted to the receiver shell. If the receiver shell is located within 20 feet, it plays the sounds captured by the sending shell at a perfect volume and pitch."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Blood Pack Squib",
+			"level": 2,
+			"bulk": "—",
+			"source": "LORA",
+			"page": 56,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 6,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"category": "Consumable",
+			"entries": [
+				"Used by theater troupes in combination with a {@item fake blood pack|LORA}, this bit of minor magic can simulate a dramatic and sudden wound. A {@i blood pack squib} is a small unassuming stone that is keyed to a single {@item fake blood pack|LORA} in a process that takes 1 minute.",
+				{
+					"type": "ability",
+					"name": "Burst Pack",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"requirements": "The {@i blood pack squib} must be within 20 feet of its associated {@item fake blood pack|LORA}",
+					"entries": [
+						"You lightly squeeze the stone and the {@item fake blood pack|LORA} dramatically bursts. The creature wearing the {@item fake blood pack|LORA} gains the benefits of a punctured {@item fake blood pack|LORA}. A single creature adjacent to the creature wearing the {@item fake blood pack|LORA} must succeed at a DC 16 Reflex save or be splattered with the fake blood, becoming {@condition dazzled|LORA} until the end of their next turn. You can also activate the blood pack squib as a reaction when the {@item fake blood pack|LORA} is punctured normally."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Fake Blood Pack",
+			"level": 0,
+			"source": "LORA",
+			"page": 56,
+			"remaster": true,
+			"traits": [
+				"consumable"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"usage": "worn under light armor or clothes",
+			"bulk": "L",
+			"category": "Consumable",
+			"entries": [
+				"Adventurers have found a number of uses for these animal blood–filled bladders, which were originally used in theatrical productions. Whenever you take slashing or piercing damage with the fake blood pack under your clothes or armor, roll a DC 11 flat check. On a success, the blood pack is punctured. You or an ally can puncture the hidden pack intentionally with an {@action Interact|PC1} action. When faking an injury, a punctured blood pack grants a +2 item bonus to relevant {@skill Deception|PC1} checks, such as to {@action Lie|PC1} about being injured, for 4 hours after the pack has been punctured or until the blood is washed off, whichever comes first. Abilities that trigger when a creature deals {@condition persistent damage|PC1|bleed damage}, that determine if a creature is bleeding, or are otherwise based on {@condition persistent damage|PC1|bleed damage} don’t trigger or apply for blood from a fake blood pack, which might mean creatures with such abilities automatically realize the ruse."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Hidden Pocket Outfit",
+			"level": 4,
+			"source": "LORA",
+			"page": 56,
+			"remaster": true,
+			"traits": [
+				"uncommon"
+			],
+			"price": {
+				"amount": 75,
+				"coin": "gp"
+			},
+			"usage": "worn garment",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"Usually worn by actors but also popular with anyone intent on subterfuge, this outfit resembles a normal piece of clothing, but with multiple pockets designed to conceal {@item blood pack squib|LORA|blood pack squibs} and similar small items. When wearing this outfit, you automatically succeed on all relevant checks to {@action Conceal an Object|PC1} on your person as long as the object is of light or negligible Bulk. However, someone specifically searching you can still attempt a {@skill Perception|PC1} check against your {@skill Stealth|PC1} DC."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Illusory Backdrop",
+			"level": 10,
+			"source": "LORA",
+			"page": 56,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"illusion",
+				"magical",
+				"structure"
+			],
+			"price": {
+				"amount": 900,
+				"coin": "gp"
+			},
+			"bulk": "3",
+			"bulkNote": "when not activated",
+			"category": "Structure",
+			"entries": [
+				"This three-panel folding backdrop measures 5 feet tall and 3 feet wide and takes 2 hands to carry when folded up. It projects a preset illusion when fully unfolded. Illusory backdrops are typically used by artists, bards, gallery owners, and the occasional politician, and common illusions include the tops of battlements with grand castles in the background, cozy bowers, and well-appointed rooms.",
+				{
+					"type": "ability",
+					"name": "Set the Scene",
+					"activity": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"You unfold the illusory backdrop, placing it on the edge of three contiguous 5-foot squares in a straight line. The illusion then emanates in a 15-foot cone from the center of the line, facing straight away from the panel. The illusion contains a scene that includes up to 5 discrete objects (usually foliage or pieces of furniture). The scene is static and lasts for 1 hour, though that duration restarts if the backdrop is refolded and then unfolded again. The appearance of the illusion is determined when the illusory backdrop is crafted and can’t be changed."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Inspiring Spotlight",
+			"level": "9+",
+			"source": "LORA",
+			"page": 56,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"light",
+				"magical"
+			],
+			"usage": "mounted on a tripod or bracket",
+			"bulk": "varies",
+			"category": "Structure",
+			"entries": [
+				"An {@i inspiring spotlight} consists of a drum-shaped metal housing around several reflective plates. It has the capacity to cast a powerful, narrow beam of light to illuminate important moments or characters on stage. The portable version consists of an 18-inch-diameter lamp on a tripod that can be set up or broken down over the course of 10 minutes. The mounted version is typically 3 feet in diameter and affixed to a bracket above and behind the audience for indoor performances.",
+				{
+					"type": "ability",
+					"name": "Light It Up",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"light",
+						"manipulate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"The {@i inspiring spotlight} emits a 5-foot burst of bright magical light within 120 feet. If the burst intersects with an area of magical darkness, the {@i inspiring spotlight} attempts to counteract the darkness with a {@d20 +17} modifier. Creatures within the burst gain a +1 item bonus to saving throws and Charisma-based skill checks. The spotlight remains lit for 1 minute or until you {@action Interact|PC1} to turn it off. During this time any creature adjacent to the spotlight can move the burst up to 20 feet from the burst’s original position with an {@action Interact|PC1} action."
+					]
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "portable",
+					"level": 9,
+					"price": {
+						"coin": "gp",
+						"amount": 650
+					},
+					"bulk": 3
+				},
+				{
+					"variantType": "mounted",
+					"level": 15,
+					"price": {
+						"coin": "gp",
+						"amount": 6500
+					},
+					"entries": [
+						"The spotlight has a 240-foot range, the counteract modifier is {@d20 +25}, and the item bonus is +2."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Monster Suit",
+			"level": 5,
+			"source": "LORA",
+			"page": 57,
+			"remaster": true,
+			"traits": [
+				"uncommon"
+			],
+			"price": {
+				"amount": 80,
+				"coin": "gp"
+			},
+			"bulk": "2",
+			"usage": "worn garment",
+			"category": "Worn",
+			"entries": [
+				"Monster suits are used in elaborate and often tawdry performances where actors portray monstrous creatures. These shows tend to feature gratuitous special effects and culminate with the costumed actors engaging in mock battles on stage, to audiences’ delight.",
+				"A monster suit is crafted to resemble a specific creature with the {@trait animal}, {@trait beast}, {@trait dragon}, {@trait fiend}, {@trait giant}, {@trait plant}, or {@trait undead} trait. You can wear a monster suit that resembles a creature that is your size or one size larger, though this doesn’t change your actual size. It takes 10 minutes to don a monster suit, and when wearing one, you take a –10-foot item penalty to your Speeds and a –4 circumstance penalty to skill checks for move actions due to the suit’s unwieldy shape. However, the monster suit counts as a using a {@item disguise kit|PC1} for {@action Impersonate|PC1|Impersonating} the associated creature, and you gain a +2 item bonus to your {@skill Deception|PC1} check and DC for the activity."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Prismatic Dust",
+			"level": 1,
+			"source": "LORA",
+			"bulk": "—",
+			"page": 57,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"This pigmented dust is often used to add color to the lights of a performance. {@i Prismatic dust} can be activated while you are adjacent to a source of magical bright light. When activated, the dust is sprinkled into the light, changing the light’s color into the color of the dust for 1 hour. The color of the dust is determined upon the dust’s creation."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Spark Wafer",
+			"level": 1,
+			"source": "LORA",
+			"page": 57,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable",
+				"fire",
+				"light"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"These wafers contain ground-up alchemical reagents that activate shortly after being snapped. First popularized by technicians in Absalom’s Ivy Playhouse, they have spread throughout Golarion as an inexpensive way to add to the visual splendor of a show without relying on magic. When you activate a spark wafer, you bend the wafer, nearly snapping it in two, and then throw it at a corner of a square within 20 feet (all part of the same {@trait manipulate} action). The wafer then releases a 10-foot-high column of sparks for 1 round. The sparks shed bright light in a 5-foot burst and dim light in the next 5 feet. Any creature that begins their turn in the burst takes {@damage 1d4} fire damage (DC 14 basic Reflex save)."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Talented Tap Shoes",
+			"level": 11,
+			"source": "LORA",
+			"page": 57,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 1250,
+				"coin": "gp"
+			},
+			"usage": "worn shoes",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"These stylish shoes were originally created by the Tappin’ Toes Troupe, a group of tap-dancing Taldan bards who achieved massive popularity for their line dance routines. Notoriously lazy when it came to practicing choreography, the troupe enchanted their footwear to enhance their agility. Upon retirement, the troupe sold off their shoe designs, and talented tap shoes have become popular among professional dancers ever since. While wearing the shoes, you gain a +2 item bonus to {@skill Acrobatics|PC1} checks to {@action Balance|PC1} and {@action Tumble Through|PC1} an enemy’s space and to {@skill Performance|PC1} checks using dance.",
+				{
+					"type": "ability",
+					"name": "Strut Your Stuff",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You click the toes of your talented tap shoes on the ground, and for the next minute, whenever you succeed or critically succeed at a Reflex save to avoid a damaging effect, you can {@action Stride|PC1} half your Speed as a reaction. However, during this time, you take a –2 item penalty to {@skill Stealth|PC1} checks to {@action Sneak|PC1}."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Weapon of False Wounds",
+			"level": 3,
+			"source": "LORA",
+			"page": 57,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"illusion",
+				"magical",
+				"visual"
+			],
+			"price": {
+				"amount": 80,
+				"coin": "gp"
+			},
+			"usage": "held in 1 or more hands",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"These weapons consist mostly of illusions, except in the spots where the weapon would be held. A sword, for example, would consist only of a physical handle with the permanent illusion of a blade. {@i Weapons of false wounds} come in all shapes and sizes to help accurately reenact both historic and theatrical combat without risk of injury. The most amazing property of these items is the fact the illusions become partially physical when interacting with other {@i weapons of false wounds}, allowing blades to clash and parry as they would in actual combat. As a {@i weapon of false wounds} is designed specifically to interact with other illusions, paying attention to subtle changes in the weapon’s appearance can help alert the wielder to nearby illusions. While using this item, you gain a +1 item bonus to {@skill Perception|PC1} checks to disbelieve an illusion."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Windborne Platform",
+			"level": 8,
+			"source": "LORA",
+			"page": 57,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"air",
+				"magical"
+			],
+			"price": {
+				"amount": 500,
+				"coin": "gp"
+			},
+			"bulk": "5",
+			"category": "Structure",
+			"entries": [
+				"These magical platforms are used in a variety of performances. They allow performers to access high places safely, while also serving an important role before the performance even begins. They’re used by various backstage crews to hang lights, curtains, and scenery above the stage. Sometimes several of these platforms are lined up to make an upper and lower stage. This large 10-foot-by-10-foot platform can be secured to a surface as a 1-minute activity. While standing on a secured platform, any creature can use the Adjust Height activation.",
+				{
+					"type": "ability",
+					"name": "Adjust Height",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"The platform and all creatures and items on the platform either rise or lower up to 10 feet. This action fails if there is more than 50 Bulk on the platform."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Twig of Knowledge and memory",
+			"level": 1,
+			"source": "LORA",
+			"page": 64,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical",
+				"mental",
+				"plant"
+			],
+			"price": {
+				"amount": 4,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"usage": "held in 1 hand, hung on a cord, or attached to clothing",
+			"bulk": "L",
+			"category": "Consumable",
+			"entries": [
+				"This tiny magic item looks like a twig from the rare mti’le tree with its swirls of reddish-gold veins through dark brown wood. Each one is unique and fits easily in the palm of a Medium-sized creature’s hand. When pressed to the temple or lips of a sentient creature, that creature can immediately attempt a check to {@action Recall Knowledge|PC1} about any subject using a corresponding skill (such as {@skill Society|PC1} to {@action Recall Knowledge|PC1} about a {@trait humanoid}); they gain a +1 status bonus on this check. This consumable is not immediately consumed on its first use, but can be used three times before it loses its power and becomes a mundane, if still beautiful, twig."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Seed Pod of Wisdom",
+			"level": 2,
+			"source": "LORA",
+			"page": 65,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical",
+				"mental",
+				"plant"
+			],
+			"price": {
+				"amount": 7,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"entries": [
+				"This tiny magic item looks like a ripe brown fruit from a kapok tree. Inside the fruit are three seeds. Each magical seed releases an effect when swallowed. The first grants you a +1 status bonus on Will saves against {@trait fear} effects for 10 minutes. The second makes your next 10 words comprehensible to any creature that understands any language. The third lets you recall precisely how to get from where you are to any other place you’ve stayed for more than an hour within the past day. Once the seeds are removed, the fruit is edible, if chewed slowly, and quite tasty, being much sweeter than the non-magical version."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Demon-Hunting Bands",
+			"level": 3,
+			"bulk": "—",
+			"source": "LORA",
+			"page": 66,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"consumable",
+				"divine",
+				"holy",
+				"talisman"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"trigger": "You {@action Stride|PC1}.",
+				"components": [
+					"{@trait concentrate}"
+				]
+			},
+			"usage": "affixed to armor",
+			"category": "Consumable",
+			"entries": [
+				"These strips of supple leather, typically about 2 inches wide and 3 feet long, feature sigils, runes, and divine marks that reflect family lineage and beliefs in the old gods of Sarkoris. When activated, the band’s holy patterns surround you as you move, preventing your movement from triggering reactions from {@trait demon||demons}. The holy patterns scour nearby {@trait demon||demons}; any {@trait demon||demons} you pass adjacent to during the triggering movement take damage equal to their weakness to {@trait holy} effects. You can activate the bands when you {@action Burrow|PC1}, {@action Climb|PC1}, {@action Fly|PC1}, or {@action Swim|PC1} (instead of {@action Stride|PC1}) if you have the corresponding movement type."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Uzunjati Storytelling Amulet",
+			"level": 5,
+			"bulk": "—",
+			"source": "LORA",
+			"page": 67,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 145,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"category": "Worn",
+			"entries": [
+				"This round, flat amulet can be made of metal, clay, or leather and is usually highly personalized with runes, sigils, lines of poetry, or a depiction of a storyteller at work. In Azimbye’s case, their gold-rimmed metal amulet boasts fine dwarven workmanship, and bears lines from one of the oldest epic poems of the legendary folk hero Kgalaserke on one side and a stylized portrait of a storytelling event in Ranage’s Circle on the other. While wearing the amulet, you gain a +1 item bonus to {@skill Performance|PC1} checks.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "The perfect anecdote or story to impress your interlocutor comes floating to your memory.",
+					"entries": [
+						"You attempt to {@action Make an Impression|PC1} or {@action Request|PC1}, using a {@skill Performance|PC1} check instead of a {@skill Diplomacy|PC1} check."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Branch Attendant's Mask",
+			"level": 2,
+			"source": "LORA",
+			"page": 69,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 25,
+				"coin": "gp"
+			},
+			"bulk": "—",
+			"usage": "worn",
+			"category": "Worn",
+			"entries": [
+				"Although not all attendants’ masks are enchanted, many apply a first enchantment to celebrate their acceptance into a branch of the academy. While you wear the mask or have it as your bonded item, add the associated cantrip to your prepared cantrips. This has no effect if you do not prepare cantrips from the {@trait arcane} or {@trait primal} lists.",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "item",
+							"name": "Cascade Bearers",
+							"entries": [
+								"{@spell read aura|PC1}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Emerald Boughs",
+							"entries": [
+								"{@spell root reading|RoE}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Rain-Scribes",
+							"entries": [
+								"{@spell deep breath|RoE}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Tempest-Sun Mages",
+							"entries": [
+								"{@spell electric arc|PC1}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Uzunjati",
+							"entries": [
+								"{@spell prestidigitation|PC1}"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Perfection's First Step",
+			"level": 5,
+			"source": "LORA",
+			"page": 77,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"mental",
+				"occult",
+				"water"
+			],
+			"price": {
+				"amount": 23,
+				"coin": "gp"
+			},
+			"bulk": "—",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait concentrate}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"This palm-leaf manuscript contains an incomplete philosophical treatise about perfection, which you must complete and provide written commentaries upon before you can activate it. This activity takes 10 minutes, but can occur at any time before you activate the treatise.",
+				"When you activate {@i perfection’s first step}, you cast {@spell unbreaking wave advance|LOWG} with a save DC of 19. You are then temporarily immune to benefiting from further copies of {@i perfection’s first step} until your next daily preparations."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Drop of Convergent Waters",
+			"level": 2,
+			"source": "LORA",
+			"page": 79,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"consumable",
+				"magical",
+				"talisman",
+				"water"
+			],
+			"price": {
+				"amount": 7,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "—",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait concentrate}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Abhaya’s tireless years of study have allowed her to reproduce, at some level, the unconscious melding of elements she experienced during the last Challenge of Sky and Heaven. A single drop of water in a crystalline container is the simplest application of her research.",
+				"When you activate this talisman, a watery echo of one of your limbs emerges from the container. Make a {@action Strike|PC1} with your fist or an unarmed attack from your ancestry. This attack gains the {@trait magical}, {@trait reach}, and {@trait water} traits, retains any benefits from appropriate weapon fundamental runes (but not of weapon property runes), and takes no penalties for being used underwater. You can perform this {@action Strike|PC1} even if you’re in a stance or under a {@trait polymorph} effect that restricts your {@action Strike|PC1|Strikes}."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Dr. Ushernacht's Astonishing Ink",
+			"level": "3+",
+			"source": "LORA",
+			"page": 89,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 10,
+					"unit": "minute"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"This syrupy ink smells organic and faintly spoiled. It’s tied to one of Ushernacht’s engines, created with a sample of the fluid from inside the engine. If the associated engine stops functioning, all ink linked with it can no longer be activated, including freshly created ink.",
+				"When you write a question on a sheet of paper using the astonishing ink, handwriting scrawls over the paper after 10 minutes, answering with the knowledge it can draw from its engine. The astonishing ink has all {@skill Lore|PC1} skills and attempts a {@action Recall Knowledge|PC1} check to answer the question using the listed bonus. At the GM’s discretion, the astonishing ink takes a –4 circumstance penalty to the check if the question relates to advice, emotions, opinions, or other subjective topics.",
+				"If the astonishing ink fails (but not critically fails) the check to {@action Recall Knowledge|PC1}, the writing turns blood-red as it forms disturbing words. Anyone reading these words must succeed at a Will save at the listed DC or become {@condition stupefied|PC1|stupefied 1} until they get a full night’s rest. The bloody message may also carry valuable or misleading information at the GM’s discretion.",
+				"You can use a vial of astonishing ink to ask 5 questions before it’s used up."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "minor",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 10
+					},
+					"entries": [
+						"The ink has a {@d20 +10} modifier, and the Will DC is 18."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 10,
+					"price": {
+						"coin": "gp",
+						"amount": 160
+					},
+					"entries": [
+						"The ink has a {@d20 +19} modifier, and the Will DC is 28."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 2250
+					},
+					"entries": [
+						"The ink has a {@d20 +28} modifier, and the Will DC is 36."
+					]
+				}
 			]
 		}
 	]
