@@ -1304,10 +1304,10 @@ class ClassesPage extends BaseComponent {
 
 		if (this._state[stateKey] == null) this._state[stateKey] = false;
 
-		const $dispName = $(`<div title="${Parser.sourceJsonToFull(sc.source)}${sc.page ? `, page ${sc.page}` : ""}">${sc.shortName || sc.name}</div>`);
+		const $dispName = $(`<div title="${Parser.sourceJsonToFull(sc.source)}${sc.page ? `, page ${sc.page}` : ""}">${sc.shortName ?? sc.name}</div>`);
 		const $dispSource = $(`<div class="ml-1" title="${Parser.sourceJsonToFull(sc.source)}">(${Parser.sourceJsonToAbv(sc.source)})</div>`);
 		const hkSourcesVisible = () => {
-			$dispName.text(sc.name);
+			$dispName.text(sc.shortName ?? sc.name);
 			$dispSource.toggleClass("hidden", !this._state.isShowScSources);
 		};
 		this._addHookBase("isShowScSources", hkSourcesVisible);
