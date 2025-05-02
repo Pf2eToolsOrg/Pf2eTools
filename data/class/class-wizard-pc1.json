@@ -262,6 +262,17 @@
 					"subclassFeatures": [
 						"Arcane School|Wizard|PC1|School of Unified Magical Theory|PC1|1"
 					]
+				},
+				{
+					"name": "School of the Reclamation",
+					"type": "Arcane School",
+					"shortName": "Reclamation",
+					"source": "LORA",
+					"remaster": true,
+					"page": 32,
+					"subclassFeatures": [
+						"Arcane School|Wizard|PC1|School of the Reclamation|LORA|1"
+					]
 				}
 			],
 			"classFeaturesIntro": [
@@ -1087,6 +1098,42 @@
 									"type": "item",
 									"name": "School Spells",
 									"entry": "initial: {@spell force bolt|PC1}; advanced: {@spell energy absorption|PC1}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Arcane School",
+			"page": 32,
+			"source": "LORA",
+			"remaster": true,
+			"className": "Wizard",
+			"classSource": "PC1",
+			"subclassShortName": "School of the Reclamation",
+			"subclassSource": "LORA",
+			"level": 1,
+			"entries": [
+				{
+					"name": "School of Battle Magic ({@trait Uncommon})",
+					"type": "pf2-h4",
+					"entries": [
+						"Whether it's been lost to war, abandoned during calamity, or simply buried by the ages, there is as much important knowledge to be found in the hidden corners of the world as in the schools and libraries of the academy. Your study of magic in the service of rediscovering lost knowledge for the Sarkoris Reclamation has taught you that much that was once lost can still be found, but only if someone is willing to seek it out and retrieve it. You've focused your magic on reaching the world's hidden and forgotten places, whether they are found in a distant ruin or the depths of a lost memory, and bringing their knowledge back to the surface\u2014whatever the cost.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Curriculum",
+									"entry": "cantrips: {@spell telekinetic hand|PC1}, {@spell telekinetic projectile|PC1}; 1st: {@spell fleet step|PC1}, {@spell gust of wind|PC1}, {@spell mending|PC1}; 2nd: {@spell knock|PC1}, {@spell mental map|LORA}; 3rd: {@spell locate|PC1}, {@spell overwhelming memory|LORA}; 4th: {@spell bridge of vines|LORA}, {@spell shape stone|PC1}; 5th: {@spell mind probe|PC1}, {@spell scouting eye|PC1}; 6th: {@spell truesight|PC1}, {@spell wall of force|PC1}; 7th: {@spell restore ground|LORA}, {@spell retrocognition|PC1}; 8th: {@spell pinpoint|PC1}, {@spell unrelenting observation|PC1}; 9th: {@spell metamorphosis|PC1}"
+								},
+								{
+									"type": "item",
+									"name": "School Spells",
+									"entry": "initial: {@spell grasping vine|LORA}; advanced: {@spell unsettling knowledge|LORA}"
 								}
 							]
 						}

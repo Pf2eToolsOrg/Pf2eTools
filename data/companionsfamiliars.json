@@ -3609,6 +3609,120 @@
 			]
 		},
 		{
+			"name": "Calligraphy Wyrm",
+			"source": "LORA",
+			"remaster": true,
+			"page": 44,
+			"traits": [
+				"rare",
+				"dragon"
+			],
+			"requires": 6,
+			"granted": [
+				"{@familiarAbility darkvision|PC1}",
+				"{@familiarAbility flier|PC1}",
+				"{@familiarAbility manual dexterity|PC1}",
+				"{@familiarAbility scent|PC1}",
+				"{@familiarAbility skilled|PC1} ({@skill Arcana|PC1}, {@skill Society|PC1})",
+				"{@familiarAbility speech|PC1}"
+			],
+			"type": "Familiar",
+			"access": "affiliation with Cobyslarni or the Pathfinder Society",
+			"abilities": [
+				{
+					"name": "Ink Spray",
+					"traits": [
+						"arcane"
+					],
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": {
+						"number": 1,
+						"unit": "minute",
+						"interval": 10
+					},
+					"entries": [
+						"The wyrm splatters ink in a 10-foot cone. Each creature in the area must attempt a Reflex save with a DC equal to its master's spell DC or class DC, whichever is higher.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "If the creature was {@condition invisible|PC1}, it is {@condition concealed|PC1} instead for 2 rounds.",
+								"Failure": "As success, but for 1 minute.",
+								"Critical Failure": "As success, but for 10 minutes. The creature is also {@condition blinded|PC1} for 1 round or until it wipes the ink from its eyes using an {@action Interact|PC1} action."
+							}
+						}
+					]
+				},
+				{
+					"name": "Stylus Claws",
+					"entries": [
+						"The wyrm has stylus-shaped claws that it can fill with its natural ink, using its claw as a pen without having to purchase ink."
+					]
+				}
+			],
+			"fluff": [
+				"Calligraphy wyrms are curious dragons constantly in search of new lore and writing. They make natural allies for academics of all stripes, whether remaining in the towers of Cobyslarni or heading into fieldwork like the Pathfinder Society, but are also found working with witches contracted to draconic powers or wizards who've somehow managed to impress the tiny creatures.",
+				"While knowledgeable, calligraphy wyrms can also be know-it-alls. Their chirpy, high-pitched voices make this attitude humorous to some and insufferable to others."
+			]
+		},
+		{
+			"name": "Mockingfey",
+			"source": "LORA",
+			"remaster": true,
+			"page": 45,
+			"traits": [
+				"uncommon",
+				"fey"
+			],
+			"requires": 4,
+			"granted": [
+				"{@familiarAbility flier|PC1}",
+				"{@familiarAbility independent|PC1}",
+				"{@familiarAbility speech|PC1}"
+			],
+			"type": "Familiar",
+			"access": "affiliation with Cobyslarni",
+			"abilities": [
+				{
+					"name": "Gibe",
+					"traits": [
+						"concentrate",
+						"illusion",
+						"mental",
+						"occult",
+						"visual"
+					],
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": {
+						"number": 1,
+						"unit": "round"
+					},
+					"entries": [
+						"The mockingfey takes on the imperfect, illusory appearance of a creature it can see within 60 feet, pantomiming their mannerisms in a derisive fashion. This illusion doesn't make the mockingfey look any larger and lasts until the end of your next turn. The creature must attempt a Will save against your class DC or spell DC, whichever is higher. Regardless of the result, the creature is temporarily immune for 1 minute.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The creature is unaffected.",
+								"Failure": "The creature is {@condition off-guard|PC1} until the start of your next turn, as it's distracted by your familiar's taunts.",
+								"Critical Failure": "The creature is {@condition off-guard|PC1} until the end of your next turn."
+							}
+						}
+					]
+				}
+			],
+			"fluff": [
+				"Mockingfey are tiny fey with the heads of humanoids and the bodies of colorful parrots. Though they're mischievous and unruly, mockingfeys are very loyal to those they consider friends. They can speak and understand language, but typically communicate in pantomime instead, as they find verbal speech restrictive.",
+				"Some spellcasters ally with mockingfey as familiars, as they're highly curious and keen\u2014if distractable\u2014 students. Cobyslarni students and faculty, being used to the bizarre nature of the First World, are more tolerant than most of a mockingfey's antics, and the little creatures are a common sight flitting around the school's towers. Naturally, any pranks a mockingfey pulls on a student's rivals are merely the unsanctioned work of an excitable familiar.",
+				"Cobyslarni representatives have found their familiars' antics are less appreciated by the students of other schools. In part, this is because a small or feathered student doesn't seem out of place among the Traveling Academy's student body. Even without that confusion, many Cobyslarni students are finding they must teach their mockingfey familiars the most difficult lessons of all: when not to insult people and who to leave alone."
+			]
+		},
+		{
 			"name": "House Drake",
 			"source": "SaS",
 			"traits": [
@@ -4917,7 +5031,7 @@
 			"page": 213,
 			"type": "Familiar",
 			"entries": [
-				"Choose a spell in your repertoire or that you prepared today at least 5 levels lower than your highest-rank spell slot. Your familiar can {@action Cast a Spell|PC1|Cast that Spell} once per day using your magical tradition, spell attack modifier, and spell DC. If the spell has a drawback that affects the caster, both you and your familiar are affected. You must be able to cast 6th-rank spells using spell slots to select this."
+				"Choose a spell in your repertoire or that you prepared today at least 5 levels lower than your highest-rank spell slot. Your familiar can Cast that Spell once per day using your magical tradition, spell attack modifier, and spell DC. If the spell has a drawback that affects the caster, both you and your familiar are affected. You must be able to cast 6th-rank spells using spell slots to select this."
 			]
 		},
 		{
@@ -4987,7 +5101,7 @@
 			"page": 214,
 			"type": "Master",
 			"entries": [
-				"Once per day, you can draw upon your familiar's innate magic to replenish your own. You can cast one innate spell gained from an ancestry feat that you have already cast today. You must still {@action Cast a Spell|PC1|Cast the Spell} and meet the spell's other requirements."
+				"Once per day, you can draw upon your familiar's innate magic to replenish your own. You can cast one innate spell gained from an ancestry feat that you have already cast today. You must still Cast the Spell and meet the spell's other requirements."
 			]
 		},
 		{

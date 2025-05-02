@@ -1,0 +1,652 @@
+{
+	"spell": [
+		{
+			"name": "Pocket Library",
+			"source": "LORA",
+			"remaster": true,
+			"page": 31,
+			"level": 1,
+			"traits": [
+				"rare",
+				"concentrate",
+				"extradimensional",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 24,
+				"unit": "hour"
+			},
+			"entries": [
+				"Like Vil Seral, you collect information from all around you and store it in book form in an extradimensional library. When you Cast this Spell, choose any skill in which you are at least trained that has the {@action Recall Knowledge|PC1} action.",
+				"During the duration of this spell, you can call forth a tome from the extradimensional library when attempting a {@action Recall Knowledge|PC1} check using your chosen skill. This is part of the action to {@action Recall Knowledge|PC1}. You must have a hand free to do so. The tome appears in your hand, open to an appropriate page. This grants you a +1 status bonus to the {@action Recall Knowledge|PC1} check. If you roll a critical failure on this check, you get a failure instead. If the roll is successful and the subject is a creature, you gain additional information or context about the creature. Once you reference a book from your {@i pocket library}, the spell ends."
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"The status bonus increases to +2 and you can reference your {@i pocket library} twice before the spell ends."
+					],
+					"6": [
+						"The status bonus increases to +3 and you can reference your {@i pocket library} three times before the spell ends."
+					],
+					"9": [
+						"The status bonus increases to +4 and you can reference your {@i pocket library} four times before the spell ends."
+					]
+				}
+			}
+		},
+		{
+			"name": "Grasping Vine",
+			"source": "LORA",
+			"remaster": true,
+			"page": 32,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"plant",
+				"wizard",
+				"wood"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 unattended object of up to 8 Bulk, or Medium or smaller creature that is currently on the ground",
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"duration": {
+				"unit": "minute",
+				"number": 1,
+				"sustained": true,
+				"entry": "sustained up to 1 minute (see text)"
+			},
+			"entries": [
+				"A thick, curling vine erupts from the ground beneath you and stretches to the target, allowing you to move it around. If the target is an item, you can move it 10 feet in any direction within range when you Cast the Spell and the first time you {@action Sustain|PC1} it each round. If the target is a creature, they must attempt a Reflex save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected and the spell ends."
+						],
+						"Success": [
+							"The target is {@condition grabbed|PC1} until the end of your next turn unless it {@action Escape|PC1|Escapes} (the vine's {@action Escape|PC1} DC is equal to your spell DC) or destroys the vine (the vine has AC 15 and 10 Hit Points), at which point the spell ends."
+						],
+						"Failure": [
+							"The target is {@condition grabbed|PC1} until it {@action Escape|PC1|Escapes} or destroys the vine, at which point the spell ends. The first time each round you {@action Sustain|PC1} this spell, you can {@action Reposition|PC1} the {@condition grabbed|PC1} target up to 5 feet."
+						],
+						"Critical Failure": [
+							"As failure, and you can immediately {@action Reposition|PC1} the target up to 10 feet."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Unsettling Knowledge",
+			"source": "LORA",
+			"remaster": true,
+			"page": 32,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"linguistic",
+				"mental",
+				"wood"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You share a piece of hidden knowledge with a creature that is both upsetting and intriguing. When you Cast this Spell, choose {@skill Arcana|PC1}, {@skill Nature|PC1}, {@skill Occultism|PC1}, {@skill Religion|PC1}, or {@skill Society|PC1} as the focus of this knowledge. The target must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition fascinated|PC1} by the knowledge you shared for 1 round."
+						],
+						"Failure": [
+							"The target is {@condition fascinated|PC1} by the knowledge for 1 minute. The target can end this fascination early by attempting a skill check to {@action Recall Knowledge|PC1} to understand the knowledge using the chosen skill (using your spell DC as the DC); regardless of the result, the target becomes {@condition frightened|PC1|frightened 2}, but if they failed the check, they can't reduce their {@condition frightened|PC1} condition below 1 for the remainder of the spell's duration."
+						],
+						"Critical Failure": [
+							"As failure, but the target becomes {@condition frightened|PC1|frightened 3} if they attempt to {@action Recall Knowledge|PC1}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Bridge of Vines",
+			"source": "LORA",
+			"remaster": true,
+			"page": 32,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"Vines sprout beneath your feet and extend away from you in a straight line up to 60 feet, forming a 10-foot-wide bridge that can cross over difficult terrain and low obstacles, as well as reach higher ground. The bridge has an AC equal to your spell DC, Hardness 10, and 20 Hit Points. It is immune to critical hits and precision damage. The bridge lasts either for the duration of the spell, until it is destroyed, or until you {@action Dismiss|PC1} the spell.",
+				"While the spell is active, you and your allies can use the bridge normally. If any other creatures attempt to use the bridge, the vines attempt to trip and entangle them. They must attempt a Reflex save against your spell DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target treats the length of the bridge as difficult terrain."
+						],
+						"Failure": [
+							"As success, and the target is knocked {@condition prone|PC1}."
+						],
+						"Critical Failure": [
+							"As success, and the target is knocked {@condition prone|PC1} and {@condition grabbed|PC1} until it {@action Escape|PC1|Escapes} (with a DC equal to your spell DC) or the spell ends."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The bridge's Hit Points increase by 10."
+					]
+				}
+			}
+		},
+		{
+			"name": "Mental Map",
+			"source": "LORA",
+			"remaster": true,
+			"page": 32,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"mental"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 24,
+				"unit": "hour"
+			},
+			"entries": [
+				"You glean detailed information about a specific place visited by a creature directly from its mind, unless it fends you off with a Will save. The target can choose to fail the save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The target is unaffected."
+						],
+						"Failure": [
+							"You gain critical information about the place in question, granting you a +2 circumstance bonus to {@skill Survival|PC1} checks while in the location and any skill checks to {@action Recall Knowledge|PC1} about the location for the next 24 hours."
+						],
+						"Critical Failure": [
+							"As failure, but you can erase all knowledge of the location from the target for 24 hours if desired."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Overwhelming Memory",
+			"source": "LORA",
+			"remaster": true,
+			"page": 33,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"emotion",
+				"manipulate",
+				"mental"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You cause the target to recall a specific type of memory you choose from the list below, bringing it to the forefront of their mind with perfect clarity.",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "item",
+							"name": "Gleeful",
+							"entries": [
+								"The memory makes the target laugh uncontrollably. They can't use reactions."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Romantic",
+							"entries": [
+								"The creature is consumed with their love for another. They are {@condition fascinated|PC1} by the memory."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Terrifying",
+							"entries": [
+								"The creature is filled with terror and is {@condition frightened|PC1|frightened 1}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Tragic",
+							"entries": [
+								"The creature is overwhelmed with sorrow. They are {@condition dazzled|PC1} from the tears in their eyes."
+							]
+						}
+					]
+				},
+				"The target must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is affected by the memory until the beginning of your next turn."
+						],
+						"Failure": [
+							"The target is affected by the memory until the beginning of your next turn and {@condition stupefied|PC1|stupefied 2} for the spell's duration."
+						],
+						"Critical Failure": [
+							"As failure, but the target is {@condition stupefied|PC1|stupefied 3} for the spell's duration."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Restore Ground",
+			"source": "LORA",
+			"remaster": true,
+			"page": 33,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"earth",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "30-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You sense that this place yearns to throw off the shackles of civilization. You attempt to restore the area within the burst to a natural state, removing all artificial objects and buildings and encouraging the growth of plants on the ground that remains. Creatures are unaffected unless caught in a structural collapse.",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "item",
+							"name": "Ground",
+							"entries": [
+								"All ground within the area becomes greater difficult terrain for 1 round."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Objects",
+							"entries": [
+								"Any unattended object of Bulk 4 or less is destroyed, regardless of Hardness, unless it's an {@trait artifact} or similarly hard to destroy."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Plants",
+							"entries": [
+								"Plants in the area become healthier and more fruitful for 1 year."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Structures",
+							"entries": [
+								"Structures within range are shaken and may collapse, as if affected by {@spell earthquake|PC1}."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mimic Spell",
+			"source": "LORA",
+			"remaster": true,
+			"page": 33,
+			"level": 8,
+			"traits": [
+				"rare",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "A creature you're aware of within range Casts a Spell of the same tradition as {@i mimic spell} and of the same or lower rank.",
+			"range": {
+				"number": 120,
+				"unit": "feet"
+			},
+			"entries": [
+				"You learn the secrets of a spell just by watching someone else cast it. Attempt to counteract the spell cast by the triggering creature. If the spell would be counteracted, you instead gain the ability to Cast that Spell without expending a slot. On your next turn, you spend the same number of actions to Cast the Spell as the triggering creature, but you choose the targets (if any) and use your spell attack modifier or spell DC as appropriate. The spell is heightened to the same rank as {@i mimic spell}. The mimicked spell is of the same tradition as the spells you normally cast. If you don't Cast the mimicked Spell by the end of your next turn, it is lost, unless you {@action Sustain|PC1} the knowledge of it. You can {@action Sustain|PC1} this knowledge for up to 1 minute, after which it is lost."
+			]
+		},
+		{
+			"name": "Recall Legacy",
+			"source": "LORA",
+			"remaster": true,
+			"page": 42,
+			"level": 7,
+			"traits": [
+				"rare",
+				"concentrate",
+				"manipulate",
+				"mental"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 willing creature",
+			"duration": {
+				"unit": "special",
+				"entry": "Until the target's next daily preparations"
+			},
+			"entries": [
+				"You establish a mental link with the target, focusing on a piece of knowledge important to their culture, family (by birth or choice), or home settlement. Both you and the target must be aware this knowledge exists, even if you don't know the exact details. As your magic connects them to this legacy, the target gains a non-lineage ancestry feat from their ancestry. The feat must be of a level no higher than twice {@i recall legacy}'s rank and the target must meet any prerequisites for the feat. The target is then immune to any further castings of {@i recall legacy} until their next daily preparations."
+			]
+		},
+		{
+			"name": "Information Overload",
+			"source": "LORA",
+			"remaster": true,
+			"page": 44,
+			"type": "Cantrip",
+			"level": 1,
+			"traits": [
+				"rare",
+				"cantrip",
+				"concentrate",
+				"hex",
+				"mental",
+				"witch"
+			],
+			"subclass": {
+				"Patron|Witch|PC1": [
+					"Cobyslarni|LORA"
+				]
+			},
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You call on Cobyslarni to open the target's mind to knowledge\u2014too much knowledge. The target's thoughts flood with irrelevant and confusing information, causing it to become {@condition stupefied|PC1|stupefied 1} if it fails a Will save (or {@condition stupefied|PC1|stupefied 2} on a critical failure)."
+			]
+		},
+		{
+			"name": "Unravel Knowledge",
+			"source": "LORA",
+			"remaster": true,
+			"page": 45,
+			"type": "Focus",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"hex",
+				"manipulate",
+				"mental",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Memory"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Your patron reaches into the target's mind, plucking out their past training like pulling a thread from a cloth. Choose a single action, activity, or spell you know the target can use, such as from seeing it previously or identifying the creature's capabilities with a {@action Recall Knowledge} check. You could select, for example, the {@action Strike} action, the {@action Disarm} action, a dragon's breath, or the {@spell haste|PC1} spell if you were aware the target could use them. The target attempts a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The target is unaffected."
+						],
+						"Failure": [
+							"The target's memories of their ability grow foggy.",
+							"The first time they use the chosen ability each round, they take {@damage 3d8} mental damage. This ability is less effective if you choose an ability almost anyone can use; the target takes {@damage 3d4} mental damage instead if you choose a basic action (such as {@action Strike}, {@action Stride}, or {@action Raise a Shield}) or a skill action that can be used untrained (such as {@action Demoralize} or {@action Hide})."
+						],
+						"Critical Failure": [
+							"As failure, and the target takes a \u20132 status penalty to any check or DC for the ability the first time they use it each round."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d8}, or by {@dice 1d4} for a basic action or untrained skill action."
+					]
+				}
+			}
+		},
+		{
+			"name": "Censure Falsehoods",
+			"source": "LORA",
+			"remaster": true,
+			"page": 45,
+			"type": "Focus",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"curse",
+				"focus",
+				"hex",
+				"manipulate",
+				"witch"
+			],
+			"subclass": {
+				"Lesson|Witch|PC1": [
+					"Vows"
+				]
+			},
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"entries": [
+				"You call on your patron to reprimand a creature that has attempted a {@skill Deception} or {@skill Stealth} check against you or an ally within the past month. You must be aware they did so. Whenever the target speaks, toads and serpents fall from their lips. The target attempts a Fortitude saving throw. The spell lasts as long as the target remains {@condition sickened} by it.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"A few animals fall from their lips, but they're otherwise unaffected."
+						],
+						"Success": [
+							"The target is {@condition sickened||sickened 1}."
+						],
+						"Failure": [
+							"The target is {@condition sickened||sickened 2} and if they perform an action that has the {@trait auditory} trait or attempt to {@action Cast a Spell}, they must succeed at a DC {@flatDC 5} flat check, or the action is disrupted as they choke on an animal."
+						],
+						"Critical Failure": [
+							"As failure, and if the target attempts a {@skill Deception} or {@skill Stealth} check, their {@condition sickened} value increases by 1 (to a maximum of {@condition sickened||sickened 4})."
+						]
+					}
+				}
+			]
+		}
+	]
+}

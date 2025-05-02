@@ -208,6 +208,17 @@
 					"subclassFeatures": [
 						"Patron|Witch|PC1|Wilding Steward|PC1|1"
 					]
+				},
+				{
+					"name": "Cobyslarni",
+					"type": "Patron Theme",
+					"shortName": "Cobyslarni",
+					"source": "LORA",
+					"remaster": true,
+					"page": 44,
+					"subclassFeatures": [
+						"Patron|Witch|PC1|Cobyslarni|LORA|1"
+					]
 				}
 			],
 			"flavor": [
@@ -1286,6 +1297,49 @@
 									"type": "item",
 									"name": "Familiar of Restored Spirit",
 									"entry": "Your familiar has glinting eyes, twitching ears, or some other sign of a beast's powerful senses. When you {@action Cast a Spell|PC1|Cast} or {@action Sustain|PC1} a hex, your familiar gains your choice of an imprecise scent, tremorsense, or wavesense, with a range of 60 feet until the start of your next turn, and it can immediately {@action Point Out|PC1} as a free action."
+		{
+			"name": "Patron",
+			"source": "LORA",
+			"remaster": true,
+			"page": 44,
+			"className": "Witch",
+			"classSource": "PC1",
+			"subclassShortName": "Cobyslarni",
+			"subclassSource": "LORA",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Cobyslarni ({@trait Rare} Witch Patron)",
+					"source": "LORA",
+					"remaster": true,
+					"page": 44,
+					"entries": [
+						"Though Cobyslarni doesn't often interact directly with mortals these days, your quest for wisdom has drawn his attention. You studied at his academy, encountered him on his travels throughout the planes, or responded to his strange psychic call. However your meeting occurred, Cobyslarni empowered your studies. Though Cobyslarni rarely demands anything directly from his witches, you may receive visions of danger to the academy or its students in times of dire need.",
+						"Most witches chosen by Cobyslarni, if they're not already students at the academy, make their way there at some point. Some who follow these nudges remain at the academy indefinitely, but most eventually move on to experience their own journeys or even establish their own schools.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Spell List",
+									"entry": "{@filter occult|spells||tradition & spell list=occult}"
+								},
+								{
+									"type": "item",
+									"name": "Patron Skill",
+									"entry": "{@skill Occultism|PC1}"
+								},
+								{
+									"type": "item",
+									"name": "Lesson of Wandering Mind",
+									"entry": "Cobyslarni has taught you to keep an open mind and seek knowledge in all things, sifting through an array of facts that others would find bewildering. You gain the {@spell information overload|LORA} {@trait hex} cantrip and your familiar learns {@spell déjà vu|PC2}."
+								},
+								{
+									"type": "item",
+									"name": "Familiar of Restored Spirit",
+									"entry": "Your familiar boasts a third eye upon their head or body, resembling the one set in Cobyslarni's forehead. When you Cast or {@action Sustain|PC1} a hex, your familiar can attempt a check to {@action Recall Knowledge|PC1} as a free action with any skill in which you are trained or better, using your bonus, and psychically transmit the information to you."
 								}
 							]
 						}

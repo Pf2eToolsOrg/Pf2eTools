@@ -1,0 +1,257 @@
+{
+	"item": [
+		{
+			"name": "One-Hour Flower",
+			"source": "LORA",
+			"remaster": true,
+			"page": 29,
+			"type": "Item",
+			"level": 1,
+			"traits": [
+				"rare",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 4
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"usage": "held in 1 hand",
+			"category": "Consumable",
+			"entries": [
+				"Popular with lovers, decorators, and sports fans, the seeds of these ephemeral plants grow and bloom immediately into flowers when placed in any warm environment, including a cup of dirt, a bowl of warm water, and a tightly clenched hand. The color of these flowers varies, but each has an internal glow that sheds bright light in a 30-foot radius. The radius of this light shrinks by 10 feet every 20 minutes. At the end of an hour, the plant disintegrates, leaving only a vaguely pleasant scent in the air."
+			]
+		},
+		{
+			"name": "Spiced Demonade",
+			"source": "LORA",
+			"remaster": true,
+			"page": 29,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"rare",
+				"alchemical",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 8
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"usage": "held in 1 hand",
+			"category": "Consumable",
+			"entries": [
+				"There are some who claim that the original version of this tart red drink contained the ground skin of actual {@trait demon||demons}, but in truth, spiced demonade was created by a first-year academy student desperate to look awake and alert after a night of carousing.",
+				"After consuming spiced demonade, you ignore all effects and penalties from the consumption of {@item alcohol|GMC} and lack of sleep for 1 hour. These effects resume when the spiced demonade wears off, and you become temporarily immune to spiced demonade for 24 hours."
+			]
+		},
+		{
+			"name": "Conspirator's Cookie",
+			"source": "LORA",
+			"remaster": true,
+			"page": 30,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"rare",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 15
+			},
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"usage": "held in 1 hand",
+			"category": "Consumable",
+			"entries": [
+				"The shape and exact flavor of these chocolate-covered cookies vary slightly based on who prepares them and the language they are imbued with when crafted. Although named for their use in obfuscating communications, Diarra finds them useful for quite the opposite reason.",
+				"After eating one of these treats, you can speak and understand the chosen language for the next hour. If you have the {@feat Read Lips|PC1} or {@feat Sign Language|PC1} feat, you can use that language with those feats. A {@i conspirator's cookie} grants you a +1 item bonus to {@skill Diplomacy|PC1} checks to {@action Make an Impression|PC1} or {@action Request|PC1} in the chosen language and you can add your level even if untrained."
+			],
+			"craftReq": [
+				"You must know the chosen language."
+			]
+		},
+		{
+			"name": "Shaping Sweet",
+			"source": "LORA",
+			"remaster": true,
+			"page": 41,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"rare",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 6
+			},
+			"usage": "held in 1 hand",
+			"category": "Consumable",
+			"entries": [
+				"Many inhabitants of the First World can shape their environment around them; weaker creatures can only make minor changes, while powerful entities such as the Eldest can remake entire landscapes. A {@i shaping sweet} is a gelatinous, fruit-flavored candy that confers a whisper of this ability on you when you eat it. For 1 hour after eating a {@i shaping sweet}, you can make each of the following changes to your surroundings with an {@action Interact|PC1} action. You can make each change only once.",
+				{
+					"type": "list",
+					"items": [
+						{
+							"type": "item",
+							"name": "Alter Weather",
+							"entries": [
+								"You create or eliminate minor precipitation in a 30-foot emanation."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Fairy Ring",
+							"entries": [
+								"A ring of flowers and mushrooms appears in a 10-foot burst around you, restoring 1 Hit Point at the start of each of your turns to a randomly chosen {@trait fey} creature within. The ring lasts for 1 minute."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Foliate",
+							"entries": [
+								"Vegetation grows around you in a 10-foot radius burst, creating light undergrowth that lasts for 1 minute."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Terrain Shift",
+							"entries": [
+								"The ground in your space rises or falls by 5 feet, remaining at that height for 1 minute."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mnemonic Feather",
+			"type": "Item",
+			"source": "LORA",
+			"page": 43,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"level": 3,
+			"entries": [
+				"Murrou crafted these feathers to assist in remembering information. A {@i mnemonic feather} is an emu feather imbued with magical energies. You can place the {@i mnemonic feather} in a book with an {@action Interact|PC1} action. As long as the {@i mnemonic feather} remains within the book, you recall information contained within that book perfectly, as if you were reading the page, as long as the book is on the same plane as you. When you attempt to {@action Recall Knowledge|PC1} about a topic contained within the book, you gain a +1 status bonus to the check.",
+				{
+					"name": "Recite Mnemonic",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"concentrate",
+						"mental"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "An ally within 30 feet attempts a {@action Recall Knowledge|PC1} check involving the topic in the mnemonic feather's book",
+					"entries": [
+						"You mentally impart the book's knowledge to your ally, giving them the benefit of the {@i mnemonic feather}."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Illusory Program",
+			"level": 1,
+			"source": "LORA",
+			"page": 53,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"illusion",
+				"magical"
+			],
+			"price": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"category": "Consumable",
+			"entries": [
+				"Produced to promote plays, {@i illusory programs} are thin pamphlets infused with minor magic. Upon opening one of these pamphlets, readers are treated to a series of tiny illusions that stand on each page, typically showcasing highlights of the performance or profiles of the cast. The magic woven into each page is of the cheap, short-lived variety, fading 24 hours after the program has been opened."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Theater Enhancers",
+			"level": 1,
+			"source": "LORA",
+			"page": 53,
+			"remaster": true,
+			"traits": [
+				"uncommon"
+			],
+			"price": {
+				"amount": 15,
+				"coin": "gp"
+			},
+			"category": "Consumable",
+			"entries": [
+				"Theater enhancers resemble a pair of opera glasses. When worn, they allow the viewer to see subtle illusions on key props or stage elements that have been cast ahead of time. For instance, a puppet of a demon might appear to project a sinister moving shadow, or a backdrop of a mountain might have snowflakes falling over it. Popular among theatergoers who want a visual experience grander than what they can see with their own eyes, {@i theater enhancers} are largely limited to fancy stage productions that can afford the time and money it takes to enchant a stage with them in mind."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Vocal Shells",
+			"level": 3,
+			"source": "LORA",
+			"page": 54,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"clockwork"
+			],
+			"price": {
+				"amount": 50,
+				"coin": "gp",
+				"note": "(set of two)"
+			},
+			"category": "Consumable",
+			"entries": [
+				"Used by more technologically inclined bards, ventriloquists, and other performers to throw their voices, this gadget consists of two button-sized conch shells, each containing a miniaturized mechanism designed to pick up and transmit sound. One of the shells is designated the sending shell and contains a tiny indentation. When this indentation is pressed and the shell is close to a source of sound (such as on an actor's necklace), any sound that reaches it is transmitted to the receiver shell. If the receiver shell is located within 20 feet, it plays the sounds captured by the sending shell at a perfect volume and pitch."
+			]
+		}
+	]
+}
