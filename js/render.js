@@ -5275,8 +5275,12 @@ Renderer.item = {
 			}
 			const activateTextIndex = renderStack.length; // This index is referenced to see if anything is appended after the action symbol
 			if (item.activate.components != null) {
-				const components = item.activate.components.map(c => renderer.render(c));
-				renderStack.push(components.join(", "));
+				const components = item.activate.components.map(c => renderer.render(c)).join(", ");
+				if (item.remaster) {
+					renderStack.push(`(${components})`);
+				} else {
+					renderStack.push(components);
+				}
 			}
 			if (item.activate.frequency != null) {
 				renderStack.push(`${renderStack[activateTextIndex] ? "; " : ""}<strong>Frequency&nbsp;</strong>${renderer.render(Parser.freqToFullEntry(item.activate.frequency))}`);
