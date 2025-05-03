@@ -3149,9 +3149,9 @@ DataUtil = {
 			variant._copy._mod = MiscUtil.merge(generic._vmod, variant._mod, variant._copy._mod);
 			const entriesMode = variant._copy._mod.entriesMode || "concat";
 			if (entriesMode === "concat") {
-				variant.entries = MiscUtil.copy([...generic.entries, ...variant.entries || []]);
+				variant.entries = MiscUtil.copy([...generic.entries ?? [], ...variant.entries ?? []]);
 			} else if (entriesMode === "generic") {
-				variant.entries = MiscUtil.copy([...generic.entries]);
+				if (generic.entries && generic.entries.length) variant.entries = MiscUtil.copy([...generic.entries]);
 			} else if (entriesMode === "variant") {
 				variant.entries = MiscUtil.copy([...variant.entries]);
 			}
