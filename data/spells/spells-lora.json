@@ -1269,6 +1269,405 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Beseech the Sphinx",
+			"source": "LORA",
+			"remaster": true,
+			"page": 100,
+			"level": 1,
+			"traits": [
+				"rare",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature other than yourself",
+			"duration": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"entries": [
+				"You look to the great Sphinx constellation, wisest of all cosmic guides and favored of Phimater, asking them to lend their insight to the target. Choose one skill and one type of saving throw (Fortitude, Reflex, or Will). The target gains a +1 status bonus to those skill checks and saving throws for the duration."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The status bonus increases to +2."
+					],
+					"7": [
+						"The status bonus increases to +3."
+					]
+				}
+			}
+		},
+		{
+			"name": "Buzzing Servants",
+			"source": "LORA",
+			"remaster": true,
+			"page": 102,
+			"level": 2,
+			"traits": [
+				"rare",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "one unoccupied 5-foot square",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You summon a swarm of bees from the city of Axis that rapidly constructs geometric shapes from wax. The bees appear in an unoccupied square, building a structure of hexagons, squares, and decagons that fill the space. The wax shape has a Hardness of 10 and 40 Hit Points but also decays over 24 hours.",
+				"When you {@action Sustain|PC1} the spell, you can choose another unoccupied square in range that the bees move to and fill with wax shapes. Any amount of area or {@trait splash} damage to the square they're present in kills the bees, ending further construction."
+			]
+		},
+		{
+			"name": "Coiling Dance",
+			"source": "LORA",
+			"remaster": true,
+			"page": 109,
+			"level": 2,
+			"traits": [
+				"rare",
+				"concentrate",
+				"holy",
+				"manipulate"
+			],
+			"traditions": [
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "30-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You perform a dance that seeks to pass on the knowledge and wisdom of a naga. Your allies in the area are filled with sacred energy, making their spells and attacks holy. Creatures or effects that would be {@trait unholy} don't gain this benefit.",
+				"When you cast or {@action Sustain|PC1} this spell, you can choose an ally in the area that's {@condition grabbed|PC1}, {@condition immobilized|PC1}, or {@condition restrained|PC1}. They can immediately use a reaction to {@action Escape|PC1}; they can use your {@skill Occultism|PC1} or {@skill Religion|PC1} modifier for the check instead of their unarmed attack, {@skill Acrobatics|PC1}, or {@skill Athletics|PC1} modifier if that would be better."
+			]
+		},
+		{
+			"name": "Disruptive Transfer",
+			"source": "LORA",
+			"remaster": true,
+			"page": 110,
+			"level": 3,
+			"traits": [
+				"rare",
+				"concentrate",
+				"manipulate",
+				"teleportation",
+				"visual"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "unknown",
+				"entry": "your Speed"
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"Using Venorium Blorm's formulas, you calculate a path through space. Teleport to an empty square you can see within range. Creatures adjacent to your initial location witness an array of overlapping destinations. Each of them must succeed at a Will save or become {@condition dazzled|PC1} for 1 minute."
+			]
+		},
+		{
+			"name": "Chrysopoetic Curse",
+			"source": "LORA",
+			"remaster": true,
+			"page": 119,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"curse",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "one creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You grant the target the gift of riches, giving them the power to turn anything they touch to gold. The target must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target's skin turns their armor and clothing partially to gold. If the target is wearing any armor or clothing, they become {@condition encumbered|PC1}."
+						],
+						"Failure": [
+							"As success, but the curse extends to the target's held weapons and other gear. If the target is holding any weapons or other objects, they become {@condition clumsy|PC1|clumsy 3}, and the objects' Hardness is reduced by 5."
+						],
+						"Critical Failure": [
+							"The curse becomes even stronger, extending to the surrounding terrain. As failure, and if the creature is standing on a solid surface, the ground in their space transmutes itself into a quagmire of liquid gold. The gold is greater difficult terrain. If the creature leaves its square (or when the curse ends), any affected terrain returns to its original shape and substance and the terrain in the new square transmutes to gold."
+						]
+					}
+				},
+				"Any objects that were turned to gold return to their previous form and original shape when they leave the target's possession or the spell ends. As long as the target did not critically succeed on their saving throw, {@dice 2d6} gp worth of gold flakes and dust are left behind as the curse recedes."
+			]
+		},
+		{
+			"name": "Devouring Void",
+			"source": "LORA",
+			"remaster": true,
+			"page": 119,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"void"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "30-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Countless tears in space appear in the area, like hungry mouths. When the spell is cast and the first time each round it's sustained, living creatures in its area take {@damage 7d8} void damage (basic Fortitude save). A living creature using a move action to leave the area must succeed at a Reflex save or their action is disrupted at the edge of the area."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The void damage increases by {@damage 1d8}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Indolent Haze",
+			"source": "LORA",
+			"remaster": true,
+			"page": 119,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"incapacitation",
+				"manipulate",
+				"mental",
+				"sleep"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "20-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"The faint scent of poppies and a soothing calm fill the area, urging creatures to lay down and take a rest, to do nothing at all, ever again. Creatures in the area when you Cast the Spell must attempt a Will save. Creatures who end their turn in the area must also attempt the save. You can {@action Dismiss|PC1} the spell.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature lies down to rest, becoming {@condition prone|PC1}. If they were already {@condition prone|PC1}, they instead drift off to sleep, becoming {@condition unconscious|PC1}."
+						],
+						"Failure": [
+							"As success, except that the creature is so happy lying down that they cannot attempt to {@action Stand|PC1} or otherwise maneuver themself off of the ground on their next turn, though they can {@action Crawl|PC1} (potentially to escape the spell's area)."
+						],
+						"Critical Failure": [
+							"The creature immediately lies down and drifts off to sleep, becoming {@condition prone} and {@condition unconscious|PC1}."
+						]
+					}
+				},
+				"Any creature in the area who is already {@condition unconscious|PC1} when you Cast the Spell (or whose turn ends in the spell's area while they are {@condition unconscious|PC1}) takes {@damage 6d4} spirit damage as their life force is {@condition drained|PC1} away through their dreams. This damage does not automatically wake them."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The spirit damage increases by {@damage 2d4}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Love's Sacrifice",
+			"source": "LORA",
+			"remaster": true,
+			"page": 119,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"concentrate",
+				"emotion",
+				"mental"
+			],
+			"traditions": [
+				"arcane",
+				"divine"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You take damage that would reduce you to 0 Hit Points.",
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "one creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You cry out for aid, and a creature near you feels compelled to throw itself in front of the threat as the ultimate expression of their love. A target that genuinely loves the caster without magical compulsion, at their player's or the GM's discretion, fails the save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The creature moves adjacent to you, moving further than its Speed if necessary as the magic compels it to exceed its limits. It takes half the damage you would have taken, while you take the rest. If you would be reduced to 0 Hit Points, you're reduced to 1 instead."
+						],
+						"Failure": [
+							"As success, except they take the full damage. If the damage reduces them to 0 Hit Points, they immediately die; this is a {@trait death} effect."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Thief of Fortune",
+			"source": "LORA",
+			"remaster": true,
+			"page": 119,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "one beneficial spell effect currently affecting a creature, with a duration of 10 minutes or less",
+			"entries": [
+				"Seeing another creature improve themself with magic, you reach out and seize its benefits for yourself. Attempt a counteract check against the target spell effect. If you successfully counteract the effect, the effect does not end. Instead, you gain the effect of the target spell as well. If you would not be a valid target for the spell, you do not gain any of its benefits.",
+				"The spell's duration is halved as you siphon off its magical energy for yourself. Each round that both you and the original creature are affected by the spell counts for two rounds when determining the spell's duration. You can {@action Dismiss|PC1} the spell."
+			]
 		}
 	]
 }

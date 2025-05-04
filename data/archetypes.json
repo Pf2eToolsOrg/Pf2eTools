@@ -1,6 +1,328 @@
 {
 	"archetype": [
 		{
+			"name": "Runelord",
+			"source": "LORA",
+			"page": 114,
+			"entries": [
+				"You've learned arcane magic, following the path of the runelords. You learn the secrets of runic magic, the building blocks of magic. But be warned: You might succumb to sin in your pursuit of power. The seven runes held in highest regard by the runelords echo the addictive power of the seven sins.",
+				"Beyond the runes themselves, you also learn the techniques of the ancient runelords. You learn to use their signature weapons and can acquire the secrets of the ancient magic items called aeon stones, embedding them into your skin.",
+				{
+					"type": "pf2-h3",
+					"name": "Runelord",
+					"page": 114,
+					"level": 1,
+					"entries": [
+						"You draw untold power from runes, sometimes called sin magic. You associate with one of the seven sins, also known as the seven rewards of rule: envy, gluttony, greed, lust, pride, sloth, and wrath. If you choose this class archetype, you must select {@feat Runelord Dedication|LORA} as your 2nd-level class feat.",
+						"{@b Prerequisites:} You must be a {@class wizard|PC1}.",
+						"{@b Runelord Adjustments:} You become trained in martial polearms and spears. When your proficiency for simple weapons increases, your proficiencies in these weapons increases as well. You learn the {@language Thassilonian|LOWG} language.",
+						"Instead of an arcane thesis, you gain a personal rune. Your personal rune also affects your arcane bond.",
+						"You must select the School of Thassilonian Rune Magic as your arcane school, and you must choose one sin to specialize in. When you cast any curriculum spell or school spell from the School of Thassilonian Rune Magic, you do so simply by tracing runes of power in the air. This removes the need to speak incantations aloud. When you {@action Refocus|PC1}, you do so by contemplating or indulging in your sin.",
+						"Each sin is opposed by two others. The incompatibility of these sins means that casting magic philosophically appropriate to those opposing sins, as represented by each school's anathema, interrupts your connection to your own sin and personal rune. If you violate your sin's anathema, you lose the benefits of your personal rune, and whenever you attempt to cast a curriculum spell or school spell, you must succeed at a DC 15 flat check or the spell is lost. This disruption lasts until you complete an {@ritual atone|PC1} ritual; unlike a normal {@ritual atone|PC1} ritual, {@skill Arcana|PC1} can be used for both the primary and secondary checks. Your curriculum spells (including spells of your own sin) never violate this anathema, sometimes providing alternatives to prohibited magic.",
+						"You gain {@feat Advanced School Spell|PC1} as a bonus feat at 8th level, gaining the advanced school spell for the School of Thassilonian Rune Magic; once you've begun your studies of sin magic, there is no turning back from its allure."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "School of Thassilonian Rune Magic",
+					"page": 114,
+					"entries": [
+						"This curriculum, taught at a few select academies in New Thassilon, can be learned only by wizards with the runelord class archetype. You have begun to study one of the seven runes of sin, granting you great power but at the cost of anathematic magic. All runelords gain the below curriculum and school spells. In addition, you must choose one of the seven sins to specialize in. You add your sin's spells and initial school spells to your curriculum. The addictive nature of sin magic prevents you from using magic in ways aligned with other sins, represented by that sin's anathema. Casting a sin spell never invokes the anathema of its school of sin.",
+						"Unlike other wizards, some of your curriculum spells may be spells that don't typically appear on the {@trait arcane} spell list (marked with an asterisk). You still cast these spells as {@trait arcane} spells, the unifying knowledge of sin bridging the gap between disparate magics.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Curriculum",
+									"entries": [
+										"cantrips: {@spell detect magic|PC1}, {@spell sigil|PC1}; 1st: {@spell mystic armor|PC1}, {@spell runic body|PC1}, {@spell runic weapon|PC1}, {@spell sure strike|PC1}; 2nd: {@spell darkvision|PC1}, {@spell see the unseen|PC1}; 3rd: {@spell clairaudience|PC1}, {@spell veil of privacy|PC1}; 4th: {@spell clairvoyance|PC1}, {@spell fly|PC1}; 5th: {@spell mind probe|PC1}, {@spell sending|PC1}; 6th: {@spell scrying|PC1}, {@spell truesight|PC1}; 7th: {@spell contingency|PC1}, {@spell spell riposte|PC2}; 8th: {@spell unrelenting observation|PC1}, {@spell seize soul|PC1}*; 9th: {@spell foresight|PC1}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Advanced School Spell",
+									"entries": [
+										"{@spell personal runewell|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Envy",
+					"page": 115,
+					"entries": [
+						"The Cutting Eye reveals weaknesses in yourself and others, creating those weaknesses when you need to humble those who dare surpass you.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to cause harm with the elements or void."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell shield|PC1}, {@spell tangle vine|PC1}; 1st: {@spell schadenfreude|PC2}, {@spell enfeeble|PC1}; 2nd: {@spell dispel magic|PC1}, {@spell stupefy|PC1}; 3rd: {@spell earthbind|PC1}, {@spell thief of fortune|LORA}; 4th: {@spell containment|PC2}, {@spell outcast's curse|PC1}; 5th: {@spell banishment|PC1}, {@spell grisly growths|PC2}; 6th: {@spell cursed metamorphosis|PC1}, {@spell spellwrack|PC1}; 7th: {@spell duplicate foe|PC1}, {@spell planar seal|PC1}; 8th: {@spell quandary|PC1}; 9th: {@spell detonate magic|PC1}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell cutting eye|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Gluttony",
+					"page": 115,
+					"entries": [
+						"The All-Encompassing invokes a deep emptiness in its users, encouraging them to consume and consume, with nothing ever feeling like enough.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to protect others or manipulate minds."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell caustic blast|PC1}, {@spell void warp|PC1}; 1st: {@spell grim tendrils|PC1}, {@spell summon undead|PC1}; 2nd: {@spell create food|PC1}, {@spell ghoulish cravings|PC2}*; 3rd: {@spell rouse skeletons|PC2}, {@spell vampiric feast|PC1}; 4th: {@spell seal fate|PC2}, {@spell vampiric maiden|PC2}; 5th: {@spell corrosive muck|PC2}, {@spell slither|PC1}; 6th: {@spell disintegrate|PC1}, {@spell vampiric exsanguination|PC1}; 7th: {@spell devouring void|LORA}, {@spell eclipse burst|PC1}; 8th: {@spell desiccate|PC1}; 9th: {@spell massacre|PC1}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell all-encompassing hunger|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Greed",
+					"page": 115,
+					"entries": [
+						"The Precious Gleam carries knowledge that the world's problems are far beyond one's current form and resources. But forms can change and resources can be hoarded with the help of this rune's magic.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to affect the mind or perception rather than physical reality."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell live wire|PC2}, {@spell read aura|PC1}; 1st: {@spell ant haul|PC1}, {@spell leaden steps|PC2}; 2nd: {@spell enlarge|PC1}, {@spell phantasmal treasure|PC2}; 3rd: {@spell one with stone|PC1}, {@spell shrink item|PC2}; 4th: {@spell aerial form|PC1}, {@spell shape stone|PC1}; 5th: {@spell elemental form|PC1}, {@spell impaling spike|PC1}; 6th: {@spell dragon form|PC1}, {@spell petrify|PC1}; 7th: {@spell chrysopoetic curse|LORA}, {@spell lifewood cage|PC2}; 8th: {@spell monstrosity form|PC1}; 9th: {@spell metamorphosis|PC1}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell cutting eye|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Lust",
+					"page": 115,
+					"entries": [
+						"The Heart's Hook drowns rationality in desires, twisting its targets' thoughts until they gladly serve the runelord's wishes.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to meddle with physical forms or invoke the void."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell daze|PC1}, {@spell message|PC1}; 1st: {@spell charm|PC1}, {@spell command|PC1}; 2nd: {@spell charitable urge|PC2}, {@spell stupefy|PC1}; 3rd: {@spell dream message|PC1}, {@spell enthrall|PC1}; 4th: {@spell confusion|PC1}, {@spell suggestion|PC1}; 5th: {@spell mind probe|PC1}, {@spell subconscious suggestion|PC1}; 6th: {@spell dominate|PC1}, {@spell never mind|PC1}; 7th: {@spell love's sacrifice|LORA}, {@spell warp mind|PC1}; 8th: {@spell uncontrollable dance|PC1}; 9th: {@spell telepathic demand|PC2}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell heart's hook|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Pride",
+					"page": 116,
+					"entries": [
+						"The Crescent Scepter is endlessly convinced of its own superiority and the ascendance of its users. If someone's eyes show something else, clearly their eyes are mistaken.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to change or create physical things rather than their appearances."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell bullhorn|PC2}, {@spell figment|PC1}; 1st: {@spell dizzying colors|PC1}, {@spell illusory disguise|PC1}; 2nd: {@spell illusory creature|PC1}, {@spell invisibility|PC1}; 3rd: {@spell blindness|PC1}, {@spell levitate|PC1}; 4th: {@spell mirage|PC1}, {@spell vision of death|PC1}; 5th: {@spell cloak of colors|PC2}, {@spell illusory scene|PC1}; 6th: {@spell phantasmal calamity|PC1}, {@spell vibrant pattern|PC1}; 7th: {@spell mask of terror|PC1}, {@spell project image|PC1}; 8th: {@spell confusing colors|PC2}; 9th: {@spell overwhelming presence|PC1}*"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell crescent scepter|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Sloth",
+					"page": 116,
+					"entries": [
+						"The Reclined spreads a sense of restful peace to its users, the feeling of rest after a hard day of work without the drudgery leading up to it. With its magic, runelords can cut away even the smallest drudgery.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to manipulate appearances or directly cause harm with the elements."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell telekinetic hand|PC1}, {@spell telekinetic projectile|PC1}; 1st: {@spell sleep|PC1}, {@spell enfeeble|PC1}; 2nd: {@spell ghostly carrier|PC1}, {@spell summon elemental|PC1}; 3rd: {@spell cozy cabin|PC1}, {@spell slow|PC1}; 4th: {@spell dull ambition|PC2}, {@spell translocate|PC1}; 5th: {@spell summon dragon|PC1}, {@spell telekinetic haul|PC1}; 6th: {@spell collective transposition|PC2}, {@spell teleport|PC1}; 7th: {@spell indolent haze|LORA}, {@spell planar palace|PC1}; 8th: {@spell quandary|PC1}; 9th: {@spell resplendent mansion|PC2}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell reclined apport|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Wrath",
+					"page": 116,
+					"entries": [
+						"The Vengeful Glare fills its users with a zealous rage and the restless need to solve problems, which generally takes the form of cutting to the most direct solution.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to protect or create."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell frostbite|PC1}, {@spell ignition|PC1}; 1st: {@spell force barrage|PC1}, {@spell thunderstrike|PC1}; 2nd: {@spell blistering invective|PC2}*, {@spell floating flame|PC1}; 3rd: {@spell fireball|PC1}, {@spell lightning bolt|PC1}; 4th: {@spell ice storm|PC2}, {@spell wall of fire|PC1}; 5th: {@spell howling blizzard|PC1}, {@spell wall of ice|PC1}; 6th: {@spell blinding fury|PC2}*, {@spell disintegrate|PC1}; 7th: {@spell eclipse burst|PC1}, {@spell fiery body|PC1}; 8th: {@spell earthquake|PC1}; 9th: {@spell falling stars|PC1}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell vengeful glare|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Arcane Bond and Personal Rune",
+					"page": 116,
+					"entries": [
+						"Runelords hail from an era where even a scholar was expected to be able to defend themself with arms if necessary, leading to the practice of attaching a blade to the typical wizard's staff. You must choose a {@group polearm} or {@group spear} as your arcane bond. In place of an arcane thesis, you have a personal rune, which appears on your bonded weapon. The weapon functions as a {@trait staff} with charges equal to the highest rank of spells you can cast and contains the sin spells from your sin up to that rank (including your {@trait cantrip||cantrips}). Your personal rune isn't a property rune and doesn't count against the weapon's limit of such runes.",
+						"If you prepare a magical {@trait staff}, it merges with your bonded item until your next daily preparations, adding its charges and spell list. While merged, the weapons haft takes on aesthetic aspects of the staff."
+					]
+				}
+			],
+			"dedicationLevel": 1,
+			"remaster": true,
+			"miscTags": [
+				"Class Archetype"
+			],
+			"extraFeats": [
+				"2|Tattoo Artist|TV"
+			],
+			"rarity": "rare"
+		},
+		{
+			"name": "Lepidstadt Surgeon",
+			"source": "LORA",
+			"remaster": true,
+			"page": 94,
+			"entries": [
+				"To be a surgeon is to be akin to a god. In your hands is the power of life and death. With a flick of a knife, you can excise a tumor. With another, you can sever an artery. Everything comes down to your skill, to the steadiness of your hand, the keenness of your eye, and the knowledge of your mind. Little wonder, then, that in Lepidstadt, surrounded by powers and temptations, surgeons sometimes go a few steps further. With the right reagents, with the proper equipment, even death is only a temporary inconvenience, a shadow to be chased from the door with kicks and shouts. Just imagine the possibilities."
+			],
+			"dedicationLevel": 2,
+			"rarity": "uncommon",
+			"extraFeats": [
+				"6|No! No! I Created You!|G&G"
+			]
+		},
+		{
 			"name": "Kitharodian Actor",
 			"source": "LORA",
 			"remaster": true,

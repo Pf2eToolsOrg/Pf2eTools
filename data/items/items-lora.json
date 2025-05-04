@@ -972,6 +972,962 @@
 					]
 				}
 			]
+		},
+		{
+			"type": "Item",
+			"name": "Aetheric Irritant",
+			"level": "1+",
+			"source": "LORA",
+			"page": 92,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"gadget",
+				"sonic"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"An aetheric irritant is a chime that can emit a subsonic frequency that otherworldly beings find unpleasant. When you Activate an aetheric irritant, you sound the chime and place it on the ground in a square within your reach. Creatures with the {@trait fey}, {@trait spirit}, or {@trait undead} traits must attempt a Will save when they enter the affected area and at the beginning of every turn they are in the affected area. Those who fail the save treat the area as difficult terrain until the beginning of their next turn. A creature that critically succeeds at the save is immune to all aetheric irritants for 24 hours. An aetheric irritant continues to hum until it shakes itself to pieces after 10 minutes of being activated or it is moved, whichever comes first."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 1,
+					"price": {
+						"coin": "gp",
+						"amount": 4
+					},
+					"entries": [
+						"The aetheric irritant affects an area in a 10-foot emanation and the Will DC is 15."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 11
+					},
+					"entries": [
+						"The aetheric irritant affects an area in a 15-foot emanation and the Will DC is 18."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 11,
+					"price": {
+						"coin": "gp",
+						"amount": 275
+					},
+					"entries": [
+						"The aetheric irritant affects an area in a 20-foot emanation and the Will DC is 28."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 2750
+					},
+					"entries": [
+						"The aetheric irritant affects an area in a 30-foot emanation and the Will DC is 36."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Krasovnatype",
+			"level": 4,
+			"source": "LORA",
+			"page": 92,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"gadget"
+			],
+			"price": {
+				"amount": 15,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"A krasovnatype (named after Dr. Krasovna Gerenevich) consists of a carefully prepared silvered glass plate charged by a Stasian coil. When you touch the front of the glass or hold it near a living creature within your reach, an image of that creature's aura is imprinted on the glass. Once a krasovnatype has an image on it, you can't use the glass plate on another creature. If you are trained in {@skill Occultism|PC1}, you can look at the image and learn if the associated creature has innate, prepared, or spontaneous spellcasting, along with the tradition of that casting and the highest rank of spells they can cast. Referencing the image grants a +1 item bonus to any {@action Recall Knowledge|PC1} check regarding the creature."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Maelstromic Destabilizer",
+			"level": "2+",
+			"source": "LORA",
+			"page": 92,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"gadget",
+				"spirit"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"A maelstromic destabilizer is a whirling gyroscope of burnished bronze and glass. It strengthens the bonds that hold a creature to this world by weakening those same bonds to every other nearby creature. When activated, the destabilizer emits a constant pleasant chime as it spins. For the next minute, the creature holding the gadget gains the listed resistance to spirit damage, while all creatures not immune to spirit damage in a 10-foot emanation gain the listed weakness to spirit damage."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 2,
+					"price": {
+						"coin": "gp",
+						"amount": 6
+					},
+					"entries": [
+						"The value for the spirit resistance and weakness is 2."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 7,
+					"price": {
+						"coin": "gp",
+						"amount": 65
+					},
+					"entries": [
+						"The value for the spirit resistance and weakness is 5."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 2750
+					},
+					"entries": [
+						"The value for the spirit resistance and weakness is 10."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Moritype",
+			"level": "10+",
+			"source": "LORA",
+			"page": 92,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"consumable",
+				"gadget",
+				"void"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "1",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"This plate of smoky glass is a variation on Dr. Krasovna Gerenevich's krasovnatype that is imprinted with void energies. Creating the plate requires a living thing to die as part of its electrical charging; most creators use insects or lab mice. The moritype creates an image in the same way as a krasovnatype, but also siphons off part of that aura. If used on a living creature, that creature must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "If the creature has any innate, prepared, or spontaneous spells, they're unable to Cast a Spell of their highest-ranked slot for 1 round. {@trait cantrip||Cantrips} and {@trait focus} spells are unaffected.",
+						"Failure": "As success, except they can't cast the 2 highest ranks they have available.",
+						"Critical Failure": "As success, except they can't cast any spells other than {@trait cantrip||cantrips} and {@trait focus} spells."
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "moritype",
+					"name": "Moritype",
+					"level": 10,
+					"price": {
+						"coin": "gp",
+						"amount": 200
+					},
+					"entries": [
+						"The Will DC is 27."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 16,
+					"price": {
+						"coin": "gp",
+						"amount": 2000
+					},
+					"entries": [
+						"The Will DC is 35."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Portable Seal",
+			"level": "6+",
+			"source": "LORA",
+			"page": 93,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"gadget",
+				"magical"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "1",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"A portable seal is a stiff framework of copper wires and strategically placed hinges, so that when the device is snapped open it forms an instant geometric design. A tiny Stasian coil is attached, which when activated runs a mixture of occult energy and high-voltage electricity through the wire. The design covers a 5-foot burst when unfolded and must be unfolded into an area free of major obstructions such as rocks or {@condition hostile|PC1} creatures. When a creature with the {@trait summoned} trait attempts to enter the seal's area or make a melee {@action Strike|PC1} against a creature in that area, the {@trait summoned} creature must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The action occurs normally, and the creature is immune to the effects of this portable seal this round.",
+						"Failure": "The movement or {@action Strike|PC1} is disrupted, but the creature is immune to further effects of the portable seal this round.",
+						"Critical Failure": "The movement or {@action Strike|PC1} is disrupted."
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 6,
+					"price": {
+						"coin": "gp",
+						"amount": 45
+					},
+					"entries": [
+						"The Will DC is 20."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 12,
+					"price": {
+						"coin": "gp",
+						"amount": 400
+					},
+					"entries": [
+						"The Will DC is 28."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 18,
+					"price": {
+						"coin": "gp",
+						"amount": 5000
+					},
+					"entries": [
+						"The Will DC is 36."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Quartz-Coil Rail Transport",
+			"level": "4+",
+			"source": "LORA",
+			"page": 93,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"electricity",
+				"gadget",
+				"teleportation"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"This odd metal rod is often misinterpreted as a mechanical wand of some kind. Any gadgeteer or mage will be able to elaborate on the fact that magic wands do not need to be throughly covered in a copper wire coil and that the pointed quartz crystal at its tip thrums with electricity, not magic. When activated, electricity courses through you, allowing you to move through the voltage that arcs through the air. You instantly transport yourself and any items you're wearing and holding from your current space to an unoccupied space up to 20 feet away that you can see. If this would bring another creature with you\u2014even if you're carrying it in an {@trait extradimensional} container\u2014the teleportation fails. You and all creatures in a line between your original location and your destination take 2 electricity damage."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 4,
+					"price": {
+						"coin": "gp",
+						"amount": 20
+					}
+				},
+				{
+					"variantType": "moderate",
+					"level": 9,
+					"price": {
+						"coin": "gp",
+						"amount": 150
+					},
+					"entries": [
+						"The distance you can teleport increases to 40 feet, and the electricty damage increases to 4."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 14,
+					"price": {
+						"coin": "gp",
+						"amount": 650
+					},
+					"entries": [
+						"The distance you can teleport increases to 60 feet, and the electricity damage increases to 6."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 19,
+					"price": {
+						"coin": "gp",
+						"amount": 8000
+					},
+					"entries": [
+						"The distance you can teleport increases to 80 feet, and the electricity damage increases to 8."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Static-Muscular Relay",
+			"level": "10",
+			"source": "LORA",
+			"page": 93,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"electricity",
+				"gadget"
+			],
+			"price": {
+				"amount": 180,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"This glass orb has a Stasian coil in the center, allowing visible electricity to be safely seen within the glass. The electricity that dances within this orb can be transferred to the user of this gadget, allowing their muscles to react and respond much quicker. When activated, you gain a +2 circumstance bonus to Reflex saves and AC for 1 minute, or until you are hit by an attack or fail a Reflex saving throw, whichever happens first."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Tangibility Resonator",
+			"level": "5+",
+			"source": "LORA",
+			"page": 93,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"gadget",
+				"sonic"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"One of the stranger devices to come out of the University of Lepidstadt is a twisted glass contraption that hums with electricity. This vibration is harmless to most but is massively disruptive to the locomotion of {@trait incorporeal} creatures. When activated, one {@trait incorporeal} creature within 15 feet must attempt a DC 19 Fortitude saving throw. Once used, the vibrations cause the glass to shatter.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The target is unaffected.",
+						"Failure": "The target is {@condition immobilized|PC1} for 1 round.",
+						"Critical Failure": "The target is {@condition immobilized|PC1} and {@condition off-guard|PC1} for 1 round."
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 5,
+					"price": {
+						"coin": "gp",
+						"amount": 25
+					}
+				},
+				{
+					"variantType": "moderate",
+					"level": 11,
+					"price": {
+						"coin": "gp",
+						"amount": 300
+					},
+					"entries": [
+						"The Fortitude DC is 27."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 2500
+					},
+					"entries": [
+						"The Fortitude DC is 35."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Vanishing Shocker",
+			"level": "7+",
+			"source": "LORA",
+			"page": 93,
+			"remaster": true,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"electricity",
+				"gadget",
+				"illusion",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"The vanishing shocker is a cube with extruding spikes at each corner. This inscrutable device channels {@trait occult} energy through the electricity it produces, creating the result of invisible lighting. When activated, the cube floats above your head, creating a field of invisible electricity in a 10-foot emanation that lasts for 1 round. You and creatures within the emanation are {@condition concealed|PC1}. Creatures that enter or start their turn within the area must attempt a DC 22 Reflex save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The target is unaffected.",
+						"Failure": "The target is {@condition off-guard|PC1} for 1 round.",
+						"Critical Failure": "The target is {@condition clumsy|PC1|clumsy 1} and {@condition off-guard|PC1} for 1 round."
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 7,
+					"price": {
+						"coin": "gp",
+						"amount": 70
+					}
+				},
+				{
+					"variantType": "moderate",
+					"level": 11,
+					"price": {
+						"coin": "gp",
+						"amount": 300
+					},
+					"entries": [
+						"The Reflex DC is 27."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 15,
+					"price": {
+						"coin": "gp",
+						"amount": 1300
+					},
+					"entries": [
+						"The Reflex DC is 33."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 19,
+					"price": {
+						"coin": "gp",
+						"amount": 8000
+					},
+					"entries": [
+						"The Reflex DC is 38."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Bloodstone Doll",
+			"level": "4+",
+			"source": "LORA",
+			"page": 101,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"consumable",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "reaction"
+				},
+				"components": [
+					"{@trait concentrate}",
+					"{@trait manipulate}"
+				],
+				"trigger": "A creature within 60 feet casts a {@trait summon} spell",
+				"requirements": "You have a free hand."
+			},
+			"entries": [
+				"This small doll has been carved from a fragment of Bloodstone. When you Activate a {@i bloodstone doll} in response to another's magic, you {@action Interact|PC1} to take it in hand and hold it up toward the triggering creature. Attempt a counteract check against the triggering spell at the listed bonus and rank.",
+				"If the spell would be counteracted, the {@i bloodstone doll} instead influences the summoned creature. You gain control of the summoned creature and can dictate its 2 actions for that turn. The triggering creature then regains control of their summoned creature, but the summoned creature takes a \u20132 status penalty to attack rolls against you. Your {@i bloodstone doll} shatters when the {@trait summon} spell ends."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "minor",
+					"level": 4,
+					"price": {
+						"coin": "gp",
+						"amount": 15
+					},
+					"entries": [
+						"The {@i bloodstone doll} has a counteract modifier of +9 and a counteract rank of 2."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 10,
+					"price": {
+						"coin": "gp",
+						"amount": 180
+					},
+					"entries": [
+						"The {@i bloodstone doll} has a counteract modifier of +17 and a counteract rank of 5."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 16,
+					"price": {
+						"coin": "gp",
+						"amount": 1800
+					},
+					"entries": [
+						"The {@i bloodstone doll} has a counteract modifier of +25 and a counteract rank of 8."
+					]
+				}
+			],
+			"craftReq": [
+				"You have a fragment of the Bloodstone at the heart of the Blodostone Conservatory."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Oathlamp of Accord",
+			"level": "3",
+			"source": "LORA",
+			"page": 103,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"light",
+				"magical",
+				"mental"
+			],
+			"price": {
+				"amount": 50,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This {hooded lantern takes the form of a translucent prism. It functions as a normal {@item hooded lantern|PC1}, except that it isn't fueled by oil, but by oaths. While you're holding the lantern, you gain a +1 item bonus to {@skill Diplomacy|PC1} checks.",
+				{
+					"type": "ability",
+					"name": "Announce Oath",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"light",
+						"mental"
+					],
+					"trigger": "You make a promise in good faith",
+					"entries": [
+						"The {@i oathlamp of accord} sheds light without consuming fuel until the promise you made is broken or fulfilled. The GM adjudicates whether a spoken promise is broken or fulfilled. This light and the shutters to conceal it work as normal for a {@item hooded lantern|PC1}. Any creature in the light of the oathlamp becomes aware of the contents of the oath, along with who made it and how long ago."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Mutator Onyx",
+			"level": "3",
+			"source": "LORA",
+			"page": 104,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"alchemical",
+				"consumable",
+				"earth"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@trait manipulate}"
+				]
+			},
+			"entries": [
+				"A mutator onyx is a jet-black, alien mineral first found within the walls of the Onyx Citadel but is now used primarily as an alchemical teaching or experimentation tool within Oprak. Pressing the gem into a solid, unattended inanimate object with Hardness 5 or less transforms that object's surface into a curious syrupy, liquid-like state, reducing its Hardness to 0. One mutator onyx can transform up to a 5-foot cube. After 10 minutes, the matter reverts to its solid state, regaining its Hardness."
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Prankster's Perpetual Pieplate",
+			"level": "1",
+			"source": "LORA",
+			"page": 105,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"magical"
+			],
+			"price": {
+				"amount": 12,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"Although the simple pies that fill this glass plate every minute are edible, they don't last long enough to sate hunger or provide any real nutritive value. Instead, they can be magically guided at targets, unleashed harmlessly by even the most uncoordinated child.",
+				{
+					"type": "ability",
+					"name": "Project Pastry",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"entries": [
+						"You magically hurl the pie at a creature within 30 feet. Unless the target succeeds at a DC 15 Reflex save, they're splattered with a harmless but tasty mess, which remains until it is wiped away with an {@action Interact|PC1} action or is otherwise cleaned off (like if the target is submerged in water). After a minute, the mess disappears, and the pieplate refills with another kind of pie."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Zarothrask's Contract",
+			"level": "9",
+			"source": "LORA",
+			"page": 106,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"contract",
+				"invested",
+				"occult"
+			],
+			"bulk": "\u2014",
+			"category": "Contract",
+			"entries": [
+				"You've bargained for power with a gongorinan, but in return, you must avoid furthering demonic goals. You gain a +2 item bonus to {@skill Athletics|PC1} checks to {@action Disarm|PC1} manufactured items and to {@action Grapple|PC1}. Once per day, the gongorinan can warp your body with animal features; you must attempt a DC 25 Fortitude save or become {@condition sickened|PC1|sickened 2}. When you recover from the {@condition sickened|PC1} condition, your features revert to normal. The gongorinan will usually do this if you sin or aid a {@trait demon}, even unintentionally.",
+				{
+					"type": "ability",
+					"name": "Gongarinan's Emergence",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"mental",
+						"morph",
+						"occult",
+						"unholy"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Stony tentacles burst out of your body, lashing at foes. Creatures in a 10-foot emanation take {@damage 6d6} bludgeoning damage and {@damage 2d6} mental damage (DC 25 basic Fortitude save); on a failure, the creature also becomes {@condition sickened|PC1|sickened 1} ({@condition sickened|PC1|sickened 2} on a critical failure) as parts of their anatomy temporarily warp into animal features. When a creature recovers from the {@condition sickened|PC1} condition, its features revert to normal."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Kimanéz Luminescent Toadstool",
+			"level": "3",
+			"source": "LORA",
+			"page": 107,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"consumable",
+				"fungus",
+				"light",
+				"magical"
+			],
+			"price": {
+				"amount": 9,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"entries": [
+				"This large blue toadstool glimmers with soft, magical light similar to moonlight. The spots of white adorning the mushroom's cap glow ethereally, as if illuminated from the inside, shedding dim light in a 10-foot radius.",
+				{
+					"type": "ability",
+					"name": "Ward Area",
+					"activity": {
+						"number": 10,
+						"unit": "minute"
+					},
+					"traits": [
+						"concentrate",
+						"light",
+						"manipulate"
+					],
+					"entries": [
+						"You plant the toadstool in the ground, allowing it to connect to all living fungi and plant matter within 120 feet of its planting. For 8 hours, any corporeal creature that touches the affected matter even accidentally begins to glow with bright magical light in a 10-foot emanation, which persists as long as they remain within 120 feet of the planted mushroom. A creature can move through an area containing affected fungi and plant matter without touching it by treating the area as difficult terrain and succeeding at a DC 18 {@skill Acrobatics|PC1} check."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Three-Pillared Yang Na",
+			"level": "4",
+			"source": "LORA",
+			"page": 108,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"divine",
+				"invested",
+				"tattoo"
+			],
+			"price": {
+				"amount": 80,
+				"coin": "gp"
+			},
+			"usage": "tattooed on the body",
+			"category": "Tattoo",
+			"entries": [
+				"This tattoo represents an abstract tree whose trunk is made up of three lines of Tang text. Applied in a ritual involving jasmine, turmeric, and a blossom from a yang na tree, the tattoo provides three blessings. The first blessing keeps your mind still during negotiations, granting a +1 item bonus to {@skill Diplomacy|PC1} checks.",
+				{
+					"type": "ability",
+					"name": "Second Blessing",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"detection"
+					],
+					"entries": [
+						"You learn the direction of the yang na tree that gave the blossom used in creating your tattoo. Most such trees are in Tang Mai, far to the west of the Inner Sea."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Third Blessing",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "You take spirit damage",
+					"traits": [
+						"concentrate"
+					],
+					"entries": [
+						"You gain resistance 3 against that spirit damage."
+					]
+				}
+			]
+		},
+		{
+			"type": "Item",
+			"name": "Demon Bone Tiles",
+			"level": "2",
+			"source": "LORA",
+			"page": 111,
+			"remaster": true,
+			"traits": [
+				"rare",
+				"catalyst",
+				"consumable",
+				"magical",
+				"unholy"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Consumable",
+			"activate": {
+				"activity": {
+					"unit": "varies",
+					"entry": "Cast a Spell (add 1 action)"
+				}
+			},
+			"entries": [
+				"These bones from different types of demons can be used to form temporary barriers. When you crush the bone fragments and blow the resulting dust around yourself as you cast {@spell shield}, the shield appears as a bone bulwark shaped like the {@trait demon||demon's} face.",
+				"When use {@feat Shield Block|PC1} with the spell, the barrier explodes into many bone fragments. The shards cause {@condition persistent damage|PC1|persistent bleed damage} to each creature adjacent to you that fails a Reflex save at the listed DC. This {@condition persistent damage|PC1|persistent bleed damage} is {@trait unholy} and can be stopped with an {@action Interact|PC1} action to remove the shards."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "pusk bone tiles",
+					"name": "Pusk Bone Tiles",
+					"level": 2,
+					"price": {
+						"amount": 7,
+						"coin": "gp"
+					},
+					"entries": [
+						"The {@condition persistent damage|PC1|persistent bleed damage} is {@damage 1d4}, and the save DC is 16."
+					]
+				},
+				{
+					"variantType": "brimorak bone tiles",
+					"name": "Brimorak Bone Tiles",
+					"level": 5,
+					"price": {
+						"amount": 28,
+						"coin": "gp"
+					},
+					"entries": [
+						"The {@condition persistent damage|PC1|persistent bleed damage} is {@damage 1d6}, and the save DC is 20."
+					]
+				},
+				{
+					"variantType": "pusk bone tiles",
+					"name": "Seraptis Bone Tiles",
+					"level": 15,
+					"price": {
+						"amount": 1200,
+						"coin": "gp"
+					},
+					"entries": [
+						"The {@condition persistent damage|PC1|persistent bleed damage} is {@damage 2d8}, and the save DC is 34."
+					]
+				}
+			]
 		}
 	]
 }

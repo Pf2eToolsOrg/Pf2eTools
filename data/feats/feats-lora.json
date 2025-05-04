@@ -1065,7 +1065,7 @@
 			]
 		},
 		{
-			"name": "Onvergent Tides",
+			"name": "Convergent Tides",
 			"source": "LORA",
 			"remaster": true,
 			"page": 82,
@@ -1095,7 +1095,7 @@
 				"force",
 				"magus"
 			],
-			"prerequisites": "resurgent maelstrom hybrid study, {@action Spellstrike|SoM}",
+			"prerequisites": "{@class Magus|SoM|Resurgent Maelstrom|Resurgent Maelstrom|LORA} hybrid study, {@action Spellstrike|SoM}",
 			"requirements": "You're in {@action Arcane Cascade|SoM} stance and wielding an improvised weapon.",
 			"entries": [
 				"You intentionally channel a rampaging cascade of magic through your weapon, breaking it to deal more damage. Make a {@action Spellstrike|SoM} against a target with your improvised weapon. If the attack hits, it deals an additional {@damage 2d6} force damage as your improvised weapon breaks. If the spell used with the {@action Spellstrike|SoM} wasn't a {@trait cantrip} or {@trait focus} spell, increase this additional damage by the spell's rank.",
@@ -1117,7 +1117,7 @@
 				"magus",
 				"water"
 			],
-			"prerequisites": "resurgent maelstrom hybrid study",
+			"prerequisites": "{@class Magus|SoM|Resurgent Maelstrom|Resurgent Maelstrom|LORA} hybrid study",
 			"requirements": "You're wielding a {@condition broken|PC1} weapon.",
 			"entries": [
 				"You encase the pieces of your {@condition broken|PC1} weapon together with water you pull from the surrounding environment. The weapon's {@condition broken|PC1} condition is temporarily suppressed, and the weapon deals an additional amount of bludgeoning damage equal to twice the number of weapon damage dice; this damage can't be changed to any other type. The weapon also gains the deadly d8 trait; if the weapon already had the {@trait deadly} trait, the damage die increases by one step or to d8, whichever is higher. The first time you use this weapon to {@action Spellstrike|SoM} or get a critical success on an attack with it, the weapon is completely destroyed.",
@@ -1159,7 +1159,7 @@
 				"concentrate",
 				"magus"
 			],
-			"prerequisites": "resurgent maelstrom hybrid study",
+			"prerequisites": "{@class Magus|SoM|Resurgent Maelstrom|Resurgent Maelstrom|LORA} hybrid study",
 			"entries": [
 				"You briefly conjure a tendril of water that allows you to grab an improvised weapon and then subsume that water to power your magic. You {@action Interact|PC1} to pick up an unattended object within 15 feet you could use as an improvised weapon and then {@action Cast a Spell|PC1} that is a cantrip or conflux spell that takes 1 action to cast."
 			]
@@ -1178,7 +1178,7 @@
 				"uncommon",
 				"magus"
 			],
-			"prerequisites": "resurgent maelstrom hybrid study",
+			"prerequisites": "{@class Magus|SoM|Resurgent Maelstrom|Resurgent Maelstrom|LORA} hybrid study",
 			"frequency": {
 				"number": 1,
 				"unit": "hour"
@@ -1204,6 +1204,391 @@
 			"entries": [
 				"With your experience as a performer, you can keep a set of medical tools handy at all times. You can wear a {@item healer's toolkit|PC1} as part of any costume or disguise. Creatures will generally only notice the toolkit it if they use a {@action Seek|PC1} action and succeed at a {@skill Perception|PC1} check against your {@skill Performance|PC1} DC.",
 				"In addition, you can realize at the last moment when you should just be pretending to avoid doing any lasting harm. When you critically fail a {@skill Medicine} check to {@action Administer First Aid|PC1}, {@action Treat Disease|PC1}, {@action Treat Poison|PC1}, or {@action Treat Wounds|PC1}, you can attempt a {@skill Performance|PC1} check against the patient's {@skill Perception|PC1} DC. On a success, your critical failure at the {@skill Medicine|PC1} check becomes a failure."
+			]
+		},
+		{
+			"name": "Lepidstadt Surgeon Dedication",
+			"source": "LORA",
+			"remaster": true,
+			"page": 94,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "trained in {@skill Medicine|PC1}, attended the University of Lepidstadt",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"Before everything else, before the blood and the monsters and the Stasian technology and the horror, you are a doctor. You are, in fact, an exceptionally good doctor. You become an expert in {@skill Medicine|PC1}. When you successfully {@action Administer First Aid|PC1} to stabilize a {@condition dying} creature that doesn't yet have the {@condition wounded|PC1} condition, it regains {@dice 2d8} Hit Points; this healing increases by 10 when you are a master of {@skill Medicine|PC1} and by another 10 when you are legendary in {@skill Medicine|PC1}. When you successfully {@action Administer First Aid|PC1} to stop bleeding, the target rolls the flat check (with lowered DC for an assisted recovery) twice and takes the better result; this is a {@trait fortune} effect."
+			]
+		},
+		{
+			"name": "In Lightning, Life",
+			"source": "LORA",
+			"remaster": true,
+			"page": 94,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 4,
+			"traits": [
+				"archetype",
+				"concentrate",
+				"electricity",
+				"healing",
+				"manipulate"
+			],
+			"prerequisites": "{@feat Lepidstadt Surgeon Dedication|PC1}",
+			"frequency": {
+				"number": 1,
+				"interval": 10,
+				"unit": "minute"
+			},
+			"requirements": "You're wearing or holding a {@item healer's toolkit|PC1}.",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"\"In lightning, there is life.\" This lesson is whispered throughout Lepidstadt, and you can put it to practical use. You have integrated a miniature Stasian coil into your {@item healer's toolkit|PC1}. You use the coil to gently shock a willing or {@condition unconscious|PC1} ally within your reach, who gains {@dice 2d4} temporary Hit Points from the jolt. These temporary Hit Points last for 1 minute. These temporary Hit Points increase by {@dice 1d4} at 8th level and every 4 levels thereafter.",
+				"A creature that has resistance or immunity to electricity is immune to this ability, and a creature that received temporary Hit Points from In Lightning, Life is temporarily immune to it for 24 hours."
+			]
+		},
+		{
+			"name": "Rise, My Creature!",
+			"source": "LORA",
+			"remaster": true,
+			"page": 94,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lepidstadt Surgeon Dedication|PC1}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"You have created life! You have usurped the power of the gods themselves! You gain a prototype construct companion pieced together from corpses and animated by chemicals or Stasian technology. You use {@skill Medicine|PC1} in place of {@skill Crafting|PC1} to {@action Repair|PC1} your construct or rebuild it if it's been destroyed.",
+				"Your creation has an affinity for the lightning that brought it to life. When your construct companion takes electricity damage, it gains a +1 circumstance bonus to its {@skill Athletics} skill checks until the end of its next turn.",
+				"Although the coils or alchemical residue make it obvious to you and those with similar training that your creation is not {@trait undead}, others must generally succeed at a DC 15 {@skill Crafting}, {@skill Medicine|PC1}, or {@skill Religion|PC1} check to verify those claims with {@action Recall Knowledge|PC1}."
+			]
+		},
+		{
+			"name": "Artery Map",
+			"source": "LORA",
+			"remaster": true,
+			"page": 94,
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lepidstadt Surgeon Dedication|PC1}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"While you've learned all the places a scalpel can cause extensive bleeding to avoid disasters in surgery, such knowledge can serve other purposes. When you {@action Strike|PC1} an {@condition off-guard|PC1} creature with a weapon from the knife group, you deal {@damage 1d6} {@condition persistent damage|PC1|persistent bleed damage}. The damage increases to {@dice 1d10} when you are legendary in {@skill Medicine|PC1}."
+			]
+		},
+		{
+			"name": "Let My Creature Live!",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Rise, My Creature!|PC1}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"You continue to tinker with your creation's muscles and rudimentary mind, granting it a limited form of autonomy. Your construct companion becomes an advanced construct companion. During an encounter, even if you don't use the Command a Minion action, your construct companion can still use 1 action on your turn that round to {@action Stride|PC1} or {@action Strike|PC1}."
+			]
+		},
+		{
+			"name": "Beautiful Knifework",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"level": 7,
+			"traits": [
+				"archetype",
+				"exploration",
+				"manipulate",
+				"skill"
+			],
+			"prerequisites": "{@feat Lepidstadt Surgeon Dedication|PC1}, master in {@skill Medicine|PC1}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"You perform surgical adjustments to disguise a willing ally or your construct companion. This counts as preparing a disguise to {@action Impersonate|PC1}, taking 10 minutes and requiring a {@item healer's toolkit|PC1} instead of a {@item disguise kit|PC1}. The DC to see through the deception with {@action Seek|PC1} is your {@skill Medicine|PC1} DC unless the disguised character's {@skill Deception|PC1} DC is higher. If the target directly interacts with someone while disguised, they gain a +2 circumstance bonus to their {@skill Deception|PC1} check.",
+				"You can reverse this effect with another 10-minute surgery. The disguised character can also end it as a free action when they receive any {@trait healing} effect."
+			]
+		},
+		{
+			"name": "Behold My Creation!",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Let My Creature Live!|PC1}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"You have rebuilt your creation once more. It is greater now, more than it once was. Soon, it shall be greater still. Your construct companion becomes an incredible construct companion."
+			]
+		},
+		{
+			"name": "Stasian Charge",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat In Lightning, Life|PC1}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"Charging a living body with electricity may seem like a bad idea, but you know better. When a creature gains temporary Hit Points from your {@feat In Lightning, Life|PC1}, they gain the {@condition quickened|PC1} condition until the end of their next turn. They can use the extra action only for {@action Stride|PC1} and {@action Strike|PC1} actions."
+			]
+		},
+		{
+			"name": "Stand Back, I'm a Doctor!",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lepidstadt Surgeon Dedication|PC1}, master in {@skill Medicine|PC1}",
+			"requirements": "You are holding healer's tools, or you are wearing them and have a hand free; a creature with the {@condition dying|PC1} condition is in your reach.",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"You have mastered techniques to aid those at the brink of death, even if they use dangerous Stasian technology. Attempt a {@skill Medicine|PC1} check on the {@condition dying|PC1} creature as you deliver it a powerful shock. The DC is usually a standard-difficulty DC of a level equal to the target. On a success, the creature's {@condition dying|PC1} condition is reduced by 1 (or 2 on a critical success); if this reduces the value of the {@condition dying|PC1} condition to 0, the creature regains {@dice 2d8+10} Hit Points, its {@condition wounded|PC1} condition doesn't increase, and it can {@action Stand|PC1} as a free action. Each creature except you adjacent to the target takes {@damage 8d6} electricity damage (basic Reflex save against your class DC or spell DC); instead of attempting this save, a creature can {@action Step|PC1} as a free action and if they end this movement not adjacent to the target, they take no damage."
+			]
+		},
+		{
+			"name": "A Miracle of Science!",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"level": 14,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"prerequisites": "{@feat Behold My Creation!|PC1}",
+			"entries": [
+				"Once, you dreamed of creating life. Now you know that merely creating life lacks ambition. No, you have taken life and improved upon it. Your construct companion becomes a paragon construct companion."
+			]
+		},
+		{
+			"name": "Runelord Dedication",
+			"source": "LORA",
+			"remaster": true,
+			"page": 116,
+			"level": 2,
+			"traits": [
+				"rare",
+				"archetype",
+				"class",
+				"dedication"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@archetype runelord|LORA}",
+			"entries": [
+				"Your connection to your sin suffuses all magic you use. When you indulge in your sin to {@action Refocus|PC1}, you can also exchange one spell you have prepared for one of your curriculum or sin spells of the same rank."
+			]
+		},
+		{
+			"name": "Embed Aeon Stone",
+			"source": "LORA",
+			"remaster": true,
+			"page": 116,
+			"level": 2,
+			"traits": [
+				"archetype",
+				"downtime",
+				"skill"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Runelord Dedication|LORA}, trained in {@skill Crafting|PC1}",
+			"entries": [
+				"You discover the secrets to embedding aeon stones into your flesh. You spend 1 day attuning to an aeon stone and physically embedding it in your skin. While the stone is embedded this way, you gain the benefits of the aeon stone as if it were orbiting above your head, but it protects the stone from being noticed or stolen as easily. Aeon stones in your flesh must be invested to function, as usual.",
+				"You can also use this activity to safely remove an embedded aeon stone in 1 day. Someone without this feat can attempt to surgically remove it safely by spending 1 day and succeeding at a DC 30 {@skill Medicine|PC1} check, or hastily by simply ripping it from a corpse."
+			]
+		},
+		{
+			"name": "Aeon Resonance",
+			"source": "LORA",
+			"remaster": true,
+			"page": 116,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Embed Aeon Stone|LORA}",
+			"entries": [
+				"You gain the resonant power of one embedded aeon stone as if it were placed in a wayfinder. While you can embed multiple aeon stones in your flesh, you can gain the resonance power from only one embedded stone at a time, selected each day when you make your daily preparations."
+			],
+			"special": [
+				"At 8th level, you can take this feat again. If you do, you gain the resonance powers of up to four invested aeon stones instead of only one."
+			]
+		},
+		{
+			"name": "Rod of Rule",
+			"source": "LORA",
+			"remaster": true,
+			"page": 116,
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Runelord Dedication|LORA}",
+			"entries": [
+				"Your personal rune is connected more closely to your arcane bond. You gain the critical specialization effects of your arcane bonded weapon. In addition, whenever you critically hit a creature with your arcane bonded weapon, they begin to feel the pull of your sin, imposing a \u22122 circumstance penalty to saves against any of your curriculum or sin spells until the end of your next turn."
+			]
+		},
+		{
+			"name": "Sinbladed Spell",
+			"source": "LORA",
+			"remaster": true,
+			"page": 116,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"traits": [
+				"archetype",
+				"spellshape"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Runelord Dedication|LORA}",
+			"requirements": "You are holding a weapon in the {@group polearm} or {@group spear} group.",
+			"entries": [
+				"You punctuate your spellcasting with a flourish of your weapon, imparting physical force to your magic. If the next spell you cast is a {@trait cantrip||non-cantrip} sin or curriculum spell that affects a single target, and you either succeed on your attack roll or the target fails its saving throw against the spell, a wound in the shape of your personal rune appears on the target, dealing additional {@condition persistent damage|PC1|persistent bleed damage} equal to the spell's rank, in addition to its regular effects."
+			]
+		},
+		{
+			"name": "Sin Reservoir",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Runelord Dedication|LORA}",
+			"entries": [
+				"During your daily preparations, you can indulge in your associated sin or meditate on its values (and risks). When you do, you gain one additional spell slot of any spell level up to two levels below the highest-level {@trait wizard} spell you can cast. You can prepare only one of your curriculum spells in this slot."
+			]
+		},
+		{
+			"name": "Sin Counterspell",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"level": 10,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Runelord Dedication|LORA}, {@feat Counterspell (Wizard)|PC1|Counterspell}",
+			"entries": [
+				"Your deep connection to a specific sin allows you to easily ne{@spell gate|PC1} spells that sin opposes. Instead of being able to counter a foe's spell with {@feat Counterspell (Wizard)|PC1|Counterspell} only if you have the same spell prepared, you can {@feat Counterspell (Wizard)|PC1|Counterspell} it with any of your curriculum spells if the spell cast would violate your sin's anathema."
+			]
+		},
+		{
+			"name": "Orichalcum Bond",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"level": 18,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Rod of Rule|LORA}",
+			"entries": [
+				"The ancient Thassilonians associated sins with different skymetals, and you've adapted that theory to empower your bonded weapon beyond its normal limits. When your personal rune is placed on a weapon during your daily preparations, choose a weapon property rune of up to your level that is common or you otherwise have access to. That rune is also added to the weapon until your next daily preparations. This rune counts against your weapon's limit as normal."
 			]
 		}
 	]

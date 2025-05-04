@@ -188,6 +188,17 @@
 						"Hybrid Study|Magus|SoM|Twisting Tree|SoM|1",
 						"Studious Spells|Magus|SoM|Twisting Tree|SoM|7"
 					]
+				},
+				{
+					"name": "Resurgent Maelstrom",
+					"type": "Hybrid Study",
+					"shortName": "Resurgent Maelstrom",
+					"source": "LORA",
+					"page": 82,
+					"subclassFeatures": [
+						"Hybrid Study|Magus|SoM|Resurgent Maelstrom|LORA|1",
+						"Studious Spells|Magus|SoM|Resurgent Maelstrom|LORA|7"
+					]
 				}
 			],
 			"classFeaturesIntro": [
@@ -1128,6 +1139,29 @@
 			]
 		},
 		{
+			"name": "Hybrid Study",
+			"page": 82,
+			"source": "LORA",
+			"className": "Magus",
+			"classSource": "SoM",
+			"subclassShortName": "Resurgent Maelstrom",
+			"subclassSource": "LORA",
+			"level": 1,
+			"entries": [
+				{
+					"name": "Resurgent Maelstrom ({@trait Uncommon})",
+					"source": "LORA",
+					"type": "pf2-h4",
+					"entries": [
+						"While fate may conspire to strip you of your armaments, you're never helpless. For you, anything can be a dangerous weapon, bolstered by the might of towering waves and crushing tides. You know these tools are transient, and so you think nothing of shattering and reforming them with your magic.",
+						"Your attacks with improvised weapons do not take the normal \u20132 item penalty. While you wield an improvised weapon, streams of water flow from your limbs to surround the weapon, granting it the water trait. These improvised weapons have a minimum damage die of {@damage 1d6}, or {@damage 1d4} if the improvised weapon is {@trait agile}. Effects that apply runes to your unarmed attacks, like {@spell runic body|PC1} and {@item handwraps of might blows|GMC}, also apply those runes to your non-magical improvised weapons. The improvised weapon also gains an additional trait, depending on how many hands it takes to wield. A one-handed improvised weapon gains the {@trait backstabber} trait; if it would already have the {@trait backstabber} trait, double the amount of additional precision damage. A two-handed improvised weapon gains the {@trait forceful} trait; if it would already have the {@trait forceful} trait, treat the number of weapon damage dice the weapon has as 1 higher for the purpose of calculating the additional damage.",
+						"While you're in {@action Arcane Cascade|SoM} stance, you can manipulate the water around your improvised weapon, making it cut like a knife or bash with the force of falling rocks. The weapon gains the {@trait versatile} traits for the types of damage that it doesn't normally deal. For instance, an improvised weapon that normally deals bludgeoning damage gains the {@trait versatile <P>} and {@trait versatile <S>} traits.",
+						"{@b Conflux Spell} {@spell turbulent tide|LORA}"
+					]
+				}
+			]
+		},
+		{
 			"name": "Studious Spells",
 			"page": 41,
 			"level": 7,
@@ -1190,6 +1224,19 @@
 			"subclassSource": "SoM",
 			"entries": [
 				"{@b Twisting Tree} 7th: {@spell magic mouth}; 11th: {@spell slow}; 13th: {@spell blink}"
+			]
+		},
+		{
+			"name": "Studious Spells",
+			"page": 82,
+			"level": 7,
+			"source": "LORA",
+			"className": "Magus",
+			"classSource": "SoM",
+			"subclassShortName": "Resurgent Maelstrom",
+			"subclassSource": "LORA",
+			"entries": [
+				"{@b Resurgent Maelstrom} 7th: {@spell water walk|PC1}; 11th: {@spell aqueous orb|PC1}; 13th: {@spell unfettered movement|PC1}"
 			]
 		}
 	]
