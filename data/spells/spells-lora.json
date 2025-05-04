@@ -1668,6 +1668,395 @@
 				"Seeing another creature improve themself with magic, you reach out and seize its benefits for yourself. Attempt a counteract check against the target spell effect. If you successfully counteract the effect, the effect does not end. Instead, you gain the effect of the target spell as well. If you would not be a valid target for the spell, you do not gain any of its benefits.",
 				"The spell's duration is halved as you siphon off its magical energy for yourself. Each round that both you and the original creature are affected by the spell counts for two rounds when determining the spell's duration. You can {@action Dismiss|PC1} the spell."
 			]
+		},
+		{
+			"name": "All-Encompassing Hunger",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"death",
+				"focus",
+				"manipulate",
+				"void",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"groupings": [
+				{
+					"name": "Sin",
+					"taxons": [
+						"{@archetype Runelord|LORA|gluttony}"
+					]
+				}
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 living creature",
+			"savingThrow": {
+				"type": [
+					"F"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You reach out to devour a life, regardless of whether you need it for sustenance. The target takes {@damage 1d6} void damage, with a basic Fortitude save. If the creature is reduced to 0 Hit Points, it dies, and you gain temporary Hit Points equal to the damage dealt. These temporary Hit Points last for 1 minute."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Crescent Scepter",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"emotion",
+				"fear",
+				"focus",
+				"manipulate",
+				"mental",
+				"visual",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"groupings": [
+				{
+					"name": "Sin",
+					"taxons": [
+						"{@archetype Runelord|LORA|pride}"
+					]
+				}
+			],
+			"duration": {
+				"entry": "until the beginning of your next turn",
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You hold up any object, which takes on the appearance of glowing regalia in the eyes of those who look on you, representing the political or religious institute most feared by each creature. If a creature attempts to attack you during the spell's duration, it must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature becomes {@condition frightened|PC1|frightened 1}, the penalty applying to its attack roll."
+						],
+						"Failure": [
+							"As success, but {@condition frightened|PC1|frightened 2}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Cutting Eye",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"groupings": [
+				{
+					"name": "Sin",
+					"taxons": [
+						"{@archetype Runelord|LORA|envy}"
+					]
+				}
+			],
+			"trigger": "You are the target of an attack or must attempt a saving throw against a spell.",
+			"requirements": "You're aware of the attack or spell.",
+			"entries": [
+				"Your eyes open enviously, stealing the power of an opponent for yourself. You are not {@condition off-guard|PC1} to the attacker or spellcaster until the beginning of your next turn. You gain a +2 circumstance bonus to your AC against the triggering attack or a +2 circumstance bonus to the triggering save."
+			]
+		},
+		{
+			"name": "Heart's Hook",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"emotion",
+				"focus",
+				"manipulate",
+				"mental",
+				"wizard"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"groupings": [
+				{
+					"name": "Sin",
+					"taxons": [
+						"{@archetype Runelord|LORA|lust}"
+					]
+				}
+			],
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"targets": "two creatures",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"entries": [
+				"You drive two creatures toward a fated meeting. Each will be compelled toward the other, but you can elect to have one automatically succeed on its saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"The creature is unaffected."
+						],
+						"Failure": [
+							"The creature must spend the first action on its next turn to approach its partner. It can't {@action Delay|PC1} or take any reactions until it has obeyed this urge."
+						],
+						"Critical Failure": [
+							"As failure, but the target must use all its actions on its next turn."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Precious Gleam",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"mental",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"groupings": [
+				{
+					"name": "Sin",
+					"taxons": [
+						"{@archetype Runelord|LORA|greed}"
+					]
+				}
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"duration": {
+				"entry": "until the beginning of your next turn",
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You temporarily enhance a weapon, replacing it with finer materials. On the next successful attack with that weapon during the spell's duration, the attack deals an additional {@damage 1d6} precision damage. You can choose for the metal to become your choice of cold iron, silver, or steel, causing the attack to bypass resistances accordingly."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Reclined Apport",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"teleportation",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"groupings": [
+				{
+					"name": "Sin",
+					"taxons": [
+						"{@archetype Runelord|LORA|sloth}"
+					]
+				}
+			],
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 unattended object of light Bulk or less",
+			"entries": [
+				"Walking over to an item to pick it up is so much effort. Whether it's your spellbook, a reagent, or a glass of wine, it's simply more efficient to call it to your hand. You teleport the target into your open hand. If you don't have a hand free, it falls to the ground at your feet."
+			],
+			"heightened": {
+				"X": {
+					"3": [
+						"You can target an unattended object with a Bulk of 1 or less."
+					],
+					"5": [
+						"The range increases to 120 feet, and you can target an unattended object with a Bulk of 1 or less."
+					],
+					"7": [
+						"The range increases to 120 feet, and you can target an unattended object with a Bulk of 2 or less."
+					]
+				}
+			}
+		},
+		{
+			"name": "Vengeful Glare",
+			"source": "LORA",
+			"remaster": true,
+			"page": 118,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"groupings": [
+				{
+					"name": "Sin",
+					"taxons": [
+						"{@archetype Runelord|LORA|wrath}"
+					]
+				}
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "one creature you can see",
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"entries": [
+				"Your gaze falls on a creature, filled with icy vengeance or fiery wrath. The gaze deals {@dice 1d4} damage (basic Fortitude save). It deals your choice of cold damage or fire damage and gains the appropriate trait. If you already dealt damage to the creature earlier this turn, it also takes 1 {@condition persistent damage} of the gaze's type."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The initial damage increases by {@damage 1d4} and {@condition persistent damage} by 1."
+					]
+				}
+			}
+		},
+		{
+			"name": "Personal Runewell",
+			"source": "LORA",
+			"remaster": true,
+			"page": 118,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"wizard"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"groupings": [
+				{
+					"name": "Sin",
+					"taxons": [
+						"{@archetype Runelord|LORA|all}"
+					]
+				}
+			],
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"area": {
+				"entry": "15-foot radius, 30-foot-tall cylinder",
+				"types": [
+					"Cylinder"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"The runelords of Thassilon pioneered the creation of {@i runewells}, magical artifacts that could extract and store the power of sin magic from mortal souls. A circle of light carves its way across the ground as you create your very own {@i runewell}, your personal rune flaring to life within it as you add your own sin to those seven revered in the past. Whenever any creature Casts a Spell within your {@i personal runewell}, the well resonates, with your choice of effects.",
+				{
+					"type": "list",
+					"items": [
+						"The runewell amplifies the power of your spells, as well as those of your allies. If the spell deals damage and doesn't have a duration, the well adds a status bonus to damage equal to the spell's rank.",
+						"The runewell punishes enemies foolish enough to attempt magic in your seat of power, firing arcane bolts at the spell's caster that deal {@damage 4d6} force damage, with a basic Reflex save."
+					]
+				},
+				"If you cast {@i personal runewell} a second time, your previous {@i personal runewell} vanishes. You can {@action Dismiss|PC1} the spell."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The amount of damage dealt by the runewell's bolts increases by {@dice 1d6}."
+					]
+				}
+			}
 		}
 	]
 }

@@ -147,6 +147,35 @@
 							"pattern": "\\w+\\|\\w+(\\|\\w+|)"
 						}
 					},
+					"groupings": {
+						"description": "Any specifiers grouping the spell into a particular category. Contextually similar to `subclass` and `domain`, but more general for when those are not appropriate.",
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"description": "The header text for this grouping.",
+									"type": "string",
+									"minLength": 1
+								},
+								"taxons": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"minLength": 1
+									},
+									"minItems": 1,
+									"uniqueItems": true
+								}
+							},
+							"required": [
+								"name",
+								"taxons"
+							]
+						},
+						"minItems": 1,
+						"uniqueItems": true
+					},
 					"cost": {
 						"type": "string"
 					},
