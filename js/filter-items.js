@@ -46,7 +46,7 @@ class PageFilterItems extends PageFilter {
 		});
 		this._typeFilter = new Filter({
 			header: "Type",
-			items: ["Equipment", "Generic Variant", "Specific Variant"],
+			items: ["Equipment", "Generic Variant", "Specific Variant", "Service"],
 			itemSortFn: null,
 			deselFn: (it) => it === "Specific Variant",
 		})
@@ -130,6 +130,7 @@ class PageFilterItems extends PageFilter {
 		if (it.equipment) it._fType.push("Equipment");
 		if (it.generic === "G") it._fType.push("Generic Variant");
 		if (it.generic === "V") it._fType.push("Specific Variant");
+		if (it.service) it._fType.push("Service");
 		it._fSubCategory = it.subCategory ? new FilterItem({
 			item: it.subCategory,
 			nest: it.category,
