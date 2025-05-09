@@ -6158,10 +6158,10 @@ Renderer.spell = {
 
 		const componentsRender = sp.components && sp.components.length === 1 ? sp.components[0].map(it => Parser.COMPONENTS_TO_FULL[it]).join(", ") : "";
 
-		let castPart = ``;
-		if (sp.cost != null) castPart += `; <strong>Cost&nbsp;</strong>${renderer.render(sp.cost)}`;
-		if (sp.trigger != null) castPart += `; <strong>Trigger&nbsp;</strong>${renderer.render(sp.trigger)}`;
-		if (sp.requirements != null) castPart += `; <strong>Requirements&nbsp;</strong>${renderer.render(sp.requirements)}`;
+		let castParts = [];
+		if (sp.cost != null) castParts.push(`<strong>Cost&nbsp;</strong>${renderer.render(sp.cost)}`);
+		if (sp.trigger != null) castParts.push(`<strong>Trigger&nbsp;</strong>${renderer.render(sp.trigger)}`);
+		if (sp.requirements != null) castParts.push(`<strong>Requirements&nbsp;</strong>${renderer.render(sp.requirements)}`);
 
 		const targetingParts = [];
 		if (sp.range) targetingParts.push(`<strong>Range&nbsp;</strong>${renderer.render(Parser.rangeToFull(sp.range))}`);
@@ -6174,10 +6174,10 @@ Renderer.spell = {
 		if (sp.duration) stDurationParts.push(`<strong>Duration&nbsp;</strong>${renderer.render(duration)}`);
 
 		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${renderer.render(sp.traditions.map(it => `{@trait ${it}}`).join(", ").toLowerCase())}</p>` : ""}
-		${sp.domains ? `<p class="pf2-stat pf2-stat__section"><strong>Domain${sp.domains.length > 1 ? "s" : ""}</strong> ${renderer.render(sp.domains.map(it => `{@filter ${it.split("|")[0].toLowerCase()}|deities||domains=${it.split("|").length === 1 ? it : `${it.split("|")[0]} (${it.split("|")[1]})`}}`).join(", "))}` : ""}
+		${sp.domains ? `<p class="pf2-stat pf2-stat__section"><strong>Domain${sp.domains.length > 1 ? "s" : ""}</strong> ${renderer.render(sp.domains.map(it => `{@filter ${it.split("|")[0].toLowerCase()}|deities||domains=${it.split("|").length === 1 ? it : `${it.split("|")[0]} (${it.split("|")[1]})`}}`).join(", "))}</p>` : ""}
 		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[0]}</strong> ${renderer.render(sp.subclass[k].map(it => `{@class ${k.split("|")[1]}|${k.split("|")[2] ?? "CRB"}|${it.split("|")[0].toLowerCase()}|${it}}`).join(", "))}</p>`) : ""}
-		${sp.groupings ? sp.groupings.map(grouping => `<p class="pf2-stat pf2-stat__section"><strong>${grouping.name}&nbsp;</strong>${renderer.render(grouping.taxons.join(","))}`).join("; ") : ""}
-		${sp.remaster && sp.cast.unit.endsWith("action") ? "" : `<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && componentsRender ? `(${componentsRender})` : componentsRender}${castPart}</p>`}
+		${sp.groupings ? sp.groupings.map(grouping => `<p class="pf2-stat pf2-stat__section"><strong>${grouping.name}&nbsp;</strong>${renderer.render(grouping.taxons.join(","))}</p>`).join("; ") : ""}
+		${sp.remaster && sp.cast.unit.endsWith("action") ? `<p class="pf2-stat pf2-stat__section">${castParts.join("; ")}</p>` : `<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && componentsRender ? `(${componentsRender})` : componentsRender}${castParts.length ? `; ${castParts.join("; ")}` : ""}</p>`}
 		${targetingParts.length ? `<p class="pf2-stat pf2-stat__section">${targetingParts.join("; ")}</p>` : ""}
 		${stDurationParts.length ? `<p class="pf2-stat pf2-stat__section">${stDurationParts.join("; ")}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}`;
