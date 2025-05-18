@@ -1,6 +1,81 @@
 {
 	"item": [
 		{
+			"name": "Heavy Barding",
+			"source": "CRB",
+			"page": 295,
+			"equipment": true,
+			"type": "Item",
+			"category": "Barding",
+			"armorData": {
+				"ac": 3,
+				"dexCap": 3,
+				"str": 20,
+				"checkPen": 3,
+				"speedPen": 10
+			},
+			"entries": [
+				"You can purchase special armor for animals, called barding. Combat-trained animals are trained in heavy barding. Barding uses the same rules as armor except for the following. The Price and Bulk of barding depend on the animal's size (use statistics for Small barding for creatures below Small size). Barding can't be etched with magic runes, though special barding might be available."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "small or medium",
+					"level": 2,
+					"price": {
+						"amount": 25,
+						"coin": "gp"
+					},
+					"bulk": "4"
+				},
+				{
+					"variantType": "large",
+					"price": {
+						"amount": 50,
+						"coin": "gp"
+					},
+					"bulk": "8"
+				}
+			]
+		},
+		{
+			"name": "Light Barding",
+			"source": "CRB",
+			"page": 295,
+			"equipment": true,
+			"type": "Item",
+			"category": "Barding",
+			"armorData": {
+				"ac": 1,
+				"dexCap": 5,
+				"str": 16,
+				"checkPen": 1,
+				"speedPen": 5
+			},
+			"entries": [
+				"You can purchase special armor for animals, called barding. All animals have a trained proficiency rank in light barding. Barding uses the same rules as armor except for the following. The Price and Bulk of barding depend on the animal's size (use statistics for Small barding for creatures below Small size). Barding can't be etched with magic runes, though special barding might be available."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "large",
+					"price": {
+						"amount": 20,
+						"coin": "gp"
+					},
+					"bulk": "4"
+				},
+				{
+					"variantType": "small or medium",
+					"price": {
+						"amount": 10,
+						"coin": "gp"
+					},
+					"bulk": "2"
+				}
+			]
+		},
+		{
 			"name": "Acid Flask",
 			"source": "CRB",
 			"page": 544,
@@ -1928,7 +2003,7 @@
 			"bulk": "L",
 			"category": "Companion",
 			"entries": [
-				"This light barding is covered in stylized wind motifs. When you suit up your animal companion, the barding adjusts to fit your animal companion regardless of its shape.",
+				"This {@item light barding (generic)||light barding} is covered in stylized wind motifs. When you suit up your animal companion, the barding adjusts to fit your animal companion regardless of its shape.",
 				"When your companion falls, wind picks it up from below; it gains the effects of feather fall.",
 				{
 					"type": "ability",
