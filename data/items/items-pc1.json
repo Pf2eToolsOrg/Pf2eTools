@@ -1,6 +1,147 @@
 {
 	"item": [
 		{
+			"name": "Wheelchair",
+			"source": "PC1",
+			"page": 293,
+			"remaster": true,
+			"category": "Assistive Item",
+			"entries": [
+				"A common wheelchair is ideal for everyday use but isn’t designed for strenuous activity. These wheelchairs are most common among non-adventurers. Wheelchairs come in a variety of sizes to suit every person regardless of height or body type."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "wheelchair",
+					"price": {
+						"amount": 5,
+						"coin": "sp"
+					},
+					"bulk": "2",
+					"hands": "see text"
+				},
+				{
+					"variantType": "traveler's chair",
+					"price": {
+						"amount": 5,
+						"coin": "gp"
+					},
+					"bulk": "3",
+					"entries": [
+						"A traveler’s chair is tailored for frequent adventures and travels. The design is sleek and fashionable to provide excellent comfort and support. A traveler’s chair has small mechanisms, either made from interlocking wood pieces, clockwork, or other devices, that allow the chair to traverse up or down stairs without any additional difficulty (moving up stairs is still difficult terrain, just like for other characters), and move through other common adventuring terrain without any additional difficulty, such as ladders and uneven ground."
+					]
+				},
+				{
+					"variantType": "chair storage",
+					"price": {
+						"amount": 1,
+						"coin": "gp"
+					},
+					"entries": [
+						"Chair storage can be purchased and applied to any wheelchair. This reduces the amount of Bulk the items weigh when stored within the chair, much like a {@item backpack|PC1}. The first 2 Bulk of items stowed in your chair don’t count against your Bulk limit. If you use both chair storage and a {@item backpack|PC1} at the same time, only 2 Bulk total isn’t counted against your limit, much like if you used multiple {@item backpack|PC1|backpacks} or similar items at the same time."
+					]
+				}
+			]
+		},
+		{
+			"name": "Hearing aid",
+			"source": "PC1",
+			"page": 293,
+			"remaster": true,
+			"category": "Assistive Item",
+			"entries": [
+				"A hearing aid is worn in the ear and is made from carved wood, shaped metal, or even small clockwork pieces. The shape of the device aids those who are hard of hearing, and you can wear one or two depending on your hearing loss. You can attach or remove your hearing aids as an {@action Interact|PC1} action."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "hearing aid",
+					"price": {
+						"amount": 5,
+						"coin": "sp"
+					}
+				},
+				{
+					"variantType": "magical hearing aid",
+					"price": {
+						"amount": 5,
+						"coin": "gp"
+					},
+					"traits": [
+						"magical"
+					],
+					"level": 1,
+					"entries": [
+						"A magical hearing aid has the magical trait. With its curved shape, it hooks over the top and sits behind your ear, with a receiver that fits into the ear opening. The external part of the device detects sound waves and, using magic, transfers them down the receiver and into your ear. You can wear one or two depending on your hearing loss, and you can turn your hearing aids on or off using an {@action Interact|PC1} action."
+					]
+				}
+			]
+		},
+		{
+			"name": "Cane",
+			"source": "PC1",
+			"page": 293,
+			"remaster": true,
+			"category": "Assistive Item",
+			"price": {
+				"amount": 5,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"entries": [
+				"A cane is a straight length of wood with a curved handle, shaped like the tip of a hook. Its simple design helps with balance and only slightly assists with taking weight off the affected opposite leg. The cane is typically 2 to 3 feet long but can be lengthened or shortened as needed."
+			]
+		},
+		{
+			"name": "Corrective Lenses",
+			"source": "PC1",
+			"page": 293,
+			"remaster": true,
+			"category": "Assistive Item",
+			"price": {
+				"amount": 5,
+				"coin": "sp"
+			},
+			"bulk": "—",
+			"entries": [
+				"A set of corrective lenses might take the form of eyeglasses or specialized goggles worn over the eyes. You can don or remove your corrective lenses as an Interact action."
+			]
+		},
+		{
+			"name": "Crutch",
+			"source": "PC1",
+			"page": 293,
+			"remaster": true,
+			"category": "Assistive Item",
+			"price": {
+				"amount": 5,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"entries": [
+				"Crutches come as singles or as a pair depending on how much support you need while walking. A crutch fits under your armpit, and you use your hand and the swing of your arm to move with them."
+			]
+		},
+		{
+			"name": "Prosthesis",
+			"source": "PC1",
+			"page": 293,
+			"remaster": true,
+			"category": "Assistive Item",
+			"price": {
+				"amount": 5,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"hands": 1,
+			"entries": [
+				"A prosthesis replaces a missing or damaged body part. Typical prostheses include artificial feet, eyes, hands, and limbs, though a basic prosthesis can be designed as a replacement for any body part. Advancements in the prosthetic field mean that even the most basic of prostheses can provide the full range of functionality for a missing body part.",
+				"A prosthesis has a number of belts or cuffs that keep it attached to your body. You can attach or remove a prosthesis as an {@action Interact|PC1} action."
+			]
+		},
+		{
 			"name": "Heavy Barding",
 			"source": "PC1",
 			"remaster": true,
