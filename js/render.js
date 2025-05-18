@@ -5497,7 +5497,7 @@ Renderer.item = {
 			<strong>AC Bonus&nbsp;</strong>${Parser.numToBonus(armorData.ac)};
 			<strong>Dex Cap&nbsp;</strong>${Parser.numToBonus(armorData.dexCap)}
 			</p><p class="pf2-stat pf2-stat__section">
-			<strong>Strength&nbsp;</strong>${armorData.str ? (item.remaster ? (armorData.str - 10) / 2 : armorData.str) : "\u2014"};
+			<strong>Strength&nbsp;</strong>${armorData.str ? (item.remaster ? `+${(armorData.str - 10) / 2}` : armorData.str) : "\u2014"};
 			<strong>Check Penalty&nbsp;</strong>${armorData.checkPen ? `–${armorData.checkPen}` : "\u2014"};
 			<strong>Speed Penalty&nbsp;</strong>${armorData.speedPen ? `–${armorData.speedPen} ft.` : "\u2014"}
 			</p>`;
