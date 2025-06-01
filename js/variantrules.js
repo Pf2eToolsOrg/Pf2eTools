@@ -118,7 +118,7 @@ function renderStatblock (rule) {
 		$content.append(Renderer.variantrule.getRenderedString(rule));
 	}
 	async function buildInfoTab () {
-		const quickRules = await Renderer.utils.pGetQuickRules("variantRule");
+		const quickRules = await Renderer.utils.pGetQuickRules("variantrule");
 		$content.append(quickRules);
 	}
 
