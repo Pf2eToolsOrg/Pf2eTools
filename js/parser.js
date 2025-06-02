@@ -1693,6 +1693,7 @@ SRC_TiO = "TiO";
 SRC_ToK = "ToK";
 SRC_TotT0 = "TotT0";
 SRC_TV = "TV";
+SRC_WoI = "WoI";
 SRC_WoW0 = "WoW0";
 SRC_WoW1 = "WoW1";
 SRC_WoW2 = "WoW2";
@@ -1825,6 +1826,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_TiO] = "TiO";
 Parser.SOURCE_JSON_TO_ABV[SRC_ToK] = "ToK";
 Parser.SOURCE_JSON_TO_ABV[SRC_TotT0] = "TotT0";
 Parser.SOURCE_JSON_TO_ABV[SRC_TV] = "TV";
+Parser.SOURCE_JSON_TO_ABV[SRC_WoI] = "WoI";
 Parser.SOURCE_JSON_TO_ABV[SRC_WoW0] = "WoW0";
 Parser.SOURCE_JSON_TO_ABV[SRC_WoW1] = "WoW1";
 Parser.SOURCE_JSON_TO_ABV[SRC_WoW2] = "WoW2";
@@ -1957,6 +1959,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_TiO] = "2020-12-09";
 Parser.SOURCE_JSON_TO_DATE[SRC_ToK] = "2021-11-19";
 Parser.SOURCE_JSON_TO_DATE[SRC_TotT0] = "2024-10-09";
 Parser.SOURCE_JSON_TO_DATE[SRC_TV] = "2023-02-22";
+Parser.SOURCE_JSON_TO_DATE[SRC_WoI] = "2024-10-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_WoW0] = "2024-04-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_WoW1] = "2024-04-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_WoW2] = "2024-05-22";
@@ -2089,6 +2092,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_TiO] = "Troubles in Otari";
 Parser.SOURCE_JSON_TO_FULL[SRC_ToK] = "Threshold of Knowledge";
 Parser.SOURCE_JSON_TO_FULL[SRC_TotT0] = "Triumph of the Tusk Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_TV] = "Treasure Vault";
+Parser.SOURCE_JSON_TO_FULL[SRC_WoI] = "War of Immortals";
 Parser.SOURCE_JSON_TO_FULL[SRC_WoW0] = "Wardens of Wildwood Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_WoW1] = "Wardens of Wildwood #1: Pactbreaker";
 Parser.SOURCE_JSON_TO_FULL[SRC_WoW2] = "Wardens of Wildwood #2: Severed at the Root";
@@ -2224,6 +2228,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_TiO] = "https://paizo.com/products/btq026k1";
 Parser.SOURCE_JSON_TO_STORE[SRC_ToK] = "https://paizo.com/products/btq027qf";
 Parser.SOURCE_JSON_TO_STORE[SRC_TotT0] = "https://downloads.paizo.com/TriumphOfTheTusk_PlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_TV] = "https://paizo.com/products/btq02eav";
+Parser.SOURCE_JSON_TO_STORE[SRC_WoI] = "https://paizo.com/products/btq02oar";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW0] = "https://downloads.paizo.com/WardensofWildwood_PlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW1] = "https://paizo.com/products/btq02ev4";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW2] = "https://paizo.com/products/btq02ewl";
@@ -2428,6 +2433,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_RoE,
 	SRC_SoM,
 	SRC_TV,
+	SRC_WoI,
 ].forEach((src) => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
