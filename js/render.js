@@ -5213,7 +5213,7 @@ Renderer.item = {
 	getRenderedString (item, opts) {
 		opts = opts || {};
 		const renderStack = [""];
-		if (item.entries) Renderer.get().recursiveRender(item.entries, renderStack, { pf2StatFix: true });
+		Renderer.get().recursiveRender(item.entries ?? [], renderStack, { pf2StatFix: true });
 		return `${Renderer.utils.getExcludedDiv(item, "item", UrlUtil.PG_ITEMS)}
 			${Renderer.utils.getNameDiv(item, { page: UrlUtil.PG_ITEMS, ...opts })}
 			${Renderer.utils.getDividerDiv()}
