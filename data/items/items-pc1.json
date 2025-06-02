@@ -1,6 +1,927 @@
 {
 	"item": [
 		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Tool",
+			"entries": [
+				"This entry is a catchall for basic hand tools that don’t have a specific adventuring purpose."
+			],
+			"variants": [
+				{
+					"name": "Long Tool",
+					"variantType": "long tool",
+					"price": {
+						"amount": 1,
+						"coin": "gp"
+					},
+					"bulk": 1,
+					"hands": 2,
+					"entries": [
+						"A hoe, shovel, or sledgehammer is a long tool. A long tool can usually be used as an improvised weapon, dealing {@damage 1d6} damage. The GM determines the damage type that’s appropriate or adjusts the damage if needed."
+					]
+				},
+				{
+					"name": "Short Tool",
+					"variantType": "short tool",
+					"price": {
+						"amount": 4,
+						"coin": "sp"
+					},
+					"bulk": "L",
+					"hands": "1 or 2",
+					"entries": [
+						"A hand drill, ice hook, or trowel is a short tool. A short tool can usually be used as an improvised weapon, dealing {@damage 1d4} damage. The GM determines the damage type that’s appropriate or adjusts the damage if needed."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Writing Set",
+			"entries": [
+				"Using a writing set, you can draft correspondence and scribe scrolls. A set includes stationery, including a variety of paper and parchment, as well as ink, a quill or ink pen, sealing wax, and a simple seal."
+			],
+			"variants": [
+				{
+					"variantType": "writing set",
+					"name": "Writing Set",
+					"price": {
+						"amount": 1,
+						"coin": "gp"
+					},
+					"bulk": "L",
+					"hands": 2
+				},
+				{
+					"variantType": "extra ink and paper",
+					"name": "Extra Ink and Paper",
+					"price": {
+						"amount": 1,
+						"coin": "sp"
+					},
+					"bulk": "—",
+					"hands": "—",
+					"entries": [
+						"If you’ve written a large amount, you can refill your kit with extra ink and paper."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Tent",
+			"hands": 2,
+			"variantType": [
+				{
+					"variantType": "pup",
+					"price": {
+						"amount": 8,
+						"coin": "sp"
+					},
+					"bulk": "L"
+				},
+				{
+					"variantType": "four-person",
+					"price": {
+						"amount": 5,
+						"coin": "gp"
+					},
+					"bulk": 1
+				},
+				{
+					"variantType": "pavilion",
+					"level": 2,
+					"price": {
+						"amount": 40,
+						"coin": "gp"
+					},
+					"bulk": 12
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Thieves’ Toolkit",
+			"prices": {
+				"amount": 3,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": "1 or 2*",
+			"entries": [
+				"You need a thieves’ toolkit to {@action Pick Lock|PC1|Pick Locks} or {@action Disable Device|PC1|Disable Devices} (of some types) using the {@skill Thievery|Pc1} skill. If you wear your thieves’ toolkit, you can draw and replace it as part of the action that uses it.",
+				"{@note * You can use a toolkit with 1 hand if you’re wearing it or 2 if you’re holding it.}"
+			],
+			"variants": [
+				{
+					"variantType": "replacement picks",
+					"price": {
+						"amount": 3,
+						"coin": "sp"
+					},
+					"bulk": "—",
+					"hands": "—",
+					"entries": [
+						"If your thieves’ toolkit is broken, you can repair it by replacing the lock picks with replacement picks appropriate to your toolkit; this doesn’t require using the {@action Repair|PC1} action."
+					]
+				},
+				{
+					"variantType": "infiltrator thieves' tools",
+					"level": 3,
+					"price": {
+						"amount": 50,
+						"coin": "gp"
+					},
+					"entries": [
+						"An infiltrator thieves’ toolkit adds a +1 item bonus to checks to {@action Pick Lock|PC1|Pick Locks} and {@action Disable Device|PC1|Disable Devices}."
+					]
+				},
+				{
+					"variantType": "Infiltrator picks (level 3)",
+					"price": {
+						"amount": 3,
+						"coin": "gp"
+					},
+					"bulk": "—",
+					"hands": "—",
+					"entries": [
+						"If your thieves’ toolkit is broken, you can repair it by replacing the lock picks with replacement picks appropriate to your toolkit; this doesn’t require using the {@action Repair|PC1} action."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Religious Symbol",
+			"entries": [
+				"This piece of wood or silver is emblazoned with an image representing a deity. Some {@trait divine} spellcasters, such as {@class cleric|PC1|clerics}, can use a religious symbol to use certain abilities. A religious symbol can be worn on the body on a chain or pin, or can be held."
+			],
+			"hands": 1,
+			"variants": [
+				{
+					"variantType": "wooden",
+					"price": {
+						"amount": 1,
+						"coin": "sp"
+					},
+					"bulk": "L"
+				},
+				{
+					"variantType": "silver",
+					"price": {
+						"amount": 2,
+						"coin": "gp"
+					},
+					"bulk": "L"
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Repair Toolkit",
+			"price": {
+				"amount": 2,
+				"coin": "gp"
+			},
+			"bulk": 1,
+			"hands": 2,
+			"entries": [
+				"A repair toolkit allows you to perform simple repairs while traveling. It contains a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning leather and wood. You can use a repair toolkit to {@action Repair|PC1} items using the {@skill Crafting|PC1} skill. You can draw and replace a worn repair toolkit as part of the action that uses it."
+			],
+			"variants": [
+				{
+					"variantType": "repair toolkit",
+					"name": "Variant Toolkit",
+					"price": {
+						"amount": 2,
+						"coin": "gp"
+					}
+				},
+				{
+					"variantType": "superb repair toolkit",
+					"name": "Superb Repair Toolkit",
+					"level": 3,
+					"price": {
+						"amount": 25,
+						"coin": "gp"
+					},
+					"entries": [
+						"A superb repair kit gives you a +1 item bonus to the check."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Spyglass",
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"bulk": "L",
+			"hands": 2,
+			"entries": [
+				"A typical spyglass lets you see eight times farther than normal."
+			],
+			"variants": [
+				{
+					"variantType": "spyglass",
+					"name": "Spyglass",
+					"price": {
+						"amount": 20,
+						"coin": "gp"
+					}
+				},
+				{
+					"variantType": "fine spyglass",
+					"name": "Fine Spyglass",
+					"level": 4,
+					"price": {
+						"amount": 80,
+						"coin": "gp"
+					},
+					"entries": [
+						"A fine spyglass adds a +1 item bonus to {@skill Perception|PC1} checks to notice details at a distance."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Lock",
+			"bulk": "—",
+			"hands": 2,
+			"variants": [
+				{
+					"variantType": "poor",
+					"level": 0,
+					"price": {
+						"amount": 2,
+						"coin": "sp"
+					},
+					"entries": [
+						"Picking a poor lock requires two successful DC 15 Thievery checks."
+					]
+				},
+				{
+					"variantType": "simple",
+					"level": 1,
+					"price": {
+						"amount": 2,
+						"coin": "gp"
+					},
+					"entries": [
+						"Picking a simple lock requires three successful DC 20 Thievery checks."
+					]
+				},
+				{
+					"variantType": "average",
+					"level": 3,
+					"price": {
+						"amount": 15,
+						"coin": "gp"
+					},
+					"entries": [
+						"Picking an average lock requires fpir successful DC 25 Thievery checks."
+					]
+				},
+				{
+					"variantType": "good",
+					"level": 9,
+					"price": {
+						"amount": 200,
+						"coin": "gp"
+					},
+					"entries": [
+						"Picking a good lock requires five successful DC 30 Thievery checks."
+					]
+				},
+				{
+					"variantType": "superior",
+					"level": 1,
+					"price": {
+						"amount": 4500,
+						"coin": "gp"
+					},
+					"entries": [
+						"Picking a superior lock requires six successful DC 40 Thievery checks."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Manacles",
+			"entries": [
+				"You can manacle someone who is willing or otherwise at your mercy as an exploration activity taking 10\u201330 seconds depending on the creature’s size and how many manacles you apply. A two-legged creature with its legs bound takes a \u221215-foot circumstance penalty to its Speeds, and a two-handed creature with its wrists bound has to succeed at a DC 5 flat check any time it uses a {@trait manipulate} action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is {@condition immobilized|PC1}. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any."
+			],
+			"bulk": "—",
+			"hands": 2,
+			"variants": [
+				{
+					"variantType": "poor",
+					"level": 0,
+					"price": {
+						"amount": 3,
+						"coin": "sp"
+					},
+					"entries": [
+						"Freeing a creature from poor manacles requires two successful DC 17 Thievery checks."
+					]
+				},
+				{
+					"variantType": "simple",
+					"level": 1,
+					"price": {
+						"amount": 3,
+						"coin": "gp"
+					},
+					"entries": [
+						"Freeing a creature from simple manacles requires three successful DC 22 Thievery checks."
+					]
+				},
+				{
+					"variantType": "average",
+					"level": 3,
+					"price": {
+						"amount": 20,
+						"coin": "gp"
+					},
+					"entries": [
+						"Freeing a creature from average manacles requires four successful DC 27 Thievery checks."
+					]
+				},
+				{
+					"variantType": "good",
+					"level": 9,
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"entries": [
+						"Freeing a creature from good manacles requires five successful DC 32 Thievery checks."
+					]
+				},
+				{
+					"variantType": "superior",
+					"level": 17,
+					"price": {
+						"amount": 5000,
+						"coin": "gp"
+					},
+					"entries": [
+						"Freeing a creature from superior manacles requires six successful DC 42 Thievery checks."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Musical Instrument",
+			"variants": [
+				{
+					"variantType": "Handheld",
+					"price": {
+						"amount": 8,
+						"coin": "sp"
+					},
+					"bulk": 1,
+					"hands": 2,
+					"entries": [
+						"Handheld instruments include bagpipes, a small set of chimes, small drums, fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly sized instruments. The GM might rule that an especially large handheld instrument (like a tuba) has greater Bulk."
+					]
+				},
+				{
+					"variantType": "Virtuoso handheld",
+					"level": 3,
+					"price": {
+						"amount": 50,
+						"coin": "gp"
+					},
+					"bulk": 1,
+					"hands": 2,
+					"entries": [
+						"Handheld instruments include bagpipes, a small set of chimes, small drums, fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly sized instruments. The GM might rule that an especially large handheld instrument (like a tuba) has greater Bulk.",
+						"A virtuoso instrument is more finely made and gives a +1 item bonus to {@skill Performance|PC1} checks using that instrument."
+					]
+				},
+				{
+					"variantType": "Heavy",
+					"price": {
+						"amount": 2,
+						"coin": "gp"
+					},
+					"bulk": 16,
+					"hands": 2,
+					"entries": [
+						"Heavy instruments such as large drums, a full set of chimes, and keyboard instruments are less portable and generally need to be stationary while being played."
+					]
+				},
+				{
+					"variantType": "Virtuoso heavy",
+					"level": 3,
+					"price": {
+						"amount": 100,
+						"coin": "gp"
+					},
+					"bulk": 16,
+					"hands": 2,
+					"entries": [
+						"Heavy instruments such as large drums, a full set of chimes, and keyboard instruments are less portable and generally need to be stationary while being played.",
+						"A virtuoso instrument is more finely made and gives a +1 item bonus to {@skill Performance|PC1} checks using that instrument."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Lantern",
+			"hands": 1,
+			"entries": [
+				"A lantern sheds bright light and requires 1 pint of oil to function for 6 hours."
+			],
+			"variants": [
+				{
+					"variantType": "bull’s-eye",
+					"price": {
+						"amount": 1,
+						"coin": "gp"
+					},
+					"bulk": 1,
+					"entries": [
+						"A bull’s-eye lantern emits its light in a 60-foot cone (and dim light in the next 60 feet)."
+					]
+				},
+				{
+					"variantType": "hooded",
+					"price": {
+						"amount": 7,
+						"coin": "sp"
+					},
+					"bulk": "L",
+					"entries": [
+						"A hooded lantern sheds light in a 30-foot radius (and dim light in the next 30 feet) and is equipped with shutters, which you can close to block the light. Closing or opening the shutters takes an Interact action."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Fishing tackle",
+			"bulk": 1,
+			"hands": 2,
+			"entries": [
+				"This kit include a collapsible fishing pole, fishhooks, line, lures, and a fishing net."
+			],
+			"variants": [
+				{
+					"variantType": "fishing tackle",
+					"name": "Fishing Tackle",
+					"price": {
+						"amount": 8,
+						"coin": "sp"
+					}
+				},
+				{
+					"variantType": "professional fishing tackle",
+					"name": "Professional Fishing Tackle",
+					"level": 3,
+					"price": {
+						"amount": 20,
+						"coin": "gp"
+					},
+					"entries": [
+						"Professional fishing tackle grants a +1 item bonus to checks to fish."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Healer’s Toolkit",
+			"bulk": 1,
+			"hands": "1 or 2*",
+			"entries": [
+				"This kit of bandages, herbs, and suturing tools is necessary for {@skill Medicine|PC1} checks to {@action Administer First Aid|PC1}, {@action Treat Disease|PC1}, {@action Treat Poison|PC1}, or {@action Treat Wounds|PC1}. If you wear your healer’s toolkit, you can draw and replace them as part of the action that uses them.",
+				"{@note * You can use a toolkit with 1 hand if you’re wearing it or 2 if you’re holding it.}"
+			],
+			"variants": [
+				{
+					"variantType": "healing toolkit",
+					"name": "Healing Toolkit",
+					"price": {
+						"amount": 5,
+						"coin": "gp"
+					}
+				},
+				{
+					"name": "Expanded Healer’s Toolkit",
+					"variantType": "expanded healer's toolkit",
+					"level": 3,
+					"price": {
+						"amount": 50,
+						"coin": "gp"
+					},
+					"entries": [
+						"Expanded healer’s toolkits provide a +1 item bonus to such checks."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Disguise Kit",
+			"bulk": "L",
+			"hands": 2,
+			"entries": [
+				"This small wooden box contains cosmetics, false facial hair, spirit gum, and a few simple wigs. You usually need a disguise kit to set up a disguise in order to {@action Impersonate|PC1} someone using the {@skill Deception|PC1} skill. You can draw and replace a worn disguise kit as part of the action that uses it."
+			],
+			"variants": [
+				{
+					"variantType": "disguise kit",
+					"name": "Disguise Kit",
+					"price": {
+						"amount": 2,
+						"coin": "gp"
+					}
+				},
+				{
+					"variantType": "replacement cosmetics",
+					"name": "Replacement Cosmetics",
+					"price": {
+						"amount": 1,
+						"coin": "sp"
+					},
+					"bulk": "—",
+					"hands": "—",
+					"entries": [
+						"If you’ve crafted a large number of disguises, you can replenish your cosmetics supply with replacement cosmetics suitable for the type of your disguise kit."
+					]
+				},
+				{
+					"variantType": "elite disguise kit",
+					"name": "Elite Disguise Kit",
+					"level": 3,
+					"price": {
+						"amount": 40,
+						"coin": "gp"
+					},
+					"entries": [
+						"An elite disguise kit adds a +1 item bonus to relevant checks."
+					]
+				},
+				{
+					"variantType": "elite cosmetics",
+					"name": "Elite Cosmetics",
+					"level": 3,
+					"price": {
+						"amount": 5,
+						"coin": "sp"
+					},
+					"bulk": "—",
+					"hands": "—",
+					"entries": [
+						"If you’ve crafted a large number of disguises, you can replenish your cosmetics supply with replacement cosmetics suitable for the type of your disguise kit."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Compass",
+			"entries": [
+				"A compass helps you {@action Sense Direction|PC1} or navigate, provided you’re in a location with uniform magnetic fields. Without a compass, you take a –2 item penalty to these checks (similar to using a shoddy item)."
+			],
+			"bulk": "—",
+			"hands": 1,
+			"variants": [
+				{
+					"variantType": "compass",
+					"name": "Compass",
+					"price": {
+						"amount": 1,
+						"coin": "gp"
+					}
+				},
+				{
+					"level": 3,
+					"variantType": "lensatic",
+					"name": "Lensatic Compass",
+					"price": {
+						"amount": 20,
+						"coin": "gp"
+					},
+					"entries": [
+						"A lensatic compass gives you a +1 item bonus to these checks."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Crowbar",
+			"bulk": "L",
+			"hands": 2,
+			"entries": [
+				"When {@action Force Open|PC1|Forcing Open} an object that doesn’t have an easy grip, a crowbar makes it easier to gain the necessary leverage. Without a crowbar, prying something open takes a –2 item penalty to the {@skill Athletics|PC1} check to {@action Force Open|PC1}."
+			],
+			"variants": [
+				{
+					"variantType": "crowbar",
+					"name": "Crowbar",
+					"price": {
+						"amount": 5,
+						"coin": "sp"
+					}
+				},
+				{
+					"variantType": "levered crowbar",
+					"name": "Levered Crowbar",
+					"level": 3,
+					"price": {
+						"amount": 20,
+						"coin": "gp"
+					},
+					"entries": [
+						"A levered crowbar grants you a +1 item bonus to {@skill Athletics|PC1} checks to {@action Force Open|PC1} anything that can be pried open."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Climbing Kit",
+			"bulk": 1,
+			"hands": 2,
+			"entries": [
+				"This satchel includes {@item rope (50 feet)|PC1|50 feet of rope}, pulleys, a dozen {@item piton|PC1|pitons}, a {@item hammer|PC1|h}ammer, a {@item grappling hook|PC1}, and one set of crampons. Climbing kits allow you to attach yourself to the wall you’re {@action Climb|PC1|Climbing}, moving half as quickly as usual (minimum 5 feet) but letting you attempt a DC 5 flat check whenever you critically fail to prevent a fall. A single kit has only enough materials for one climber; each climber needs their own kit. If you wear your climbing kit, you can access it as part of a {@action Climb|PC1} action."
+			],
+			"variants": [
+				{
+					"name": "Climbing Kit",
+					"variantType": "climbing kit",
+					"price": {
+						"amount": 5,
+						"coin": "sp"
+					}
+				},
+				{
+					"name": "Extreme Climbing Kit",
+					"variantType": "extreme climbing kit",
+					"level": 3,
+					"price": {
+						"amount": 40,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +1 item bonus to {@skill Athletics|PC1} checks to {@action Climb|PC1} while using an extreme climbing kit."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Clothing",
+			"hands": "—",
+			"variants": [
+				{
+					"variantType": "ordinary",
+					"price": {
+						"amount": 1,
+						"coin": "sp"
+					},
+					"bulk": "—",
+					"entries": [
+						"Ordinary clothing is functional with basic tailoring, such as peasant garb, monk’s robes, or work clothes."
+					]
+				},
+				{
+					"variantType": "explorer's",
+					"exists": true,
+					"price": {
+						"amount": 1,
+						"coin": "sp"
+					},
+					"bulk": "L",
+					"entries": [
+						"Explorer’s clothing is sturdy enough that it can be reinforced to protect you, even though it isn’t a suit of armor. It comes in many forms, though the most common resemble {@class cleric|PC1|clerical} vestments, {@class monk|PC2|monk’s} garments, or {@class wizard|PC1|wizard’s} robes, as members of these classes likely avoid wearing armor."
+					]
+				},
+				{
+					"variantType": "fine",
+					"price": {
+						"amount": 2,
+						"coin": "gp"
+					},
+					"bulk": "L",
+					"entries": [
+						"More expensive finery or clothes for specific climes cost more."
+					]
+				},
+				{
+					"variantType": "high-fashion fine",
+					"level": 3,
+					"price": {
+						"amount": 55,
+						"coin": "gp"
+					},
+					"bulk": "L",
+					"entries": [
+						"More expensive finery or clothes for specific climes cost more."
+					]
+				},
+				{
+					"variantType": "cold-weather",
+					"price": {
+						"amount": 4,
+						"coin": "sp"
+					},
+					"bulk": "L",
+					"entries": [
+						"More expensive finery or clothes for specific climes cost more."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Artisan’s Toolkit",
+			"bulk": 2,
+			"hands": "1 or 2*",
+			"entries": [
+				"You need this toolkit to create items from raw materials with the {@action Craft|PC1} action. Different sets are needed for different work, as determined by the GM; for example, a blacksmith’s toolkit differs from a woodworker’s toolkit. If you wear your artisan’s toolkit, you can draw and replace it as part of the action that uses it."
+			],
+			"variants": [
+				{
+					"variantType": "artisan's toolkit",
+					"name": "Artisan's Toolkit",
+					"price": {
+						"amount": 4,
+						"coin": "gp"
+					}
+				},
+				{
+					"variantType": "sterling artistan's toolkit",
+					"name": "Sterling Artisan’s Toolkit",
+					"level": 3,
+					"price": {
+						"amount": 50,
+						"coin": "gp"
+					},
+					"entries": [
+						"A sterling artisan’s toolkit gives you a +1 item bonus to the check."
+					]
+				}
+			]
+		},
+		{
+			"remaster": true,
+			"source": "PC1",
+			"page": 291,
+			"generic": "G",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"name": "Alchemist’s Lab",
+			"bulk": 6,
+			"hands": 2,
+			"entries": [
+				"You need an alchemist’s lab to {@action Craft|PC1} {@trait alchemical} items during {@trait downtime}."
+			],
+			"variants": [
+				{
+					"variantType": "alchemist's lab",
+					"name": "Alchemist's Lab",
+					"price": {
+						"amount": 5,
+						"coin": "gp"
+					}
+				},
+				{
+					"variantType": "expanded alchemist's lab",
+					"name": "Expanded Alchemist's Lab",
+					"level": 3,
+					"price": {
+						"amount": 55,
+						"coin": "gp"
+					},
+					"entries": [
+						"An expanded alchemist’s lab gives a +1 item bonus to {@skill Crafting|PC1} checks to create {@trait alchemical} items."
+					]
+				}
+			]
+		},
+		{
+			"remaster": "true",
+			"source": "PC1",
+			"page": 291,
+			"name": "Concealed Sheath",
+			"level": 3,
+			"price": {
+				"amount": 25,
+				"coin": "gp"
+			},
+			"bulk": "—",
+			"hands": "—",
+			"entries": [
+				"This leather sheath is large enough to hold an item of up to light Bulk and is typically used for {@item dagger|PC1|daggers}, {@trait wand||wands}, {@item thieves' toolkit (generic)|PC1|thieves’ toolkits}, and similar objects. You can affix it to the inside of a boot, under a bracer or sleeve, or in other inconspicuous locations to gain a +1 item bonus to {@skill Stealth|PC1} checks and DCs to hide or conceal the item within."
+			]
+		},
+		{
 			"remaster": "true",
 			"source": "PC1",
 			"page": 291,
