@@ -91,7 +91,7 @@
 						"uniqueItems": true
 					},
 					"miscTags": {
-						"description": "ability = Used when a background grants an active, voluntary ability\n equipment = Used when a background grants free items (not access/proficiency\u2014the actual concrete thing)\n sense = Used when a background grants a sense (e.g. darkvision, scent)\n situationalBenefit = Used when a background grants a benefit that isn't a skill/feat/spell/etc., but also isn't explicitly a new ability (e.g. a +1 circumstance bonus to Seek on cloudy days)\n drawback = Used when a background comes with an objective, mandatory drawback (e.g. penalty to some check, inability to use an item or spell; not something that is both good and bad)",
+						"description": "ability = Used when a background grants an active, voluntary ability\n equipment = Used when a background grants free items (not access/proficiency\u2014the actual concrete thing)\n sense = Used when a background grants a sense (e.g. darkvision, scent)\n situationalBenefit = Used when a background grants a benefit that isn't a skill/feat/spell/etc., but also isn't explicitly a new ability (e.g. a +1 circumstance bonus to Seek on cloudy days)\n drawback = Used when a background comes with an objective, mandatory drawback (e.g. penalty to some check, inability to use an item or spell; not something that is both good and bad)\n GMInfluence = Used when the GM has non-negotiable control over your background's mechanics",
 						"type": "array",
 						"items": {
 							"type": "string",
@@ -100,7 +100,8 @@
 								"equipment",
 								"sense",
 								"situationalBenefit",
-								"drawback"
+								"drawback",
+								"GMInfluence"
 							]
 						},
 						"minItems": 1,

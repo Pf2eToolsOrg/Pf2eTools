@@ -3,9 +3,9 @@
 .source {
 	$rgb-source-APG: #4a6898;
 	$rgb-source-GMG: purple;
-	$rgb-source-B1: rgb(0, 137, 0);
-	$rgb-source-B2: rgb(0, 107, 0);
-	$rgb-source-B3: rgb(0, 77, 0);
+	$rgb-source-B1: rgb(0 137 0);
+	$rgb-source-B2: rgb(0 107 0);
+	$rgb-source-B3: rgb(0 77 0);
 	$rgb-source-LOGM: #1b8fac;
 	$rgb-source-Homebrew: $rgb-class-brew;
 	$rgb-source-CRB: #a2201f;
@@ -22,9 +22,13 @@
 	$rgb-source-RoE: #a78015;
 	$rgb-source-TV: #8b8b56;
 	$rgb-source-PC1: #038027;
+	$rgb-source-PC2: #852d23;
 	$rgb-source-LOTXWG: #ca3052;
 	$rgb-source-LOACLO: #91d4d1;
+	$rgb-source-LORA: #dfa4a4;
 	$rgb-source-LOHh: #72879b;
+	$rgb-source-HotW: #ac4a24;
+	$rgb-source-WoI: #960202;
 
 	&TV {
 		color: $rgb-source-TV !important;
@@ -171,6 +175,13 @@
 		font-style: italic; /* hack to make remaster stuff obvious */
 	}
 
+	&PC2 {
+		color: $rgb-source-PC2 !important;
+		border-color: $rgb-source-PC2 !important;
+		text-decoration-color: $rgb-source-PC2 !important;
+		font-style: italic; /* hack to make remaster stuff obvious */
+	}
+
 	&LOTXWG {
 		color: $rgb-source-LOTXWG !important;
 		border-color: $rgb-source-LOTXWG !important;
@@ -182,5 +193,26 @@
 		color: $rgb-source-LOHh !important;
 		border-color: $rgb-source-LOHh !important;
 		text-decoration-color: $rgb-source-LOHh !important;
+	}
+
+	&HotW {
+		color: $rgb-source-HotW !important;
+		border-color: $rgb-source-HotW !important;
+		text-decoration-color: $rgb-source-HotW !important;
+		font-style: italic; /* hack to make remaster stuff obvious */
+	}
+
+	&LORA {
+		color: $rgb-source-LORA !important;
+		border-color: $rgb-source-LORA !important;
+		text-decoration-color: $rgb-source-LORA !important;
+		font-style: italic; /* hack to make remaster stuff obvious */
+	}
+
+	&WoI {
+		color: $rgb-source-WoI !important;
+		border-color: $rgb-source-WoI !important;
+		text-decoration-color: $rgb-source-WoI !important;
+		font-style: italic; /* hack to make remaster stuff obvious */
 	}
 }

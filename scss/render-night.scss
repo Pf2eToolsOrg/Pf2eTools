@@ -1,27 +1,28 @@
-@import 'vars';
+@use "sass:color";
+@use 'vars';
 
 .night-mode .rd {
 	&__ {
 		&h--0,
 		&h--1,
 		&h--2 {
-			color: $rgb-name-red--night;
+			color: vars.$rgb-name-red--night;
 		}
 
 		&h--1 {
-			border-bottom-color: $rgb-name-red--night;
+			border-bottom-color: vars.$rgb-name-red--night;
 		}
 
 		&h--4 {
-			color: $rgb-name-alt--night;
+			color: vars.$rgb-name-alt--night;
 		}
 
 		&h--3 {
-			color: $rgb-name-alt--night;
+			color: vars.$rgb-name-alt--night;
 		}
 
 		&-image-title-inner {
-			border-color: $rgb-border-grey--night;
+			border-color: vars.$rgb-border-grey--night;
 		}
 
 		&b-inset {
@@ -41,24 +42,24 @@
 		}
 
 		&stats-name-page {
-			color: $rgb-font--night;
+			color: vars.$rgb-font--night;
 		}
 
 		&highlight {
-			background-color: $rgb-bg-highlight--night;
-			color: $rgb-bg--night;
+			background-color: vars.$rgb-bg-highlight--night;
+			color: vars.$rgb-bg--night;
 		}
 	}
 
 	&-item__ {
 		&type-rarity-attunement {
-			color: $rgb-font--night;
+			color: vars.$rgb-font--night;
 		}
 	}
 
 	&-spell__ {
 		&level-school-ritual {
-			color: $rgb-font--night;
+			color: vars.$rgb-font--night;
 		}
 	}
 }
@@ -68,8 +69,8 @@
 	.rd__h--0,
 	.rd__h--1,
 	.rd__h--2 {
-		color: $rgb-subclass--night;
-		border-bottom-color: $rgb-subclass--night;
+		color: vars.$rgb-subclass--night;
+		border-bottom-color: vars.$rgb-subclass--night;
 	}
 }
 
@@ -77,8 +78,8 @@
 	.rd__h--0,
 	.rd__h--1,
 	.rd__h--2 {
-		color: $rgb-subclass-ua--night;
-		border-bottom-color: $rgb-subclass-ua--night;
+		color: vars.$rgb-subclass-ua--night;
+		border-bottom-color: vars.$rgb-subclass-ua--night;
 	}
 }
 
@@ -86,8 +87,8 @@
 	.rd__h--0,
 	.rd__h--1,
 	.rd__h--2 {
-		color: $rgb-class-ua--night;
-		border-bottom-color: $rgb-class-ua--night;
+		color: vars.$rgb-class-ua--night;
+		border-bottom-color: vars.$rgb-class-ua--night;
 	}
 }
 
@@ -95,8 +96,8 @@
 	.rd__h--0,
 	.rd__h--1,
 	.rd__h--2 {
-		color: $rgb-class-brew--night;
-		border-bottom-color: $rgb-class-brew--night;
+		color: vars.$rgb-class-brew--night;
+		border-bottom-color: vars.$rgb-class-brew--night;
 	}
 }
 // endregion

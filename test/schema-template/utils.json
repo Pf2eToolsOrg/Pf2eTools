@@ -304,11 +304,24 @@
 				},
 				"amount": {
 					"type": "number"
+				},
+				"entry": {
+					"type": "string",
+					"minLength": 1
 				}
 			},
-			"required": [
-				"amount",
-				"coin"
+			"oneOf": [
+				{
+					"required": [
+						"amount",
+						"coin"
+					]
+				},
+				{
+					"required": [
+						"entry"
+					]
+				}
 			]
 		},
 		"otherSources": {

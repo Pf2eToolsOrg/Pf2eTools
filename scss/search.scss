@@ -1,4 +1,5 @@
-@import 'vars';
+@use "sass:color";
+@use 'vars';
 
 .pg-search__ {
 	$sz-image: 48px;
@@ -8,9 +9,9 @@
 	}
 
 	&wrp-result {
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid vars.$rgb-border-grey;
 		border-radius: 5px;
-		min-height: calc(#{$spacer} + #{$sz-image} + 2px);
+		min-height: calc(#{vars.$spacer} + #{$sz-image} + 2px);
 	}
 
 	&disp-token {
@@ -21,7 +22,7 @@
 
 	&wrp-preview {
 		width: 500px;
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid vars.$rgb-border-grey;
 	}
 
 	&btn-toggle-preview {
@@ -29,7 +30,7 @@
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
 
-			@media only screen and (max-width: $max-width-screen-sm) {
+			@media only screen and (max-width: vars.$max-width-screen-sm) {
 				border-top-left-radius: 3px;
 				border-bottom-left-radius: 3px;
 			}
@@ -40,13 +41,13 @@
 .night-mode {
 	.pg-search__ {
 		&wrp-result {
-			border: 1px solid $rgb-border-grey--night;
-			background: $rgb-bg--night;
+			border: 1px solid vars.$rgb-border-grey--night;
+			background: vars.$rgb-bg--night;
 		}
 
 		&wrp-preview {
 			width: 500px;
-			border: 1px solid $rgb-border-grey--night;
+			border: 1px solid vars.$rgb-border-grey--night;
 		}
 	}
 }

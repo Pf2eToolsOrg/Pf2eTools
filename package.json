@@ -1,7 +1,7 @@
 {
 	"name": "pf2etools",
 	"author": "Pf2eTools",
-	"version": "0.8.13",
+	"version": "0.9.0",
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
@@ -15,7 +15,7 @@
 		"test:js": "npx eslint js node",
 		"lint:js": "npx eslint js node --fix",
 		"test": "npm run test:js && npm run test:styles && npm run test:data",
-		"test:styles": "npx stylelint scss/*.scss scss/includes/*.scss",
+		"test:styles": "npx stylelint scss/**.scss",
 		"test:data": "node test/test-all.js",
 		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:schema && npm run build:sw:prod",
 		"build-no-sw": "npm run build && del-cli sw.js && del-cli sw-injector.js",
@@ -36,7 +36,7 @@
 		"build:schema:traits": "node test/scripts/compile-traits-schema.js",
 		"build:schema:languages": "node test/scripts/compile-languages-schema.js",
 		"build:schema:sources": "node test/scripts/compile-sources-schema.js",
-		"preversion": "npm run test:js && npm run test:data",
+		"preversion": "npm run test",
 		"version": "node node/version-bump.js"
 	},
 	"repository": {
@@ -44,28 +44,29 @@
 		"url": "git+https://github.com/Pf2eToolsOrg/Pf2eTools.git"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "^3.1.0",
-		"@eslint/js": "^9.7.0",
+		"@eslint/eslintrc": "^3.3.1",
+		"@eslint/js": "^9.28.0",
 		"ajv": "^8.17.1",
-		"autoprefixer": "^10.4.19",
-		"del-cli": "^5.1.0",
-		"esbuild": "^0.23.0",
-		"eslint": "^9.7.0",
-		"globals": "^15.8.0",
+		"autoprefixer": "^10.4.21",
+		"del-cli": "^6.0.0",
+		"esbuild": "^0.25.5",
+		"eslint": "^9.28.0",
+		"globals": "^16.2.0",
 		"http-server": "^14.1.1",
 		"json": "^11.0.0",
 		"json-source-map": "^0.6.1",
-		"postcss": "^8.4.39",
-		"postcss-cli": "^11.0.0",
+		"postcss": "^8.5.4",
+		"postcss-cli": "^11.0.1",
 		"postcss-syntax": "^0.36.2",
 		"probe-image-size": "^7.2.3",
 		"readline-sync": "^1.4.10",
-		"sass": "1.77.6",
-		"simple-git": "^3.25.0",
-		"stylelint": "^16.7.0",
-		"stylelint-config-sass-guidelines": "^12.0.0",
-		"terser": "^5.31.3",
-		"workbox-cli": "^7.1.0",
+		"sass": "1.79.6",
+		"simple-git": "^3.27.0",
+		"stylelint": "^16.20.0",
+		"stylelint-config-standard-scss": "^15.0.1",
+		"stylelint-scss": "^6.12.0",
+		"terser": "^5.40.0",
+		"workbox-cli": "^7.3.0",
 		"xmlbuilder": "^15.1.1"
 	},
 	"bugs": {
@@ -76,5 +77,9 @@
 	"directories": {
 		"lib": "lib",
 		"test": "test"
-	}
+	},
+	"trustedDependencies": [
+		"@parcel/watcher",
+		"esbuild"
+	]
 }
