@@ -1,33 +1,21 @@
 {
-	"extends": "stylelint-config-sass-guidelines",
+	"extends": [
+		"stylelint-config-standard-scss"
+	],
+	"plugins": [
+		"stylelint-scss"
+	],
 	"rules": {
-		"indentation": "tab",
-		"order/properties-order": [
-			"position",
-			"z-index",
-			"top",
-			"right",
-			"bottom",
-			"left",
-			"margin",
-			"margin-top",
-			"margin-right",
-			"margin-bottom",
-			"margin-left",
-			"padding",
-			"padding-top",
-			"padding-right",
-			"padding-bottom",
-			"padding-left"
-		],
-		"order/properties-alphabetical-order": null,
-		"color-named": "always-where-possible",
-		"selector-no-qualifying-type": null,
-		"selector-max-compound-selectors": null,
-		"selector-max-id": null,
-		"selector-class-pattern": null,
-		"max-nesting-depth": null,
+		"comment-empty-line-before": null,
+		"keyframes-name-pattern": null,
+		"no-descending-specificity": null,
+		"no-duplicate-selectors": null,
+		"number-max-precision": null,
 		"scss/at-mixin-pattern": null,
-		"scss/dollar-variable-pattern": null
+		"scss/dollar-variable-pattern": null,
+		"scss/double-slash-comment-empty-line-before": null,
+		"selector-class-pattern": null,
+		"selector-id-pattern": null,
+		"selector-not-notation": null
 	}
 }

@@ -1,6 +1,60 @@
 {
 	"action": [
 		{
+			"name": "Refocus",
+			"source": "PC1",
+			"remaster": true,
+			"page": 298,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"requirements": "You have a focus pool.",
+			"entries": [
+				"You spend 10 minutes performing deeds to restore your magical connection. This restores 1 Focus Point to your focus pool. The deeds you need to perform are specified in the class or ability that gives you your focus spells. These deeds can usually overlap with other tasks that relate to the source of your focus spells. For instance, a {@class cleric|PC1} with focus spells from a holy deity can usually Refocus while tending the wounds of their allies."
+			]
+		},
+		{
+			"name": "Search for Speakers",
+			"page": 48,
+			"source": "WoW3",
+			"remaster": true,
+			"traits": [
+				"downtime"
+			],
+			"entries": [
+				"You contribute your efforts to the day's search for Zibik's speakers, whether by helping directly, by looking out for danger, by navigating terrain, or by keeping companions safe and healthy. Choose an option from the current region's Exploration skills and attempt a check against the listed DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The party gains 2 Search Points.",
+						"Success": "The party gains 1 Search Point.",
+						"Failure": "The part loses 1 Search Point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Support the Siege Effort",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 15,
+			"traits": [
+				"downtime"
+			],
+			"entries": [
+				"You spend 4 hours performing tasks to aid in the siege of Arenway, such as repairing structures, preparing meals, persuading captives to join the Rootweft Lodge, treating injured Rootweft warriors, or scouting the area. Roll a skill check related to the task you perform\u2014the GM determines the specific skill required and the DC, and you earn Siege Points based on the result of your check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain 2 Siege Points.",
+						"Success": "You gain 1 Siege Point.",
+						"Critical Failure": "You lose 1 Siege Point."
+					}
+				}
+			]
+		},
+		{
 			"name": "Unwavering Resilience",
 			"source": "WoW2",
 			"page": 69,
@@ -942,9 +996,2908 @@
 			]
 		},
 		{
-			"name": "Leap",
-			"remaster": true,
+			"name": "Call on Ancient Blood",
 			"source": "PC1",
+			"remaster": true,
+			"page": 43,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"actionType": {
+				"ancestry": [
+					"Dwarf"
+				],
+				"heritage": [
+					"Ancient-Blooded"
+				]
+			},
+			"trigger": "You attempt a saving throw against a {@trait magical} effect, but you haven't rolled yet.",
+			"entries": [
+				"Your ancestors' innate resistance to magic surges before slowly ebbing down. You gain a +1 circumstance bonus to saving throws on the triggering save and other saves against magical effects until the end of this turn."
+			]
+		},
+		{
+			"name": "Jinx",
+			"source": "PC1",
+			"remaster": true,
+			"page": 59,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"actionType": {
+				"ancestry": [
+					"Halfling"
+				],
+				"heritage": [
+					"Jinxed"
+				]
+			},
+			"frequency": {
+				"unit": "day",
+				"number": 1
+			},
+			"entries": [
+				"You can curse another creature with clumsiness. This curse has a range of 30 feet, and you must be able to see your target. The target gets a Will saving throw against your class DC or spell DC, whichever is higher.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The target is unaffected and temporarily immune for 24 hours.",
+						"Failure": "The target is {@condition clumsy|PC1|clumsy 1} for 1 minute. ",
+						"Critical Failure": "The target is {@condition clumsy|PC1|clumsy 2} for 1 minute."
+					}
+				}
+			]
+		},
+		{
+			"name": "Reactive Strike",
+			"page": 138,
+			"otherSources": {
+				"Reprinted": [
+					"PC1|422"
+				]
+			},
+			"alias": [
+				"Attack of Opportunity",
+				"Opportunity Attack"
+			],
+			"source": "PC1",
+			"remaster": true,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "A creature within your reach uses a {@trait manipulate} action or a {@trait move} action, makes a ranged attack, or leaves a square during a {@trait move} action it's using.",
+			"entries": [
+				"You lash out at a foe that leaves an opening. Make a melee {@action Strike|PC1} against the triggering creature. If your attack is a critical hit and the trigger was a {@trait manipulate} action, you disrupt that action. This {@action Strike|PC1} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike|PC1}."
+			]
+		},
+		{
+			"name": "Hunt Prey",
+			"source": "PC1",
+			"remaster": true,
+			"page": 154,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"concentrate",
+				"ranger"
+			],
+			"actionType": {
+				"class": [
+					"ranger"
+				]
+			},
+			"entries": [
+				"You designate a single creature as your prey and focus your attacks against that creature. You must be able to see or hear the prey, or you must be tracking the prey during exploration.",
+				"You gain a +2 circumstance bonus to {@skill Perception|PC1} checks when you {@action Seek|PC1} your prey and a +2 circumstance bonus to {@skill Survival|PC1} checks when you {@action Track|PC1} your prey. You also ignore the penalty for making ranged attacks within your second range increment against the prey you're hunting.",
+				"crement against the prey you're hunting. You can have only one creature designated as your prey at a time. If you use {@action Hunt Prey|PC1} against a creature when you already have a creature designated, the prior creature loses the designation and the new prey gains the designation. Your designation lasts until your next daily preparations."
+			]
+		},
+		{
+			"name": "Debilitating Strike",
+			"source": "PC1",
+			"remaster": true,
+			"page": 168,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"rogue"
+			],
+			"actionType": {
+				"class": [
+					"rogue"
+				]
+			},
+			"trigger": "Your {@action Strike|PC1} hits an {@condition off-guard|PC1} creature and deals damage.",
+			"entries": [
+				"You apply one of the following debilitations, which lasts until the end of your next turn.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Debilitation} the target takes a \u201310-foot status penalty to its Speeds.",
+						"{@b Debilitation} The target becomes {@condition enfeebled|PC1|enfeebled 1}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Master Strike",
+			"source": "PC1",
+			"remaster": true,
+			"page": 169,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"incapacitation",
+				"rogue"
+			],
+			"actionType": {
+				"class": [
+					"rogue"
+				]
+			},
+			"frequency": {
+				"unit": "round",
+				"number": 1
+			},
+			"trigger": "Your {@action Strike|PC1} hits a {@condition off-guard|PC1} creature and deals damage.",
+			"entries": [
+				"The target attempts a Fortitude save at your class DC. It then becomes temporarily immune to your Master Strike for 1 day.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "The target is {@condition enfeebled|PC1|enfeebled 2} until the end of your next turn.",
+						"Failure": "The target is {@condition paralyzed|PC1} for 4 rounds.",
+						"Critical Failure": "The target is {@condition paralyzed|PC1} for 4 rounds, knocked {@condition unconscious|PC1} for 2 hours, or killed (your choice)."
+					}
+				}
+			]
+		},
+		{
+			"name": "Drain Bonded Item",
+			"source": "PC1",
+			"remaster": true,
+			"page": 197,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"arcane",
+				"wizard"
+			],
+			"actionType": {
+				"class": [
+					"wizard"
+				]
+			},
+			"requirements": "Your bonded item is on your person.",
+			"frequency": {
+				"unit": "day",
+				"number": 1
+			},
+			"entries": [
+				"You expend the magical power stored in your bonded item. During the current turn, you can cast one spell you prepared today and already cast, without spending a spell slot. You must still Cast the Spell and meet the spell's other requirements."
+			]
+		},
+		{
+			"name": "Decipher Writing",
+			"source": "PC1",
+			"remaster": true,
+			"page": 228,
+			"traits": [
+				"concentrate",
+				"exploration",
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"arcana",
+						"occultism",
+						"religion",
+						"society"
+					]
+				}
+			},
+			"entries": [
+				"You attempt to decipher complicated writing or literature on an obscure topic. This usually takes 1 minute per page of text, but might take longer (typically an hour per page for decrypting ciphers or the like). The text must be in a language you can read, though the GM might allow you to attempt to decipher text written in an unfamiliar language using {@skill Society} instead.",
+				"The DC is determined by the GM based on the state or complexity of the document. The GM might have you roll one check for a short text or a check for each section of a larger text.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You understand the true meaning of the text.",
+						"Success": "You understand the true meaning of the text. If it was a coded document, you know the general meaning but might not have a word-for-word translation.",
+						"Failure": "You can't understand the text and take a \u20132 circumstance penalty to further checks to decipher it.",
+						"Critical Failure": "You believe you understand the text on that page, but you have in fact misconstrued its message."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Decipher Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "entry-level philosophy treatise"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "complex code, such as a cipher"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "spymaster's code or advanced research notes"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "esoteric planar text written in metaphor by an ancient celestial"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Earn Income",
+			"source": "PC1",
+			"remaster": true,
+			"page": 228,
+			"traits": [
+				"downtime"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"acrobatics",
+						"arcana",
+						"athletics",
+						"crafting",
+						"deception",
+						"diplomacy",
+						"intimidation",
+						"lore",
+						"medicine",
+						"nature",
+						"occultism",
+						"performance",
+						"religion",
+						"society",
+						"stealth",
+						"survival",
+						"thievery"
+					]
+				}
+			},
+			"entries": [
+				"You use one of your skills to make money during downtime. The GM assigns a task level representing the most lucrative job available. You can search for lower-level tasks, with the GM determining whether you find any. Sometimes you can attempt to find better work than the initial offerings, though this takes time and requires using the {@skill Diplomacy|PC1} skill to {@action Gather Information|PC1}, doing some research, or socializing.",
+				"When you take on a job, the GM secretly sets the DC of your skill check. After your first day of work, you roll to determine your earnings. You gain an amount of income based on your result, the task's level, and your proficiency rank (as listed on the {@table Income Earned|PC1} table).",
+				"You can continue working at the task on subsequent days without needing to roll again. For each day you spend after the first, you earn the same amount as the first day, up until the task's completion. The GM determines how long you can work at the task. Most tasks last a week or two, though some can take months or even years.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You do outstanding work. Gain the amount of currency listed for the task level + 1 and your proficiency rank.",
+						"Success": "You do competent work. Gain the amount of currency listed for the task level and your proficiency rank.",
+						"Failure": "You do shoddy work and get paid the bare minimum for your time. Gain the amount of currency listed in the failure column for the task level. The GM will likely reduce how long you can continue at the task.",
+						"Critical Failure": "You earn nothing for your work and are fired immediately. You can't continue at the task. Your reputation suffers, potentially making it difficult for you to find rewarding jobs in that community in the future."
+					}
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Crafting Goods for the Market (Crafting)",
+					"entries": [
+						"Using {@skill Crafting|PC1}, you can work at producing common items for the market. It's usually easy to find work making basic items whose level is 1 or 2 below your settlement's level.",
+						"Higher-level tasks represent special commissions, which might require you to {@action Craft|PC1} a specific item using the {@action Craft|PC1} downtime activity and sell it to a buyer at full Price. These opportunities don't occur as often and might have special requirements\u2014or serious consequences if you disappoint a prominent client."
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Practicing a Trade (Lore)",
+					"entries": [
+						"You apply the practical benefits of one of your {@skill Lore|PC1} specialties during downtime by practicing your trade. This is most effective for {@skill Lore|PC1} specialties such as business, law, or sailing, where there's high demand for workers. The GM might increase the DC or determine only low-level tasks are available if you're attempting to use an obscure {@skill Lore|PC1} skill to Earn Income. You might also need specialized tools to accept a job, like mining tools to work in a mine or a merchant's scale to buy and sell valuables in a market."
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Staging a Performance (Performance)",
+					"entries": [
+						"You perform for an audience to make money. The available audiences determine the level of your task, since more discerning audiences are harder to impress but provide a bigger payout. The GM determines the task level based on the audiences available.",
+						"Performing for a typical audience of commoners on the street is a level 0 task, but a performance for a group of artisans with more refined tastes might be a 2nd- or 3rd-level task, and ones for merchants, nobility, and royalty are increasingly higher level.",
+						"Your degree of success determines whether you moved your audience and whether you were rewarded with applause or rotten fruit."
+					]
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Earn Income Tasks",
+					"entries": [
+						"These examples use {@skill Lore|PC1|Alcohol Lore} to work in a bar or {@skill Lore|PC1|Legal Lore} to perform legal work.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "bartend, do legal research"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "curate drink selection, present minor court cases"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "run a large brewery, present important court cases"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "run an international brewing franchise, present a case in Hell's courts"
+								}
+							]
+						}
+					]
+				},
+				{
+					"tag": "table",
+					"name": "EARN INCOME TASKS",
+					"source": "PC1",
+					"remaster": true,
+					"type": "data"
+				}
+			]
+		},
+		{
+			"name": "Identify Magic",
+			"source": "PC1",
+			"remaster": true,
+			"page": 230,
+			"traits": [
+				"concentrate",
+				"exploration",
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"arcana",
+						"nature",
+						"occultism",
+						"religion"
+					]
+				}
+			},
+			"entries": [
+				"Once you discover that an item, location, or ongoing effect is magical, you can spend 10 minutes to try to identify the particulars of its magic. If your attempt is interrupted, you must start over. The GM sets the DC for your check. Cursed magic or esoteric subjects usually have higher DCs or might even be impossible to identify using this activity alone. Heightening a spell doesn't increase the DC to identify it.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You learn all the attributes of the magic, including its name (for an effect), what it does, any means of activating it (for an item or location), and whether it is cursed.",
+						"Success": "For an item or location, you get a sense of what it does and learn any means of activating it. For an ongoing effect (such as a spell with a duration), you learn the effect's name and what it does. You can't try again in hopes of getting a critical success.",
+						"Failure": "You fail to identify the magic and can't try again for 1 day.",
+						"Critical Failure": "You misidentify the magic as something else of the GM's choice."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Magical Traditions and Skills",
+					"entries": [
+						"Each magical tradition has a corresponding skill, as shown on the table below. You must have the trained proficiency rank in a skill to use it to {@action Identify Magic|PC1} or {@action Learn a Spell|PC1}. Something without a specific tradition, such as an item with the magical trait, can be identified using any of these skills.",
+						{
+							"type": "table",
+							"colStyles": [
+								"text-center",
+								"text-center"
+							],
+							"rows": [
+								[
+									"Magical Tradition",
+									"Corresponding Skill"
+								],
+								[
+									"{@filter Arcane|spells||tradition & spell list=arcane}",
+									"{@skill Arcana|PC1}"
+								],
+								[
+									"{@filter Divine|spells||tradition & spell list=divine}",
+									"{@skill Religion|PC1}"
+								],
+								[
+									"{@filter Occult|spells||tradition & spell list=occult}",
+									"{@skill Occultism|PC1}"
+								],
+								[
+									"{@filter Primal|spells||tradition & spell list=primal}",
+									"{@skill Nature|PC1}"
+								]
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Learn a Spell",
+			"source": "PC1",
+			"remaster": true,
+			"page": 230,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"arcana",
+						"nature",
+						"occultism",
+						"religion"
+					]
+				}
+			},
+			"requirements": "You have a spellcasting class feature, and the spell you want to learn is on your magical tradition's spell list.",
+			"entries": [
+				"You can gain access to a new spell of your tradition from someone who knows that spell or from magical writing like a spellbook or scroll. If you can cast spells of multiple traditions, you can Learn a Spell of any of those traditions, but you must use the corresponding skill to do so. For example, if you were a {@class cleric|PC1} with the {@archetype bard|PC1|bard multiclass archetype}, you couldn't use {@skill Religion|PC1} to add an occult spell to your bardic spell repertoire.",
+				"To learn the spell, you must do the following:",
+				{
+					"type": "list",
+					"items": [
+						"Spend 1 hour per spell rank, during which you must remain in conversation with a person who knows the spell or have the magical writing in your possession.",
+						"Have materials with the Price indicated in {@table Learning a Spell|PC1}.",
+						"Attempt a skill check for the skill corresponding to your tradition (DC determined by the GM, often close to the DC on the {@table Learning a Spell|PC1} Table). {@trait Uncommon} or {@trait rare} spells have higher DCs; full guidelines for the GM appear on page 52 of GM Core."
+					]
+				},
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You expend half the materials and learn the spell.",
+						"Success": "You expend the materials and learn the spell.",
+						"Failure": "You fail to learn the spell but can try again after you gain a level. The materials aren't expended.",
+						"Critical Failure": "As failure, plus you expend half the materials."
+					}
+				},
+				{
+					"type": "pf2-h4",
+					"name": "Learned Spells",
+					"entries": [
+						"A spell you learn is added to your repository of spells, such as a spellbook for a {@class wizard|PC1}, familiar for a {@class witch|PC1}, or spell list for a {@class cleric|PC1} or {@class druid|PC1}. If you have a spell repertoire, such as a {@class bard|PC1}, it's not automatically added since you can only know a limited number of spells. Instead, you can select it when you add or swap spells."
+					]
+				}
+			]
+		},
+		{
+			"name": "Recall Knowledge",
+			"alias": [
+				"Identify"
+			],
+			"source": "PC1",
+			"remaster": true,
+			"page": 231,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"concentrate",
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"arcana",
+						"crafting",
+						"lore",
+						"medicine",
+						"nature",
+						"occultism",
+						"religion",
+						"society"
+					]
+				}
+			},
+			"entries": [
+				"You attempt a skill check to try to remember a bit of knowledge regarding a topic related to that skill. Suggest which skill you'd like to use and ask the GM one question. The GM determines the DC. You might need to collaborate with the GM to narrow down the question or skills, and you can decide not to Recall Knowledge before committing to the action if you can't don't like your options.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You recall the knowledge accurately. The GM answers your question truthfully and either tells you additional information or context, or answers one followup question.",
+						"Success": "You recall the knowledge accurately. The GM answers your question truthfully.",
+						"Critical Failure": "You recall incorrect information. The GM answers your question falsely (or decides to give you no information, as on a failure)."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Recall Knowledge Tasks",
+					"entries": [
+						"These examples use {@skill Society|PC1} or {@skill Religion|PC1}.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "name of a ruler, key noble, or major deity"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "line of succession for a major noble family, core doctrines of a major deity"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "genealogy of a minor noble, teachings of an ancient priest"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "hierarchy of a genie noble court, major extraplanar temples of a deity"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "existence of a long-lost noble heir, secret doctrines of a religion"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 232,
+					"source": "PC1",
+					"remaster": true,
+					"name": "Recall Knowledge Skills",
+					"entries": [
+						"The following skills can be used to Recall Knowledge about the listed topics. Some topics might appear on multiple lists, but the skills could give different information. For example, {@skill Arcana|PC1} might tell you about the magical defenses of a construct, whereas {@skill Crafting|PC1} could tell you about its sturdy resistance to physical attacks.",
+						{
+							"type": "list",
+							"items": [
+								"{@b {@skill Arcana}:} Arcane theories, magical traditions, creatures of arcane significance, and arcane planes.",
+								"{@b {@skill Crafting}:} Alchemical reactions and creatures, item value, engineering, unusual materials, and constructs.",
+								"{@b Lore:} The subject of the Lore skill's subcategory.",
+								"{@b {@skill Medicine}:} Diseases, poisons, wounds, and forensics.",
+								"{@b {@skill Nature}:} The environment, flora, geography, weather, creatures of natural origin, and natural planes.",
+								"{@b {@skill Occultism}:} Ancient mysteries, folk superstition, obscure philosophy, creatures of occult significance, and esoteric planes.",
+								"{@b {@skill Religion}:} Divine agents, divine planes, theology, obscure myths, and creatures of religious significance.",
+								"{@b Society:} Local history, key personalities, legal institutions, societal structure, and humanoid culture."
+							]
+						},
+						"Using an applicable {@skill Lore|PC1} to {@action Recall Knowledge|PC1} about a topic, such as {@skill Lore|PC1|Engineering Lore} instead of {@skill Crafting|PC1} to find structural weaknesses in a bridge, typically comes with a lower DC. Your special interests can pay off! In some cases, you can get the GM's permission to use a different but related skill, usually against a higher DC than normal. The GM might allow checks to {@action Recall Knowledge|PC1} using other skills. For example, you might assess the skill of an acrobat using {@skill Acrobatics|PC1}. If you're using a physical skill (like in this example), the GM will most likely have you use a mental modifier\u2014typically Intelligence\u2014instead of the skill's normal physical attribute modifier."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 232,
+					"source": "PC1",
+					"remaster": true,
+					"name": "Recall Knowledge Questions",
+					"entries": [
+						"When encountering a subject for the first time, your first question will likely be a basic \"What is it?\", which the GM can answer with a name and basic description like, \"That's an ogre, a tough and cruel giant\" or \"This is the symbol of {@deity Urgathoa|PC1}, a goddess of disease, gluttony, and undeath.\" If you already know this base level of detail on the subject, the list below includes some reasonable questions. The GM determines what other questions to allow. Usually this is simple as long as you stick to one question. Any question must be about something observable in the game world, not the abstract numbers of the rules. The GM might tell you a lumbering monster's Reflex save is its weakest\u2014translating a concept your character could understand using the game term for clarity\u2014but wouldn't reveal the exact Reflex modifier. The GM can find more guidance on page 54 of GM Core.",
+						"{@b Creatures:} \"Can it be reasoned with?\" \"What environments does it live in?\" \"What's its most notable offensive ability?\" \"Is it highly vulnerable or resistant to anything?\" \"Are any of its defenses weak?\"",
+						"{@b Magic:}  \"How can it be avoided?\" \"What type of people use this magic?\" \"How long does it last?\"",
+						"{@b Organizations:} \"What kind of influence does it have?\" \"Where is it headquartered?\" \"How large is it?\" \"What kind of members does it have?\" \"Who are its major authorities?\" \"Do they have any notable allies and enemies?\"",
+						"{@b People:} \"What's their personality like?\" \"What do they look like?\" \"Do they have any notable talents?\" \"Do they have notable allies and enemies?\" \"What kind of influence do they have?\" \"Do they have any vices?\"",
+						"{@b Sites:}  \"What's its general location?\" \"How large is it?\" \"What's the government like?\" \"Do any notable people live there?\" \"What kind of monsters dwell there?\" \"What's the environment and terrain like?\""
+					]
+				}
+			]
+		},
+		{
+			"name": "Subsist",
+			"source": "PC1",
+			"remaster": true,
+			"page": 232,
+			"traits": [
+				"downtime"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"society",
+						"survival"
+					]
+				}
+			},
+			"entries": [
+				"You try to provide food and shelter for yourself, and possibly others as well, with a standard of living described on the {@table Cost of Living|PC1} table. The GM determines the DC based on the nature of the place where you're trying to Subsist. You might need a minimum proficiency rank to Subsist in particularly strange environments. Unlike most {@trait downtime} activities, you can Subsist after 8 hours or less of exploration, but if you do, you take a \u20135 penalty.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You either provide a subsistence living for yourself and one additional creature, or you improve your own food and shelter, granting yourself a comfortable living.",
+						"Success": "You find enough food and shelter with basic protection from the elements to provide you a subsistence living.",
+						"Failure": "You're exposed to the elements and don't get enough food, becoming {@condition fatigued|PC1} until you attain sufficient food and shelter.",
+						"Critical Failure": "You attract trouble, eat something you shouldn't, or otherwise worsen your situation. You take a \u20132 circumstance penalty to checks to Subsist for 1 week. You don't find any food at all; if you don't have any stored up, you're in danger of starving or dying of thirst if you continue failing."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Subsist Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "a lush forest with calm weather or a large city with plentiful resources"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "typical hillside or village"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "typical mountains or insular hamlet"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "typical desert or city under siege"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "barren wasteland or city of undead"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Balance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 233,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"acrobatics"
+					]
+				}
+			},
+			"requirements": "You are in a square that contains a narrow surface, uneven ground, or another similar feature.",
+			"entries": [
+				"You move across a narrow surface or uneven ground, attempting an {@skill Acrobatics|PC1} check against its Balance DC. You are {@condition off-guard|PC1} while on a narrow surface or uneven ground.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You move up to your Speed.",
+						"Success": "You move up to your Speed, treating it as {@quickref difficult terrain|PC1|3|terrain} (every 5 feet costs 10 feet of movement).",
+						"Failure": "You must remain stationary to keep your balance (wasting the action) or you fall. If you fall, your turn ends.",
+						"Critical Failure": "You fall and your turn ends."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Balance Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "tangled roots, uneven cobblestones"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "wooden beam"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "deep, loose gravel"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "tightrope, smooth sheet of ice"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "razor's edge, chunks of floor falling in midair"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tumble Through",
+			"source": "PC1",
+			"remaster": true,
+			"page": 233,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"acrobatics"
+					]
+				}
+			},
+			"entries": [
+				"You {@action Stride|PC1} up to your Speed. During this movement, you can try to move through the space of one enemy. Attempt an {@skill Acrobatics|PC1} check against the enemy's Reflex DC as soon as you try to enter its space. You can Tumble Through using {@action Climb|PC1}, {@action Fly|PC1}, {@action Swim|PC1}, or another action instead of {@action Stride|PC1} in the appropriate environment.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You move through the enemy's space, treating the squares in its space as {@quickref difficult terrain|PC1|3|terrain} (every 5 feet costs 10 feet of movement). If you don't have enough Speed to move all the way through its space, you get the same effect as a failure.",
+						"Failure": "Your movement ends, and you trigger reactions as if you had moved out of the square you started in."
+					}
+				}
+			]
+		},
+		{
+			"name": "Maneuver in Flight",
+			"source": "PC1",
+			"remaster": true,
+			"page": 233,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"acrobatics"
+					]
+				}
+			},
+			"requirements": "You have a fly Speed.",
+			"entries": [
+				"You try a difficult maneuver while flying. Attempt an {@skill Acrobatics|PC1} check. The GM determines what maneuvers are possible, but they rarely allow you to move farther than your fly Speed.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You succeed at the maneuver.",
+						"Failure": "Your maneuver fails. The GM chooses if you simply can't move or if some other detrimental effect happens. The outcome should be appropriate for the maneuver you attempted (for instance, being blown off course if you were trying to fly against a strong wind).",
+						"Critical Failure": "As failure, but the consequence is more dire."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Maneuver in Flight Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "steep ascent or descent"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "fly against the wind"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "reverse direction"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "fly through gale force winds"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Squeeze",
+			"source": "PC1",
+			"remaster": true,
+			"page": 233,
+			"traits": [
+				"exploration",
+				"move"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"acrobatics"
+					]
+				}
+			},
+			"entries": [
+				"You contort yourself to squeeze through a space so small you can barely fit through. This action is for exceptionally small spaces; many tight spaces are {@quickref difficult terrain|PC1|3|terrain} that you can move through more quickly and without a check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You squeeze through the tight space in 1 minute per 10 feet of squeezing.",
+						"Success": "You squeeze through in 1 minute per 5 feet.",
+						"Critical Failure": "You become stuck in the tight space. While you're stuck, you can spend 1 minute attempting another {@skill Acrobatics|PC1} check at the same DC. Any result on that check other than a critical failure causes you to become unstuck."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Squeeze Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "space barely fitting your shoulders"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "space barely fitting your head"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Borrow an Arcane Spell",
+			"source": "PC1",
+			"remaster": true,
+			"page": 234,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"arcana"
+					]
+				}
+			},
+			"entries": [
+				"If you're an arcane spellcaster who prepares spells, you can attempt to prepare a spell from someone else's arcane spellbook, arcane witch familiar, or the like. The GM sets the DC for the check based on the spell's level and rarity; it's typically a bit easier than {@action Learn a Spell|PC1|Learning the Spell}.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You prepare the borrowed spell as part of your normal spell preparation.",
+						"Failure": "You fail to prepare the spell, but the spell slot remains available for you to prepare a different spell. You can't try to prepare this spell until the next time you prepare spells."
+					}
+				}
+			]
+		},
+		{
+			"name": "Climb",
+			"source": "PC1",
+			"remaster": true,
+			"page": 234,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"athletics"
+					]
+				}
+			},
+			"requirements": "You have both hands free.",
+			"entries": [
+				"You attempt an {@skill Athletics|PC1} check to move a maximum distance of 5 feet up, down, or across an incline. You're {@condition off-guard|PC1} while climbing unless you have a climb Speed. The GM determines the DC based on the nature of the incline and environmental circumstances; you might get an automatic critical success on an incline that's trivial to climb. If your land Speed is 40 feet or higher, increase the maximum distance by 5 feet for every 20 feet of Speed above 20 feet.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You move along the incline, increasing the maximum distance by 5 feet.",
+						"Success": "You move along the incline.",
+						"Critical Failure": "You fall. If you began the climb on stable ground, you fall and land {@condition prone|PC1}."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Climb Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "ladder, steep slope, low-branched tree"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "rigging, rope, typical tree"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "wall with small handholds and footholds"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "ceiling with handholds and footholds, rock wall"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "smooth surface"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Force Open",
+			"source": "PC1",
+			"remaster": true,
+			"page": 234,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"attack"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"athletics"
+					]
+				}
+			},
+			"entries": [
+				"Using your body, a lever, or some other tool, you attempt to forcefully open a door, window, container or heavy gate. With a high enough result, you can even smash through walls. Without a {@item crowbar|PC1}, prying something open takes a \u20132 item penalty to the {@skill Athletics|PC1} check to Force Open.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You open the door, window, container, or gate and can avoid damaging it in the process.",
+						"Success": "You break the door, window, container, or gate open, and the door, window, container, or gate gains the {@condition broken|PC1} condition. If it's especially sturdy, the GM might have it take damage but not be broken.",
+						"Critical Failure": "Your attempt jams the door, window, container, or gate shut, imposing a \u20132 circumstance penalty on future attempts to Force it Open."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Force Open Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "fabric, flimsy glass"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "ice, sturdy glass"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "flimsy wooden door, wooden portcullis"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "sturdy wooden door, iron portcullis, metal bar"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "stone or iron door"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Avoid Notice",
+			"source": "PC1",
+			"remaster": true,
+			"page": 438,
+			"traits": [
+				"exploration"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You attempt a {@skill Stealth|PC1} check to avoid notice while traveling at half speed. If you're Avoiding Notice at the start of an encounter, you usually roll a {@skill Stealth|PC1} check instead of a {@skill Perception|PC1} check both to determine your initiative and to see if the enemies notice you (based on their {@skill Perception|PC1} DCs, as normal for {@action Sneak|PC1}, regardless of their initiative check results)."
+			]
+		},
+		{
+			"name": "Grapple",
+			"alias": [
+				"Grab"
+			],
+			"source": "PC1",
+			"remaster": true,
+			"page": 235,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"attack"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"athletics"
+					]
+				}
+			},
+			"requirements": "You have at least one free hand and your target is no more than one size larger than you.",
+			"entries": [
+				"You attempt to grab a creature or object with your free hand. Attempt an {@skill Athletics|PC1} check against the target's Fortitude DC. You can Grapple a target you already have grabbed or restrained without having a hand free.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your target is {@condition restrained|PC1} until the end of your next turn unless you move or your opponent {@action Escape|PC1|Escapes}.",
+						"Success": "Your target is {@condition grabbed|PC1} until the end of your next turn unless you move or your opponent {@action Escape|PC1|Escapes}.",
+						"Failure": "You fail to grab your target. If you already had the target {@condition grabbed|PC1} or {@condition restrained|PC1} using a Grapple, those conditions on that creature end.",
+						"Critical Failure": "If you already had the target {@condition grabbed|PC1} or {@condition restrained|PC1}, it breaks free. Your target can either grab you, as if it succeeded at using the Grapple action against you, or force you to fall and land {@condition prone|PC1}."
+					}
+				}
+			]
+		},
+		{
+			"name": "High Jump",
+			"source": "PC1",
+			"remaster": true,
+			"page": 235,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"athletics"
+					]
+				}
+			},
+			"entries": [
+				"You {@action Stride|PC1}, then attempt a DC 30 {@skill Athletics|PC1} check to jump vertically. If you didn't {@action Stride|PC1} at least 10 feet, you automatically fail. This DC might be increased or decreased due to the situation, as determined by the GM.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You {@action Leap|PC1} up to 8 feet vertically and 10 feet horizontally.",
+						"Success": "You {@action Leap|PC1} up to 5 feet vertically and 5 feet horizontally",
+						"Failure": "You {@action Leap|PC1} normally.",
+						"Critical Failure": "You fall {@condition prone|PC1} in your space."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Leap",
+					"entries": [
+						"The {@action Leap|PC1} basic action is used for {@action High Jump|PC1} and {@action Long Jump|PC1}. A {@b horizontal} {@action Leap|PC1} lets you jump up to 10 feet horizontally if your Speed is at least 15 feet, or up to 15 feet horizontally if your Speed is at least 30 feet. You land in the space where your {@action Leap|PC1} ends (meaning you can typically clear a 5-foot gap if your Speed is between 15 feet and 30 feet, or a 10-foot gap if your Speed is 30 feet or more).",
+						"A {@b vertical} {@action Leap|PC1} lets you jump up to 3 feet vertically and 5 feet horizontally onto an elevated surface."
+					]
+				}
+			]
+		},
+		{
+			"name": "Long Jump",
+			"source": "PC1",
+			"remaster": true,
+			"page": 235,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"athletics"
+					]
+				}
+			},
+			"entries": [
+				"You {@action Stride|PC1}, then attempt a DC 15 {@skill Athletics|PC1} check to make a long jump in the direction you were {@action Stride|PC1|Striding}. If you didn't {@action Stride|PC1} at least 10 feet, you automatically fail your check. The GM might increase or decrease this DC depending on the situation.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You {@action Leap|PC1} a distance equal to your check result rounded down to the nearest 5 feet. You can't jump farther than your land Speed.",
+						"Failure": "You make a normal horizontal {@action Leap|PC1}.",
+						"Critical Failure": "You make a normal horizontal {@action Leap|PC1}, then fall and land {@condition prone|PC1}."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Leap",
+					"entries": [
+						"The {@action Leap|PC1} basic action is used for {@action High Jump|PC1} and {@action Long Jump|PC1}. A {@b horizontal} {@action Leap|PC1} lets you jump up to 10 feet horizontally if your Speed is at least 15 feet, or up to 15 feet horizontally if your Speed is at least 30 feet. You land in the space where your {@action Leap|PC1} ends (meaning you can typically clear a 5-foot gap if your Speed is between 15 feet and 30 feet, or a 10-foot gap if your Speed is 30 feet or more).",
+						"A {@b vertical} {@action Leap|PC1} lets you jump up to 3 feet vertically and 5 feet horizontally onto an elevated surface."
+					]
+				}
+			]
+		},
+		{
+			"name": "Reposition",
+			"remaster": true,
+			"alias": [
+				"Drag",
+				"Pull"
+			],
+			"source": "PC1",
+			"page": 235,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"attack"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"athletics"
+					]
+				}
+			},
+			"requirements": "You either have at least one hand free, or you're {@condition grabbed|PC1|grabbing} or {@condition restrained|PC1|restraining} the target. The target can't be more than one size larger than you.",
+			"entries": [
+				"You muscle a creature or object around. Attempt an {@skill Athletics|PC1} check against the target's Fortitude DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You move the creature up to 10 feet. It must remain within your reach during this movement, and you can't move it into or through obstacles.",
+						"Success": "You move the target up to 5 feet. It must remain within your reach during this movement, and you can't move it into or through obstacles.",
+						"Critical Failure": "The target can move you up to 5 feet as though it successfully Repositioned you."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Forced Movement",
+					"entries": [
+						"{@action Reposition|PC1} and {@action Shove|PC1} force a creature to move. When an effect forces you to move, or if you start falling, the distance you move is defined by the effect that moved you, not by your Speed. Because you're not acting to move, this doesn't trigger reactions triggered by movement. See page 422 for full details."
+					]
+				}
+			]
+		},
+		{
+			"name": "Shove",
+			"source": "PC1",
+			"remaster": true,
+			"alias": [
+				"Push"
+			],
+			"page": 235,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"attack"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"athletics"
+					]
+				}
+			},
+			"requirements": "You have at least one hand free. The target can't be more than one size larger than you.",
+			"entries": [
+				"You push an opponent away from you. Attempt an {@skill Athletics|PC1} check against your opponent's Fortitude DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You push your opponent up to 10 feet away from you. You can {@action Stride|PC1} after it, but you must move the same distance and in the same direction.",
+						"Success": "You push your opponent back 5 feet. You can {@action Stride|PC1} after it, but you must move the same distance and in the same direction.",
+						"Critical Failure": "You lose your balance, fall, and land {@condition prone|PC1}."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Forced Movement",
+					"entries": [
+						"{@action Reposition|PC1} and {@action Shove|PC1} force a creature to move. When an effect forces you to move, or if you start falling, the distance you move is defined by the effect that moved you, not by your Speed. Because you're not acting to move, this doesn't trigger reactions triggered by movement. See page 422 for full details."
+					]
+				}
+			]
+		},
+		{
+			"name": "Swim",
+			"source": "PC1",
+			"remaster": true,
+			"page": 235,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"athletics"
+					]
+				}
+			},
+			"entries": [
+				"You attempt an {@skill Athletics|PC1} check to move a maximum distance of 10 feet through water. The GM determines the DC based on the turbulence or danger of the water; in most instances of calm water, you get an automatic critical success. If your land Speed is 40 feet or higher, increase the maximum possible distance by 5 feet for every 20 feet of Speed above 20 feet.",
+				"If you end your turn in water and haven't succeeded at a Swim action that turn, you sink 10 feet or get moved by the current, as determined by the GM. This doesn't apply if your last action on your turn was to enter the water.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You move through the water, increasing the maximum distance by 5 feet.",
+						"Success": "You move through the water.",
+						"Critical Failure": "You make no progress. If you're holding your breath, you lose 1 round of air."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Swim Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "lake or other still water"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "flowing water, like a river"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "swiftly flowing river"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "stormy sea"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "maelstrom, waterfall"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Trip",
+			"source": "PC1",
+			"remaster": true,
+			"page": 236,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"attack"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"athletics"
+					]
+				}
+			},
+			"requirements": "You have at least one hand free. Your target can't be more than one size larger than you.",
+			"entries": [
+				"You try to knock an opponent to the ground. Attempt an {@skill Athletics|PC1} check against the target's Reflex DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target falls, lands {@condition prone|PC1}, and takes {@dice 1d6} bludgeoning damage.",
+						"Success": "The target falls and lands {@condition prone|PC1}.",
+						"Critical Failure": "You lose your balance, fall, and land {@condition prone|PC1}."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Falling",
+					"entries": [
+						"When you fall more than 5 feet, you take falling damage when you land, which is bludgeoning damage equal to half the distance you fell. If you take any damage from a fall, you're knocked {@condition prone|PC1} when you land. You can {@action Grab an Edge|PC1} as a reaction to reduce or eliminate the damage from some falls. More detailed rules for falling damage appear on page 421."
+					]
+				}
+			]
+		},
+		{
+			"name": "Disarm",
+			"source": "PC1",
+			"remaster": true,
+			"page": 236,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"attack"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"athletics"
+					]
+				}
+			},
+			"requirements": "You have at least one hand free. The target can't be more than one size larger than you.",
+			"entries": [
+				"You try to knock an item out of a creature's grasp. Attempt an {@skill Athletics|PC1} check against the opponent's Reflex DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You knock the item out of the target's grasp. It falls to the ground in the target's space.",
+						"Success": "You weaken your target's grasp on the item. Further attempts to Disarm the target of that item gain a +2 circumstance bonus, and the target takes a \u20132 circumstance penalty to attacks with the item or other checks requiring a firm grasp on the item. The creature can end the effect by {@action Interact|PC1|Interacting} to change its grip on the item; otherwise, it lasts as long as the creature holds the item.",
+						"Critical Failure": "You lose your balance and become {@condition off-guard|PC1} until the start of your next turn."
+					}
+				}
+			]
+		},
+		{
+			"name": "Repair",
+			"source": "PC1",
+			"remaster": true,
+			"page": 236,
+			"activity": {
+				"number": 10,
+				"unit": "minute",
+				"entry": "10 minutes"
+			},
+			"traits": [
+				"exploration",
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"crafting"
+					]
+				}
+			},
+			"requirements": "You are holding or wearing a {@item repair toolkit|PC1}.",
+			"entries": [
+				"You spend 10 minutes attempting to fix a damaged item, placing the item on a stable surface and using the repair toolkit with both hands. Roll a {@skill Crafting|PC1} check. The GM sets the DC, but it's usually about the same DC to Repair a given item as it is to {@action Craft|PC1} it in the first place. You can't Repair a destroyed item.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You restore 10 Hit Points to the item, plus an additional 10 Hit Points per proficiency rank you have in {@skill Crafting|PC1} (a total of 20 HP if you're trained, 30 HP if you're an expert, 40 HP if you're a master, or 50 HP if you're legendary).",
+						"Success": "You restore 5 Hit Points to the item, plus an additional 5 per proficiency rank you have in {@skill Crafting|PC1} (for a total of 10 HP if you are trained, 15 HP if you're an expert, 20 HP if you're a master, or 25 HP if you're legendary).",
+						"Critical Failure": "You deal {@damage 2d6} damage to the item. Apply the item's Hardness to this damage."
+					}
+				}
+			]
+		},
+		{
+			"name": "Craft",
+			"source": "PC1",
+			"remaster": true,
+			"page": 236,
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"crafting"
+					]
+				}
+			},
+			"entries": [
+				"You can make an item from raw materials. You need the {@feat Alchemical Crafting|PC1} skill feat to create alchemical items, the {@feat Magical Crafting|PC1} skill feat to create magic items, and the {@feat Snare Crafting|PC1} feat to create snares.",
+				"To Craft an item, you must meet the following requirements:",
+				{
+					"type": "list",
+					"items": [
+						"The item is your level or lower. An item that doesn't list a level is level 0. If the item is 9th level or higher, you must be a master in {@skill Crafting|PC1}, and if it's 17th or higher, you must be legendary.",
+						"The item must be common, or you must otherwise have access to it.",
+						"You have an appropriate set of tools and, in many cases, a workshop. For example, you need access to a smithy to forge a metal shield, or an alchemist's lab to produce alchemical items.",
+						"You must supply raw materials worth at least half the item's Price. You always expend at least that amount of raw materials when you Craft successfully. If you're in a settlement, you can usually spend currency to get the amount of raw materials you need, except in the case of rarer precious materials."
+					]
+				},
+				"You attempt a {@skill Crafting|PC1} check after you spend 2 days of work setting up, or 1 day if you have the item's formula. The GM determines the DC to Craft the item based on its level, rarity, and other circumstances.",
+				"If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item's Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using the {@table Income Earned} table, based on your proficiency rank in {@skill Crafting|PC1} and using your own level instead of a task level.",
+				"After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of Crafting appears in the sidebar below.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your attempt is successful. Each additional day spent Crafting reduces the materials needed to complete the item by an amount based on your level + 1 and your proficiency rank in {@skill Crafting|PC1}.",
+						"Success": "Your attempt is successful. Each additional day spent Crafting reduces the materials needed to complete the item by an amount based on your level and your proficiency rank.",
+						"Failure": "You fail to complete the item. You can salvage the raw materials you supplied for their full value. If you want to try again, you must start over.",
+						"Critical Failure": "You fail to complete the item. You ruin 10% of the raw materials you supplied, but you can salvage the rest. If you want to try again, you must start over."
+					}
+				},
+				{
+					"type": "pf2-brown-box",
+					"name": "Crafting Example",
+					"entries": [
+						"Ezren is a 5th-level wizard and an expert in {@skill Crafting|PC1}. He has a {@skill Crafting|PC1} modifier of +13 and the {@feat Magical Crafting|PC1} feat. With 2 weeks of downtime ahead of him, he decides to craft a {@item striking|PC1} rune, a 4th-level item. The GM secretly chooses a DC of 19.",
+						"The item has a Price of 65 gp, so Ezren prepares 32 gp, 5 sp worth of raw materials. He has another 32 gp, 5 sp worth of raw materials on hand. After spending 1 day building and incanting spells, he rolls a 12 on his {@skill Crafting|PC1} check, for a result of 25. That's a success! At this point, Ezren can spend the additional 32 gp, 5 sp worth of materials to complete the item immediately for 65 gp.",
+						"However, Ezren has 13 more days on his hands, so he decides to spend additional time to complete the item. Because he's a 5th-level character and an expert at {@skill Crafting|PC1}, he reduces the amount he has to pay by 1 gp for each day spent. After spending 13 days working, he reduces the total cost to complete the item from 65 gp to 52 gp. He spends the remaining portion of its Price in materials, completes the {@item striking|PC1} rune, and goes out on his next adventure. (He could have stayed home to keep working on the {@item striking|PC1} rune, eventually reducing the item's total Price to just the half he paid up front, but adventuring is far more lucrative!)",
+						"If Ezren's {@skill Crafting|PC1} check result were a 29 or higher, he'd have gotten a critical success. In that case, he'd reduce the remaining amount by 2 gp per day (the amount for a 6th-level expert), lowering the amount needed to complete the item after 13 additional days of work to 39 gp."
+					]
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Consumables and Ammunition",
+					"entries": [
+						"You can Craft items with the {@trait consumable} trait in batches, making up to four of the same item at once with a single check. This requires you to include the raw materials for all the items in the batch at the start, and you must complete the batch all at once. You also Craft non-magical ammunition in batches, using the quantity listed in {@table Ranged Weapons|PC1|Ranged Weapons} (typically 10)."
+					]
+				},
+				{
+					"type": "pf2-sample-box",
+					"name": "Getting Formulas",
+					"entries": [
+						"A written formula for an item helps you create it with less difficulty. This has two functions. First, it reduces the time needed to start Crafting from 2 days to 1, as you have less preparation to do. Second, you can Craft uncommon and rarer items if you're able to acquire their formulas. See the rules on page 294 for information on formulas."
+					]
+				}
+			]
+		},
+		{
+			"name": "Identify Alchemy",
+			"source": "PC1",
+			"remaster": true,
+			"page": 237,
+			"activity": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"traits": [
+				"concentrate",
+				"exploration",
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"crafting"
+					]
+				}
+			},
+			"requirements": "You are holding or wearing an {@item alchemist's toolkit|PC1}.",
+			"entries": [
+				"You can identify the nature of an alchemical item with 10 minutes of testing using your {@item alchemist's toolkit|PC1}. If your attempt is interrupted in any way, you must start over",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You identify the item and the means of activating it.",
+						"Failure": "You fail to identify the item but can try again.",
+						"Critical Failure": "You misidentify the item as another item of the GM's choice."
+					}
+				}
+			]
+		},
+		{
+			"name": "Create a Diversion",
+			"source": "PC1",
+			"remaster": true,
+			"page": 237,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"mental"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"deception"
+					]
+				}
+			},
+			"entries": [
+				"With a gesture, a trick, or some distracting words, you can create a diversion that draws creatures' attention elsewhere. If you use a gesture or trick, this action gains the {@trait manipulate} trait. If you use distracting words, it gains the {@trait auditory} and {@trait linguistic} traits.",
+				"Attempt a single {@skill Deception|PC1} check and compare it to the {@skill Perception|PC1} DCs of the creatures whose attention you're trying to divert. Whether or not you succeed, creatures you attempt to divert gain a +4 circumstance bonus to their {@skill Perception|PC1} DCs against your attempts to Create a Diversion for 1 minute.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You become {@condition hidden|PC1} to each creature whose {@skill Perception|PC1} DC is less than or equal to your result. (The {@condition hidden|PC1} condition allows you to {@action Sneak|PC1} away, as described on page 245.) This lasts until the end of your turn or until you do anything except {@action Step|PC1} or use the {@skill Stealth|PC1} skill to {@action Hide|PC1} or {@action Sneak|PC1}. If you {@action Strike|PC1} a creature, the creature remains {@condition off-guard|PC1} against that attack, and you then become {@condition observed|PC1}. If you do anything else, you become {@condition observed|PC1} just before you act unless the GM determines otherwise.",
+						"Failure": "You don't divert the attention of any creatures whose {@skill Perception|PC1} DC exceeds your result, and those creatures are aware you were trying to trick them."
+					}
+				}
+			]
+		},
+		{
+			"name": "Impersonate",
+			"source": "PC1",
+			"remaster": true,
+			"page": 238,
+			"traits": [
+				"concentrate",
+				"exploration",
+				"manipulate",
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"deception"
+					]
+				}
+			},
+			"entries": [
+				"You create a disguise to pass yourself off as someone or something you are not. Assembling a convincing disguise takes 10 minutes and requires a {@item disguise kit|PC1}, but a simpler, quicker disguise might do the job if you're not trying to imitate a specific individual, at the GM's discretion.",
+				"In most cases, creatures have a chance to detect your deception only if they use the {@action Seek|PC1} action to attempt {@skill Perception|PC1} checks against your {@skill Deception|PC1} DC. If you attempt to directly interact with someone while disguised, the GM rolls a secret {@skill Deception|PC1} check for you against that creature's {@skill Perception|PC1} DC instead.",
+				"If you're disguised as a specific individual, the GM might give creatures you interact with a circumstance bonus based on how well they know the person you're imitating, or the GM might roll a secret {@skill Deception|PC1} check even if you aren't directly interacting with others.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You trick the creature into thinking you're the person you're disguised as. You might have to attempt a new check if your behavior changes.",
+						"Failure": "The creature can tell you're not who you claim to be.",
+						"Critical Failure": "The creature can tell you're not who you claim to be, and it recognizes you if it would know you without a disguise."
+					}
+				}
+			]
+		},
+		{
+			"name": "Lie",
+			"source": "PC1",
+			"remaster": true,
+			"page": 238,
+			"activity": {
+				"number": 1,
+				"unit": "round",
+				"entry": "at least 1 Round"
+			},
+			"traits": [
+				"auditory",
+				"concentrate",
+				"linguistic",
+				"mental",
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"deception"
+					]
+				}
+			},
+			"entries": [
+				"You try to fool someone with an untruth. Doing so takes at least 1 round, or longer if the lie is elaborate. You roll a single {@skill Deception|PC1} check and compare it against the {@skill Perception|PC1} DC of every creature you are trying to fool. The GM might give them a circumstance bonus based on the situation and the nature of the lie you are trying to tell. Elaborate or highly unbelievable lies are much harder to get a creature to believe than simpler and more believable lies, and some lies are so big that it's impossible to get anyone to believe them.",
+				"At the GM's discretion, if a creature initially believes your lie, it might attempt a {@skill Perception|PC1} check later to {@action Sense Motive|PC1} against your {@skill Deception|PC1} DC to realize it's a lie. This usually happens if the creature discovers enough evidence to counter your statements.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The target believes your lie.",
+						"Failure": "The target doesn't believe your lie and gains a +4 circumstance bonus against your attempts to Lie for the duration of your conversation. The target is also more likely to be suspicious of you in the future."
+					}
+				}
+			]
+		},
+		{
+			"name": "Feint",
+			"source": "PC1",
+			"remaster": true,
+			"page": 239,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"mental"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"deception"
+					]
+				}
+			},
+			"requirements": "You are within melee reach of the opponent you attempt to Feint.",
+			"entries": [
+				"With a misleading flourish, you leave an opponent unprepared for your real attack. Attempt a {@skill Deception|PC1} check against your target's {@skill Perception|PC1} DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You throw your enemy's defenses against you entirely off. The target is {@condition off-guard|PC1} against melee attacks that you attempt against it until the end of your next turn.",
+						"Success": "Your foe is fooled, but only momentarily. The target is {@condition off-guard|PC1} against the next melee attack that you attempt against it before the end of your current turn.",
+						"Critical Failure": "Your feint backfires. You are {@condition off-guard|PC1} against melee attacks the target attempts against you until the end of your next turn."
+					}
+				}
+			]
+		},
+		{
+			"name": "Gather Information",
+			"source": "PC1",
+			"remaster": true,
+			"page": 239,
+			"traits": [
+				"exploration",
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"diplomacy"
+					]
+				}
+			},
+			"entries": [
+				"You canvass local markets, taverns, and gathering places in an attempt to learn about a specific individual or topic. The GM determines the DC of the check and the amount of time it takes (typically 2 hours, but sometimes more), along with any benefit you might be able to gain by spending coin on bribes, drinks, or gifts.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You collect information about the individual or topic. The GM determines the specifics.",
+						"Critical Failure": "You collect incorrect information about the individual or topic."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Gather Information Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "talk of the town"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "common rumor"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "obscure rumor, poorly guarded secret"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "well-guarded or esoteric information"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "information known only to an incredibly select few, or only to extraordinary beings"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Make an Impression",
+			"source": "PC1",
+			"remaster": true,
+			"page": 239,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"exploration",
+				"linguistic",
+				"mental"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"diplomacy"
+					]
+				}
+			},
+			"entries": [
+				"With at least 1 minute of conversation, during which you engage in charismatic overtures, flattery, and other acts of goodwill, you seek to make a good impression on someone to make them temporarily agreeable. At the end of the conversation, attempt a {@skill Diplomacy|PC1} check against the Will DC of one target. You can instead choose up to five targets if you take a \u20132 penalty. The GM might add other bonuses or penalties based on the situation. Any impression you make lasts for only the current social interaction unless the GM decides otherwise. See the Changing Attitudes sidebar for a summary of the attitude conditions.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target's attitude toward you improves by two steps.",
+						"Success": "The target's attitude toward you improves by one step.",
+						"Critical Failure": "The target's attitude toward you decreases by one step."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Changing Attitudes",
+					"entries": [
+						"Your influence on NPCs is measured with a set of attitudes that reflect how they view your character. These are only a brief summary of a creature's disposition. The GM will supply additional nuance based on the history and beliefs of the characters you're interacting with, and their attitudes can change in accordance with the story. The attitudes are detailed in the Conditions Appendix and are summarized here.",
+						{
+							"type": "list",
+							"style": "list-hang",
+							"items": [
+								"{@b {@condition Helpful|PC1}:} Willing to help you and responds favorably to your requests.",
+								"{@b {@condition Friendly|PC1}:} Has a good attitude toward you, but won't necessarily stick their neck out to help you.",
+								"{@b {@condition Indifferent|PC1}:} Doesn't care about you either way. (Most NPCs start out indifferent.)",
+								"{@b {@condition Unfriendly|PC1}:} Dislikes you and doesn't want to help you.",
+								"{@b {@condition Hostile}:} Actively works against you\u2014and might attack you just because of their dislike."
+							]
+						},
+						"No one can ever change the attitude of a player character with these skills. You can roleplay interactions with player characters, and even use {@skill Diplomacy|PC1} results if the player wants a mechanical sense of how convincing or charming a character is, but players make the ultimate decisions about how their characters respond."
+					]
+				}
+			]
+		},
+		{
+			"name": "Request",
+			"source": "PC1",
+			"remaster": true,
+			"page": 239,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"auditory",
+				"concentrate",
+				"linguistic",
+				"mental"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"diplomacy"
+					]
+				}
+			},
+			"entries": [
+				"You can make a request of a creature that's {@condition friendly|PC1} or {@condition helpful|PC1} to you. You must couch the request in terms that the target would accept given their current attitude toward you. The GM sets the DC based on the difficulty of the request. Some requests are unsavory or impossible, and even a {@condition helpful|PC1} NPC would never agree to them.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target agrees to your request without qualifications.",
+						"Success": "The target agrees to your request, but they might demand added provisions or alterations to the request.",
+						"Failure": "The target refuses the request, though they might propose an alternative that is less extreme.",
+						"Critical Failure": "Not only does the target refuse the request, but their attitude toward you decreases by one step due to the temerity of the request."
+					}
+				}
+			]
+		},
+		{
+			"name": "Coerce",
+			"source": "PC1",
+			"remaster": true,
+			"page": 240,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"emotion",
+				"exploration",
+				"linguistic",
+				"mental"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"intimidation"
+					]
+				}
+			},
+			"entries": [
+				"With threats either veiled or overt, you attempt to bully a creature into doing what you want. You must spend at least 1 minute of conversation with the creature. At the end of the conversation, attempt an Intimidation check against the target's Will DC, modified by any circumstances the GM determines.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target gives you the information you seek or agrees to follow your directives so long as they aren't likely to harm the target in any way. The target continues to comply for an amount of time determined by the GM but not exceeding 1 day, at which point the target becomes {@condition unfriendly|PC1} (if it wasn't already {@condition unfriendly|PC1} or {@condition hostile|PC1}). However, the target is too scared of you to retaliate\u2014at least in the short term.",
+						"Success": "As critical success, but once the target becomes {@condition unfriendly|PC1}, they might decide to act against you\u2014for example, by reporting you to the authorities or assisting your enemies.",
+						"Failure": "The target doesn't do what you say, and if they were not already {@condition unfriendly|PC1} or {@condition hostile|PC1}, they become {@condition unfriendly|PC1}.",
+						"Critical Failure": "The target refuses to comply, becomes {@condition hostile|PC1} if they weren't already, and is temporarily immune to your Coercion for at least 1 week."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Changing Attitudes",
+					"entries": [
+						"Your influence on NPCs is measured with a set of attitudes that reflect how they view your character. These are only a brief summary of a creature's disposition. The GM will supply additional nuance based on the history and beliefs of the characters you're interacting with, and their attitudes can change in accordance with the story. The attitudes are detailed in the Conditions Appendix and are summarized here.",
+						{
+							"type": "list",
+							"style": "list-hang",
+							"items": [
+								"{@b {@condition Helpful|PC1}:} Willing to help you and responds favorably to your requests.",
+								"{@b {@condition Friendly|PC1}:} Has a good attitude toward you, but won't necessarily stick their neck out to help you.",
+								"{@b {@condition Indifferent|PC1}:} Doesn't care about you either way. (Most NPCs start out indifferent.)",
+								"{@b {@condition Unfriendly|PC1}:} Dislikes you and doesn't want to help you.",
+								"{@b {@condition Hostile}:} Actively works against you\u2014and might attack you just because of their dislike."
+							]
+						},
+						"No one can ever change the attitude of a player character with these skills. You can roleplay interactions with player characters, and even use {@skill Diplomacy|PC1} results if the player wants a mechanical sense of how convincing or charming a character is, but players make the ultimate decisions about how their characters respond."
+					]
+				}
+			]
+		},
+		{
+			"name": "Demoralize",
+			"source": "PC1",
+			"remaster": true,
+			"page": 240,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"auditory",
+				"concentrate",
+				"emotion",
+				"fear",
+				"mental"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"intimidation"
+					]
+				}
+			},
+			"entries": [
+				"With a sudden shout, a well-timed taunt, or a cutting put-down, you can shake an enemy's resolve. Choose a creature within 30 feet of you who you're aware of. Attempt an {@skill Intimidation|PC1} check against that target's Will DC. If the target doesn't understand the language you are speaking, or you're not speaking a language, you take a \u20134 circumstance penalty to the check. Regardless of your result, the target is temporarily immune to your attempts to Demoralize it for 10 minutes.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target becomes {@condition frightened|PC1|frightened 2}.",
+						"Success": "The target becomes {@condition frightened|PC1|frightened 1}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Administer First Aid",
+			"source": "PC1",
+			"remaster": true,
+			"page": 241,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"medicine"
+					]
+				}
+			},
+			"requirements": "You're wearing or holding a {@item healer's toolkit|PC1}.",
+			"entries": [
+				"You perform first aid on an adjacent creature that is {@condition dying|PC1} or {@condition persistent damage|PC1|bleeding}. If a creature is both {@condition dying|PC1} and {@condition persistent damage|PC1|bleeding}, choose which ailment you're trying to treat before you roll. You can Administer First Aid again to attempt to remedy the other effect.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Stabilize} Attempt a {@skill Medicine|PC1} check on a creature that has 0 Hit Points and the {@condition dying|PC1} condition. The DC is equal to 5 + that creature's recovery roll DC (typically 15 + its {@condition dying|PC1} value).",
+						"{@b Stop Bleeding} Attempt a {@skill Medicine|PC1} check on a creature that is taking {@condition persistent damage|PC1|persistent bleed damage}. The DC is usually the DC of the effect that caused the bleed."
+					]
+				},
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "If you're trying to stabilize, the target loses the {@condition dying|PC1} condition (but remains {@condition unconscious|PC1}). If you're trying to stop {@condition persistent damage|PC1|bleeding}, the target benefits from an assisted recovery with the lowered DC for particularly appropriate help.",
+						"Critical Failure": "If you were trying to stabilize, the target's {@condition dying|PC1} value increases by 1. If you were trying to stop {@condition persistent damage|PC1|bleeding}, the target immediately takes an amount of damage equal to its {@condition persistent damage|PC1|persistent bleed damage}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Treat Disease",
+			"source": "PC1",
+			"remaster": true,
+			"page": 242,
+			"activity": {
+				"number": 8,
+				"unit": "hour",
+				"entry": "at least 8 hours"
+			},
+			"traits": [
+				"downtime",
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"medicine"
+					]
+				}
+			},
+			"requirements": "You're wearing or holding a {@item healer's toolkit|PC1}.",
+			"entries": [
+				"You spend at least 8 hours caring for a diseased creature. Attempt a {@skill Medicine|PC1} check against the disease's DC. After you attempt to Treat a Disease for a creature, you can't try again until after that creature's next save against the disease.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You grant the creature a +4 circumstance bonus to its next saving throw against the disease.",
+						"Success": "You grant the creature a +2 circumstance bonus to its next saving throw against the disease.",
+						"Critical Failure": "Your efforts cause the creature to take a \u20132 circumstance penalty to its next save against the disease."
+					}
+				}
+			]
+		},
+		{
+			"name": "Treat Poison",
+			"source": "PC1",
+			"remaster": true,
+			"page": 242,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"medicine"
+					]
+				}
+			},
+			"requirements": "You're wearing or holding a {@item healer's toolkit|PC1}.",
+			"entries": [
+				"You treat a patient to prevent the spread of poison. Attempt a {@skill Medicine|PC1} check against the poison's DC. After you attempt to Treat a Poison for a creature, you can't try again until after the next time that creature attempts a save against the poison.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You grant the creature a +4 circumstance bonus to its next saving throw against the poison.",
+						"Success": "You grant the creature a +2 circumstance bonus to its next saving throw against the poison.",
+						"Critical Failure": "Your efforts cause the creature to take a \u20132 circumstance penalty to its next save against the poison."
+					}
+				}
+			]
+		},
+		{
+			"name": "Treat Wounds",
+			"source": "PC1",
+			"remaster": true,
+			"page": 242,
+			"activity": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"traits": [
+				"exploration",
+				"healing",
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"medicine"
+					]
+				}
+			},
+			"requirements": "You're wearing or holding a {@item healer's toolkit|PC1}.",
+			"entries": [
+				"You spend 10 minutes treating one injured living creature (targeting yourself, if you so choose). The target is then temporarily immune to Treat Wounds actions for 1 hour, but this interval overlaps with the time you spent treating (so a patient can be treated once per hour, not once per 70 minutes).",
+				"The {@skill Medicine|PC1} check DC is usually 15, though the GM might adjust it based on the circumstances, such as treating a patient outside in a storm, or treating magically cursed wounds. If you're an expert in {@skill Medicine|PC1}, you can instead attempt a DC 20 check to increase the Hit Points regained by 10; if you're a master of {@skill Medicine|PC1}, you can instead attempt a DC 30 check to increase the Hit Points regained by 30; and if you're legendary, you can instead attempt a DC 40 check to increase the Hit Points regained by 50. The damage dealt on a critical failure remains the same.",
+				"If you succeed at your check, you can continue treating the target to grant additional healing. If you treat it for a total of 1 hour, double the Hit Points it regains from Treat Wounds.",
+				"The result of your {@skill Medicine|PC1} check determines how many Hit Points the target regains.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target regains {@dice 4d8} Hit Points and loses the {@condition wounded|PC1} condition.",
+						"Success": "The target regains {@dice 2d8} Hit Points and loses the {@condition wounded|PC1} condition.",
+						"Critical Failure": "The target takes {@dice 1d8} damage."
+					}
+				}
+			]
+		},
+		{
+			"name": "Command an Animal",
+			"source": "PC1",
+			"remaster": true,
+			"page": 242,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"auditory",
+				"concentrate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"nature"
+					]
+				}
+			},
+			"entries": [
+				"You issue an order to an animal. Attempt a {@skill Nature|PC1} check against the animal's Will DC. The GM might adjust the DC if the animal has a good attitude toward you, you suggest a course of action it was predisposed toward, or you offer it a treat.",
+				"You automatically fail if the animal is {@condition hostile|PC1} or {@condition unfriendly|PC1} to you. If the animal is helpful to you, increase your degree of success by one step. You might be able to Command an Animal more easily with a feat like {@feat Ride|PC1}.",
+				"Most animals know the {@action Drop Prone|PC1}, {@action Leap|PC1}, {@action Seek|PC1}, {@action Stand|PC1}, {@action Stride|PC1}, and {@action Strike|PC1} basic actions. If an animal knows an activity, such as a horse's Gallop, you can Command the Animal to perform the activity, but you must spend as many actions on Command an Animal as the activity's number of actions. You can also spend multiple actions to Command the Animal to perform that number of basic actions on its next turn; for instance, you could spend 3 actions to Command an Animal to {@action Stride|PC1} three times or to {@action Stride|PC1} twice and then make a {@action Strike|PC1}.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The animal does as you command on its next turn.",
+						"Failure": "The animal is hesitant or resistant, and it does nothing.",
+						"Critical Failure": "The animal misbehaves or misunderstands, and it takes some other action determined by the GM."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Commanded Animals",
+					"entries": [
+						"Issuing commands to an animal doesn't always go smoothly. An animal is an independent creature with limited intelligence. Most animals understand only the simplest instructions, so you might be able to instruct an animal to move to a certain square but not dictate a specific path to get there, or command it to attack a certain creature but not to make its attack nonlethal. The GM decides the specifics of the action the animal uses.",
+						"The animal does what you commanded as soon as it can, usually as its first action on its next turn. If you successfully commanded it multiple times, it does what you said in order. It forgets all commands beyond what it can accomplish on its turn. If multiple people command the same animal, the GM determines how the animal reacts. The GM might also make the DC higher if someone has already tried to Command the Animal that round.",
+						"If you have a pet, animal companion, familiar, or similar minion, you can command it much more effectively."
+					]
+				}
+			]
+		},
+		{
+			"name": "Perform",
+			"source": "PC1",
+			"remaster": true,
+			"page": 243,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"concentrate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"performance"
+					]
+				}
+			},
+			"entries": [
+				"When making a brief performance\u2014one song, a quick dance, or a few jokes\u2014you use the Perform action. This action is most useful when you want to prove your capability or impress someone quickly. Performing rarely has an impact on its own, but it might influence the DCs of subsequent {@skill Diplomacy|PC1} checks against the observers, or even change their attitudes if the GM sees fit.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your performance impresses the observers, and they're likely to share stories of your ability.",
+						"Success": "You prove yourself, and observers appreciate the quality of your performance.",
+						"Failure": "Your performance falls flat.",
+						"Critical Failure": "You demonstrate only incompetence."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sample Perform Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "audience of commoners"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "audience of artisans"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "audience of merchants or minor nobles"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "audience of high nobility or minor royalty"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "audience of major royalty or otherworldly beings"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Create Forgery",
+			"source": "PC1",
+			"remaster": true,
+			"page": 244,
+			"traits": [
+				"downtime",
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"society"
+					]
+				}
+			},
+			"entries": [
+				"You create a forged document, usually over the course of a day or a week. The GM rolls a secret DC 20 {@skill Society|PC1} check. If you need to forge a specific person's handwriting, you need a sample of that person's handwriting. Otherwise, you need only to have seen a similar document, and you gain up to a +4 circumstance bonus to the check (the GM determines the bonus).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The forgery is of good enough quality that passive observers can't notice the fake (but see Examining Forgeries).",
+						"Failure": "The forgery has some obvious signs of being a fake, potentially allowing passive observers to detect it. Each time a passive observer sees the document, the GM compares your check result to the observer's {@skill Perception|PC1} DC or {@skill Society|PC1} DC, whichever is higher. If your result doesn't exceed a passive observer's DC, that observer knows the document is a forgery."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Examining Forgeries",
+					"entries": [
+						"A creature on the lookout for forgeries, even one who was fooled on a passive glance, can take time to closely examine a document to see if it's a forgery. They apply different techniques and analysis methods to look beyond the surface elements and attempt a secret {@skill Perception|PC1} or {@skill Society|PC1} check against the forger's {@skill Society|PC1} DC; any bonus you had to create the forgery initially applies to this DC. On a success, the examiner knows the document is a forgery. On a failure, they think the document is genuine and can't try again unless they get a new reason to be suspicious of the document. If a PC examines a genuine document, the GM might still pretend to roll a secret check before revealing the document is genuine."
+					]
+				}
+			]
+		},
+		{
+			"name": "Conceal an Object",
+			"source": "PC1",
+			"remaster": true,
+			"page": 244,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"manipulate",
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"stealth"
+					]
+				}
+			},
+			"entries": [
+				"You hide a small object on your person (such as a weapon of light Bulk). When you try to sneak a concealed object past someone who might notice it, the GM rolls your {@skill Stealth|PC1} check and compares it to this passive observer's {@skill Perception|PC1} DC. Once the GM rolls your check for a concealed object, that same result is used no matter how many passive observers you try to sneak it past. If a creature is specifically searching you for an item, it can attempt a {@skill Perception|PC1} check against your {@skill Stealth|PC1} DC (finding the object on success).",
+				"You can also conceal an object somewhere other than your person, such as among undergrowth or in a secret compartment within a piece of furniture. In this case, characters Seeking in an area compare their {@skill Perception|PC1} check results to your {@skill Stealth|PC1} DC to determine whether they find the object.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The object remains {@condition undetected|PC1}.",
+						"Failure": "The searcher finds the object."
+					}
+				}
+			]
+		},
+		{
+			"name": "Hide",
+			"source": "PC1",
+			"remaster": true,
+			"page": 244,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"stealth"
+					]
+				}
+			},
+			"entries": [
+				"You huddle behind cover or greater cover or deeper into concealment to become hidden, rather than observed. The GM rolls your {@skill Stealth|PC1} check in secret and compares the result to the {@skill Perception|PC1} DC of each creature you're {@condition observed|PC1} by but that you have cover or greater cover against or are {@condition concealed|PC1} from. You get a +2 circumstance bonus to your check if you have standard cover (or +4 from greater cover).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"If the creature could see you, you're now {@condition hidden|PC1} from it instead of {@condition observed|PC1}. If you were {@condition hidden|PC1} from or {@condition undetected|PC1} by the creature, you retain that condition.",
+							"If you successfully become {@condition hidden|PC1} to a creature but then cease to have cover or greater cover against it or be {@condition concealed|PC1} from it, you become {@condition observed|PC1} again. You cease being {@condition hidden|PC1} if you do anything except {@action Hide|PC1}, {@action Sneak|PC1}, or {@action Step|PC1}. If you attempt to {@action Strike|PC1} a creature, the creature remains {@condition off-guard|PC1} against that attack, and you then become {@condition observed|PC1}. If you do anything else, you become {@condition observed|PC1} just before you act unless the GM determines otherwise. The GM might allow you to perform a particularly unobtrusive action without being noticed, possibly requiring another {@skill Stealth|PC1} check.",
+							"If a creature uses {@action Seek|PC1} to make you observed by it, you must successfully Hide to become {@condition hidden|PC1} from it again."
+						]
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Being Stealthy",
+					"entries": [
+						"If you want to sneak around when there are creatures that can see you, you can use a combination of {@action Hide|PC1} and {@action Sneak|PC1} to do so.",
+						{
+							"type": "list",
+							"items": [
+								"First, {b{@action Hide|PC1}} behind something (either by taking advantage of cover or having the {@condition concealed|PC1} condition due to fog, a spell, or a similar effect). A successful {@skill Stealth|PC1} check makes you {@condition hidden|PC1}, though the creatures still know roughly where you are.",
+								"Second, now that you're {@condition hidden|PC1}, you can {@action Sneak|PC1}. That means you can move at half your Speed and attempt another {@skill Stealth|PC1} check. If it's successful, you're now {@condition undetected|PC1}. That means the creatures don't know which square you're in anymore."
+							]
+						},
+						"If you were approaching creatures that didn't know you were there, you could begin {@action Sneak|PC1|Sneaking} right away, since they didn't know your location to start with. Some actions can cause you to become {@condition observed|PC1} again, but they're mostly what you'd expect: standing out in the open, attacking someone, making a bunch of noise, and so forth. If you {@action Strike|PC1} someone after successfully {@action Hide|PC1|Hiding} or {@action Sneak|PC1|Sneaking}, though, they're {@condition off-guard|PC1} to that {@action Strike|PC1}.",
+						"Creatures can try to find you using the {@action Seek|PC1} action.",
+						"Three conditions explain the states of detection. Remember that these conditions are relative to each creature\u2014you can be {@condition observed|PC1} by one creature while {@condition hidden|PC1} to another and {@condition undetected|PC1} by a third.",
+						{
+							"type": "pf2-h4",
+							"name": "{@condition Observed|PC1}}",
+							"entries": [
+								"You're in the creature's clear view."
+							]
+						},
+						{
+							"type": "pf2-h4",
+							"name": "{@condition Hidden|PC1}",
+							"entries": [
+								"The creature knows your location but can't see you."
+							]
+						},
+						{
+							"type": "pf2-h4",
+							"name": "{@condition Undetected|PC1}",
+							"entries": [
+								"The creature doesn't know your location."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Unobservable Stealth",
+							"entries": [
+								"In some cases, it can be impossible for a creature to fully observe you. Typically this happens if you're {@condition invisible|PC1}, the observer is {@condition blinded|PC1}, or you're in darkness and the creature can't see in darkness. In such cases, any critical failure you roll on a check to {@action Sneak|PC1} is a failure instead. You also continue to be {@condition undetected|PC1} if you lose cover or greater cover against or are no longer {@condition concealed|PC1} from such a creature."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sneak",
+			"source": "PC1",
+			"remaster": true,
+			"page": 245,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move",
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"stealth"
+					]
+				}
+			},
+			"entries": [
+				"You attempt to move to another place while becoming or staying {@condition undetected|PC1}. {@action Stride|PC1} up to half your Speed. (You can use Sneak while {@action Burrow|PC1|Burrowing}, {@action Climb|PC1|Climbing}, {@action Fly|PC1|Flying}, or {@action Swim|PC1|Swimming} instead of {@action Stride|PC1|Striding} if you have the corresponding movement type; you must move at half that Speed.)",
+				"At the end of your movement, the GM rolls your {@skill Stealth|PC1} check in secret and compares the result to the {@skill Perception|PC1} DC of each creature you were {@condition hidden|PC1} from or {@condition undetected|PC1} by at the start of your movement. If you have cover or greater cover from the creature throughout your {@action Stride|PC1}, you gain the +2 circumstance bonus from cover (or +4 from greater cover) to your {@skill Stealth|PC1} check. Because you're moving, the bonus increase from {@action Take Cover|PC1|Taking Cover} doesn't apply. You don't get to roll against a creature if, at the end of your movement, you neither are {@condition concealed|PC1} from it nor have cover or greater cover against it. You automatically become {@condition observed|PC1} by such a creature.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": [
+							"You're {@condition undetected|PC1} by the creature during your movement and remain {@condition undetected|PC1} by the creature at the end of it.",
+							"You become {@condition observed|PC1} as soon as you do anything other than {@action Hide|PC1}, Sneak, or {@action Step|PC1}. If you attempt to {@action Strike|PC1} a creature, the creature remains {@condition off-guard|PC1} against that attack, and you then become {@condition observed|PC1}. If you do anything else, you become {@condition observed|PC1} just before you act unless the GM determines otherwise. The GM might allow you to perform a particularly unobtrusive action without being noticed, possibly requiring another {@skill Stealth|PC1} check. If you speak or make a deliberate loud noise, you become {@condition hidden|PC1} instead of {@condition undetected|PC1}.",
+							"If a creature uses {@action Seek|PC1} and you become {@condition hidden|PC1} to it as a result, you must Sneak if you want to become {@condition undetected|PC1} by that creature again."
+						],
+						"Failure": "A telltale sound or other sign gives your position away, though you still remain unseen. You're {@condition hidden|PC1} from the creature throughout your movement and remain so.",
+						"Critical Failure": "You're spotted! You're observed by the creature throughout your movement and remain so. If you're {@condition invisible|PC1} and were {@condition hidden|PC1} from the creature, instead of being observed you're {@condition hidden|PC1} throughout your movement and remain so."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Being Stealthy",
+					"entries": [
+						"If you want to sneak around when there are creatures that can see you, you can use a combination of {@action Hide|PC1} and {@action Sneak|PC1} to do so.",
+						{
+							"type": "list",
+							"items": [
+								"First, {b{@action Hide|PC1}} behind something (either by taking advantage of cover or having the {@condition concealed|PC1} condition due to fog, a spell, or a similar effect). A successful {@skill Stealth|PC1} check makes you {@condition hidden|PC1}, though the creatures still know roughly where you are.",
+								"Second, now that you're {@condition hidden|PC1}, you can {@action Sneak|PC1}. That means you can move at half your Speed and attempt another {@skill Stealth|PC1} check. If it's successful, you're now {@condition undetected|PC1}. That means the creatures don't know which square you're in anymore."
+							]
+						},
+						"If you were approaching creatures that didn't know you were there, you could begin {@action Sneak|PC1|Sneaking} right away, since they didn't know your location to start with. Some actions can cause you to become {@condition observed|PC1} again, but they're mostly what you'd expect: standing out in the open, attacking someone, making a bunch of noise, and so forth. If you {@action Strike|PC1} someone after successfully {@action Hide|PC1|Hiding} or {@action Sneak|PC1|Sneaking}, though, they're {@condition off-guard|PC1} to that {@action Strike|PC1}.",
+						"Creatures can try to find you using the {@action Seek|PC1} action.",
+						"Three conditions explain the states of detection. Remember that these conditions are relative to each creature\u2014you can be {@condition observed|PC1} by one creature while {@condition hidden|PC1} to another and {@condition undetected|PC1} by a third.",
+						{
+							"type": "pf2-h4",
+							"name": "{@condition Observed|PC1}}",
+							"entries": [
+								"You're in the creature's clear view."
+							]
+						},
+						{
+							"type": "pf2-h4",
+							"name": "{@condition Hidden|PC1}",
+							"entries": [
+								"The creature knows your location but can't see you."
+							]
+						},
+						{
+							"type": "pf2-h4",
+							"name": "{@condition Undetected|PC1}",
+							"entries": [
+								"The creature doesn't know your location."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Unobservable Stealth",
+							"entries": [
+								"In some cases, it can be impossible for a creature to fully observe you. Typically this happens if you're {@condition invisible|PC1}, the observer is {@condition blinded|PC1}, or you're in darkness and the creature can't see in darkness. In such cases, any critical failure you roll on a check to {@action Sneak|PC1} is a failure instead. You also continue to be {@condition undetected|PC1} if you lose cover or greater cover against or are no longer {@condition concealed|PC1} from such a creature."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sense Direction",
+			"source": "PC1",
+			"remaster": true,
+			"page": 246,
+			"traits": [
+				"exploration",
+				"secret"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"survival"
+					]
+				}
+			},
+			"entries": [
+				"Using the stars, the position of the sun, traits of the geography or flora, or the behavior of fauna, you can stay oriented in the wild. Typically, you attempt a {@skill Survival|PC1} check only once per day, but some environments or changes might necessitate rolling more often. The GM determines the DC and how long this activity takes (usually just a minute or so). More unusual locales or those you're unfamiliar with might require you to have a minimum proficiency rank to Sense Direction. Without a {@item compass|PC1}, you take a \u20132 item penalty to checks to Sense Direction.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You get an excellent sense of where you are. If you are in an environment with cardinal directions, you know them exactly.",
+						"Success": "You gain enough orientation to avoid becoming hopelessly lost. If you are in an environment with cardinal directions, you have a sense of those directions."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sense Direction Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "determine a cardinal direction using the sun"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "find an overgrown path in a forest"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "navigate a hedge maze"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "navigate a byzantine labyrinth or relatively featureless desert"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "navigate an ever-changing dream realm"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cover Tracks",
+			"source": "PC1",
+			"remaster": true,
+			"page": 246,
+			"traits": [
+				"concentrate",
+				"exploration",
+				"move"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"survival"
+					]
+				}
+			},
+			"entries": [
+				"You cover your tracks, moving up to half your {@quickref travel Speed|PC1|0|Exploration Mode}. You don't need to attempt a {@skill Survival|PC1} check to cover your tracks, but anyone tracking you must succeed at a {@skill Survival|PC1} check against your {@skill Survival|PC1} DC if it is higher than the normal DC to {@action Track|PC1}.",
+				"In some cases, you might Cover Tracks in an encounter. In this case, Cover Tracks is a single action and doesn't have the {@trait exploration} trait."
+			]
+		},
+		{
+			"name": "Track",
+			"source": "PC1",
+			"remaster": true,
+			"page": 246,
+			"traits": [
+				"concentrate",
+				"exploration",
+				"move"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"survival"
+					]
+				}
+			},
+			"entries": [
+				"You follow tracks, moving at up to half your {@quickref travel Speed|PC1|0|Exploration Mode}. After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour.",
+				"In some cases, you might Track in an encounter. In this case, Track is a single action and doesn't have the {@trait exploration} trait, but you might need to roll more often because you're in a tense situation. The GM determines how often you must attempt this check",
+				"You attempt your {@skill Survival|PC1} check when you start Tracking, once every hour you continue tracking, and any time something significant changes in the trail. The GM determines the DCs for such checks, depending on the freshness of the trail, the weather, and the type of ground.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You find the trail or continue to follow the one you're already following.",
+						"Failure": "You lose the trail but can try again after a 1-hour delay.",
+						"Critical Failure": "You lose the trail and can't try again for 24 hours."
+					}
+				}
+			],
+			"info": [
+				{
+					"type": "pf2-sample-box",
+					"name": "Sense Track Tasks",
+					"entries": [
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Untrained",
+									"entry": "the path of a large army following a road"
+								},
+								{
+									"type": "item",
+									"name": "Trained",
+									"entry": "relatively fresh tracks of a rampaging bear through the plains"
+								},
+								{
+									"type": "item",
+									"name": "Expert",
+									"entry": "a nimble panther's tracks through a jungle, tracks obscured by rainfall"
+								},
+								{
+									"type": "item",
+									"name": "Master",
+									"entry": "tracks obscured by winter snow, tracks of a mouse or smaller creature, tracks left on surfaces that can't hold prints like bare rock"
+								},
+								{
+									"type": "item",
+									"name": "Legendary",
+									"entry": "old tracks through a windy desert's sands, tracks obscured by a major blizzard or hurricane"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Palm an Object",
+			"source": "PC1",
+			"remaster": true,
+			"page": 246,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"thievery"
+					]
+				}
+			},
+			"entries": [
+				"You pick up a small, unattended object and try not to be noticed. Roll a single {@skill Thievery|PC1} check against the {@skill Perception|PC1} DCs of all creatures who are currently observing you. You can typically only Palm Objects of negligible Bulk, though the GM might determine otherwise depending on the situation.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The creature does not notice you Palming the Object.",
+						"Failure": "The creature notices you Palming the Object."
+					}
+				}
+			]
+		},
+		{
+			"name": "Steal",
+			"source": "PC1",
+			"remaster": true,
+			"page": 246,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"untrained": [
+						"thievery"
+					]
+				}
+			},
+			"entries": [
+				"You try to take a small object from another creature without being noticed. Typically, you can Steal only an object of negligible Bulk, and you automatically fail if the creature who has the object is in combat or on guard.",
+				"Attempt a {@skill Thievery|PC1} check to determine if you successfully Steal the object. The DC is usually the Perception DC of the creature wearing the object. It's easiest to steal an object that is worn but not closely guarded (like a loosely carried pouch filled with coins, or an object within such a pouch). The GM might increase the DC if the object is protected or if the nature of the object makes it harder to steal (such as a very small item in a large pack, or a sheet of parchment mixed in with other documents). For instance, the DC is typically 5 higher if the object is in a pocket, held in a creature's hand, or similarly protected.",
+				"You might also need to compare your {@skill Thievery|PC1} check result against the {@skill Perception|PC1} DCs of observers other than the person wearing the object. The GM might impose a circumstance penalty to the DCs of observers who are distracted.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You steal the item without the bearer noticing, or an observer doesn't see you take or attempt to take the item.",
+						"Failure": "The item's bearer notices your attempt before you can take the object, or an observer sees you take or attempt to take the item. The GM determines the response of any creature that notices your theft."
+					}
+				}
+			]
+		},
+		{
+			"name": "Disable a Device",
+			"source": "PC1",
+			"remaster": true,
+			"page": 247,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"thievery"
+					]
+				}
+			},
+			"entries": [
+				"This action allows you to disarm a trap or another complex device. Often, a device requires numerous successes before becoming disabled, depending on its construction and complexity. A {@item thieves' toolkit|PC1} is helpful and sometimes even required to Disable a Device, as determined by the GM, and sometimes a device requires a higher proficiency rank in {@skill Thievery|PC1} to disable it.",
+				"Your {@skill Thievery|PC1} check result determines your progress.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You disable the device, or you achieve two successes toward disabling a device requiring more than one success. You leave no trace of your tampering, and you can rearm the device later, if that type of device can be rearmed.",
+						"Success": "You disable the device, or you achieve one success toward disabling a device that requires more than one success.",
+						"Critical Failure": "You trigger the device."
+					}
+				}
+			]
+		},
+		{
+			"name": "Pick a Lock",
+			"source": "PC1",
+			"remaster": true,
+			"page": 247,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true,
+				"skill": {
+					"trained": [
+						"thievery"
+					]
+				}
+			},
+			"requirements": "You're holding or wearing a {@item thieves' tools|PC1}.",
+			"entries": [
+				"Opening a lock without a key is very similar to {@action Disable a Device|PC1|Disabling a Device}, but the DC of the check is determined by the complexity and construction of the lock you are attempting to pick (locks and their DCs are found on page 288). Locks of higher quality might require multiple successes to unlock. If you lack the proper tools, the GM might let you use improvised picks, which are treated as a shoddy toolkit.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You unlock the lock, or you achieve two successes toward opening a lock that requires more than one success. You leave no trace of your tampering.",
+						"Success": "You open the lock, or you achieve one success toward opening a lock that requires more than one success. You leave behind damage that indicates the lock was picked on close scrutiny.",
+						"Critical Failure": "You break your toolkit and leave behind obvious damage. Fixing a broken toolkit requires using {@skill Crafting|PC1} to {@action Repair|PC1} it or else swapping in replacement picks (costing 3 sp, or 3 gp for {@item infiltrator thieves' tools|PC1})."
+					}
+				}
+			]
+		},
+		{
+			"name": "Aid",
+			"alias": [
+				"Help"
+			],
+			"source": "PC1",
+			"remaster": true,
+			"page": 4416,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"actionType": {
+				"basic": true
+			},
+			"trigger": "An ally is about to use an action that requires a skill check or attack roll.",
+			"requirements": "The ally is willing to accept your aid, and you have prepared to help (see below).",
+			"entries": [
+				"You try to help your ally with a task. To use this reaction, you must first prepare to help, usually by using an action during your turn. You must explain to the GM exactly how you're trying to help, and they determine whether you can Aid your ally.",
+				"When you use your Aid reaction, attempt a skill check or attack roll of a type decided by the GM. The typical DC is 15, but the GM might adjust this DC for particularly hard or easy tasks. The GM can add any relevant traits to your preparatory action or to your Aid reaction depending on the situation, or even allow you to Aid checks other than skill checks and attack rolls.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You grant your ally a +2 circumstance bonus to the triggering check. If you're a master with the check you attempted, the bonus is +3, and if you're legendary, it's +4.",
+						"Success": "You grant your ally a +1 circumstance bonus to the triggering check.",
+						"Critical Failure": "Your ally takes a \u20131 circumstance penalty to the triggering check."
+					}
+				}
+			]
+		},
+		{
+			"name": "Crawl",
+			"source": "PC1",
+			"remaster": true,
+			"page": 416,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"requirements": "You are {@condition prone|PC1} and your Speed is at least 10 feet.",
+			"entries": [
+				"You move 5 feet by crawling and continue to stay {@condition prone|PC1}."
+			]
+		},
+		{
+			"name": "Delay",
+			"source": "PC1",
+			"remaster": true,
+			"page": 416,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"actionType": {
+				"basic": true
+			},
+			"trigger": "Your turn begins.",
+			"entries": [
+				"You wait for the right moment to act. The rest of your turn doesn't happen yet. Instead, you're removed from the initiative order. You can return to the initiative order as a free action triggered by the end of any other creature's turn. This permanently changes your initiative to the new position. You can't use reactions until you return to the initiative order. If you Delay an entire round without returning to the initiative order, the actions from the Delayed turn are lost, your initiative doesn't change, and your next turn occurs at your original position in the initiative order.",
+				"When you Delay, any {@condition persistent damage|PC1} or other negative effects that normally occur at the start or end of your turn occur immediately when you use the Delay action. Any beneficial effects that would end at any point during your turn also end. The GM might determine that other effects end when you Delay as well. Essentially, you can't Delay to avoid negative consequences that would happen on your turn or to extend beneficial effects that would end on your turn."
+			]
+		},
+		{
+			"name": "Drop Prone",
+			"source": "PC1",
+			"remaster": true,
+			"page": 416,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You fall {@condition prone|PC1}."
+			]
+		},
+		{
+			"name": "Escape",
+			"source": "PC1",
+			"remaster": true,
+			"page": 416,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"attack"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You attempt to escape from being {@condition grabbed|PC1}, {@condition immobilized|PC1}, or {@condition restrained|PC1}. Choose one creature, object, spell effect, hazard, or other impediment imposing any of those conditions on you. Attempt a check using your unarmed attack modifier against the DC of the effect. This is typically the {@skill Athletics|PC1} DC of a creature grabbing you, the {@skill Thievery|PC1} DC of a creature who tied you up, the spell DC for a spell effect, or the listed Escape DC of an object, hazard, or other impediment. You can attempt an {@skill Acrobatics|PC1} or {@skill Athletics|PC1} check instead of using your attack modifier if you choose (but this action still has the {@trait attack} trait).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You get free and remove the {@condition grabbed|PC1}, {@condition immobilized|PC1}, and {@condition restrained|PC1} conditions imposed by your chosen target. You can then {@action Stride|PC1} up to 5 feet.",
+						"Success": "You get free and remove the {@condition grabbed|PC1}, {@condition immobilized|PC1}, and {@condition restrained|PC1} conditions imposed by your chosen target.",
+						"Critical Failure": "You don't get free, and you can't attempt to Escape again until your next turn."
+					}
+				}
+			]
+		},
+		{
+			"name": "Interact",
+			"alias": [
+				"Use an Object"
+			],
+			"source": "PC1",
+			"remaster": true,
+			"page": 416,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You use your hand or hands to manipulate an object or the terrain. You can grab an unattended or stored object, draw a weapon, swap a held item for another, open a door, or achieve a similar effect. On rare occasions, you might have to attempt a skill check to determine if your Interact action was successful."
+			]
+		},
+		{
+			"name": "Leap",
+			"source": "PC1",
+			"remaster": true,
 			"page": 417,
 			"activity": {
 				"number": 1,
@@ -980,63 +3933,172 @@
 			]
 		},
 		{
-			"name": "High Jump",
-			"remaster": true,
+			"name": "Ready",
 			"source": "PC1",
-			"page": 235,
+			"remaster": true,
+			"page": 417,
 			"activity": {
 				"number": 2,
 				"unit": "action"
 			},
+			"traits": [
+				"concentrate"
+			],
 			"actionType": {
 				"basic": true
 			},
 			"entries": [
-				"You {@action Stride}, then attempt a DC 30 {@skill Athletics} check to make a jump vertically. If you didn't {@action Stride} at least 10 feet, you automatically fail. This DC might be increased or decreased due to the situation, as determined by the GM.",
+				"You prepare to use an action that will occur outside your turn. Choose a single action or free action you can use, and designate a trigger. Your turn then ends. If the trigger you designated occurs before the start of your next turn, you can use the chosen action as a reaction (provided you still meet the requirements to use it). You can't Ready a free action that already has a trigger.",
+				"If you have a multiple attack penalty and your readied action is an attack action, your readied attack takes the multiple attack penalty you had at the time you used Ready. This is one of the few times the multiple attack penalty applies when it's not your turn."
+			]
+		},
+		{
+			"name": "Release",
+			"source": "PC1",
+			"remaster": true,
+			"page": 417,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"manipulate"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You release something you're holding in your hand or hands. This might mean dropping an item, removing one hand from your weapon while continuing to hold it in another hand, releasing a rope suspending a chandelier, or performing a similar action. Unlike most manipulate actions, Release does not trigger reactions that can be triggered by actions with the manipulate trait (such as {@action Reactive Strike|PC1}).",
+				"If you want to prepare to Release something outside of your turn, use the {@action Ready|PC1} activity."
+			]
+		},
+		{
+			"name": "Seek",
+			"source": "PC1",
+			"remaster": true,
+			"page": 417,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"concentrate",
+				"secret"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You scan an area for signs of creatures or objects, possibly including secret doors or hazards. Choose an area to scan. The GM determines the area you can scan with one Seek action\u2014almost always 30 feet or less in any dimension. The GM might impose a penalty if you search far away from you or adjust the number of actions it takes to Seek a particularly cluttered area",
+				"The GM attempts a single secret {@skill Perception|PC1} check for you and compares the result to the {@skill Stealth|PC1} DCs of any {@condition undetected|PC1} or {@condition hidden|PC1} creatures in the area, or the DC to detect each object in the area (as determined by the GM or by someone {@action Conceal an Object|PC1|Concealing the Object}). A creature you detect might remain {@condition hidden|PC1}, rather than becoming {@condition observed|PC1}, if you're using an imprecise sense or if an effect (such as {@spell invisibility|PC1}) prevents the subject from being {@condition observed|PC1}.",
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "You {@action Leap|PC1} up to 8 feet vertically and 10 feet horizontally.",
-						"Success": "You {@action Leap|PC1} up to 5 feet vertically and 5 feet horizontally.",
-						"Failure": "You {@action Leap|PC1} normally.",
-						"Critical Failure": "You fall {@condition prone} in your space."
+						"Critical Success": "Any {@condition undetected|PC1} or {@condition hidden|PC1} creature you critically succeeded against becomes {@condition observed|PC1} by you. You learn the location of objects in the area you critically succeeded against.",
+						"Success": "Any {@condition undetected|PC1} creature you succeeded against becomes {@condition hidden|PC1} from you instead of {@condition undetected|PC1}, and any {@condition hidden|PC1} creature you succeeded against becomes {@condition observed|PC1} by you. You learn the location of any object or get a clue to its whereabouts, as determined by the GM."
 					}
 				}
 			]
 		},
 		{
-			"name": "Long Jump",
-			"remaster": true,
+			"name": "Sense Motive",
 			"source": "PC1",
-			"page": 235,
+			"remaster": true,
+			"page": 417,
 			"activity": {
-				"number": 2,
+				"number": 1,
 				"unit": "action"
 			},
+			"traits": [
+				"concentrate",
+				"secret"
+			],
 			"actionType": {
 				"basic": true
 			},
 			"entries": [
-				"You {@action Stride}, then attempt a DC 15 {@skill Athletics} check to make a long jump in the direction you were {@action Stride||Striding}. If you didn't {@action Stride} at least 10 feet, you automatically fail your check. The GM might increase or decrease this DC depending on the situation.",
+				"You try to tell whether a creature's behavior is abnormal. Choose one creature and assess it for odd body language, signs of nervousness, and other indicators that it might be trying to deceive someone. The GM attempts a single secret {@skill Perception|PC1} check for you and compares the result to the {@skill Deception|PC1} DC of the creature, the DC of a spell affecting the creature's mental state, or another appropriate DC determined by the GM. You typically can't try to Sense the Motive of the same creature again until the situation changes significantly.",
 				{
 					"type": "successDegree",
 					"entries": {
-						"Success": "You {@action Leap|PC1} up to a distance equal to your check result rounded down to the nearest 5 feet. You can't jump farther than your land Speed.",
-						"Failure": "You make a normal horizontal {@action Leap|PC1}.",
-						"Critical Failure": "You make a normal horizontal {@action Leap|PC1}, then fall and land {@condition prone}."
+						"Critical Success": "You determine the creature's true intentions and get a solid idea of any mental magic affecting it.",
+						"Success": "You can tell whether the creature is behaving normally, but you don't know its exact intentions or what magic might be affecting it.",
+						"Failure": "You detect what a deceptive creature wants you to believe. If they're not being deceptive, you believe they're behaving normally.",
+						"Critical Failure": "You get a false sense of the creature's intentions."
 					}
 				}
 			]
 		},
 		{
-			"name": "Reposition",
+			"name": "Stand",
+			"source": "PC1",
 			"remaster": true,
+			"page": 418,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You stand up from {@condition prone|PC1}."
+			]
+		},
+		{
+			"name": "Step",
 			"alias": [
-				"Drag",
-				"Pull"
+				"Disengage"
 			],
 			"source": "PC1",
-			"page": 235,
+			"remaster": true,
+			"page": 418,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"requirements": "Your Speed is at least 10 feet.",
+			"entries": [
+				"You carefully move 5 feet. Unlike most types of movement, Stepping doesn't trigger reactions, such as {@action Reactive Strike|PC1}, that can be triggered by move actions or upon leaving or entering a square.",
+				"You can't Step into {@quickref difficult terrain|PC1|3|terrain}, and you can't Step using a Speed other than your land Speed."
+			]
+		},
+		{
+			"name": "Stride",
+			"source": "PC1",
+			"remaster": true,
+			"page": 418,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You move up to your Speed."
+			]
+		},
+		{
+			"name": "Strike",
+			"alias": [
+				"Attack"
+			],
+			"source": "PC1",
+			"remaster": true,
+			"page": 418,
 			"activity": {
 				"number": 1,
 				"unit": "action"
@@ -1044,21 +4106,371 @@
 			"traits": [
 				"attack"
 			],
-			"requirements": "You either have at least one hand free, or you're {@condition grabbed||grabbing} or {@condition restrained||restraining} the target. The target can't be more than one size larger than you.",
+			"actionType": {
+				"basic": true
+			},
 			"entries": [
-				"You muscle a creature or object around. Attempt an {@skill Athletics} check against the target's Fortitude DC.",
+				"You attack with a weapon you're wielding or with an unarmed attack, targeting one creature within your reach (for a melee attack) or within range (for a ranged attack). Roll an attack roll using the attack modifier for the weapon or unarmed attack you're using, and compare the result to the target creature's AC to determine the effect.",
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "You move the creature up to 10 feet. It must remain within your reach during this movement, and you can't move it into or through obstacles.",
-						"Success": "You move the target up to 5 feet. It must remain within your reach during this movement, and you can't move it into or through obstacles.",
-						"Critical Failure": "The target can move you up to 5 feet as though it successfully Repositioned you."
+						"Critical Success": "You make a damage roll according to the weapon or unarmed attack and deal double damage.",
+						"Success": "You make a damage roll according to the weapon or unarmed attack and deal damage."
 					}
 				}
+			]
+		},
+		{
+			"name": "Take Cover",
+			"source": "PC1",
+			"remaster": true,
+			"page": 418,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"basic": true
+			},
+			"requirements": "You are benefiting from cover, are near a feature that allows you to take cover, or are {@condition prone|PC1}.",
+			"entries": [
+				"You press yourself against a wall or duck behind an obstacle to take better advantage of cover. If you would have standard cover, you instead gain greater cover, which provides a +4 circumstance bonus to AC; to Reflex saves against area effects; and to {@skill Stealth|PC1} checks to {@action Hide|PC1}, {@action Sneak|PC1}, or otherwise avoid detection. Otherwise, you gain the benefits of standard cover (a +2 circumstance bonus instead). This lasts until you move from your current space, use an {@trait attack} action, become {@condition unconscious|PC1}, or end this effect as a free action."
+			]
+		},
+		{
+			"name": "Arrest a Fall",
+			"source": "PC1",
+			"remaster": true,
+			"page": 418,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"actionType": {
+				"basic": true
+			},
+			"trigger": "You fall.",
+			"requirements": "You have a fly Speed.",
+			"entries": [
+				"You attempt an {@skill Acrobatics|PC1} check to slow your fall. The DC is typically 15, but it might be higher due to air turbulence or other circumstances.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You fall gently, taking no damage from the fall."
+					}
+				}
+			]
+		},
+		{
+			"name": "Avert Gaze",
+			"source": "PC1",
+			"remaster": true,
+			"page": 419,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You avert your gaze from danger, such as a medusa's gaze. You gain a +2 circumstance bonus to saves against visual abilities that require you to look at a creature or object, such as a medusa's petrifying gaze. Your gaze remains averted until the start of your next turn."
+			]
+		},
+		{
+			"name": "Burrow",
+			"source": "PC1",
+			"remaster": true,
+			"page": 419,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
 			],
 			"actionType": {
 				"basic": true
-			}
+			},
+			"requirements": "You have a burrow Speed",
+			"entries": [
+				"You dig your way through dirt, sand, or a similar loose material at a rate up to your burrow Speed. You can't burrow through rock or other substances denser than dirt unless you have an ability that allows you to do so."
+			]
+		},
+		{
+			"name": "Dismiss",
+			"source": "PC1",
+			"remaster": true,
+			"page": 419,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"concentrate"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You end an effect that states you can Dismiss it. Dismissing ends the entire effect unless noted otherwise."
+			]
+		},
+		{
+			"name": "Fly",
+			"source": "PC1",
+			"remaster": true,
+			"page": 419,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"requirements": "You have a fly Speed.",
+			"entries": [
+				"You move through the air up to your fly Speed. Moving upward (straight up or diagonally) uses the rules for moving through {@quickref difficult terrain|PC1|3|terrain}. You can move straight down 10 feet for every 5 feet of movement you spend. If you Fly to the ground, you don't take falling damage. You can use an action to Fly 0 feet to hover in place. If you're airborne at the end of your turn and didn't use a Fly action this round, you fall."
+			]
+		},
+		{
+			"name": "Grab an Edge",
+			"source": "PC1",
+			"remaster": true,
+			"page": 419,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"actionType": {
+				"basic": true
+			},
+			"trigger": "You fall from or past an edge or handhold.",
+			"requirements": "Your hands are not tied behind your back or otherwise restrained.",
+			"entries": [
+				"When you fall off or past an edge or other handhold, you can try to grab it, potentially stopping your fall. You must succeed at your choice of an {@skill Acrobatics|PC1} check or a Reflex save, usually at the {@action Climb|PC1} DC. If you grab the edge or handhold, you can then {@action Climb|PC1} up using Athletics.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You grab the edge or handhold, whether or not you have a hand free, typically by using a suitable held item to catch yourself (catching a battle axe on a ledge, for example). You still take damage from the distance fallen so far, but you treat the fall as though it were 30 feet shorter.",
+						"Success": "If you have at least one hand free, you grab the edge or handhold, stopping your fall. You still take damage from the distance fallen so far, but you treat the fall as though it were 20 feet shorter. If you have no hands free, you continue to fall as if you had failed the check.",
+						"Critical Failure": "You continue to fall, and if you've fallen 20 feet or more before you use this reaction, you take 10 bludgeoning damage from the impact for every 20 feet fallen."
+					}
+				}
+			]
+		},
+		{
+			"name": "Mount",
+			"source": "PC1",
+			"remaster": true,
+			"page": 419,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"move"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"requirements": "You are adjacent to a creature that is at least one size larger than you and is willing to be your mount.",
+			"entries": [
+				"You move onto the creature and ride it. If you're already mounted, you can instead use this action to dismount, moving off the mount into a space adjacent to it."
+			]
+		},
+		{
+			"name": "Point Out",
+			"source": "PC1",
+			"remaster": true,
+			"page": 419,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"auditory",
+				"manipulate",
+				"visual"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"requirements": "A creature is {@condition undetected|PC1} by one or more of your allies but isn't {@condition undetected|PC1} by you.",
+			"entries": [
+				"You indicate a creature that you can see to one or more allies, gesturing in a direction and describing the distance verbally. That creature is {@condition hidden|PC1} to your allies, rather than {@condition undetected|PC1}. This works only for allies who can see you and are in a position where they could potentially detect the target. If your allies can't hear or understand you, they must succeed at a {@skill Perception|PC1} check against the creature's {@skill Stealth|PC1} DC or they misunderstand and believe the target is in a different location."
+			]
+		},
+		{
+			"name": "Raise a Shield",
+			"source": "PC1",
+			"remaster": true,
+			"page": 419,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"basic": true
+			},
+			"requirements": "You are wielding a shield.",
+			"entries": [
+				"You position your shield to protect yourself. When you have Raised a Shield, you gain its listed circumstance bonus to AC. Your shield remains raised until the start of your next turn."
+			]
+		},
+		{
+			"name": "Sustain",
+			"source": "PC1",
+			"remaster": true,
+			"page": 419,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"concentrate"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"requirements": "You have at least one spell active with a sustained duration, and you are not fatigued.",
+			"entries": [
+				"Choose one of your effects that has a sustained duration or lists a special benefit when you Sustain it. Most such effects come from spells or magic item activations. If the effect has a sustained duration, its duration extends until the end of your next turn. (Sustaining more than once in the same turn doesn't extend the duration to subsequent turns.) If an ability can be sustained but doesn't list how long, it can be sustained up to 10 minutes.",
+				"An effect might list an additional benefit that occurs if you Sustain it, and this can even appear on effects that don't have a sustained duration. If the effect has both a special benefit and a sustained duration, your Sustain action extends the duration as well as having the special benefit.",
+				"If your Sustain action is disrupted, the ability ends."
+			]
+		},
+		{
+			"name": "Defend",
+			"source": "PC2",
+			"page": 438,
+			"traits": [
+				"exploration"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You move at half your travel speed with your shield raised. If combat breaks out, you gain the benefits of {@action Raise a Shield|PC1|Raising a Shield} before your first turn begins."
+			]
+		},
+		{
+			"name": "Detect Magic",
+			"source": "PC1",
+			"remaster": true,
+			"page": 438,
+			"traits": [
+				"exploration",
+				"concentrate"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You cast {@spell detect magic|PC1} at regular intervals. You move at half your travel speed or slower. You have no chance of accidentally overlooking a magic aura at a travel speed up to 300 feet per minute, but must be traveling no more than 150 feet per minute to detect magic auras before the party moves into them."
+			]
+		},
+		{
+			"name": "Follow the Expert",
+			"source": "PC1",
+			"remaster": true,
+			"page": 438,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"exploration",
+				"visual"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"Choose an ally attempting a recurring skill check while exploring, such as climbing, or performing a different exploration tactic that requires a skill check (like {@action Avoid Notice|PC1|Avoiding Notice}). The ally must be at least an expert in that skill and must be willing to provide assistance. While Following the Expert, you match their tactic or attempt similar skill checks.",
+				"Thanks to your ally's assistance, you can add your level as a proficiency bonus to the associated skill check, even if you're untrained. Additionally, you gain a circumstance bonus to your skill check based on your ally's proficiency (+2 for expert, +3 for master, and +4 for legendary)."
+			]
+		},
+		{
+			"name": "Hustle",
+			"source": "PC1",
+			"remaster": true,
+			"page": 438,
+			"traits": [
+				"exploration",
+				"move"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You strain yourself to move at double your travel speed. You can Hustle only for a number of minutes equal to your Constitution modifier × 10 (minimum 10 minutes). If you are in a group that is Hustling, use the lowest Constitution modifier among everyone to determine how fast the group can Hustle together."
+			]
+		},
+		{
+			"name": "Investigate",
+			"source": "PC1",
+			"remaster": true,
+			"page": 439,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You seek out information about your surroundings while traveling at half speed. You use {@action Recall Knowledge|PC1} as a secret check to discover clues among the various things you can see and engage with as you journey along. You can use any skill that has a {@action Recall Knowledge|PC1} action while Investigating, but the GM determines whether the skill is relevant to the clues you could find."
+			]
+		},
+		{
+			"name": "Repeat a Spell",
+			"source": "PC1",
+			"remaster": true,
+			"page": 439,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You repeatedly cast the same spell while moving at half speed. Typically, this spell is a cantrip that you want to have in effect in the event a combat breaks out, and it must be one you can cast in 2 actions or fewer. Repeating a spell that requires making complex decisions, such as {@spell figment|PC1}, can make you {@condition fatigued|PC1}, as determined by the GM."
+			]
+		},
+		{
+			"name": "Scout",
+			"source": "PC1",
+			"remaster": true,
+			"page": 439,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You scout ahead and behind the group to watch danger, moving at half speed. At the start of the next encounter, every creature in your party gains a +1 circumstance bonus to their initiative rolls."
+			]
+		},
+		{
+			"name": "Sustain an Effect",
+			"source": "PC1",
+			"remaster": true,
+			"page": 439,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You {@action Sustain|PC1} one effect with a sustained duration while moving at half speed. Most such effects can be sustained for 10 minutes, though some specify they can be sustained for a different duration. Sustaining an effect that requires making complex decisions, such as {@spell spiritual armament|PC1}, can make you {@condition fatigued|PC1}, as determined by the GM."
+			]
 		},
 		{
 			"name": "Extract Element",
@@ -1687,7 +5099,7 @@
 			]
 		},
 		{
-			"name": "Recall The Teachings",
+			"name": "Recall the Teachings",
 			"source": "DA",
 			"page": 15,
 			"activity": {
@@ -1705,7 +5117,7 @@
 			]
 		},
 		{
-			"name": "Restore The Mind",
+			"name": "Restore the Mind",
 			"source": "DA",
 			"page": 15,
 			"activity": {
@@ -1838,7 +5250,7 @@
 						"Command ({@trait auditory}, {@trait concentrate})",
 						"Envision ({@trait concentrate})",
 						"{@action Interact} ({@trait manipulate})",
-						"{@action Cast a Spell|CRB}"
+						"{@action Cast a Spell}"
 					]
 				}
 			],
@@ -2867,10 +6279,6 @@
 			"name": "Coerce",
 			"source": "CRB",
 			"page": 247,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
 			"traits": [
 				"auditory",
 				"concentrate",
@@ -3100,7 +6508,7 @@
 					"type": "pf2-sample-box",
 					"name": "Consumables and Ammunition",
 					"entries": [
-						"You can Craft items with the {@trait consumable} trait in batches, making up to four of the same item at once with a single check. This requires you to include the raw materials for all the items in the batch at the start, and you must complete the batch all at once. You also {@action Craft} non-magical ammunition in batches, using the quantity listed in {@table Ranged Weapons||Table 6\u20138: Ranged Weapons} (typically 10)."
+						"You can Craft items with the {@trait consumable} trait in batches, making up to four of the same item at once with a single check. This requires you to include the raw materials for all the items in the batch at the start, and you must complete the batch all at once. You also Craft non-magical ammunition in batches, using the quantity listed in {@table Ranged Weapons||Table 6\u20138: Ranged Weapons} (typically 10)."
 					]
 				},
 				{
@@ -3120,8 +6528,7 @@
 						"Because he's a 5th-level character and an expert at {@skill Crafting}, he reduces the amount he has to pay by 1 gp for each day spent. After spending 10 days working, he reduces the cost to complete the item from 65 gp to 55 gp. He spends the remaining portion of its Price in materials, completes the {@item striking} rune, and goes out on his next adventure. (He could have stayed home to keep working on the striking rune, eventually reducing the item's total Price to just the half he paid up front, but adventuring is far more lucrative!) If Ezren's {@skill Crafting} check result were a 29 or higher, he'd have gotten a critical success. In that case, he'd reduce the remaining amount by 2 gp per day, lowering the amount needed to complete the item after 10 additional days of work to 45 gp."
 					]
 				}
-			],
-			"info": []
+			]
 		},
 		{
 			"name": "Cram",
@@ -4447,7 +7854,7 @@
 				}
 			},
 			"entries": [
-				"You Stride, then make a vertical {@action Leap} and attempt a DC 30 {@skill Athletics} check to increase the height of your jump. If you didn't {@action Stride} at least 10 feet, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
+				"You {@action Stride}, then make a vertical {@action Leap} and attempt a DC 30 {@skill Athletics} check to increase the height of your jump. If you didn't {@action Stride} at least 10 feet, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -6513,7 +9920,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "You get an excellent sense of where you are. If you are in an environment with cardinal directions, you know them exactly",
+						"Critical Success": "You get an excellent sense of where you are. If you are in an environment with cardinal directions, you know them exactly.",
 						"Success": "You gain enough orientation to avoid becoming hopelessly lost. If you are in an environment with cardinal directions, you have a sense of those directions."
 					}
 				}
@@ -7027,14 +10434,14 @@
 				"basic": true
 			},
 			"entries": [
-				"You try to provide food and shelter for yourself, and possibly others as well, with a standard of living as described {@table Cost of Living||here}. The GM determines the DC based on the nature of the place where you're trying to Subsist. You might need a minimum proficiency rank to Subsist in particularly strange environments. Unlike most {@trait downtime} activities, you can Subsist after 8 hours or less of exploration, but if you do, you take a \u20135 penalty",
+				"You try to provide food and shelter for yourself, and possibly others as well, with a standard of living as {@table Cost of Living||described}. The GM determines the DC based on the nature of the place where you're trying to Subsist. You might need a minimum proficiency rank to Subsist in particularly strange environments. Unlike most {@trait downtime} activities, you can Subsist after 8 hours or less of exploration, but if you do, you take a \u22125 penalty.",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You either provide a subsistence living for yourself and one additional creature, or you improve your own food and shelter, granting yourself a comfortable living.",
 						"Success": "You find enough food and shelter with basic protection from the elements to provide you a subsistence living.",
 						"Failure": "You're exposed to the elements and don't get enough food, becoming {@condition fatigued} until you attain sufficient food and shelter.",
-						"Critical Failure": "You attract trouble, eat something you shouldn't, or otherwise worsen your situation. You take a \u20132 circumstance penalty to checks to Subsist for 1 week. You don't find any food at all; if you don't have any stored up, you're in danger of starving or dying of thirst if you continue failing."
+						"Critical Failure": "You attract trouble, eat something you shouldn't, or otherwise worsen your situation. You take a \u22122 circumstance penalty to checks to Subsist for 1 week. You don't find any food at all; if you don't have any stored up, you're in danger of starving or dying of thirst if you continue failing."
 					}
 				}
 			],
@@ -7413,7 +10820,7 @@
 				}
 			},
 			"entries": [
-				"You follow tracks, moving at up to half your {@quickref travel Speed||0|Exploration Mode}.. After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn't have the {@trait exploration} trait, but you might need to roll more often because you're in a tense situation. The GM determines how often you must attempt this check.",
+				"You follow tracks, moving at up to half your {@table travel Speed}. After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn't have the {@trait exploration} trait, but you might need to roll more often because you're in a tense situation. The GM determines how often you must attempt this check.",
 				"You attempt your {@skill Survival} check when you start {@action Track||Tracking}, once every hour you continue tracking, and any time something significant changes in the trail. The GM determines the DCs for such checks, depending on the freshness of the trail, the weather, and the type of ground.",
 				{
 					"type": "successDegree",
@@ -7651,7 +11058,7 @@
 				}
 			},
 			"entries": [
-				"You {@action Stride|CRB} up to your Speed. During this movement, you can try to move through the space of one enemy. Attempt an {@skill Acrobatics} check against the enemy's Reflex DC as soon as you try to enter its space. You can {@action Tumble Through} using Climb, Fly, Swim, or another action instead of {@action Stride|CRB} in the appropriate environment.",
+				"You {@action Stride} up to your Speed. During this movement, you can try to move through the space of one enemy. Attempt an {@skill Acrobatics} check against the enemy's Reflex DC as soon as you try to enter its space. You can Tumble Through using {@action Climb}, {@action Fly}, {@action Swim}, or another action instead of {@action Stride} in the appropriate environment.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -8940,25 +12347,6 @@
 						"Critical Failure": "You anger the deity. The copper coin vanishes, you can't attempt to invoke a blessing at this shrine again for 1 week, and you become {@condition stupefied||stupefied 1} for 1 hour."
 					}
 				}
-			]
-		},
-		{
-			"name": "Reactive Strike",
-			"page": 138,
-			"otherSources": {
-				"Reprinted": [
-					"PC1|422"
-				]
-			},
-			"source": "PC1",
-			"remaster": true,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"trigger": "A creature within your reach uses a {@trait manipulate} action or a {@trait move} action, makes a ranged attack, or leaves a square during a {@trait move} action it's using.",
-			"entries": [
-				"You lash out at a foe that leaves an opening. Make a melee {@action Strike} against the triggering creature. If your attack is a critical hit and the trigger was a {@trait manipulate} action, you disrupt that action. This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}."
 			]
 		}
 	]

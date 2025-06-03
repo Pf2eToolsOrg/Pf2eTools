@@ -67,8 +67,7 @@
 								"type": "string",
 								"enum": [
 									"\u2014",
-									"L",
-									"L (when not activated)"
+									"L"
 								]
 							},
 							{
@@ -76,6 +75,13 @@
 								"pattern": "varies by \\w+"
 							}
 						]
+					},
+					"bulkNote": {
+						"type": "string",
+						"examples": [
+							"when not activated"
+						],
+						"description": "Adds a parenthesised note after the bulk. Does not show up on the left-hand list, only the statblock."
 					},
 					"hands": {
 						"$comment": "This is only for tools. Weapons should use the hands key in the weaponData",

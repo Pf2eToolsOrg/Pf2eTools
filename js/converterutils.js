@@ -199,43 +199,75 @@ SkillTag._SKILLS_REGEX = new RegExp(/(Acrobatics|Arcana|Athletics|Crafting|Decep
 
 class ConditionTag {
 	static tryRun (it) {
-		return TaggerUtils.WALKER.walk(
-			it,
-			{
-				string: (str) => {
-					const ptrStack = {_: ""};
-					TaggerUtils.walkerStringHandler(
-						["@condition"],
-						ptrStack,
-						0,
-						0,
-						str,
-						{
-							fnTag: this._fnTag,
-						},
-					);
-					return ptrStack._;
-				},
+		return TaggerUtils.WALKER.walk(it, {
+			string: (str) => {
+				const ptrStack = { _: "" };
+				TaggerUtils.walkerStringHandler(["@condition"], ptrStack, 0, 0, str, {
+					fnTag: this._fnTag,
+				});
+				return ptrStack._;
 			},
-		);
+		});
 	}
 
 	static _fnTag (str) {
-		if (str.match(/off.?guard/i)) return str === "off-guard" ? "{@condition off-guard|PC1}" : `{@condition off-guard|PC1|${str}}`;
-		return str.replace(ConditionTag._CONDITIONS_REGEX, (...m) => {
-			if (m[2]) return `{@condition ${m[1]}||${m[1]}${m[2]}}`;
-			else return `{@condition ${m[1]}}`;
-		}).replace(/persistent ((damage)|(?:bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision|void|vitality)(?: damage)?)/gi, (...m) => {
-			return `{@condition persistent damage${m[2] ? "" : `||persistent ${m[1]}`}}`
-		});
+		return str
+			.replace(ConditionTag._CONDITIONS_REGEX, (...m) => {
+				const condition = m[1].replace(/\W/, "-");
+				const source = condition.toLowerCase() === "off-guard" ? "PC1" : "";
+				if (m[2] || condition !== m[1]) return `{@condition ${condition}|${source}|${m[1]}${m[2]}}`;
+				return `{@condition ${m[1]}${source ? `|${source}` : ""}}`;
+			})
+			.replace(
+				/persistent ((damage)|(?:bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision|void|vitality)(?: damage)?)/gi,
+				(...m) => `{@condition persistent damage${m[2] ? "" : `||persistent ${m[1]}`}}`,
+			);
 	}
 }
-ConditionTag._CONDITIONS = ["Blinded", "Broken", "Clumsy", "Concealed", "Confused", "Controlled", "Dazzled", "Deafened",
-	"Doomed", "Drained", "Dying", "Encumbered", "Enfeebled", "Fascinated", "Fatigued", "Flat.?Footed",
-	"Fleeing", "Friendly", "Frightened", "Grabbed", "Helpful", "Hidden", "Hostile", "Immobilized",
-	"Indifferent", "Invisible", "Observed", "Paralyzed", "Petrified", "Prone", "Quickened", "Restrained",
-	"Sickened", "Slowed", "Stunned", "Stupefied", "Unconscious", "Undetected", "Unfriendly",
-	"Unnoticed", "Wounded", "Off.?Guard"]
+ConditionTag._CONDITIONS = [
+	"blinded",
+	"broken",
+	"clumsy",
+	"concealed",
+	"confused",
+	"controlled",
+	"dazzled",
+	"deafened",
+	"doomed",
+	"drained",
+	"dying",
+	"encumbered",
+	"enfeebled",
+	"fascinated",
+	"fatigued",
+	"flat\\W?footed",
+	"fleeing",
+	"friendly",
+	"frightened",
+	"grabbed",
+	"helpful",
+	"hidden",
+	"hostile",
+	"immobilized",
+	"indifferent",
+	"invisible",
+	"observed",
+	"paralyzed",
+	"petrified",
+	"prone",
+	"quickened",
+	"restrained",
+	"sickened",
+	"slowed",
+	"stunned",
+	"stupefied",
+	"unconscious",
+	"undetected",
+	"unfriendly",
+	"unnoticed",
+	"wounded",
+	"off\\W?guard",
+];
 ConditionTag._CONDITIONS_REGEX = new RegExp(`(?<![a-z])(${ConditionTag._CONDITIONS.join("|")})( [0-9]+)?(?![a-z])`, "gi")
 
 // region with entries
@@ -448,40 +480,33 @@ FeatTag._FEATS_REGEX_NAMES = null;
 
 class TraitTag {
 	static init (traits) {
-		traits = (traits || []).map(t => t.name);
-		TraitTag._TRAITS_REGEX_EFFECT = new RegExp(` (${traits.join("|")}) (effect|trait|creature|object)`, "gi");
-		TraitTag._TRAITS_REGEX_AND = new RegExp(` (${traits.join("|")})(,? and|,? or) {@trait`, "gi");
+		traits = (traits || [])
+			.filter((t) => t.name !== "Any")
+			.map((t) => t.name.toLowerCase().replace(/([()[\]{}])/g, "\\$1"));
+		TraitTag._TRAITS_REGEX_EFFECT = new RegExp(
+			` (${traits.join("|")}) (effect|trait|creature|object|item|spell)`,
+			"gi",
+		);
+		TraitTag._TRAITS_REGEX_AND = new RegExp(`\\s(${traits.join("|")})(,? and|,? or) {@trait`, "gi");
 		if (traits.length) TraitTag._INIT = true;
 	}
 
 	static tryRun (it) {
-		return TaggerUtils.WALKER.walk(
-			it,
-			{
-				string: (str) => {
-					const ptrStack = {_: ""};
-					TaggerUtils.walkerStringHandler(
-						["@trait"],
-						ptrStack,
-						0,
-						0,
-						str,
-						{
-							fnTag: this._fnTag,
-						},
-					);
-					return ptrStack._;
-				},
+		return TaggerUtils.WALKER.walk(it, {
+			string: (str) => {
+				const ptrStack = { _: "" };
+				TaggerUtils.walkerStringHandler(["@trait"], ptrStack, 0, 0, str, {
+					fnTag: this._fnTag,
+				});
+				return ptrStack._;
 			},
-		);
+		});
 	}
 
 	static _fnTag (str) {
-		return str.replace(TraitTag._TRAITS_REGEX_EFFECT, (...m) => {
-			return ` {@trait ${m[1]}} ${m[2]}`;
-		}).replace(TraitTag._TRAITS_REGEX_AND, (...m) => {
-			return ` {@trait ${m[1]}}${m[2]} {@trait`;
-		});
+		return str
+			.replace(TraitTag._TRAITS_REGEX_EFFECT, (...m) => ` {@trait ${m[1]}} ${m[2]}`)
+			.replace(TraitTag._TRAITS_REGEX_AND, (...m) => ` {@trait ${m[1]}}${m[2]} {@trait`);
 	}
 }
 TraitTag._INIT = false;

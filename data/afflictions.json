@@ -1,6 +1,101 @@
 {
 	"disease": [
 		{
+			"name": "Ayrzul's Blight",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 33,
+			"type": "Disease",
+			"level": 13,
+			"traits": [
+				"uncommon",
+				"disease",
+				"earth",
+				"primal"
+			],
+			"entries": [
+				"Radioactive elemental energy courses through sap and blood, petrifies bark and bone, withers flesh, and mutates life. Creatures with the {@trait wood} or {@trait plant} trait treat critical successes against the disease as successes. The {@condition drained} condition caused by Ayrzul's Blight can't be healed until the disease is removed. Ayrzul's Blight presents with obvious but varying symptoms, from coughing up black dust to suddenly becoming covered in itchy patches of flaky stone.",
+				{
+					"type": "affliction",
+					"DC": 32,
+					"savingThrow": "Fortitude",
+					"onset": "1 day",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition drained||drained 1}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition drained||drained 2}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition drained||drained 3}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 4,
+							"entry": "{@condition drained||drained 4}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 5,
+							"entry": "mutation (on a failure) or death (on a critical failure)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Leechlichen",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 21,
+			"type": "Disease",
+			"level": 11,
+			"traits": [
+				"uncommon",
+				"disease"
+			],
+			"entries": [
+				"Patches of petrified lichen grow on your limbs and slowly eat away your flesh. Damage and the enfeebled condition caused by leechlichen can't be healed until the disease is removed.",
+				{
+					"type": "affliction",
+					"DC": 28,
+					"savingThrow": "Fortitude",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 3d6} void damage and {@condition enfeebled||enfeebled 1}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 3d6} void damage and {@condition enfeebled||enfeebled 2}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 3d6} void damage and {@condition enfeebled||enfeebled 2}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 4,
+							"entry": "{@damage 5d6} void damage and {@condition enfeebled||enfeebled 3}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 5,
+							"entry": "{@condition petrified}"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Rust Creep",
 			"source": "Rust",
 			"page": 19,
@@ -190,7 +285,7 @@
 						},
 						{
 							"stage": 3,
-							"entry": "As Stage 2, but the creature is {@condition sickened||sickened 3} and has incurable hunger and thirst, in addition to being {@condition fatigued} (1 day)",
+							"entry": "As Stage 2, but the creature is {@condition sickened||sickened 3} and has incurable hunger and thirst, in addition to being {@condition fatigued}",
 							"duration": "1 day"
 						}
 					]
@@ -1236,7 +1331,7 @@
 			]
 		},
 		{
-			"name": "Curse of The Rotting Heart",
+			"name": "Curse of the Rotting Heart",
 			"source": "LOIL",
 			"page": 176,
 			"type": "Curse",
@@ -1370,7 +1465,7 @@
 			]
 		},
 		{
-			"name": "Rage of The Excommunicant",
+			"name": "Rage of the Excommunicant",
 			"source": "DA",
 			"page": 163,
 			"level": 10,

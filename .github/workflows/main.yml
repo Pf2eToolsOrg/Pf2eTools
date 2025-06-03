@@ -103,7 +103,7 @@ jobs:
                 git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
                 git fetch origin "main"
                 git switch -c "main" "origin/main"
-                git commit -m "${{ github.event.release.tag_name }}"
+                git commit -m "${{ env.RELEASE_VERSION }}"
                 git push -f
 
             - name: Push Image

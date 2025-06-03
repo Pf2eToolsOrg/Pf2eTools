@@ -4112,10 +4112,11 @@ Renderer.companionfamiliar = {
 
 	getRenderedSenses (it) {
 		const renderer = Renderer.get();
-		if (!it.senses) return ""
-		return `<p class="pf2-stat pf2-stat__section"><strong>Senses&nbsp;</strong>${Object.entries(it.senses).map(([k, v]) => {
-			return v.map(s => `${renderer.render(s)}${k === "other" ? "" : ` (${k})`}`)
-		}).flat().join(", ")}</p>`
+		if (!it.senses) return "";
+		const senses = [];
+		if (it.senses.other) senses.push(...it.senses.other);
+		if (it.senses.imprecise) senses.push(...it.senses.imprecise);
+		return `<p class="pf2-stat pf2-stat__section"><strong>Senses&nbsp;</strong>${renderer.render(senses.join(", "))}</p>`
 	},
 };
 Renderer.companion = {
@@ -4132,7 +4133,7 @@ Renderer.companion = {
 		${Renderer.creature.getAttacks(companion)}
 		${Renderer.creature.getAbilityMods(companion.abilityMods)}
 		<p class="pf2-stat pf2-stat__section"><strong>Hit Points&nbsp;</strong>${companion.hp}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Skill&nbsp;</strong>${renderer.render(`{@skill ${companion.skill.toTitleCase()}}`)}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Skill&nbsp;</strong>${renderer.render(`{@skill ${companion.skill.toTitleCase()}${companion.remaster ? "|PC1" : ""}}`)}</p>
 		${Renderer.companionfamiliar.getRenderedSenses(companion)}
 		${Renderer.creature.getSpeed(companion)}
 		${companion.special ? `<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${renderer.render(companion.special)}</p>` : ""}
@@ -4189,11 +4190,11 @@ Renderer.eidolon = {
 		${Renderer.utils.getDividerDiv()}
 		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${renderer.render(eidolon.size.map(t => `{@trait ${t}}`).joinConjunct(", ", " or "))}</p>
 		${eidolon.extraStats ? eidolon.extraStats.map(es => `<p class="pf2-stat pf2-stat__section"><strong>${es.name}&nbsp;</strong>${renderer.render(es.entries)}</p>`) : ""}
-		<p class="pf2-stat pf2-stat__section"><strong>Suggested Attacks&nbsp;</strong>${renderer.render(eidolon.suggestedAttacks)}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Suggested Attacks&nbsp;</strong>${renderer.render(eidolon.suggestedAttacks.join(", "))}</p>
 		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name || ""}&nbsp;</strong>${Object.entries(s.abilityScores).map(([k, v]) => `<i>${k.toTitleCase()}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`).join("")}
 		<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>${renderer.render(eidolon.skills.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>
 		${Renderer.companionfamiliar.getRenderedSenses(eidolon)}
-		<p class="pf2-stat pf2-stat__section"><strong>Language&nbsp;</strong>${renderer.render(eidolon.languages.map(l => `{@language ${l}}`).join(", "))}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Language&nbsp;</strong>${renderer.render(eidolon.languages.join(", "))}</p>
 		${Renderer.creature.getSpeed(eidolon)}
 		${Renderer.utils.getDividerDiv()}
 		<p class="pf2-stat pf2-stat__section"><strong>Eidolon Abilities&nbsp;</strong>${eidolon.abilities.map(a => `<i>${a.type.toTitleCase()}</i> ${a.name}`).join("; ")}</p>
@@ -4380,6 +4381,7 @@ Renderer.creature = {
 	},
 
 	getAbilityMods (mods) {
+		if (!mods) return "";
 		const renderer = Renderer.get();
 		return `<p class="pf2-stat pf2-stat__section">
 			<strong>Str&nbsp;</strong>${renderer.render(`{@d20 ${mods.str}||Strength}`)}
@@ -4403,7 +4405,7 @@ Renderer.creature = {
 	},
 
 	getDefenses (creature) {
-		if (!creature.defenses) return "";
+		if (!Object.keys(creature.defenses ?? {}).length) return "";
 		const acPart = Renderer.creature.getDefenses_getACPart(creature);
 		const savingThrowPart = Renderer.creature.getDefenses_getSavingThrowPart(creature);
 		const hpParts = Renderer.creature.getDefenses_getHPParts(creature);
@@ -4491,6 +4493,7 @@ Renderer.creature = {
 	},
 
 	getSpeed (cr) {
+		if (!cr.speed) return "";
 		const renderer = Renderer.get();
 		const speeds = cr.speed.walk != null ? [`${cr.speed.walk} feet`] : [];
 		speeds.push(...Object.keys(cr.speed).filter(k => !(["abilities", "walk", "speedNote"].includes(k))).map(k => `${k} ${cr.speed[k]} feet`));
@@ -4566,7 +4569,16 @@ Renderer.creature = {
 		const renderRitual = (r) => {
 			return `{@ritual ${r.name}|${r.source || ""}}${r.notes == null && r.level == null ? "" : ` (${[Parser.getOrdinalForm(r.level)].concat(...(r.notes || [])).filter(Boolean).join(", ")})`}`;
 		};
-		return `${cr.rituals.map(rf => `<p class="pf2-stat pf2-stat__section"><strong>${rf.tradition ? `${rf.tradition.toTitleCase()} ` : ""}Rituals</strong>${rf.DC ? ` DC ${rf.DC};` : ""} ${renderer.render(rf.rituals.map(r => renderRitual(r)).join(", "))}`)}`;
+		return cr.rituals.map(
+			(rf) =>
+				`<p class="pf2-stat pf2-stat__section"><strong>${
+					rf.tradition ? `${rf.tradition.toTitleCase()} ` : ""
+				}Rituals</strong>${
+					rf.DC ? ` DC ${rf.DC};` : ""
+				} ${renderer.render(
+					rf.rituals.map((r) => renderRitual(r)).join(", "),
+				)}${rf.note ? `; ${rf.note}` : ""}`,
+		);
 	},
 
 	getRenderedAbility (ability, opts) {
@@ -4817,11 +4829,24 @@ Renderer.deity = {
 
 		// Cleric stuff
 		if ((deity.edicts || deity.anathema) && deity.font) renderStack.push(Renderer.utils.getDividerDiv());
-		if (deity.font) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(deity.font.map(f => `{@spell ${f}}`).join(" or "))}</p>`);
+		if (deity.font) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(deity.font.map(f => `{@spell ${f}|${deity.remaster ? "PC1" : "CRB"}}`).join(" or "))}</p>`);
 		if (deity.divineSanctification) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Sanctification&nbsp;</strong>${renderer.render(deity.divineSanctification.entry ?? deity.divineSanctification.sanctification.join(" or "))}</p>`);
-		if (deity.divineAbility) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(deity.divineAbility.entry ? deity.divineAbility.entry : deity.divineAbility.abilities.map(x => x.toTitleCase()).joinConjunct(", ", " or "))}</p>`);
-		if (deity.divineSkill) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(deity.divineSkill.entry ? deity.divineSkill.entry : deity.divineSkill.skills.map(s => `{@skill ${s.toTitleCase()}}`).join(", "))}</p>`);
-		if (deity.domains) renderStack.push(`<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(deity.domains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
+		if (deity.divineAbility) renderStack.push(`<p class="pf2-stat__section"><strong>Divine ${deity.remaster ? "Attribute" : "Ability"}&nbsp;</strong>${renderer.render(deity.divineAbility.entry ? deity.divineAbility.entry : deity.divineAbility.abilities.map(x => x.toTitleCase()).joinConjunct(", ", " or "))}</p>`);
+		if (deity.divineSkill) renderStack.push(`<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(deity.divineSkill.entry ? deity.divineSkill.entry : deity.divineSkill.skills.map(s => `{@skill ${s.toTitleCase()}${deity.remaster ? "|PC1" : ""}}`).join(", "))}</p>`);
+		if (deity.domains) {
+			renderStack.push(
+				`<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(
+					deity.domains
+						.map(
+							(it) =>
+								`{@filter ${it.split("|")[0]}|spells||domains=${
+									it.split("|").length === 1 ? it : `${it.split("|")[0]} (${it.split("|")[1]})`
+								}}`,
+						)
+						.join(", "),
+				)}</p>`,
+			);
+		}
 		if (deity.alternateDomains) renderStack.push(`<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(deity.alternateDomains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
 		if (deity.spells) renderStack.push(`<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(deity.spells))}</p>`);
 		if (deity.favoredWeapon) renderStack.push(`<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(deity.favoredWeapon.entry ? deity.favoredWeapon.entry : deity.favoredWeapon.weapons.map(w => `{@item ${w}}`).join(", "))}</p>`);
@@ -4837,6 +4862,7 @@ Renderer.deity = {
 
 			let notes = [];
 			if (deity.avatar.airWalk) notes.push(`{@spell air walk}`);
+			if (deity.avatar.spells) notes.push(deity.avatar.spells.map(spell => `{@spell ${spell}}`).join(", "));
 			if (deity.avatar.immune) notes.push(`immune to ${deity.avatar.immune.map(i => `{@condition ${i}}`).joinConjunct(", ", " and ")}`);
 			if (deity.avatar.ignoreTerrain) notes.push("ignore {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}");
 			if (deity.avatar.waterBreathing) notes.push("can breathe underwater");
@@ -5186,8 +5212,8 @@ Renderer.hazard = {
 Renderer.item = {
 	getRenderedString (item, opts) {
 		opts = opts || {};
-		const renderStack = [""]
-		Renderer.get().recursiveRender(item.entries, renderStack, { pf2StatFix: true })
+		const renderStack = [""];
+		Renderer.get().recursiveRender(item.entries ?? [], renderStack, { pf2StatFix: true });
 		return `${Renderer.utils.getExcludedDiv(item, "item", UrlUtil.PG_ITEMS)}
 			${Renderer.utils.getNameDiv(item, { page: UrlUtil.PG_ITEMS, ...opts })}
 			${Renderer.utils.getDividerDiv()}
@@ -5200,7 +5226,7 @@ Renderer.item = {
 	item.footers
 		? item.footers.map((footer) => {
 			const renderer = Renderer.get();
-			return `<p class="pf2-stat pf2-stat__section"><strong>${footer.name}&nbsp;</strong>${renderer.render(footer.entries)}`
+			return `<p class="pf2-stat pf2-stat__section"><strong>${footer.name}&nbsp;</strong>${renderer.render(footer.entries ?? [])}`
 		}).join("")
 		: ""
 }
@@ -5235,7 +5261,7 @@ Renderer.item = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			if (item.usage != null) renderStack.push(`<strong>Usage&nbsp;</strong>${renderer.render(item.usage)}`);
 			if (item.usage != null && item.bulk != null) renderStack.push("; ");
-			if (item.bulk != null) renderStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}`);
+			if (item.bulk != null) renderStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}${item.bulkNote ? ` (${item.bulkNote})` : ""}`);
 			renderStack.push(`</p>`);
 		}
 		if (item.duration) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Duration&nbsp;</strong>${renderer.render(Parser.durationToFull(item.duration))}</p>`);
@@ -5249,8 +5275,12 @@ Renderer.item = {
 			}
 			const activateTextIndex = renderStack.length; // This index is referenced to see if anything is appended after the action symbol
 			if (item.activate.components != null) {
-				const components = item.activate.components.map(c => renderer.render(c));
-				renderStack.push(components.join(", "));
+				const components = item.activate.components.map(c => renderer.render(c)).join(", ");
+				if (item.remaster) {
+					renderStack.push(`(${components})`);
+				} else {
+					renderStack.push(components);
+				}
 			}
 			if (item.activate.frequency != null) {
 				renderStack.push(`${renderStack[activateTextIndex] ? "; " : ""}<strong>Frequency&nbsp;</strong>${renderer.render(Parser.freqToFullEntry(item.activate.frequency))}`);
@@ -5280,7 +5310,7 @@ Renderer.item = {
 
 		// General Item Line
 		// If weaponData and !comboWeaponData, use weaponData group. If not, use armorData group. If not, check if it's a Shield, then make it a Shield. If not, use the item.group.
-		const group = item.weaponData && !item.comboWeaponData ? item.weaponData.group : item.armorData ? item.armorData.group : item.category === "Shield" ? "Shield" : item.group;
+		const group = item.weaponData && !item.comboWeaponData ? item.weaponData.group : item.armorData ? item.armorData.group : item.category === "Shield" ? `Shield${item.remaster ? "|PC1" : ""}` : item.group;
 		if (item.category || group) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			if (item.category) {
@@ -5415,7 +5445,7 @@ Renderer.item = {
 			let miniStack = [];
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			if (item.usage) miniStack.push(`<strong>Usage&nbsp;</strong>${item.usage}`);
-			if (item.bulk) miniStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}`);
+			if (item.bulk) miniStack.push(`<strong>Bulk&nbsp;</strong>${item.bulk}${item.bulkNote ? ` (${item.bulkNote})` : ""}`);
 			if (siegeData.space) miniStack.push(`<strong>Space&nbsp;</strong>${Object.entries(siegeData.space).map(([k, v]) => `${v.number} ${v.unit} ${k}`).join(", ")}`);
 			renderStack.push(miniStack.join("; "));
 			renderStack.push(`</p>`);
@@ -5467,7 +5497,7 @@ Renderer.item = {
 			<strong>AC Bonus&nbsp;</strong>${Parser.numToBonus(armorData.ac)};
 			<strong>Dex Cap&nbsp;</strong>${Parser.numToBonus(armorData.dexCap)}
 			</p><p class="pf2-stat pf2-stat__section">
-			<strong>Strength&nbsp;</strong>${armorData.str ? `${armorData.str}` : "\u2014"};
+			<strong>Strength&nbsp;</strong>${armorData.str ? (item.remaster ? `+${(armorData.str - 10) / 2}` : armorData.str) : "\u2014"};
 			<strong>Check Penalty&nbsp;</strong>${armorData.checkPen ? `–${armorData.checkPen}` : "\u2014"};
 			<strong>Speed Penalty&nbsp;</strong>${armorData.speedPen ? `–${armorData.speedPen} ft.` : "\u2014"}
 			</p>`;
@@ -5517,10 +5547,10 @@ Renderer.item = {
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
 			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))})`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
-			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}`);
+			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}${v.bulkNote ? ` (${v.bulkNote})` : ""}`);
 			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
 			renderStack.push(`</p>`);
-			if (v.entries != null && v.entries.length) {
+			if (v.entries && v.entries.length) {
 				renderer.recursiveRender(v.entries, renderStack, { prefix: "<p class='pf2-stat pf2-stat__section--wide'>", suffix: "</p>" });
 			}
 			if (v.shieldData != null) renderStack.push(`<p class='pf2-stat pf2-stat__section--wide'>The shield has Hardness ${v.shieldData.hardness}, HP ${v.shieldData.hp}, and BT ${v.shieldData.bt}.</p>`);
@@ -6110,9 +6140,10 @@ Renderer.spell = {
 
 		const level = ` ${sp.level}`;
 		const type = sp.traits.includes("cantrip") ? "CANTRIP" : sp.focus ? "FOCUS" : "SPELL";
+		if (sp.remaster) sp.activity = sp.cast;
 
 		return `${Renderer.utils.getExcludedDiv(sp, "spell", UrlUtil.PG_SPELLS)}
-		${Renderer.utils.getNameDiv(sp, { page: UrlUtil.PG_SPELLS, type: type, level: level, ...opts })}
+		${Renderer.utils.getNameDiv(sp, { page: UrlUtil.PG_SPELLS, type: type, level: level, activity: sp.remaster, ...opts })}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(sp.traits)}
 		${Renderer.spell.getSubHead(sp)}
@@ -6127,10 +6158,10 @@ Renderer.spell = {
 
 		const componentsRender = sp.components && sp.components.length === 1 ? sp.components[0].map(it => Parser.COMPONENTS_TO_FULL[it]).join(", ") : "";
 
-		let castPart = ``;
-		if (sp.cost != null) castPart += `; <strong>Cost&nbsp;</strong>${renderer.render(sp.cost)}`;
-		if (sp.trigger != null) castPart += `; <strong>Trigger&nbsp;</strong>${renderer.render(sp.trigger)}`;
-		if (sp.requirements != null) castPart += `; <strong>Requirements&nbsp;</strong>${renderer.render(sp.requirements)}`;
+		let castParts = [];
+		if (sp.cost != null) castParts.push(`<strong>Cost&nbsp;</strong>${renderer.render(sp.cost)}`);
+		if (sp.trigger != null) castParts.push(`<strong>Trigger&nbsp;</strong>${renderer.render(sp.trigger)}`);
+		if (sp.requirements != null) castParts.push(`<strong>Requirements&nbsp;</strong>${renderer.render(sp.requirements)}`);
 
 		const targetingParts = [];
 		if (sp.range) targetingParts.push(`<strong>Range&nbsp;</strong>${renderer.render(Parser.rangeToFull(sp.range))}`);
@@ -6138,14 +6169,15 @@ Renderer.spell = {
 		if (sp.targets != null) targetingParts.push(`<strong>Targets&nbsp;</strong>${renderer.render(sp.targets)}`);
 
 		const stDurationParts = [];
-		if (sp.savingThrow != null && sp.savingThrow.hidden !== true) stDurationParts.push(`<strong>Saving Throw&nbsp;</strong>${sp.savingThrow.basic ? "basic " : ""}${sp.savingThrow.type.map(t => Parser.savingThrowAbvToFull(t)).join(" or ")}`);
+		if (sp.savingThrow != null && sp.savingThrow.hidden !== true) stDurationParts.push(`<strong>${sp.remaster ? "Defense" : "Saving Throw"}&nbsp;</strong>${sp.savingThrow.entry ?? `${sp.savingThrow.basic ? "basic " : ""}${sp.savingThrow.type.map(t => Parser.savingThrowAbvToFull(t)).join(" or ")}`}`);
 		const duration = Parser.durationToFull(sp.duration);
 		if (sp.duration) stDurationParts.push(`<strong>Duration&nbsp;</strong>${renderer.render(duration)}`);
 
 		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${renderer.render(sp.traditions.map(it => `{@trait ${it}}`).join(", ").toLowerCase())}</p>` : ""}
-		${sp.domains ? `<p class="pf2-stat pf2-stat__section"><strong>Domain${sp.domains.length > 1 ? "s" : ""}</strong> ${renderer.render(sp.domains.map(it => `{@filter ${it.toLowerCase()}|deities||domain=${it.replace("(Apocryphal)", "")}}`).join(", "))}` : ""}
+		${sp.domains ? `<p class="pf2-stat pf2-stat__section"><strong>Domain${sp.domains.length > 1 ? "s" : ""}</strong> ${renderer.render(sp.domains.map(it => `{@filter ${it.split("|")[0].toLowerCase()}|deities||domains=${it.split("|").length === 1 ? it : `${it.split("|")[0]} (${it.split("|")[1]})`}}`).join(", "))}</p>` : ""}
 		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[0]}</strong> ${renderer.render(sp.subclass[k].map(it => `{@class ${k.split("|")[1]}|${k.split("|")[2] ?? "CRB"}|${it.split("|")[0].toLowerCase()}|${it}}`).join(", "))}</p>`) : ""}
-		<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && componentsRender ? `(${componentsRender})` : componentsRender}${castPart}</p>
+		${sp.groupings ? sp.groupings.map(grouping => `<p class="pf2-stat pf2-stat__section"><strong>${grouping.name}&nbsp;</strong>${renderer.render(grouping.taxons.join(","))}</p>`).join("; ") : ""}
+		${sp.remaster && sp.cast.unit.endsWith("action") ? `<p class="pf2-stat pf2-stat__section">${castParts.join("; ")}</p>` : `<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && componentsRender ? `(${componentsRender})` : componentsRender}${castParts.length ? `; ${castParts.join("; ")}` : ""}</p>`}
 		${targetingParts.length ? `<p class="pf2-stat pf2-stat__section">${targetingParts.join("; ")}</p>` : ""}
 		${stDurationParts.length ? `<p class="pf2-stat pf2-stat__section">${stDurationParts.join("; ")}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}`;

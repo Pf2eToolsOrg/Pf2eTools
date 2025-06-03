@@ -199,6 +199,7 @@ class ConverterUi extends BaseComponent {
 				const opts = {
 					source: this._state.source,
 					initialPage: this._state.page,
+					remaster: this._state.remaster,
 					avgLineLength: 58,
 				};
 				const parsed = this._converter.parse(this.inText, opts);
@@ -261,6 +262,7 @@ class ConverterUi extends BaseComponent {
 			const pod = this.getPod();
 			this._renderSettingsSourcePart(pod, $wrpSourcePart);
 			this._renderSettingsPagePart(pod, $wrpSourcePart);
+			this._renderSettingsRemasterPart(pod, $wrpSourcePart);
 			ConverterUiUtil.renderSideMenuDivider($modalInner);
 			this._renderSettingsSelectMode(pod, $wrpSourcePart);
 
@@ -271,6 +273,18 @@ class ConverterUi extends BaseComponent {
 	_renderSettingsPagePart (parent, $wrp) {
 		const $iptPage = ComponentUiUtil.$getIptInt(this, "page", 0, {html: `<input class="form-control input-sm text-right" style="max-width: 9rem;">`});
 		$$`<div class="w-100 mb-2 split-v-center"><div class="pr-2 help" title="Determines what's the default page of the content you're converting. If left blank, assumes 0.\nThis has the same effect as putting the page number in front of the statblock. Any subsequent statblock after that will use that page number.">Initial Page</div>${$iptPage}</div>`.appendTo($wrp);
+	}
+
+	_renderSettingsRemasterPart (parent, $wrp) {
+		const $iptRemaster = ComponentUiUtil.$getBtnBool(this, "remaster", {
+			activeTitle: "Currently configured for remaster (Player Core) rules. Click to return to legacy (Core Rulebook) rules.",
+			activeText: "Remaster",
+			inactiveTitle: "Currently configured for legacy (Core Rulebook) rules. Click to return to remaster (Player Core) rules.",
+			inactiveText: "Legacy",
+		});
+		$$`<div class="w-100 mb-2 split-v-center"><div class="pr-2"><span class="help" title="Configures the text converter to prefer remaster content (sometimes).">Version</span> <span class="ve-muted">(experimental)</span></div>${$iptRemaster}</div>`.appendTo(
+			$wrp,
+		);
 	}
 
 	_renderSettingsSourcePart (parent, $wrp) {

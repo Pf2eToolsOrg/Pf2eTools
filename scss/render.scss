@@ -2,13 +2,14 @@
 Renderer
 */
 
-@import 'vars';
+@use "sass:color";
+@use 'vars';
 
 $rgb-inset-border: #656565;
 
 @mixin rd__h--large() {
-	color: $rgb-name-red;
-	font-family: 'Andada', serif;
+	color: vars.$rgb-name-red;
+	font-family: Andada, serif;
 	font-variant: small-caps;
 	font-weight: 500;
 	display: flex;
@@ -84,9 +85,8 @@ $rgb-inset-border: #656565;
 		&compact-stats {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: space-between;
+			place-content: flex-start space-between;
 			align-items: flex-start;
-			align-content: flex-start;
 		}
 
 		&title-link {
@@ -159,7 +159,7 @@ $rgb-inset-border: #656565;
 		}
 
 		&image-title-inner {
-			border-bottom: 1px solid $rgb-border-grey;
+			border-bottom: 1px solid vars.$rgb-border-grey;
 			display: inline;
 		}
 
@@ -251,7 +251,7 @@ $rgb-inset-border: #656565;
 		// section headers
 		// statsBlockSectionHead
 		&h--0 {
-			@include rd__h--large();
+			@include rd__h--large;
 
 			font-size: 1.8em;
 		}
@@ -259,17 +259,17 @@ $rgb-inset-border: #656565;
 		// underline headers
 		// statsBlockHead
 		&h--1 {
-			@include rd__h--large();
+			@include rd__h--large;
 
 			font-size: 1.5em;
-			border-bottom: 1px solid $rgb-name-red;
+			border-bottom: 1px solid vars.$rgb-name-red;
 			margin: 0 0 0.2em;
 		}
 
 		// basic headers
 		// statsBlockSubHead
 		&h--2 {
-			@include rd__h--large();
+			@include rd__h--large;
 
 			font-size: 1.4em;
 		}
@@ -324,7 +324,7 @@ $rgb-inset-border: #656565;
 		&b-inset {
 			margin: 7px 15px;
 			padding: 5px 10px;
-			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+			box-shadow: 0 0 4px 0 rgb(152 142 124);
 			border: 1px solid $rgb-inset-border;
 			border-top: 2px solid $rgb-inset-border;
 			border-bottom: 2px solid $rgb-inset-border;
@@ -335,7 +335,7 @@ $rgb-inset-border: #656565;
 			}
 
 			&--readaloud {
-				box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+				box-shadow: 0 0 4px 0 rgb(152 142 124);
 				border: 1px solid $rgb-inset-border;
 				border-left: 2px solid $rgb-inset-border;
 				border-right: 2px solid $rgb-inset-border;
@@ -348,8 +348,8 @@ $rgb-inset-border: #656565;
 		}
 
 		&b-data {
-			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
-			background-color: rgba(156, 150, 120, 0.1);
+			box-shadow: 0 0 4px 0 rgb(152 142 124);
+			background-color: rgb(156 150 120 / 10%);
 			margin: 0.3em;
 			padding: 0.3em;
 			clear: both;
@@ -358,13 +358,13 @@ $rgb-inset-border: #656565;
 		&data-embed {
 			&-header {
 				cursor: pointer;
-				font-family: 'Andada', serif;
+				font-family: Andada, serif;
 				font-variant: small-caps;
 				text-transform: uppercase;
 				font-weight: bold;
 
 				&:hover {
-					background: rgba(100, 100, 100, 0.08);
+					background: rgb(100 100 100 / 8%);
 				}
 			}
 
@@ -465,7 +465,7 @@ $rgb-inset-border: #656565;
 		&b-flow {
 			margin: 0 15px;
 			padding: 5px 10px;
-			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+			box-shadow: 0 0 4px 0 rgb(152 142 124);
 			border: 1px solid $rgb-inset-border;
 			border-top: 2px solid $rgb-inset-border;
 			border-bottom: 2px solid $rgb-inset-border;
@@ -477,9 +477,9 @@ $rgb-inset-border: #656565;
 		}
 
 		&stats-name-page {
-			font-family: 'Convergence', Arial, sans-serif;
+			font-family: Convergence, Arial, sans-serif;
 			font-size: 12px;
-			color: $rgb-off-black;
+			color: vars.$rgb-off-black;
 			font-weight: 100;
 		}
 
@@ -488,7 +488,7 @@ $rgb-inset-border: #656565;
 		}
 
 		&highlight {
-			background-color: $rgb-bg-highlight;
+			background-color: vars.$rgb-bg-highlight;
 		}
 	}
 
@@ -517,8 +517,8 @@ td > .rd__b:last-child {
 	.rd__h--0,
 	.rd__h--1,
 	.rd__h--2 {
-		color: $rgb-subclass;
-		border-bottom-color: $rgb-subclass;
+		color: vars.$rgb-subclass;
+		border-bottom-color: vars.$rgb-subclass;
 	}
 }
 
@@ -526,8 +526,8 @@ td > .rd__b:last-child {
 	.rd__h--0,
 	.rd__h--1,
 	.rd__h--2 {
-		color: $rgb-subclass-ua;
-		border-bottom-color: $rgb-subclass-ua;
+		color: vars.$rgb-subclass-ua;
+		border-bottom-color: vars.$rgb-subclass-ua;
 	}
 }
 
@@ -535,8 +535,8 @@ td > .rd__b:last-child {
 	.rd__h--0,
 	.rd__h--1,
 	.rd__h--2 {
-		color: $rgb-class-ua;
-		border-bottom-color: $rgb-class-ua;
+		color: vars.$rgb-class-ua;
+		border-bottom-color: vars.$rgb-class-ua;
 	}
 }
 
@@ -544,8 +544,8 @@ td > .rd__b:last-child {
 	.rd__h--0,
 	.rd__h--1,
 	.rd__h--2 {
-		color: $rgb-class-brew;
-		border-bottom-color: $rgb-class-brew;
+		color: vars.$rgb-class-brew;
+		border-bottom-color: vars.$rgb-class-brew;
 	}
 }
 // endregion

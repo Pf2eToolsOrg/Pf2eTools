@@ -105,6 +105,7 @@ PropOrder._TABLE = [
 	"alias",
 	"id",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -130,6 +131,7 @@ PropOrder._TABLE = [
 PropOrder._ANCESTRY = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -158,6 +160,7 @@ PropOrder._ANCESTRY = [
 PropOrder._VE_HERITAGE = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 	"versatile",
@@ -172,6 +175,7 @@ PropOrder._VE_HERITAGE = [
 PropOrder._BACKGROUND = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -190,6 +194,7 @@ PropOrder._BACKGROUND_FLUFF = [
 PropOrder._CLASS = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -212,6 +217,7 @@ PropOrder._CLASS = [
 PropOrder._CLASS_FEATURE = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"className",
 	"classSource",
@@ -224,6 +230,7 @@ PropOrder._CLASS_FEATURE = [
 PropOrder._SUBCLASS_FEATURE = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"className",
 	"classSource",
@@ -236,6 +243,7 @@ PropOrder._SUBCLASS_FEATURE = [
 PropOrder._ARCHETYPE = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -250,6 +258,7 @@ PropOrder._ARCHETYPE = [
 PropOrder._FEAT = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"add_hash",
 	"otherSources",
@@ -274,6 +283,7 @@ PropOrder._FEAT = [
 PropOrder._COMPANION = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -304,6 +314,7 @@ PropOrder._COMPANION = [
 PropOrder._COMPANION_ABILITY = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"tier",
 	"traits",
@@ -312,6 +323,7 @@ PropOrder._COMPANION_ABILITY = [
 PropOrder._FAMILIAR = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -327,6 +339,7 @@ PropOrder._FAMILIAR = [
 PropOrder._FAMILIAR_ABILITY = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"type",
 	"entries",
@@ -335,6 +348,7 @@ PropOrder._EIDOLON = [
 	"name",
 	"type",
 	"source",
+	"remaster",
 	"page",
 	"fluff",
 	"tradition",
@@ -353,6 +367,7 @@ PropOrder._EIDOLON = [
 PropOrder._HAZARD = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -374,6 +389,7 @@ PropOrder._ACTION = [
 	"name",
 	"alias",
 	"source",
+	"remaster",
 	"page",
 	"add_hash",
 	"otherSources",
@@ -399,6 +415,7 @@ PropOrder._CREATURE = [
 	"hasImages",
 
 	"source",
+	"remaster",
 	"page",
 	"description",
 	"foundIn",
@@ -408,6 +425,7 @@ PropOrder._CREATURE = [
 		order: [
 			"name",
 			"source",
+			"remaster",
 			"creatureAdjustment",
 			new PropOrder._ObjectKey("_mod", {
 				fnGetOrder: () => PropOrder._CREATURE__COPY_MOD,
@@ -476,12 +494,14 @@ PropOrder._CREATURE_FLUFF = [
 	"altName",
 
 	"source",
+	"remaster",
 	"page",
 
 	new PropOrder._ObjectKey("_copy", {
 		order: [
 			"name",
 			"source",
+			"remaster",
 			new PropOrder._ObjectKey("_mod", {
 				fnGetOrder: () => PropOrder._CREATURE_FLUFF__COPY_MOD,
 			}),
@@ -500,6 +520,7 @@ PropOrder._CREATURE_FLUFF__COPY_MOD = [
 PropOrder._CONDITION = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -509,6 +530,7 @@ PropOrder._CONDITION = [
 PropOrder._ITEM = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"add_hash",
 	"otherSources",
@@ -574,6 +596,7 @@ PropOrder._ITEM = [
 PropOrder._ITEM_FLUFF = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 
 	"_copy",
@@ -586,6 +609,7 @@ PropOrder._SPELL = [
 	"alias",
 
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -622,6 +646,7 @@ PropOrder._SPELL = [
 PropOrder._AFFLICTION = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -635,6 +660,7 @@ PropOrder._AFFLICTION = [
 PropOrder._ABILITY = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"add_hash",
 	"otherSources",
@@ -652,6 +678,7 @@ PropOrder._DEITY = [
 	"name",
 	"alias",
 	"source",
+	"remaster",
 	"page",
 	"hasLore",
 	"category",
@@ -698,6 +725,7 @@ PropOrder._DEITY = [
 PropOrder._DEITY_FLUFF = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 
 	"_copy",
@@ -708,6 +736,7 @@ PropOrder._DEITY_FLUFF = [
 PropOrder._LANGUAGE = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -721,6 +750,7 @@ PropOrder._LANGUAGE = [
 PropOrder._PLACE = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -738,6 +768,7 @@ PropOrder._PLACE = [
 PropOrder._RITUAL = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -760,6 +791,7 @@ PropOrder._RITUAL = [
 PropOrder._VEHICLE = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -783,6 +815,7 @@ PropOrder._TRAIT = [
 	"name",
 	"alias",
 	"source",
+	"remaster",
 	"page",
 	"otherSources",
 
@@ -796,6 +829,7 @@ PropOrder._ADVENTURE = [
 	"name",
 	"id",
 	"source",
+	"remaster",
 	"coverUrl",
 	"published",
 	"storyline",
@@ -807,6 +841,7 @@ PropOrder._BOOK = [
 	"name",
 	"id",
 	"source",
+	"remaster",
 	"group",
 	"coverUrl",
 	"published",
@@ -816,6 +851,7 @@ PropOrder._BOOK = [
 PropOrder._ORGANIZATION = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 
 	"traits",
@@ -836,6 +872,7 @@ PropOrder._ORGANIZATION = [
 PropOrder._ORGANIZATION_FLUFF = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 
 	"entries",
@@ -845,6 +882,7 @@ PropOrder._CREATURE_TEMPLATE = [
 	"type",
 	"hasLore",
 	"source",
+	"remaster",
 	"page",
 
 	"entries",
@@ -854,6 +892,7 @@ PropOrder._CREATURE_TEMPLATE = [
 PropOrder._CREATURE_TEMPLATE_FLUFF = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 
 	"_copy",
@@ -863,6 +902,7 @@ PropOrder._CREATURE_TEMPLATE_FLUFF = [
 PropOrder._DOMAIN = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 
 	"entries",
@@ -870,6 +910,7 @@ PropOrder._DOMAIN = [
 PropOrder._EVENT = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 
 	"level",
@@ -881,6 +922,7 @@ PropOrder._GROUP = [
 	"name",
 	"type",
 	"source",
+	"remaster",
 	"page",
 
 	"specialization",
@@ -889,6 +931,7 @@ PropOrder._OPTIONAL_FEATURE = [
 	"name",
 	"add_hash",
 	"source",
+	"remaster",
 	"page",
 
 	"type",
@@ -900,6 +943,7 @@ PropOrder._RELIC_GIFT = [
 	"name",
 	"add_hash",
 	"source",
+	"remaster",
 	"page",
 
 	"tier",
@@ -913,6 +957,7 @@ PropOrder._RELIC_GIFT = [
 PropOrder._SKILL = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 
 	"entries",
@@ -929,10 +974,12 @@ PropOrder._SOURCE = [
 	"entries",
 	"vanilla",
 	"defaultSource",
+	"license",
 ];
 PropOrder._VARIANTRULE = [
 	"name",
 	"source",
+	"remaster",
 	"page",
 
 	"category",

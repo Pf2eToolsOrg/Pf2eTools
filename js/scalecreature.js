@@ -614,14 +614,16 @@ class ScaleCreature {
 		if (creature.attacks) {
 			creature.attacks.forEach(a => {
 				a.attack += opts.flatAddProf;
-				a.damage = a.damage.replace(/(\d+d\d+)([+-]?\d*)/, (formula, formulaNoMod, mod) => {
-					if (!mod) return `${formula}${Parser.numToBonus(opts.flatAddDamage)}`;
-					else {
-						const newMod = Number(mod) + opts.flatAddDamage;
-						if (newMod === 0) return `${formulaNoMod}`;
-						else return `${formulaNoMod}${Parser.numToBonus(newMod)}`;
-					}
-				});
+				if (a.damage) {
+					a.damage = a.damage.replace(/(\d+d\d+)([+-]?\d*)/, (formula, formulaNoMod, mod) => {
+						if (!mod) return `${formula}${Parser.numToBonus(opts.flatAddDamage)}`;
+						else {
+							const newMod = Number(mod) + opts.flatAddDamage;
+							if (newMod === 0) return `${formulaNoMod}`;
+							else return `${formulaNoMod}${Parser.numToBonus(newMod)}`;
+						}
+					});
+				}
 			});
 		}
 		const adjustAbility = (ab) => {

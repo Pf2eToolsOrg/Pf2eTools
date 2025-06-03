@@ -40,6 +40,7 @@ class PageFilterBackgrounds extends PageFilter {
 				"Grants Sense",
 				"Grants Situational Benefit",
 				"Has Drawback",
+				"GM Influence",
 			],
 		});
 	}
@@ -65,6 +66,7 @@ class PageFilterBackgrounds extends PageFilter {
 				case "sense": return "Grants Sense";
 				case "situationalBenefit": return "Grants Situational Benefit";
 				case "drawback": return "Has Drawback";
+				case "GMInfluence": return "GM Influence";
 				default: return "FILTER ERROR";
 			}
 		});

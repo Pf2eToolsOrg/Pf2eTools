@@ -203,7 +203,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 70,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
 				"air",
@@ -490,7 +489,7 @@
 				"unit": "minute"
 			},
 			"entries": [
-				"A dense lightning cloud descends to fill the target's space, then fires a jolt of revitalizing lightning into the target. If the target is a corpse that died within the last round, the creature comes back to life with 0 Hit Points, and {@trait any} effects and conditions it had when it died, with the exception of {@condition dying}, and its {@condition wounded} condition increases by 1. The creature's initiative is right before yours.",
+				"A dense lightning cloud descends to fill the target's space, then fires a jolt of revitalizing lightning into the target. If the target is a corpse that died within the last round, the creature comes back to life with 0 Hit Points, and any effects and conditions it had when it died, with the exception of {@condition dying}, and its {@condition wounded} condition increases by 1. The creature's initiative is right before yours.",
 				"Regardless of whether the creature came back to life or was already alive, it regains {@dice 8d8} Hit Points, and the bolt wakes it up if it was {@condition unconscious}. For the duration of the spell, the target is supercharged. It becomes {@condition quickened} and can use the extra action to {@action Stand}, {@action Stride}, {@action Strike}, or {@action Fly} (if it has a fly Speed). In addition, it can cast 5th-rank thunderstrike as an innate spell at will, using your spell DC.",
 				"The cloud that covered the creature remains until the end of the target's next turn. Any creature in the cloud is {@condition hidden}, and anything outside the cloud is {@condition hidden} to any creature inside the cloud."
 			],
@@ -507,7 +506,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 71,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
 				"air",
@@ -1065,7 +1063,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 94,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
 				"cantrip",
@@ -1093,7 +1090,8 @@
 				"basic": true
 			},
 			"duration": {
-				"unit": "turn"
+				"unit": "turn",
+				"entry": "until the start of your next turn"
 			},
 			"entries": [
 				"You summon a layer of clear glass to keep you from harm. This cantrip functions as the {@spell shield} spell, except it has Hardness 2 and 4 Hit Points. If this shield breaks, provided the breaker is within 5 feet, they must succeed at a basic Reflex save or take {@damage 1d4} piercing damage from the glass shards."
@@ -1505,7 +1503,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 97,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
 				"cantrip",
@@ -1716,7 +1713,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 97,
-			"type": "Focus",
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -1744,14 +1740,14 @@
 			"targets": "the triggering creature",
 			"entries": [
 				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target's check."
-			]
+			],
+			"focus": true
 		},
 		{
 			"name": "Tireless Worker",
 			"source": "RoE",
 			"remaster": true,
 			"page": 97,
-			"type": "Focus",
 			"level": 4,
 			"traits": [
 				"concentrate",
@@ -1784,7 +1780,8 @@
 			"targets": "the triggering creature",
 			"entries": [
 				"You suppress your choice of one of the following conditions that's affecting the target: {@condition clumsy}, {@condition encumbered}, {@condition enfeebled}, or {@condition fatigued}. If you don't remove the effect that caused the condition, the condition returns after the spell's duration expires."
-			]
+			],
+			"focus": true
 		},
 		{
 			"name": "Blazing Armory",
@@ -2031,7 +2028,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 119,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
 				"cantrip",
@@ -2373,7 +2369,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 120,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
 				"cantrip",
@@ -2916,7 +2911,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 142,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
 				"cantrip",
@@ -3259,7 +3253,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 144,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
 				"attack",
@@ -3543,7 +3536,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 145,
-			"type": "Focus",
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -3577,14 +3569,14 @@
 						"The extra damage increases by {@damage 1d4}."
 					]
 				}
-			}
+			},
+			"focus": true
 		},
 		{
 			"name": "Repel Metal",
 			"source": "RoE",
 			"remaster": true,
 			"page": 145,
-			"type": "Focus",
 			"level": 4,
 			"traits": [
 				"uncommon",
@@ -3615,7 +3607,8 @@
 			"targets": "the creature targeted by the triggering {@action Strike}",
 			"entries": [
 				"You call forth a repelling field. The target gains a +2 circumstance bonus to AC against the triggering attack. If the attack then misses, you direct the {@action Strike} back at the attacker, who compares the attack roll to their own AC. The target then becomes immune to this spell for 10 minutes."
-			]
+			],
+			"focus": true
 		},
 		{
 			"name": "Brine Dragon Bile",
@@ -3762,7 +3755,7 @@
 							"The target is {@condition clumsy||clumsy 2}. Each round at the beginning of its turn, the target becomes {@condition clumsy||clumsy 1} or increases its {@condition clumsy} condition by 1, to a maximum of 4. The target can {@action Interact} to scrape the coral growths from its body, decreasing the {@condition clumsy} condition to 0 and ending the spell. If the target's {@condition clumsy} condition caused by coral scourge reaches 4, the growths spread to cover the target's entire body, and the target becomes {@condition paralyzed}."
 						],
 						"Critical Failure": [
-							"As failure, but when the target Interacts to scrape the coral growths from its body, it reduces its {@condition clumsy} condition by 1, instead of decreasing it to 0, and decreasing the {@condition clumsy} condition to 0 doesn't end the spell."
+							"As failure, but when the target {@action Interact||Interacts} to scrape the coral growths from its body, it reduces its {@condition clumsy} condition by 1, instead of decreasing it to 0, and decreasing the {@condition clumsy} condition to 0 doesn't end the spell."
 						]
 					}
 				}
@@ -3864,11 +3857,10 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 173,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
-				"concentrate",
 				"cantrip",
+				"concentrate",
 				"manipulate",
 				"water"
 			],
@@ -4249,9 +4241,9 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 174,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
+				"cantrip",
 				"manipulate",
 				"water"
 			],
@@ -4959,9 +4951,9 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 197,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
+				"cantrip",
 				"wood"
 			],
 			"traditions": [
@@ -5034,7 +5026,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 198,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
 				"cantrip",
@@ -5074,7 +5065,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 196,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
 				"cantrip",
@@ -5330,7 +5320,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 199,
-			"type": "Focus",
 			"level": 1,
 			"traits": [
 				"uncommon",
@@ -5372,14 +5361,14 @@
 						"The weapon is a +3 greater striking weapon."
 					]
 				}
-			}
+			},
+			"focus": true
 		},
 		{
 			"name": "Wood Walk",
 			"source": "RoE",
 			"remaster": true,
 			"page": 199,
-			"type": "Focus",
 			"level": 4,
 			"traits": [
 				"uncommon",
@@ -5413,7 +5402,8 @@
 						"The duration of this spell becomes 10 minutes. You no longer need to {@action Sustain a spell||Sustain the spell} to extend its duration, but you can {@action Sustain a spell||Sustain} it to move as described."
 					]
 				}
-			}
+			},
+			"focus": true
 		},
 		{
 			"name": "Elemental Breath",
@@ -5474,7 +5464,6 @@
 			"source": "RoE",
 			"remaster": true,
 			"page": 222,
-			"type": "Cantrip",
 			"level": 1,
 			"traits": [
 				"uncommon",

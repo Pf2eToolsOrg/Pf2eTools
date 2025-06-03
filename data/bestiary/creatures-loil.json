@@ -273,7 +273,7 @@
 					"range": "Melee",
 					"traits": [
 						"magical",
-						"two-handed d12"
+						"two-handed <d12>"
 					],
 					"name": "bastard sword",
 					"attack": 39,
@@ -283,7 +283,7 @@
 					"range": "Ranged",
 					"traits": [
 						"magical",
-						"range 120 feet"
+						"range <120 feet>"
 					],
 					"name": "eye beam",
 					"attack": 36,
@@ -394,7 +394,10 @@
 			},
 			"defenses": {
 				"ac": {
-					"std": null
+					"std": 46,
+					"notes": [
+						"all-around vision"
+					]
 				},
 				"savingThrows": {
 					"fort": {
@@ -448,7 +451,7 @@
 				{
 					"range": "Melee",
 					"traits": [
-						"reach 15 feet"
+						"reach <15 feet>"
 					],
 					"name": "jaws",
 					"attack": 39,
@@ -458,7 +461,7 @@
 					"range": "Melee",
 					"traits": [
 						"agile",
-						"reach 15 feet"
+						"reach <15 feet>"
 					],
 					"name": "fin",
 					"attack": 39,
@@ -467,16 +470,16 @@
 				{
 					"range": "Melee",
 					"traits": [
-						"reach 30 feet"
+						"reach <30 feet>"
 					],
 					"name": "tail",
 					"attack": 39,
-					"damage": "{@damage 4d10+18} slashing plus {@damage 2d6} negative and"
+					"damage": "{@damage 4d10+18} slashing plus {@damage 2d6} negative and {@ability Improved Knockdown}"
 				},
 				{
 					"range": "Ranged",
 					"traits": [
-						"range 150 feet"
+						"range <150 feet>"
 					],
 					"name": "eye beam",
 					"attack": 37,
@@ -523,7 +526,7 @@
 							"evocation"
 						],
 						"entries": [
-							"30 feet. {@damage 5d6} cold damage ({@dc 41} basic Reflex save). On a failure, the creature takes a \u201315-foot status penalty to its Speeds for 1 round."
+							"30 feet. {@damage 5d6} cold damage ({@dc 41} basic Reflex save). On a failure, the creature takes a \u2212315-foot status penalty to its Speeds for 1 round."
 						]
 					},
 					{
@@ -534,17 +537,11 @@
 						},
 						"trigger": "A creature moves from beyond the reach of the benthic reaver's tail to within the reach of the benthic reaver's tail",
 						"entries": [
-							"The benthic reaver makes a tail {@action Strike} against the triggering creature and can use Improved Knockdown if the attack hits, even if it isn't the benthic reaver's turn. If the benthic reaver knocks the target {@condition prone}, it disrupts the triggering move action."
+							"The benthic reaver makes a tail {@action Strike} against the triggering creature and can use {@ability Improved Knockdown} if the attack hits, even if it isn't the benthic reaver's turn. If the benthic reaver knocks the target {@condition prone}, it disrupts the triggering {@trait move} action."
 						]
 					}
 				],
 				"bot": [
-					{
-						"name": "Improved Knockdown",
-						"generic": {
-							"tag": "ability"
-						}
-					},
 					{
 						"name": "Numbing Ice",
 						"traits": [
@@ -569,13 +566,7 @@
 							"mental"
 						],
 						"entries": [
-							"The benthic reaver unleashes a cry of mourning. All creatures within 60 feet must attempt a"
-						]
-					},
-					{
-						"name": "{@dc 41}",
-						"entries": [
-							"Will save to resist. The benthic reaver can't use Song of the Lost for {@dice 1d4} rounds.",
+							"The benthic reaver unleashes a cry of mourning. All creatures within 60 feet must attempt a {@dc 41} Will save to resist. The benthic reaver can't use Song of the Lost for {@dice 1d4} rounds.",
 							{
 								"type": "successDegree",
 								"entries": {
@@ -589,10 +580,20 @@
 										"The creature is {@condition frightened||frightened 2}."
 									],
 									"Critical Failure": [
-										"As failure, but the creature is also {@condition stunned||stunned 1} with sympathy. Tail Sweep {@as 2} The benthic reaver makes a tail {@action Strike} against each enemy within its reach. These attacks count toward the benthic reaver's multiple attack penalty, but the multiple attack penalty doesn't increase until after the benthic reaver makes all its attacks."
+										"As failure, but the creature is also {@condition stunned||stunned 1} with sympathy."
 									]
 								}
 							}
+						]
+					},
+					{
+						"name": "Tail Sweep",
+						"activity": {
+							"unit": "action",
+							"number": 2
+						},
+						"entries": [
+							"The benthic reaver makes a tail {@action Strike} against each enemy within its reach. These attacks count toward the benthic reaver's multiple attack penalty, but the multiple attack penalty doesn't increase until after the benthic reaver makes all its attacks."
 						]
 					}
 				]
@@ -703,7 +704,7 @@
 				{
 					"range": "Ranged",
 					"traits": [
-						"range increment 100 feet"
+						"range increment <100 feet>"
 					],
 					"name": "cannonball",
 					"attack": 29,
@@ -1201,7 +1202,7 @@
 				{
 					"range": "Melee",
 					"traits": [
-						"reach 15 feet"
+						"reach <15 feet>"
 					],
 					"name": "battering ram",
 					"attack": 35,
@@ -1211,7 +1212,7 @@
 					"range": "Melee",
 					"traits": [
 						"agile",
-						"reach 10 feet"
+						"reach <10 feet>"
 					],
 					"name": "claw",
 					"attack": 35,
@@ -1220,7 +1221,7 @@
 				{
 					"range": "Ranged",
 					"traits": [
-						"range increment 120 feet"
+						"range increment <120 feet>"
 					],
 					"name": "ballista",
 					"attack": 33,
@@ -1414,12 +1415,7 @@
 						},
 						"trigger": "The skinskitter is reduced to 0 HP",
 						"entries": [
-							"The fear of death agitates the skinskitter, precipitating a sudden existential awakening of consciousness. The skinskitter is reduced to 1 HP, loses the {@trait mindless} trait and immunity to {@trait mental} effects for the next 24 hours, gains the ability to speak one language (typically Osiriani or Vudrani), and takes two of the following actions in any order: {@action Hide},"
-						]
-					},
-					{
-						"name": "Sneak, Step, Stride, or Take Cover.",
-						"entries": [
+							"The fear of death agitates the skinskitter, precipitating a sudden existential awakening of consciousness. The skinskitter is reduced to 1 HP, loses the {@trait mindless} trait and immunity to {@trait mental} effects for the next 24 hours, gains the ability to speak one language (typically Osiriani or Vudrani), and takes two of the following actions in any order: {@action Hide}, {@action Sneak}, {@action Step}, {@action Stride}, or {@action Take Cover}.",
 							"In addition, the square occupied by the skinskitter before using Shuddering Skitter becomes difficult terrain, as they disgorge a shower of halfdigested calluses, chewed nails, and entangled hair in their skittering wake."
 						]
 					}
@@ -1533,8 +1529,8 @@
 					"traits": [
 						"evocation",
 						"primal",
-						"range increment 60 feet",
-						"versatile B"
+						"range increment <60 feet>",
+						"versatile <B>"
 					],
 					"name": "earthen shard",
 					"attack": 9,
@@ -1693,8 +1689,8 @@
 					"traits": [
 						"agile",
 						"finesse",
-						"thrown 10 feet",
-						"versatile S"
+						"thrown <10 feet>",
+						"versatile <S>"
 					],
 					"name": "dagger",
 					"attack": 10,
@@ -1876,7 +1872,7 @@
 					"traits": [
 						"magical",
 						"sweep",
-						"reach 10 feet"
+						"reach <10 feet>"
 					],
 					"name": "battle axe",
 					"attack": 22,
@@ -1885,7 +1881,7 @@
 				{
 					"range": "Melee",
 					"traits": [
-						"reach 10 feet"
+						"reach <10 feet>"
 					],
 					"name": "maw",
 					"attack": 21,
@@ -1894,8 +1890,8 @@
 				{
 					"range": "Ranged",
 					"traits": [
-						"deadly d10",
-						"volley 30 feet"
+						"deadly <d10>",
+						"volley <30 feet>"
 					],
 					"name": "composite longbow",
 					"attack": 18,
@@ -2013,7 +2009,7 @@
 				{
 					"range": "Melee",
 					"traits": [
-						"reach 10 feet"
+						"reach <10 feet>"
 					],
 					"name": "pseudopod",
 					"attack": 29,
@@ -2023,7 +2019,7 @@
 					"range": "Ranged",
 					"traits": [
 						"propulsive",
-						"range increment 60 feet"
+						"range increment <60 feet>"
 					],
 					"name": "blast",
 					"attack": 26,
@@ -2162,7 +2158,7 @@
 				{
 					"range": "Melee",
 					"traits": [
-						"deadly d8",
+						"deadly <d8>",
 						"disarm",
 						"finesse"
 					],
@@ -2173,9 +2169,9 @@
 				{
 					"range": "Ranged",
 					"traits": [
-						"deadly d10",
-						"range increment 60 feet",
-						"reload 0"
+						"deadly <d10>",
+						"range increment <60 feet>",
+						"reload <0>"
 					],
 					"name": "shortbow",
 					"attack": 11,

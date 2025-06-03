@@ -1,9 +1,978 @@
 {
 	"companion": [
 		{
+			"name": "Wolf",
+			"page": 210,
+			"source": "PC1",
+			"remaster": true,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a wolf, dog, or other canine."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 3,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 6,
+			"skill": "survival",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				],
+				"imprecise": [
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"walk": 40
+			},
+			"support": "Your wolf tears tendons with each opening. Until the start of your next turn, your {@action Strike|PC1|Strikes} that damage creatures your wolf threatens give the target a \u22125-foot status penalty to its Speeds for 1 minute (\u221210 on a critical success).",
+			"maneuver": {
+				"name": "Takedown",
+				"page": 211,
+				"source": "PC1",
+				"requirements": "The animal companion's last action was a successful jaws {@action Strike|PC1}.",
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"entries": [
+					"The wolf automatically knocks the target of its jaws {@action Strike|PC1} {@condition prone|PC1}."
+				]
+			}
+		},
+		{
+			"name": "Snake",
+			"page": 210,
+			"source": "PC1",
+			"remaster": true,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a constrictor snake, such as a boa or python."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"name": "jaws",
+					"range": "Melee",
+					"damage": "{@damage 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 3,
+				"con": 1,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 6,
+			"skill": "stealth",
+			"senses": {
+				"imprecise": [
+					"{@ability scent} (imprecise, 30 feet)"
+				],
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20,
+				"swim": 20
+			},
+			"support": "Your snake holds your enemies with its coils, interfering with reactions. Until the start of your next turn, any creature your snake threatens can't use reactions triggered by your actions unless its level is higher than yours.",
+			"maneuver": {
+				"name": "Constrict",
+				"page": 210,
+				"source": "PC1",
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"requirements": "The snake has a smaller creature {@condition grabbed|PC1}.",
+				"entries": [
+					"The snake deals 12 bludgeoning damage to the {@condition grabbed|PC1} creature; the creature must attempt a basic Fortitude save against your class DC. If the snake is a specialized animal companion, increase this damage to 20."
+				]
+			}
+		},
+		{
+			"name": "Shark",
+			"page": 210,
+			"source": "PC1",
+			"remaster": true,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a shark of any kind, such as a hammerhead, great white, or jigsaw shark."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@damage 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 2,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 6,
+			"skill": "stealth",
+			"senses": {
+				"other": [
+					"blood scent"
+				],
+				"imprecise": [
+					"{@ability scent} (imprecise, 60 feet)"
+				]
+			},
+			"speed": {
+				"swim": 40
+			},
+			"special": "The shark has the {@trait aquatic} trait. Its blood scent enables it to smell blood in the water from up to 1 mile away.",
+			"support": "When your shark senses blood, it tears into your enemies. Until the start of your next turn, each time you hit a creature in the shark's reach with a {@action Strike|PC1} and deal slashing or piercing damage, the creature takes {@damage 1d8} slashing damage from the shark. If your shark is nimble or savage, the slashing damage increases to {@damage 2d8}.",
+			"maneuver": {
+				"name": "Shred",
+				"page": 210,
+				"source": "PC1",
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"requirements": "The shark hit with a jaws {@action Strike|PC1} on its most recent action this turn.",
+				"entries": [
+					"The shark viciously rips into the wound. The target of the shark's {@action Strike|PC1} takes {@damage 1d8} slashing damage ({@damage 2d8} for a mature shark or {@damage 3d8} for a specialized companion)."
+				]
+			}
+		},
+		{
+			"name": "Scorpion",
+			"page": 210,
+			"source": "PC1",
+			"remaster": true,
+			"fluff": [
+				"Your companion is one of the various species of giant scorpion."
+			],
+			"type": "Companion",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "stinger",
+					"damage": "{@damage 1d6} piercing plus poison (see Special)"
+				},
+				{
+					"range": "Melee",
+					"name": "pincer",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 1d6} slashing"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 3,
+				"con": 1,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 6,
+			"skill": "stealth",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"special": "The scorpion's stinger attack deals an additional {@damage 1d4} poison damage or {@damage 2d4} poison damage if the scorpion is a specialized companion.",
+			"support": " Your scorpion drips poison from its stinger when you create an opening. Until the start of your next turn, your {@action Strike|PC1|Strikes} that damage a creature in your scorpion's reach also deal {@damage 1d6} {@condition persistent damage|PC1|persistent poison damage}. If your scorpion is nimble or savage, the {@condition persistent damage|PC1|persistent poison damage} increases to {@damage 2d6}.",
+			"maneuver": {
+				"name": "Grab and Sting",
+				"source": "PC1",
+				"page": 210,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The scorpion holds its foe in place with its pincers in order to sting it. It makes a pincer {@action Strike|PC1}. If the {@action Strike|PC1} hits, the target creature automatically becomes {@condition grabbed|PC1} by the scorpion, which then makes a stinger {@action Strike|PC1} against it. The {@condition grabbed|PC1} condition lasts until the end of your next turn."
+				]
+			}
+		},
+		{
+			"name": "Riding Drake",
+			"source": "PC1",
+			"remaster": true,
+			"page": 209,
+			"traits": [
+				"uncommon",
+				"dragon"
+			],
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a swift, flightless drake with limited intelligence, less vicious than most drakes but fiercely loyal to you. A riding drake has the {@trait dragon} trait instead of the {@trait animal} trait, but it otherwise functions normally as an animal companion."
+			],
+			"size": [
+				"large"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@damage 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"damage": "{@damage 1d6} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 1,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 2
+			},
+			"hp": 8,
+			"skill": "intimidation",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"walk": 45
+			},
+			"special": "mount",
+			"support": "Your drake snorts fire in your foes' faces. Until the start of your next turn, each time you {@action Strike|PC1} while riding the drake and hit a creature in the drake's reach, the creature takes {@damage 1d4} fire damage from the drake. If your drake is nimble or savage, the fire damage increases to {@damage 2d4}.",
+			"maneuver": {
+				"name": "Fire Breath",
+				"source": "PC1",
+				"page": 210,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"frequency": {
+					"number": 1,
+					"unit": "hour"
+				},
+				"entries": [
+					"The riding drake breathes a 30-foot cone of fire, dealing {@damage 1d6} fire damage for every 2 levels the drake has to all creatures in the area (basic Reflex save). This uses a trained DC using the drake's Constitution modifier or an expert DC if the drake is specialized."
+				]
+			}
+		},
+		{
+			"name": "Horse",
+			"source": "PC1",
+			"page": 209,
+			"remaster": true,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a horse, pony, or similar equine."
+			],
+			"size": [
+				"medium",
+				"large"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "hoof",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 1d6} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 2,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "survival",
+			"senses": {
+				"imprecise": [
+					"{@ability scent} (imprecise, 30 feet)"
+				],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"speed": {
+				"walk": 40
+			},
+			"special": "mount",
+			"support": "Until the start of your next turn, if you're mounted on your horse and moved 10 feet or more on the action before a melee {@action Strike|PC1}, add a circumstance bonus to damage for that {@action Strike|PC1} equal to twice the number of weapon damage dice. If your weapon already has the {@trait jousting} weapon trait, increase the trait's damage bonus by 2 per die instead.",
+			"maneuver": {
+				"name": "Gallop",
+				"source": "PC1",
+				"page": 209,
+				"traits": [
+					"move"
+				],
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The horse {@action Stride|PC1|Strides} twice at a +10-foot circumstance bonus to Speed."
+				]
+			}
+		},
+		{
+			"name": "Dromaeosaur",
+			"page": 209,
+			"source": "PC1",
+			"remaster": true,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a dromaeosaur (also called a raptor), such as a velociraptor or deinonychus."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "talon",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 1d6} slashing"
+				}
+			],
+			"hp": 6,
+			"skill": "stealth",
+			"senses": {
+				"imprecise": [
+					"{@ability scent} (imprecise, 30 feet)"
+				],
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 50
+			},
+			"support": "Your raptor constantly darts into flanking position. Until the start of your next turn, it counts as being in its space or an empty space of your choice within 10 feet when determining whether you and your companion are flanking; you can choose a different space for each of your attacks.",
+			"maneuver": {
+				"name": "Darting Attack",
+				"source": "PC1",
+				"page": 209,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"traits": [
+					"flourish"
+				],
+				"entries": [
+					"The raptor {@action Step|PC1|Steps} up to 10 feet and then {@action Strike|PC1|Strikes}, or {@action Strike|PC1|Strikes} and then {@action Step|PC1|Steps} up to 10 feet."
+				]
+			}
+		},
+		{
+			"name": "Crocodile",
+			"page": 208,
+			"source": "PC1",
+			"remaster": true,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a crocodile or a similar crocodilian reptile, such as an alligator or caiman."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@damage 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"damage": "{@damage 1d6} bludgeoning"
+				}
+			],
+			"hp": 6,
+			"skill": "stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 25
+			},
+			"special": "The crocodile can hold its breath for about 2 hours.",
+			"support": "Your crocodile clamps its jaws on your foe, refusing to let go. Until the start of your next turn, if your {@action Strike|PC1} damages a creature in your crocodile's reach, your crocodile can latch onto the creature. While thus attached, the crocodile can move along with the target whenever the target moves until the end of your next turn. Your crocodile can latch onto only one creature in this way, and it must release the creature to make a jaws {@action Strike|PC1}. If the target is smaller than the crocodile, it takes a \u221210-foot circumstance penalty to its Speeds and can't {@action Fly|PC1} while the crocodile is latched on.",
+			"maneuver": {
+				"name": "Death Roll",
+				"source": "PC1",
+				"page": 209,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"requirements": "The crocodile has a creature {@condition grabbed|PC1}.",
+				"entries": [
+					"The crocodile tucks its legs and rolls rapidly, twisting its victim. It makes a jaws {@action Strike|PC1} with a +2 circumstance bonus to the attack roll against the {@condition grabbed|PC1} creature. If it hits, it also knocks the creature {@condition prone|PC1}. If it misses, it releases the creature."
+				]
+			}
+		},
+		{
+			"name": "Cat",
+			"page": 208,
+			"source": "PC1",
+			"remaster": true,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a big cat, such as a leopard or tiger."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d6} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 1d4} slashing"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 3,
+				"con": 1,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"hp": 4,
+			"skill": "stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				],
+				"imprecise": [
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"walk": 35
+			},
+			"special": "Your cat deals {@damage 1d4} extra precision damage against {@condition off-guard|PC1} targets.",
+			"support": "Your cat throws your enemies off-balance when you create an opening. Until the start of your next turn, your {@action Strike|PC1|Strikes} that deal damage to a creature within your cat's reach make the target {@condition off-guard|PC1} until the end of your next turn.",
+			"maneuver": {
+				"name": "Cat Pounce",
+				"source": "PC1",
+				"page": 208,
+				"traits": [
+					"flourish"
+				],
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"entries": [
+					"The cat {@action Stride|PC1|Strides} and then {@action Strike|PC1|Strikes}. If it was {@condition undetected|PC1} at the start of its Cat Pounce, it remains {@condition undetected|PC1} until after the attack."
+				]
+			}
+		},
+		{
+			"name": "Boar",
+			"source": "PC1",
+			"remaster": true,
+			"page": 208,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a boar or pig."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "tusk",
+					"damage": "{@damage 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 1,
+				"con": 2,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "survival",
+			"senses": {
+				"imprecise": [
+					"{@ability scent} (imprecise, 30 feet)"
+				],
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 35
+			},
+			"support": "Your boar gores your foes. Until the start of your next turn, your {@action Strike|PC1|Strikes} that damage a creature in your boar's reach also deal {@damage 1d6} {@condition persistent damage|PC1|persistent bleed damage}. If your boar is nimble or savage, the {@condition persistent damage|PC1|persistent bleed damage} increases to {@damage 2d6}.",
+			"maneuver": {
+				"name": "Boar Charge",
+				"source": "PC1",
+				"page": 207,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The boar {@action Stride|PC1|Strides} twice in a straight line and then makes a tusk {@action Strike|PC1}. As long as it moved at least 20 feet, it gains a +2 circumstance bonus to its attack roll."
+				]
+			}
+		},
+		{
+			"name": "Bird",
+			"page": 208,
+			"source": "PC1",
+			"remaster": true,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a bird of prey, such as an eagle, hawk, or owl."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d6} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "talon",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 1d4} slashing"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 3,
+				"con": 1,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"hp": 4,
+			"skill": "stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"support": "The bird pecks at your foes' eyes when you create an opening. Until the start of your next turn, your {@action Strike|PC1|Strikes} that damage a creature that your bird threatens also deal {@damage 1d4} {@condition persistent damage|PC1|persistent bleed damage}, and the target is {@condition dazzled|PC1} until it removes the bleed damage. If your bird is nimble or savage, the {@condition persistent damage|PC1|persistent bleed damage} increases to {@damage 2d4}.",
+			"maneuver": {
+				"name": "Flyby Attack",
+				"source": "PC1",
+				"page": 208,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The bird {@action Fly|PC1|Flies} and makes a talon {@action Strike|PC1} at any point along the way."
+				]
+			}
+		},
+		{
+			"name": "Bear",
+			"page": 207,
+			"source": "PC1",
+			"remaster": true,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a black, grizzly, polar, or other type of bear."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@damage 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 1d6} slashing"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 2,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "intimidation",
+			"senses": {
+				"imprecise": [
+					"{@ability scent} (imprecise, 30 feet)"
+				],
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 35
+			},
+			"support": "Your bear mauls your enemies when you create an opening. Until the start of your next turn, each time you hit a creature in the bear's reach with a {@action Strike|PC1}, the creature takes {@damage 1d8} slashing damage from the bear. If your bear is nimble or savage, the slashing damage increases to {@damage 2d8}.",
+			"maneuver": {
+				"name": "Bear Hug",
+				"source": "PC1",
+				"page": 207,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"requirements": "The bear's last action was a successful claw {@action Strike|PC1}.",
+				"entries": [
+					"The bear makes another claw {@action Strike|PC1} against the same target. If this {@action Strike|PC1} hits, the target is also {@condition grabbed|PC1}, as if the bear had successfully {@action Grapple|PC1|Grappled} the target."
+				]
+			}
+		},
+		{
+			"name": "Bat",
+			"page": 207,
+			"source": "PC1",
+			"remaster": true,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a particularly large bat, such as a giant bat."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@damage 1d6} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "wing",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@damage 1d4} slashing"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 3,
+				"con": 2,
+				"int": -4,
+				"wis": 1,
+				"cha": 0
+			},
+			"hp": 6,
+			"skill": "stealth",
+			"senses": {
+				"other": [
+					"echolocation 20 feet (the bat can use hearing as a precise sense within this range)",
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 15,
+				"fly": 30
+			},
+			"support": "Your bat flaps around your foes' arms and faces, getting in the way of their attacks. Until the start of your next turn, creatures in your bat's reach that you damage with {@action Strike|PC1|Strikes} take a \u22121 circumstance penalty to their attack rolls.",
+			"maneuver": {
+				"name": "Wing Thrash",
+				"source": "PC1",
+				"page": 207,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The bat thrashes wildly with its wings, making wing {@action Strike|PC1|Strikes} against up to three adjacent foes. Each attack counts toward the bat's multiple attack penalty, but the penalty only increases after all the attacks have been made."
+				]
+			}
+		},
+		{
+			"name": "Ape",
+			"source": "PC1",
+			"remaster": true,
+			"page": 206,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is an ape or other primate."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 1,
+				"con": 2,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "intimidation",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"support": "Your ape threatens your foes with menacing growls. Until the start of your next turn, if you hit and deal damage to a creature in your ape's reach, the creature becomes {@condition frightened|PC1|frightened 1}.",
+			"maneuver": {
+				"name": "Frightning Display",
+				"source": "PC1",
+				"page": 206,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"entries": [
+					"Your ape makes a loud and frightening display, throwing a foe off balance. The ape attempts to {@action Demoralize|PC1} the target creature; this display gains the {@trait visual} trait and doesn't require language. While frightened by this ability, the target is {@condition off-guard|PC1} to your ape."
+				]
+			}
+		},
+		{
+			"name": "Arboreal Sapling",
+			"source": "PC1",
+			"remaster": true,
+			"page": 206,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a walking tree, a cousin of the great arboreal wardens and regents. An arboreal sapling has the {@trait plant} trait instead of the {@trait animal} trait, but it otherwise functions normally as an animal companion. They are typically only selected by {@class druid|PC1|animal order druids|animal} who are also members of the {@class druid|PC1|leaf order|leaf}."
+			],
+			"access": "You are a member of the {@class druid|PC1|leaf order|leaf}.",
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "branch",
+					"damage": "{@damage 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"str": 3,
+				"dex": 1,
+				"con": 2,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"support": "Your arboreal sapling plants roots around your foe, impeding its movement. Until the start of your next turn, if you hit and deal damage to a creature in your arboreal sapling's reach, the first square the creature moves into after taking that damage is {@quickref difficult terrain|PC1|3|terrain}.",
+			"maneuver": {
+				"name": "Throw Rock",
+				"source": "PC1",
+				"page": 207,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"entries": [
+					"The arboreal sapling {@action Interact|PC1|Interacts} to pick up a rock within reach or retrieve a stowed rock, then throws it with a ranged rock Strike that deals {@damage 2d6} bludgeoning ({@damage 3d6} for a specialized companion) damage with a range increment of 30 feet."
+				]
+			},
+			"traits": [
+				"uncommon"
+			]
+		},
+		{
+			"name": "Badger",
+			"source": "PC1",
+			"remaster": true,
+			"page": 207,
+			"type": "Companion",
+			"fluff": [
+				"Your companion is a badger, wolverine, or other big mustelid."
+			],
+			"size": [
+				"small"
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@damage 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@damage 1d6} slashing"
+				}
+			],
+			"abilityMods": {
+				"str": 2,
+				"dex": 2,
+				"con": 2,
+				"int": -4,
+				"wis": 2,
+				"cha": 0
+			},
+			"hp": 8,
+			"skill": "survival",
+			"senses": {
+				"imprecise": [
+					"{@ability scent} (imprecise, 30 feet)"
+				],
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"burrow": 10,
+				"climb": 10
+			},
+			"support": "Your badger digs around your foe's position, interfering with its footing. Until the start of your next turn, if you hit and deal damage to a creature your badger threatens, the target can't use a {@action Step|PC1} action (unless it can {@action Step|PC1} through {@quickref difficult terrain|PC1|3|terrain}) until it moves from its current position.",
+			"maneuver": {
+				"name": "Badger Rage",
+				"source": "PC1",
+				"page": 207,
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"traits": [
+					"concentrate",
+					"emotion",
+					"mental"
+				],
+				"requirements": "The badger isn't {@condition fatigued|PC1} or raging.",
+				"entries": [
+					"The badger enters a state of pure rage that lasts for 1 minute, until there are no enemies it can perceive, or until it falls {@condition unconscious|PC1}, whichever comes first. It can't voluntarily stop raging. While raging, the badger is affected in the following ways.",
+					{
+						"type": "list",
+						"items": [
+							"It deals 4 additional damage with its bite attacks and 2 additional damage with its claw attacks.",
+							"It takes a \u22121 penalty to AC",
+							"It can't use actions that have the {@trait concentrate} trait. The animal companion can {@action Seek|PC1} even while raging."
+						]
+					},
+					"After it has stopped raging, it can't use Badger Rage again for 1 minute."
+				]
+			}
+		},
+		{
 			"name": "Chetamog",
 			"source": "WoW1",
 			"type": "Companion",
+			"remaster": true,
 			"page": 86,
 			"fluff": [
 				"Your companion is a chetamog, a large tree-dwelling rodent that makes its home in the branches of the largest and most ancient trees of the Verduran Forest."
@@ -225,6 +1194,7 @@
 		{
 			"name": "Air Elemental",
 			"source": "RoE",
+			"remaster": true,
 			"page": 40,
 			"type": "Companion",
 			"traits": [
@@ -277,6 +1247,7 @@
 			"name": "Earth Elemental",
 			"source": "RoE",
 			"page": 40,
+			"remaster": true,
 			"type": "Companion",
 			"traits": [
 				"uncommon",
@@ -331,6 +1302,7 @@
 			"name": "Fire Elemental",
 			"source": "RoE",
 			"page": 40,
+			"remaster": true,
 			"type": "Companion",
 			"traits": [
 				"uncommon",
@@ -389,6 +1361,7 @@
 			"name": "Metal Elemental",
 			"source": "RoE",
 			"page": 41,
+			"remaster": true,
 			"type": "Companion",
 			"traits": [
 				"uncommon",
@@ -442,6 +1415,7 @@
 			"name": "Water Elemental",
 			"source": "RoE",
 			"page": 41,
+			"remaster": true,
 			"type": "Companion",
 			"traits": [
 				"uncommon",
@@ -498,6 +1472,7 @@
 		{
 			"name": "Wood Elemental",
 			"source": "RoE",
+			"remaster": true,
 			"page": 41,
 			"type": "Companion",
 			"traits": [
@@ -538,7 +1513,7 @@
 				"walk": 25,
 				"climb": 25
 			},
-			"support": "Your wood elemental entangles your foes with detachable branches and roots. Until the start of your next turn, if you hit with a {@action Strike} that deals damage to a creature in your wood elemental's reach, the creature takes a \u20135-foot circumstance penalty to its Speeds for 1 minute (\u201310 on a critical success). The creature, or a creature adjacent to it, can use an {@action Interact} action to unravel the branches and roots and remove the penalty.",
+			"support": "Your wood elemental entangles your foes with detachable branches and roots. Until the start of your next turn, if you hit with a {@action Strike} that deals damage to a creature in your wood elemental's reach, the creature takes a \u22125-foot circumstance penalty to its Speeds for 1 minute (\u221210 on a critical success). The creature, or a creature adjacent to it, can use an {@action Interact} action to unravel the branches and roots and remove the penalty.",
 			"maneuver": {
 				"name": "Grabbing Branches",
 				"source": "RoE",
@@ -709,7 +1684,7 @@
 					"unit": "action"
 				},
 				"entries": [
-					"The arboreal sapling Interacts to pick up a rock within reach or retrieve a stowed rock, then throws it with a ranged rock {@action Strike} that deals a base of {@damage 1d6} bludgeoning damage with a range increment of 30 feet."
+					"The arboreal sapling {@action Interact||Interacts} to pick up a rock within reach or retrieve a stowed rock, then throws it with a ranged rock {@action Strike} that deals a base of {@damage 1d6} bludgeoning damage with a range increment of 30 feet."
 				]
 			},
 			"traits": [
@@ -754,7 +1729,7 @@
 			"skill": "survival",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability low-light vision}"
@@ -786,7 +1761,7 @@
 						"type": "list",
 						"items": [
 							"It deals 4 additional damage with its bite attacks and 2 additional damage with its claw attacks.",
-							"It takes a \u20131 penalty to AC",
+							"It takes a \u22121 penalty to AC",
 							"It can't use actions that have the {@trait concentrate} trait unless they also have the {@trait rage} trait. The animal companion can {@action Seek} even while raging."
 						]
 					},
@@ -844,7 +1819,7 @@
 				"walk": 15,
 				"fly": 30
 			},
-			"support": "Your bat flaps around your foes' arms and faces, getting in the way of their attacks. Until the start of your next turn, creatures in your bat's reach that you damage with {@action Strike||Strikes} take a \u20131 circumstance penalty to their attack rolls.",
+			"support": "Your bat flaps around your foes' arms and faces, getting in the way of their attacks. Until the start of your next turn, creatures in your bat's reach that you damage with {@action Strike||Strikes} take a \u22121 circumstance penalty to their attack rolls.",
 			"maneuver": {
 				"name": "Wing Thrash",
 				"source": "APG",
@@ -896,7 +1871,7 @@
 			"skill": "intimidation",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability low-light vision}"
@@ -998,7 +1973,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d6} finesse"
+					"damage": "{@dice 1d6} piercing"
 				},
 				{
 					"range": "Melee",
@@ -1073,7 +2048,7 @@
 			"skill": "survival",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability low-light vision}"
@@ -1127,7 +2102,7 @@
 			"skill": "survival",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability low-light vision}"
@@ -1187,7 +2162,7 @@
 			"skill": "survival",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability low-light vision}"
@@ -1261,7 +2236,7 @@
 			"skill": "stealth",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability low-light vision}"
@@ -1318,7 +2293,7 @@
 			"skill": "stealth",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability low-light vision}"
@@ -1453,7 +2428,7 @@
 				"walk": 20,
 				"swim": 25
 			},
-			"support": "Your crocodile clamps its jaws on your foe, refusing to let go. Until the start of your next turn, if your {@action Strike} damages a creature in your crocodile's reach, your crocodile can latch onto the creature. While thus attached, the crocodile can move along with the target whenever the target moves until the end of your next turn. Your crocodile can latch onto only one creature in this way, and it must release the creature to make a jaws {@action Strike}. If the target is smaller than the crocodile, it takes a \u201310-foot circumstance penalty to its Speeds and can't {@action Fly} while the crocodile is latched on.",
+			"support": "Your crocodile clamps its jaws on your foe, refusing to let go. Until the start of your next turn, if your {@action Strike} damages a creature in your crocodile's reach, your crocodile can latch onto the creature. While thus attached, the crocodile can move along with the target whenever the target moves until the end of your next turn. Your crocodile can latch onto only one creature in this way, and it must release the creature to make a jaws {@action Strike}. If the target is smaller than the crocodile, it takes a \u221210-foot circumstance penalty to its Speeds and can't {@action Fly} while the crocodile is latched on.",
 			"maneuver": {
 				"name": "Death Roll",
 				"source": "APG",
@@ -1511,7 +2486,7 @@
 			"skill": "stealth",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability low-light vision}"
@@ -1568,7 +2543,7 @@
 			"skill": "survival",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability low-light vision}"
@@ -1628,7 +2603,7 @@
 			"skill": "intimidation",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability low-light vision}"
@@ -1648,7 +2623,7 @@
 				},
 				"requirements": "The animal companion's last action was a successful jaws {@action Strike}",
 				"entries": [
-					"The {@action Strike}'s target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage} and takes a \u201310-foot status penalty to its Speed until it removes the bleed damage. If the hyena is a {@quickref specialized animal companion||0|Specialized Animal Companions}, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}."
+					"The {@action Strike}'s target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage} and takes a \u221210-foot status penalty to its Speed until it removes the bleed damage. If the hyena is a {@quickref specialized animal companion||0|Specialized Animal Companions}, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}."
 				]
 			}
 		},
@@ -1682,7 +2657,7 @@
 			"skill": "survival",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability low-light vision}"
@@ -1739,7 +2714,7 @@
 			"skill": "stealth",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability darkvision}"
@@ -1986,7 +2961,7 @@
 			"skill": "intimidation",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"{@ability darkvision}"
@@ -2039,7 +3014,7 @@
 			"skill": "stealth",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 60 feet"
+					"{@ability scent} (imprecise, 60 feet)"
 				],
 				"other": [
 					"blood scent"
@@ -2097,7 +3072,7 @@
 			"skill": "stealth",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"low-light vision"
@@ -2215,7 +3190,7 @@
 			"skill": "survival",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"low-light vision"
@@ -2282,7 +3257,7 @@
 			"skill": "survival",
 			"senses": {
 				"imprecise": [
-					"{@ability scent} 30 feet"
+					"{@ability scent} (imprecise, 30 feet)"
 				],
 				"other": [
 					"low-light vision"
@@ -2291,7 +3266,7 @@
 			"speed": {
 				"walk": 40
 			},
-			"support": "Your wolf tears tendons with each opening. Until the start of your next turn, your {@action Strike||Strikes} that damage creatures your wolf threatens give the target a \u20135-foot status penalty to its Speeds for 1 minute (\u201310 on a critical success).",
+			"support": "Your wolf tears tendons with each opening. Until the start of your next turn, your {@action Strike||Strikes} that damage creatures your wolf threatens give the target a \u22125-foot status penalty to its Speeds for 1 minute (\u221210 on a critical success).",
 			"maneuver": {
 				"name": "Knockdown",
 				"source": "CRB",
@@ -2309,6 +3284,124 @@
 	],
 	"companionAbility": [
 		{
+			"name": "Ambusher",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"In your companion's natural environment, it can use a {@action Sneak|PC1} action even if it's currently {@condition observed|PC1}. Its proficiency rank in {@skill Stealth|PC1} increases to expert (or master if it was already an expert from its type), and its Dexterity modifier increases by 1. Its proficiency rank for unarmored defense increases to expert."
+			]
+		},
+		{
+			"name": "Bully",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"Your companion terrorizes foes with dominance displays and pushes them around the battlefield. Its proficiency ranks for {@skill Athletics|PC1} and {@skill Intimidation|PC1} increase to expert (or master if it was already expert from its type), its Strength modifier increases by 1, and its Charisma modifier increases by 3."
+			]
+		},
+		{
+			"name": "Daredevil",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"Your companion joins the fray with graceful leaps and dives. It gains the deny advantage ability, so it isn't {@condition off-guard|PC1} to {@condition hidden|PC1}, {@condition undetected|PC1}, or {@condition flanking|PC1} creatures unless such a creature's level is greater than yours. Its proficiency rank in {@skill Acrobatics|PC1} increases to master, and its Dexterity modifier increases by 1. Its proficiency rank in unarmored defense increases to expert."
+			]
+		},
+		{
+			"name": "Racer",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"Your companion races. It gains a +10-foot status bonus to its Speed, swim Speed, or fly Speed (your choice). Its proficiency in Fortitude saves increases to legendary, and its Constitution modifier increases by 1."
+			]
+		},
+		{
+			"name": "Tracker",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"Your companion is an incredible tracker. It can move at full Speed while following tracks. Its proficiency rank in {@skill Survival|PC1} increases to expert (or master if it was already an expert from its type), and its Wisdom modifier increases by 1."
+			]
+		},
+		{
+			"name": "Wrecker",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 3,
+			"entries": [
+				"Your companion smashes things. Its unarmed attacks ignore half an object's Hardness. Its {@skill Athletics|PC1} proficiency increases to master, and its Strength modifier increases by 1."
+			]
+		},
+		{
+			"name": "Mature",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 1,
+			"entries": [
+				"When you advance a young animal companion to a mature animal companion:",
+				{
+					"type": "list",
+					"items": [
+						"If your companion is Medium or smaller, it grows by one size.",
+						"Increase its Strength, Dexterity, Constitution, and Wisdom modifiers by 1.",
+						"Increase its proficiency rank for {@skill Perception|PC1} and all saving throws to expert. Increase its proficiency ranks in {@skill Intimidation|PC1}, {@skill Stealth|PC1}, and {@skill Survival|PC1} to trained, and if it was already trained in one of those skills from its type, increase its proficiency rank in that skill to expert.",
+						"Increase its unarmed attack damage from one die to two dice (for instance {@damage 1d8} to {@damage 2d8})."
+					]
+				}
+			]
+		},
+		{
+			"name": "Nimble",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 2,
+			"entries": [
+				"To advance a {@companionAbility mature|PC1} animal companion to a nimble animal companion:",
+				{
+					"type": "list",
+					"items": [
+						"Increase its Dexterity modifier by 2 and its Strength, Constitution, and Wisdom modifiers by 1.",
+						"Increase its proficiency ranks in {@skill Acrobatics|PC1} to expert.",
+						"It deals 2 additional damage with its unarmed attacks. Its attacks become {@trait magical} for the purpose of ignoring resistances.",
+						"It learns the advanced maneuver for its type."
+					]
+				}
+			]
+		},
+		{
+			"name": "Savage",
+			"source": "PC1",
+			"remaster": true,
+			"page": 211,
+			"tier": 2,
+			"entries": [
+				"To advance a {@companionAbility mature|PC1} animal companion to a savage animal companion:",
+				{
+					"type": "list",
+					"items": [
+						"If your companion is Medium or smaller, it grows by one size.",
+						"Increase its Strength modifier by 2 and its Dexterity, Constitution, and Wisdom modifiers by 1.",
+						"Increase its proficiency rank in {@skill Athletics|PC1} to expert.",
+						"It deals 3 additional damage with its unarmed attacks. Its attacks become {@trait magical} for the purpose of ignoring resistances.",
+						"It learns the advanced maneuver for its type."
+					]
+				}
+			]
+		},
+		{
 			"name": "Unseen",
 			"source": "DA",
 			"page": 65,
@@ -2324,6 +3417,15 @@
 			"tier": 2,
 			"entries": [
 				"To advance a mature animal companion to a nimble animal companion, increase its Dexterity modifier by 2 and its Strength, Constitution, and Wisdom modifiers by 1. It deals 2 additional damage with its unarmed attacks. Increase its proficiency ranks in {@skill Acrobatics} and unarmored defense to expert. It also learns the advanced maneuver for its type. Its attacks become {@trait magical} for the purpose of ignoring resistances."
+			]
+		},
+		{
+			"name": "Mature",
+			"source": "CRB",
+			"page": 214,
+			"tier": 1,
+			"entries": [
+				"To advance a young animal companion to a mature animal companion (usually a result of one of your class feat choices), increase its Strength, Dexterity, Constitution, and Wisdom modifiers by 1. Increase its unarmed attack damage from one die to two dice (for instance {@damage 1d8} to {@damage 2d8}), and its proficiency rank for {@skill Perception|PC1} and all saving throws to expert. Increase its proficiency ranks in {@skill Intimidation|PC1}, {@skill Stealth|PC1}, and {@skill Survival|PC1} to trained, and if it was already trained in one of those skills from its type, increase its proficiency rank in that skill to expert. If your attack companion is Medium or smaller, it grows by one size."
 			]
 		},
 		{
@@ -2504,6 +3606,120 @@
 			],
 			"fluff": [
 				"The spirit guide is a specific familiar you can gain during this adventure. Spirit guide familiars typically take the form of {@creature cunning fox|B3|cunning guides} or {@creature green monkey|GW2|nimble guides}."
+			]
+		},
+		{
+			"name": "Calligraphy Wyrm",
+			"source": "LORA",
+			"remaster": true,
+			"page": 44,
+			"traits": [
+				"rare",
+				"dragon"
+			],
+			"requires": 6,
+			"granted": [
+				"{@familiarAbility darkvision|PC1}",
+				"{@familiarAbility flier|PC1}",
+				"{@familiarAbility manual dexterity|PC1}",
+				"{@familiarAbility scent|PC1}",
+				"{@familiarAbility skilled|PC1} ({@skill Arcana|PC1}, {@skill Society|PC1})",
+				"{@familiarAbility speech|PC1}"
+			],
+			"type": "Familiar",
+			"access": "affiliation with Cobyslarni or the Pathfinder Society",
+			"abilities": [
+				{
+					"name": "Ink Spray",
+					"traits": [
+						"arcane"
+					],
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": {
+						"number": 1,
+						"unit": "minute",
+						"interval": 10
+					},
+					"entries": [
+						"The wyrm splatters ink in a 10-foot cone. Each creature in the area must attempt a Reflex save with a DC equal to its master's spell DC or class DC, whichever is higher.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "If the creature was {@condition invisible|PC1}, it is {@condition concealed|PC1} instead for 2 rounds.",
+								"Failure": "As success, but for 1 minute.",
+								"Critical Failure": "As success, but for 10 minutes. The creature is also {@condition blinded|PC1} for 1 round or until it wipes the ink from its eyes using an {@action Interact|PC1} action."
+							}
+						}
+					]
+				},
+				{
+					"name": "Stylus Claws",
+					"entries": [
+						"The wyrm has stylus-shaped claws that it can fill with its natural ink, using its claw as a pen without having to purchase ink."
+					]
+				}
+			],
+			"fluff": [
+				"Calligraphy wyrms are curious dragons constantly in search of new lore and writing. They make natural allies for academics of all stripes, whether remaining in the towers of Cobyslarni or heading into fieldwork like the Pathfinder Society, but are also found working with witches contracted to draconic powers or wizards who've somehow managed to impress the tiny creatures.",
+				"While knowledgeable, calligraphy wyrms can also be know-it-alls. Their chirpy, high-pitched voices make this attitude humorous to some and insufferable to others."
+			]
+		},
+		{
+			"name": "Mockingfey",
+			"source": "LORA",
+			"remaster": true,
+			"page": 45,
+			"traits": [
+				"uncommon",
+				"fey"
+			],
+			"requires": 4,
+			"granted": [
+				"{@familiarAbility flier|PC1}",
+				"{@familiarAbility independent|PC1}",
+				"{@familiarAbility speech|PC1}"
+			],
+			"type": "Familiar",
+			"access": "affiliation with Cobyslarni",
+			"abilities": [
+				{
+					"name": "Gibe",
+					"traits": [
+						"concentrate",
+						"illusion",
+						"mental",
+						"occult",
+						"visual"
+					],
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": {
+						"number": 1,
+						"unit": "round"
+					},
+					"entries": [
+						"The mockingfey takes on the imperfect, illusory appearance of a creature it can see within 60 feet, pantomiming their mannerisms in a derisive fashion. This illusion doesn't make the mockingfey look any larger and lasts until the end of your next turn. The creature must attempt a Will save against your class DC or spell DC, whichever is higher. Regardless of the result, the creature is temporarily immune for 1 minute.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The creature is unaffected.",
+								"Failure": "The creature is {@condition off-guard|PC1} until the start of your next turn, as it's distracted by your familiar's taunts.",
+								"Critical Failure": "The creature is {@condition off-guard|PC1} until the end of your next turn."
+							}
+						}
+					]
+				}
+			],
+			"fluff": [
+				"Mockingfey are tiny fey with the heads of humanoids and the bodies of colorful parrots. Though they're mischievous and unruly, mockingfeys are very loyal to those they consider friends. They can speak and understand language, but typically communicate in pantomime instead, as they find verbal speech restrictive.",
+				"Some spellcasters ally with mockingfey as familiars, as they're highly curious and keen\u2014if distractable\u2014 students. Cobyslarni students and faculty, being used to the bizarre nature of the First World, are more tolerant than most of a mockingfey's antics, and the little creatures are a common sight flitting around the school's towers. Naturally, any pranks a mockingfey pulls on a student's rivals are merely the unsanctioned work of an excitable familiar.",
+				"Cobyslarni representatives have found their familiars' antics are less appreciated by the students of other schools. In part, this is because a small or feathered student doesn't seem out of place among the Traveling Academy's student body. Even without that confusion, many Cobyslarni students are finding they must teach their mockingfey familiars the most difficult lessons of all: when not to insult people and who to leave alone."
 			]
 		},
 		{
@@ -3231,7 +4447,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"Your clockwork familiar enters standby mode. Its operational time doesn't decrease in standby, but it can sense its surroundings (with a \u20132 penalty to {@skill Perception}). It can't act, with one exception: when you {@action Command an Animal||Command} it to exit standby mode, it does so, by using this action again."
+						"Your clockwork familiar enters standby mode. Its operational time doesn't decrease in standby, but it can sense its surroundings (with a \u22122 penalty to {@skill Perception}). It can't act, with one exception: when you {@action Command an Animal||Command} it to exit standby mode, it does so, by using this action again."
 					]
 				}
 			],
@@ -3639,12 +4855,322 @@
 	],
 	"familiarAbility": [
 		{
+			"name": "Accompanist",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar helps you perform. Whenever you attempt a {@skill Performance|PC1} check, if your familiar is nearby and can act, it accompanies you with chirps, claps, or its own miniature instrument. This grants you a +1 circumstance bonus, or +2 if you're a master in {@skill Performance|PC1}."
+			]
+		},
+		{
+			"name": "Construct",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait construct} trait instead of the {@trait animal} trait. The familiar is immune to death effects, {@condition disease|PC1}, {@condition doomed|PC1}, {@condition drained|PC1}, {@condition fatigued|PC1}, {@trait healing}, {@trait nonlethal} attacks, {@condition paralyzed|PC1}, {@trait poison}, {@condition sickened|PC1}, {@trait spirit}, {@condition unconscious|PC1}, {@trait vitality}, and {@trait void}. Your familiar must have the tough {@feat pet|PC1} ability to select this."
+			]
+		},
+		{
+			"name": "Damage Avoidance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Choose one type of save. Your familiar takes no damage when it rolls a success on that type of save; this doesn't prevent effects other than damage."
+			]
+		},
+		{
+			"name": "Dragon",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait dragon} trait instead of the {@trait animal} trait."
+			]
+		},
+		{
+			"name": "Elemental",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait elemental} trait instead of the {@trait animal} trait. Choose {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait water}, or {@trait wood}. Your familiar gains that trait. The familiar is immune to {@condition persistent damage|PC1|bleed}, {@condition paralyzed|PC1}, {@condition poison|PC1}, {@condition sleep|PC1}, and the element matching its trait. Your familiar must have the {@familiarAbility resistance|PC1} familiar ability to select this."
+			]
+		},
+		{
+			"name": "Focused Rejuvenation",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"When you {@action Refocus|PC1}, you generate magical energy that heals your familiar. Your familiar regains 1 Hit Point per level whenever you {@action Refocus|PC1}."
+			]
+		},
+		{
+			"name": "Fungus",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait fungus} trait instead of the {@trait animal} trait."
+			]
+		},
+		{
+			"name": "Independent",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"In an encounter, if you don't {@action Command an Animal|PC1|Command} your familiar, it still gains 1 action each round. Typically, you still decide how it spends that action, but, the GM might determine that your familiar chooses its own tactics rather than performing your preferred action. This doesn't work with {@familiarAbility valet|PC1} or similar abilities that require a command, if you're capable of riding your familiar, or similar situations."
+			]
+		},
+		{
+			"name": "Kinspeech",
+			"source": "PC1",
+			"remaster": true,
+			"page": 212,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar can understand and speak with animals of the same species. To select this, your familiar must be an {@trait animal}, it must have the {@familiarAbility speech|PC1} ability, and you must be at least 6th level."
+			]
+		},
+		{
+			"name": "Major Resistance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar increases the resistance it gains from its {@familiarAbility resistance|PC1} familiar ability to a value equal to your level. To select this you must be at least 8th level."
+			]
+		},
+		{
+			"name": "Master's Form",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar can change shape as a single action, transforming into a humanoid of your ancestry with the same age, gender, and build of its true form, though it always maintains a clearly unnatural remnant of its nature, such as a cat's eyes or a serpent's tongue. This form is always the same each time it uses this ability. This otherwise uses the effects of humanoid form, except the change is purely cosmetic. It only appears humanoid and gains no new capabilities. Your familiar must have the {@familiarAbility manual dexterity|PC1} and {@familiarAbility speech|PC1} abilities to select this."
+			]
+		},
+		{
+			"name": "Partner in Crime",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar is your criminal associate. Despite being a {@trait minion}, your familiar gains 1 reaction at the start of its turns, which it can use only to {@action Aid|PC1} you on a {@skill Deception|PC1} or {@skill Thievery|PC1} skill check (it still has to prepare to help you as normal for the {@action Aid|PC1} reaction). It automatically succeeds at its check to {@action Aid|PC1} you with those skills or automatically critically succeeds if you're a master of the skill in question."
+			]
+		},
+		{
+			"name": "Plant",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar has the {@trait plant} trait instead of the {@trait animal} trait."
+			]
+		},
+		{
+			"name": "Plant Form",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your plant familiar can change shape as a single action, transforming into a Tiny plant of a type roughly similar to the familiar's nature. This otherwise uses the effects of one with plants. You must have a familiar with the {@trait plant} trait to select this ability."
+			]
+		},
+		{
+			"name": "Resistance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Choose two of the following: acid, cold, electricity, fire, poison, or sonic. Your familiar gains resistance equal to half your level (minimum resistance 1) against the chosen damage types."
+			]
+		},
+		{
+			"name": "Skilled",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Choose a skill other than {@skill Acrobatics|PC1} or {@skill Stealth|PC1}. Your familiar's modifier for that skill is equal to your level plus your spellcasting attribute modifier, rather than just your level. You can select this ability repeatedly, choosing a different skill each time."
+			]
+		},
+		{
+			"name": "Speech",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar understands and speaks a language you know."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Choose a spell in your repertoire or that you prepared today at least 5 levels lower than your highest-rank spell slot. Your familiar can Cast that Spell once per day using your magical tradition, spell attack modifier, and spell DC. If the spell has a drawback that affects the caster, both you and your familiar are affected. You must be able to cast 6th-rank spells using spell slots to select this."
+			]
+		},
+		{
+			"name": "Toolbearer",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar can carry a toolkit of up to light Bulk. So long as your familiar is adjacent to you, you can draw and replace the tools as part of the action that uses them as if you were wearing them. Your familiar must have the {@familiarAbility manual dexterity|PC1} ability to select this."
+			]
+		},
+		{
+			"name": "Touch Telepathy",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar can telepathically communicate with you via touch. If it also has the {@familiarAbility speech|PC1} ability, it can telepathically communicate via touch with any creature if they share a language."
+			]
+		},
+		{
+			"name": "Valet",
+			"source": "PC1",
+			"remaster": true,
+			"page": 213,
+			"type": "Familiar",
+			"entries": [
+				"You can command your familiar to deliver you items more efficiently. Your familiar doesn't use its 2 actions immediately upon your command. Instead, up to twice before the end of your turn, you can have your familiar {@action Interact|PC1} to retrieve an item of light or negligible Bulk you are wearing and place it into one of your free hands. The familiar can't use this ability to retrieve stowed items. If the familiar has a different number of actions, it can retrieve one item for each action it has when commanded this way."
+			]
+		},
+		{
+			"name": "Absorb Familiar",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Your familiar can transform into a mark you carry on your flesh, typically seeming like a birthmark, tattoo, or gem that vaguely resembles its normal form. When transformed, the familiar can't act except to turn back into a familiar. It isn't affected by area effects and must be targeted separately to affect it, which requires knowledge that it's a creature. This means you and your allies can heal or assist the familiar while most enemies stay unaware of its true nature. Creatures must attempt a DC 20 {@skill Perception|PC1} check to {@action Seek|PC1} to realize a it is actually a familiar. Your familiar can still communicate its feelings empathically. Transforming the familiar between forms is a 1-minute activity that has the {@trait concentrate} trait."
+			]
+		},
+		{
+			"name": "Cantrip Connection",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"You can prepare an additional {@trait cantrip} or, if you have a repertoire, designate a {@trait cantrip} to add to your repertoire every time you select this ability; you can retrain it but can't otherwise change it. You must be able to prepare {@trait cantrip||cantrips} or add them to your repertoire to select this."
+			]
+		},
+		{
+			"name": "Familiar Focus",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Once per day, your familiar can use 2 actions with the {@trait concentrate} trait to restore 1 Focus Point to your focus pool, up to your usual maximum. You must have a focus pool to select this."
+			]
+		},
+		{
+			"name": "Innate Surge",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Once per day, you can draw upon your familiar's innate magic to replenish your own. You can cast one innate spell gained from an ancestry feat that you have already cast today. You must still Cast the Spell and meet the spell's other requirements."
+			]
+		},
+		{
+			"name": "Lifelink",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"If your familiar would be reduced to 0 HP by damage, as a reaction with the {@trait concentrate} trait, you can take all the damage, and your familiar takes none. However, special effects that would occur due to that damage (such as snake venom) still apply."
+			]
+		},
+		{
+			"name": "Share Senses",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Once every 10 minutes, you can use a single action with the {@trait concentrate} trait to project your senses into your familiar. When you do, you lose all sensory information from your own body, but can sense through your familiar's body for up to 1 minute. You can {@action Dismiss|PC1} this effect."
+			]
+		},
+		{
+			"name": "Spell Battery",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"You gain one additional spell slot at least 3 ranks lower than your highest-rank spell slot; you must be able to cast 4th-rank spells using spell slots to select this master ability."
+			]
+		},
+		{
+			"name": "Spell Delivery",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"If your familiar is in your space, you can cast a spell with a range of touch, transfer its power to your familiar, and command the familiar to deliver the spell. If you do, the familiar uses its 2 actions for the round to move to a target of your choice and touch that target. If it doesn't reach the target to touch it this turn, the spell has no effect."
+			]
+		},
+		{
+			"name": "Recall Familiar",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Once per day, you can use a 3-action activity, which has the {@trait concentrate} trait, to teleport your familiar to your space. Your familiar must be within 1 mile or the attempt to summon it fails. This is a {@trait teleportation} effect."
+			]
+		},
+		{
+			"name": "Restorative Familiar",
+			"source": "PC1",
+			"remaster": true,
+			"page": 214,
+			"type": "Master",
+			"entries": [
+				"Once per day, your familiar can use 2 actions with the {@trait concentrate} trait to give up some of its energy and heal you. It must be in your space to do so. You restore a number of Hit Points equal to {@dice 1d8} times half your level (minimum {@dice 1d8})."
+			]
+		},
+		{
 			"name": "Elemental",
 			"source": "RoE",
 			"page": 42,
 			"type": "Familiar",
 			"entries": [
-				"Your familiar has the {@trait elemental} trait instead of the {@trait animal} trait. Choose {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait water}, or {@trait wood}. Your familiar gains that trait. The familiar is immune to {@trait bleed}, {@trait paralyzed}, {@trait poison}, {@trait sleep}, and the element matching its trait. Your familiar must have the resistance familiar ability to select this, unless it's a specific familiar. You can't select this ability if your familiar has a trait other than {@trait animal} (such as a leshy familiar or an undead familiar)."
+				"Your familiar has the {@trait elemental} trait instead of the {@trait animal} trait. Choose {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait water}, or {@trait wood}. Your familiar gains that trait. The familiar is immune to {@trait bleed}, {@trait paralyzed}, {@trait poison}, {@trait sleep}, and the element matching its trait. Your familiar must have the {@familiarAbility resistance|PC1} familiar ability to select this, unless it's a specific familiar. You can't select this ability if your familiar has a trait other than {@trait animal} (such as a {@trait leshy} familiar or an {@trait undead} familiar)."
 			]
 		},
 		{
@@ -3744,7 +5270,7 @@
 			"page": 34,
 			"type": "Familiar",
 			"entries": [
-				"Your familiar helps you convey wordless threats through body language. Whenever you attempt an {@skill Intimidation} check to {@action Demoralize} a creature, if your familiar is within 30 feet of your target and can act, it accompanies you with snarls, hisses, or raising its hackles. If it can do so, you don't take the normal \u20134 penalty on the {@skill Intimidation} check if your target doesn't understand the language you're speaking."
+				"Your familiar helps you convey wordless threats through body language. Whenever you attempt an {@skill Intimidation} check to {@action Demoralize} a creature, if your familiar is within 30 feet of your target and can act, it accompanies you with snarls, hisses, or raising its hackles. If it can do so, you don't take the normal \u22124 penalty on the {@skill Intimidation} check if your target doesn't understand the language you're speaking."
 			]
 		},
 		{
@@ -4127,7 +5653,7 @@
 	],
 	"eidolon": [
 		{
-			"name": "Elemental Eidolon (air)",
+			"name": "Elemental Eidolon",
 			"type": "Eidolon",
 			"source": "RoE",
 			"page": 38,
@@ -4138,15 +5664,18 @@
 			"tradition": "primal",
 			"traits": [
 				"eidolon",
-				"elemental",
-				"air"
+				"elemental"
 			],
-			"home": "Plane of Air",
+			"home": "elemental plane matching their Elemental Core",
 			"size": [
 				"medium"
 			],
 			"suggestedAttacks": [
-				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
+				"branch (bludgeoning)",
+				"fist (bludgeoning)",
+				"spike (piercing)",
+				"tendril (bludgeoning)",
+				"wave (bludgeoning)"
 			],
 			"stats": [
 				{
@@ -4190,7 +5719,12 @@
 				]
 			},
 			"languages": [
-				"{@language Sussuran} (air elemental)"
+				"{@language Sussuran|PC1} (air elemental)",
+				"{@language Petran|PC1} (earth elemental)",
+				"{@language Pyric|PC1} (fire elemental)",
+				"{@language Talican|PC1} (metal elemental)",
+				"{@language Thalassic|PC1} (water elemental)",
+				"{@language Muan|PC1} (wood elemental)"
 			],
 			"speed": {
 				"walk": 25
@@ -4200,582 +5734,12 @@
 					"name": "Elemental Core",
 					"type": "initial",
 					"entries": [
-						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
-						"{@b Air}: Your eidolon is formed from elemental air and is light as a breeze. Your eidolon can {@action Leap}, {@action High Jump}, and {@action Long Jump} twice as far, and doesn't take falling damage."
-					]
-				},
-				{
-					"name": "Elemental Burst",
-					"type": "symbiosis",
-					"traits": [
-						"concentrate",
-						"eidolon"
-					],
-					"entries": [
-						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
-						{
-							"type": "ability",
-							"activity": {
-								"number": 2,
-								"unit": "action"
-							},
-							"traits": [
-								"concentrate",
-								"eidolon"
-							],
-							"entries": [
-								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
-							]
-						}
-					]
-				},
-				{
-					"name": "Elemental Maelstrom",
-					"type": "transcendence",
-					"traits": [
-						"eidolon"
-					],
-					"entries": [
-						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
-					]
-				}
-			]
-		},
-		{
-			"name": "Elemental Eidolon (earth)",
-			"type": "Eidolon",
-			"source": "RoE",
-			"page": 38,
-			"fluff": [
-				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
-				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
-			],
-			"tradition": "primal",
-			"traits": [
-				"eidolon",
-				"elemental",
-				"earth"
-			],
-			"home": "Plane of Earth",
-			"size": [
-				"medium"
-			],
-			"suggestedAttacks": [
-				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
-			],
-			"stats": [
-				{
-					"name": "Adaptable Elemental",
-					"abilityScores": {
-						"str": 12,
-						"dex": 18,
-						"con": 16,
-						"int": 10,
-						"wis": 12,
-						"cha": 10
-					},
-					"ac": {
-						"number": 1,
-						"dexCap": 4
-					}
-				},
-				{
-					"name": "Primordial Elemental",
-					"abilityScores": {
-						"str": 18,
-						"dex": 14,
-						"con": 16,
-						"int": 8,
-						"wis": 12,
-						"cha": 10
-					},
-					"ac": {
-						"number": 2,
-						"dexCap": 3
-					}
-				}
-			],
-			"skills": [
-				"Nature",
-				"Survival"
-			],
-			"senses": {
-				"other": [
-					"{@ability darkvision}"
-				]
-			},
-			"languages": [
-				"{@language Petran} (earth elemental)"
-			],
-			"speed": {
-				"walk": 25
-			},
-			"abilities": [
-				{
-					"name": "Elemental Core",
-					"type": "initial",
-					"entries": [
-						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
-						"{@b Earth}: Your eidolon is formed from elemental earth, and is incredibly hard to move by force. Your eidolon gains a +2 circumstance bonus to their Fortitude or Reflex DCs against attempts to {@action Shove} or {@action Trip} them. This bonus also applies to saving throws against spells or effects that attempt to knock them prone. In addition, if any effect would force them to move 10 feet or more, they're moved only half the distance."
-					]
-				},
-				{
-					"name": "Elemental Burst",
-					"type": "symbiosis",
-					"traits": [
-						"concentrate",
-						"eidolon"
-					],
-					"entries": [
-						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
-						{
-							"type": "ability",
-							"activity": {
-								"number": 2,
-								"unit": "action"
-							},
-							"traits": [
-								"concentrate",
-								"eidolon"
-							],
-							"entries": [
-								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
-							]
-						}
-					]
-				},
-				{
-					"name": "Elemental Maelstrom",
-					"type": "transcendence",
-					"traits": [
-						"eidolon"
-					],
-					"entries": [
-						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
-					]
-				}
-			]
-		},
-		{
-			"name": "Elemental Eidolon (fire)",
-			"type": "Eidolon",
-			"source": "RoE",
-			"page": 38,
-			"fluff": [
-				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
-				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
-			],
-			"tradition": "primal",
-			"traits": [
-				"eidolon",
-				"elemental",
-				"fire"
-			],
-			"home": "Plane of Fire",
-			"size": [
-				"medium"
-			],
-			"suggestedAttacks": [
-				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
-			],
-			"stats": [
-				{
-					"name": "Adaptable Elemental",
-					"abilityScores": {
-						"str": 12,
-						"dex": 18,
-						"con": 16,
-						"int": 10,
-						"wis": 12,
-						"cha": 10
-					},
-					"ac": {
-						"number": 1,
-						"dexCap": 4
-					}
-				},
-				{
-					"name": "Primordial Elemental",
-					"abilityScores": {
-						"str": 18,
-						"dex": 14,
-						"con": 16,
-						"int": 8,
-						"wis": 12,
-						"cha": 10
-					},
-					"ac": {
-						"number": 2,
-						"dexCap": 3
-					}
-				}
-			],
-			"skills": [
-				"Nature",
-				"Survival"
-			],
-			"senses": {
-				"other": [
-					"{@ability darkvision}"
-				]
-			},
-			"languages": [
-				"{@language Pyric} (fire elemental)"
-			],
-			"speed": {
-				"walk": 25
-			},
-			"abilities": [
-				{
-					"name": "Elemental Core",
-					"type": "initial",
-					"entries": [
-						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
-						"{@b Fire}: Your eidolon is formed from elemental fire and burns with embers of flame. Your eidolon gains resistance equal to half your level (minimum 1) to fire and an equal amount of weakness to cold and water. Their unarmed attacks deal 1 additional fire damage."
-					]
-				},
-				{
-					"name": "Elemental Burst",
-					"type": "symbiosis",
-					"traits": [
-						"concentrate",
-						"eidolon"
-					],
-					"entries": [
-						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
-						{
-							"type": "ability",
-							"activity": {
-								"number": 2,
-								"unit": "action"
-							},
-							"traits": [
-								"concentrate",
-								"eidolon"
-							],
-							"entries": [
-								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
-							]
-						}
-					]
-				},
-				{
-					"name": "Elemental Maelstrom",
-					"type": "transcendence",
-					"traits": [
-						"eidolon"
-					],
-					"entries": [
-						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
-					]
-				}
-			]
-		},
-		{
-			"name": "Elemental Eidolon (metal)",
-			"type": "Eidolon",
-			"source": "RoE",
-			"page": 38,
-			"fluff": [
-				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
-				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
-			],
-			"tradition": "primal",
-			"traits": [
-				"eidolon",
-				"elemental",
-				"metal"
-			],
-			"home": "Plane of Metal",
-			"size": [
-				"medium"
-			],
-			"suggestedAttacks": [
-				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
-			],
-			"stats": [
-				{
-					"name": "Adaptable Elemental",
-					"abilityScores": {
-						"str": 12,
-						"dex": 18,
-						"con": 16,
-						"int": 10,
-						"wis": 12,
-						"cha": 10
-					},
-					"ac": {
-						"number": 1,
-						"dexCap": 4
-					}
-				},
-				{
-					"name": "Primordial Elemental",
-					"abilityScores": {
-						"str": 18,
-						"dex": 14,
-						"con": 16,
-						"int": 8,
-						"wis": 12,
-						"cha": 10
-					},
-					"ac": {
-						"number": 2,
-						"dexCap": 3
-					}
-				}
-			],
-			"skills": [
-				"Nature",
-				"Survival"
-			],
-			"senses": {
-				"other": [
-					"{@ability darkvision}"
-				]
-			},
-			"languages": [
-				"{@language Talican} (metal elemental)"
-			],
-			"speed": {
-				"walk": 25
-			},
-			"abilities": [
-				{
-					"name": "Elemental Core",
-					"type": "initial",
-					"entries": [
-						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
-						"{@b Metal}: Your eidolon is formed from elemental metal and can adapt their metallic form to battle. One of your eidolon's starting melee unarmed attacks gains the {@trait versatile} bludgeoning, piercing, or slashing trait, as your eidolon learns how to shift the metal into various weaponlike forms."
-					]
-				},
-				{
-					"name": "Elemental Burst",
-					"type": "symbiosis",
-					"traits": [
-						"concentrate",
-						"eidolon"
-					],
-					"entries": [
-						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
-						{
-							"type": "ability",
-							"activity": {
-								"number": 2,
-								"unit": "action"
-							},
-							"traits": [
-								"concentrate",
-								"eidolon"
-							],
-							"entries": [
-								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
-							]
-						}
-					]
-				},
-				{
-					"name": "Elemental Maelstrom",
-					"type": "transcendence",
-					"traits": [
-						"eidolon"
-					],
-					"entries": [
-						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
-					]
-				}
-			]
-		},
-		{
-			"name": "Elemental Eidolon (water)",
-			"type": "Eidolon",
-			"source": "RoE",
-			"page": 38,
-			"fluff": [
-				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
-				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
-			],
-			"tradition": "primal",
-			"traits": [
-				"eidolon",
-				"elemental",
-				"water"
-			],
-			"home": "Plane of Water",
-			"size": [
-				"medium"
-			],
-			"suggestedAttacks": [
-				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
-			],
-			"stats": [
-				{
-					"name": "Adaptable Elemental",
-					"abilityScores": {
-						"str": 12,
-						"dex": 18,
-						"con": 16,
-						"int": 10,
-						"wis": 12,
-						"cha": 10
-					},
-					"ac": {
-						"number": 1,
-						"dexCap": 4
-					}
-				},
-				{
-					"name": "Primordial Elemental",
-					"abilityScores": {
-						"str": 18,
-						"dex": 14,
-						"con": 16,
-						"int": 8,
-						"wis": 12,
-						"cha": 10
-					},
-					"ac": {
-						"number": 2,
-						"dexCap": 3
-					}
-				}
-			],
-			"skills": [
-				"Nature",
-				"Survival"
-			],
-			"senses": {
-				"other": [
-					"{@ability darkvision}"
-				]
-			},
-			"languages": [
-				"{@language Thalassic} (water elemental)"
-			],
-			"speed": {
-				"walk": 25
-			},
-			"abilities": [
-				{
-					"name": "Elemental Core",
-					"type": "initial",
-					"entries": [
-						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
-						"{@b Water}: Your eidolon is formed from elemental water and swims with ease. Your eidolon gains the amphibious trait, allowing them to breathe in water and air and to avoid the normal \u20132 penalty for making bludgeoning and slashing {@trait unarmed} {@action Strike||Strikes} underwater. Your eidolon's land Speed is reduced to 15 feet, and they gain a swim Speed of 25 feet. You can take the {@feat Amphibious Form|SoM} feat  to increase their land Speed back up to 25 feet, as described in the feat."
-					]
-				},
-				{
-					"name": "Elemental Burst",
-					"type": "symbiosis",
-					"traits": [
-						"concentrate",
-						"eidolon"
-					],
-					"entries": [
-						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
-						{
-							"type": "ability",
-							"activity": {
-								"number": 2,
-								"unit": "action"
-							},
-							"traits": [
-								"concentrate",
-								"eidolon"
-							],
-							"entries": [
-								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
-							]
-						}
-					]
-				},
-				{
-					"name": "Elemental Maelstrom",
-					"type": "transcendence",
-					"traits": [
-						"eidolon"
-					],
-					"entries": [
-						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
-					]
-				}
-			]
-		},
-		{
-			"name": "Elemental Eidolon (wood)",
-			"type": "Eidolon",
-			"source": "RoE",
-			"page": 38,
-			"fluff": [
-				"Your eidolon is a primal chunk of elemental matter infused with sapience, power, and identity, but unable to manifest a true form of their own without the life force you provide via your connection. Most elementals in their natural environment already have different sorts of forms, from vaguely humanoid, to animalistic, to simple masses of their component element. As your life force provides your eidolon the instincts necessary to adopt a physical form, their appearance varies based on the strength of their own self image and your prior exposure to elementals.",
-				"Elemental eidolons tend to reach their unusual state\u2014powerful but formless\u2014as the result of large scale events or cataclysms, such as the war to seal the benevolent {@filter elemetal lords|deities||Category=Elemental Lords} or their recent unsealing. Whether elemental eidolons possess any memories of a previous life or are a new sapience formed from left‑over essence of a mighty servant of the {@filter elemetal lords|deities||Category=Elemental Lords} brought low varies from eidolon to eidolon. Together, you might undertake a journey to understand your eidolon's mysterious past or leave the past behind and forge a new destiny of your own."
-			],
-			"tradition": "primal",
-			"traits": [
-				"eidolon",
-				"elemental",
-				"wood"
-			],
-			"home": "Plane of Wood",
-			"size": [
-				"medium"
-			],
-			"suggestedAttacks": [
-				"branch (bludgeoning), fist (bludgeoning), spike (piercing), tendril (bludgeoning), wave (bludgeoning)"
-			],
-			"stats": [
-				{
-					"name": "Adaptable Elemental",
-					"abilityScores": {
-						"str": 12,
-						"dex": 18,
-						"con": 16,
-						"int": 10,
-						"wis": 12,
-						"cha": 10
-					},
-					"ac": {
-						"number": 1,
-						"dexCap": 4
-					}
-				},
-				{
-					"name": "Primordial Elemental",
-					"abilityScores": {
-						"str": 18,
-						"dex": 14,
-						"con": 16,
-						"int": 8,
-						"wis": 12,
-						"cha": 10
-					},
-					"ac": {
-						"number": 2,
-						"dexCap": 3
-					}
-				}
-			],
-			"skills": [
-				"Nature",
-				"Survival"
-			],
-			"senses": {
-				"other": [
-					"{@ability darkvision}"
-				]
-			},
-			"languages": [
-				"{@language Muan} (wood elemental)"
-			],
-			"speed": {
-				"walk": 25
-			},
-			"abilities": [
-				{
-					"name": "Elemental Core",
-					"type": "initial",
-					"entries": [
-						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@companion air elemental|RoE|air}, {@companion earth elemental|RoE|earth}, {@companion fire elemental|RoE|fire}, {@companion metal elemental|RoE|metal}, {@companion wood elemental|RoE|wood}, or {@companion water elemental|RoE}. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
+						"Your elemental eidolon is an amalgam of elemental matter and mortal life force, which helps protect them from certain effects that are more harmful to mortals than elementals. They gain a +2 circumstance bonus to saving throws against {@trait poison} and {@trait sleep} effects, as well as effects causing the {@condition paralyzed} condition. Additionally, their elemental essence bleeds less easily than flesh, so the DC of any flat check they make to remove {@condition persistent damage||persistent bleed damage} is 10 (or 5 after receiving particularly effective aid). Choose for your eidolon to be an {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait wood}, or {@trait water} elemental. Your eidolon and all their unarmed attacks gain the trait of the chosen element, and the eidolon gains additional effects based on your choice.",
+						"{@b Air}: Your eidolon is formed from elemental air and is light as a breeze. Your eidolon can {@action Leap}, {@action High Jump}, and {@action Long Jump} twice as far, and doesn't take falling damage.",
+						"{@b Earth}: Your eidolon is formed from elemental earth, and is incredibly hard to move by force. Your eidolon gains a +2 circumstance bonus to their Fortitude or Reflex DCs against attempts to {@action Shove} or {@action Trip} them. This bonus also applies to saving throws against spells or effects that attempt to knock them prone. In addition, if any effect would force them to move 10 feet or more, they're moved only half the distance.",
+						"{@b Fire}: Your eidolon is formed from elemental fire and burns with embers of flame. Your eidolon gains resistance equal to half your level (minimum 1) to fire and an equal amount of weakness to cold and water. Their unarmed attacks deal 1 additional fire damage.",
+						"{@b Metal}: Your eidolon is formed from elemental metal and can adapt their metallic form to battle. One of your eidolon's starting melee unarmed attacks gains the {@trait versatile} bludgeoning, piercing, or slashing trait, as your eidolon learns how to shift the metal into various weaponlike forms.",
+						"{@b Water}: Your eidolon is formed from elemental water and swims with ease. Your eidolon gains the amphibious trait, allowing them to breathe in water and air and to avoid the normal \u22122 penalty for making bludgeoning and slashing {@trait unarmed} {@action Strike||Strikes} underwater. Your eidolon's land Speed is reduced to 15 feet, and they gain a swim Speed of 25 feet. You can take the {@feat Amphibious Form|SoM} feat  to increase their land Speed back up to 25 feet, as described in the feat.",
 						"{@b Wood}: Your eidolon is formed from elemental wood, and its living wooden form twists and regrows as you focus your elemental energies. You can choose to have your eidolon gain the {@trait plant} trait. Whenever you {@action Refocus}, your eidolon regains a number of Hit Points equal to double your level."
 					]
 				},
@@ -4790,6 +5754,8 @@
 						"Your eidolon can form projectile attacks from their own body. Your eidolon gains the Elemental Burst activity.",
 						{
 							"type": "ability",
+							"name": "Elemental Burst",
+							"style": "full",
 							"activity": {
 								"number": 2,
 								"unit": "action"
@@ -4799,7 +5765,7 @@
 								"eidolon"
 							],
 							"entries": [
-								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either {@trait fire} damage if your eidolon is a fire elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a fire elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
+								"Your eidolon rips off a chunk of elemental matter from their own form and hurls it into a group of foes. Your eidolon loses a number of Hit Points equal to your level. All creatures in a 20-foot burst within 60 feet take {@dice 6d6} damage with a basic Reflex save against your spell DC. The damage increases by 1d6 for each level you have beyond 7th. The damage's type is either fire damage if your eidolon is a {@trait fire} elemental, or the same physical damage type as your eidolon's primary unarmed attack if your eidolon isn't a {@trait fire} elemental. Elemental Burst gains any traits that your eidolon's unarmed attacks gain from elemental core."
 							]
 						}
 					]
@@ -4807,11 +5773,19 @@
 				{
 					"name": "Elemental Maelstrom",
 					"type": "transcendence",
-					"traits": [
-						"eidolon"
-					],
 					"entries": [
-						"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of Stride."
+						"Your eidolon can form a swirling vortex of elemental matter and move across the battlefield, damaging everything in their path. Your eidolon gains the Elemental Maelstrom activity.",
+						{
+							"type": "ability",
+							"style": "full",
+							"name": "Elemental Maelstrom",
+							"traits": [
+								"eidolon"
+							],
+							"entries": [
+								"Your eidolon temporarily shifts its form into a swirling vortex of elemental matter and rampages through their foes. Your eidolon {@action Stride||Strides}. During their movement, they can attempt a {@action Strike} against each enemy that is within their reach. If an enemy comes within your eidolon's reach more than once, your eidolon makes only a single {@action Strike} against a given enemy. These attacks all count towards your eidolon's multiple attack penalty, but the penalty doesn't increase until after all the attacks. If your eidolon has the appropriate Speed, they can {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride}."
+							]
+						}
 					]
 				}
 			]
@@ -4880,7 +5854,7 @@
 				]
 			},
 			"languages": [
-				"necril"
+				"{@language Necril}"
 			],
 			"speed": {
 				"walk": 25
@@ -5002,7 +5976,7 @@
 				]
 			},
 			"languages": [
-				"celestial"
+				"{@language Celestial}"
 			],
 			"speed": {
 				"walk": 25
@@ -5012,7 +5986,7 @@
 					"name": "Hallowed Strikes",
 					"type": "initial",
 					"entries": [
-						"Your eidolon's attacks are hallowed by the celestial realms. Your eidolon's unarmed {@action Strike||Strikes} deal an extra 1 good damage; as usual, this extra damage harms only evil creatures or those with a weakness to good damage. Additionally, your eidolon can make {@trait nonlethal} attacks with its unarmed attacks without taking the usual \u20132 circumstance penalty."
+						"Your eidolon's attacks are hallowed by the celestial realms. Your eidolon's unarmed {@action Strike||Strikes} deal an extra 1 good damage; as usual, this extra damage harms only evil creatures or those with a weakness to good damage. Additionally, your eidolon can make {@trait nonlethal} attacks with its unarmed attacks without taking the usual \u22122 circumstance penalty."
 					]
 				},
 				{
@@ -5145,7 +6119,7 @@
 								"mental"
 							],
 							"entries": [
-								"Your eidolon's fury boils over into a reckless, outof-control frenzy. While frenzied, your eidolon is affected by {@spell boost eidolon} and gains temporary Hit Points equal to your level, but it takes a \u20132 penalty to AC. Your eidolon can't voluntarily end the frenzy or start another frenzy while in the frenzy. The frenzy lasts for 1 minute, after which it's {@condition fatigued} for 1 minute and can't start another frenzy for 1 minute."
+								"Your eidolon's fury boils over into a reckless, outof-control frenzy. While frenzied, your eidolon is affected by {@spell boost eidolon} and gains temporary Hit Points equal to your level, but it takes a \u22122 penalty to AC. Your eidolon can't voluntarily end the frenzy or start another frenzy while in the frenzy. The frenzy lasts for 1 minute, after which it's {@condition fatigued} for 1 minute and can't start another frenzy for 1 minute."
 							],
 							"type": "ability",
 							"style": "full",
@@ -5225,7 +6199,7 @@
 				]
 			},
 			"languages": [
-				"Sylvan"
+				"{@language Sylvan}"
 			],
 			"speed": {
 				"walk": 25
@@ -5417,7 +6391,7 @@
 				"eidolon",
 				"fiend"
 			],
-			"home": "{@place The Abyss}",
+			"home": "The {@place Abyss}",
 			"size": [
 				"medium",
 				"small"
@@ -5468,7 +6442,7 @@
 				]
 			},
 			"languages": [
-				"Abyssal"
+				"{@language Abyssal}"
 			],
 			"speed": {
 				"walk": 25
@@ -5498,7 +6472,7 @@
 							"style": "full",
 							"name": "Visions of Sin",
 							"entries": [
-								"Your eidolon summons images of its sin into the mind of a target creature within 30 feet, tormenting and confusing the target. The target must attempt a Will save against your spell DC with the following effects. The effects last until the end of your next turn, but your eidolon can use a single action, which has the {@trait concentrate} trait, to extend the effects until the end of your next turn (like {@action Sustain a Spell||Sustaining a Spell}), to a maximum duration of 1 minute. If the target is evil, it takes a \u20132 circumstance penalty to its save. Regardless of whether it succeeds, the target becomes temporarily immune for 1 day.",
+								"Your eidolon summons images of its sin into the mind of a target creature within 30 feet, tormenting and confusing the target. The target must attempt a Will save against your spell DC with the following effects. The effects last until the end of your next turn, but your eidolon can use a single action, which has the {@trait concentrate} trait, to extend the effects until the end of your next turn (like {@action Sustain a Spell||Sustaining a Spell}), to a maximum duration of 1 minute. If the target is evil, it takes a \u22122 circumstance penalty to its save. Regardless of whether it succeeds, the target becomes temporarily immune for 1 day.",
 								{
 									"type": "successDegree",
 									"entries": {
@@ -5708,7 +6682,7 @@
 				]
 			},
 			"languages": [
-				"Draconic"
+				"{@language Draconic}"
 			],
 			"speed": {
 				"walk": 25
@@ -5852,7 +6826,7 @@
 				]
 			},
 			"languages": [
-				"Sylvan"
+				"{@language Sylvan}"
 			],
 			"speed": {
 				"walk": 25
@@ -5946,7 +6920,7 @@
 				]
 			},
 			"languages": [
-				"Sylvan"
+				"{@language Sylvan}"
 			],
 			"speed": {
 				"walk": 25
@@ -6005,8 +6979,8 @@
 									"type": "successDegree",
 									"entries": {
 										"Critical Success": "The enemy is unaffected.",
-										"Success": "The enemy takes no damage, but takes a \u201310 foot circumstance penalty to its Speeds.",
-										"Failure": "The enemy takes half damage, takes a \u201310-foot circumstance penalty to its Speeds, and, at the end of each of its turns, takes half damage again.",
+										"Success": "The enemy takes no damage, but takes a \u221210 foot circumstance penalty to its Speeds.",
+										"Failure": "The enemy takes half damage, takes a \u221210-foot circumstance penalty to its Speeds, and, at the end of each of its turns, takes half damage again.",
 										"Critical Failure": "The enemy is {@condition immobilized}, takes full damage, and, at the end of each of its turns, takes full damage again."
 									}
 								}
@@ -6030,7 +7004,7 @@
 				"monitor",
 				"psychopomp"
 			],
-			"home": "{@place The Boneyard}",
+			"home": "The {@place Boneyard}",
 			"alignment": "must be true neutral",
 			"size": [
 				"medium"
@@ -6080,7 +7054,7 @@
 				]
 			},
 			"languages": [
-				"Requian"
+				"{@language Requian|B1}"
 			],
 			"speed": {
 				"walk": 25

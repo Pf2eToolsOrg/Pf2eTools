@@ -1,0 +1,146 @@
+{
+	"ancestry": [
+		{
+			"name": "Halfling",
+			"source": "PC1",
+			"remaster": true,
+			"page": 58,
+			"hp": 6,
+			"size": [
+				"small"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"boosts": [
+				"dexterity",
+				"wisdom",
+				"free"
+			],
+			"flaw": [
+				"strength"
+			],
+			"languages": [
+				"{@language Common|PC1}",
+				"{@language Halfling|PC1}",
+				"Additional languages equal to your Intelligence modifier (if it's positive). Choose from {@language Dwarven|PC1}, {@language Elven|PC1}, {@language Gnomish|PC1}, {@language Goblin|PC1}, and any other languages to which you have access (such as the languages prevalent in your region)."
+			],
+			"traits": [
+				"halfling",
+				"humanoid"
+			],
+			"features": [
+				{
+					"name": "Keen Eyes",
+					"entries": [
+						"Your eyes are sharp, allowing you to make out small details about {@condition concealed|PC1} or even {@condition invisible|PC1} creatures that others might miss. You gain a +2 circumstance bonus when using the {@action Seek|PC1} action to find {@condition hidden|PC1} or {@condition undetected|PC1} creatures within 30 feet of you. When you target an opponent that is {@condition concealed|PC1} from you or hidden from you, reduce the DC of the flat check to 3 for a {@condition concealed|PC1} target or 9 for a {@condition hidden|PC1} one."
+					]
+				}
+			],
+			"flavor": [
+				"Claiming no place as their own, halflings control few settlements larger than villages. Instead, they frequently live among humans within larger cities, carving out small communities alongside taller folk. Optimistic, cheerful, and driven by powerful wanderlust, halflings make up for their short stature with an abundance of bravado. At once excitable and easygoing, halflings are the best kind of opportunists, and their passions favor joy over violence. While their curiosity sometimes drives them toward adventure, halflings also carry strong ties to house and home.",
+				"If you want to play a character who must contend with these opposing drives toward adventure and comfort, you should play a halfling."
+			],
+			"heritageInfo": [
+				"Living all across the land, halflings of different heritages might appear in regions far from where their ancestors lived. Choose one of the following halfling heritages at 1st level."
+			],
+			"heritage": [
+				{
+					"name": "Gutsy Halfling",
+					"shortName": "Gutsy",
+					"source": "PC1",
+					"remaster": true,
+					"page": 59,
+					"entries": [
+						"Your family line is known for keeping a level head and staving off fear when the chips were down. When you roll a success on a saving throw against an {@trait emotion} effect, you get a critical success instead."
+					]
+				},
+				{
+					"name": "Hillock Halfling",
+					"shortName": "Hillock",
+					"source": "PC1",
+					"remaster": true,
+					"page": 59,
+					"entries": [
+						"Accustomed to a calm life in the hills, your people find rest and relaxation especially replenishing, particularly when indulging in creature comforts. When you regain Hit Points overnight, add your level to the Hit Points regained. When anyone uses the {@skill Medicine|PC1} skill to {@action Treat Wounds|PC1|Treat your Wounds}, you can eat a snack to add your level to the Hit Points you regain from their treatment."
+					]
+				},
+				{
+					"name": "Jinxed Halfling (Uncommon)",
+					"shortName": "Jinxed",
+					"source": "PC1",
+					"remaster": true,
+					"page": 59,
+					"entries": [
+						"You were born with a strange blessing: bereft of the typical halfling luck, you can instead manipulate the fortunes of others. You can never take the {@feat Halfling Luck|PC1} feat, and you gain the {@action Jinx|PC1} action.",
+						{
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"curse",
+								"occult"
+							],
+							"entries": [
+								"You can curse another creature with clumsiness. This curse has a range of 30 feet, and you must be able to see your target. The target gets a Will saving throw against your class DC or spell DC, whichever is higher.",
+								{
+									"type": "successDegree",
+									"entries": {
+										"Success": "The target is unaffected and temporarily immune for 24 hours.",
+										"Failure": "The target is {@condition clumsy|PC1|clumsy 1} for 1 minute. ",
+										"Critical Failure": "The target is {@condition clumsy|PC1|clumsy 2} for 1 minute."
+									}
+								}
+							],
+							"type": "ability",
+							"style": "full",
+							"name": "Jinx",
+							"frequency": {
+								"unit": "day",
+								"number": 1
+							}
+						}
+					]
+				},
+				{
+					"name": "Nomadic Halfling",
+					"shortName": "Nomadic",
+					"source": "PC1",
+					"remaster": true,
+					"page": 59,
+					"entries": [
+						"Your ancestors have traveled from place to place for generations, never content to settle down. You gain two additional languages of your choice, chosen from among the {@filter common and uncommon languages|languages||type=common;uncommon} available to you, and every time you take the {@feat Multilingual|PC1} feat, you gain another new language."
+					]
+				},
+				{
+					"name": "Twilight Halfling",
+					"shortName": "Twilight",
+					"source": "PC1",
+					"remaster": true,
+					"page": 59,
+					"entries": [
+						"Your ancestors performed many secret acts under the concealing cover of dusk, whether for good or ill, and over time they developed the ability to see in twilight beyond even the usual keen sight of halflings. You gain low-light vision."
+					]
+				},
+				{
+					"name": "Wildwood Halfling",
+					"shortName": "Wildwood",
+					"source": "PC1",
+					"remaster": true,
+					"page": 59,
+					"entries": [
+						"You hail from deep within a jungle or forest, and you've learned how to use your small size to wriggle through undergrowth and other obstacles. You ignore any {@quickref difficult terrain|PC1|3|terrain}  caused by plants and fungi, such as bushes, vines, and undergrowth."
+					]
+				}
+			],
+			"summary": {
+				"text": "Halflings are a short, adaptable people who exhibit remarkable curiosity and humor.",
+				"images": [
+					"https://2e.aonprd.com/Images/Ancestries/Halfling01.png",
+					"https://2e.aonprd.com/Images/Ancestries/Halfling02.png"
+				]
+			}
+		}
+	]
+}

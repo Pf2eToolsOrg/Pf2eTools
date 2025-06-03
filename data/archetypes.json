@@ -1,6 +1,579 @@
 {
 	"archetype": [
 		{
+			"name": "Runelord",
+			"source": "LORA",
+			"page": 114,
+			"entries": [
+				"You've learned arcane magic, following the path of the runelords. You learn the secrets of runic magic, the building blocks of magic. But be warned: You might succumb to sin in your pursuit of power. The seven runes held in highest regard by the runelords echo the addictive power of the seven sins.",
+				"Beyond the runes themselves, you also learn the techniques of the ancient runelords. You learn to use their signature weapons and can acquire the secrets of the ancient magic items called aeon stones, embedding them into your skin.",
+				{
+					"type": "pf2-h3",
+					"name": "Runelord",
+					"page": 114,
+					"level": 1,
+					"entries": [
+						"You draw untold power from runes, sometimes called sin magic. You associate with one of the seven sins, also known as the seven rewards of rule: envy, gluttony, greed, lust, pride, sloth, and wrath. If you choose this class archetype, you must select {@feat Runelord Dedication|LORA} as your 2nd-level class feat.",
+						"{@b Prerequisites:} You must be a {@class wizard|PC1}.",
+						"{@b Runelord Adjustments:} You become trained in martial polearms and spears. When your proficiency for simple weapons increases, your proficiencies in these weapons increases as well. You learn the {@language Thassilonian|LOWG} language.",
+						"Instead of an arcane thesis, you gain a personal rune. Your personal rune also affects your arcane bond.",
+						"You must select the School of Thassilonian Rune Magic as your arcane school, and you must choose one sin to specialize in. When you cast any curriculum spell or school spell from the School of Thassilonian Rune Magic, you do so simply by tracing runes of power in the air. This removes the need to speak incantations aloud. When you {@action Refocus|PC1}, you do so by contemplating or indulging in your sin.",
+						"Each sin is opposed by two others. The incompatibility of these sins means that casting magic philosophically appropriate to those opposing sins, as represented by each school's anathema, interrupts your connection to your own sin and personal rune. If you violate your sin's anathema, you lose the benefits of your personal rune, and whenever you attempt to cast a curriculum spell or school spell, you must succeed at a DC 15 flat check or the spell is lost. This disruption lasts until you complete an {@ritual atone|PC1} ritual; unlike a normal {@ritual atone|PC1} ritual, {@skill Arcana|PC1} can be used for both the primary and secondary checks. Your curriculum spells (including spells of your own sin) never violate this anathema, sometimes providing alternatives to prohibited magic.",
+						"You gain {@feat Advanced School Spell|PC1} as a bonus feat at 8th level, gaining the advanced school spell for the School of Thassilonian Rune Magic; once you've begun your studies of sin magic, there is no turning back from its allure."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "School of Thassilonian Rune Magic",
+					"page": 114,
+					"entries": [
+						"This curriculum, taught at a few select academies in New Thassilon, can be learned only by wizards with the runelord class archetype. You have begun to study one of the seven runes of sin, granting you great power but at the cost of anathematic magic. All runelords gain the below curriculum and school spells. In addition, you must choose one of the seven sins to specialize in. You add your sin's spells and initial school spells to your curriculum. The addictive nature of sin magic prevents you from using magic in ways aligned with other sins, represented by that sin's anathema. Casting a sin spell never invokes the anathema of its school of sin.",
+						"Unlike other wizards, some of your curriculum spells may be spells that don't typically appear on the {@trait arcane} spell list (marked with an asterisk). You still cast these spells as {@trait arcane} spells, the unifying knowledge of sin bridging the gap between disparate magics.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Curriculum",
+									"entries": [
+										"cantrips: {@spell detect magic|PC1}, {@spell sigil|PC1}; 1st: {@spell mystic armor|PC1}, {@spell runic body|PC1}, {@spell runic weapon|PC1}, {@spell sure strike|PC1}; 2nd: {@spell darkvision|PC1}, {@spell see the unseen|PC1}; 3rd: {@spell clairaudience|PC1}, {@spell veil of privacy|PC1}; 4th: {@spell clairvoyance|PC1}, {@spell fly|PC1}; 5th: {@spell mind probe|PC1}, {@spell sending|PC1}; 6th: {@spell scrying|PC1}, {@spell truesight|PC1}; 7th: {@spell contingency|PC1}, {@spell spell riposte|PC2}; 8th: {@spell unrelenting observation|PC1}, {@spell seize soul|PC1}*; 9th: {@spell foresight|PC1}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Advanced School Spell",
+									"entries": [
+										"{@spell personal runewell|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Envy",
+					"page": 115,
+					"entries": [
+						"The Cutting Eye reveals weaknesses in yourself and others, creating those weaknesses when you need to humble those who dare surpass you.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to cause harm with the elements or void."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell shield|PC1}, {@spell tangle vine|PC1}; 1st: {@spell schadenfreude|PC2}, {@spell enfeeble|PC1}; 2nd: {@spell dispel magic|PC1}, {@spell stupefy|PC1}; 3rd: {@spell earthbind|PC1}, {@spell thief of fortune|LORA}; 4th: {@spell containment|PC2}, {@spell outcast's curse|PC1}; 5th: {@spell banishment|PC1}, {@spell grisly growths|PC2}; 6th: {@spell cursed metamorphosis|PC1}, {@spell spellwrack|PC1}; 7th: {@spell duplicate foe|PC1}, {@spell planar seal|PC1}; 8th: {@spell quandary|PC1}; 9th: {@spell detonate magic|PC1}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell cutting eye|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Gluttony",
+					"page": 115,
+					"entries": [
+						"The All-Encompassing invokes a deep emptiness in its users, encouraging them to consume and consume, with nothing ever feeling like enough.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to protect others or manipulate minds."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell caustic blast|PC1}, {@spell void warp|PC1}; 1st: {@spell grim tendrils|PC1}, {@spell summon undead|PC1}; 2nd: {@spell create food|PC1}, {@spell ghoulish cravings|PC2}*; 3rd: {@spell rouse skeletons|PC2}, {@spell vampiric feast|PC1}; 4th: {@spell seal fate|PC2}, {@spell vampiric maiden|PC2}; 5th: {@spell corrosive muck|PC2}, {@spell slither|PC1}; 6th: {@spell disintegrate|PC1}, {@spell vampiric exsanguination|PC1}; 7th: {@spell devouring void|LORA}, {@spell eclipse burst|PC1}; 8th: {@spell desiccate|PC1}; 9th: {@spell massacre|PC1}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell all-encompassing hunger|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Greed",
+					"page": 115,
+					"entries": [
+						"The Precious Gleam carries knowledge that the world's problems are far beyond one's current form and resources. But forms can change and resources can be hoarded with the help of this rune's magic.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to affect the mind or perception rather than physical reality."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell live wire|PC2}, {@spell read aura|PC1}; 1st: {@spell ant haul|PC1}, {@spell leaden steps|PC2}; 2nd: {@spell enlarge|PC1}, {@spell phantasmal treasure|PC2}; 3rd: {@spell one with stone|PC1}, {@spell shrink item|PC2}; 4th: {@spell aerial form|PC1}, {@spell shape stone|PC1}; 5th: {@spell elemental form|PC1}, {@spell impaling spike|PC1}; 6th: {@spell dragon form|PC1}, {@spell petrify|PC1}; 7th: {@spell chrysopoetic curse|LORA}, {@spell lifewood cage|PC2}; 8th: {@spell monstrosity form|PC1}; 9th: {@spell metamorphosis|PC1}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell cutting eye|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Lust",
+					"page": 115,
+					"entries": [
+						"The Heart's Hook drowns rationality in desires, twisting its targets' thoughts until they gladly serve the runelord's wishes.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to meddle with physical forms or invoke the void."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell daze|PC1}, {@spell message|PC1}; 1st: {@spell charm|PC1}, {@spell command|PC1}; 2nd: {@spell charitable urge|PC2}, {@spell stupefy|PC1}; 3rd: {@spell dream message|PC1}, {@spell enthrall|PC1}; 4th: {@spell confusion|PC1}, {@spell suggestion|PC1}; 5th: {@spell mind probe|PC1}, {@spell subconscious suggestion|PC1}; 6th: {@spell dominate|PC1}, {@spell never mind|PC1}; 7th: {@spell love's sacrifice|LORA}, {@spell warp mind|PC1}; 8th: {@spell uncontrollable dance|PC1}; 9th: {@spell telepathic demand|PC2}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell heart's hook|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Pride",
+					"page": 116,
+					"entries": [
+						"The Crescent Scepter is endlessly convinced of its own superiority and the ascendance of its users. If someone's eyes show something else, clearly their eyes are mistaken.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to change or create physical things rather than their appearances."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell bullhorn|PC2}, {@spell figment|PC1}; 1st: {@spell dizzying colors|PC1}, {@spell illusory disguise|PC1}; 2nd: {@spell illusory creature|PC1}, {@spell invisibility|PC1}; 3rd: {@spell blindness|PC1}, {@spell levitate|PC1}; 4th: {@spell mirage|PC1}, {@spell vision of death|PC1}; 5th: {@spell cloak of colors|PC2}, {@spell illusory scene|PC1}; 6th: {@spell phantasmal calamity|PC1}, {@spell vibrant pattern|PC1}; 7th: {@spell mask of terror|PC1}, {@spell project image|PC1}; 8th: {@spell confusing colors|PC2}; 9th: {@spell overwhelming presence|PC1}*"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell crescent scepter|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Sloth",
+					"page": 116,
+					"entries": [
+						"The Reclined spreads a sense of restful peace to its users, the feeling of rest after a hard day of work without the drudgery leading up to it. With its magic, runelords can cut away even the smallest drudgery.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to manipulate appearances or directly cause harm with the elements."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell telekinetic hand|PC1}, {@spell telekinetic projectile|PC1}; 1st: {@spell sleep|PC1}, {@spell enfeeble|PC1}; 2nd: {@spell ghostly carrier|PC1}, {@spell summon elemental|PC1}; 3rd: {@spell cozy cabin|PC1}, {@spell slow|PC1}; 4th: {@spell dull ambition|PC2}, {@spell translocate|PC1}; 5th: {@spell summon dragon|PC1}, {@spell telekinetic haul|PC1}; 6th: {@spell collective transposition|PC2}, {@spell teleport|PC1}; 7th: {@spell indolent haze|LORA}, {@spell planar palace|PC1}; 8th: {@spell quandary|PC1}; 9th: {@spell resplendent mansion|PC2}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell reclined apport|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Wrath",
+					"page": 116,
+					"entries": [
+						"The Vengeful Glare fills its users with a zealous rage and the restless need to solve problems, which generally takes the form of cutting to the most direct solution.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Anathema",
+									"entries": [
+										"Use your magic to protect or create."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Sin Spells",
+									"entries": [
+										"cantrips: {@spell frostbite|PC1}, {@spell ignition|PC1}; 1st: {@spell force barrage|PC1}, {@spell thunderstrike|PC1}; 2nd: {@spell blistering invective|PC2}*, {@spell floating flame|PC1}; 3rd: {@spell fireball|PC1}, {@spell lightning bolt|PC1}; 4th: {@spell ice storm|PC2}, {@spell wall of fire|PC1}; 5th: {@spell howling blizzard|PC1}, {@spell wall of ice|PC1}; 6th: {@spell blinding fury|PC2}*, {@spell disintegrate|PC1}; 7th: {@spell eclipse burst|PC1}, {@spell fiery body|PC1}; 8th: {@spell earthquake|PC1}; 9th: {@spell falling stars|PC1}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Initial School Spell",
+									"entries": [
+										"{@spell vengeful glare|LORA}"
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Arcane Bond and Personal Rune",
+					"page": 116,
+					"entries": [
+						"Runelords hail from an era where even a scholar was expected to be able to defend themself with arms if necessary, leading to the practice of attaching a blade to the typical wizard's staff. You must choose a {@group polearm} or {@group spear} as your arcane bond. In place of an arcane thesis, you have a personal rune, which appears on your bonded weapon. The weapon functions as a {@trait staff} with charges equal to the highest rank of spells you can cast and contains the sin spells from your sin up to that rank (including your {@trait cantrip||cantrips}). Your personal rune isn't a property rune and doesn't count against the weapon's limit of such runes.",
+						"If you prepare a magical {@trait staff}, it merges with your bonded item until your next daily preparations, adding its charges and spell list. While merged, the weapons haft takes on aesthetic aspects of the staff."
+					]
+				}
+			],
+			"dedicationLevel": 1,
+			"remaster": true,
+			"miscTags": [
+				"Class Archetype"
+			],
+			"extraFeats": [
+				"2|Tattoo Artist|TV"
+			],
+			"rarity": "rare"
+		},
+		{
+			"name": "Lepidstadt Surgeon",
+			"source": "LORA",
+			"remaster": true,
+			"page": 94,
+			"entries": [
+				"To be a surgeon is to be akin to a god. In your hands is the power of life and death. With a flick of a knife, you can excise a tumor. With another, you can sever an artery. Everything comes down to your skill, to the steadiness of your hand, the keenness of your eye, and the knowledge of your mind. Little wonder, then, that in Lepidstadt, surrounded by powers and temptations, surgeons sometimes go a few steps further. With the right reagents, with the proper equipment, even death is only a temporary inconvenience, a shadow to be chased from the door with kicks and shouts. Just imagine the possibilities."
+			],
+			"dedicationLevel": 2,
+			"rarity": "uncommon",
+			"extraFeats": [
+				"6|No! No! I Created You!|G&G"
+			]
+		},
+		{
+			"name": "Kitharodian Actor",
+			"source": "LORA",
+			"remaster": true,
+			"page": 58,
+			"entries": [
+				"Some performers at Kitharodian Academy are so dedicated to method acting that they can completely disappear into roles in a manner that's almost magical. These thespians are capable of mimicking Taldor's vast array of stage-immortalized luminaries via vivid impressions, awe-inspiring vocal performances, and wild stunts that defy all expectations. The Academy's foremost instructors and senior Lion Blades agents keep a close eye on all prodigies who show a sliver of this potential, helping them harness their talents for use in both the acting world and the world of spycraft.",
+				"Through Taldor's long history, a handful of classic roles have been repeated and hammered into shape until they became icons and metaphors that define the art of Taldor. Although some of these are symbols of national strength, like First Emperor Taldaris, many are tragic or even comedic figures like Emperor Beldam I. Accepting any one of these roles in a high-profile production can be the highlight of an actor's career, but the best of the best gather these roles like trophies.",
+				"Newer roles are added to the canon very slowly, with modern figures like Grand Princess Eutropia usually alluded to with references from other roles. Many performances with Cyricas and his animal friends now feature a dog at his side, for example, as a reference to the grand princess's beloved pet.",
+				"Although the most famous internationally, Kitharodian Academy is not the sole repository of Taldor's stories. Many other schools in Taldor, like the nearby Rhapsodic College, teach the classics. But these plays and songs are such a deeply rooted part of Taldor's culture that prodigies arise from the soldiers of Zimar to the dwarven enclaves in Maheto."
+			],
+			"dedicationLevel": 2,
+			"rarity": "rare"
+		},
+		{
+			"name": "Campfire Chronicler",
+			"source": "LORA",
+			"remaster": true,
+			"page": 24,
+			"entries": [
+				"You follow in the footsteps of Isthralei, an old god of Sarkoris dedicated to protecting and assisting travelers in return for a story of their journey. Though tales of Isthralei himself are scarce, his gifts are still sometimes given to those who protect travelers and collect their stories.",
+				"This tradition of chronicling, relearned from the ghost of a Sarkorian storyteller, has flourished at the Academy of the Reclamation. Many students who enter the Sarkoris Scar now travel under Isthralei's name, both believing in the god's purpose and using his rediscovery as a symbol of the Reclamation's successes. Even that may be too small a scope, however, as travelers' tales come from far and wide. Many campfire chroniclers collect stories of other students who have returned to Sarkoris from afar, along with the stories of their families who were scattered following the opening of the Worldwound.",
+				"The mysterious benefactor accepts all stories with a listening ear, leading to many late night discussions among students about what truths might be hidden in tall tales and outright fabrications. Although Isthralei accepts falsehoods without comment, he places no requirement on the chroniclers to do the same. In fact, Isthralei has yet to provide guidance beyond the comforting warmth of his protection after stories are offered.",
+				"Although Sarkorian traditions don't place importance on dividing their gods by power level or origin, some at the Academy of the Reclamation have begun to dig deeper into each of the gods' individual circumstances. The question of where Isthralei came from has become a particularly popular one among students who hope that a god who so loves the stories of travelers wouldn't take offense at his own story being exposed.",
+				"Students prying into these matters have found some success using magical sources of information. Most recently, Cobyslarni's Echo Repository has revealed several tales of travelers and explorers who encountered a smiling figure far from any habitation. The reoccurring theme of weary travelers being offered a space next to the campfire in exchange for their tales has led several students to suggest that the wanderer is actually Isthralei. Unfortunately, the sightings are so vastly spread\u2014occurring between continents, in the First World of the fey, or even on elemental planes\u2014that they've provided little illumination of the god's origins.",
+				"At the academy, Isthralei's philosophy has expanded to include tenets to protect travelers' freedom of movement, be generous to others when possible, and seek wisdom in the experience of others. Although these aren't strictly necessary to gain or keep Isthralei's favor, it's difficult to find a teacher among the Academy of the Reclamation without agreeing to these tenets.",
+				"This philosophy of protecting travelers is generally seen to include the Convocation's guests in Nerosyan. Isthralei's campfire chroniclers are among the most obvious representatives of their academy and the Convocation as a whole. Although surviving tales of the old god inspire campfire conversations on the exhibit grounds, his followers also listen to stories in bars, cafes, and the schools' lodgings."
+			],
+			"rarity": "uncommon",
+			"dedicationLevel": 2,
+			"extraFeats": [
+				"8|Advanced Domain|PC1"
+			]
+		},
+		{
+			"name": "Bard",
+			"source": "PC1",
+			"remaster": true,
+			"page": 216,
+			"entries": [
+				"A muse has called you to dabble in occult lore, allowing you to cast a few spells. The deeper you delve, the more powerful your performances become.",
+				{
+					"type": "pf2-h3",
+					"name": "Multiclass Bard characters",
+					"entries": [
+						"The bard archetype grants knowledge and powerful compositions that support your allies, whether from the front line or at a safe distance. These compositions use actions; making them a great choice if you have actions to spare."
+					]
+				}
+			],
+			"benefits": [
+				"Spellcasting"
+			],
+			"miscTags": [
+				"Multiclass"
+			],
+			"dedicationLevel": 2
+		},
+		{
+			"name": "Cleric",
+			"source": "PC1",
+			"remaster": true,
+			"page": 217,
+			"entries": [
+				"You are an ordained priest of your deity and have even learned how to cast a few divine spells. Though your main training lies elsewhere, your religious calling provides you divine gifts.",
+				{
+					"type": "pf2-h3",
+					"name": "Multiclass Cleric characters",
+					"entries": [
+						"Although many characters profess faith in the gods, the cleric archetype represents a character of another class who's been acknowledged by a particular deity and granted divine spellcasting. Before a character takes the cleric archetype, it's important to consider the god's anathema and whether they'll be able to avoid it. The many domains available to clerics of different deities also present a variety of options for focus spells.",
+						{
+							"type": "list",
+							"items": [
+								"Martial clerics are typically looking for a potent domain spell or some healing to use in a pinch.",
+								"Divine {@class witch|PC1} clerics double down as the ultimate divine spellcasters.",
+								"Other spellcaster clerics diversify their options, becoming theurgic characters who combine two magical traditions."
+							]
+						}
+					]
+				}
+			],
+			"benefits": [
+				"Spellcasting"
+			],
+			"miscTags": [
+				"Multiclass"
+			],
+			"dedicationLevel": 2
+		},
+		{
+			"name": "Druid",
+			"source": "PC1",
+			"remaster": true,
+			"page": 218,
+			"entries": [
+				"You have entered a druidic circle and learned a few of the order's secrets, granting you primal power.",
+				{
+					"type": "pf2-h3",
+					"name": "Multiclass Druid characters",
+					"entries": [
+						"The druid archetype can provide a bit of healing or elemental damage and can increase your utility in a natural environment with spells like {@spell speak with animals|PC1} and {@spell one with stone|PC1}."
+					]
+				}
+			],
+			"benefits": [
+				"Spellcasting"
+			],
+			"miscTags": [
+				"Multiclass"
+			],
+			"dedicationLevel": 2
+		},
+		{
+			"name": "Fighter",
+			"source": "PC1",
+			"remaster": true,
+			"page": 219,
+			"entries": [
+				"You have spent time learning the art of warfare, increasing your skill with martial arms and at wearing armor. With further training, you can become a true combat specialist.",
+				{
+					"type": "pf2-h3",
+					"name": "Multiclass Fighter characters",
+					"entries": [
+						"The fighter archetype grants access to great feats for characters focusing on any combat style, and it's particularly helpful for characters looking to diversify their offensive abilities or focus on more powerful weapons.",
+						{
+							"type": "list",
+							"items": [
+								"{@class Bard|PC1} fighters lead warriors from the front, using their martial skills to stay in the thick of combat where their audience is.",
+								"{@class Cleric|PC1} fighters focus on a style of combat exemplified by their deity. A shield-using warpriest benefits from the best of both worlds in shield feats.",
+								"{@class Ranger|PC1} fighters can either specialize in archery or use their fighter feats to pick up an unusual combat style combination.",
+								"{@class Rogue|PC1} fighters can make good use of fighter's free hand, two-weapon fighting, or archery feats. Making multiple Strikes can serve them well.",
+								"Spellcaster fighters benefit greatly from the additional weapon proficiencies, and fighter is a solid choice for any spellcaster of a particularly martial bent."
+							]
+						}
+					]
+				}
+			],
+			"miscTags": [
+				"Multiclass"
+			],
+			"dedicationLevel": 2
+		},
+		{
+			"name": "Ranger",
+			"source": "PC1",
+			"remaster": true,
+			"page": 220,
+			"entries": [
+				"You have studied hunting, tracking, and wilderness survival, adding a ranger's tools to your skill set. Your keen eyes while hunting prey help gather more information.",
+				{
+					"type": "pf2-h3",
+					"name": "Multiclass Ranger characters",
+					"entries": [
+						"The ranger archetype has access to excellent options to improve a character's monster knowledge and survival skills, but ranger is of particular interest to any character wanting to become a dedicated archer.",
+						{
+							"type": "list",
+							"items": [
+								"{@class Bard|PC1} rangers support their allies and animal companions with expanded combat options. The bard's knowledge can also complement the ranger's investigation of their foes.",
+								"{@class Cleric|PC1} rangers are particularly fitting for deities who connect thematically to nature or have a bow as their favored weapon. (Or, in the case of Erastil, both!)",
+								"{@class Druids|PC1} have the most thematic overlap with rangers among the spellcasters, allowing you to create a true master of the wilderness.",
+								"{@class Fighter|PC1} rangers are among the most fearsome archers, combining the feats from both classes to create a fighting style unique to each fighter ranger. Some warden spells can also be particularly helpful to a fighter.",
+								"{@class Rogue|PC1} rangers make excellent snipers or ranged skirmishers, with their rogue skills naturally playing into the ranger's strengths.",
+								"{@class Witch|PC1} rangers add a new prowess scouting to the information they can gain through their familiar and patron.",
+								"{@class Wizard|PC1} rangers benefit greatly from ranger's feat support, backing up their spells with ranged weapon attacks."
+							]
+						}
+					]
+				}
+			],
+			"miscTags": [
+				"Multiclass"
+			],
+			"dedicationLevel": 2
+		},
+		{
+			"name": "Rogue",
+			"source": "PC1",
+			"remaster": true,
+			"page": 221,
+			"entries": [
+				"You've learned to sneak, steal, and disable traps. With time and luck, you'll become capable of moving through the shadows, striking unseen, and escaping without notice.",
+				{
+					"type": "pf2-h3",
+					"name": "Multiclass Rogue characters",
+					"entries": [
+						"Nearly any character can benefit from the many skills and tricks the rogue archetype grants.",
+						{
+							"type": "list",
+							"items": [
+								"{@class Bard|PC1} rogues expand their robust base of skills. They are also well-suited to take advantage of the distractions caused by their performances and otherwise apply their skills to combat.",
+								"{@class Cleric|PC1} rogues often follow gods that support trickery in combat, such as Calistria, learning a combat style that fits their god. However, many clerics might need stealth and trickery when their voices are unwelcome.",
+								"{@class Druid|PC1} rogues can ambush foes in other forms, seamlessly fading into the shadows of the natural world.",
+								"{@class Fighter|PC1} rogues combine the fighter's accuracy with extra damage, a deadly combination for archers or finesse fighters.",
+								"{@class Ranger|PC1} rogues benefit from the shared focus on trailing foes and catching them off-guard. The flurry edge can get you many sneak attacks, and the precision edge doubles down on precision damage.",
+								"{@class Witch|PC1} rogues apply the hexes of their patrons from the shadows and improve many of the simple weapons they're trained in.",
+								"{@class Wizard|PC1} rogues use the rogue multiclass to shore up skills or to pick up tricky rogue feats to help keep them safe."
+							]
+						}
+					]
+				}
+			],
+			"miscTags": [
+				"Multiclass"
+			],
+			"dedicationLevel": 2
+		},
+		{
+			"name": "Witch",
+			"source": "PC1",
+			"remaster": true,
+			"page": 222,
+			"entries": [
+				"You have heard the whispers of a distant patron, who sent an emissary to teach you powerful magic.",
+				{
+					"type": "pf2-h3",
+					"name": "Multiclass Witch characters",
+					"entries": [
+						"The witch archetype grants versatile prepared spells, perfect for characters looking to add some extra utility."
+					]
+				}
+			],
+			"benefits": [
+				"Spellcasting"
+			],
+			"miscTags": [
+				"Multiclass"
+			],
+			"dedicationLevel": 2
+		},
+		{
+			"name": "Wizard",
+			"source": "PC1",
+			"remaster": true,
+			"page": 223,
+			"entries": [
+				"You have dabbled in the arcane arts and, through discipline and academic study, learned how to cast a few spells.",
+				{
+					"type": "pf2-h3",
+					"name": "Multiclass Wizard characters",
+					"entries": [
+						"The wizard archetype grants versatile prepared spells, perfect for characters looking to add some extra utility."
+					]
+				}
+			],
+			"benefits": [
+				"Spellcasting"
+			],
+			"miscTags": [
+				"Multiclass"
+			],
+			"dedicationLevel": 2
+		},
+		{
 			"name": "Verduran Shadow",
 			"source": "WoW1",
 			"page": 79,
@@ -979,7 +1552,7 @@
 					"name": "CAVALIER PLEDGES",
 					"entries": [
 						"Many cavaliers pledge themselves in service to a specific organization or individual, such as a noble family or sovereign ruler, a knightly order or another organization, or a particular ideal. A cavalier pledged to an order or ideal must uphold its edicts and is beholden to any anathema it has; for example, a cavalier pledged to the druid's animal order would be tied to that anathema, while a cavalier pledged to the church of {@deity Abadar} would be held to the same standards as a cleric of that god. If you pledge yourself to an entity or cause without a stated anathema, you should work with your GM to determine the edicts and anathema associated with your pledge.",
-						"Cavaliers who have pledged themselves can gain access to certain abilities related to that pledge, such as Cavalier's Banner. If you violate the anathema of your pledge, you lose access to those feats until you benefit from an atone ritual. Changing the subject of your pledge is equivalent to retraining a class feature."
+						"Cavaliers who have pledged themselves can gain access to certain abilities related to that pledge, such as Cavalier's Banner. If you violate the anathema of your pledge, you lose access to those feats until you benefit from an {@ritual atone} ritual. Changing the subject of your pledge is equivalent to retraining a class feature."
 					]
 				}
 			],
@@ -2041,7 +2614,7 @@
 			"dedicationLevel": 2
 		},
 		{
-			"name": "Runelord",
+			"name": "Runelord (Secrets of Magic)",
 			"source": "SoM",
 			"page": 240,
 			"entries": [

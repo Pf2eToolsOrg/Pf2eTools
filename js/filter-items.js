@@ -141,16 +141,15 @@ class PageFilterItems extends PageFilter {
 		if (it._fcomboWeaponData && Object.keys(it._fcomboWeaponData).length !== 0) it._fWeaponRange.push(it._fcomboWeaponData.range ? "Ranged" : "Melee")
 		it._fHands = [it.hands, it._fweaponData.hands, it._fcomboWeaponData.hands].filter(Boolean).map(it => String(it));
 		it._fMisc = [];
+		if (it.remaster) it._fMisc.push("Remaster");
 		if (it.entries) {
 			for (let entry of it.entries) {
 				if (typeof entry === "object") {
 					if (entry.type === "ability") it._fMisc.push("Activatable");
-					if (entry.type === "affliction") {
-						// TODO: More Filters?
-					}
+					if (entry.type === "affliction") it._fMisc.push("Affliction");
 				}
 			}
-		} else throw new Error(`"${it.name}" has no entries?`)
+		}
 		it._fDamage = undefined; // FIXME: set by trait implies
 		this.handleTraitImplies(it, { traitProp: "traits", entityTypes: ["item"] });
 		it._fTraits = (it.traits || []).concat(it?.weaponData?.traits || []).concat(it?.comboWeaponData?.traits || []).map(t => Parser.getTraitName(t));

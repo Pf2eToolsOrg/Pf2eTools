@@ -21,6 +21,7 @@ class Converter {
 
 		this._string = "";
 		this._page = 0;
+		this._remaster = false;
 		this._tokenizer = new Tokenizer(config);
 		this._tokenizerUtils = opts.tokenizerUtilsClass || TokenizerUtils;
 		this._parsedData = null;
@@ -69,6 +70,7 @@ class Converter {
 		this._parsedData = {};
 		this._string = "";
 		this._page = 0;
+		this._remaster = false;
 		this._tokenStack = [];
 		this._isParsingCreature = null;
 		this._parsing = null;
@@ -89,6 +91,7 @@ class Converter {
 
 		this._string = this._preprocessString(string);
 		this._page = opts.initialPage || 0;
+		this._remaster = opts.remaster || false;
 		this._source = opts.source || "SOURCE";
 		this._avgLineLength = opts.avgLineLength || 58;
 		this._tokenizer.init(this._string);
@@ -155,7 +158,7 @@ class Converter {
 		this._tokenStack.reverse();
 		this._parsedProperties = [];
 		const headerToken = this._consumeToken("SPELL");
-		const [match, name, type, level] = this._tokenizerUtils.dataHeaders.find(it => it.type === "SPELL").regex.exec(headerToken.value);
+		const [match, name, activity, type, level] = this._tokenizerUtils.dataHeaders.find(it => it.type === "SPELL").regex.exec(headerToken.value);
 		const spell = {};
 		spell.name = name.toTitleCase();
 		if (type.toTitleCase() !== "Spell") {
@@ -164,6 +167,7 @@ class Converter {
 		spell.level = Number(level);
 		spell.source = this._source;
 		spell.page = this._page;
+		if (this._remaster) spell.remaster = this._remaster;
 		spell.entries = [""];
 		this._parsing = spell.name;
 		this._parseTraits(spell);
@@ -177,6 +181,37 @@ class Converter {
 
 		if (spell.traditions) {
 			spell.traditions = spell.traditions.map(t => t.toLowerCase());
+		}
+
+		if (!spell.cast) {
+			if (activity.match(/^\[one.action\]\s$/i)) {
+				spell.cast = {
+					number: 1,
+					unit: "action",
+				}
+			} else if (activity.match(/^\[two.actions\]\s$/i)) {
+				spell.cast = {
+					number: 2,
+					unit: "action",
+				};
+			} else if (activity.match(/^\[three.actions\]\s$/i)) {
+				spell.cast = {
+					number: 3,
+					unit: "action",
+				};
+			} else if (activity.match(/^\[reaction\]\s$/i)) {
+				spell.cast = {
+					number: 1,
+					unit: "reaction",
+				};
+			} else if (activity.match(/^\[free.action\]\s$/i)) {
+				spell.cast = {
+					number: 1,
+					unit: "free",
+				};
+			} else {
+				this._cbWarn(`Could not parse casting activity for "${spell.name}"!`);
+			}
 		}
 
 		return PropOrder.getOrdered(spell, "spell");
@@ -193,6 +228,7 @@ class Converter {
 		feat.level = Number(level);
 		feat.source = this._source;
 		feat.page = this._page;
+		if (this._remaster) feat.remaster = this._remaster;
 		feat.entries = [""];
 		this._parsing = feat.name;
 		this._parseTraits(feat);
@@ -217,6 +253,7 @@ class Converter {
 		item.level = Number.isNaN(Number(level)) ? level : Number(level);
 		item.source = this._source;
 		item.page = this._page;
+		if (this._remaster) item.remaster = this._remaster;
 		item.entries = [""];
 		this._parsing = item.name;
 		this._parseTraits(item);
@@ -245,6 +282,7 @@ class Converter {
 		background.name = name.toTitleCase();
 		background.source = this._source;
 		background.page = this._page;
+		if (this._remaster) background.remaster = this._remaster;
 		this._parsing = background.name;
 		this._parseTraits(background);
 		this._parseProperties(background);
@@ -272,6 +310,7 @@ class Converter {
 		creature.level = Number(level);
 		creature.source = this._source;
 		creature.page = this._page;
+		if (this._remaster) creature.remaster = this._remaster;
 		this._parsing = creature.name;
 		this._parseTraits(creature);
 		if (this._tokenIsType(this._tokenizerUtils.stringEntries)) {
@@ -301,6 +340,7 @@ class Converter {
 		hazard.level = Number(level);
 		hazard.source = this._source;
 		hazard.page = this._page;
+		if (this._remaster) hazard.remaster = this._remaster;
 		this._parsing = hazard.name;
 		this._parseTraits(hazard);
 		this._parseHazardProperties(hazard);
@@ -319,8 +359,7 @@ class Converter {
 			const traitToken = this._consumeToken(this._tokenizerUtils.traits);
 			traits.push(traitToken.value.trim().toLowerCase());
 		}
-		if (traits.length === 0) return;
-		obj.traits = traits;
+		if (traits.length) obj.traits = traits;
 	}
 	_parseProperties (obj, opts) {
 		while (this._tokenStack.length) {
@@ -404,7 +443,18 @@ class Converter {
 		const entries = this._getEntries({checkContinuedLines: true, ...opts.getEntriesOpts});
 		const components = [];
 
-		if (this._tokensAreTypes(entries, [this._tokenizerUtils.actions, this._tokenizerUtils.sentences])) {
+		if (this._remaster) {
+			const regExpTime = new RegExp(
+				`(\\d+) (${this._tokenizerUtils.timeUnits.map((u) => u.regex.source).join("|")})`,
+			);
+			const matchedTime = this._renderToken(entries[0]).match(regExpTime);
+			if (matchedTime) {
+				obj.cast = {
+					number: Number(matchedTime[1]),
+					unit: this._tokenizerUtils.timeUnits.find((u) => u.regex.test(matchedTime[2])).unit,
+				};
+			} else obj.cast = { number: 1, unit: "varies", entry: this._renderToken(entries[0]) };
+		} else if (this._tokensAreTypes(entries, [this._tokenizerUtils.actions, this._tokenizerUtils.sentences])) {
 			obj.cast = this._renderToken(entries[0], {asObject: true});
 			Object.entries(this._tokenizerUtils.spellComponents).forEach(([key, regexp]) => {
 				if (regexp.test(entries[1].value)) components.push(key);
@@ -551,7 +601,15 @@ class Converter {
 		this._parsedProperties.push(...this._tokenizerUtils.savingThrow);
 		const entries = this._getEntries({checkContinuedLines: true, ...opts.getEntriesOpts});
 		const rendered = this._renderEntries(entries, {asString: true});
-		obj.savingThrow = {type: this._tokenizerUtils.savingThrows.filter(u => u.regex.test(rendered)).map(st => st.short)};
+		obj.savingThrow = {
+			type: [
+				...new Set(
+					this._tokenizerUtils.savingThrows
+						.filter((u) => u.regex.test(rendered))
+						.map((st) => st.short),
+				),
+			],
+		};
 		if (/basic/.test(rendered)) obj.savingThrow.basic = true;
 	}
 	_parseShieldData (obj) {
@@ -581,10 +639,20 @@ class Converter {
 		const entries = this._getEntries({checkContinuedLines: true, ...opts.getEntriesOpts});
 		const altTraditions = entries.map(e => this._renderToken(e)).join(" ").split(", ").map(tr => tr.trim().toTitleCase());
 		obj.subclass = obj.subclass || {};
-		const key = `${this._tokenizerUtils.traditionsSubclasses.find(it => it.type === token.type).class}|${token.value.trim()}`;
 		if (token.type === "DOMAIN") {
 			obj.domains = altTraditions;
 		} else {
+			const subclass = token.value.trim();
+			const classe = this._tokenizerUtils.traditionsSubclasses.find((it) => it.type === token.type).class;
+			let source;
+			if (classe === "Witch") {
+				source = this._remaster ? "PC1" : "APG";
+			} else if (classe === "Oracle") {
+				source = this._remaster ? "PC2" : "APG";
+			} else if (classe === "Bard" && this._remaster) {
+				source = "PC1";
+			}
+			const key = `${subclass}|${classe}${source ? `|${source}` : ""}`;
 			obj.subclass[key] = altTraditions;
 		}
 	}
@@ -661,13 +729,13 @@ class Converter {
 	}
 
 	_parseBackgroundAbilityBoosts (background) {
-		const reFree = /free\sability\sboost/i;
+		const reFree = /free\s(ability|attribute)\sboost/i;
 		const scores = [];
 		const entriesString = background.entries.filter(e => typeof e === "string").join(" ");
 		this._tokenizerUtils.abilityScores.forEach(it => {
-			if (it.regex.test(entriesString)) scores.push(it.full);
+			if (it.regex.test(entriesString)) scores.push(it.full.toLowerCase());
 		});
-		if (reFree.test(entriesString)) scores.push("Free");
+		if (reFree.test(entriesString)) scores.push("free");
 		if (scores.length) background.boosts = scores;
 	}
 	_parseBackgroundSkills (background) {
@@ -1104,7 +1172,7 @@ class Converter {
 		const type = this._tokenizerUtils.spellTypes.find(it => it.regex.test(name));
 		if (tradition) casting.tradition = tradition.unit.toLowerCase();
 		if (type) casting.type = type.unit.toTitleCase();
-		else casting.type = "Focus";
+		else casting.focus = true;
 
 		if (!casting.type || !casting.tradition
 			|| (!name.localeCompare(`${casting.type} ${casting.tradition}`, { sensitivity: "base" })
@@ -1597,7 +1665,7 @@ class Converter {
 
 		// TODO: Merge cases act-txt-act into act/ or even a different system entirely
 		const _parseTime = (timeText) => {
-			const regExpTime = new RegExp(`(\\d+) (${this._tokenizerUtils.timeUnits.map(u => u.regex.source).join("|")})`);
+			const regExpTime = new RegExp(`(\\d+) (${this._tokenizerUtils.timeUnits.map(u => u.regex.source).join("|")})`, "i");
 			const matchedTime = timeText.match(regExpTime);
 			if (matchedTime) obj.activity = {number: Number(matchedTime[1]), unit: this._tokenizerUtils.timeUnits.find(u => u.regex.test(matchedTime[2])).unit};
 			else obj.activity = {unit: "varies", entry: timeText};
@@ -1867,7 +1935,7 @@ class Converter {
 		} else if (token.type === "CR_SPELL") {
 			return token.value.trim().toLowerCase().replaceAll(/\n/g, " ");
 		}
-		throw new Error(`Unimplemented rendering of token with type "${token.type ? token.type : "???"}"`)
+		throw new Error(`Unimplemented rendering of token with type "${token.type || "???"}"`)
 	}
 	_renderEntries (tokens, opts) {
 		opts = opts || {};

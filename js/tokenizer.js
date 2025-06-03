@@ -17,8 +17,8 @@ class TokenizerUtils {
 
 	static get dataHeaders () {
 		return [
-			{regex: /^(.+)\s(SPELL|CANTRIP|FOCUS) (\d{1,2})\s/, type: "SPELL", mode: "spell"},
-			{regex: /^([^\n[]*?)\s(\[.+]\s)?FEAT (\d{1,2})\s/, type: "FEAT", mode: "feat"},
+			{regex: /^([^[]+?)\s?(\[[\w-]+\]\s)?(SPELL|CANTRIP|FOCUS) (\d{1,2})\s/, type: "SPELL", mode: "spell"},
+			{regex: /^([^\n[]+?)\s?(\[[\w-]+]\s)?FEAT (\d{1,2})\s/, type: "FEAT", mode: "feat"},
 			{regex: /^(.+)\s(ITEM|RUNE|MATERIAL|SNARE) (\d{1,2}\+?)\s/, type: "ITEM", mode: "item"},
 			{regex: /^(.*?)\sBACKGROUND\s/, type: "BACKGROUND", mode: "background"},
 			{regex: /^(.*?)\sCREATURE (–?\d{1,2})\s/, type: "CREATURE", mode: "creature"},
@@ -124,7 +124,7 @@ class TokenizerUtils {
 	}
 	static get savingThrow () {
 		return [
-			{regex: /^Saving Throw\s/, type: "SAVING_THROW", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 2},
+			{regex: /^(?:Saving Throw|Defense)\s/, type: "SAVING_THROW", lookbehind: /(\n|[;.)]\s)$/, lookaheadIncDepth: 2},
 		]
 	}
 	static get shieldData () {
@@ -144,9 +144,11 @@ class TokenizerUtils {
 	}
 	static get traditionsSubclasses () {
 		return [
-			{regex: /^Domain\s/, type: "DOMAIN", class: "Cleric", lookbehind: /(\n|[;.)]\s)$/},
-			{regex: /^Mystery\s/, type: "MYSTERY", class: "Oracle", lookbehind: /(\n|[;.)]\s)$/},
-			{regex: /^Patron\s/, type: "PATRON", class: "Witch", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Domains?\s/, type: "DOMAIN", class: "Cleric", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Myster(y|ies)\s/, type: "MYSTERY", class: "Oracle", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Patrons?\s/, type: "PATRON", class: "Witch", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Lessons?\s/, type: "LESSON", class: "Witch", lookbehind: /(\n|[;.)]\s)$/},
+			{regex: /^Muses?\s/, type: "MUSE", class: "Bard", lookbehind: /(\n|[;.)]\s)$/},
 		]
 	}
 	static get trigger () {
@@ -554,16 +556,16 @@ class TokenizerUtils {
 
 	static get amp () {
 		return [
-			{regex: /^Amp Heightened\s\(\+\d+\)[\s:]/, type: "AMP_HEIGHTENED_PLUS_X", lookbehind: /\n$/},
-			{regex: /^Amp Heightened\s\(\d+(st|nd|rd|th)\)[\s:]/, type: "AMP_HEIGHTENED_X", lookbehind: /\n$/},
+			{regex: /^Amp Heightened\s?\(\+\d+\)([\s:]|\b(?=\S))/, type: "AMP_HEIGHTENED_PLUS_X", lookbehind: /\n$/},
+			{regex: /^Amp Heightened\s?\(\d+(st|nd|rd|th)\)([\s:]|\b(?=\S))/, type: "AMP_HEIGHTENED_X", lookbehind: /\n$/},
 			{regex: /^Amp Heightened[\s:]/, type: "AMP_HEIGHTENED", lookbehind: /\n$/},
 			{regex: /^Amp[\s:]/, type: "AMP", lookbehind: /\n$/},
 		]
 	}
 	static get heightened () {
 		return [
-			{regex: /^Heightened\s\(\+\d+\)[\s:]/, type: "HEIGHTENED_PLUS_X"},
-			{regex: /^Heightened\s\(\d+(st|nd|rd|th)\)[\s:]/, type: "HEIGHTENED_X"},
+			{regex: /^Heightened\s?\(\+\d+\)([\s:]|\b(?=\S))/, type: "HEIGHTENED_PLUS_X"},
+			{regex: /^Heightened\s?\(\d+(st|nd|rd|th)\)([\s:]|\b(?=\S))/, type: "HEIGHTENED_X"},
 			{regex: /^Heightened[\s:]/, type: "HEIGHTENED"},
 		]
 	}
@@ -862,6 +864,7 @@ class TokenizerUtils {
 			{regex: /Fort/, unit: "Fort", full: "Fortitude", short: "F"},
 			{regex: /Reflex/, unit: "Reflex", full: "Reflex", short: "R"},
 			{regex: /Will/, unit: "Will", full: "Will", short: "W"},
+			{regex: /AC/, unit: "AC", full: "AC", short: "AC"},
 		]
 	}
 	static get abilityScores () {

@@ -1,6 +1,160 @@
 {
 	"hazard": [
 		{
+			"name": "Lichen Monstrosity",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 21,
+			"level": 11,
+			"traits": [
+				"uncommon",
+				"complex",
+				"environmental"
+			],
+			"stealth": {
+				"bonus": 26,
+				"minProf": "expert"
+			},
+			"description": [
+				"A mass of petrified lichen takes the shape of a beast and lurches forward."
+			],
+			"disable": {
+				"entries": [
+					"DC 33 {@skill Survival} or {@skill Thievery} (master) to scrape away lichen without being exposed, or DC 36 {@skill Medicine} or {@skill Nature} to concoct a natural remedy and weaken the hazard; four total successes are required to disable it"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 31
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 24
+					}
+				},
+				"hardness": {
+					"std": 20
+				},
+				"hp": {
+					"std": 80
+				},
+				"bt": {
+					"std": 40
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 10
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Lurching Lichen",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Three or more creatures not infected with {@affliction leechlichen|WoW3} enter the area of the hazard",
+					"entries": [
+						"The mass of lichen lurches forward, taking up one 5-foot square and forming a beast-like shape. The hazard rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) The lichen monstrosity uses 3 actions to move, traveling up to 30 feet with each action and dealing {@damage 2d10+10} bludgeoning damage. Each creature in its path must attempt a DC 31 Reflex save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature takes half damage."
+						],
+						"Failure": [
+							"The creature takes full damage and is exposed to {@affliction leechlichen|WoW3}."
+						],
+						"Critical Failure": [
+							"The creature takes double damage and is exposed to {@affliction leechlichen|WoW3}. The results of its saving throw against the {@affliction leechlichen|WoW3} are treated as one step worse. Each successful check to disable this hazard reduces its movement by 30 feet, and the fourth success disables it completely."
+						]
+					}
+				}
+			],
+			"reset": [
+				"The trap resets over the course of an hour."
+			]
+		},
+		{
+			"name": "Twisted King's Court",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 18,
+			"level": 12,
+			"traits": [
+				"unique",
+				"complex",
+				"haunt",
+				"magical"
+			],
+			"stealth": {
+				"bonus": 20,
+				"minProf": "trained"
+			},
+			"description": [
+				"Countless fey with grisly visages and misshapen bodies cavort throughout the room, kicking up caustic debris and pulling other creatures into their dangerous dance."
+			],
+			"disable": {
+				"entries": [
+					"DC 32 {@skill Nature} or {@skill Occultism} (expert) to perform a ritual to ward the area against fey intrusion, DC 34 {@skill Performance} (master) to meet the Twisted King's demands with a disturbing dance, or DC 32 {@skill Athletics} or {@skill Intimidation} (expert) to fend off or frighten the fey dancers. Three total successes are required to disable the haunt, and each check takes 2 actions."
+				]
+			},
+			"actions": [
+				{
+					"name": "Welcome to the Feywrithe",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "1 round passes since both isqulugs in area {@b B6} are slain, or 10 rounds pass since they rolled initiative",
+					"entries": [
+						"The isqulugs die horribly (if they're still alive), rent by clawed fey hands. Spectral fey pull at the other creatures in the caves, all of which must attempt a DC 36 Fortitude save. The haunt then rolls initiative.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature is pulled 10 feet toward the standing stones."
+								],
+								"Failure": [
+									"The creature is pulled 15 feet toward the standing stones."
+								],
+								"Critical Failure": [
+									"The creature is pulled 15 feet toward the standing stones, knocked {@condition prone}, and takes {@damage 1d6} bludgeoning damage (in addition to any damage from the toxic water)."
+								]
+							}
+						}
+					]
+				}
+			],
+			"routine": [
+				"(1 action) Spectral fey cavort about the room. All creatures in the room are raked by ghostly claws and splashed with toxic water, taking {@damage 1d10+14} force damage and {@damage 2d10} acid damage (DC 32 basic Reflex save). Creatures that critically fail their Reflex saves are pulled 10 feet toward the standing stones."
+			],
+			"reset": [
+				"The haunt deactivates after 1 minute. It re-forms every new moon. If all of the glyphs in area {@b B6} are restored\u2014a process requiring 10 days of downtime and 10 successful DC 36 {@skill Nature} or {@skill Occultism} checks\u2014the haunt becomes permanently disabled and doesn't re-form."
+			]
+		},
+		{
 			"name": "Puncturing Spire",
 			"source": "WoW2",
 			"page": 55,
@@ -16793,7 +16947,7 @@
 			]
 		},
 		{
-			"name": "Masks Of Aroden's Guises",
+			"name": "Masks of Aroden's Guises",
 			"source": "EC2",
 			"page": 37,
 			"level": 10,
@@ -18275,7 +18429,7 @@
 						"number": 1,
 						"unit": "reaction"
 					},
-					"trigger": "A creature Interacts to throw either the primary lever or backup lever.",
+					"trigger": "A creature {@action Interact||Interacts} to throw either the primary lever or backup lever.",
 					"entries": [
 						"The trap rolls initiative."
 					],

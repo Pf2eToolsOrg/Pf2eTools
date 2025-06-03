@@ -1,8 +1,5 @@
-/*
-Shared UI components
- */
-
-@import 'vars';
+@use "sass:color";
+@use 'vars';
 
 /* region Misc/Shared */
 .ui__ {
@@ -12,7 +9,7 @@ Shared UI components
 	}
 
 	&ipt-color {
-		width: $w-ipt-number-2-digit;
+		width: vars.$w-ipt-number-2-digit;
 		padding: 0;
 
 		&::-webkit-color-swatch-wrapper {
@@ -20,7 +17,7 @@ Shared UI components
 		}
 
 		&::-webkit-color-swatch {
-			border: 1px solid $rgb-border-grey;
+			border: 1px solid vars.$rgb-border-grey;
 		}
 	}
 }
@@ -58,7 +55,7 @@ Shared UI components
 	&divider {
 		height: 1px;
 		width: 30px;
-		background: $rgb-border-grey;
+		background: vars.$rgb-border-grey;
 		display: inline-block;
 		margin: 0 3px;
 	}
@@ -120,30 +117,30 @@ Shared UI components
 		height: 1px;
 		width: calc(100% - 12px);
 		margin: 2px 2px 7px;
-		background: $rgb-border-grey;
+		background: vars.$rgb-border-grey;
 	}
 
 	&header {
 		&--border {
-			border-bottom: 1px solid $rgb-border-grey--trans;
+			border-bottom: 1px solid vars.$rgb-border-grey--trans;
 		}
 
 		&--fullscreen {
-			@include shadow-2();
+			@include vars.shadow-2;
 		}
 	}
 
 	&footer {
-		border-top: 1px solid $rgb-border-grey--trans;
+		border-top: 1px solid vars.$rgb-border-grey--trans;
 
 		&--fullscreen {
-			@include shadow-2();
+			@include vars.shadow-2;
 		}
 	}
 
 	&overlay {
 		position: fixed;
-		z-index: $z-modal-wrapper;
+		z-index: vars.$z-modal-wrapper;
 		top: 0;
 		left: 0;
 		width: 100vw;
@@ -151,7 +148,7 @@ Shared UI components
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: $rgb-modal-overlay-grey;
+		background-color: vars.$rgb-modal-overlay-grey;
 	}
 
 	&overlay-blind {
@@ -160,7 +157,7 @@ Shared UI components
 
 	&inner {
 		position: relative;
-		z-index: $z-modal-inner;
+		z-index: vars.$z-modal-inner;
 		top: initial;
 		left: initial;
 		margin: 60px auto;
@@ -171,19 +168,19 @@ Shared UI components
 		max-height: 400px;
 		min-height: 400px;
 
-		@media (max-width: 767px) {
+		@media (width <= 767px) {
 			min-width: 0;
 		}
 
-		@media (min-width: 768px) {
+		@media (width >= 768px) {
 			max-width: 750px;
 		}
 
-		@media (min-width: 992px) {
+		@media (width >= 992px) {
 			max-width: 970px;
 		}
 
-		@media (min-width: 1200px) {
+		@media (width >= 1200px) {
 			max-width: 1170px;
 		}
 
@@ -239,7 +236,7 @@ Shared UI components
 	&wrp-controls {
 		width: 100%;
 		display: flex;
-		z-index: $z-search;
+		z-index: vars.$z-search;
 
 		&--in-tabs {
 			margin-top: -1px;
@@ -251,8 +248,7 @@ Shared UI components
 		padding: 3px;
 		transform: translateZ(0);
 		height: 100%;
-		overflow-y: auto;
-		overflow-x: hidden;
+		overflow: hidden auto;
 		font-size: 11.2px;
 	}
 
@@ -262,14 +258,14 @@ Shared UI components
 		padding: 1px 2px;
 		display: flex;
 		justify-content: space-between;
-		border-bottom: 1px solid $rgb-border-grey;
+		border-bottom: 1px solid vars.$rgb-border-grey;
 
 		&:hover {
 			background: lightgrey;
 		}
 
 		&:focus {
-			@include row-glow-active();
+			@include vars.row-glow-active;
 		}
 	}
 
@@ -285,7 +281,7 @@ Shared UI components
 		width: 100%;
 	}
 
-	&ipt-search-sub-ipt[type=radio] {
+	&ipt-search-sub-ipt[type="radio"] {
 		display: inline-block;
 		margin: 0 3px 0 0;
 	}
@@ -300,7 +296,7 @@ Shared UI components
 		padding-left: 0;
 
 		/* TODO switch this field to a validated text-type input, instead of a number */
-		&[type=number]::-webkit-inner-spin-button {
+		&[type="number"]::-webkit-inner-spin-button {
 			margin: 0;
 			/* stylelint-disable-next-line property-no-vendor-prefix */
 			-webkit-appearance: none;
@@ -312,7 +308,7 @@ Shared UI components
 		margin-bottom: 0;
 		padding: 5px;
 		font-weight: normal;
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid vars.$rgb-border-grey;
 		height: 34px;
 		border-left: 0;
 		display: flex;
@@ -335,7 +331,7 @@ Shared UI components
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-family: 'Andada', serif;
+		font-family: Andada, serif;
 		font-variant: small-caps;
 		font-weight: 500;
 	}
@@ -362,20 +358,19 @@ Shared UI components
 	&wrp-tab-body {
 		width: 100%;
 		height: 100%;
-		overflow-y: auto;
-		overflow-x: hidden;
+		overflow: hidden auto;
 
 		&--border {
 			padding: 3px 0;
 		}
 
 		&--background {
-			background: $rgb-bg;
+			background: vars.$rgb-bg;
 		}
 	}
 
 	&wrp-tab-heads--border {
-		border-bottom: 1px solid $rgb-border-grey;
+		border-bottom: 1px solid vars.$rgb-border-grey;
 	}
 }
 /* endregion */
@@ -383,20 +378,20 @@ Shared UI components
 /* region Proficiency */
 .ui-prof__ {
 	&btn-cycle {
-		@include cb-custom();
+		@include vars.cb-custom;
 
 		&[data-state='0'] {
 			background: white;
 		}
 
 		&[data-state='1'] {
-			background: $rgb-cb-grey;
-			border-color: lighten($rgb-cb-grey, 15%);
+			background: vars.$rgb-cb-grey;
+			border-color: color.adjust(vars.$rgb-cb-grey, $lightness: 15%);
 		}
 
 		&[data-state='2'] {
-			background: $rgb-cb-grey;
-			border-color: lighten($rgb-cb-grey, 15%);
+			background: vars.$rgb-cb-grey;
+			border-color: color.adjust(vars.$rgb-cb-grey, $lightness: 15%);
 			display: flex;
 			line-height: 14px;
 			-moz-osx-font-smoothing: grayscale;
@@ -404,7 +399,7 @@ Shared UI components
 			font-style: normal;
 			font-variant: normal;
 			text-rendering: auto;
-			font-family: 'Font Awesome 5 Pro';
+			font-family: 'Font Awesome 5 Pro', monospace;
 			font-weight: 900;
 			color: white;
 			font-size: 12px;
@@ -415,8 +410,8 @@ Shared UI components
 		}
 
 		&[data-state='3'] {
-			background: repeating-linear-gradient(135deg, white, white 10px, $rgb-cb-grey 10px, $rgb-cb-grey 20px);
-			border-color: lighten($rgb-cb-grey, 15%);
+			background: repeating-linear-gradient(135deg, white, white 10px, vars.$rgb-cb-grey 10px, vars.$rgb-cb-grey 20px);
+			border-color: color.adjust(vars.$rgb-cb-grey, $lightness: 15%);
 		}
 	}
 }
@@ -430,7 +425,7 @@ Shared UI components
 		height: 92px;
 		border-radius: 46px;
 		background: #f0f0f0;
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid vars.$rgb-border-grey;
 		user-select: none;
 		cursor: grab;
 	}
@@ -446,7 +441,7 @@ Shared UI components
 		transform-origin: top;
 		pointer-events: none;
 		user-select: none;
-		box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75);
+		box-shadow: 0 0 2px 0 rgb(0 0 0 / 75%);
 	}
 }
 /* endregion */
@@ -463,10 +458,7 @@ Shared UI components
 .ui-drag__ {
 	&wrp-drag-block {
 		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		inset: 0;
 	}
 
 	&wrp-drag-dummy--highlight {
@@ -512,18 +504,18 @@ Shared UI components
 	}
 
 	&child {
-		@include shadow-1();
+		@include vars.shadow-1;
 
 		display: none;
 		position: absolute;
-		border: 1px solid $rgb-border-grey;
+		border: 1px solid vars.$rgb-border-grey;
 		background: white;
 		border-radius: 3px;
 		z-index: 1;
 		top: calc(100% + 5px);
 		padding: 5px;
 		opacity: 0;
-		transition: opacity $time-5-frames ease-in-out;
+		transition: opacity vars.$time-5-frames ease-in-out;
 		pointer-events: none;
 	}
 
@@ -537,19 +529,19 @@ Shared UI components
 /* region Context menu */
 .ui-ctx {
 	&__wrp {
-		@include shadow-1--dark();
+		@include vars.shadow-1--dark;
 
-		z-index: $z-context-menu;
+		z-index: vars.$z-context-menu;
 		font-size: 14px;
-		background: $rgb-bg;
-		border: 1px solid $rgb-border-grey--trans;
-		border-top-color: $rgb-border-grey;
+		background: vars.$rgb-bg;
+		border: 1px solid vars.$rgb-border-grey--trans;
+		border-top-color: vars.$rgb-border-grey;
 	}
 
 	&__divider {
 		height: 1px;
 		width: 100%;
-		background: $rgb-border-grey;
+		background: vars.$rgb-border-grey;
 	}
 
 	&__row {
@@ -557,13 +549,13 @@ Shared UI components
 		min-width: 160px;
 
 		&:hover {
-			background: $rgb-bg--alt;
+			background: vars.$rgb-bg--alt;
 		}
 
 		&.disabled,
 		&.disabled:hover {
 			cursor: default;
-			background: $rgb-bg;
+			background: vars.$rgb-bg;
 		}
 	}
 }
@@ -614,7 +606,7 @@ Shared UI components
 		}
 
 		&disp-text {
-			border: 1px solid $rgb-border-grey;
+			border: 1px solid vars.$rgb-border-grey;
 		}
 	}
 }
@@ -658,7 +650,7 @@ Shared UI components
 	}
 
 	&disp-copied {
-		@include shadow-2();
+		@include vars.shadow-2;
 
 		position: fixed;
 		white-space: nowrap;
@@ -669,7 +661,7 @@ Shared UI components
 		height: 24px;
 		line-height: 24px;
 		font-size: 12px;
-		z-index: $z-temp-effect;
+		z-index: vars.$z-temp-effect;
 		display: block;
 	}
 }
@@ -708,9 +700,8 @@ Shared UI components
 	}
 
 	&btn-ticker {
-		transition: opacity $time-2-frames;
+		transition: opacity vars.$time-2-frames;
 		opacity: 0;
-
 		padding: 0;
 		width: 14px;
 		height: 10px;
@@ -718,9 +709,8 @@ Shared UI components
 		font-size: 14px;
 		line-height: 10px;
 		border-radius: 0;
-
 		background: #0003;
-		color: $rgb-off-black;
+		color: vars.$rgb-off-black;
 
 		&:hover,
 		&:active,
@@ -732,20 +722,20 @@ Shared UI components
 
 		&:hover {
 			background: #0005;
-			color: $rgb-off-black;
+			color: vars.$rgb-off-black;
 		}
 
 		&:active,
 		&:focus,
 		&:active:focus {
 			background: #0007;
-			color: $rgb-off-black;
+			color: vars.$rgb-off-black;
 		}
 	}
 
 	&ipt:hover + .ui-ideco__wrp .ui-ideco__btn-ticker,
 	&wrp:hover .ui-ideco__btn-ticker {
-		transition: opacity $time-2-frames;
+		transition: opacity vars.$time-2-frames;
 		opacity: 1;
 	}
 }
@@ -770,7 +760,7 @@ Shared UI components
 
 			> .ui-sel2__ipt-display {
 				text-align: right;
-				color: $rgb-font--muted;
+				color: vars.$rgb-font--muted;
 				font-weight: bold;
 			}
 
@@ -786,8 +776,8 @@ Shared UI components
 		left: 0;
 		display: none;
 		flex-direction: column;
-		background: $rgb-bg;
-		border: 1px solid $rgb-border-grey;
+		background: vars.$rgb-bg;
+		border: 1px solid vars.$rgb-border-grey;
 		border-top: 0;
 		max-height: 160px;
 
@@ -803,12 +793,12 @@ Shared UI components
 		&.active,
 		&:focus,
 		&:hover {
-			background: $rgb-bg--alt;
+			background: vars.$rgb-bg--alt;
 		}
 
 		&:focus.active,
 		&:hover.active {
-			background: darken($rgb-bg--alt, $pct-darken-active);
+			background: color.adjust(vars.$rgb-bg--alt, $lightness: - vars.$pct-darken-active);
 		}
 	}
 }
@@ -823,20 +813,20 @@ Shared UI components
 			font-size: 14px;
 		}
 
-		//&wrp-top {}
+		// &wrp-top {}
 
 		&thumb {
 			width: 14px;
 			height: 18px;
 			top: -5px;
-			background: $rgb-bg--alt;
-			border: 1px solid $rgb-border-grey;
+			background: vars.$rgb-bg--alt;
+			border: 1px solid vars.$rgb-border-grey;
 			border-radius: 2px;
 
 			&--hover,
 			&:hover {
-				background: darken($rgb-bg--alt, 10%);
-				border-color: darken($rgb-border-grey, 10%);
+				background: color.adjust(vars.$rgb-bg--alt, $lightness: -10%);
+				border-color: color.adjust(vars.$rgb-border-grey, $lightness: -10%);
 			}
 		}
 
@@ -846,13 +836,13 @@ Shared UI components
 		}
 
 		&track-outer {
-			border: 1px solid $rgb-border-grey;
+			border: 1px solid vars.$rgb-border-grey;
 			height: 10px;
 			border-radius: 3px;
 		}
 
 		&track-inner {
-			background: $rgb-border-grey--muted;
+			background: vars.$rgb-border-grey--muted;
 		}
 
 		&disp-value {
@@ -861,8 +851,8 @@ Shared UI components
 			border-radius: 4px;
 
 			&--visible {
-				border: 1px solid $rgb-border-grey;
-				background: $rgb-bg;
+				border: 1px solid vars.$rgb-border-grey;
+				background: vars.$rgb-bg;
 			}
 
 			&--left {
@@ -887,11 +877,11 @@ Shared UI components
 		&pip {
 			width: 1px;
 			height: 4px;
-			background: $rgb-border-grey;
+			background: vars.$rgb-border-grey;
 
 			&--major {
 				height: 6px;
-				background: darken($rgb-border-grey, 15%);
+				background: color.adjust(vars.$rgb-border-grey, $lightness: -15%);
 			}
 		}
 
@@ -908,8 +898,8 @@ Shared UI components
 			border-radius: 4px;
 			flex-grow: 1;
 			margin: 0 7px;
-			border: 1px solid $rgb-border-grey;
-			background: $rgb-bg;
+			border: 1px solid vars.$rgb-border-grey;
+			background: vars.$rgb-bg;
 		}
 	}
 }

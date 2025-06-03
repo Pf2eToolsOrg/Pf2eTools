@@ -1,0 +1,1627 @@
+{
+	"feat": [
+		{
+			"name": "Campfire Chronicler Dedication",
+			"source": "LORA",
+			"remaster": true,
+			"page": 34,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"featType": {
+				"archetype": [
+					"Campfire Chronicler"
+				]
+			},
+			"entries": [
+				"You've gained Isthralei's attention and can now offer stories up to him, either passing on your own stories or collecting those of travelers as he did. You become trained in {@skill Religion|PC1} and {@skill Survival|PC1}; for either of these skills in which you were already trained, you instead become trained in a skill of your choice. You gain the Offer Story action.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Offer Story",
+					"activity": {
+						"unit": "action",
+						"number": 1
+					},
+					"traits": [
+						"auditory",
+						"concentrate",
+						"divine",
+						"linguistic",
+						"mental"
+					],
+					"entries": [
+						"You share a story of your travels with a creature within 30 feet. You gain the blessing of Isthralei as a +1 status bonus to AC and Will saves until the end of your next turn. On their next turn, the creature you shared a story with can take a single action, which has the {@trait auditory}, {@trait concentrate}, {@trait linguistic}, and {@trait mental} traits, to respond with their own story to gain the same benefits until the end of the following turn."
+					]
+				}
+			],
+			"leadsTo": [
+				"The Dead Tell Tales|LORA",
+				"Listener's Boon|LORA",
+				"Raging Stories|LORA",
+				"Cozy Campfire|LORA",
+				"Illuminating Stories|LORA",
+				"Flickering Stories|LORA",
+				"Tales of the Road|LORA",
+				"Stories of Home|LORA"
+			]
+		},
+		{
+			"name": "The Dead Tell Tales",
+			"source": "LORA",
+			"remaster": true,
+			"page": 35,
+			"level": 4,
+			"traits": [
+				"archetype",
+				"divine"
+			],
+			"featType": {
+				"archetype": [
+					"Campfire Chronicler"
+				]
+			},
+			"prerequisites": "{@feat Campfire Chronicler Dedication|LORA}",
+			"entries": [
+				"New campfire chroniclers are inundated with the stories of the ghosts below Pulura's Fall and the lessons learned there. You have resistance equal to your level to spirit and void damage caused by a {@trait haunt}, {@trait spirit}, or {@trait incorporeal} {@trait undead}. The first time you take damage from a {@trait haunt} or {@trait spirit}, you learn the general story of its origin (such as the type of tragedy that caused a ghost to linger or what a spirit represents)."
+			]
+		},
+		{
+			"name": "Listener's Boon",
+			"source": "LORA",
+			"remaster": true,
+			"page": 35,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Campfire Chronicler"
+				]
+			},
+			"prerequisites": "{@feat Campfire Chronicler Dedication|LORA}",
+			"entries": [
+				"Isthralei has given you a gift to assist you on your journey. You gain the {@feat Domain Initiate|PC1} feat for the domain of {@domain fire|PC1}, {@domain knowledge|PC1}, {@domain protection|PC1}, or {@domain travel|PC1}. You can {@action Refocus|PC1} by spending 10 minutes telling stories of your travels or listening to others' stories of theirs. You gain the trained proficiency rank in spell attack modifier and spell DC, increasing to expert at 11th level."
+			],
+			"special": [
+				"You can select this feat multiple times, selecting a different domain each time and gaining its domain spell."
+			]
+		},
+		{
+			"name": "Raging Stories",
+			"source": "LORA",
+			"remaster": true,
+			"page": 35,
+			"level": 4,
+			"traits": [
+				"archetype",
+				"divine"
+			],
+			"featType": {
+				"archetype": [
+					"Campfire Chronicler"
+				]
+			},
+			"prerequisites": "{@feat Campfire Chronicler Dedication|LORA}",
+			"entries": [
+				"When you Offer a Story about wild chances and fighting against all odds, you can wrap yourself in spectral flame in place of the normal benefits. The action then gains the {@trait fire} trait. Your melee {@action Strike|PC1|Strikes} for the duration deal 2 additional fire damage. The creature you share a story with can choose this benefit even if you did not.",
+				"The fire damage increases to 4 if you are a master of {@skill Religion|PC1} and 6 if you are legendary."
+			]
+		},
+		{
+			"name": "Cozy Campfire",
+			"source": "LORA",
+			"remaster": true,
+			"page": 35,
+			"level": 6,
+			"traits": [
+				"archetype",
+				"consecration",
+				"divine",
+				"exploration",
+				"fire"
+			],
+			"featType": {
+				"archetype": [
+					"Campfire Chronicler"
+				]
+			},
+			"prerequisites": "{@feat Campfire Chronicler Dedication|LORA}",
+			"entries": [
+				"You spend 1 hour building a campfire in a single unoccupied square and whispering the stories of those you've met on your journeys. The campfire sheds bright light in a 30-foot radius (and dim light for the next 30 feet). The campfire can't be put out or get larger through mundane means; it instead burns out after your next daily preparations or when you use this ability again.",
+				"The first time each round a creature within the campfire's bright light performs an action with the {@trait attack} trait, they must then attempt a Will save against your class DC or spell DC (whichever is higher). This is a {@trait divine} {@trait curse} effect, and you are aware of any attempt, although other creatures in the area are not.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is aware of the effect and can choose to disrupt their action. If they don't disrupt it, the campfire goes out."
+						],
+						"Success": [
+							"The creature is aware of the effect and can choose to disrupt their action. If they don't disrupt it, they become temporarily immune to the campfire's effects for 24 hours."
+						],
+						"Failure": [
+							"The creature takes a \u20132 status penalty to the action's attack roll and to all other attack rolls until the beginning of their next turn."
+						],
+						"Critical Failure": [
+							"The action is disrupted, and the creature takes a \u20132 status penalty to attack rolls until the beginning of their next turn."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Illuminating Stories",
+			"source": "LORA",
+			"remaster": true,
+			"page": 35,
+			"level": 6,
+			"traits": [
+				"archetype",
+				"divine"
+			],
+			"featType": {
+				"archetype": [
+					"Campfire Chronicler"
+				]
+			},
+			"prerequisites": "{@feat Campfire Chronicler Dedication|LORA}",
+			"entries": [
+				"Stories serve as beacons in the night, illuminating valuable knowledge even if the tale itself misses the mark. When you Offer a Story about any topic, you can choose that illumination in place of the normal benefits of Offer Story. You receive a +1 status bonus on checks to {@action Recall Knowledge|PC1} for the duration and can {@action Recall Knowledge|PC1} about the topic of the story as a free action. The creature you share a story with can choose this benefit even if you did not. The bonus increases to +2 if you are a master of {@skill Religion|PC1} and +3 if you are legendary."
+			]
+		},
+		{
+			"name": "Flickering Stories",
+			"source": "LORA",
+			"remaster": true,
+			"page": 35,
+			"level": 8,
+			"traits": [
+				"archetype",
+				"divine"
+			],
+			"featType": {
+				"archetype": [
+					"Campfire Chronicler"
+				]
+			},
+			"prerequisites": "{@feat Campfire Chronicler Dedication|LORA}",
+			"entries": [
+				"Stories, like fires, can create shadows as much as they illuminate. When you Offer a Story, you can become {@condition concealed} by shifting shadows for the duration instead of the normal benefits. The action then gains the {@trait shadow} trait. You can't use this concealment to {@action Hide|PC1}, as normal for concealing effects that leave your location obvious. The creature you share a story with can choose this benefit even if you did not."
+			]
+		},
+		{
+			"name": "Tales of the Road",
+			"source": "LORA",
+			"remaster": true,
+			"page": 35,
+			"level": 10,
+			"traits": [
+				"archetype",
+				"divine"
+			],
+			"featType": {
+				"archetype": [
+					"Campfire Chronicler"
+				]
+			},
+			"prerequisites": "{@feat Campfire Chronicler Dedication|LORA}",
+			"entries": [
+				"The blessings of Isthralei connect you to the thrum of the stories that underlie all settlements. When attempting a check to {@action Recall Knowledge|PC1} about a city you have visited, you gain a +2 circumstance bonus and can use an associated {@skill Lore|PC1} skill (such as {@skill Lore|PC1|Nerosyan Lore}) with your level as your proficiency bonus even if you're untrained."
+			]
+		},
+		{
+			"name": "Stories of Home",
+			"source": "LORA",
+			"remaster": true,
+			"page": 35,
+			"level": 14,
+			"traits": [
+				"archetype",
+				"auditory",
+				"divine",
+				"exploration",
+				"healing",
+				"linguistic",
+				"mental"
+			],
+			"featType": {
+				"archetype": [
+					"Campfire Chronicler"
+				]
+			},
+			"prerequisites": "{@feat Campfire Chronicler Dedication|LORA}",
+			"frequency": {
+				"number": 1,
+				"unit": "day"
+			},
+			"entries": [
+				"You share the joy of every story of long-awaited homecoming you've offered to Isthralei. You can spend 10 minutes sharing this joy with your allies within 30 feet. You and those allies regain Hit Points equal to their Constitution modifier (minimum 1) times their level and recover from the {@condition doomed|PC1}, {@condition drained|PC1}, and {@condition fatigued|PC1} conditions as though they had a full night's rest (though they gain no other benefits associated with having a full night's rest)."
+			]
+		},
+		{
+			"name": "Pact of Huldra's Renewal",
+			"source": "LORA",
+			"remaster": true,
+			"page": 46,
+			"level": 4,
+			"traits": [
+				"rare",
+				"archetype",
+				"primal"
+			],
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"You've sworn a pact with Zemnaïdé, a huldra professor at Cobyslarni, to help renew his former homeland of the Sarkoris Scar. You can cast {@spell entangling flora|PC1} as a primal innate spell once per day. After the spell ends, the flowers and vines become mundane plants that can continue surviving if the natural environment can support them. They're no longer difficult terrain, and don't have the other effects of the spell. {@trait fiend||Fiends} that fail a save against this spell or another {@trait plant} spell you cast become {@condition sickened|PC1|sickened 1} in addition to the normal effects.",
+				"In exchange for her boon, Zemnaïdé requires that you never knowingly aid {@trait demon||demons} or their allies, nor despoil a natural environment. If you do either, you lose the benefits of this feat until you atone. If you comment on his bovine tail or imply the huldras are connected to trolls, Zemnaïdé revokes the benefits of this feat for 1 week or until you sincerely apologize."
+			]
+		},
+		{
+			"name": "Ouroboric Pact",
+			"source": "LORA",
+			"remaster": true,
+			"page": 46,
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"occult"
+			],
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"prerequisites": "{@feat Pactbinder Dedication|DA}; master in {@skill Occultism|PC1}",
+			"entries": [
+				"You've studied pacts at Cobyslarni, or learned under someone who has, and understand them to not only create a bargain between individuals, but a separate entity altogether: the pact itself. You gain the Entreat Pact action, which you can use in association with any pact from the pactbinder archetype. For example, if you have the {@feat Pact of Draconic Fury|DA}, you could Entreat Pact to aid a skill check to obtain an item the dragon desires.",
+				{
+					"name": "Entreat Pact",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"concentrate",
+						"fortune"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"trigger": "You attempt a skill check directly related to the conditions of the pact",
+					"entries": [
+						"You call upon the occult energies powering your pact to help you fulfill your promise. Roll twice on the triggering check and take the better result."
+					],
+					"type": "ability"
+				}
+			],
+			"special": [
+				"Your pacts continually enforce themselves in a circular magical loop. You lose the ability to retrain out of any feats from the pactbinder archetype."
+			]
+		},
+		{
+			"name": "Pact of the Nightblossom",
+			"source": "LORA",
+			"remaster": true,
+			"page": 46,
+			"level": 10,
+			"traits": [
+				"rare",
+				"archetype",
+				"occult"
+			],
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"You've sworn a pact with Jenway Nightblossom of the Synod of Truth in Dreams, a talented oneiromancer and pactbinder. Through your connection to her, you're able to divine your dreams for wisdom, and they're protected from interference. You're immune to {@spell nightmare|PC1}. During your daily preparations, if you slept and were able to dream, you learn a helpful piece of advice about your future activities, as {@spell read omens|PC1}.",
+				"As payment, Jenway established a permanent telepathic connection to you that functions whenever you sleep or dream. Whenever you learn something significant, Jenway learns it the next time you sleep. You can withhold information, but you lose the benefits of Pact of the Nightblossom until you relent and allow Jenway to learn it."
+			]
+		},
+		{
+			"name": "Pact of the Crossroads",
+			"source": "LORA",
+			"remaster": true,
+			"page": 47,
+			"level": 12,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"primal"
+			],
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"You've sworn a pact with {@deity Ng|LOGM} the Hooded, the Eldest known as the Lord of the Crossroads, though your only sign of {@deity Ng|LOGM|Ng's} acknowledgment is the benefits you receive. Anyone tracking you must succeed at a {@skill Survival|PC1} check against the higher of your class DC and spell DC. Creatures attempting to remember your features after the first time meeting you must succeed at a Will save against the same DC. If they fail, they recall the meeting but none of your features.",
+				"In exchange, you must continue your wanderings, never settling in one place for longer than one month, or you lose the benefits of this feat until you begin your travels again. If you ever willingly tell anyone you've formed a pact with {@deity Ng|LOGM}, you lose the benefits of this feat permanently, though you can share vague information about the pact's effects."
+			]
+		},
+		{
+			"name": "Pact of the Death Hunter",
+			"source": "LORA",
+			"remaster": true,
+			"page": 47,
+			"level": 14,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"divine"
+			],
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"You've sworn a pact with a psychopomp bent on the destruction of all undeath. You gain an imprecise deathsense that can detect {@trait undead} creatures up to 60 feet away. Additionally, whenever an {@trait undead} creature is destroyed within 60 feet you gain temporary Hit Points equal to its level that last for 1 minute.",
+				"In exchange, the psychopomp requires that you never aid in the creation or conquest of an {@trait undead} creature. You must also seek out and put to rest any mindless or destructive {@trait undead} creatures you come across."
+			]
+		},
+		{
+			"name": "Pact of the Fey Paths",
+			"source": "LORA",
+			"remaster": true,
+			"page": 47,
+			"level": 14,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"primal"
+			],
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"You've sworn a pact with a powerful {@trait fey} creature that longs to see the wonders of the Universe. You gain the Fey Jump ability. In exchange, you can no longer see the moon or stars as the fey steals those wonders from your eyes, and you must gaze at the empty sky for at least 10 minutes each night. If you do not, the fey revokes your benefits for the next day. If you go a week without gazing, the fey revokes your benefits until you atone.",
+				{
+					"name": "Fey Jump",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"primal",
+						"teleportation"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You jump through the First World for a brief second, teleporting up 60 feet away to an empty space you can see. If this would bring another creature with you\u2014even if you're carrying it in an extradimensional container\u2014the action is lost."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Pact of the Rune Dragon",
+			"source": "LORA",
+			"remaster": true,
+			"page": 47,
+			"level": 16,
+			"traits": [
+				"uncommon",
+				"arcane",
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"While the students of Cobyslarni are taught to make pacts with many kinds of dragons, a pact with a rune dragon is somewhat more frequent due to their interest in the accomplishments of various academies. You immediately learn 10 languages chosen from common languages, uncommon languages, and any others the dragon has access to. Additionally, you can {@action Identify Magic|PC1} at a range of 30 feet as a single action ability with the {@trait concentrate} trait.",
+				"In exchange, the rune dragon requires you to research a topic and send a detailed report each year. Year to year, the dragon may change the interest of your research as they see fit. If you fail to send an appropriately detailed report, you lose this ability unless you spend one week serving the dragon."
+			]
+		},
+		{
+			"name": "Pact of the Living Pact",
+			"source": "LORA",
+			"remaster": true,
+			"page": 47,
+			"level": 18,
+			"traits": [
+				"uncommon",
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Pactbinder"
+				]
+			},
+			"prerequisites": "{@feat Pactbinder Dedication|DA}",
+			"entries": [
+				"You've sworn a pact with a pact that has somehow survived long after the death of the original pactbinder. You gain the Forced Pact action. In exchange, this and any other pact you have made seek longevity. Whenever you become {@condition dying|PC1|dying 3} or higher, all of your pacts abandon you and flee to the nearest safe space. You can sense their direction at all times, and if you find them, you regain all of your pacts.",
+				{
+					"name": "Forced Pact",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You force a temporary pact on both yourself and another creature you can see within 60 feet. Choose {@trait attack}, {@trait move}, {@trait manipulate}, or {@trait concentrate}. The target must attempt a Will saving throw.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": [
+									"The target is unaffected."
+								],
+								"Failure": [
+									"If you or the target uses an action with the chosen trait within the next minute, they take {@damage 10d6} mental damage, and this pact ends for both of you."
+								],
+								"Critical Failure": "As failure, except your target takes the damage if either of you uses an action with the chosen trait."
+							}
+						}
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Talent Envy",
+			"source": "LORA",
+			"remaster": true,
+			"page": 55,
+			"level": 7,
+			"traits": [
+				"rare",
+				"general",
+				"skill"
+			],
+			"prerequisites": "expert in {@skill Performance|PC1}, {@feat Virtuosic Performer|PC1}",
+			"entries": [
+				"You give off a bedazzling glow with every performance, sparking feelings of severe envy and inadequacy in those who compare their talent to yours. Once per minute when you succeed at a check using the type of performance that you chose with {@feat Virtuosic Performer|PC1}, you can attempt to {@action Demoralize|PC1} an onlooker of your choice within 60 feet as a free action. If you critically succeeded on your {@skill Performance|PC1} check, improve the degree of success for your {@action Demoralize|PC1} check by one step."
+			]
+		},
+		{
+			"name": "Kitharodian Actor Dedication",
+			"source": "LORA",
+			"remaster": true,
+			"page": 58,
+			"level": 2,
+			"traits": [
+				"rare",
+				"archetype",
+				"dedication"
+			],
+			"featType": {
+				"archetype": [
+					"Kitharodian Actor"
+				]
+			},
+			"prerequisites": "trained in {@skill Performance|PC1}",
+			"access": "You are from Taldor or have attended Kitharodian Academy.",
+			"entries": [
+				"You've studied classic Taldan theater and learned to embody various roles to a sublime degree. You become trained in {@skill Society|PC1} and in {@skill Lore|PC1|Theater Lore}; if you were already trained in either, you become an expert in that skill instead. In addition, when you attempt a {@skill Deception|PC1} or {@skill Performance|PC1} check to portray a famous figure, you gain a +2 circumstance bonus to your check. This bonus changes to +3 at 10th level and +4 at 17th level. However, you don't gain this bonus while {@action Impersonate|PC1|Impersonating} a figure whose death is common knowledge (as determined by the GM)."
+			],
+			"leadsTo": [
+				"Animal Actor|LORA",
+				"Heaven's Step Offense|LORA",
+				"Clean Take|LORA",
+				"Monumental Maestro|LORA",
+				"Stunt Performer Stance|LORA",
+				"Sympathetic Portrayal|LORA",
+				"Bleak Humorist|LORA",
+				"Of Lions and Wyrms|LORA",
+				"Ruthless Orator|LORA"
+			]
+		},
+		{
+			"name": "Animal Actor",
+			"source": "LORA",
+			"remaster": true,
+			"page": 58,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Kitharodian Actor"
+				]
+			},
+			"prerequisites": "{@feat Kitharodian Actor Dedication|LORA}",
+			"entries": [
+				"You participated in a performance of {@i The Leaping Lion}, a play focusing on Cyricas, the animal-loving adventurer who traveled with his ape friend Mardu and remains a favorite hero among Taldan youth. You become trained in {@skill Nature|PC1} and a {@skill Lore|PC1} skill related to a particular type of animal commonly used in show business (such as {@skill Lore||PC1|Canine Lore}, {@skill Lore||PC1|Ursine Lore}, or {@skill Lore||PC1|Primate Lore}); if you were already trained in either, you become an expert in that skill instead. You gain a +2 circumstance bonus to all checks to {@action Command an Animal|PC1} and {@action Recall Knowledge|PC1} about creatures with the {@trait animal} trait. You can use your chosen animal {@skill Lore|PC1} to {@action Command an Animal|PC1} of that type."
+			]
+		},
+		{
+			"name": "Heaven's Step Offense",
+			"source": "LORA",
+			"remaster": true,
+			"page": 58,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Kitharodian Actor"
+				]
+			},
+			"prerequisites": "{@feat Kitharodian Actor Dedication|LORA}",
+			"trigger": "Your melee {@action Strike|PC1} reduces a creature to 0 Hit Points",
+			"entries": [
+				"Your lessons from the stage find life in the storied mercy and fearlessness of Grand Prince Gennaris III. With a theatrical flourish, the {@action Strike|PC1} becomes {@trait nonlethal}, and you can {@action Stride|PC1} up to half your Speed in a straight line toward another enemy. This attention-arresting movement does not provoke reactions from enemies unless they are immune to {@trait mental} effects."
+			]
+		},
+		{
+			"name": "Clean Take",
+			"source": "LORA",
+			"remaster": true,
+			"page": 58,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 6,
+			"traits": [
+				"archetype",
+				"fortune"
+			],
+			"featType": {
+				"archetype": [
+					"Kitharodian Actor"
+				]
+			},
+			"prerequisites": "{@feat Kitharodian Actor Dedication|LORA}",
+			"trigger": "You fail, but don't critically fail, a {@skill Deception|PC1} or {@skill Performance|PC1} check to portray a famous figure.",
+			"entries": [
+				"Thanks to many long hours of rehearsals, your acting skill is infinitely adaptable. Even when your impressions don't quite hit the mark, you're able to refine and tweak your performance on the spot. Reroll the triggering check and take the second result."
+			]
+		},
+		{
+			"name": "Monumental Maestro",
+			"source": "LORA",
+			"remaster": true,
+			"page": 58,
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Kitharodian Actor"
+				]
+			},
+			"prerequisites": "{@feat Kitharodian Actor Dedication|LORA}",
+			"entries": [
+				"You've studied the moving compositions of Andreas Romung, a legendary maestro whose Shining Crusade anthems live on in the music for the play {@i Echoes of Glory}. You gain a +2 circumstance bonus to {@skill Performance|PC1} checks to {@action Perform|PC1} with a musical instrument or sing. If you succeed, the DCs of subsequent {@skill Diplomacy|PC1} checks against any creature who {@condition observed|PC1} your performance are reduced by 2 for the next 24 hours."
+			]
+		},
+		{
+			"name": "Stunt Performer Stance",
+			"source": "LORA",
+			"remaster": true,
+			"page": 58,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"featType": {
+				"archetype": [
+					"Kitharodian Actor"
+				]
+			},
+			"level": 10,
+			"traits": [
+				"archetype",
+				"stance"
+			],
+			"prerequisites": "{@feat Kitharodian Actor Dedication|LORA}",
+			"requirements": "You are unarmored.",
+			"entries": [
+				"You clear your mind, regulate your breathing, and prepare your muscles in a stance inspired by Kemen Kayton, a graduate of Zimar's Monastery of the Seven Forms. Kemen controversially shunned monastic life and instead used his martial skills as a death-defying stunt performer, winning acclaim for exhibitions that saw him survive great falls and escape deadly traps. While in this stance, you gain a +2 circumstance bonus to Reflex saving throws and skill checks to {@action Escape|PC1}, as well as resistance 2 to all physical damage."
+			]
+		},
+		{
+			"name": "Sympathetic Portrayal",
+			"source": "LORA",
+			"remaster": true,
+			"page": 59,
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Kitharodian Actor"
+				]
+			},
+			"prerequisites": "{@feat Kitharodian Actor Dedication|LORA}",
+			"entries": [
+				"You portrayed Grand Prince Stavian in {@i Fall of the Troubled King}, a production dedicated to the life and times of the paranoid Taldan ruler whose violent resistance to new policies on succession kicked off the War for the Crown. Your acting won rave reviews for recasting Stavian's paranoia and political machinations in a sympathetic light, and you've learned to apply these subtle techniques outside of the stage to win others over. Whenever you succeed at a {@skill Deception|PC1} or {@skill Performance|PC1} check to portray a famous figure, you can select one creature within 60 feet who observed your performance. As long as this creature isn't hostile, its attitude toward you automatically improves by two steps (three steps if your check was a critical success). If it's hostile, it's {@condition stupefied|PC1|stupefied 2} for 1 minute as it tries to reconcile its desire to harm you with its newfound sympathy for you."
+			]
+		},
+		{
+			"name": "Bleak Humorist",
+			"source": "LORA",
+			"remaster": true,
+			"page": 59,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 12,
+			"traits": [
+				"archetype",
+				"emotion",
+				"linguistic",
+				"mental"
+			],
+			"prerequisites": "{@feat Kitharodian Actor Dedication|LORA}",
+			"frequency": {
+				"number": 1,
+				"unit": "day"
+			},
+			"featType": {
+				"archetype": [
+					"Kitharodian Actor"
+				]
+			},
+			"trigger": "You are reduced to 0 Hit Points by a creature within 30 feet, but not immediately killed",
+			"entries": [
+				"You've watched dozens of morbid comedies depicting Beldam I, Taldor's prankster emperor whose wife accidentally killed him when she struck him with a marble bust after he jumped out from behind curtains to frighten her. You are reminded of this depressing yet perversely comical tale whenever you are near death, and in your final moments of consciousness you murmur a bleak joke to the creature who reduced you to 0 Hit Points. The creature must attempt a Will save against your class DC.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is distracted by giggles and can't use reactions until the beginning of your next turn."
+						],
+						"Failure": [
+							"The target laughs uncontrollably. It can't use reactions until the beginning of your next turn and is {@condition slowed|PC1|slowed 1}."
+						],
+						"Critical Failure": [
+							"As failure, but the target also immediately falls {@condition prone|PC1}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Of Lions and Wyrms",
+			"source": "LORA",
+			"remaster": true,
+			"page": 59,
+			"level": 14,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Kitharodian Actor"
+				]
+			},
+			"prerequisites": "{@feat Kitharodian Actor Dedication|LORA}",
+			"entries": [
+				"You starred in a war drama depicting First Emperor Taldaris's battles against the Grogrisant, a massive sixeyed lion, and Verksaris the Kingeater, a mighty dragon. To prepare for your role, you spent weeks in the wild observing and occasionally scrapping with any creature resembling Taldaris's legendary foes. You gain a +2 circumstance bonus to saving throws against effects from {@trait beast||beasts} and {@trait dragon||dragons}."
+			]
+		},
+		{
+			"name": "Ruthless Orator",
+			"source": "LORA",
+			"remaster": true,
+			"page": 59,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 16,
+			"traits": [
+				"archetype",
+				"auditory",
+				"emotional",
+				"linguistic",
+				"mental"
+			],
+			"featType": {
+				"archetype": [
+					"Kitharodian Actor"
+				]
+			},
+			"prerequisites": "{@feat Kitharodian Actor Dedication|LORA}",
+			"frequency": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You were once cast in the role of Daronlyr XII, one of Taldor's most ambitious rulers who slew his cousin to seize the crown, yet somehow still managed to convince the entire Ulfen Guard to swear loyalty to him simply through his powers of oration. You attempt a {@skill Performance|PC1} check to launch into a powerful monologue, pulling lines from Daronlyr's playbook to win respect from everyone around you, even your enemies. The DC of this check is a hard difficulty DC of your level. On a success, any {@condition hostile|PC1} creatures within 20 feet take a \u22122 circumstance penalty to attack rolls and spell attack rolls that target you until the beginning of your next turn, and any allies within 20 feet are {@condition quickened|PC1} until the beginning of your next turn. The additional action can be only used to {@action Strike|PC1} or {@action Stride|PC1}."
+			]
+		},
+		{
+			"name": "Flood Stance",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"monk",
+				"stance",
+				"water"
+			],
+			"entries": [
+				"The lessons of the flood teach a stance that distributes and circulates a single breath through the body and allows your punches to contain the focused power of a torrent of water. While in this stance, you hold your breath for up to 10 minutes and leave the stance if you stop holding your breath. You do not lose additional air if you attack, are critically hit, or critically fail a save. You still lose all remaining air if you speak, including to Cast a Spell. The only {@action Strike|PC1|Strikes} you can make are flooded river unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the {@group brawling|PC1} group; have the {@trait nonlethal}, {@trait trip}, {@trait unarmed}, and {@trait water} traits; and don't take the normal penalty for being used underwater. They also gain the {@trait forceful} trait while you're underwater."
+			],
+			"leadsTo": [
+				"Culvert's Collapse|LORA"
+			]
+		},
+		{
+			"name": "Reflective Ripple Stance",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 1,
+			"traits": [
+				"monk",
+				"stance",
+				"water"
+			],
+			"requirements": "You're unarmored.",
+			"entries": [
+				"You enter a stance of fluid grace as small amounts of water flow with your movements and attacks. You can make flowing wave attacks that deal {@damage 1d6} bludgeoning damage. They are in the {@group brawling} group and have the {@trait agile}, {@trait disarm}, {@trait finesse}, {@trait nonlethal}, {@trait trip}, {@trait unarmed}, and {@trait water} traits.",
+				"While in Reflective Ripple Stance, you gain a +1 circumstance bonus to {@skill Athletics|PC1} checks to {@action Disarm}, {@action Swim|PC1}, or {@action Trip|PC1}, and you gain a +2 circumstance bonus to your Reflex DC to avoid being {@action Disarm|PC1|Disarmed} and {@action Trip|PC1|Tripped}."
+			],
+			"special": [
+				"This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your qi spell tradition if possible."
+			],
+			"leadsTo": [
+				"Rippling Spin|LORA",
+				"Wave Spiral|LORA"
+			]
+		},
+		{
+			"name": "Student of Water",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"monk",
+				"water"
+			],
+			"entries": [
+				"Following your studies of water, your qi stirs the water of the natural world. If you're underwater, you have cover against creatures outside of the water. As soon as you meet the prerequisites for {@feat Underwater Marauder|PC2} and {@feat Water Sprint|PC2}, you gain those feats."
+			]
+		},
+		{
+			"name": "Waterfowl Stance",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"monk",
+				"stance",
+				"water"
+			],
+			"prerequisites": "{@feat Monastic Weaponry|PC2}",
+			"entries": [
+				"In your hands, swords dance like rainfall over the waves; who can tell where the storm ends and the sea begins? Developed by Swordmaster Ganhil to compete with the House of Untwisting Iron, this stance integrates fluid swordplay into even the simplest movements.",
+				"While in Waterfowl Stance, the {@item dandpatta|LOIL}, {@item scimitar|PC1}, {@item talwar|LOIL}, and {@item zulfikar|LOIL} gain the {@trait monk} trait for you. When you {@action Tumble Through|PC1} a creature's space or {@action Leap|PC1} over a creature while wielding one of these weapons, you can deal that creature {@damage 1d6} slashing damage. This damage is increased to {@dice 2d6} if the weapon has a greater striking rune and {@dice 3d6} if it has a major striking rune."
+			],
+			"special": [
+				"You gain access to the {@item dandpatta|LOIL}, {@item talwar|LOIL}, and {@item zulfikar|LOIL}."
+			],
+			"leadsTo": [
+				"Snakebird's Shadow|LORA"
+			]
+		},
+		{
+			"name": "Divert Streamflow",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"monk"
+			],
+			"trigger": "You're damaged by a melee {@action Strike|PC1} by a creature in your reach.",
+			"entries": [
+				"With a brief gesture, you adapt swiftly to an attack like a flowing stream. Attempt an {@skill Athletics|PC1} check to {@action Reposition|PC1} the creature who dealt the triggering damage. If you're successful, you can {@action Step|PC1} as a free action."
+			]
+		},
+		{
+			"name": "Tributary Circulation",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"entry": "{@as 1} or {@as 2}",
+				"unit": "varies"
+			},
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"monk",
+				"occult",
+				"water"
+			],
+			"entries": [
+				"Never distant from water's succoring presence, your refined breathing techniques focus your awareness and control of water inward. You gain a +2 circumstance bonus to Will saves and saves against poison until the beginning of your next turn. If you spent two actions on Tributary Circulation, you can also attempt a flat check to end {@condition persistent damage|PC1|persistent poison damage} you're suffering, reducing the DC to 10 as if you had gained the benefits of assisted recovery."
+			]
+		},
+		{
+			"name": "Culvert's Collapse",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"monk",
+				"water"
+			],
+			"prerequisites": "{@feat Flood Stance|LORA}",
+			"requirements": "You are in {@feat Flood Stance|LORA} and were damaged by an enemy since your previous turn.",
+			"entries": [
+				"Under your foes' onslaught, the water within your violent blood stirs. Your killing intent swells, your agonies marshaling your inevitable resurgence. Make a flooded river {@action Strike|PC1} against the enemy who dealt damage to you since your previous turn. That {@action Strike|PC1} deals an additional {@damage 1d8} {@condition persistent damage|PC1|persistent bleed damage}."
+			]
+		},
+		{
+			"name": "Rippling Spin",
+			"source": "LORA",
+			"remaster": true,
+			"page": 80,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 8,
+			"traits": [
+				"flourish",
+				"monk",
+				"occult",
+				"water"
+			],
+			"prerequisites": "{@feat Reflective Ripple Stance|LORA}",
+			"trigger": "You're hit by a physical melee attack by an attacker you can see that's in reach.",
+			"requirements": "You're in {@feat Reflective Ripple Stance|LORA}.",
+			"entries": [
+				"After the triggering attack is done, {@action Step|PC1}. You must end this {@action Step|PC1} within the attacker's reach. Then, you can attempt an {@skill Athletics|PC1} check to {@action Disarm|PC1} or {@action Trip|PC1} the attacker."
+			]
+		},
+		{
+			"name": "Snakebird's Shadow",
+			"source": "LORA",
+			"remaster": true,
+			"page": 81,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"flourish",
+				"monk",
+				"occult",
+				"water"
+			],
+			"prerequisites": "{@feat Waterfowl Stance|LORA}",
+			"requirements": "You are in {@feat Waterfowl Stance|LORA} and are wielding a {@trait monk} weapon from the {@group sword} group.",
+			"entries": [
+				"Ganhil developed this technique through observing the sharp-beaked darters fishing Prada Hanam's waters, seeking to match their speed and suppleness with the elemental flash of his blade. Make a melee {@action Strike|PC1} with the required weapon against each enemy in a 15-foot line as razor-sharp shadows of water surge from your blade. Each attack counts toward your multiple attack penalty, but you do not increase your penalty until you have made all your attacks."
+			]
+		},
+		{
+			"name": "Wake to Strife",
+			"source": "LORA",
+			"remaster": true,
+			"page": 81,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"monk",
+				"occult",
+				"water"
+			],
+			"requirements": "A creature within your reach is {@condition prone|PC1} or swimming.",
+			"entries": [
+				"You summon the explosive power of a geyser beneath a foe. The required creature must attempt a Fortitude save against your class DC as elemental water confounds their senses; if the creature is {@condition prone|PC1}, they can {@action Stand|PC1} as a free action.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition sickened|PC1|sickened 1}."
+						],
+						"Failure": [
+							"The target is {@condition sickened|PC1|sickened 2}. If you have a free hand and they are not larger than you, you can attempt an {@skill Athletics|PC1} check to {@action Grapple|PC1} them as a free action."
+						],
+						"Critical Failure": [
+							"As failure, but if you succeed at the {@skill Athletics|PC1} check to {@action Grapple|PC1} them, you get a critical success instead."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Lessons of Flux",
+			"source": "LORA",
+			"remaster": true,
+			"page": 81,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"fortune",
+				"monk"
+			],
+			"frequency": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"trigger": "You fail a skill check to {@action Grab|PC1}, {@action Reposition|PC1}, {@action Shove|PC1}, {@action Trip|PC1}, or {@action Tumble Through|PC1}.",
+			"entries": [
+				"You apply the persistence and permutation taught by faydhaans to your failures. You reroll the check and take the second result. If it still fails or critically fails, you can ask a question about the creature you were attempting to {@action Grab|PC1}, {@action Reposition|PC1}, {@action Shove|PC1}, {@action Trip|PC1}, or {@action Tumble Through|PC1} as if you had succeeded at a check to {@action Recall Knowledge|PC1}."
+			]
+		},
+		{
+			"name": "Wave Dashes Rocks",
+			"source": "LORA",
+			"remaster": true,
+			"page": 81,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"monk",
+				"water"
+			],
+			"requirements": "You have a creature {@condition grabbed|PC1} or {@condition restrained|PC1}.",
+			"entries": [
+				"You slam an unlucky foe with the tremendous power of a plunging wave. Make a melee {@action Strike|PC1} against the required creature, after which they are no longer {@condition grabbed|PC1} or {@condition restrained|PC1} by you. This {@action Strike|PC1} must be made with an unarmed attack or a {@trait monk} weapon. If you deal damage with this {@action Strike|PC1}, the target is knocked {@condition prone|PC1} and is {@condition clumsy|PC1|clumsy 1} and {@condition enfeebled|PC1|enfeebled 1} until the end of its next turn."
+			]
+		},
+		{
+			"name": "Wave Spiral",
+			"source": "LORA",
+			"remaster": true,
+			"page": 81,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 12,
+			"traits": [
+				"flourish",
+				"monk",
+				"occult",
+				"water"
+			],
+			"prerequisites": "{@feat Reflective Ripple Stance|LORA}",
+			"frequency": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"requirements": "You're in {@feat Reflective Ripple Stance|LORA}.",
+			"entries": [
+				"You dip and spin, unleashing a wide whirlpool of water. Make an {@skill Athletics|PC1} check to {@action Trip|PC1} each creature standing on the ground in a 10-foot emanation. These attacks all count toward your multiple attack penalty, but the penalty doesn't increase until after you make all the attacks."
+			]
+		},
+		{
+			"name": "Convergent Tides",
+			"source": "LORA",
+			"remaster": true,
+			"page": 82,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"magus",
+				"water"
+			],
+			"prerequisites": "{@action Arcane Cascade|SoM}",
+			"entries": [
+				"Your footwork is like the convergence of tides, granting your body supernatural power and fluidity. While you're in {@action Arcane Cascade|SoM} stance, you ignore difficult terrain caused by water, such as walking along a flooded path or swimming in rough water."
+			]
+		},
+		{
+			"name": "Shattering Spellstrike",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"force",
+				"magus"
+			],
+			"prerequisites": "{@class Magus|SoM|Resurgent Maelstrom|Resurgent Maelstrom|LORA} hybrid study, {@action Spellstrike|SoM}",
+			"requirements": "You're in {@action Arcane Cascade|SoM} stance and wielding an improvised weapon.",
+			"entries": [
+				"You intentionally channel a rampaging cascade of magic through your weapon, breaking it to deal more damage. Make a {@action Spellstrike|SoM} against a target with your improvised weapon. If the attack hits, it deals an additional {@damage 2d6} force damage as your improvised weapon breaks. If the spell used with the {@action Spellstrike|SoM} wasn't a {@trait cantrip} or {@trait focus} spell, increase this additional damage by the spell's rank.",
+				"If the item has a Hardness greater than your level, or if it's an artifact, {@trait cursed} item, or other item that's difficult to break or destroy, it doesn't break and you don't deal additional damage."
+			]
+		},
+		{
+			"name": "Surface Tension",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"magus",
+				"water"
+			],
+			"prerequisites": "{@class Magus|SoM|Resurgent Maelstrom|Resurgent Maelstrom|LORA} hybrid study",
+			"requirements": "You're wielding a {@condition broken|PC1} weapon.",
+			"entries": [
+				"You encase the pieces of your {@condition broken|PC1} weapon together with water you pull from the surrounding environment. The weapon's {@condition broken|PC1} condition is temporarily suppressed, and the weapon deals an additional amount of bludgeoning damage equal to twice the number of weapon damage dice; this damage can't be changed to any other type. The weapon also gains the deadly d8 trait; if the weapon already had the {@trait deadly} trait, the damage die increases by one step or to d8, whichever is higher. The first time you use this weapon to {@action Spellstrike|SoM} or get a critical success on an attack with it, the weapon is completely destroyed.",
+				"If the weapon has a Hardness greater than your level, or if it's an artifact, {@trait cursed} item, or other item that's difficult to break or destroy, it is not destroyed, and this ability only lasts until the end of your turn."
+			]
+		},
+		{
+			"name": "Crosscurrent Counter",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"magus",
+				"water"
+			],
+			"trigger": "You become {@condition grabbed|PC1} or {@condition restrained|PC1} by a creature.",
+			"entries": [
+				"You counter the creature with the power of elemental water, a tendril of it encasing your limb or weapon. You attempt an {@skill Athletics|PC1} check to {@action Grapple|PC1} the triggering creature, even if it's outside your reach or you don't have a free hand. If you succeed, you also remove the triggering condition, and the tendril of water pulls the creature adjacent to you before dissipating."
+			]
+		},
+		{
+			"name": "Whirlpool's Pull",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"magus"
+			],
+			"prerequisites": "{@class Magus|SoM|Resurgent Maelstrom|Resurgent Maelstrom|LORA} hybrid study",
+			"entries": [
+				"You briefly conjure a tendril of water that allows you to grab an improvised weapon and then subsume that water to power your magic. You {@action Interact|PC1} to pick up an unattended object within 15 feet you could use as an improvised weapon and then {@action Cast a Spell|PC1} that is a cantrip or conflux spell that takes 1 action to cast."
+			]
+		},
+		{
+			"name": "Maelstrom Flow",
+			"source": "LORA",
+			"remaster": true,
+			"page": 83,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"magus"
+			],
+			"prerequisites": "{@class Magus|SoM|Resurgent Maelstrom|Resurgent Maelstrom|LORA} hybrid study",
+			"frequency": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"requirements": "You're wielding an improvised weapon.",
+			"entries": [
+				"You pour energy into an improvised weapon, speeding its destruction to grant it power. The overloaded energy grants your improvised weapon the effect of the astral, corrosive, extending, or frost rune for 1 minute, after which the item is destroyed. If the item has a Hardness greater than your level, or if it's an {@trait artifact}, {@trait cursed} item, or other item that's difficult to break or destroy, it is not destroyed, and this ability only lasts until the end of your turn.",
+				"This effect doesn't count against the number of property runes a weapon can have based on its potency rune, but a given weapon can only have one application of Maelstrom Flow at a time."
+			]
+		},
+		{
+			"name": "Performer's Treatment",
+			"source": "LORA",
+			"remaster": true,
+			"page": 91,
+			"level": 2,
+			"traits": [
+				"rare",
+				"general",
+				"skill"
+			],
+			"prerequisites": "expert in {@skill Medicine}, expert in {@skill Performance}",
+			"entries": [
+				"With your experience as a performer, you can keep a set of medical tools handy at all times. You can wear a {@item healer's toolkit|PC1} as part of any costume or disguise. Creatures will generally only notice the toolkit it if they use a {@action Seek|PC1} action and succeed at a {@skill Perception|PC1} check against your {@skill Performance|PC1} DC.",
+				"In addition, you can realize at the last moment when you should just be pretending to avoid doing any lasting harm. When you critically fail a {@skill Medicine} check to {@action Administer First Aid|PC1}, {@action Treat Disease|PC1}, {@action Treat Poison|PC1}, or {@action Treat Wounds|PC1}, you can attempt a {@skill Performance|PC1} check against the patient's {@skill Perception|PC1} DC. On a success, your critical failure at the {@skill Medicine|PC1} check becomes a failure."
+			]
+		},
+		{
+			"name": "Lepidstadt Surgeon Dedication",
+			"source": "LORA",
+			"remaster": true,
+			"page": 94,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"dedication"
+			],
+			"prerequisites": "trained in {@skill Medicine|PC1}, attended the University of Lepidstadt",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"Before everything else, before the blood and the monsters and the Stasian technology and the horror, you are a doctor. You are, in fact, an exceptionally good doctor. You become an expert in {@skill Medicine|PC1}. When you successfully {@action Administer First Aid|PC1} to stabilize a {@condition dying} creature that doesn't yet have the {@condition wounded|PC1} condition, it regains {@dice 2d8} Hit Points; this healing increases by 10 when you are a master of {@skill Medicine|PC1} and by another 10 when you are legendary in {@skill Medicine|PC1}. When you successfully {@action Administer First Aid|PC1} to stop bleeding, the target rolls the flat check (with lowered DC for an assisted recovery) twice and takes the better result; this is a {@trait fortune} effect."
+			],
+			"leadsTo": [
+				"In Lightning, Life|LORA",
+				"Rise, My Creature!|LORA",
+				"Artery Map|LORA",
+				"Beautiful Knifework|LORA",
+				"Stand Back, I'm a Doctor!|LORA"
+			]
+		},
+		{
+			"name": "In Lightning, Life",
+			"source": "LORA",
+			"remaster": true,
+			"page": 94,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 4,
+			"traits": [
+				"archetype",
+				"concentrate",
+				"electricity",
+				"healing",
+				"manipulate"
+			],
+			"prerequisites": "{@feat Lepidstadt Surgeon Dedication|LORA}",
+			"frequency": {
+				"number": 1,
+				"interval": 10,
+				"unit": "minute"
+			},
+			"requirements": "You're wearing or holding a {@item healer's toolkit|PC1}.",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"\"In lightning, there is life.\" This lesson is whispered throughout Lepidstadt, and you can put it to practical use. You have integrated a miniature Stasian coil into your {@item healer's toolkit|PC1}. You use the coil to gently shock a willing or {@condition unconscious|PC1} ally within your reach, who gains {@dice 2d4} temporary Hit Points from the jolt. These temporary Hit Points last for 1 minute. These temporary Hit Points increase by {@dice 1d4} at 8th level and every 4 levels thereafter.",
+				"A creature that has resistance or immunity to electricity is immune to this ability, and a creature that received temporary Hit Points from In Lightning, Life is temporarily immune to it for 24 hours."
+			]
+		},
+		{
+			"name": "Rise, My Creature!",
+			"source": "LORA",
+			"remaster": true,
+			"page": 94,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lepidstadt Surgeon Dedication|LORA}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"You have created life! You have usurped the power of the gods themselves! You gain a prototype construct companion pieced together from corpses and animated by chemicals or Stasian technology. You use {@skill Medicine|PC1} in place of {@skill Crafting|PC1} to {@action Repair|PC1} your construct or rebuild it if it's been destroyed.",
+				"Your creation has an affinity for the lightning that brought it to life. When your construct companion takes electricity damage, it gains a +1 circumstance bonus to its {@skill Athletics} skill checks until the end of its next turn.",
+				"Although the coils or alchemical residue make it obvious to you and those with similar training that your creation is not {@trait undead}, others must generally succeed at a DC 15 {@skill Crafting}, {@skill Medicine|PC1}, or {@skill Religion|PC1} check to verify those claims with {@action Recall Knowledge|PC1}."
+			]
+		},
+		{
+			"name": "Artery Map",
+			"source": "LORA",
+			"remaster": true,
+			"page": 94,
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lepidstadt Surgeon Dedication|LORA}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"While you've learned all the places a scalpel can cause extensive bleeding to avoid disasters in surgery, such knowledge can serve other purposes. When you {@action Strike|PC1} an {@condition off-guard|PC1} creature with a weapon from the knife group, you deal {@damage 1d6} {@condition persistent damage|PC1|persistent bleed damage}. The damage increases to {@dice 1d10} when you are legendary in {@skill Medicine|PC1}."
+			]
+		},
+		{
+			"name": "Let My Creature Live!",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Rise, My Creature!|PC1}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"You continue to tinker with your creation's muscles and rudimentary mind, granting it a limited form of autonomy. Your construct companion becomes an advanced construct companion. During an encounter, even if you don't use the Command a Minion action, your construct companion can still use 1 action on your turn that round to {@action Stride|PC1} or {@action Strike|PC1}."
+			]
+		},
+		{
+			"name": "Beautiful Knifework",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"level": 7,
+			"traits": [
+				"archetype",
+				"exploration",
+				"manipulate",
+				"skill"
+			],
+			"prerequisites": "{@feat Lepidstadt Surgeon Dedication|LORA}, master in {@skill Medicine|PC1}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"You perform surgical adjustments to disguise a willing ally or your construct companion. This counts as preparing a disguise to {@action Impersonate|PC1}, taking 10 minutes and requiring a {@item healer's toolkit|PC1} instead of a {@item disguise kit|PC1}. The DC to see through the deception with {@action Seek|PC1} is your {@skill Medicine|PC1} DC unless the disguised character's {@skill Deception|PC1} DC is higher. If the target directly interacts with someone while disguised, they gain a +2 circumstance bonus to their {@skill Deception|PC1} check.",
+				"You can reverse this effect with another 10-minute surgery. The disguised character can also end it as a free action when they receive any {@trait healing} effect."
+			]
+		},
+		{
+			"name": "Behold My Creation!",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Let My Creature Live!|PC1}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"You have rebuilt your creation once more. It is greater now, more than it once was. Soon, it shall be greater still. Your construct companion becomes an incredible construct companion."
+			]
+		},
+		{
+			"name": "Stasian Charge",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat In Lightning, Life|PC1}",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"Charging a living body with electricity may seem like a bad idea, but you know better. When a creature gains temporary Hit Points from your {@feat In Lightning, Life|PC1}, they gain the {@condition quickened|PC1} condition until the end of their next turn. They can use the extra action only for {@action Stride|PC1} and {@action Strike|PC1} actions."
+			]
+		},
+		{
+			"name": "Stand Back, I'm a Doctor!",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lepidstadt Surgeon Dedication|LORA}, master in {@skill Medicine|PC1}",
+			"requirements": "You are holding healer's tools, or you are wearing them and have a hand free; a creature with the {@condition dying|PC1} condition is in your reach.",
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"entries": [
+				"You have mastered techniques to aid those at the brink of death, even if they use dangerous Stasian technology. Attempt a {@skill Medicine|PC1} check on the {@condition dying|PC1} creature as you deliver it a powerful shock. The DC is usually a standard-difficulty DC of a level equal to the target. On a success, the creature's {@condition dying|PC1} condition is reduced by 1 (or 2 on a critical success); if this reduces the value of the {@condition dying|PC1} condition to 0, the creature regains {@dice 2d8+10} Hit Points, its {@condition wounded|PC1} condition doesn't increase, and it can {@action Stand|PC1} as a free action. Each creature except you adjacent to the target takes {@damage 8d6} electricity damage (basic Reflex save against your class DC or spell DC); instead of attempting this save, a creature can {@action Step|PC1} as a free action and if they end this movement not adjacent to the target, they take no damage."
+			]
+		},
+		{
+			"name": "A Miracle of Science!",
+			"source": "LORA",
+			"remaster": true,
+			"page": 95,
+			"level": 14,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Lepidstadt Surgeon"
+				]
+			},
+			"prerequisites": "{@feat Behold My Creation!|PC1}",
+			"entries": [
+				"Once, you dreamed of creating life. Now you know that merely creating life lacks ambition. No, you have taken life and improved upon it. Your construct companion becomes a paragon construct companion."
+			]
+		},
+		{
+			"name": "Runelord Dedication",
+			"source": "LORA",
+			"remaster": true,
+			"page": 116,
+			"level": 2,
+			"traits": [
+				"rare",
+				"archetype",
+				"class",
+				"dedication"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@archetype runelord|LORA}",
+			"entries": [
+				"Your connection to your sin suffuses all magic you use. When you indulge in your sin to {@action Refocus|PC1}, you can also exchange one spell you have prepared for one of your curriculum or sin spells of the same rank."
+			],
+			"leadsTo": [
+				"Embed Aeon Stone|LORA",
+				"Aeon Resonance|LORA",
+				"Rod of Rule|LORA",
+				"Orichalcum Bond|LORA",
+				"Sinbladed Spell|LORA",
+				"Sin Reservoir|LORA",
+				"Sin Counterspell|LORA"
+			]
+		},
+		{
+			"name": "Embed Aeon Stone",
+			"source": "LORA",
+			"remaster": true,
+			"page": 116,
+			"level": 2,
+			"traits": [
+				"archetype",
+				"downtime",
+				"skill"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Runelord Dedication|LORA}, trained in {@skill Crafting|PC1}",
+			"entries": [
+				"You discover the secrets to embedding aeon stones into your flesh. You spend 1 day attuning to an aeon stone and physically embedding it in your skin. While the stone is embedded this way, you gain the benefits of the aeon stone as if it were orbiting above your head, but it protects the stone from being noticed or stolen as easily. Aeon stones in your flesh must be invested to function, as usual.",
+				"You can also use this activity to safely remove an embedded aeon stone in 1 day. Someone without this feat can attempt to surgically remove it safely by spending 1 day and succeeding at a DC 30 {@skill Medicine|PC1} check, or hastily by simply ripping it from a corpse."
+			],
+			"leadsTo": [
+				"Aeon Resonance|LORA"
+			]
+		},
+		{
+			"name": "Aeon Resonance",
+			"source": "LORA",
+			"remaster": true,
+			"page": 116,
+			"level": 4,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Embed Aeon Stone|LORA}",
+			"entries": [
+				"You gain the resonant power of one embedded aeon stone as if it were placed in a wayfinder. While you can embed multiple aeon stones in your flesh, you can gain the resonance power from only one embedded stone at a time, selected each day when you make your daily preparations."
+			],
+			"special": [
+				"At 8th level, you can take this feat again. If you do, you gain the resonance powers of up to four invested aeon stones instead of only one."
+			]
+		},
+		{
+			"name": "Rod of Rule",
+			"source": "LORA",
+			"remaster": true,
+			"page": 116,
+			"level": 6,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Runelord Dedication|LORA}",
+			"entries": [
+				"Your personal rune is connected more closely to your arcane bond. You gain the critical specialization effects of your arcane bonded weapon. In addition, whenever you critically hit a creature with your arcane bonded weapon, they begin to feel the pull of your sin, imposing a \u22122 circumstance penalty to saves against any of your curriculum or sin spells until the end of your next turn."
+			],
+			"leadsTo": [
+				"Orichalcum Bond|LORA"
+			]
+		},
+		{
+			"name": "Sinbladed Spell",
+			"source": "LORA",
+			"remaster": true,
+			"page": 116,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"traits": [
+				"archetype",
+				"spellshape"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Runelord Dedication|LORA}",
+			"requirements": "You are holding a weapon in the {@group polearm} or {@group spear} group.",
+			"entries": [
+				"You punctuate your spellcasting with a flourish of your weapon, imparting physical force to your magic. If the next spell you cast is a {@trait cantrip||non-cantrip} sin or curriculum spell that affects a single target, and you either succeed on your attack roll or the target fails its saving throw against the spell, a wound in the shape of your personal rune appears on the target, dealing additional {@condition persistent damage|PC1|persistent bleed damage} equal to the spell's rank, in addition to its regular effects."
+			]
+		},
+		{
+			"name": "Sin Reservoir",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"level": 8,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Runelord Dedication|LORA}",
+			"entries": [
+				"During your daily preparations, you can indulge in your associated sin or meditate on its values (and risks). When you do, you gain one additional spell slot of any spell level up to two levels below the highest-level {@trait wizard} spell you can cast. You can prepare only one of your curriculum spells in this slot."
+			]
+		},
+		{
+			"name": "Sin Counterspell",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"level": 10,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Runelord Dedication|LORA}, {@feat Counterspell (Wizard)|PC1|Counterspell}",
+			"entries": [
+				"Your deep connection to a specific sin allows you to easily ne{@spell gate|PC1} spells that sin opposes. Instead of being able to counter a foe's spell with {@feat Counterspell (Wizard)|PC1|Counterspell} only if you have the same spell prepared, you can {@feat Counterspell (Wizard)|PC1|Counterspell} it with any of your curriculum spells if the spell cast would violate your sin's anathema."
+			]
+		},
+		{
+			"name": "Orichalcum Bond",
+			"source": "LORA",
+			"remaster": true,
+			"page": 117,
+			"level": 18,
+			"traits": [
+				"archetype"
+			],
+			"featType": {
+				"archetype": [
+					"Runelord"
+				]
+			},
+			"prerequisites": "{@feat Rod of Rule|LORA}",
+			"entries": [
+				"The ancient Thassilonians associated sins with different skymetals, and you've adapted that theory to empower your bonded weapon beyond its normal limits. When your personal rune is placed on a weapon during your daily preparations, choose a weapon property rune of up to your level that is common or you otherwise have access to. That rune is also added to the weapon until your next daily preparations. This rune counts against your weapon's limit as normal."
+			]
+		}
+	]
+}

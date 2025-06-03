@@ -1,0 +1,729 @@
+{
+	"item": [
+		{
+			"name": "Inflammation Flask",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 75,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"uncommon",
+				"acid",
+				"alchemical",
+				"bomb",
+				"consumable",
+				"disease",
+				"splash"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Strike}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"This flask contains a caustic irritant that makes a target's skin, scales, or carapace extremely sensitive to further nicks and burns. An inflammation flask deals the listed acid damage and acid {@trait splash} damage. On a hit, the target also gains weakness to acid, fire, and slashing damage for 3 rounds. Many types of inflammation flask grant a bonus to attack rolls.",
+				"The target can end the weakness effect by three means: being drenched with water (such as submersion or exposure to an area {@trait water} effect), being {@action Administer First Aid||Administered First Aid} (whose DC in based on the bomb type), or regaining Hit Points from a single effect equal to twice the inflammation flask's level. A creature that critically fails to {@action Administer First Aid} in this way deals untyped damage to the target equal to the inflammation flask's initial acid damage."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 2,
+					"price": {
+						"amount": 5,
+						"coin": "gp"
+					},
+					"entries": [
+						"The bomb deals {@damage 1d6} acid damage and 1 acid {@trait splash} damage. The target gains weakness 1 to acid, fire, and slashing damage, and the {@skill Medicine} DC is 17."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 4,
+					"price": {
+						"amount": 15,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} acid damage and 2 acid {@trait splash} damage. The target gains weakness 2 to acid, fire, and slashing damage, and the {@skill Medicine} DC is 20."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 12,
+					"price": {
+						"amount": 340,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} acid damage and 3 acid {@trait splash} damage. The target gains weakness 3 to acid, fire, and slashing damage, and the {@skill Medicine} DC is 30."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 18,
+					"price": {
+						"amount": 3750,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} acid damage and 4 acid {@trait splash} damage. The target gains weakness 4 to acid, fire, and slashing damage, and the {@skill Medicine} DC is 38."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spider Satchel",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 75,
+			"type": "Item",
+			"level": "2+",
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"bomb",
+				"consumable",
+				"poison",
+				"splash"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Strike}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"The Verduran Forest's tiny tent-trap spider lays her eggs in a pyramidal web, and her young hatch only in response to intense vibration, such as the struggles of an ensnared insect or even songbird. Sadistic alchemists gather and augment these eggs, packing them in silken satchels that disgorge thousands of biting spider babies on impact. Many types of spider satchel grant a bonus to attack rolls.",
+				"Until shaken off\u2014or for the desperate target, incinerated\u2014these spiders make it difficult to concentrate on anything other than escaping the swarm. The {@condition fascinated||fascination} effect ends automatically if a creature uses further {@condition hostile} actions against the target, but {@condition hostile} actions against the target's allies don't automatically end the effect."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 2,
+					"price": {
+						"amount": 6,
+						"coin": "gp"
+					},
+					"entries": [
+						"The bomb deals {@damage 1d6} {@condition persistent damage||persistent poison damage}, 1 poison {@trait splash} damage, and {@condition fascinated||fascinates} the target while the {@condition persistent damage} lasts."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 4,
+					"price": {
+						"amount": 16,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} {@condition persistent damage||persistent poison damage}, 2 poison {@trait splash} damage, and {@condition fascinated||fascinates} the target while the {@condition persistent damage} lasts."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 12,
+					"price": {
+						"amount": 350,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} {@condition persistent damage||persistent poison damage}, 3 poison {@trait splash} damage, and {@condition fascinated||fascinates} the target while the {@condition persistent damage} lasts."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 18,
+					"price": {
+						"amount": 4000,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} {@condition persistent damage||persistent poison damage}, 4 poison {@trait splash} damage, and {@condition fascinated||fascinates} the target while the {@condition persistent damage} lasts."
+					]
+				}
+			]
+		},
+		{
+			"name": "Bogeyman Breath",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 76,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable",
+				"fear",
+				"inhaled",
+				"mental",
+				"poison"
+			],
+			"price": {
+				"amount": 360,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"traits": [
+					"manipulate"
+				]
+			},
+			"category": "Poison",
+			"entries": [
+				"This dust is created from the powdered bones of ensnared rabbits and other woodland creatures that died from fright. When inhaled, it pollutes the victim's mind with fear, awakening an unshakable prey response that sees danger lurking in every shadow.",
+				{
+					"type": "affliction",
+					"DC": 28,
+					"savingThrow": "Fortitude",
+					"onset": "1 round",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 4d6} mental damage, {@condition frightened||frightened 1}, and can't reduce {@condition frightened} value for 1 round",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 4d6} mental damage, {@condition frightened||frightened 2}, and can't reduce {@condition frightened} value for 1 round",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 4d6} mental damage, {@condition frightened||frightened 2}, {@condition fleeing} the poison cloud for 1 round, and can't reduce {@condition frightened} value for 1 round",
+							"duration": "1 round"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reaper's Shadow",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 76,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"consumable",
+				"injury",
+				"poison",
+				"virulent",
+				"void"
+			],
+			"price": {
+				"amount": 525,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"traits": [
+					"manipulate"
+				]
+			},
+			"category": "Poison",
+			"entries": [
+				"Derived from duskwood sap tapped during the winter solstice, this toxin erodes the connection between body and soul, tricking the latter into assuming the former has already died. Survivors of this near-death experience report ominous tunnel vision, as if the {@creature Grim Reaper} lurks in their peripheral vision and awaits their final breath.",
+				{
+					"type": "affliction",
+					"DC": 30,
+					"savingThrow": "Fortitude",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 2d12} void damage and {@condition doomed||doomed 1} for 1 round",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 3d12} void damage and {@condition doomed||doomed 1} for 1 round",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 3d12} void damage and {@condition doomed||doomed 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 4,
+							"entry": "{@damage 3d12} void damage and {@condition doomed||doomed 2}",
+							"duration": "1 round"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Burglar's Rosebud",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 76,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"uncommon",
+				"consumable",
+				"emotion",
+				"mental",
+				"plant",
+				"wood"
+			],
+			"price": {
+				"amount": 10,
+				"coin": "gp"
+			},
+			"usage": "Held in 1 hand",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"traits": [
+					"manipulate"
+				]
+			},
+			"category": "Consumable",
+			"entries": [
+				"Though originally intended to protect a green man's favorite agents against predation by pesky herbivores, thieves have adapted the design to help them disperse guard animals. The soft flower bud belies the horrible perfume contained within. Activated by cracking open the petals, the rosebud exudes a noxious cloud that has the {@trait olfactory} trait for 10 minutes.",
+				"If dropped, it fills a 10-foot-burst. If you carry it in one hand and periodically waft it as a free action, the rosebud instead gives you a 10-foot emanation. Creatures that enter or start their turn in the cloud must succeed at a Fortitude save against the listed DC or become {@condition sickened||sickened 1}. Animals and beasts that critically fail are also {@condition fleeing} for 1 round. A creature that successfully saves against the burglar's rosebud becomes temporarily immune to the effects for 24 hours."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "burglar's rosebud",
+					"level": 3,
+					"price": {
+						"amount": 10,
+						"coin": "gp"
+					},
+					"entries": [
+						"The DC is 18."
+					]
+				},
+				{
+					"variantType": "greater burglar's rosebud",
+					"level": 8,
+					"price": {
+						"amount": 100,
+						"coin": "gp"
+					},
+					"entries": [
+						"The DC is 24."
+					]
+				}
+			]
+		},
+		{
+			"name": "Crushing Bough Bracers",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 76,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 2500,
+				"coin": "gp"
+			},
+			"usage": "worn bracers",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"Carved from the heartwood of some impossibly large tree on the {@place Plane of Wood|RoE} or {@place First World|GMG}, {@i crushing bough bracers} enable wearers to cling to and shape plant material with ease. The pine cone designs appear to open and bare their seeds when the bracers are in especially verdant areas.",
+				"The bracers grant you a 20-foot climb Speed while climbing plants or fungi. Your {@action Strike||Strikes} deal damage to {@trait fungus}, {@trait plant}, and {@trait wood} creatures as though their resistances were 5 lower (minimum 0). In addition, the bracers allow you to cast {@spell timber|RoE} as an innate {@trait primal} cantrip. When you cast {@spell timber|RoE} on a plane with the {@trait wood} planar essence trait (or a supernaturally verdant area, at the GM's discretion), you can modify the spell in one of the following two ways: increase the spell's area to 20 feet, to 25 feet if your proficiency rank for spell attack modifier and spell DC is expert, or to 30 feet if your proficiency is legendary; or increase the cantrip's damage die size to {@damage d6}."
+			]
+		},
+		{
+			"name": "Durian Bomb",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 77,
+			"type": "Item",
+			"level": "1+",
+			"traits": [
+				"uncommon",
+				"alchemical",
+				"bomb",
+				"consumable",
+				"olfactory",
+				"plant",
+				"splash"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Strike}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"Whereas a durian's aroma ranges from pleasant to revolting depending on the person, a durian bomb is a fruit that's been alchemically modified for maximum revulsion. Many types of this bomb grant an item bonus to attack rolls.",
+				"On a successful {@action Strike}, a durian bomb deals the listed piercing damage to the target. Any creature hit by the bomb or in its {@trait splash} area must attempt a Fortitude saving throw with a DC based on the bomb's type. Creatures in the {@trait splash} area treat the results of their saving throw as one step better. Creatures {@condition sickened} by a durian bomb are unable to smell anything else while the {@condition sickened} condition lasts, suppressing any scent special sense they might have.",
+				"Once a creature is {@condition sickened} by a durian bomb, they're immune to the {@condition sickened} condition caused by other durian bombs for 1 minute.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The creature is {@condition sickened||sickened 1}."
+						],
+						"Failure": [
+							"The creature is {@condition dazzled} for 1 round and {@condition sickened||sickened 1}."
+						],
+						"Critical Failure": [
+							"The creature is {@condition dazzled} for 1 round and {@condition sickened||sickened 2}."
+						]
+					}
+				}
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 1,
+					"price": {
+						"amount": 4,
+						"coin": "gp"
+					},
+					"entries": [
+						"The bomb deals {@damage 1d4} piercing damage, and the DC is 15."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 3,
+					"price": {
+						"amount": 12,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@dice 2d4} points of piercing damage, and the DC is 17."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 11,
+					"price": {
+						"amount": 275,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@dice 3d4} points of piercing damage, and the DC is 28."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 17,
+					"price": {
+						"amount": 2750,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@dice 4d4} points of piercing damage, and the DC is 37."
+					]
+				}
+			]
+		},
+		{
+			"name": "Irritating Seedpod",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 77,
+			"type": "Item",
+			"level": "3+",
+			"traits": [
+				"uncommon",
+				"catalyst",
+				"consumable",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"unit": "varies",
+					"entry": "{@action Cast a Spell} (add 1 action)"
+				}
+			},
+			"category": "Consumable",
+			"entries": [
+				"When you crack open this soft, spongy seedpod, you can use it as a catalyst when casting a {@spell mist|PC1} spell. When you do, irritating pollen fills the area for the spell's duration. Creatures in the area must attempt a Fortitude saving throw at the listed DC to avoid sneezing uncontrollably. On a failed save, the creature gains the listed condition for the listed time. A creature that succeeds at this saving throw becomes temporarily immune to the {@i irritating seedpod}'s pollen for 10 minutes."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser irritating seedpod",
+					"level": 3,
+					"price": {
+						"amount": 11,
+						"coin": "gp"
+					},
+					"entries": [
+						"The DC is 15. On a failed save, the creature becomes {@condition slowed||slowed 1} for 1 round. Rather than last for the duration of the spell, the irritating pollen only remains in the area for 1 round."
+					]
+				},
+				{
+					"variantType": "irritating seedpod",
+					"level": 7,
+					"price": {
+						"amount": 55,
+						"coin": "gp"
+					},
+					"entries": [
+						"The DC is 21. On a failed save, the creature becomes {@condition slowed||slowed 1} for 1 round."
+					]
+				},
+				{
+					"variantType": "greater irritating seedpod",
+					"level": 10,
+					"price": {
+						"amount": 190,
+						"coin": "gp"
+					},
+					"entries": [
+						"The DC is 24. On a failed save, the creature becomes {@condition slowed||slowed 1} for 3 rounds."
+					]
+				},
+				{
+					"variantType": "major irritating seedpod",
+					"level": 14,
+					"price": {
+						"amount": 800,
+						"coin": "gp"
+					},
+					"entries": [
+						"The DC is 29. On a failed save, the creature becomes {@condition slowed||slowed 2} for 1 round, then {@condition slowed||slowed 1} for 3 rounds."
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenderizer Grenade",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 77,
+			"type": "Item",
+			"level": "1+",
+			"traits": [
+				"uncommon",
+				"acid",
+				"alchemical",
+				"bomb",
+				"consumable",
+				"plant",
+				"splash"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Strike}"
+				]
+			},
+			"category": "Bomb",
+			"entries": [
+				"Made from the acidic flesh of an especially astringent fruit found on the {@place Plane of Wood|RoE}, this bomb's contents soften, oxidize, and season whatever they touch. Many types of this bomb grant an item bonus to attack rolls.",
+				"On a successful {@action Strike}, a tenderizer grenade deals the listed acid damage to the target and the listed acid {@trait splash} damage. Any resistances the target has against bludgeoning, piercing, and slashing damage are reduced by an amount based on the bomb's type. In addition, the target is showered with appetizing esters, oils, and salts, making them {@condition off-guard|PC1} against jaws {@action Strike||Strikes}, fangs {@action Strike||Strikes}, or similar {@action Strike||Strikes} with a creature's mouth. These additional effects last until the end of your next turn, or for 1 minute on a critical hit."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 1,
+					"price": {
+						"amount": 4,
+						"coin": "gp"
+					},
+					"entries": [
+						"The bomb deals {@damage 1d6} acid damage."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 3,
+					"price": {
+						"amount": 12,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@dice 2d6} points of acid damage."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 11,
+					"price": {
+						"amount": 275,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@dice 3d6} points of acid damage."
+					]
+				},
+				{
+					"variantType": "major",
+					"level": 17,
+					"price": {
+						"amount": 2750,
+						"coin": "gp"
+					},
+					"entries": [
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@dice 4d6} points of acid damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Unfolding Tree House",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 78,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"magical",
+				"structure",
+				"wood"
+			],
+			"price": {
+				"amount": 340,
+				"coin": "gp"
+			},
+			"category": "Structure",
+			"bulk": "L",
+			"bulkNote": "when not activated",
+			"entries": [
+				"Though it looks like a simple profile of a bird's wing and body carved into a flat triangle of wood, this {@trait magical} object can transform into a tree house.",
+				{
+					"name": "Activate\u2014Unfold",
+					"activity": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"traits": [
+						"concentrate",
+						"manipulate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You unfold the triangle on near-invisible seams and the bird animates, flying up to perch in a tree you designate within 300 feet of you. The bird's perch can be as high as 200 feet off the ground or the top of the trees, whichever is lower. The bird then alights, expands, and reshapes into an elegantly crafted tree house over the course of 10 minutes. Unlike typical items with the {@trait structure} trait, this tree house attaches to the tree instead of needing to be on solid ground.",
+						"Once the tree house is in place, a ladder made of intricately woven vines attached to the tree house unfurls all the way to the ground. It can be manually pulled up by inhabitants of the tree house for safety. The tree house has a small veranda, circular windows, a door with a simple lock, and six bedrolls inside. Atop a small cushion sits a wooden whistle.",
+						"As an action, you can blow the whistle to create a soft bird call. At this signal, the tree house gradually folds back into a bird over the course of 1 minute, gently ejecting any occupants toward the ladder. Afterward, the bird flies to you, seizes the whistle, and then folds back into the wooden triangle. Unless commanded to dismantle, the tree house stays in place indefinitely, though it's subject to normal wear and damage."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Boughshatter",
+			"source": "WoW3",
+			"remaster": true,
+			"page": 79,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"uncommon",
+				"earth",
+				"magical",
+				"poison"
+			],
+			"price": {
+				"amount": 2875,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": 1,
+			"category": "Poison",
+			"entries": [
+				"The spikes of this {@item +2 weapon potency||+2} {@item greater striking} {@item Standard-Grade Adamantine Weapon||standard-grade adamantine} {@item morningstar} have a faintly green shimmer, as if resembling {@deity Ayrzul|LOGM}'s crystalline teeth. The weapon vibrates briefly when first drawn in or carried into a radioactive area, with the intensity of the vibration correlating to the radioactivity's strength. While you carry {@i Boughshatter}, you gain a +4 status bonus to saving throws against radiation, including {@affliction Ayrzul's Blight|WoW3}.",
+				{
+					"name": "Activate\u2014Splintering Strike",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"entries": [
+						"Make a {@action Strike} with the morningstar that deals an extra die of weapon damage. If you make this {@action Strike} against a {@trait fungus}, {@trait plant}, or creature with the {@trait wood} trait, the {@action Strike} ignores 10 points of the target's resistances to bludgeoning and piercing damage, if any. By damaging such a creature, the morningstar causes the target's flesh to explode in a shower of splinters that affect a 30-foot cone originating from the target's space, dealing {@damage 8d6} piercing damage to creatures in the area (DC 30 basic Reflex save). You and the target are unaffected by these splinters."
+					],
+					"type": "ability"
+				},
+				{
+					"name": "Activate\u2014Absorb Corruption",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "You take poison or void damage",
+					"entries": [
+						"You channel some of the toxic energy into {@i Boughshatter}, granting the weapon the effects of either a {@item decaying|GMC} weapon rune, {@item grievous} weapon rune, or {@item wounding} weapon rune for 1 minute. While under this effect, the morningstar glows with dim green light in a 20-foot radius."
+					],
+					"type": "ability"
+				}
+			]
+		}
+	]
+}

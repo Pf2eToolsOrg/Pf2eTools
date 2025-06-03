@@ -253,7 +253,7 @@ class ArchetypesPage extends BaseComponent {
 					const hash = UrlUtil.encodeForHash([name, source]);
 					const mutateExtraFeat = (feat) => {
 						feat.featType = feat.featType || {};
-						feat.featType.archetype = typeof feat.featType.archetype === "object" ? feat.featType.archetype : [];
+						feat.featType.archetype = Array.isArray(feat.featType.archetype) ? feat.featType.archetype : [];
 						feat.featType.archetype.push(arc.name);
 						feat.addSections = feat.addSections || [];
 						feat.leadsTo = []

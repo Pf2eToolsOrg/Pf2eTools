@@ -1271,7 +1271,7 @@
 					},
 					"trigger": "You fail (but don't critically fail) an initial saving throw against a poison, or you gain {@condition persistent damage||persistent poison damage}",
 					"entries": [
-						"You pick your poison. Calling out the name of a drink as though ordering at a bar, you negate the triggering poison. Instead, you gain the alcohol affliction (Pathfinder Gamemastery Guide 120) at stage 2. The DC of this magical alcohol is the DC of the triggering poison save or DC 20 for {@condition persistent damage||persistent poison damage}."
+						"You pick your poison. Calling out the name of a drink as though ordering at a bar, you negate the triggering poison. Instead, you gain the {@item alcohol|GMG} affliction at stage 2. The DC of this magical alcohol is the DC of the triggering poison save or DC 20 for {@condition persistent damage||persistent poison damage}."
 					]
 				}
 			]
@@ -1297,7 +1297,7 @@
 			"bulk": "\u2014",
 			"category": "Tattoo",
 			"entries": [
-				"A bound guardian is a tattoo guardian (Pathfinder Bestiary 3 262) bonded to your skin, which you can temporarily animate to protect you. If your soul leaves your body, your tattoo guardian might be destroyed (see the sidebar, Bestiary 3 262).",
+				"A bound guardian is a {@creature tattoo guardian|B3} bonded to your skin, which you can temporarily animate to protect you. If your soul leaves your body, your {@creature tattoo guardian|B3} might be destroyed (see the sidebar, Bestiary 3 262).",
 				{
 					"type": "ability",
 					"activity": {
@@ -1403,7 +1403,7 @@
 			"category": "Tattoo",
 			"entries": [
 				"You have marked your body to show your devotion to a deity. This tattoo could be the deity's religious symbol, another image that evokes that deity, or another mark you gained through your devotion. The tattoo serves as a silver religious symbol of the deity. Provided you keep the tattoo uncovered, you need not wield it to gain that benefit.",
-				"If you cease meeting the prerequisites, the tattoo fades, and you lose its benefits until you perform an atone ritual and meet the prerequisites thereafter.",
+				"If you cease meeting the prerequisites, the tattoo fades, and you lose its benefits until you perform an {@ritual atone} ritual and meet the prerequisites thereafter.",
 				{
 					"type": "ability",
 					"components": [
@@ -1414,7 +1414,7 @@
 						"unit": "day"
 					},
 					"entries": [
-						"The tattoo casts harm, heal, or the 1st-level spell from your deity's cleric spells. You can choose harm or heal only in accord with the deity's divine font. If the deity allows either spell, choose one the tattoo can cast when you receive the tattoo. The DC for any of these spells is 18. Also, the tattoo has as {@trait a} trait the school of the spell the tattoo can cast."
+						"The tattoo casts harm, heal, or the 1st-level spell from your deity's cleric spells. You can choose harm or heal only in accord with the deity's divine font. If the deity allows either spell, choose one the tattoo can cast when you receive the tattoo. The DC for any of these spells is 18. Also, the tattoo has as a trait the school of the spell the tattoo can cast."
 					]
 				}
 			],
@@ -2081,15 +2081,15 @@
 			"category": "Tattoo",
 			"entries": [
 				"The name of your beloved adorns this stylized image of a heart.",
-				"An unbreakable heart tattoo can be received only at the end of a successful heartbond ritual (Pathfinder Advanced Player's Guide 242), serving as your token. The other participant can have a token other than a tattoo if they wish. If you have more than one heartbond, each unbreakable heart you have serves as a token for only one of them.",
-				"The love exuding from you grants you a +1 item bonus to {@skill Diplomacy} checks. When you use heartbond's activity to learn your beloved's present state, you can also grant them a small gift, choosing from the following options each time. Make your choice after learning their state.",
+				"An unbreakable heart tattoo can be received only at the end of a successful {@ritual heartbond|APG} ritual, serving as your token. The other participant can have a token other than a tattoo if they wish. If you have more than one {@ritual heartbond|APG}, each unbreakable heart you have serves as a token for only one of them.",
+				"The love exuding from you grants you a +1 item bonus to {@skill Diplomacy} checks. When you use {@ritual heartbond|APG|heartbond's} activity to learn your beloved's present state, you can also grant them a small gift, choosing from the following options each time. Make your choice after learning their state.",
 				{
 					"type": "list",
 					"items": [
 						"Your beloved gains 5 temporary Hit Points that last for 10 minutes.",
 						"The tattoo casts guidance on your beloved.",
 						"The tattoo casts stabilize on your beloved.",
-						"The tattoo casts light on your beloved's token from heartbond."
+						"The tattoo casts light on your beloved's token from {@ritual heartbond|APG}."
 					]
 				}
 			]
@@ -2158,7 +2158,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"This rune of enchantment can cast {@spell liberating command|LOGM} (Pathfinder Lost Omens Gods & Magic 108)."
+						"This rune of enchantment can cast {@spell liberating command|LOGM}."
 					],
 					"variantType": "carnasia"
 				},
@@ -9939,8 +9939,8 @@
 						"overcharge": true
 					},
 					"entries": [
-						"You cast {@spell disintegrate}. If the spell reduces a living creature to fine powder, you animate that creature's ashes into a sulfur zombie (Pathfinder Bestiary 3 303) with the same general appearance as the disintegrated creature.",
-						"You control this sulfur zombie, which gains the {@trait minion} and {@trait summoned} traits. You can issue a verbal command to the sulfur zombie as a single action with the {@trait auditory} and {@trait concentrate} traits. The sulfur zombie crumbles into inanimate ash when reduced to 0 Hit Points or after 1 minute, whichever comes first."
+						"You cast {@spell disintegrate}. If the spell reduces a living creature to fine powder, you animate that creature's ashes into a {@creature sulfur zombie|B3} with the same general appearance as the disintegrated creature.",
+						"You control this {@creature sulfur zombie|B3}, which gains the {@trait minion} and {@trait summoned} traits. You can issue a verbal command to the {@creature sulfur zombie|B3} as a single action with the {@trait auditory} and {@trait concentrate} traits. The {@creature sulfur zombie|B3} crumbles into inanimate ash when reduced to 0 Hit Points or after 1 minute, whichever comes first."
 					]
 				}
 			],
@@ -11762,7 +11762,20 @@
 			"category": "Worn",
 			"entries": [
 				"Gemstones of many colors adorn the silver of a mind's light circlet. When you're charged with mental power, the jewels scintillate with light, with different gems resonating based on your emotions. If you have at least 1 Focus Point, the gems cast dim light in a 10-foot radius. When you amp a spell, the light increases to bright light in a 20-foot radius (and dim light to the next 20 feet) until the start of your next turn.",
-				"You gain a +2 item bonus to {@skill Occultism} checks. You also gain the following amp, which you can apply to any of your psi cantrips that have a target or area, much like an amp gained from a feat (Pathfinder Dark Archive 10). Amp You transfer some of the magical luminescence from the mind's light circlet to one of the creatures. Choose a creature targeted by the spell or in its area. Until the start of your next turn, that creature sheds bright light in a 20-foot radius (and dim light to the next 20 feet) and can't be {@condition concealed}. If the creature is {@condition invisible}, it's {@condition concealed} while alight, rather than being {@condition undetected}.",
+				"You gain a +2 item bonus to {@skill Occultism} checks. You also gain the following {@trait amp}, which you can apply to any of your psi cantrips that have a target or area, much like an {@trait amp} gained from a feat.",
+				{
+					"type": "pf2-options",
+					"noColon": true,
+					"items": [
+						{
+							"type": "item",
+							"name": "Amp",
+							"entries": [
+								"You transfer some of the magical luminescence from the mind's light circlet to one of the creatures. Choose a creature targeted by the spell or in its area. Until the start of your next turn, that creature sheds bright light in a 20-foot radius (and dim light to the next 20 feet) and can't be {@condition concealed}. If the creature is {@condition invisible}, it's {@condition concealed} while alight, rather than being {@condition undetected}."
+							]
+						}
+					]
+				},
 				{
 					"type": "ability",
 					"activity": {
@@ -12121,7 +12134,7 @@
 						"unit": "hour"
 					},
 					"entries": [
-						"You drink from the tankard, ending the {@condition controlled}, {@condition grabbed}, {@condition immobilized}, {@condition paralyzed}, {@condition restrained}, and {@condition slowed} conditions on yourself and creatures of your choice within 120 feet of you, as well as anything giving such targets a circumstance penalty to Speed. {@trait Any} effect causing these conditions ends, and if the source of the effect is an item, that item can't produce the effect for 1 week, provided it is of a level lower than the tankard's. If a target needs to {@action Escape} an effect imposing any of these conditions, it automatically does so on its next attempt. You can Activate this ability even if one of the listed conditions would normally prevent you from doing so (such as {@condition paralyzed})."
+						"You drink from the tankard, ending the {@condition controlled}, {@condition grabbed}, {@condition immobilized}, {@condition paralyzed}, {@condition restrained}, and {@condition slowed} conditions on yourself and creatures of your choice within 120 feet of you, as well as anything giving such targets a circumstance penalty to Speed. Any effect causing these conditions ends, and if the source of the effect is an item, that item can't produce the effect for 1 week, provided it is of a level lower than the tankard's. If a target needs to {@action Escape} an effect imposing any of these conditions, it automatically does so on its next attempt. You can Activate this ability even if one of the listed conditions would normally prevent you from doing so (such as {@condition paralyzed})."
 					]
 				},
 				{
@@ -12689,8 +12702,8 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"Bower fruit got its name from its association with the Green Mother, a fey Eldest with a fondness for plants and manipulation, whose domain is known as the Hanging Bower. She uses these cursed fruits to keep mortals in her thrall, but it's unknown whether she created them or simply popularized their use.",
-				"A bower fruit condemns a non-fey who tastes it to never again be satisfied with Material Plane fare. Any fruit can be cursed in this manner, but stone fruits such as peaches, plums, mangoes, and lychees are most common. Upon activating a bower fruit by eating it, the fruit casts a 6th-level {@spell feast of ashes|LOGM} (Pathfinder Lost Omens Gods & Magic 107) on you (DC 30). This curse is permanent, but food from the First World, rather than no food, can sate your accursed hunger.",
+				"Bower fruit got its name from its association with the {@deity Green Mother|LOGM}, a fey Eldest with a fondness for plants and manipulation, whose domain is known as the Hanging Bower. She uses these cursed fruits to keep mortals in her thrall, but it's unknown whether she created them or simply popularized their use.",
+				"A bower fruit condemns a non-fey who tastes it to never again be satisfied with Material Plane fare. Any fruit can be cursed in this manner, but stone fruits such as peaches, plums, mangoes, and lychees are most common. Upon activating a bower fruit by eating it, the fruit casts a 6th-level {@spell feast of ashes|LOGM} on you (DC 30). This curse is permanent, but food from the First World, rather than no food, can sate your accursed hunger.",
 				"If you sate your hunger this way, you gain an addiction (Gamemastery Guide 120) as if First World food and drink were a drug for you (DC 30)."
 			]
 		},
@@ -13171,7 +13184,7 @@
 			"bulk": "L",
 			"category": "Held",
 			"entries": [
-				"Carved of bone, luckless dice appear to be a set of loaded dice (Pathfinder Lost Omens Grand Bazaar 58). If unsuccessfully identified as cursed, luckless dice seem to hold a minor enchantment that improves your luck. However, they fuse to you when you use them, cursing you with ill fortune. Luckless dice don't grant a bonus on {@skill Lore||Games Lore} checks. Instead, when you use them to gamble, the GM rolls secretly, granting you the lower result. Once you realize the dice are cursed, the GM can instead allow you to roll twice and take the lower result."
+				"Carved of bone, luckless dice appear to be a set of {@item loaded dice games|LOTGB}. If unsuccessfully identified as cursed, luckless dice seem to hold a minor enchantment that improves your luck. However, they fuse to you when you use them, cursing you with ill fortune. Luckless dice don't grant a bonus on {@skill Lore||Games Lore} checks. Instead, when you use them to gamble, the GM rolls secretly, granting you the lower result. Once you realize the dice are cursed, the GM can instead allow you to roll twice and take the lower result."
 			]
 		},
 		{
@@ -13966,7 +13979,7 @@
 				}
 			},
 			"entries": [
-				"A Pathfinder's mentor is a bi‑resonant wayfinder (Pathfinder Lost Omens World Guide 17) that has developed sapience. Most Pathfinder's mentors are eager explorers that object to staying in one location for long, urging their bearers toward ancient ruins to explore, relics to study, and discoveries to make. To this end, the wayfinder acts as a guide, making {@skill Survival} checks on your behalf during your travels. A Pathfinder's mentor also has the following activations.",
+				"A Pathfinder's mentor is a {@item bi-resonant wayfinder|LOWG} that has developed sapience. Most Pathfinder's mentors are eager explorers that object to staying in one location for long, urging their bearers toward ancient ruins to explore, relics to study, and discoveries to make. To this end, the wayfinder acts as a guide, making {@skill Survival} checks on your behalf during your travels. A Pathfinder's mentor also has the following activations.",
 				{
 					"type": "ability",
 					"activity": {
@@ -15446,7 +15459,7 @@
 				"Armor"
 			],
 			"entries": [
-				"Your armor provides support for your joints or advanced prostheses for missing limbs, holding your body in place and easing physical symptoms. This replicates the benefits of any number of splints, supports, and prostheses (Pathfinder Lost Omens Grand Bazaar 68\u201369). When you invest the armor, you determine how many such supports you want, and where on your body they assist you.",
+				"Your armor provides support for your joints or advanced prostheses for missing limbs, holding your body in place and easing physical symptoms. This replicates the benefits of any number of splints, supports, and prostheses. When you invest the armor, you determine how many such supports you want, and where on your body they assist you.",
 				"In addition, the extra support and structure provided by the armor allows you to transport more than you would otherwise normally be able to. You can carry Bulk equal to 6 + your Strength modifier before becoming {@condition encumbered}, and you can hold and carry a total Bulk of up to 11 + your Strength modifier."
 			]
 		},
@@ -16519,9 +16532,9 @@
 						"unit": "day"
 					},
 					"entries": [
-						"You call forth the cursed regenerative blood of an ouroboros to recover from your wounds. You gain regeneration 15 (Pathfinder Bestiary 343) for 1 minute; fire damage deactivates this regeneration. Each time you regain Hit Points from this regeneration, if you're in your normal form, you collapse into a Large swarm of Tiny snakes. This is a {@trait polymorph} effect that changes you into a battle form.",
+						"You call forth the cursed regenerative blood of an ouroboros to recover from your wounds. You gain {@ability regeneration||regeneration 15} for 1 minute; fire damage deactivates this {@ability regeneration}. Each time you regain Hit Points from this {@ability regeneration}, if you're in your normal form, you collapse into a Large swarm of Tiny snakes. This is a {@trait polymorph} effect that changes you into a battle form.",
 						"When you're a swarm of snakes, you gain low-light vision, imprecise scent (30 feet), a Speed of 20 feet, a climb Speed of 20 feet, and a swim Speed of 20 feet. You have an AC of 16 + your level and ignore your armor's check penalty and Speed reduction. Also, you gain resistance 5 to physical damage and weakness 5 to area damage and {@trait splash} damage. You can use none of your normal Strikes. Instead, you can use Swarming Bites, a single action that deals {@damage 4d4} piercing damage plus {@damage 2d6} poison damage to creatures in your space with a DC 41 basic Reflex save.",
-						"If you're in this battle form and are already at full HP when your regeneration occurs, the snakes instantaneously slither together, and you transform into your original form."
+						"If you're in this battle form and are already at full HP when your {@ability regeneration} occurs, the snakes instantaneously slither together, and you transform into your original form."
 					]
 				},
 				{
@@ -17070,7 +17083,7 @@
 			],
 			"category": "Consumable",
 			"entries": [
-				"When activated, the reservoir of alchemical reagents in elemental ammunition atomizes on impact, dealing {@condition persistent damage||persistent acid}, cold, electricity, fire, or poison damage to the target and {@trait splash} damage in addition to the damage the attack normally deals. Each damage type requires a different formula, and the ammunition gains {@trait a} trait matching the damage type."
+				"When activated, the reservoir of alchemical reagents in elemental ammunition atomizes on impact, dealing {@condition persistent damage||persistent acid}, cold, electricity, fire, or poison damage to the target and {@trait splash} damage in addition to the damage the attack normally deals. Each damage type requires a different formula, and the ammunition gains a trait matching the damage type."
 			],
 			"generic": "G",
 			"variants": [
@@ -21691,7 +21704,7 @@
 			},
 			"category": "Poison",
 			"entries": [
-				"Kept as a closely guarded secret by the deadly members of the Red Mantis assassins, this poison is treated with reverence for its ability to end lives. If the victim dies while affected by this poison, its body decomposes to nothing in 1 minute, leaving only its gear behind. Non-magical preservation can't protect the tainted corpse. Gentle repose works on the poisoned body only if cast as a 5th-level spell and the caster succeeds at a counteract check against the poison's saving throw DC when casting the spell. Even if cast successfully, gentle repose only works as if it had been cast at 2nd level.",
+				"Kept as a closely guarded secret by the deadly members of the Red Mantis assassins, this poison is treated with reverence for its ability to end lives. If the victim dies while affected by this poison, its body decomposes to nothing in 1 minute, leaving only its gear behind. Non-magical preservation can't protect the tainted corpse. {@spell Gentle repose} works on the poisoned body only if cast as a 5th-level spell and the caster succeeds at a counteract check against the poison's saving throw DC when casting the spell. Even if cast successfully, {@spell gentle repose} only works as if it had been cast at 2nd level.",
 				{
 					"type": "affliction",
 					"DC": 42,
@@ -25110,7 +25123,7 @@
 			},
 			"category": "Talisman",
 			"entries": [
-				"This rough wooden coin hangs from a string drilled through a hole at its center. When you Activate the wooden nickel, for 10 minutes, you can cause any object you touch of 2 Bulk or less to look, feel, and smell like valuables of a similar size crafted from a precious metal of your choice. A creature that touches or Interacts with an affected object can attempt a {@skill Perception} check against your {@skill Deception} DC to disbelieve the illusion, and a successful check against your {@skill Deception} DC with {@skill Crafting} or an appropriate {@skill Lore} skill will also reveal the item's true nature.",
+				"This rough wooden coin hangs from a string drilled through a hole at its center. When you Activate the wooden nickel, for 10 minutes, you can cause any object you touch of 2 Bulk or less to look, feel, and smell like valuables of a similar size crafted from a precious metal of your choice. A creature that touches or {@action Interact||Interacts} with an affected object can attempt a {@skill Perception} check against your {@skill Deception} DC to disbelieve the illusion, and a successful check against your {@skill Deception} DC with {@skill Crafting} or an appropriate {@skill Lore} skill will also reveal the item's true nature.",
 				"After 10 minutes have elapsed since you Activated the wooden nickel, all affected objects revert to their true form."
 			]
 		},
@@ -29005,7 +29018,7 @@
 			},
 			"category": "Oil",
 			"entries": [
-				"This glistening oil has a green hue and tiny snake scales floating within. If you slather serpent oil on a Tiny object that is snakelike in shape, from a stick to a scarf, the object transforms into a viper, keeping some of the same colors and patterns of the original item. If placed on other objects, the oil fails and is wasted. This false snake has the {@trait minion} trait. It remains in snake form for 1 minute before returning to its object state. If slain, the item returns to its original form, unharmed."
+				"This glistening oil has a green hue and tiny snake scales floating within. If you slather serpent oil on a Tiny object that is snakelike in shape, from a stick to a scarf, the object transforms into a {@creature viper}, keeping some of the same colors and patterns of the original item. If placed on other objects, the oil fails and is wasted. This false snake has the {@trait minion} trait. It remains in snake form for 1 minute before returning to its object state. If slain, the item returns to its original form, unharmed."
 			],
 			"generic": "G",
 			"variants": [
@@ -29025,7 +29038,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"The oil can be applied to a Small object, producing a sea snake (Pathfinder Bestiary 2 245), or a Medium object, producing a ball python."
+						"The oil can be applied to a Small object, producing a {@creature sea snake|B2}, or a Medium object, producing a {@creature ball python}."
 					],
 					"variantType": "moderate"
 				},
@@ -29036,7 +29049,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"The oil can be applied to a Medium object, producing a giant viper."
+						"The oil can be applied to a Medium object, producing a {@creature giant viper}."
 					],
 					"variantType": "greater"
 				},
@@ -29047,7 +29060,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"The oil can be applied to a Large object, producing an emperor cobra (Pathfinder Bestiary 2 245)."
+						"The oil can be applied to a Large object, producing an {@creature emperor cobra|B2}."
 					],
 					"variantType": "major"
 				},
@@ -29058,7 +29071,7 @@
 						"coin": "gp"
 					},
 					"entries": [
-						"The oil can be applied to a Huge object, producing a giant anaconda."
+						"The oil can be applied to a Huge object, producing a {@creature giant anaconda}."
 					],
 					"variantType": "true"
 				}

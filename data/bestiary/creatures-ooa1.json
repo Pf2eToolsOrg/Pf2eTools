@@ -1022,7 +1022,7 @@
 						},
 						"requirements": "The gunner is holding a loaded firearm",
 						"entries": [
-							"The gunner Interacts to draw an alchemist's fire, throws it at a point within 30 feet, and then shoots the bomb in midair. Creatures within a 10-foot radius of the shot bomb must succeed at a {@dc 15} Reflex save or take the splash and {@condition persistent damage} from the alchemist's fire."
+							"The gunner {@action Interact||Interacts} to draw an alchemist's fire, throws it at a point within 30 feet, and then shoots the bomb in midair. Creatures within a 10-foot radius of the shot bomb must succeed at a {@dc 15} Reflex save or take the splash and {@condition persistent damage} from the alchemist's fire."
 						]
 					}
 				]
@@ -2084,9 +2084,18 @@
 			"abilities": {
 				"bot": [
 					{
-						"name": "Dirt",
+						"name": "Dirt Breath",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"earth",
+							"evocation"
+						],
 						"entries": [
-							"Breath{@as 2} (arcane, earth, evocation) The prairie drake spits a ball of dirt that explodes into a shower of rocks and mud. The attack has a range of 30 feet and explodes in a 5-foot radius burst. Creatures within the burst take {@damage 3d6} bludgeoning damage ({@dc 16} basic Reflex save). Plant creatures in the area take no damage on a successful save; regardless, once per day, plant creatures can spend 10 minutes in the area to absorb the nutrients and heal {@dice 1d8} Hit Points. The prairie drake can't use Dirt Breath again for {@dice 1d6} rounds."
+							"The prairie drake spits a ball of dirt that explodes into a shower of rocks and mud. The attack has a range of 30 feet and explodes in a 5-foot radius burst. Creatures within the burst take {@damage 3d6} bludgeoning damage ({@dc 16} basic Reflex save). Plant creatures in the area take no damage on a successful save; regardless, once per day, plant creatures can spend 10 minutes in the area to absorb the nutrients and heal {@dice 1d8} Hit Points. The prairie drake can't use Dirt Breath again for {@dice 1d6} rounds."
 						]
 					},
 					{
@@ -2096,7 +2105,7 @@
 							"unit": "action"
 						},
 						"entries": [
-							"The prairie drake makes one jaws {@action Strike} and two wing Strikes in any order."
+							"The prairie drake makes one jaws {@action Strike} and two wing {@action Strike||Strikes} in any order."
 						]
 					},
 					{
@@ -2110,7 +2119,7 @@
 							"unit": "day"
 						},
 						"entries": [
-							"The prairie drake Strides or Burrows twice."
+							"The prairie drake {@action Stride||Strides} or {@action Burrow||Burrows} twice."
 						]
 					}
 				]

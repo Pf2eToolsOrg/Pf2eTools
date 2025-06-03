@@ -2,6 +2,381 @@
 	"skill": [
 		{
 			"name": "Acrobatics",
+			"source": "PC1",
+			"remaster": true,
+			"page": 233,
+			"entries": [
+				"Acrobatics measures your ability to perform tasks requiring coordination and grace. When you use the {@action Escape|PC1} basic action, you can use your Acrobatics modifier instead of your unarmed attack modifier. You can also use it for the basic actions {@action Arrest a Fall|PC1} and {@action Grab an Edge|PC1} instead of Reflex."
+			]
+		},
+		{
+			"name": "Arcana",
+			"source": "PC1",
+			"remaster": true,
+			"page": 234,
+			"entries": [
+				"Arcana measures how much you know about arcane magic and creatures. Even if you're untrained, you can {@action Recall Knowledge|PC1}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Recall Knowledge|PC1}} about arcane theories; magic traditions; creatures of arcane significance (like constructs, beasts, and elementals); and the Astral Plane, Elemental Planes, and the Netherworld."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Arcana Trained Actions",
+					"entries": [
+						"You must be trained in Arcana to use it for the following general skill actions.",
+						{
+							"type": "list",
+							"items": [
+								"{@b {@action Decipher Writing|PC1}} about arcane theory.",
+								"{@b {@action Identify Magic|PC1}}, particularly magic of the arcane tradition.",
+								"{@b {@action Learn a Spell|PC1}} from the arcane tradition."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Athletics",
+			"source": "PC1",
+			"remaster": true,
+			"page": 234,
+			"entries": [
+				"Athletics allows you to perform deeds of physical prowess. Most Athletics actions let you move about the environment ({@action Climb|PC1}, {@action High Jump|PC1}, {@action Long Jump|PC1}, {@action Swim|PC1}) or control your opponent's movement in combat ({@action Grapple|PC1}, {@action Reposition|PC1}, {@action Shove|PC1}, {@action Trip|PC1}, and {@action Disarm|PC1}).",
+				{
+					"type": "pf2-options",
+					"items": [
+						{
+							"type": "item",
+							"name": "Escape",
+							"entries": [
+								"When you use the {@action Escape|PC1} basic action, you can use your Athletics modifier instead of your unarmed attack modifier."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Crafting",
+			"source": "PC1",
+			"remaster": true,
+			"page": 236,
+			"entries": [
+				"You can use this skill to create and repair items. Even if you're untrained, you can {@action Recall Knowledge|PC1}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Recall Knowledge|PC1}} about alchemical reactions, the value of items, engineering, unusual materials, and alchemical or mechanical creatures. The GM determines which creatures this applies to, but it usually includes {@trait construct||constructs}."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Crafting Trained Actions",
+					"entries": [
+						"You must be trained in Crafting to use it to {@action Earn Income|PC1}.",
+						{
+							"type": "list",
+							"items": [
+								"{@b {@action Earn Income|PC1}} by crafting goods for the market."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Deception",
+			"source": "PC1",
+			"remaster": true,
+			"page": 237,
+			"entries": [
+				"You can trick and mislead others using disguises, lies, and other forms of subterfuge. Deception often has a drawback if you get found out, and it's often best to be out of town by the time this happens."
+			]
+		},
+		{
+			"name": "Diplomacy",
+			"source": "PC1",
+			"remaster": true,
+			"page": 239,
+			"entries": [
+				"You influence others through negotiation and flattery, or find out information through friendly chats."
+			]
+		},
+		{
+			"name": "Intimidation",
+			"source": "PC1",
+			"remaster": true,
+			"page": 240,
+			"entries": [
+				"You bend others to your will using threats. Unlike {@skill Deception|PC1} or {@skill Diplomacy|PC1}, Intimidation is typically a blunt instrument with little room for nuance or care."
+			]
+		},
+		{
+			"name": "Lore",
+			"source": "PC1",
+			"remaster": true,
+			"page": 240,
+			"entries": [
+				"You have specialized information on a narrow topic. Lore features many subcategories. You might have Military Lore, Sailing Lore, Vampire Lore, or any similar subcategory of the skill. Each subcategory counts as its own skill, so applying a skill increase to Planar Lore wouldn't increase your proficiency with Sailing Lore, for example.",
+				"Most backgrounds make you trained in a specific subcategory of the Lore skill. The GM determines what other subcategories they'll allow as Lore skills, though these categories are always less broad than any of the other skills that allow you to {@action Recall Knowledge|PC1}, and they should never be able to take the place of another skill's {@action Recall Knowledge|PC1} action. For instance, you couldn't choose Magic Lore to recall the breadth of knowledge about magic covered by {@skill Arcana|PC1}, {@skill Nature|PC1}, {@skill Occultism|PC1}, and {@skill Religion|PC1}, or choose Adventuring Lore to give you all the information an adventurer needs, or choose Planar Lore to gain all the information spread across various skills and subcategories such as Heaven Lore.",
+				"If you're making a check and multiple subcategories of Lore could apply, or a non-Lore skill could apply, you can use whichever skill you prefer. If there's any doubt whether a Lore skill applies to a specific topic or action, the GM decides whether it can be used or not.",
+				"Even if you're untrained in Lore, you can use it to {@action Recall Knowledge|PC1}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Recall Knowledge|PC1}} about the subject of the Lore skill's subcategory."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Lore Trained Actions",
+					"entries": [
+						"You must be trained in Lore to use it to {@action Earn Income|PC1}.",
+						{
+							"type": "list",
+							"items": [
+								"{@b {@action Earn Income|PC1}} by using your knowledge to practice a trade."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Medicine",
+			"source": "PC1",
+			"remaster": true,
+			"page": 241,
+			"entries": [
+				"You can patch up wounds and help people recover from diseases and poisons. {@action Treat Wounds|PC1} is especially useful, allowing your adventuring party to heal up between fights. It can be made more efficient with skill feats like {@feat Continual Recovery|PC1} and {@feat Ward Medic|PC1}.",
+				"Even if you're untrained in Medicine, you can use it to {@action Recall Knowledge|PC1}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Recall Knowledge|PC1}} about diseases, injuries, poisons, and other ailments. You can use this to perform forensic examinations if you spend 10 minutes (or more, as determined by the GM) checking for evidence such as wound patterns. This is most useful when determining how a body was injured or killed."
+					]
+				}
+			]
+		},
+		{
+			"name": "Nature",
+			"source": "PC1",
+			"remaster": true,
+			"page": 242,
+			"entries": [
+				"You know about the natural world, and you command and train animals and magical beasts. Even if you're untrained in Nature, you can use it to {@action Recall Knowledge|PC1}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Recall Knowledge|PC1}} about fauna, flora, geography, weather, the environment, creatures of natural origin (like animals, beasts, fey, and plants), the First World, and the Elemental Planes."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Nature Trained Actions",
+					"entries": [
+						"You must be trained in Nature to use it for the following general skill actions.",
+						{
+							"type": "list",
+							"items": [
+								"{@b {@action Identify Magic|PC1}}, particularly magic of the primal tradition.",
+								"{@b {@action Learn a Spell|PC1}} from the primal tradition."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Occultism",
+			"source": "PC1",
+			"remaster": true,
+			"page": 243,
+			"entries": [
+				"You know a great deal about ancient philosophies, esoteric lore, obscure mysticism, and supernatural creatures. Even if you're untrained in Occultism, you can use it to {@action Recall Knowledge|PC1}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Recall Knowledge|PC1}} about ancient mysteries; obscure philosophies; creatures of occult significance (like aberrations, spirits, and oozes); and esoteric planes like the Astral Plane, Creation's Forge, the Ethereal Plane, the Netherworld, and the Void."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Occultism Trained Actions",
+					"entries": [
+						"You must be trained in Occultism to use it for the following general skill actions.",
+						{
+							"type": "list",
+							"items": [
+								"{@b {@action Decipher Writing|PC1}} on occult topics, including complex metaphysical systems, syncretic principles, obscure philosophies, and incoherent ramblings.",
+								"{@b {@action Identify Magic|PC1}}, particularly magic of the occult tradition.",
+								"{@b {@action Learn a Spell|PC1}} from the occult tradition."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Performance",
+			"source": "PC1",
+			"remaster": true,
+			"page": 243,
+			"entries": [
+				"You are skilled at a form of performance, using your talents to impress a crowd or make a living.",
+				{
+					"type": "pf2-h3",
+					"name": "Basic Competence",
+					"entries": [
+						"Some performances require you to be more than just charismatic, and if you don't meet the demands of the art form or the audience, the GM might apply a penalty based on the relevant attribute. For example, if you're dancing and have a negative Dexterity modifier, you might take a penalty to your attempt at dancing. Likewise, if you are orating and have a negative Intelligence modifier, you might have to hope your raw Charisma can overcome the penalties from your intellectual shortcomings\u2014or ask someone to help write your speeches!"
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Performance Traits",
+					"entries": [
+						"When you use an action that utilizes the Performance skill, it gains one or more traits relevant to the type of performance. The GM might change these depending on the circumstances, but the most common performance-based traits are listed below.",
+						"If you want to be particularly skilled with one type of performance, you can select the {@feat Virtuosic Performer|PC1} skill feat. That feat breaks down some of the performance listed above into specific instrument types, and your GM might allow you to add your own type.",
+						{
+							"type": "table",
+							"rows": [
+								[
+									"Performance",
+									"Additional Traits"
+								],
+								[
+									"Act or perform comedy",
+									"{@trait Auditory}, {@trait linguistic}, and {@trait visual}"
+								],
+								[
+									"Dance",
+									"{@trait Move} and {@trait visual}"
+								],
+								[
+									"Play an instrument",
+									"{@trait Auditory} and {@trait manipulate}"
+								],
+								[
+									"Orate or sing",
+									"{@trait Auditory} and {@trait linguistic}"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Performance Trained Action",
+					"entries": [
+						"You must be trained in Performance to use it to {@action Earn Income|PC1}.",
+						{
+							"type": "list",
+							"items": [
+								"{@b {@action Earn Income|PC1}} by staging a performance."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Religion",
+			"source": "PC1",
+			"remaster": true,
+			"page": 244,
+			"entries": [
+				"The secrets of deities, dogma, faith, and the realms of divine creatures both sublime and sinister are open to you. You also understand how magic works, though your training imparts a religious slant to that knowledge. Even if you're untrained in Religion, you can use it to {@action Recall Knowledge|PC1}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Recall Knowledge|PC1}} about divine agents, the finer points of theology, obscure myths regarding a faith, and creatures of religious significance (like celestials, fiends, and undead), Creation's Forge, the Void, and the Outer Sphere."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Religion Trained Actions",
+					"entries": [
+						"You must be trained in Religion to use it for the following general skill actions.",
+						{
+							"type": "list",
+							"items": [
+								"{@b {@action Decipher Writing|PC1}} of a religious nature, including allegories, homilies, and proverbs.",
+								"{@b {@action Identify Magic|PC1}}, particularly magic of the divine tradition.",
+								"{@b {@action Learn a Spell|PC1}} from the divine tradition."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Society",
+			"source": "PC1",
+			"remaster": true,
+			"page": 244,
+			"entries": [
+				"You understand the people and systems that make civilization run, and you know the historical events that make societies what they are today. Further, you can use that knowledge to navigate the complex physical, societal, and economic workings of settlements. Even if you're untrained in Society, you can use it for the following general skill actions.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Recall Knowledge|PC1}} about local history, important personalities, legal institutions, societal structure, and humanoid cultures. The GM might allow Society to apply to other creatures that are major elements of society in your region, such as the draconic nobility in a kingdom of humans ruled by dragons.",
+						"{@b {@action Subsist|PC1}} in a settlement by finding shelter, scrounging, or begging for food."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Religion Trained Actions",
+					"entries": [
+						"You must be trained in Society to use it to {@action Decipher Writing|PC1}.",
+						{
+							"type": "list",
+							"items": [
+								"{@b {@action Decipher Writing|PC1}} that's a coded message, text written in an incomplete or archaic form, or in some cases, text in a language you don't know."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Stealth",
+			"source": "PC1",
+			"remaster": true,
+			"page": 244,
+			"entries": [
+				"You are skilled at avoiding detection, allowing you to slip past foes, hide, or conceal an item."
+			]
+		},
+		{
+			"name": "Survival",
+			"source": "PC1",
+			"remaster": true,
+			"page": 246,
+			"entries": [
+				"You are adept at living in the wilderness, foraging for food and building shelter, and with training you discover the secrets of tracking and hiding your trail. Even if you're untrained, you can still use Survival to {@action Subsist|PC1}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Subsist|PC1}} in the wild by foraging for food and building shelter."
+					]
+				}
+			]
+		},
+		{
+			"name": "Thievery",
+			"source": "PC1",
+			"remaster": true,
+			"page": 246,
+			"entries": [
+				"You are trained in a particular set of skills favored by thieves and miscreants."
+			]
+		},
+		{
+			"name": "Acrobatics",
 			"source": "CRB",
 			"page": 240,
 			"entries": [
