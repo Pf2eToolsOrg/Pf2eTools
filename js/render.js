@@ -6385,7 +6385,20 @@ Renderer.vehicle = {
 			if (sectionAcSt.length) defensesStack.push(`</p><p class="pf2-stat pf2-stat__section">`);
 			if (def.hardness != null && def.hp != null) {
 				// FIXME: KILL ME
-				sectionTwo.push(Object.keys(def.hardness).map(k => `<strong>${k === "default" ? "" : `${k} `}Hardness&nbsp;</strong>${def.hardness[k]}${def.hp[k] != null ? `, <strong>${k === "default" ? "" : `${k} `}HP&nbsp;</strong>${def.hp[k]}${def.bt && def.bt[k] != null ? ` (BT ${def.bt[k]})` : ""}${def.notes && def.notes[k] != null ? ` ${renderer.render(def.notes[k])}` : ""}` : ""}`).join("; "));
+				sectionTwo.push(
+					Object.keys(def.hardness)
+						.map(
+							(k) =>
+								`<strong>${k === "default" ? "" : `${k} `}Hardness&nbsp;</strong>${def.hardness[k]}${
+									def.hp[k] != null
+										? `, <strong>${k === "default" ? "" : `${k} `}HP&nbsp;</strong>${def.hp[k]}${
+											def.bt && def.bt[k] != null ? ` (BT ${def.bt[k]})` : ""
+										}${def.notes && def.notes[k] != null ? ` ${renderer.render(def.notes[k])}` : ""}`
+										: ""
+								}`,
+						)
+						.join("; "),
+				);
 			} else if (def.hp != null) {
 				sectionTwo.push(Object.keys(def.hp)
 					.map(k => `<strong>${k === "default" ? "" : `${k} `}HP&nbsp;</strong>${def.hp[k]}${def.bt && def.bt[k] != null ? `, (BT ${def.bt[k]})` : ""}`).join("; "));

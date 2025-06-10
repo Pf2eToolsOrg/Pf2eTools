@@ -42,7 +42,18 @@ class PageFilterHazards extends PageFilter {
 		it._fStealth = it.stealth ? (it.stealth.dc ? it.stealth.dc : (it.stealth.bonus || 0) + 10) : 0;
 		if (it.defenses != null) {
 			if (it.defenses.ac) it._fAC = Math.max(...Object.values(it.defenses.ac).filter(v => typeof v === "number"));
-			if (it.defenses.hardness) it._fHardness = Math.max(...Object.values(it.defenses.hardness).filter(v => typeof v === "number"));
+			if (it.defenses.hardness) {
+				it._fHardness = Math.max(
+					...Object.values(it.defenses.hardness)
+						.map((h) => {
+							if (typeof h !== "string") return h;
+							const maybeNumber = Number.parseInt(h.match(/\b\d+\d/i)[0]);
+							if (Number.isNaN(maybeNumber)) return "no";
+							return maybeNumber;
+						})
+						.filter((v) => typeof v === "number"),
+				);
+			}
 			if (it.defenses.hp) it._fHP = Math.max(...Object.values(it.defenses.hp).filter(v => typeof v === "number"));
 			if (it.defenses.savingThrows) it._fFort = it.defenses.savingThrows.fort ? it.defenses.savingThrows.fort.std : null;
 			if (it.defenses.savingThrows) it._fRef = it.defenses.savingThrows.ref ? it.defenses.savingThrows.ref.std : null;
