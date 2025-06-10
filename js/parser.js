@@ -1539,7 +1539,7 @@ Parser.COMPACT_PREFIX_MAP = [
 	{ re: /Spore War #(\d): /, replaceWith: "SoB$1: " },
 	{ re: /Stolen Fate #(\d): /, replaceWith: "SF$1: " },
 	{ re: /Strength of Thousands #(\d): /, replaceWith: "SoT$1: " },
-	{ re: /triumph of the Tusk #(\d): /, replaceWith: "SoT$1: " },
+	{ re: /Triumph of the Tusk #(\d): /, replaceWith: "SoT$1: " },
 	{ re: /Wardens of Wildwood #(\d): /, replaceWith: "WoW$1: " },
 ];
 
