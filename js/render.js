@@ -3830,7 +3830,7 @@ Renderer.action = {
 		${Renderer.utils.getTraitsDiv(it.traits || [])}
 		${Renderer.action.getSubHead(it)}
 		${Renderer.generic.getRenderedEntries(it)}
-		${Renderer.action.getFooter(it)}
+		${Renderer.action.getFooters(it)}
 		${opts.noPage ? "" : Renderer.utils.getPageP(it)}`;
 	},
 	getSubHead (it) {
@@ -3916,12 +3916,18 @@ Renderer.action = {
 		if (renderStack.length !== 0) renderStack.push(Renderer.utils.getDividerDiv())
 		return renderStack.join("");
 	},
-	getFooter (it) {
-		if (!it.footer) return "";
+	getFooters (it) {
+		if (!it.footers || !it.footers.length) return "";
 
 		const renderStack = [Renderer.utils.getDividerDiv()];
-		const renderer = Renderer.get();
-		renderStack.push(Object.keys(it.footer).sort().map(lvl => `<p class="pf2-stat pf2-stat__section"><strong>${lvl}</strong>&nbsp;${renderer.render(it.footer[lvl])}</p>`).join(""));
+		const list = {
+			type: "list",
+			style: "list-hang-notitle",
+			items: it.footers.map((footer) =>
+				typeof footer === "string" ? footer : { type: "item", name: footer.name, entries: footer.entries },
+			),
+		};
+		Renderer.get().recursiveRender(list, renderStack)
 		return renderStack.join("");
 	},
 	getQuickRules (it) {

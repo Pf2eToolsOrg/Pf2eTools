@@ -165,6 +165,33 @@
 					},
 					"add_hash": {
 						"type": "string"
+					},
+					"footers": {
+						"type": "array",
+						"items": {
+							"anyOf": [
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								{
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"entries": {
+											"type": "array",
+											"$ref": "entry.json"
+										}
+									},
+									"required": [
+										"entries"
+									]
+								}
+							]
+						},
+						"minItems": 1
 					}
 				},
 				"additionalProperties": false,
