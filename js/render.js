@@ -4582,7 +4582,7 @@ Renderer.creature = {
 				}Rituals</strong>${
 					rf.DC ? ` DC ${rf.DC};` : ""
 				} ${renderer.render(
-					rf.rituals.map((r) => renderRitual(r)).join(", "),
+					Object.keys(rf.levelled ?? {}).sort().reverse().map(l => `{@b ${Parser.getOrdinalForm(l)}} ${rf.levelled[l].map(r => renderRitual(r)).join(", ")}`).join("; "))}${rf.levelled && rf.rituals ? "; " : ""}${renderer.render((rf.rituals ?? []).map((r) => renderRitual(r)).join(", "),
 				)}${rf.note ? `; ${rf.note}` : ""}`,
 		);
 	},
