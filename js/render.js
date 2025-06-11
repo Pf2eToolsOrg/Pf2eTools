@@ -4473,7 +4473,7 @@ Renderer.creature = {
 	},
 	getDefenses_getThresholdsParts (creature) {
 		if (creature.defenses.thresholds && creature.defenses.thresholds.length) {
-			const thresholds = creature.defenses.thresholds.map(t => `${t.value} (${t.squares} squares)`).join(", ")
+			const thresholds = creature.defenses.thresholds.map(t => `${t.value} (${t.squares} ${creature.remaster ? "segments" : "squares"})`).join(", ")
 			return `<strong>Thresholds&nbsp;</strong>${thresholds}`;
 		} else {
 			return "";
