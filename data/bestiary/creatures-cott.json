@@ -1,0 +1,6758 @@
+{
+	"creature": [
+		{
+			"name": "Seldeg Bhedlis",
+			"source": "CotT",
+			"remaster": true,
+			"page": 125,
+			"level": 20,
+			"traits": [
+				"unique",
+				"medium",
+				"graveknight",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"chthonian",
+					"common",
+					"diabolic",
+					"kelish",
+					"necril",
+					"osiriani"
+				]
+			},
+			"skills": {
+				"arazni lore": {
+					"std": 38
+				},
+				"athletics": {
+					"std": 38
+				},
+				"diplomacy": {
+					"std": 34
+				},
+				"intimidation": {
+					"std": 34
+				},
+				"religion": {
+					"std": 32
+				},
+				"society": {
+					"std": 34
+				},
+				"warfare lore": {
+					"std": 34
+				}
+			},
+			"abilityMods": {
+				"str": 10,
+				"dex": 6,
+				"con": 10,
+				"int": 7,
+				"wis": 4,
+				"cha": 7
+			},
+			"items": [
+				"+2 resilient standard-grade adamantine full plate",
+				"javelin (4)",
+				"longsword",
+				"supreme sturdy shield (Hardness 20, HP 160, BT 80)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 46,
+					"with shield raised": 48
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 28
+					},
+					"will": {
+						"std": 29
+					}
+				},
+				"hp": [
+					{
+						"hp": 465,
+						"abilities": [
+							"rejuvenation",
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"fire",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"fire",
+						"magical",
+						"versatile <P>"
+					],
+					"name": "flaming longsword",
+					"attack": 38,
+					"damage": "{@damage 6d8+18} slashing plus {@damage 2d10} fire"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"fire",
+						"magical"
+					],
+					"name": "fist",
+					"attack": 39,
+					"damage": "{@damage 5d8+18} bludgeoning plus {@damage 2d10} fire"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"fire",
+						"magical",
+						"thrown <30 feet>"
+					],
+					"name": "flaming javelin",
+					"attack": 34,
+					"damage": "{@damage 6d6+18} piercing plus {@damage 2d10} fire"
+				}
+			],
+			"spellcasting": [
+				{
+					"focus": true,
+					"name": "Champion Devotion Spells",
+					"fp": 1,
+					"DC": 39,
+					"entry": {
+						"10": {
+							"spells": [
+								{
+									"name": "touch of the void",
+									"source": "pc2"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Sacrilegious Aura",
+						"traits": [
+							"aura",
+							"divine",
+							"void"
+						],
+						"entries": [
+							"30 feet. Counteract modifier +31"
+						]
+					},
+					{
+						"name": "Iron Command",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "An enemy within 15 feet damages Seldeg",
+						"entries": [
+							"Seldeg puts an impertinent foe who dared harm him in their proper place. He commands the enemy to kneel in obedience. If they refuse, they must pay the price in pain and anguish. The triggering creature must choose one of the following options: the enemy kneels, dropping {@condition prone|PC1} as a free action, or the enemy refuses and takes {@damage 6d6} mental damage. In addition, Seldeg's {@action Strike|PC1|Strikes} against the triggering creature deal an additional 3 damage until the end of his next turn. Seldeg chooses whether the additional damage is spirit or void each time he uses this reaction."
+						]
+					},
+					{
+						"name": "Reactive Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						}
+					},
+					{
+						"name": "Shield Block",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Devastating Blast",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"fire"
+						],
+						"entries": [
+							"{@damage 11d12} fire, DC 39"
+						]
+					},
+					{
+						"type": "affliction",
+						"name": "Graveknight's Curse",
+						"DC": 39,
+						"savingThrow": "Will",
+						"onset": "1 hour",
+						"notes": [
+							"This curse affects anyone who wears Seldeg's armor for at least 1 hour."
+						],
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition doomed|PC1|doomed 1}, and the wearer can't remove the armor",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition doomed|PC1|doomed 2}, \u221210-foot status penalty to Speeds, and the wearer can't remove the armor",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "the wearer dies and transforms into Seldeg."
+							}
+						]
+					},
+					{
+						"name": "Phantom Mount",
+						"traits": [
+							"arcane"
+						],
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"Seldeg summons a supernatural mount as per {@spell marvelous mount|PC1} (10th rank). Unlike {@spell marvelous mount|PC1}, the mount's AC and saving throw bonuses are all 4 levels lower than Seldeg's, and the mount has one-third of Seldeg's Hit Points (rounded down). If the mount is destroyed, Seldeg must wait 1 hour before using this ability again.",
+							"{@b HP} 155; {@b AC} 42; {@b Fort} {@d20 +32}, {@b Ref} {@d20 +28}, {@b Will} {@d20 +29}"
+						]
+					},
+					{
+						"name": "Ruinous Weapons",
+						"entries": [
+							"Any weapon or unarmed attack Seldeg uses gains the effects of the +1 greater striking and greater flaming runes."
+						]
+					},
+					{
+						"name": "Swap Fates",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"teleportation"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"Seldeg switches the fates of two creatures within 500 feet. The two creatures teleport into each other's spaces. Each creature then attempts a DC 39 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The target becomes temporarily immune to Swap Fates for 24 hours."
+									],
+									"Success": [
+										"The target takes {@damage 3d6} mental damage."
+									],
+									"Failure": [
+										"The target takes {@damage 6d6} mental damage and is {@condition stunned|PC1|stunned 1}."
+									],
+									"Critical Failure": [
+										"The target takes {@damage 12d6} mental damage and is {@condition stunned|PC1|stunned 4}."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Unyielding Block",
+						"entries": [
+							"At the start of each of Seldeg's turns, he gains two additional reactions he can use only to perform a Shield Block."
+						]
+					},
+					{
+						"name": "Weapon Master",
+						"entries": [
+							"Seldeg has access to the critical specialization effects of any weapon he wields."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Tallusian",
+			"source": "CotT",
+			"remaster": true,
+			"page": 121,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"medium",
+				"azata",
+				"celestial",
+				"holy"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"empyrean",
+					"fey"
+				],
+				"abilities": [
+					"truespeech"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 11
+				},
+				"architecture lore": {
+					"std": 14
+				},
+				"athletics": {
+					"std": 11
+				},
+				"crafting": {
+					"std": 13
+				},
+				"nature": {
+					"std": 13
+				},
+				"stealth": {
+					"std": 11,
+					"in ruins": 14
+				},
+				"survival": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 2,
+				"con": 4,
+				"int": 1,
+				"wis": 3,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 12
+					}
+				},
+				"hp": [
+					{
+						"hp": 76
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 5
+					},
+					{
+						"name": "unholy",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 14,
+					"damage": "{@damage 2d8+8} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "claw",
+					"attack": 14,
+					"damage": "{@damage 2d6+6} slashing"
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 14,
+					"damage": "{@damage 2d6+6} bludgeoning plus Knockdown"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"range increment <20 feet>"
+					],
+					"name": "quill",
+					"attack": 14,
+					"damage": "{@damage 2d6+6} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 22,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "pummeling rubble",
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "humanoid form",
+									"amount": "at will",
+									"source": "PC1"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "shape stone",
+									"source": "PC1"
+								}
+							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "truespeech",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Crumbling Ground",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"earth"
+						],
+						"entries": [
+							"The tallusian slaps their tail against the earth, creating a vibration at the precise frequency needed to shake the ground in a 10-foot burst within 30 feet. The area becomes difficult terrain for 24 hours. Any creature in the area must attempt a DC 22 Reflex save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected."
+									],
+									"Success": [
+										"The creature is {@condition off-guard|PC1} until the start of its next turn."
+									],
+									"Failure": [
+										"The creature falls {@condition prone|PC1}."
+									],
+									"Critical Failure": [
+										"As failure, plus the creature takes {@damage 1d6} bludgeoning damage."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Rubble",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"Until the next time it acts, the tallusian appears to be a normal pile of broken rubble. It has an automatic result of 31 (34 in ruins) on {@skill Deception|PC1} checks and DCs to pass as a pile of rubble."
+						]
+					},
+					{
+						"name": "Tail Spin",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The tallusian spins in place, sweeping their tail to knock down their foes. Each adjacent foe takes {@damage 2d6+6} bludgeoning damage (DC 22 basic Reflex save). Also on a failed save, the target is knocked {@condition prone}. Afterward, the tallusian becomes {@condition clumsy|PC1|clumsy 1} for 1 round."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Commander Arsiella Dei",
+			"source": "CotT",
+			"remaster": true,
+			"page": 123,
+			"level": 9,
+			"traits": [
+				"unique",
+				"medium",
+				"aiuvarin",
+				"elf",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 21
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"elven"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 18
+				},
+				"athletics": {
+					"std": 16
+				},
+				"diplomacy": {
+					"std": 16
+				},
+				"intimidation": {
+					"std": 16
+				},
+				"iomedae lore": {
+					"std": 18
+				},
+				"nature": {
+					"std": 18
+				},
+				"religion": {
+					"std": 16
+				},
+				"stealth": {
+					"std": 18
+				},
+				"survival": {
+					"std": 20
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 5,
+				"con": 4,
+				"int": 4,
+				"wis": 6,
+				"cha": 4
+			},
+			"items": [
+				"breastplate",
+				"composite shortbow (20 arrows)",
+				"Irgal's Axe (+1 striking vitalizing battle axe)",
+				"+1 leather armor",
+				"religious symbol of Iomedae"
+			],
+			"defenses": {
+				"ac": {
+					"std": 28
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 19
+					},
+					"will": {
+						"std": 21
+					}
+				},
+				"hp": [
+					{
+						"hp": 155
+					}
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"sweep"
+					],
+					"name": "battle axe",
+					"attack": 22,
+					"damage": "{@damage 2d8+11} slashing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly <d10>",
+						"propulsive",
+						"range increment <60 feet>"
+					],
+					"name": "composite shortbow",
+					"attack": 21,
+					"damage": "{@damage 1d6+10} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"focus": true,
+					"name": "Ranger Warden Spells",
+					"fp": 2,
+					"DC": 28,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "gravity weapon",
+									"source": "pc1"
+								},
+								{
+									"name": "soothing mist",
+									"source": "pc1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Blind-Fight",
+						"entries": [
+							"Arsiella doesn't need to succeed at a flat check to target {@condition concealed|PC1} creatures. She isn't {@condition off-guard|PC1} to creatures that are {@condition hidden|PC1} from her (unless she's {@condition off-guard|PC1} to them for reasons other than the {@condition hidden|PC1} condition) and only needs a successful DC {@flatDC 5} flat check to target a {@condition hidden|PC1} creature."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Reactive Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "For Nirmathas!",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"Arsiella makes two battle axe {@action Strike|PC1|Strikes} against the same target. Both {@action Strike|PC1|Strikes} use Arsiella's current multiple attack penalty, but each {@action Strike|PC1} takes a \u22122 penalty. A target hit by both attacks on the same turn must also succeed at a DC 26 Fortitude saving throw or be knocked {@condition prone|PC1}."
+						]
+					},
+					{
+						"name": "Heavenly Strike",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"Arsiella calls on the spirit of her father and the strength of {@deity Iomedae|PC1} to infuse her weapon, then {@action Strike|PC1|Strikes} with that weapon. If the {@action Strike|PC1} hits, Arsiella deals an extra weapon die of vitality damage."
+						]
+					},
+					{
+						"name": "Hunt Prey",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"Arsiella designates a single creature she can see and hear, or one she's {@action Track|PC1|Tracking}, as her prey. She gains a +2 circumstance bonus to {@skill Perception|PC1} checks to {@action Seek|PC1} her prey and to {@skill Survival|PC1} checks to {@action Track|PC1} her prey. The first time she hits her designated prey in a round, she deals an additional {@damage 1d8} precision damage. She also ignores the penalty for making ranged attacks within the second range increment when attacking her prey.",
+							"These effects last until she uses Hunt Prey again."
+						],
+						"generic": {
+							"tag": "action",
+							"source": "PC1"
+						}
+					},
+					{
+						"name": "Quick Draw",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Arsiella draws a weapon, then {@action Strike|PC1|Strikes} with that weapon."
+						],
+						"generic": {
+							"tag": "feat",
+							"add_hash": "Ranger",
+							"source": "PC1"
+						}
+					},
+					{
+						"name": "Skirmish Strike",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Arsiella either {@action Step|PC1|Steps} and then {@action Strike|PC1|Strikes}, or {@action Strike|PC1|Strikes} and then {@action Step|PC1|Steps}."
+						],
+						"generic": {
+							"tag": "feat",
+							"add_hash": "Ranger",
+							"source": "PC1"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Stelemora",
+			"source": "CotT",
+			"remaster": true,
+			"page": 120,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"large",
+				"fey",
+				"plant"
+			],
+			"perception": {
+				"std": 17
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"fey"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 17
+				},
+				"nature": {
+					"std": 17
+				},
+				"stealth": {
+					"std": 15,
+					"in forests": 18
+				},
+				"survival": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 2,
+				"con": 3,
+				"int": 1,
+				"wis": 6,
+				"cha": 3
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 17
+					}
+				},
+				"hp": [
+					{
+						"hp": 188,
+						"abilities": [
+							"regeneration 20 (deactivated by fire)"
+						]
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 10
+					},
+					{
+						"name": "fire",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "vine",
+					"attack": 17,
+					"damage": "{@damage 2d8+8} bludgeoning plus Grab"
+				},
+				{
+					"range": "Melee",
+					"name": "seed pod",
+					"attack": 17,
+					"damage": "{@damage 2d10+8} piercing"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Constrict",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 1d8+8} bludgeoning, DC 25"
+						]
+					},
+					{
+						"name": "Flurry of Vines",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The stelemora makes two vine Strikes at a \u22122 penalty, each against a different target. These attacks count toward the stelemora's multiple attack penalty, but the multiple attack penalty doesn't increase until after they make all their attacks."
+						]
+					},
+					{
+						"name": "Slithering Vine",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The stelemora increases the reach of their vine {@action Strike|PC1} by 10 feet until the end of their turn."
+						]
+					},
+					{
+						"name": "Sow and Sprout",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The stelemora implants a seed inside a creature they're grappling. The target must attempt a DC 25 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": [
+										"The stelemora fails to implant a seed, and the target is unaffected."
+									],
+									"Failure": [
+										"The target is {@condition sickened|PC1|sickened 1}. While {@condition sickened|PC1}, the target also takes {@damage 4d6} {@condition persistent damage|PC1|persistent piercing damage} as flowering vines sprout through its flesh. The target can't end the {@condition persistent damage|PC1} until it recovers from the {@condition sickened|PC1} condition."
+									],
+									"Critical Failure": [
+										"As failure, except the target is {@condition sickened|PC1|sickened 2}."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Tangle of Vines",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"Until the next time they act, the stelemora appears to be a normal tangle of flowering vines. They have an automatic result of 35 (38 in forests) on {@skill Deception|PC1} checks and DCs to pass as a non-creature plant."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Mirmicette",
+			"source": "CotT",
+			"remaster": true,
+			"page": 116,
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"small",
+				"fey"
+			],
+			"perception": {
+				"std": 16
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"fey"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 12
+				},
+				"crafting": {
+					"std": 15
+				},
+				"deception": {
+					"std": 12
+				},
+				"diplomacy": {
+					"std": 11
+				},
+				"intimidation": {
+					"std": 11
+				},
+				"stealth": {
+					"std": 13
+				},
+				"thievery": {
+					"std": 15
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 5,
+				"con": 1,
+				"int": 3,
+				"wis": 3,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 14
+					}
+				},
+				"hp": [
+					{
+						"hp": 95
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "claw",
+					"attack": 16,
+					"damage": "{@damage 2d4+7} slashing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 24,
+					"attack": 16,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "telekinetic projectile",
+									"source": "PC1"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "fear",
+									"source": "PC1"
+								},
+								{
+									"name": "force barrage",
+									"source": "PC1"
+								},
+								{
+									"name": "gust of wind",
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "animated assault",
+									"source": "PC2"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Claw Feint",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The mirmicette makes a series of quick claw attacks, using the first attack to throw their foe {@condition off-guard|PC1} against a second attack from a different angle. They make two claw {@action Strike|PC1|Strikes}, both against the same target. The target is automatically {@condition off-guard|PC1} against the second attack. The mirmicette applies their multiple attack penalty to these {@action Strike|PC1|Strikes} normally."
+						]
+					},
+					{
+						"name": "Copied Clutter",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"occult"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"The mirmicette creates dozens of copies of an object of 1 Bulk or less that the mirmicette can see. The counterfeit items rain down in a 10-foot burst within 40 feet. The ground in the area becomes difficult terrain until the items are collected and removed. Creatures in the area must attempt a DC 24 Reflex save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": [
+										"The creature takes {@damage 2d6} bludgeoning damage."
+									],
+									"Failure": [
+										"The creature takes {@damage 4d6} bludgeoning damage and is {@condition off-guard|PC1} for 1 round."
+									],
+									"Critical Failure": [
+										"The creature takes {@damage 8d6} bludgeoning damage and is knocked {@condition prone|PC1}."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Create Counterfeit",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"occult"
+						],
+						"entries": [
+							"The mirmicette creates a copy of an object of 1 Bulk or less that they can see. The object appears in the mirmicette's hands or in a space within 40 feet. To all appearances, the copy is an exact duplicate of the original object but is in fact a worthless reproduction. The counterfeit object is real but has no magical properties and is treated as a shoddy item if used as a weapon or tool. The copied object can be identified with a DC 35 check to {@action Recall Knowledge|PC1} with {@skill Crafting|PC1} (or with a skill related to the item; for instance, {@skill Religion|PC1} for a copied religious symbol), though the DC drops to 25 if the object is more than 40 feet away from the mirmicette who created it."
+						]
+					},
+					{
+						"name": "Sneak Attack",
+						"entries": [
+							"The mirmicette deals an additional {@damage 2d6} precision damage to {@condition off-guard|PC1} creatures."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Moldering Steed",
+			"source": "CotT",
+			"remaster": true,
+			"page": 117,
+			"level": 16,
+			"traits": [
+				"uncommon",
+				"large",
+				"mindless",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 28
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "willsense",
+					"type": "precise",
+					"unit": "feet",
+					"number": 120
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 32
+				},
+				"survival": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 7,
+				"con": 6,
+				"int": -5,
+				"wis": 5,
+				"cha": -2
+			},
+			"defenses": {
+				"ac": {
+					"std": 38
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 28
+					}
+				},
+				"hp": [
+					{
+						"hp": 370,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"mental",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "slashing",
+						"amount": 15
+					},
+					{
+						"name": "vitality",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "hoof",
+					"attack": 31,
+					"damage": "{@damage 3d10+13} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 31,
+					"damage": "{@damage 3d8+13} piercing plus siphon will"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Willsense",
+						"traits": [
+							"divine",
+							"mental"
+						],
+						"entries": [
+							"The moldering steed senses all living creatures within the listed range that have a Wisdom of +1 or higher."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Buck",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"DC 38"
+						]
+					},
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"divine",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"60 feet, DC 38"
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Gallop",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The moldering steed {@action Stride|PC1|Strides} twice. It has a +10-foot circumstance bonus to its Speed during these {@action Stride|PC1|Strides}."
+						]
+					},
+					{
+						"name": "Hunt Will",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"The moldering steed designates the living creature with the highest Will modifier within 120 feet as its prey. The steed gains a +2 circumstance bonus to {@skill Perception|PC1} checks to {@action Seek|PC1} the prey and to {@skill Survival|PC1} checks to {@action Track|PC1} the prey. The first time the steed hits its designated prey in a round, it deals an additional {@damage 1d8} precision damage. These effects last until the steed uses Hunt Will again."
+						]
+					},
+					{
+						"name": "Siphon Will",
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"When the moldering steed damages a living creature with its jaws {@action Strike|PC1}, the steed gains 20 temporary Hit Points that last for 1 minute, and the creature must succeed at a DC 38 Will save or become {@condition stupefied|PC1|stupefied 1}. Further damage dealt by the steed increases the creature's {@condition stupefied|PC1} value on a failed save by 1, to a maximum of {@condition stupefied|PC1|stupefied 4}."
+						]
+					},
+					{
+						"name": "Undead Steed",
+						"entries": [
+							"{@trait Undead} and creatures allied with them can {@action Command an Animal|PC1|Command} a moldering steed without needing to attempt a skill check."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Raised Cavalry",
+			"source": "CotT",
+			"remaster": true,
+			"page": 118,
+			"level": 19,
+			"traits": [
+				"uncommon",
+				"gargantuan",
+				"mindless",
+				"troop",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 37
+				}
+			},
+			"abilityMods": {
+				"str": 10,
+				"dex": 5,
+				"con": 6,
+				"int": 5,
+				"wis": 6,
+				"cha": 6
+			},
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 29
+					},
+					"ref": {
+						"std": 28
+					},
+					"will": {
+						"std": 31
+					}
+				},
+				"hp": [
+					{
+						"hp": 360,
+						"notes": [
+							"4 segments"
+						],
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 240,
+						"squares": 3
+					},
+					{
+						"value": 140,
+						"squares": 2
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 20
+					},
+					{
+						"name": "splash damage",
+						"amount": 20
+					},
+					{
+						"name": "vitality",
+						"amount": 20
+					}
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"abilities": [
+					"troop movement"
+				]
+			},
+			"abilities": {
+				"top": [
+					{
+						"name": "Mounted",
+						"entries": [
+							"When not mounted, the raised cavalry is {@condition slowed|PC1|slowed 1}."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Shuffle Forces",
+						"entries": [
+							"The raised cavalry consists of {@trait skeleton||skeletons}, {@trait zombie||zombies}, and other {@trait undead} hastily bound to a shared cause. The cavalry has resistance 20 to physical damage, as it shuffles its weakest members to the front lines. When the cavalry is reduced to 12 squares or fewer, its resistance to physical drops to 10. Once the cavalry reaches the 2-segment threshold, it loses its resistance to physical damage."
+						]
+					},
+					{
+						"name": "Troop Defenses"
+					}
+				],
+				"bot": [
+					{
+						"name": "Claws and Jaws",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"Members of the cavalry leap from their mounts and attack each enemy within 10 feet (DC 41 basic Reflex save). The damage depends on the number of actions.",
+							{
+								"type": "pf2-options",
+								"noColon": true,
+								"items": [
+									{
+										"type": "item",
+										"name": "{@as 1}",
+										"entries": [
+											"{@damage 2d12+14} piercing and slashing plus {@damage 1d12} void"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 2}",
+										"entries": [
+											"{@damage 3d12+14} piercing and slashing plus {@damage 1d12} void"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 3}",
+										"entries": [
+											"{@damage 4d12+14} piercing and slashing plus {@damage 1d12} void"
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Hail of Arrows",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Members of the raised cavalry draw or reload their shortbows, then launch a ranged attack in the form of a volley. This volley is a 10-foot burst within 60 feet that deals {@damage 7d8} piercing damage (DC 41 basic Reflex save). When the cavalry is reduced to 2 segments, this area decreases to a 5-foot burst."
+						]
+					},
+					{
+						"name": "Trampling Charge",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The raised cavalry Strides twice with a +10-foot circumstance bonus to its Speed. During this movement, the cavalry can move through the spaces of Medium or smaller creatures. It deals {@damage 3d12+14} bludgeoning damage to each creature whose space it moves through (DC 41 basic Reflex save). A creature that fails its save is also knocked {@condition prone|PC1}. The cavalry can affect the same creature only once in a single use of Trampling Charge."
+						]
+					},
+					{
+						"name": "Troop Movement"
+					}
+				]
+			}
+		},
+		{
+			"name": "Splinter Officer",
+			"source": "CotT",
+			"remaster": true,
+			"page": 119,
+			"level": 19,
+			"traits": [
+				"uncommon",
+				"medium",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 35
+			},
+			"senses": [
+				{
+					"name": "darkvision",
+					"range": 120
+				},
+				{
+					"name": "splintersense"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 30
+				},
+				"deception": {
+					"std": 37
+				},
+				"diplomacy": {
+					"std": 37
+				},
+				"warfare lore": {
+					"std": 39
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 6,
+				"con": 5,
+				"int": 5,
+				"wis": 4,
+				"cha": 10
+			},
+			"items": [
+				"+2 greater resilient chain shirt",
+				"+2 greater striking longbow",
+				"+2 greater striking keen rapier"
+			],
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 35
+					},
+					"will": {
+						"std": 36
+					}
+				},
+				"hp": [
+					{
+						"hp": 375,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"nonlethal",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "vitality",
+						"amount": 15
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 20
+					},
+					{
+						"name": "electricity",
+						"amount": 20
+					},
+					{
+						"name": "fire",
+						"amount": 20
+					},
+					{
+						"name": "piercing",
+						"amount": 20
+					},
+					{
+						"name": "slashing",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly d8",
+						"disarm",
+						"finesse",
+						"magical"
+					],
+					"name": "rapier",
+					"attack": 34,
+					"damage": "{@damage 4d6+15} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly <d10>",
+						"magical",
+						"propulsive",
+						"range increment <100 feet>",
+						"volley <30 feet>"
+					],
+					"name": "longbow",
+					"attack": 34,
+					"damage": "{@damage 4d8+15} piercing"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Splintersense",
+						"traits": [
+							"divine",
+							"mental"
+						],
+						"entries": [
+							"The splinter officer knows the direction and distance of all {@trait undead} that share splinters of the same splinter officer's soul. These {@trait undead} are always considered to be allies of the splinter officer."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Behind the Lines",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The splinter officer is targeted by an attack",
+						"requirements": "At least one of the officer's {@trait undead} allies is adjacent to the officer",
+						"entries": [
+							"The ally interposes itself, granting the officer a +2 circumstance bonus to AC against the triggering attack."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Raise Defenses",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine"
+						],
+						"entries": [
+							"The splinter officer mentally commands its {@trait undead} allies to strengthen their defenses. For 1 round, each {@trait undead} that shares the officer's splintered soul gains a +1 circumstance bonus to AC."
+						]
+					},
+					{
+						"name": "Rally the Rabble",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine"
+						],
+						"entries": [
+							"The splinter officer mentally energizes the {@trait undead} under its command. Each {@trait undead} that shares the officer's splintered soul is {@condition quickened|PC1} for 1 round. {@condition Quickened|PC1} allies can use the extra action only to {@action Stride|PC1} or {@action Strike|PC1}. The officer can't Rally the Rabble again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Synchronized Step",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine"
+						],
+						"entries": [
+							"The splinter officer mentally commands the {@trait undead} that share its splintered soul to reposition. The officer {@action Step|PC1|Steps}, and each {@trait undead} that shares the officer's splintered soul can use a reaction to {@action Step|PC1}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Engerra",
+			"source": "CotT",
+			"remaster": true,
+			"page": 114,
+			"level": 9,
+			"traits": [
+				"uncommon",
+				"tiny",
+				"agathion",
+				"celestial",
+				"holy"
+			],
+			"perception": {
+				"std": 20
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"diabolic",
+					"empyrean"
+				],
+				"abilities": [
+					"truespeech"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 16
+				},
+				"diplomacy": {
+					"std": 16
+				},
+				"performance": {
+					"std": 18
+				},
+				"religion": {
+					"std": 17
+				},
+				"society": {
+					"std": 20
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 4,
+				"con": 3,
+				"int": 6,
+				"wis": 4,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 16
+					},
+					"ref": {
+						"std": 18
+					},
+					"will": {
+						"std": 20
+					},
+					"abilities": [
+						"+1 status bonus to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 152
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "unholy",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "swarming bite",
+					"attack": 19,
+					"damage": "{@damage 3d6+10} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 26,
+					"attack": 18,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "light",
+									"source": "PC1"
+								},
+								{
+									"name": "stabilize",
+									"source": "PC1"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "enfeeble",
+									"source": "PC1"
+								},
+								{
+									"name": "infuse vitality",
+									"source": "PC1"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "crisis of faith",
+									"source": "PC1"
+								},
+								{
+									"name": "holy light",
+									"source": "PC1"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "invoke spirits",
+									"source": "PC1"
+								}
+							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "truespeech",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Firefly's Remembrance",
+						"entries": [
+							"Engerras embody the ethos of honoring the dead. When the engerra {@action Recall Knowledge|PC1|Recalls Knowledge} about a creature whose final words it has heard spoken aloud, it uses the outcome one degree of success better than the result of its roll."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Disperse",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						],
+						"entries": [
+							"The engerra {@action Stride|PC1|Strides} or {@action Fly|PC1|Flies}. This movement doesn't trigger reactions. During the movement, the engerra can move through occupied spaces and tiny cracks, and it ignores difficult terrain and greater difficult terrain. It then coalesces back into its normal form."
+						]
+					},
+					{
+						"name": "Dying Breath",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"The engerra draws the air from around breathing creatures in a 40-foot emanation, giving them the feeling of drawing their last breath. Enemies in the area must attempt a DC 26 Will save. If at least one creature fails the save, the engerra can gift the stolen breath to a willing creature within 40 feet, granting that creature {@dice 2d6} temporary Hit Points that last for 1 minute.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": [
+										"The creature is unaffected."
+									],
+									"Failure": [
+										"The creature takes {@damage 2d6+7} mental damage and is {@condition frightened|PC1|frightened 1}."
+									],
+									"Critical Failure": [
+										"The creature takes {@damage 3d6+10} mental damage, is {@condition frightened|PC1|frightened 2}, and becomes {@condition fatigued|PC1} for 1 minute."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Final Words of Doom",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"divine",
+							"emotion",
+							"linguistic",
+							"mental"
+						],
+						"entries": [
+							"The engerra whispers words of doom to an enemy within 40 feet. The creature must attempt a DC 26 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"As success, and the creature is temporarily immune for 1 minute."
+									],
+									"Success": [
+										"The creature is unaffected."
+									],
+									"Failure": [
+										"The creature takes {@damage 3d8+13} mental damage and is {@condition doomed|PC1|doomed 1} for 1 minute."
+									],
+									"Critical Failure": [
+										"The creature takes {@damage 4d8+18} mental damage and is {@condition doomed|PC1|doomed 2} for 1 minute."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Final Words of Wisdom",
+						"traits": [
+							"auditory",
+							"divine",
+							"emotion",
+							"linguistic",
+							"mental"
+						],
+						"entries": [
+							"The engerra finds words to bolster a creature's spirits. The engerra spends 10 minutes speaking with a willing creature. If that creature has the {@condition fatigued|PC1} condition, it's no longer {@condition fatigued|PC1}. The creature can't benefit from any engerra's Final Words of Wisdom again for 1 year."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Garrholdion",
+			"source": "CotT",
+			"remaster": true,
+			"page": 115,
+			"level": 20,
+			"traits": [
+				"rare",
+				"huge",
+				"construct",
+				"incorporeal",
+				"mindless"
+			],
+			"perception": {
+				"std": 33
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "truesight"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 36
+				},
+				"athletics": {
+					"std": 38
+				},
+				"faction lore": {
+					"std": 41
+				}
+			},
+			"abilityMods": {
+				"str": 10,
+				"dex": 6,
+				"con": 7,
+				"int": -5,
+				"wis": 5,
+				"cha": -2
+			},
+			"items": [
+				"+3 major striking longsword",
+				"supreme reinforcing steel shield (Hardness 12, HP 128, BT 64)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 46,
+					"with shield raised": 48
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 36
+					},
+					"ref": {
+						"std": 27
+					},
+					"will": {
+						"std": 30
+					}
+				},
+				"hp": [
+					{
+						"hp": 350
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"mental",
+					"nonlethal attacks",
+					"paralyzed",
+					"poisoned",
+					"precision",
+					"sickened",
+					"unconscious",
+					"vitality",
+					"void"
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 15,
+						"note": "except force, ghost touch, or spirit; double resistance vs. non-magical"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"versatile <P>"
+					],
+					"name": "longsword",
+					"attack": 38,
+					"damage": "{@damage 4d8+18} slashing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"magical",
+						"range 60 feet",
+						"spirit"
+					],
+					"name": "belief ray",
+					"attack": 34,
+					"damage": "{@dice 8d6} spirit plus seed of doubt"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 39,
+					"entry": {
+						"constant": {
+							"10": {
+								"spells": [
+									{
+										"name": "truesight",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"dc": 39,
+					"levelled": {
+						"7": [
+							{
+								"name": "consecrate",
+								"source": "PC1"
+							}
+						]
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Faction-Bound",
+						"entries": [
+							"A garrholdion is bound to a faction at its creation. It can't harm a known member of its faction, a symbol of its faction, or relics associated with its faction. It gains a +4 circumstance bonus to {@skill Perception|PC1} checks to verify the identity of such creatures and objects. A garrholdion is also bound to a location associated with its faction, such as a fortress, an academy, or a secret hideout. It can't move more than 120 feet from its designated location. Finally, a garrholdion bears an obvious mark of its faction somewhere on its body. This mark can't be {@condition hidden|PC1}."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Belief Fortification",
+						"traits": [
+							"aura",
+							"emotion",
+							"occult"
+						],
+						"entries": [
+							"30 feet. Members of the garrholdion's faction gain a +1 status bonus to saving throws against {@trait emotion} effects while within the aura."
+						]
+					},
+					{
+						"name": "Quick Shield Block",
+						"entries": [
+							"The garrholdion gains an additional reaction each round that can be used only for {@feat Shield Block|PC1}."
+						]
+					},
+					{
+						"name": "Reactive Defense",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within reach attacks the garrholdion's ally",
+						"entries": [
+							"The garrholdion positions its shield in front of the attack, granting its ally a +2 circumstance bonus to AC against the triggering attack. It then makes a melee {@action Strike|PC1} against the triggering creature."
+						]
+					},
+					{
+						"name": "Reactive Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						}
+					},
+					{
+						"name": "Shield Block",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"source": "PC1",
+							"tag": "feat"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Seed of Doubt",
+						"traits": [
+							"mental",
+							"occult"
+						],
+						"entries": [
+							"A creature hit by the garrholdion's belief ray {@action Strike|PC1} doubts their actions, forcing them to hesitate. The target must succeed at a DC 39 Will save or be {@condition stunned|PC1|stunned 1} (or {@condition stunned|PC1|stunned 3} on a critical failure). On a critical success, the target becomes temporarily immune to seed of doubt for 24 hours."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Chained Norn",
+			"source": "CotT",
+			"remaster": true,
+			"page": 96,
+			"description": "Variant norn",
+			"level": 20,
+			"traits": [
+				"unique",
+				"large",
+				"undead"
+			],
+			"perception": {
+				"std": 41
+			},
+			"senses": [
+				{
+					"name": "detect magic"
+				},
+				{
+					"name": "greater darkvision"
+				},
+				{
+					"name": "lifesense",
+					"unit": "feet",
+					"number": 120
+				},
+				{
+					"name": "truesight"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"fey",
+					"jotun"
+				],
+				"abilities": [
+					"truespeech"
+				]
+			},
+			"skills": {
+				"crafting": {
+					"std": 36
+				},
+				"deception": {
+					"std": 35
+				},
+				"intimidation": {
+					"std": 37
+				},
+				"lore": {
+					"note": "all",
+					"std": 28
+				},
+				"medicine": {
+					"std": 38
+				},
+				"occultism": {
+					"std": 34
+				},
+				"performance": {
+					"std": 31
+				},
+				"religion": {
+					"std": 34
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 6,
+				"con": 6,
+				"int": 6,
+				"wis": 10,
+				"cha": 7
+			},
+			"defenses": {
+				"ac": {
+					"std": 46
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 34
+					},
+					"ref": {
+						"std": 30
+					},
+					"will": {
+						"std": 38
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 375,
+						"abilities": [
+							"regeneration 20 (deactivated by cold iron)",
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"off-guard",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 35,
+				"fly": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"reach <10 feet>"
+					],
+					"name": "hand of fate",
+					"attack": 38,
+					"damage": "{@damage 4d10+15} void plus sever fate"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 42,
+					"entry": {
+						"7": {
+							"spells": [
+								{
+									"name": "dispel magic",
+									"amount": "at will",
+									"source": "PC1"
+								},
+								{
+									"name": "read omens",
+									"amount": "at will",
+									"source": "PC1"
+								},
+								{
+									"name": "spellwrack",
+									"amount": "at will",
+									"source": "PC1"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "migration",
+									"source": "PC1"
+								},
+								{
+									"name": "quandary",
+									"source": "PC1"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "execute",
+									"source": "PC1"
+								},
+								{
+									"name": "phantasmagoria",
+									"source": "PC1"
+								},
+								{
+									"name": "retrocognition",
+									"source": "PC1"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "freeze time",
+									"source": "PC1"
+								}
+							]
+						},
+						"constant": {
+							"10": {
+								"spells": [
+									{
+										"name": "detect magic",
+										"source": "PC1"
+									},
+									{
+										"name": "hidden mind",
+										"source": "PC1"
+									},
+									{
+										"name": "truesight",
+										"source": "PC1"
+									},
+									{
+										"name": "truespeech",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Broken Fate",
+						"traits": [
+							"misfortune"
+						],
+						"entries": [
+							"The chained norn automatically rolls a 1 when she rolls initiative."
+						]
+					},
+					{
+						"name": "Broken Triumvirate",
+						"entries": [
+							"The chained norn's fate has been severed from the rest of the norns. She can't join a triumvirate or willingly take a hostile action against a norn."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Broken Fates Aura",
+						"traits": [
+							"aura",
+							"mental",
+							"misfortune",
+							"occult"
+						],
+						"entries": [
+							"60 feet. Creatures other than norns in the aura must attempt a DC 42 Will save. On a successful save, the creature is temporarily immune to the broken fates aura for 24 hours. On a failure, the creature can’t benefit from effects with the {@trait fortune} trait for 24 hours."
+						]
+					},
+					{
+						"name": "Rewind Fate",
+						"traits": [
+							"misfortune",
+							"occult"
+						],
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within 120 feet would succeed on an attack or skill check",
+						"entries": [
+							"The creature must attempt the attack or skill check again, rolling twice and taking the worse result."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Fated",
+						"entries": [
+							"When a creature is subject to a {@trait misfortune} effect from a norn and a {@trait fortune} effect from any source other than a norn (or vice versa), the norn's effect automatically counteracts the other effect and then takes place normally, rather than the two effects canceling each other out. If both the {@trait fortune} and {@trait misfortune} effect are from a norn, then the two cancel each other out as normal. At the GM's discretion, powerful entities related to fate or luck, like {@deity Desna|PC1}, {@deity Magdh|DM}, or {@deity Pharasma|PC1}, can't have their effects negated by this ability."
+						]
+					},
+					{
+						"name": "Sever Fate",
+						"traits": [
+							"occult"
+						],
+						"entries": [
+							"When a norn deals void damage with a {@action Strike|PC1}, she regains 10 Hit Points. The target must succeed at a DC 39 Fortitude save or become {@condition drained|PC1|drained 1} ({@condition drained|PC1|drained 2} on a critical failure). Further void damage dealt by the norn increases the {@condition drained|PC1} condition value by 1 on a failed save (or by 2 on a critical failure), to a maximum of {@condition drained|PC1|drained 4}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Radiant Veranallia",
+			"source": "CotT",
+			"remaster": true,
+			"page": 95,
+			"description": "{@creature Veranallia|B2} {@creatureTemplate mummy|BotD}",
+			"level": 20,
+			"traits": [
+				"unique",
+				"medium",
+				"mummy",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 38
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "tremorsense",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 120
+				}
+			],
+			"languages": {
+				"languages": [
+					"diabolic",
+					"draconic",
+					"empyrean",
+					"necril"
+				],
+				"abilities": [
+					"truespeech"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 34
+				},
+				"deception": {
+					"std": 36
+				},
+				"diplomacy": {
+					"std": 38
+				},
+				"intimidation": {
+					"std": 36
+				},
+				"medicine": {
+					"std": 36
+				},
+				"nature": {
+					"std": 34
+				},
+				"survival": {
+					"std": 38
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 6,
+				"con": 8,
+				"int": 6,
+				"wis": 10,
+				"cha": 8
+			},
+			"items": [
+				"+3 greater striking sickle"
+			],
+			"defenses": {
+				"ac": {
+					"std": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 36
+					},
+					"ref": {
+						"std": 34
+					},
+					"will": {
+						"std": 38
+					}
+				},
+				"hp": [
+					{
+						"hp": 475,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 20
+					},
+					{
+						"name": "fire",
+						"amount": 20
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"trip"
+					],
+					"name": "sickle",
+					"attack": 39,
+					"damage": "{@damage 3d4+16} slashing plus {@damage 4d6} cold and {@dice 1d6} spirit"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <20 feet>"
+					],
+					"name": "vine",
+					"attack": 39,
+					"damage": "{@damage 4d12+16} bludgeoning plus {@dice 1d6} spirit and Improved Grab"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 42,
+					"attack": 32,
+					"entry": {
+						"6": {
+							"spells": [
+								{
+									"name": "cursed metamorphosis",
+									"amount": "at will",
+									"source": "PC1"
+								},
+								{
+									"name": "tangling creepers",
+									"amount": "at will",
+									"source": "PC1"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "arctic rift",
+									"amount": "at will",
+									"source": "PC1"
+								},
+								{
+									"name": "sunburst",
+									"amount": "at will",
+									"source": "PC1"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "nature's pathway",
+									"amount": "at will",
+									"source": "PC1"
+								},
+								{
+									"name": "regenerate",
+									"amount": 3,
+									"source": "PC1"
+								},
+								{
+									"name": "wrathful storm",
+									"source": "PC1"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "cataclysm",
+									"source": "PC1"
+								},
+								{
+									"name": "remake",
+									"source": "PC1"
+								},
+								{
+									"name": "revival",
+									"source": "PC1"
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "environmental endurance",
+										"source": "PC1"
+									},
+									{
+										"name": "speak with animals",
+										"source": "PC1"
+									},
+									{
+										"name": "speak with plants",
+										"source": "PC1"
+									},
+									{
+										"name": "truespeech",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"DC": 42,
+					"levelled": {
+						"6": [
+							{
+								"name": "awaken animal",
+								"source": "PC1"
+							},
+							{
+								"name": "primal call",
+								"source": "PC1"
+							}
+						],
+						"4": [
+							{
+								"name": "blight",
+								"source": "PC1"
+							},
+							{
+								"name": "plant growth",
+								"source": "PC1"
+							}
+						],
+						"2": [
+							{
+								"name": "consecrate",
+								"source": "PC1"
+							}
+						]
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Alter Weather",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"frequency": {
+							"number": 3,
+							"unit": "day"
+						},
+						"entries": [
+							"The veranallia dramatically alters weather patterns in the surrounding area, producing any of the results of a successful 9th-rank {@ritual control weather|PC1} ritual."
+						]
+					},
+					{
+						"name": "Rebirth",
+						"traits": [
+							"divine"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"The veranallia spends a minute to encase a creature that has been dead for no more than a year in a cocoon. After 24 hours, the creature is restored to life, and the cocoon explodes in a shower of dust. If the veranallia chooses, Rebirth can change the creature's ancestry or heritage, typically into a skeleton (Book of the Dead 54)."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Lady Siccale",
+			"source": "CotT",
+			"remaster": true,
+			"page": 93,
+			"description": "True vampire assassin",
+			"level": 19,
+			"traits": [
+				"unique",
+				"medium",
+				"undead",
+				"unholy",
+				"vampire"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"necril"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 37
+				},
+				"athletics": {
+					"std": 31
+				},
+				"deception": {
+					"std": 35
+				},
+				"intimidation": {
+					"std": 32
+				},
+				"poison lore": {
+					"std": 35
+				},
+				"society": {
+					"std": 33
+				},
+				"stealth": {
+					"std": 40
+				},
+				"thievery": {
+					"std": 38
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 10,
+				"con": 5,
+				"int": 4,
+				"wis": 4,
+				"cha": 6
+			},
+			"items": [
+				"cerulean scourge poison (5)",
+				"+2 major striking dagger (6)",
+				"high-fashion clothing with a +3 greater resilient rune",
+				"major oil of unlife (3)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 43
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 35
+					},
+					"ref": {
+						"std": 38
+					},
+					"will": {
+						"std": 35
+					}
+				},
+				"hp": [
+					{
+						"hp": 360,
+						"abilities": [
+							"coffin restoration",
+							"fast healing 15",
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyze",
+					"poison",
+					"sleep"
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 15,
+						"note": "except magical silver"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "claws",
+					"attack": 33,
+					"damage": "{@damage 4d8+17} slashing plus Grab"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 35,
+					"damage": "{@damage 4d4+17} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"thrown <10 feet>",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 35,
+					"damage": "{@damage 4d4+17} piercing"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Children of the Night",
+						"traits": [
+							"divine",
+							"mental"
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Vampire Vulnerabilities"
+					},
+					{
+						"name": "Mist Escape",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"polymorph"
+						],
+						"entries": [
+							"Giant bat with fangs +33 for {@damage 4d8+17} piercing."
+						]
+					},
+					{
+						"name": "Create Servitor",
+						"traits": [
+							"divine",
+							"downtime"
+						]
+					},
+					{
+						"name": "Dominate",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"incapacitation",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"DC 38"
+						]
+					},
+					{
+						"name": "Drink Blood",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"When Drinking Blood, the Lady Siccale regains 36 HP."
+						]
+					},
+					{
+						"name": "Poison Weapon",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Lady Siccale applies poison to a dagger. If she has a free hand, she can {@action Interact|PC1} to draw a poison as part of the action. If her next attack with that weapon hits and deals damage, it applies the effect of the poison. If she critically fails the attack roll, the poison is wasted."
+						]
+					},
+					{
+						"name": "Turn to Mist",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"air",
+							"concentrate",
+							"divine",
+							"polymorph"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Elite Ecorches",
+			"source": "CotT",
+			"remaster": true,
+			"page": 92,
+			"level": 17,
+			"traits": [
+				"medium",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 29
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 35
+				},
+				"deception": {
+					"std": 33
+				},
+				"intimidation": {
+					"std": 29,
+					"when skinless": 33
+				},
+				"stealth": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 6,
+				"con": 7,
+				"int": 0,
+				"wis": 5,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 29
+					},
+					"ref": {
+						"std": 32
+					},
+					"will": {
+						"std": 29
+					}
+				},
+				"hp": [
+					{
+						"hp": 295,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "claw",
+					"attack": 35,
+					"damage": "{@damage 3d8+19} slashing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Flaying Flurry",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The ecorche attempts two claw {@action Strike|PC1|Strikes} against the same target. If both hit and deal damage, it attempts to pull the skin off its target. It attempts an {@skill Athletics|PC1} check against the enemy's Fortitude DC.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The ecorche fully pulls the target's skin off its body. The creature takes {@damage 4d8} {@condition persistent damage|PC1|persistent bleed damage}, and it's {@condition frightened|PC1|frightened 4} and {@condition stunned|PC1|stunned 4}. The bleed damage can't end naturally, only ending if the creature regains at least 75 HP or regains at least 10 HP from regeneration."
+									],
+									"Success": [
+										"The target takes {@damage 2d8} {@condition persistent damage|PC1|persistent bleed damage} and is {@condition stunned|PC1|stunned 1}."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Muscular Leap",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The ecorche over-stresses its leg muscles for a massive jump. It loses 20 HP and {@action Leap|PC1|Leaps} up to 120 feet in any direction. If its next action is a {@action Strike|PC1} or Flaying Flurry, it doesn't fall until after that action."
+						]
+					},
+					{
+						"name": "Tear Skin",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"fear",
+							"manipulate",
+							"mental",
+							"visual"
+						],
+						"requirements": "The ecorche is wearing skin",
+						"entries": [
+							"The ecorche destroys the skin it's currently wearing. The ecorche reverts to its true appearance and size, and anyone within 120 feet who witnesses this must succeed at a DC 39 Will save or become {@condition frightened|PC1|frightened 2} ({@condition frightened|PC1|frightened 4} on a critical failure). Regardless of the results of their saving throws, the creatures are temporarily immune for 24 hours."
+						]
+					},
+					{
+						"name": "Wear Skin",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"requirements": "The ecorche is holding the stolen skin of a {@trait Small}, {@trait Medium}, or {@trait Large} creature and isn't already wearing a skin",
+						"entries": [
+							"The ecorche wears the skin as a disguise. It assumes the creature's size, appearance, and voice. Wearing Skin counts as a disguise for the {@action Impersonate|PC1} use of {@skill Deception|PC1}. The ecorche's transformation automatically defeats {@skill Perception|PC1} DCs to determine whether it's a member of the ancestry or creature type into which it transformed, and the ecorche gains a +4 status bonus to its {@skill Deception|PC1} DC to prevent others from seeing through its disguise.",
+							"Wearing a skin gives the ecorche a +2 item bonus to AC and 75 temporary Hit Points. If the ecorche takes more than 50 slashing damage from a single source the skin becomes {@condition broken|PC1}. When {@condition broken|PC1} the skin no longer provides any of these benefits (any remaining temporary HP are immediately lost) but can still be used for Tear Skin."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Rumesgarth",
+			"source": "CotT",
+			"remaster": true,
+			"page": 87,
+			"description": "Variant {@creature runecarved lich|BotD}",
+			"level": 19,
+			"traits": [
+				"unique",
+				"medium",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"chthonian",
+					"diabolic",
+					"draconic",
+					"empyrean",
+					"necril",
+					"sakvroth"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 34
+				},
+				"crafting": {
+					"std": 38,
+					"note": "can craft magic items"
+				},
+				"deception": {
+					"std": 35
+				},
+				"diplomacy": {
+					"std": 35
+				},
+				"intimidation": {
+					"std": 37
+				},
+				"occultism": {
+					"std": 36
+				},
+				"religion": {
+					"std": 34
+				},
+				"stealth": {
+					"std": 33
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 6,
+				"con": 4,
+				"int": 7,
+				"wis": 7,
+				"cha": 10
+			},
+			"items": [
+				"+2 greater striking grievous flail",
+				"wand of shardstorm (7th)",
+				"wand of wall of force"
+			],
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 27
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 36
+					},
+					"abilities": [
+						"+1 status to all saves vs. vitality"
+					]
+				},
+				"hp": [
+					{
+						"hp": 330,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"disarm",
+						"magical",
+						"sweep",
+						"trip"
+					],
+					"name": "flail",
+					"attack": 34,
+					"damage": "{@damage 3d6+13} bludgeoning plus {@damage 3d8} void"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"finesse",
+						"magical"
+					],
+					"name": "hand",
+					"attack": 31,
+					"damage": "{@damage 6d8} void"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Spontaneous",
+					"DC": 45,
+					"attack": 37,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "daze",
+									"source": "PC1"
+								},
+								{
+									"name": "detect magic",
+									"source": "PC1"
+								},
+								{
+									"name": "figment",
+									"source": "PC1"
+								},
+								{
+									"name": "prestidigitation",
+									"source": "PC1"
+								},
+								{
+									"name": "telekinetic hand",
+									"source": "PC1"
+								}
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "alarm",
+									"source": "PC1"
+								},
+								{
+									"name": "illusory disguise",
+									"source": "PC1"
+								},
+								{
+									"name": "phantasmal minion",
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "false vitality",
+									"source": "PC1"
+								},
+								{
+									"name": "see the unseen",
+									"source": "PC1"
+								},
+								{
+									"name": "shatter",
+									"source": "PC1"
+								}
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "hypercognition",
+									"source": "PC1"
+								},
+								{
+									"name": "mind reading",
+									"source": "PC1"
+								},
+								{
+									"name": "slow",
+									"source": "PC1"
+								}
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "confusion",
+									"source": "PC1"
+								},
+								{
+									"name": "fly",
+									"source": "PC1"
+								},
+								{
+									"name": "translocate",
+									"source": "PC1"
+								}
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "false vision",
+									"source": "PC1"
+								},
+								{
+									"name": "scouting eye",
+									"source": "PC1"
+								},
+								{
+									"name": "slither",
+									"source": "PC1"
+								}
+							]
+						},
+						"6": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "spellwrack",
+									"source": "PC1"
+								},
+								{
+									"name": "spirit blast",
+									"source": "PC1"
+								},
+								{
+									"name": "teleport",
+									"source": "PC1"
+								}
+							]
+						},
+						"7": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "duplicate foe",
+									"source": "PC1"
+								},
+								{
+									"name": "energy aegis",
+									"source": "PC1"
+								},
+								{
+									"name": "mask of terror",
+									"source": "PC1"
+								}
+							]
+						},
+						"8": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "disappearance",
+									"source": "PC1"
+								},
+								{
+									"name": "hidden mind",
+									"source": "PC1"
+								},
+								{
+									"name": "quandary",
+									"source": "PC1"
+								}
+							]
+						},
+						"9": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "overwhelming presence",
+									"source": "PC1"
+								},
+								{
+									"name": "phantasmagoria",
+									"source": "PC1"
+								},
+								{
+									"name": "wails of the damned",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Stored Items",
+						"entries": [
+							"Brumesgarth can store items inside his body, as detailed below. Brumesgarth can {@action Interact|PC1} to remove or store an item. If Brumesgarth's body is destroyed, any stored items appear among his bones."
+						]
+					},
+					{
+						"name": "Arm Wands",
+						"traits": [
+							"extradimensional"
+						],
+						"entries": [
+							"Brumesgarth can store up to two wands in the radius and ulna of one of his arms. These wands can be used as if wielded, and they can't be disarmed. If an arm wand is overcharged, Brumesgarth takes 20 damage if the wand is {@condition broken|PC1} or 40 damage if it's destroyed."
+						]
+					},
+					{
+						"name": "Spell Tome",
+						"entries": [
+							"Brumesgarth has a carefully crafted tome, filled with magical power, placed inside his ribcage. This tome can hold up to three spells stolen by the Spellstealing Counter ability."
+						]
+					},
+					{
+						"name": "Stored Weapon",
+						"traits": [
+							"extradimensional"
+						],
+						"entries": [
+							"Brumesgarth can store a single one-haded weapon of 1 Bulk or less, linked to special runes carved into the bones of one of his arms. Brumesgarth has the flail listed in his items. A weapon Brumesgarth wields deals additional damage equal to half the number of dice from his Hand strike."
+						]
+					},
+					{
+						"name": "Spellstealing Counter",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"occult"
+						],
+						"trigger": "A creature Brumesgarth can see Casts a Spell",
+						"requirements": "Brumesgarth has fewer than three spells stored in his spell tome",
+						"entries": [
+							"Brumesgarth expends a spell slot of the same rank as the spell being cast to counter the triggering creature’s casting. Brumesgarth loses his spell slot as if he had cast the triggering spell. Brumesgarth then attempts to counteract the triggering spell (counteract modifier +35). If successful, the spell is countered and added to Brumesgarth’s spell tome."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"60 feet, DC 38"
+						]
+					},
+					{
+						"name": "Rejuvenation",
+						"traits": [
+							"arcane"
+						],
+						"entries": [
+							"When Brumesgarth is destroyed, his soul immediately transfers to his {@item soul cage|BotD}. Brumesgarth can be permanently destroyed only if his {@item soul cage|BotD} is found and destroyed."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Consult the Text",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"Brumesgarth causes the pages of his spell tome to flip open, revealing an {@trait occult} spell of 9th rank or lower of his choice. For the remainder of the day, Brumesgarth can cast that spell as if it were one of his spells known for every rank of its base rank up to 9th."
+						]
+					},
+					{
+						"name": "Drain Spell Tome",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"entries": [
+							"Brumesgarth draws upon the magic stored in his spell tome to cast one of the spells he has countered. This spell is the same rank as the one countered, but it uses Brumesgarth's spell DC and spell attack. Casting a spell in this way removes it from the spell tome."
+						]
+					},
+					{
+						"name": "Steady Spellcasting",
+						"entries": [
+							"If a reaction would disrupt Brumesgarth's spellcasting action, he attempts a DC {@flatDC 15} flat check. On a success, the action isn't disrupted."
+						]
+					},
+					{
+						"name": "Summon Weapon",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"requirements": "Brumesgarth has a stored weapon in his arm and has that hand free",
+						"entries": [
+							"Brumesgarth summons his stored weapon into that arm's hand."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Zombie Desecrators",
+			"source": "CotT",
+			"remaster": true,
+			"page": 85,
+			"level": 17,
+			"traits": [
+				"uncommon",
+				"medium",
+				"mindless",
+				"undead",
+				"unholy",
+				"zombie"
+			],
+			"perception": {
+				"std": 23
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 35
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": -2,
+				"con": 6,
+				"int": -5,
+				"wis": 3,
+				"cha": -2
+			},
+			"items": [
+				"{@item breastplate|PC1}",
+				"+2 greater striking unholy greatsword"
+			],
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 35
+					},
+					"ref": {
+						"std": 23
+					},
+					"will": {
+						"std": 29
+					}
+				},
+				"hp": [
+					{
+						"hp": 395,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"mental",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "slashing",
+						"amount": 15
+					},
+					{
+						"name": "vitality",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"unholy",
+						"versatile <P>"
+					],
+					"name": "greatsword",
+					"attack": 31,
+					"damage": "{@damage 3d12+16} slashing plus {@dice 1d4} spirit"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Reactive Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "action",
+							"source": "PC1"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Trudge",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The zombie desecrator moves mindlessly forward without fear of pain. It {@action Stride|PC1|Strides} twice, ignoring any difficult terrain during its movement. At the end of its movement, the zombie takes {@damage 1d6} bludgeoning damage for each square of difficult terrain it entered while Trudging."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Last Guard",
+			"source": "CotT",
+			"remaster": true,
+			"page": 77,
+			"level": 20,
+			"traits": [
+				"uncommon",
+				"gargantuan",
+				"incorporeal",
+				"spirit",
+				"troop",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 33
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "lifesense ",
+					"range": {
+						"unit": "feet",
+						"number": 60
+					}
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"elven",
+					"necril"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 38
+				},
+				"stealth": {
+					"std": 38
+				},
+				"warfare lore": {
+					"std": 35
+				}
+			},
+			"abilityMods": {
+				"str": -5,
+				"dex": 10,
+				"con": 10,
+				"int": 7,
+				"wis": 7,
+				"cha": 6
+			},
+			"defenses": {
+				"ac": {
+					"std": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 34
+					},
+					"ref": {
+						"std": 36
+					},
+					"will": {
+						"std": 31
+					}
+				},
+				"hp": [
+					{
+						"hp": 330,
+						"notes": [
+							"4 segments"
+						],
+						"abilities": [
+							"rejuvenation",
+							"void healing"
+						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 220,
+						"squares": 3
+					},
+					{
+						"value": 110,
+						"squares": 2
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 20
+					},
+					{
+						"name": "splash damage",
+						"amount": 10
+					}
+				],
+				"resistances": [
+					{
+						"name": "all damage",
+						"amount": 10,
+						"note": "except force, ghost touch, spirit, or vitality; double resistance vs. non-magical"
+					}
+				]
+			},
+			"speed": {
+				"fly": 40,
+				"abilities": [
+					"troop movement"
+				]
+			},
+			"abilities": {
+				"top": [
+					{
+						"name": "Battlefield Bound",
+						"entries": [
+							"Without a call to war, a last guard can stray only a short distance from the location they failed to defend, typically 120 feet. Some last guards are instead bound to a province, kingdom, or nation, rather than a specific location."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Rejuvenation",
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"When a last guard is destroyed, they re-form after {@dice 2d4} days within the location they're bound to, fully healed. A last guard can be permanently destroyed and move on to the afterlife only if they successfully defend the location they're bound to from large-scale attack, or fulfill a call to war."
+						]
+					},
+					{
+						"name": "Troop Defenses"
+					}
+				],
+				"bot": [
+					{
+						"name": "Frightful Battle Cry",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"divine",
+							"emotion",
+							"fear",
+							"mental",
+							"sonic"
+						],
+						"entries": [
+							"The last guards unleash a soul-shaking bellow in unison. All creatures in a 60-foot cone take {@damage 7d6} sonic damage (DC 42 basic Will save). Any creature that fails its save is also {@condition frightened|PC1|frightened 3} (or {@condition frightened|PC1|frightened 4} on a critical failure). If the troop occupies 2 or fewer segments, this area decreases to a 30-foot cone."
+						]
+					},
+					{
+						"name": "Ghostly Blades",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The last guards engage in a coordinated attack with their spectral curved blades against each enemy within 5 feet (DC 40 basic Reflex save). The damage depends on the number of actions.",
+							{
+								"type": "pf2-options",
+								"noColon": true,
+								"items": [
+									{
+										"type": "item",
+										"name": "{@as 1}",
+										"entries": [
+											"{@damage 1d8+2} slashing and {@damage 1d8} void damage"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 2}",
+										"entries": [
+											"{@damage 2d8+14} slashing and {@damage 2d8} void damage"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 3}",
+										"entries": [
+											"{@damage 3d8+14} slashing and {@damage 3d8} void damage"
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Spectral Charge",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The last guards charge, swarming through their foes. The troop {@action Fly|PC1|Flies} up to double its Speed, dealing {@damage 4d8} void damage to each creature whose space it moves through (DC 40 basic Reflex save). Any creature that fails its save is also {@condition drained|PC1|drained 1} (or {@condition drained|PC1|drained 2} on a critical failure). The troop can affect each creature only once in a single use of Spectral Charge."
+						]
+					},
+					{
+						"name": "Troop Movement",
+						"entries": [
+							"Whenever the troop {@action Stride|PC1|Strides}, they first Form Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing segments), then move up to their Speed. This works just like a {@trait Gargantuan} creature moving."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Onturat",
+			"source": "CotT",
+			"remaster": true,
+			"page": 75,
+			"description": "Variant skulltaker",
+			"level": 19,
+			"traits": [
+				"unique",
+				"huge",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 34
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "truesight"
+				}
+			],
+			"languages": {
+				"languages": [
+					"necril"
+				],
+				"notes": [
+					"skeletal lore languages"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 36
+				},
+				"deception": {
+					"std": 38
+				},
+				"intimidation": {
+					"std": 35
+				},
+				"religion": {
+					"std": 32
+				},
+				"skeletal lore": {
+					"std": 32
+				},
+				"stealth": {
+					"std": 34
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 6,
+				"con": 6,
+				"int": 7,
+				"wis": 8,
+				"cha": 7
+			},
+			"defenses": {
+				"ac": {
+					"std": 44
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 35
+					},
+					"will": {
+						"std": 37
+					},
+					"abilities": [
+						"+1 status to all saves vs. vitality"
+					]
+				},
+				"hp": [
+					{
+						"hp": 335,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"cold",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "piercing",
+						"amount": 15
+					},
+					{
+						"name": "slashing",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly <2d12>",
+						"magical",
+						"reach <10 feet>"
+					],
+					"name": "jaws",
+					"attack": 37,
+					"damage": "{@damage 3d10+16} piercing plus {@damage 3d6} void and void drain"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"deadly <2d12>",
+						"magical",
+						"reach <15 feet>"
+					],
+					"name": "claw",
+					"attack": 37,
+					"damage": "{@damage 3d6+16} slashing plus {@damage 3d6} void and void drain"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"magical",
+						"thrown <100 feet>"
+					],
+					"name": "bone javelin",
+					"attack": 35,
+					"damage": "{@damage 3d8+8} piercing plus {@damage 3d6} void"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 42,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "translocate",
+									"amount": 2,
+									"source": "PC1"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "desiccate",
+									"amount": 2,
+									"source": "PC1"
+								},
+								{
+									"name": "execute",
+									"amount": 2,
+									"source": "PC1"
+								},
+								{
+									"name": "punishing winds",
+									"amount": 2,
+									"source": "PC1"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "metamorphosis",
+									"source": "PC1"
+								}
+							]
+						},
+						"constant": {
+							"6": {
+								"spells": [
+									{
+										"name": "truesight",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 42,
+					"levelled": {
+						"7": [
+							{
+								"name": "collective memories",
+								"source": "PC1",
+								"notes": [
+									"see also Skeletal Lore"
+								]
+							}
+						]
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Skeletal Lore",
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"Onturat taps into the memories of the creatures whose bones make up his body. This gives him the {@skill Lore|PC1|Skeletal Lore} skill, which he can use to {@action Recall Knowledge|PC1} of any kind. In addition, he can speak and understand all the languages known by the creatures whose bones make up his body (typically {@language Common|PC1} and the regional language of the skulltaker's home region). Onturat can use {@skill Lore|PC1|Skeletal Lore} as the primary skill check for the {@ritual collective memories|PC1} ritual, and he can cast {@ritual collective memories|PC1} without secondary casters."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Shard Storm",
+						"traits": [
+							"air",
+							"aura",
+							"divine"
+						],
+						"entries": [
+							"10 feet. A cloud of bone shards surrounds the skulltaker. When a creature moves into the emanation or begins its turn there, shard storm deals {@damage 4d6} slashing damage and {@damage 4d6} void damage to the creature, with a DC 42 basic Reflex save. If the creature has resistance or immunity to void damage, or an effect that protects it against {@trait death} effects, or an effect that protects it against the {@condition doomed|PC1} or {@condition drained|PC1} condition, the creature must first succeed at a DC 42 Will save or have all such benefits suppressed for 1 minute."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Bonetaker",
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"Whenever a creature dies within 60 feet of a skulltaker, the skulltaker draws a portion of the creature's bones into its shard storm. The creature must succeed at a DC 42 Will save or rise as a skeletal champion (Pathfinder Monster Core 312) in {@dice 1d4} rounds. These skeletal champions are {@condition controlled|PC1} by the skulltaker."
+						]
+					},
+					{
+						"name": "Void Drain",
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"When a skulltaker hits with a melee {@action Strike|PC1}, the target must succeed at a DC 42 Fortitude save or become {@condition drained|PC1|drained 2} and {@condition doomed|PC1|doomed 1}."
+						]
+					},
+					{
+						"name": "Splintered Ground",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The skulltaker causes splintered bones to erupt from all solid surfaces in a 100-foot emanation, except for surfaces of worked stone. A creature moving through the bones takes 10 piercing damage and 10 void damage for every 5 feet of movement. The first time each round a creature takes piercing damage from these splintered bones, it must succeed at a DC 42 Reflex save or take a \u201310-foot circumstance penalty to all Speeds for 10 minutes, or a \u201315-foot circumstance penalty for 24 hours on a critical failure. The bones remain in place until the skulltaker uses this action again or the bones are manually removed, which takes 10 minutes for each 5-foot square."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Oceanius and Glory Arcely",
+			"source": "CotT",
+			"remaster": true,
+			"page": 73,
+			"description": "Male angel guardians",
+			"level": 18,
+			"traits": [
+				"unique",
+				"large",
+				"angel",
+				"celestial",
+				"holy"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"diabolic",
+					"draconic",
+					"empyrean"
+				],
+				"abilities": [
+					"truespeech"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 36
+				},
+				"intimidation": {
+					"std": 34
+				},
+				"religion": {
+					"std": 36
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 4,
+				"con": 6,
+				"int": 5,
+				"wis": 6,
+				"cha": 7
+			},
+			"items": [
+				"+2 greater striking greatsword"
+			],
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 32
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 360,
+						"abilities": [
+							"regeneration 20 (deactivated by {@trait evil})"
+						]
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "unholy",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"holy",
+						"magical",
+						"versatile <P>"
+					],
+					"name": "holy greatsword",
+					"attack": 36,
+					"damage": "{@damage 3d12+19} slashing plus {@dice 1d4} spirit (or {@dice 2d4} spirit vs. an {@trait unholy} target)"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 41,
+					"attack": 33,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "invisibility",
+									"amount": "at will",
+									"notes": [
+										"self only"
+									],
+									"source": "PC1"
+								},
+								{
+									"name": "sure footing",
+									"source": "PC1"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "breath of life",
+									"source": "PC1"
+								},
+								{
+									"name": "cleanse affliction",
+									"amount": 3,
+									"source": "PC1"
+								},
+								{
+									"name": "unfettered movement",
+									"source": "PC1"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "blessed boundary",
+									"source": "PC1"
+								},
+								{
+									"name": "dispel magic",
+									"amount": "at will",
+									"source": "PC1"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "charm",
+									"source": "PC1"
+								},
+								{
+									"name": "clear mind",
+									"amount": "at will",
+									"source": "PC1"
+								},
+								{
+									"name": "divine decree",
+									"source": "PC1"
+								},
+								{
+									"name": "interplanar teleport",
+									"source": "PC1"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "dispel magic",
+									"source": "PC1"
+								},
+								{
+									"name": "divine wrath",
+									"source": "PC1"
+								},
+								{
+									"name": "earthquake",
+									"source": "PC1"
+								},
+								{
+									"name": "heal",
+									"source": "PC1"
+								},
+								{
+									"name": "sunburst",
+									"source": "PC1"
+								}
+							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "truespeech",
+										"source": "PC1"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 41,
+					"rituals": [
+						{
+							"name": "call spirit",
+							"source": "PC1"
+						},
+						{
+							"name": "resurrect",
+							"source": "PC1"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Aura of Righteousness",
+						"traits": [
+							"aura",
+							"divine",
+							"holy"
+						],
+						"entries": [
+							"20 feet. Allies in the angel's aura gain a +2 status bonus to AC against {@trait unholy} creatures and a +2 status bonus to damage rolls against {@trait unholy} creatures. The area in the aura is difficult terrain for {@trait unholy} creatures."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"The angel takes on the appearance of any {@trait Small} or {@trait Medium} humanoid. This doesn't change their Speed or {@action Strike|PC1|Strikes}."
+						]
+					},
+					{
+						"name": "Holy Armaments",
+						"traits": [
+							"divine",
+							"holy"
+						],
+						"entries": [
+							"Any weapon gains the effect of a holy property rune while the angel wields it."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Divine Wardens of Arazni",
+			"source": "CotT",
+			"remaster": true,
+			"page": 73,
+			"level": 16,
+			"traits": [
+				"uncommon",
+				"medium",
+				"construct",
+				"divine",
+				"mindless"
+			],
+			"perception": {
+				"std": 27
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"intimidation": {
+					"std": 32
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 9,
+				"con": 6,
+				"int": -5,
+				"wis": 4,
+				"cha": -5
+			},
+			"items": [
+				"{@item rapier|PC1}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 37
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 28
+					},
+					"will": {
+						"std": 33
+					}
+				},
+				"hp": [
+					{
+						"hp": 290
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"mental",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious",
+					"vitality",
+					"void"
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly <2d8>",
+						"disarm",
+						"finesse",
+						"magical"
+					],
+					"name": "greater striking rapier",
+					"attack": 33,
+					"damage": "{@damage 3d6+19} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 37,
+					"attack": 29,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "divine lance",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"focus": true,
+					"name": "Cleric Domain Spells",
+					"fp": 3,
+					"DC": 37,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "savor the sting",
+									"source": "pc1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Divine Destruction",
+						"traits": [
+							"divine",
+							"spirit"
+						],
+						"entries": [
+							"When the divine warden is reduced to 0 HP, it erupts with divine energy in a 30-foot emanation, dealing {@damage 16d6} spirit damage. Each creature in the area must attempt a DC 37 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature takes half damage."
+									],
+									"Success": [
+										"The creature takes full damage."
+									],
+									"Failure": [
+										"The creature takes full damage and becomes temporarily cursed by the patron deity. The {@trait cursed} creature is {@condition enfeebled|PC1|enfeebled 1} and {@condition stupefied|PC1|stupefied 1} for 1 day; this is a {@trait curse} effect that uses the Will save DC as the counteract DC."
+									],
+									"Critical Failure": [
+										"As failure, except the {@trait cursed} creature is {@condition enfeebled|PC1|enfeebled 2} and {@condition stupefied|PC1|stupefied 2}."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "God-Bound",
+						"entries": [
+							"The divine warden is bound to a specific patron deity upon its creation. The warden can't take {@condition hostile} actions against a creature that openly wears or displays a symbol of its patron deity unless that creature uses a {@condition hostile} action against the warden first. The warden gains an initial domain spell chosen from its deity's list of domains. The divine warden has 3 Focus Points."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Faithful Weapon",
+						"entries": [
+							"While the divine warden wields the favored weapon of its patron deity, that weapon gains the effect of a greater striking rune."
+						]
+					},
+					{
+						"name": "Instrument of Faith",
+						"entries": [
+							"The divine warden is a beacon for its deity's faith. A cleric of the divine warden's patron deity can channel a {@spell heal|PC1} spell through a divine warden they can see within 60 feet. The cleric determines any targets or area for the spell as if they were standing in the divine warden's space."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Divine Warden of Iomedae",
+			"source": "CotT",
+			"remaster": true,
+			"page": 71,
+			"description": "Variant {@creature divine warden|B3}",
+			"level": 16,
+			"traits": [
+				"uncommon",
+				"huge",
+				"construct",
+				"divine",
+				"mindless"
+			],
+			"perception": {
+				"std": 27
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"intimidation": {
+					"std": 32
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 9,
+				"con": 6,
+				"int": -5,
+				"wis": 4,
+				"cha": -5
+			},
+			"items": [
+				"{@item longsword|PC1}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 37
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 28
+					},
+					"will": {
+						"std": 33
+					}
+				},
+				"hp": [
+					{
+						"hp": 290
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"mental",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious",
+					"vitality",
+					"void"
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"versatile <P>"
+					],
+					"name": "greater striking longsword",
+					"attack": 33,
+					"damage": "{@damage 3d8+19} slashing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 37,
+					"attack": 29,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "divine lance",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"focus": true,
+					"name": "Cleric Domain Spells",
+					"fp": 3,
+					"DC": 37,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "weapon surge",
+									"source": "pc1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Divine Destruction",
+						"traits": [
+							"divine",
+							"spirit"
+						],
+						"entries": [
+							"When the divine warden is reduced to 0 HP, it erupts with divine energy in a 30-foot emanation, dealing {@damage 16d6} spirit damage. Each creature in the area must attempt a DC 37 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature takes half damage."
+									],
+									"Success": [
+										"The creature takes full damage."
+									],
+									"Failure": [
+										"The creature takes full damage and becomes temporarily cursed by the patron deity. The {@trait cursed} creature is {@condition enfeebled|PC1|enfeebled 1} and {@condition stupefied|PC1|stupefied 1} for 1 day; this is a {@trait curse} effect that uses the Will save DC as the counteract DC."
+									],
+									"Critical Failure": [
+										"As failure, except the {@trait cursed} creature is {@condition enfeebled|PC1|enfeebled 2} and {@condition stupefied|PC1|stupefied 2}."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "God-Bound",
+						"entries": [
+							"The divine warden is bound to a specific patron deity upon its creation. The warden can't take hostile actions against a creature that openly wears or displays a symbol of its patron deity unless that creature uses a hostile action against the warden first. The warden gains an initial domain spell chosen from its deity's list of domains. The divine warden has 3 Focus Points."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Faithful Weapon",
+						"entries": [
+							"While the divine warden wields the favored weapon of its patron deity, that weapon gains the effect of a greater striking rune."
+						]
+					},
+					{
+						"name": "Instrument of Faith",
+						"entries": [
+							"The divine warden is a beacon for its deity's faith. A cleric of the divine warden's patron deity can channel a {@spell heal|PC1} spell through a divine warden they can see within 60 feet. The cleric determines any targets or area for the spell as if they were standing in the divine warden's space."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Wyrmwraith",
+			"source": "CotT",
+			"remaster": true,
+			"page": 66,
+			"level": 17,
+			"traits": [
+				"rare",
+				"gargantuan",
+				"dragon",
+				"incorporeal",
+				"undead",
+				"unholy",
+				"wraith"
+			],
+			"perception": {
+				"std": 29
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "lifesense",
+					"range": 120
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"necril"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 30
+				},
+				"arcana": {
+					"std": 30
+				},
+				"intimidation": {
+					"std": 33
+				},
+				"religion": {
+					"std": 33
+				},
+				"stealth": {
+					"std": 33
+				}
+			},
+			"abilityMods": {
+				"str": -5,
+				"dex": 9,
+				"con": 0,
+				"int": 7,
+				"wis": 7,
+				"cha": 9
+			},
+			"defenses": {
+				"ac": {
+					"std": 39
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 29
+					},
+					"ref": {
+						"std": 32
+					},
+					"will": {
+						"std": 32
+					}
+				},
+				"hp": [
+					{
+						"hp": 280,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "all",
+						"amount": 20,
+						"note": "except force, ghost touch, spirit, or vitality; double resistance vs. non-magical"
+					}
+				]
+			},
+			"speed": {
+				"walk": 50,
+				"fly": 80
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach 20 feet"
+					],
+					"name": "spectral jaws",
+					"attack": 34,
+					"damage": "{@damage 3d12+17} void plus drain life"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach 15 feet"
+					],
+					"name": "spectral claw",
+					"attack": 34,
+					"damage": "{@damage 3d8+17} void plus divine dispelling and drain life"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 35,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "bind undead",
+									"amount": "at will",
+									"source": "PC1"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "charm",
+									"amount": 3,
+									"notes": [
+										"undead targets only"
+									],
+									"source": "PC1"
+								},
+								{
+									"name": "darkness",
+									"source": "PC1"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "vampiric exsanguination",
+									"source": "PC1"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "divine wrath",
+									"amount": 3,
+									"source": "PC1"
+								},
+								{
+									"name": "execute",
+									"source": "PC1"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "charm",
+									"notes": [
+										"undead targets only"
+									],
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"90 feet, DC 33"
+						]
+					},
+					{
+						"name": "Sunlight Powerlessness",
+						"entries": [
+							"A wyrmwraith in sunlight is {@condition clumsy|PC1|clumsy 2} and {@condition stunned|PC1|stunned 2}."
+						]
+					},
+					{
+						"name": "Vitality Transfer",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divine"
+						],
+						"trigger": "The wyrmwraith succeeds at a saving throw to resist vitality damage but still takes damage",
+						"entries": [
+							"The wyrmwraith transfers all vitality damage from the effect to a single {@trait undead} creature of their choice within 120 feet that they control or that's {@condition friendly|PC1} or {@condition helpful|PC1} to them."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Divine Dispelling",
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"A wyrmwraith's claws rend divine magic. Whenever a wyrmwraith hits a creature with a spectral claw {@action Strike|PC1}, the wyrmwraith can attempt a {@skill Religion|PC1} check to counteract an ongoing {@trait divine|PC1} spell effect on the creature."
+						]
+					},
+					{
+						"name": "Draconic Frenzy",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The wyrmwraith makes two spectral claw {@action Strike|PC1|Strikes} and one spectral jaws {@action Strike|PC1} in any order."
+						]
+					},
+					{
+						"name": "Drain Life",
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"When a wyrmwraith deals damage to a living creature with a spectral jaws or spectral claw {@action Strike|PC1}, the wyrmwraith gains 18 temporary Hit Points for 1 minute, and the creature must succeed at a DC 38 Fortitude save or become {@condition drained|PC1|drained 2}. Further damage dealt by the wyrmwraith's spectral jaws or spectral claw Strikes increase the value of the {@condition drained|PC1} condition by 2 on a failed save, to a maximum of {@condition drained|PC1|drained 4}."
+						]
+					},
+					{
+						"name": "Ectoplasmic Form",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"A wyrmwraith can push through the ectoplasmic veil to temporarily assume a physical form made of ectoplasm. The wyrmwraith loses the {@trait incorporeal} trait for {@dice 1d4} rounds, though they can return to their incorporeal form as a free action before then. Once this ability ends, the wyrmwraith can't use this ability again for {@dice 1d4} rounds. While in their ectoplasmic form, the wyrmwraith's AC increases to 43 and they gain 100 temporary Hit Points. They lose their immunity to precision damage and all of their resistances. Their melee {@action Strike|PC1|Strikes} deal slashing and piercing damage, respectively, instead of void damage."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Phase Lurch",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The wyrmwraith is in their ectoplasmic form",
+						"entries": [
+							"As the {@action Stride|PC1} action, but the wyrmwraith can pass through walls or material objects as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is difficult terrain."
+						]
+					},
+					{
+						"name": "Void Breath",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"void"
+						],
+						"entries": [
+							"The wyrmwraith unleashes a burst of void energy that deals {@damage 18d6} void damage to all creatures in a 60-foot cone (DC 38 basic Reflex save). They can't use Void Breath again for {@dice 1d4} rounds."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Ossuary Warden",
+			"source": "CotT",
+			"remaster": true,
+			"page": 67,
+			"level": 19,
+			"traits": [
+				"unique",
+				"huge",
+				"mindless",
+				"skeleton",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "wavesense",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 120
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 37
+				},
+				"athletics": {
+					"std": 40
+				},
+				"stealth": {
+					"std": 33
+				}
+			},
+			"abilityMods": {
+				"str": 10,
+				"dex": 6,
+				"con": 6,
+				"int": -5,
+				"wis": 5,
+				"cha": -1
+			},
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 34
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 32
+					}
+				},
+				"hp": [
+					{
+						"hp": 265,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"mental",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 20
+					},
+					{
+						"name": "electricity",
+						"amount": 20
+					},
+					{
+						"name": "fire",
+						"amount": 20
+					},
+					{
+						"name": "piercing",
+						"amount": 20
+					},
+					{
+						"name": "slashing",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly 3d12",
+						"reach 15 feet"
+					],
+					"name": "jaws",
+					"attack": 36,
+					"damage": "{@damage 4d12+28} piercing plus Grab"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <20 feet>"
+					],
+					"name": "tail",
+					"attack": 36,
+					"damage": "{@damage 4d10+20} bludgeoning"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Breach",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The ossuary warden Leaps and makes a {@action Strike|PC1} at any point along its movement."
+						]
+					},
+					{
+						"name": "River Jump",
+						"entries": [
+							"If the ossuary warden is in water, it can {@action Leap|PC1} vertically 60 feet and horizontally 60 feet, moving any creature it has {@condition Grabbed|PC1} along with it. The warden doesn't take damage from falls into water."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Chernasardo Ranger",
+			"source": "CotT",
+			"remaster": true,
+			"page": 44,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"medium",
+				"humanoid"
+			],
+			"perception": {
+				"std": 18
+			},
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 13
+				},
+				"athletics": {
+					"std": 12
+				},
+				"forest lore": {
+					"std": 13
+				},
+				"medicine": {
+					"std": 15
+				},
+				"nature": {
+					"std": 16
+				},
+				"stealth": {
+					"std": 17
+				},
+				"survival": {
+					"std": 17
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 6,
+				"con": 2,
+				"int": 3,
+				"wis": 4,
+				"cha": 2
+			},
+			"items": [
+				"dagger",
+				"shortbow (20 arrows)",
+				"+1 shortsword",
+				"specialist snare kit"
+			],
+			"defenses": {
+				"ac": {
+					"std": 25
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 18
+					},
+					"will": {
+						"std": 13
+					}
+				},
+				"hp": [
+					{
+						"hp": 115
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile <S>"
+					],
+					"name": "shortsword",
+					"attack": 19,
+					"damage": "{@damage 1d6+10} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 18,
+					"damage": "{@damage 1d4+9} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly <d8>",
+						"propulsive",
+						"range increment <60 feet>"
+					],
+					"name": "shortbow",
+					"attack": 18,
+					"damage": "{@damage 1d6+9} piercing"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Double Shot",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The ranger makes two shortbow {@action Strike|PC1|Strikes} targeting two different creatures within the shortbow's first range increment. Both {@action Strike|PC1|Strikes} use the ranger's current multiple attack penalty, but each strike takes a \u22122 penalty."
+						]
+					},
+					{
+						"name": "Quick Draw",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The ranger draws a weapon, then {@action Strike|PC1|Strikes} with that weapon."
+						],
+						"generic": {
+							"tag": "feat",
+							"source": "PC1",
+							"add_hash": "Ranger"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Knight Reclaimant",
+			"source": "CotT",
+			"remaster": true,
+			"page": 44,
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"medium",
+				"humanoid"
+			],
+			"perception": {
+				"std": 16
+			},
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 12
+				},
+				"gravelands lore": {
+					"std": 16
+				},
+				"nature": {
+					"std": 12
+				},
+				"medicine": {
+					"std": 12
+				},
+				"religion": {
+					"std": 14
+				},
+				"stealth": {
+					"std": 14
+				},
+				"survival": {
+					"std": 14
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 3,
+				"con": 4,
+				"int": 2,
+				"wis": 4,
+				"cha": 3
+			},
+			"items": [
+				"+1 striking bastard sword",
+				"half plate",
+				"steel shield (Hardness 5, 20 HP, BT 10)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 27
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 19
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 16
+					}
+				},
+				"hp": [
+					{
+						"hp": 135
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"two-hand <2d12>"
+					],
+					"name": "bastard sword",
+					"attack": 20,
+					"damage": "{@damage 2d8+10} slashing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Deep Resilience",
+						"entries": [
+							"The knight reclaimant's convictions steel their mind against outside influences and help their allies remain strong. The knight and their allies within 30 feet have a +1 circumstance bonus to saves against {@trait mental} effects, which increases to +2 against {@trait mental} effects originating from undead."
+						]
+					},
+					{
+						"name": "Shield Block",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Sudden Charge",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "turn"
+						},
+						"entries": [
+							"The knight {@action Stride|PC1|Strides} twice. If they end their movement within melee reach of at least one enemy, the knight can make a melee {@action Strike|PC1} against that enemy."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Priest of Iomedae",
+			"source": "CotT",
+			"remaster": true,
+			"page": 45,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"medium",
+				"humanoid"
+			],
+			"perception": {
+				"std": 15
+			},
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"diplomacy": {
+					"std": 13
+				},
+				"intimidation": {
+					"std": 15
+				},
+				"iomedae lore": {
+					"std": 17
+				},
+				"medicine": {
+					"std": 16
+				},
+				"religion": {
+					"std": 17
+				},
+				"society": {
+					"std": 12
+				},
+				"survival": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 2,
+				"con": 3,
+				"int": 2,
+				"wis": 6,
+				"cha": 3
+			},
+			"items": [
+				"dagger",
+				"+1 longsword",
+				"religious symbol of {@deity Iomedae|PC1}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 18
+					}
+				},
+				"hp": [
+					{
+						"hp": 110
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"versatile <P>"
+					],
+					"name": "longsword",
+					"attack": 16,
+					"damage": "{@damage 1d8+9} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 15,
+					"damage": "{@damage 1d4+8} piercing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"thrown <10 feet>",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 15,
+					"damage": "{@damage 1d4+8} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Prepared",
+					"DC": 25,
+					"attack": 17,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "detect magic",
+									"source": "PC1"
+								},
+								{
+									"name": "divine lance",
+									"source": "PC1"
+								},
+								{
+									"name": "guidance",
+									"source": "PC1"
+								},
+								{
+									"name": "light",
+									"source": "PC1"
+								},
+								{
+									"name": "shield",
+									"source": "PC1"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "alarm",
+									"source": "PC1"
+								},
+								{
+									"name": "infuse vitality",
+									"source": "PC1"
+								},
+								{
+									"name": "sure strike",
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "enlarge",
+									"source": "PC1"
+								},
+								{
+									"name": "dispel magic",
+									"source": "PC1"
+								},
+								{
+									"name": "see the unseen",
+									"source": "PC1"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "crisis of faith",
+									"source": "PC1"
+								},
+								{
+									"name": "heal",
+									"amount": 3,
+									"source": "PC1"
+								},
+								{
+									"name": "heroism",
+									"source": "PC1"
+								},
+								{
+									"name": "holy light",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"focus": true,
+					"name": "Cleric Domain Spells",
+					"fp": 1,
+					"DC": 25,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "weapon surge",
+									"source": "pc1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 25,
+					"rituals": [
+						{
+							"name": "consecrate",
+							"source": "PC1"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Healing Hands",
+						"entries": [
+							"When the priest casts heal, they roll {@dice d10|d10s} instead of {@dice d8|d8s}."
+						],
+						"generic": {
+							"tag": "feat"
+						}
+					},
+					{
+						"name": "Steady Spellcasting",
+						"entries": [
+							"If another creature's reaction would disrupt the priest's spellcasting action, the priest attempts a DC {@flatDC 15} flat check. If the priest succeeds, their action isn't disrupted."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Omelia",
+			"source": "CotT",
+			"remaster": true,
+			"page": 36,
+			"description": "Variant female ghoul hunter",
+			"level": 5,
+			"traits": [
+				"unique",
+				"medium",
+				"ghoul",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 13
+				},
+				"athletics": {
+					"std": 11
+				},
+				"gravelands lore": {
+					"std": 9
+				},
+				"intimidation": {
+					"std": 9
+				},
+				"stealth": {
+					"std": 13
+				},
+				"survival": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 4,
+				"con": 3,
+				"int": 2,
+				"wis": 4,
+				"cha": 2
+			},
+			"items": [
+				"+1 composite longbow",
+				"leather armor"
+			],
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 75,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"burrow": 5
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"finesse"
+					],
+					"name": "jaws",
+					"attack": 14,
+					"damage": "{@damage 1d8+4} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"finesse"
+					],
+					"name": "claws",
+					"attack": 14,
+					"damage": "{@damage 1d6+4} slashing plus"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly <d10>",
+						"magical",
+						"propulsive",
+						"range increment <100 feet>",
+						"reload <0>",
+						"volley <30 feet>"
+					],
+					"name": "composite longbow",
+					"attack": 15,
+					"damage": "{@damage 1d8+4} piercing"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Stench",
+						"traits": [
+							"aura",
+							"olfactory"
+						],
+						"entries": [
+							"10 feet, DC 22"
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Grab"
+					},
+					{
+						"name": "Consume Flesh",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"entries": [
+							"{@dice 3d6} HP"
+						]
+					},
+					{
+						"name": "Ghoul Whispers",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"linguistic",
+							"occult"
+						],
+						"entries": [
+							"DC 22"
+						]
+					},
+					{
+						"name": "Grave Knowledge",
+						"traits": [
+							"occult"
+						],
+						"entries": [
+							"+13 skill modifier"
+						]
+					},
+					{
+						"name": "Hunt Prey",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"Omelia designates a single creature she can see and hear, or one she's {@action Track|PC1|Tracking}, as her prey. She gains a +2 circumstance bonus to {@skill Perception|PC1} checks to {@action Seek|PC1} the prey and to {@skill Survival|PC1} checks to {@action Track|PC1} the prey. The first time Omelia hits her designated prey in a round, she deals an additional {@damage 1d8} precision damage. These effects last until she uses Hunt Prey again."
+						],
+						"generic": {
+							"tag": "action",
+							"source": "PC1"
+						}
+					},
+					{
+						"name": "Swift Leap",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"move"
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Elite Yeast Ooze",
+			"source": "CotT",
+			"remaster": true,
+			"page": 29,
+			"description": "Variant {@creature yeast ooze|OoA1} (Pathfinder Adventure Path #178: Punks in a Powderkeg 88, Pathfinder Monster Core 6)",
+			"level": 3,
+			"traits": [
+				"rare",
+				"large",
+				"mindless",
+				"ooze"
+			],
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "motion sense",
+					"type": "precise",
+					"unit": "feet",
+					"number": 60
+				},
+				{
+					"name": "no vision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 9
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": -2,
+				"con": 2,
+				"int": -5,
+				"wis": -1,
+				"cha": -5
+			},
+			"defenses": {
+				"ac": {
+					"std": 14
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 5
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 75
+					}
+				],
+				"immunities": [
+					"acid",
+					"critical hits",
+					"mental",
+					"precision",
+					"unconscious",
+					"visual"
+				],
+				"weaknesses": [
+					{
+						"name": "bludgeoning",
+						"amount": 5
+					},
+					{
+						"name": "cold",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "piercing",
+						"amount": 5
+					},
+					{
+						"name": "slashing",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "pseudopod",
+					"attack": 11,
+					"damage": "{@damage 1d8+5} bludgeoning plus monstrous yeast"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Motion Sense",
+						"entries": [
+							"A yeast ooze can sense nearby creatures through vibration and air or water movement."
+						]
+					}
+				],
+				"bot": [
+					{
+						"type": "affliction",
+						"name": "Monstrous Yeast",
+						"traits": [
+							"disease"
+						],
+						"entries": [
+							"Whenever a creature infected with monstrous yeast takes cold damage, they can make a new saving throw with a +2 circumstance bonus. Failure doesn't advance the disease;"
+						],
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"onset": "1 round",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition off-guard|PC1}",
+								"duration": "1 hour"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition enfeebled|PC1|enfeebled 1} and {@condition off-guard|PC1}",
+								"duration": "1 hour"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition enfeebled|PC1|enfeebled 2} and {@condition off-guard|PC1}",
+								"duration": "1 day"
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Zombie Bear",
+			"source": "CotT",
+			"remaster": true,
+			"page": 29,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"large",
+				"mindless",
+				"undead",
+				"unholy",
+				"zombie"
+			],
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 0,
+				"con": 3,
+				"int": -5,
+				"wis": 1,
+				"cha": -3
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 8
+					},
+					"ref": {
+						"std": 5
+					},
+					"will": {
+						"std": 6
+					}
+				},
+				"hp": [
+					{
+						"hp": 75,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"mental",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "slashing",
+						"amount": 5
+					},
+					{
+						"name": "vitality",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 12,
+					"damage": "{@damage 1d10+7} piercing plus Grab"
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 12,
+					"damage": "{@damage 1d12+7} piercing"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Slow",
+						"entries": [
+							"A zombie bear is permanently {@condition slowed|PC1|slowed 1} and can't use reactions."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Murderous Mauler",
+						"entries": [
+							"The zombie bear gains a +2 circumstance bonus to damage rolls against creatures it has {@condition grabbed|PC1}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Undead Murder",
+			"source": "CotT",
+			"remaster": true,
+			"page": 32,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"large",
+				"skeleton",
+				"swarm",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 30
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 10
+				},
+				"stealth": {
+					"std": 7
+				},
+				"thievery": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 3,
+				"con": 0,
+				"int": -4,
+				"wis": 4,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 7
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 32,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poisoned",
+					"precision",
+					"swarm mind",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 5
+					},
+					{
+						"name": "splash damage",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 3
+					},
+					{
+						"name": "electricity",
+						"amount": 3
+					},
+					{
+						"name": "fire",
+						"amount": 3
+					},
+					{
+						"name": "piercing",
+						"amount": 3
+					},
+					{
+						"name": "slashing",
+						"amount": 3
+					}
+				]
+			},
+			"speed": {
+				"walk": 5,
+				"fly": 35
+			},
+			"abilities": {
+				"mid": [
+					{
+						"name": "Mindless Grudge",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature deals damage to the murder",
+						"entries": [
+							"The murder begrudges the triggering creature. The murder's swarming hunger deals 3 extra damage to that creature. The effect ends if the murder begrudges a different creature."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Swarming Hunger",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The murder's beaks and talons deal {@damage 2d6} piercing damage to each enemy in the swarm's space (DC 20 basic Reflex save). A creature that critically fails its save is {@condition blinded|PC1} for {@dice 1d4} rounds as the murder focuses its attacks on clawing out the creature's eyes."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Skeletal Rat Swarm",
+			"source": "CotT",
+			"remaster": true,
+			"page": 26,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"large",
+				"mindless",
+				"skeleton",
+				"swarm",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 8
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 30
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 8
+				},
+				"athletics": {
+					"std": 7
+				},
+				"stealth": {
+					"std": 8
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 4,
+				"con": 2,
+				"int": -5,
+				"wis": 1,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 16
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 5
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 40,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"grabbed",
+					"mental",
+					"paralyzed",
+					"poison",
+					"precision",
+					"prone",
+					"restrained",
+					"swarm mind",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 4
+					},
+					{
+						"name": "splash damage",
+						"amount": 4
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 5
+					},
+					{
+						"name": "electricity",
+						"amount": 5
+					},
+					{
+						"name": "fire",
+						"amount": 5
+					},
+					{
+						"name": "piercing",
+						"amount": 5
+					},
+					{
+						"name": "slashing",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 10
+			},
+			"abilities": {
+				"bot": [
+					{
+						"type": "affliction",
+						"name": "Ravenous Sickness",
+						"traits": [
+							"disease",
+							"unholy"
+						],
+						"notes": [
+							"An infected creature can't heal damage it takes from this disease until the disease is cured;"
+						],
+						"DC": 20,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} void damage and the target requires twice as much food for a creature of their size to avoid starvation",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 1d6} void damage and the target requires three times as much food for a creature of their size to avoid starvation",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@damage 1d6} void damage and the target takes 1 void damage each hour until it eats a full meal",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "dead, rising as a skeleton immediately after it devours the flesh off its own bones."
+							}
+						]
+					},
+					{
+						"name": "Swarming Bites",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Each enemy in the swarm's space takes {@damage 3d4} piercing damage (DC 18 basic Fortitude save). A creature that fails this save is exposed to ravenous sickness."
+						]
+					}
+				]
+			}
+		}
+	]
+}

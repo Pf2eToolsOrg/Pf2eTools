@@ -1,6 +1,1067 @@
 {
 	"hazard": [
 		{
+			"name": "Twist of Fate",
+			"source": "CotT",
+			"remaster": true,
+			"page": 98,
+			"level": 22,
+			"traits": [
+				"unique",
+				"complex",
+				"divine",
+				"magical"
+			],
+			"stealth": {
+				"bonus": 25,
+				"minProf": "master",
+				"notes": "to notice the buildup of divine energy and anticipate its discharge."
+			},
+			"description": [
+				"Seldeg's ritual nears its conclusion, causing magical energy to arc erratically between the ritual circles."
+			],
+			"disable": {
+				"entries": [
+					"DC 44 {@skill Lore|PC1|Arazni Lore} or {@skill Lore|PC1|Iomedae Lore} to recount a tale from history that grounds that deity in the current reality, DC 50 {@skill Crafting|PC1} (legendary) to create a device to siphon energy from the ritual circle, or DC 46 {@skill Religion|PC1} (legendary) to discharge the escalating divine energy; six successes (three successes per circle) are required to disarm the hazard"
+				]
+			},
+			"actions": [
+				{
+					"name": "Reorder Reality",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature other than Seldeg enters the area contained by the ritual circles",
+					"entries": [
+						"Arcs of divine energy travel between the two circles. Each creature within the circles takes {@damage 4d10+26} spirit damage (DC 45 basic Fortitude save). If one of the ritual circles has been disabled, the hazard instead affects all creature in the room, but each creature gains a +2 circumstance bonus to their save. The hazard rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action; {@trait divine}) The divine energy gathered by the ritual spikes. One of the eleven stained-glass windows (each depicting one of her Eleven Acts) transforms to feature {@deity Arazni|DM} instead. Any creature that can see the window change must attempt a DC 50 Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected and is immune to this effect for 10 minutes."
+						],
+						"Success": [
+							"The creature is unaffected."
+						],
+						"Failure": [
+							"The creature takes {@damage 3d12+20} mental damage."
+						],
+						"Critical Failure": [
+							"The creature takes {@damage 6d12+40} mental damage."
+						]
+					}
+				},
+				"If the creatures' next d20 roll is a critical success, they earn a critical failure instead. This is a {@trait misfortune} effect.",
+				"If all 11 windows transform, Seldeg's ritual finishes ahead of schedule. The stained-glass windows shatter, dealing {@damage 8d10+52} piercing damage (DC 50 Reflex save) to each creature in the room. The hazard then becomes inactive."
+			],
+			"reset": [
+				"While atop the floating platform, Seldeg Bhedlis can use a 3-action activity with the {@trait auditory} trait to reenergize the ritual. Doing so removes one success to disable the hazard and immediately triggers the hazard's Reorder Reality reaction."
+			]
+		},
+		{
+			"name": "Cleansing Suite",
+			"source": "CotT",
+			"remaster": true,
+			"page": 74,
+			"level": 19,
+			"traits": [
+				"unique",
+				"complex",
+				"divine",
+				"holy",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 37,
+				"minProf": "master"
+			},
+			"description": [
+				"Deadbolts inside the doors clunk as three glowing runes appear on the ceiling."
+			],
+			"disable": {
+				"entries": [
+					"DC 42 {@skill Arcana|PC1}, {@skill Nature|PC1}, {@skill Occultism|PC1}, or {@skill Religion|PC1} to erase the runes, or DC 46 {@skill Crafting|PC1} or {@skill Thievery|PC1} to destroy the runes, or {@spell dispel magic|PC1} (9th rank, counteract DC 41); each rune requires a success to remove (three runes total)"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 38
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 35
+					}
+				},
+				"hardness": {
+					"std": "31 (runes)"
+				},
+				"hp": {
+					"std": 130
+				},
+				"bt": {
+					"std": 65
+				}
+			},
+			"actions": [
+				{
+					"name": "Deadbolts",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature approaches within 10 feet of the cleansing suite's eastern doors",
+					"entries": [
+						"The doors to the chamber slam shut and seal with deadbolts. The hazard rolls initiative."
+					]
+				},
+				{
+					"name": "Rune Against Evil",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"holy"
+					],
+					"entries": [
+						"The hazard fills the chamber with holy energy that deals {@damage 6d6+20} spirit damage (DC 41 basic Fortitude save) to creatures with the {@trait unholy} trait."
+					]
+				},
+				{
+					"name": "Rune Against Magic",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"divine"
+					],
+					"entries": [
+						"The hazard casts {@spell dispel magic|PC1} (9th rank, counteract +31) that targets a spell or effect on each creature in the chamber."
+					]
+				},
+				{
+					"name": "Rune Against Scrying",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"detection",
+						"divine"
+					],
+					"entries": [
+						"The hazard casts detect scrying. If it detects a {@trait scrying} effect in the chamber, it casts {@spell hidden mind|PC1} on each affected creature and {@spell dispel magic|PC1} on the effect (9th rank, counteract +31)."
+					]
+				}
+			],
+			"routine": [
+				"(3 actions) The cleansing suite activates one of its runes. The hazard can't activate the same rune more than once per turn. Disabling a rune removes one of the hazard's actions and prevents the hazard from activating that rune."
+			],
+			"reset": [
+				"1 minute after the hazard activates, the deadbolts unlock and the hazard resets."
+			]
+		},
+		{
+			"name": "Grasping Gauntlet",
+			"source": "CotT",
+			"remaster": true,
+			"page": 70,
+			"level": 18,
+			"traits": [
+				"uncommon",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 46,
+				"minProf": "master"
+			},
+			"description": [
+				"A gauntlet of magical force clutches creatures trying to steal gear from the armory."
+			],
+			"disable": {
+				"entries": [
+					"DC 45 {@skill Arcana|PC1}, {@skill Nature|PC1}, {@skill Occultism|PC1}, or {@skill Religion|PC1} to trick the hazard's magic into nullifying itself, DC 41 {@skill Athletics} to wrestle the gauntlet into submission, DC 39 {@skill Thievery|PC1} to slide an object into the gauntlet's grasp, or {@spell dispel magic|PC1} (9th rank; counteract DC 41)"
+				]
+			},
+			"actions": [
+				{
+					"name": "Seize Thief",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"magical"
+					],
+					"trigger": "A creature touches the warded area",
+					"entries": [
+						"A gauntleted hand reaches out from the ward and attempts a gauntlet {@action Strike|PC1}. The hazard has an {@skill Athletics|PC1} modifier of +37 for its Grab ({@action Escape|PC1} DC 47)."
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical"
+					],
+					"name": "gauntlet",
+					"attack": 37,
+					"damage": "{@damage 10d6+35} bludgeoning plus Improved Grab"
+				}
+			],
+			"reset": [
+				"1 hour"
+			]
+		},
+		{
+			"name": "Hardened Entry",
+			"source": "CotT",
+			"remaster": true,
+			"page": 68,
+			"level": 18,
+			"traits": [
+				"uncommon",
+				"complex",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 35,
+				"minProf": "master"
+			},
+			"description": [
+				"A portcullis drops from the ceiling, landing with a heavy thunk. Seconds later, a cloud of acid rises from a metal grate in the floor."
+			],
+			"disable": {
+				"entries": [
+					"DC 45 {@skill Athletics|PC1} to prevent the portcullis from dropping, DC 48 {@skill Crafting|PC1} (master) to create a compound to neutralize the cloud of acid, or DC 35 {@skill Thievery|PC1} (expert) to jam the pressure plate"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 27
+					}
+				},
+				"hardness": {
+					"std": 29
+				},
+				"hp": {
+					"std": 110
+				},
+				"bt": {
+					"std": 55
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Falling Portcullis",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature {@action Stride|PC1|Strides} beneath the portcullis while it is raised",
+					"entries": [
+						"The portcullis slams down, driving its sharpened ends through a grate in the floor. Creatures directly beneath the portcullis take {@damage 3d12+20} piercing damage (DC 40 basic Reflex save). The portcullis is made of adamantine and has Hardness 31 and 120 HP (BT 60). The trap then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) A cloud of acidic vapor rises from the grate beneath the portcullis in a 5-foot emanation. Any creature that enters the area or starts its turn inside the cloud takes {@damage 3d12+20} acid damage (DC 40 basic Fortitude save). A creature that critically fails the save also takes {@damage 1d12} {@condition persistent damage|PC1|persistent acid damage}. Each time the hazard uses this routine beyond the first, increase the radius of the emanation by 5 feet."
+			],
+			"reset": [
+				"Once triggered, the trap must be manually reset by raising the portcullis. Once all the vials are smashed, the trap can't use its routine again until the vials are replaced."
+			]
+		},
+		{
+			"name": "Carnivorous Mold",
+			"source": "CotT",
+			"remaster": true,
+			"page": 68,
+			"level": 18,
+			"traits": [
+				"uncommon",
+				"environmental",
+				"fungus"
+			],
+			"stealth": {
+				"dc": 36,
+				"minProf": "expert"
+			},
+			"description": [
+				"Spores explode onto nearby creatures, leaving welts as the mold dissolves exposed flesh."
+			],
+			"disable": {
+				"entries": [
+					"DC 42 {@skill Religion|PC1} (legendary) to neutralize the void energy that animates the mold, or DC 36 {@skill Survival|PC1} (master) to remove the mold without triggering the spores"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 37
+					},
+					"ref": {
+						"std": 29
+					}
+				},
+				"hp": {
+					"std": 130
+				},
+				"bt": {
+					"std": 65
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "vitality",
+						"amount": 20
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Spore Explosion",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A living creature moves adjacent to the mold or damages the mold",
+					"entries": [
+						"All creatures within 15 feet of the mold are exposed to the flesh-eating spores."
+					]
+				},
+				{
+					"name": "Flesh-Eating Spores",
+					"traits": [
+						"contact",
+						"poison",
+						"void"
+					],
+					"entries": [
+						"The flesh-eating spores leave red rings on the skin as they dissolve the target's flesh;",
+						{
+							"type": "affliction",
+							"DC": 44,
+							"savingThrow": "Fortitude",
+							"maxDuration": "6 rounds",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@damage 4d10} void damage and {@condition drained|PC1|drained 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@damage 6d10} void damage and {@condition drained|PC1|drained 2}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 3,
+									"entry": "{@damage 8d10} void damage and {@condition drained|PC1|drained 3}",
+									"duration": "1 round"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Collapsing Bridge",
+			"source": "CotT",
+			"remaster": true,
+			"page": 67,
+			"level": 16,
+			"traits": [
+				"unique",
+				"complex",
+				"mechanical",
+				"trap"
+			],
+			"stealth": {
+				"bonus": 38,
+				"minProf": "expert"
+			},
+			"description": [
+				"Metal supports twist and shear off the bridge, causing stretches of the structure to collapse."
+			],
+			"disable": {
+				"entries": [
+					"DC 40 {@skill Lore|PC1|Engineering Lore} to identify and reinforce weak points, DC 43 {@skill Crafting|PC1} (master) to construct secondary supports, or DC 45 {@skill Athletics|PC1} (legendary) to reinforce the bridge with found materials; three successes are required to halt the collapse"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 39
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 25
+					}
+				},
+				"hardness": {
+					"std": 25
+				},
+				"hp": {
+					"std": 104
+				},
+				"bt": {
+					"std": 52
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Bridge Collapse",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A {@trait Medium} or larger creature steps onto the bridge's weak point",
+					"entries": [
+						"The bridge collapses in the creature's square, then rolls initiative. The DC to {@action Grab an Edge|PC1} on the bridge is 38. Once the bridge begins to collapse, the river's {@action Swim|PC1} DC increases to 36 as the water churns with the falling debris. A creature that starts its turn swimming within 15 feet of the bridge takes {@damage 10d6} bludgeoning damage (DC 41 basic Reflex save)."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The collapse radiates out from the damaged section of the bridge. All squares adjacent to a collapsed section also fall into the water."
+			]
+		},
+		{
+			"name": "Names of the Nameless",
+			"source": "CotT",
+			"remaster": true,
+			"page": 57,
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 16,
+				"minProf": "trained",
+				"notes": "to hear whispering voices"
+			},
+			"description": [
+				"The voices of the nameless dead intrude into the minds of the living."
+			],
+			"disable": {
+				"entries": [
+					"DC 26 {@skill Perception|PC1} to discern a name spoken by the nameless dead, or DC 28 {@skill Religion|PC1} (expert) to put the nameless dead to rest. Speaking three names aloud disables the haunt. A creature that speaks any other name aloud must succeed at a DC 28 Will save or be {@condition confused|PC1} for 1 round."
+				]
+			},
+			"actions": [
+				{
+					"name": "Disappearing Door",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"illusion",
+						"mental"
+					],
+					"trigger": "A creature enters the room",
+					"entries": [
+						"An illusory wall appears across the room's entrance. A creature who succeeds at DC 30 {@skill Perception|PC1} check disbelieves the illusion, allowing them to leave the area. The haunt then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action; {@trait auditory}, {@trait divine}, {@trait emotion}, {@trait fear}, {@trait mental}) Spirits of the dead whisper their names into the minds of creatures in the room, dealing {@damage 2d10+11} mental damage (DC 28 basic Will save). A creature that fails the save is also {@condition frightened|PC1|frightened 1} (or {@condition frightened|PC1|frightened 2} on a critical failure)."
+			],
+			"reset": [
+				"If the haunt is disabled, divine light washes through the area. Living creatures in the area regain {@dice 4d8} Hit Points, and {@trait undead} creatures in the area take {@damage 4d8} vitality damage. The haunt deactivates 1 minute after all creatures leave the area but resets immediately thereafter."
+			]
+		},
+		{
+			"name": "Iomedae's Flame",
+			"source": "CotT",
+			"remaster": true,
+			"page": 50,
+			"level": 9,
+			"traits": [
+				"uncommon",
+				"magical"
+			],
+			"stealth": {
+				"dc": 22,
+				"minProf": "expert"
+			},
+			"description": [
+				"A magical flame changes color in response to Fort Ozem's alert status, with a 10-foot radius."
+			],
+			"disable": {
+				"entries": [
+					"DC 30 {@skill Arcana|PC1}, {@skill Nature|PC1}, {@skill Occultism|PC1}, or {@skill Religion|PC1} (expert) to snuff out the flame with opposing magic; each success reduces the flame's color one step (from red to blue, blue to yellow, and so on). A critical success reduces the flame's color two steps. A success while the flame is white permanently disables the hazard."
+				]
+			},
+			"actions": [
+				{
+					"name": "Flaring Flame",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature moves into the radius of the flame's light or starts its turn in the radius",
+					"entries": [
+						"Iomedae's Flame flares, producing an effect determined by the flame's current color. Followers of {@deity Iomedae|PC1} treat the result of all saving throws against the flame's effects as one step better. The effects are cumulative; a creature that enters the radius of the red flame also triggers the effect of the white, yellow, and blue flames."
+					]
+				},
+				{
+					"name": "White Flame",
+					"entries": [
+						"The flame casts {@spell revealing light|PC1} (DC 28)."
+					]
+				},
+				{
+					"name": "Yellow Flame",
+					"entries": [
+						"The flame casts {@spell fear|PC1} (DC 28) on each creature in the light's radius."
+					]
+				},
+				{
+					"name": "Blue Flame",
+					"entries": [
+						"The flame flickers as winds buffet creatures in the area. Any creature in the flame's light takes {@damage 8d4} bludgeoning damage (DC 28 basic Reflex save). This damage has the {@trait nonlethal} trait against living creatures."
+					]
+				},
+				{
+					"name": "Red Flame",
+					"entries": [
+						"The flame releases a sudden pulse of intense heat. Any creature in the flame's light takes {@damage 4d6} fire damage and {@damage 4d6} spirit damage (DC 28 basic Fortitude save). This damage has the {@trait holy} trait."
+					]
+				}
+			],
+			"reset": [
+				"The hazard resets automatically each round. After 1 hour, the flame reverts to its default status of a white flame."
+			]
+		},
+		{
+			"name": "Electrified Entrance",
+			"source": "CotT",
+			"remaster": true,
+			"page": 49,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 24,
+				"minProf": "trained",
+				"notes": "to spot the runes etched into the door's frame"
+			},
+			"description": [
+				"Magical runes electrocute anyone who crosses the door's threshold."
+			],
+			"disable": {
+				"entries": [
+					"DC 26 {@skill Acrobatics|PC1} (trained) to jump through the door before the runes trigger, DC 28 {@skill Thievery|PC1} (expert) to scratch out the runes, or {@spell dispel magic|PC1} (4th rank; counteract DC 24) to counteract the runes"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 18
+					},
+					"ref": {
+						"std": 12
+					}
+				},
+				"hardness": {
+					"std": 14
+				},
+				"hp": {
+					"std": 58
+				},
+				"bt": {
+					"std": 26
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Sizzle",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature moves through the doorway",
+					"entries": [
+						"Arcs of lightning flash across the threshold. The triggering creature takes {@damage 4d8+18} electricity damage (DC 23 basic Reflex save). On a failure, the creature is also {@condition dazzled|PC1} for 1 minute. On a critical failure, the creature is {@condition blinded|PC1} for 1 minute and then {@condition dazzled|PC1} for an additional minute."
+					]
+				}
+			],
+			"reset": [
+				"1 minute"
+			]
+		},
+		{
+			"name": "Thieves' Lament",
+			"source": "CotT",
+			"remaster": true,
+			"page": 49,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 27,
+				"minProf": "trained",
+				"notes": "to spot the rune inside the lock"
+			},
+			"description": [
+				"A rune inscribed on the inside of the lock releases a burst of flame that burns the thief's hands and their tools."
+			],
+			"disable": {
+				"entries": [
+					"DC 30 {@skill Thievery|PC1} (expert) to scratch out the rune, or {@spell dispel magic|PC1} (4th rank; counteract DC 24) to counteract the runes"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 17
+					}
+				},
+				"hardness": {
+					"std": 14
+				},
+				"hp": {
+					"std": 58
+				},
+				"bt": {
+					"std": 36
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Flash Flame",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature attempts to {@action Pick a Lock|PC1|Pick the Lock} or fails to {@action Disable a Device|PC1|Disable the Device}",
+					"entries": [
+						"The rune triggers, releasing a burst of flame from the lock. The triggering creature must attempt a DC 25 Reflex saving throw.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature takes {@damage 2d10+9} fire damage."
+								],
+								"Failure": [
+									"The creature takes {@damage 4d10+18} fire damage and their fingers are burned, imposing a \u22121 circumstance penalty to {@skill Thievery|PC1} checks for 1 hour."
+								],
+								"Critical Failure": [
+									"As failure, and the creature's {@item thieves' toolkit|PC1} is {@condition broken|PC1}."
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Snake's Mane",
+			"source": "CotT",
+			"remaster": true,
+			"page": 48,
+			"level": 7,
+			"traits": [
+				"environmental"
+			],
+			"stealth": {
+				"dc": 27,
+				"minProf": "trained",
+				"notes": "to discern the snake's mane from the surrounding vegetation"
+			},
+			"description": [
+				"A tangle of feathery green vines appears innocuous but fires a spray of acidic barbs at anything that disturbs it."
+			],
+			"disable": {
+				"entries": [
+					"DC 27 {@skill Nature|PC1} (expert) to strip the barbs from the vines, rendering them harmless, or DC 30 {@skill Stealth|PC1} (trained) to move through the snake's mane without disturbing it"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 22
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 0
+					}
+				},
+				"hardness": {
+					"std": 0
+				},
+				"hp": {
+					"std": 60
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 10
+					},
+					{
+						"name": "slashing",
+						"amount": 10
+					}
+				]
+			},
+			"actions": [
+				{
+					"name": "Barb Spray",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature enters an area containing snake's mane or the snake's mane takes damage",
+					"entries": [
+						"The vine sprays a hail of acidic barbs in a 10-foot emanation. Any creature in the area takes {@damage 4d10+18} acid damage. On a critical failure, the creature is also {@condition blinded|PC1} for 1 minute."
+					]
+				}
+			],
+			"reset": [
+				"1 hour, as the vine grows a new set of barbs"
+			]
+		},
+		{
+			"name": "Chernasardo Chompers",
+			"source": "CotT",
+			"remaster": true,
+			"page": 48,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"mechanical",
+				"snare",
+				"trap"
+			],
+			"stealth": {
+				"dc": 27,
+				"minProf": "trained",
+				"notes": "to spot the snare"
+			},
+			"description": [
+				"These animal snares have been repurposed to discourage unwanted intruders. When a creature steps onto the snare, jaws with sharpened teeth close around the creature's leg."
+			],
+			"disable": {
+				"entries": [
+					"DC 26 {@skill Acrobatics|PC1} (trained) to step clear the snare before it springs, or DC 22 {@skill Thievery|PC1} (trained) to trigger the trap harmlessly"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 0
+					}
+				},
+				"hardness": {
+					"std": 15
+				},
+				"hp": {
+					"std": 60
+				},
+				"bt": {
+					"std": 30
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Bite",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature moves into the space containing the trap",
+					"entries": [
+						"The trap's jaws snap shut on the creature's leg, dealing {@damage 4d8+14} piercing damage (DC 26 basic Reflex save). On a failure, the creature becomes caught in the trap and is {@condition immobilized|PC1} ({@action Escape|PC1} DC 22)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Decrepit Bridge",
+			"source": "CotT",
+			"remaster": true,
+			"page": 35,
+			"level": 2,
+			"traits": [
+				"mechanical"
+			],
+			"stealth": {
+				"dc": 14,
+				"minProf": "trained"
+			},
+			"description": [
+				"The 30-foot-long, 10-foot-wide bridge groans under the weight of those who cross it."
+			],
+			"actions": [
+				{
+					"name": "Perilous Sway",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A {@trait Medium} or larger creature Strides 10 feet or more in the bridge's area",
+					"entries": [
+						"All creatures on the bridge must attempt a DC 18 Reflex save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": [
+									"The creature is unaffected."
+								],
+								"Success": [
+									"The creature is {@condition clumsy|PC1|clumsy 1} until the beginning of its next turn."
+								],
+								"Failure": [
+									"The creature falls {@condition prone|PC1}."
+								],
+								"Critical Failure": [
+									"The creature falls from the bridge, landing in the ravine 20 feet below."
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Collapse",
+					"entries": [
+						"Each time the decrepit bridge triggers its Perilous Sway after the first, attempt a DC {@flatDC 5} flat check. On a failure, the bridge collapses. All creatures on the bridge fall 20 feet into the ravine, taking falling damage normally."
+					]
+				}
+			]
+		},
+		{
+			"name": "Grove of Despair",
+			"source": "CotT",
+			"remaster": true,
+			"page": 33,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 12,
+				"minProf": "trained"
+			},
+			"description": [
+				"An eerie fog fills a lonely stretch of forest."
+			],
+			"disable": {
+				"entries": [
+					"DC 22 {@skill Diplomacy|PC1} (untrained) to {@action Request|PC1} that the spirits leave or DC 20 {@skill Religion} (trained) to exorcise the spirits. All creatures and objects within the fog are {@condition concealed|PC1}, and all creatures and objects outside the fog are {@condition concealed|PC1} to creatures within it."
+				]
+			},
+			"actions": [
+				{
+					"name": "Despairing Whispers",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"trigger": "A living creature enters the haunted area",
+					"entries": [
+						"The spirits manifest, whispering in the minds of creatures in the fog. Each creature in the area must succeed at a DC 22 Will save or be {@condition frightened|PC1|frightened 1} ({@condition frightened|PC1|frightened 2} on a critical failure). {@condition Frightened|PC1} creatures are {@condition immobilized} for as long as they remain {@condition frightened|PC1}. The haunt then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action; {@trait auditory}, {@trait emotion}, {@trait fear}, {@trait mental}) The haunt attempts an {@skill Intimidation|PC1} check with a +12 modifier against the Will DC of each {@condition frightened|PC1} creature as it fills their minds with haunting whispers.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature takes {@damage 4d6} mental damage and its {@condition frightened|PC1} condition increases by 1, to a maximum of {@condition frightened|PC1|frightened 3}."
+						],
+						"Success": [
+							"The creature takes {@damage 2d6} mental damage."
+						],
+						"Failure": [
+							"The creature is unaffected."
+						],
+						"Critical Failure": [
+							"The creature's {@condition frightened|PC1} condition is reduced by 1."
+						]
+					}
+				}
+			],
+			"reset": [
+				"The haunt falls silent for 24 hours once all {@condition frightened|PC1} creatures die or reduce their {@condition frightened|PC1} condition's value to 0. During this time, a creature that isn't {@condition frightened|PC1} can exorcise the spirits with a DC 20 {@skill Religion|PC1} check, permanently destroying the haunt."
+			]
+		},
+		{
+			"name": "Haunting Echoes",
+			"source": "CotT",
+			"remaster": true,
+			"page": 28,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"complex",
+				"haunt"
+			],
+			"stealth": {
+				"bonus": 10,
+				"minProf": "trained"
+			},
+			"description": [
+				"The spirits of community members linger on after their tragic deaths."
+			],
+			"disable": {
+				"entries": [
+					"DC 20 {@skill Diplomacy|PC1} (untrained) to {@action Request|PC1} that the spirits leave or DC 18 {@skill Religion|PC1} (trained) to exorcise the spirits"
+				]
+			},
+			"actions": [
+				{
+					"name": "Manifest",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"trigger": "A creature the spirits knew in life enters the haunted area",
+					"entries": [
+						"The spirits manifest with a terrible wailing. Each creature in the area must succeed at a"
+					]
+				},
+				{
+					"name": "DC 20",
+					"entries": [
+						"Will save or be {@condition frightened|PC1|frightened 1} (or {@condition frightened|PC1|frightened 2} on a critical failure). {@condition Frightened|PC1} creatures are {@condition immobilized|PC1} for as long as they remain {@condition frightened|PC1}. The haunt then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action; {@trait auditory}, {@trait emotion}, {@trait fear}, {@trait mental}) The haunt attempts an {@skill Intimidation|PC1} check with a +11 modifier against the Will DC of each {@condition frightened|PC1} creature as it bombards them with the voices of their dead loved ones.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature takes {@damage 2d4} mental damage and its {@condition frightened|PC1} condition increases by 1, to a maximum of {@condition frightened|PC1|frightened 3}."
+						],
+						"Success": [
+							"The creature takes {@damage 1d4} mental damage."
+						],
+						"Failure": [
+							"The creature is unaffected."
+						],
+						"Critical Failure": [
+							"The creature's {@condition frightened|PC1} condition is reduced by 1."
+						]
+					}
+				}
+			],
+			"reset": [
+				"The haunt falls silent for 24 hours once all {@condition frightened|PC1} creatures die or reduce their {@condition frightened|PC1} condition's value to 0. During this time, a creature that isn't {@condition frightened|PC1} can exorcise the spirits with a DC 18 {@skill Religion|PC1} check, permanently destroying the haunt."
+			]
+		},
+		{
 			"name": "Lichen Monstrosity",
 			"source": "WoW3",
 			"remaster": true,

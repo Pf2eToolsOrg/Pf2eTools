@@ -1,0 +1,363 @@
+{
+	"feat": [
+		{
+			"name": "Shattered Sacrament",
+			"source": "CotT",
+			"remaster": true,
+			"page": 110,
+			"level": 14,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Halcyon Speaker Dedication|LOCG}, {@feat Cascade Bearers Spellcasting|LOCG}",
+			"entries": [
+				"When Vigil fell to Tar-Baphon's Radiant Fire, that lost innocence brought you a deeper understanding of what faith means in the context of your own magic. When you cast a halcyon spell, you can choose for it to be a {@trait divine} spell instead of {@trait arcane} or {@trait primal}. You gain a halcyon cantrip and a 1st-rank halcyon spell."
+			]
+		},
+		{
+			"name": "Speak for the Gravelands",
+			"source": "CotT",
+			"remaster": true,
+			"page": 110,
+			"level": 14,
+			"traits": [
+				"uncommon",
+				"archetype"
+			],
+			"prerequisites": "{@feat Halcyon Speaker Dedication|LOCG}, trained in {@skill Nature|PC1}, can cast at least one spell with the {@trait vitality} trait",
+			"access": "You're a member of the Vellumis Scholars.",
+			"entries": [
+				"You have learned much of what the Gravelands need and are confident in your ability to speak for them. You gain the {@feat Geomancer Dedication|SoM} archetype feat, even if you normally couldn't take another dedication feat until you take more feats from your current archetype. You can benefit from the following Gravelands terrain attunement when in the Gravelands.",
+				{
+					"type": "pf2-options",
+					"noColon": true,
+					"items": [
+						{
+							"type": "item",
+							"name": "Gravelands",
+							"entries": [
+								"({@trait vitality}) You gain a +1 status bonus to saving throws against the spells and abilities of {@trait haunt||haunts} and {@trait undead} creatures for 1 round."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Vellumis Excision",
+			"source": "CotT",
+			"remaster": true,
+			"page": 111,
+			"level": 16,
+			"traits": [
+				"uncommon",
+				"archetype"
+			],
+			"prerequisites": "{@feat Halcyon Spellcasting Adept|LOCG}",
+			"access": "You're a member of the Vellumis Scholars.",
+			"entries": [
+				"You seek to excise the rot from the Gravelands and have made progress to do so. You can cast {@spell field of life|PC1} as a 6th-rank halcyon spell, and you gain a 6th-rank halcyon spell slot. When you cast your halcyon {@spell field of life|PC1} as a {@trait primal} spell, any living creatures in the area when you {@action Sustain|PC1} the spell gain a +2 status bonus to saving throws against {@trait curse||curses}, {@trait disease||diseases}, and {@trait poison||poisons} for 1 round."
+			],
+			"special": [
+				"If you have the {@feat Halcyon Spellcasting Sage|LOCG} feat, you treat the {@spell field of life|PC1} halcyon spell gained from this feat as a signature spell, even though halcyon spells normally can't be signature spells."
+			]
+		},
+		{
+			"name": "Tripartite Omen",
+			"source": "CotT",
+			"remaster": true,
+			"page": 111,
+			"level": 18,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Dualistic Synergy|LOCG}, {@feat Shattered Sacrament|CotT}, master in {@skill Religion|PC1}",
+			"entries": [
+				"You invoke religious portents to ward yourself against danger without losing sight of the history that led to this point. When you use {@feat Dualistic Synergy|LOCG}, if your next action is to Cast a Spell from your spell slots and that spell is {@trait d}ivine, you gain a +1 status bonus to AC for 1 round. If the spell is a halcyon spell, you gain this benefit in addition to the benefits described in {@feat Dualistic Synergy|LOCG}."
+			]
+		},
+		{
+			"name": "Vigil's Palisades",
+			"source": "CotT",
+			"remaster": true,
+			"page": 111,
+			"level": 20,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Persistent Creation|LOCG}",
+			"entries": [
+				"When you use {@feat Persistent Creation|LOCG}, you can create up to three special wooden shields that provide a +2 circumstance bonus to AC and have Hardness 15, 120 HP, and BT 60. A creature that {@action Raise a Shield|PC1|Raises a Shield} made with your {@feat Persistent Creation|LOCG} also gains a +2 item bonus to saving throws while the shield is raised."
+			]
+		},
+		{
+			"name": "Grave Threat",
+			"source": "CotT",
+			"remaster": true,
+			"page": 111,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 16,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Reaper of Repose|LOCG}",
+			"entries": [
+				"You use your imposing demeanor to set up the {@trait undead} for defeat. Make a {@action Strike|PC1} against an {@trait undead} creature using a weapon with which you have master proficiency. If you hit, all {@action Strike|PC1|Strikes} against that creature gain the benefits of {@feat Reaper of Repose|LOCG} for 1 round."
+			]
+		},
+		{
+			"name": "Cut Them Down, Burn Them Out",
+			"source": "CotT",
+			"remaster": true,
+			"page": 111,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 18,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG}, master proficiency in a weapon",
+			"entries": [
+				"Inspired by the sixth line of the Crimson Oath, when you oppose the enemies of Lastwall, you aim to excise the rot from the land itself. Make a {@action Strike|PC1} against an {@trait undead} creature using a weapon with which you have master proficiency. On a success, in addition to the attack's other effects, the creature takes a \u22122 status penalty to the DC of any {@trait curse||curses}, {@trait disease||diseases}, or {@trait poison||poisons} it can inflict for 1 round. On a critical success, the {@trait undead} creature takes the \u22122 status penalty for 1 round, then a \u22121 status penalty for an additional round."
+			]
+		},
+		{
+			"name": "May Death Itself Reconsider",
+			"source": "CotT",
+			"remaster": true,
+			"page": 112,
+			"level": 20,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Reclaimant Plea|LOKL}",
+			"entries": [
+				"Your will is so steadfast that even death can't stop you. You gain the ability to cast {@spell breath of life|PC1} up to three times per day as a 5th-rank {@trait divine} innate spell."
+			]
+		},
+		{
+			"name": "Rallying Charge",
+			"source": "CotT",
+			"remaster": true,
+			"page": 112,
+			"level": 16,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, {@feat Lead the Way|LOKL}",
+			"entries": [
+				"When you lead your allies to the front lines, you leave no one behind. When you Lead the Way, instead of choosing one ally that has a reaction available, you can choose any number of allies within 10 feet of you. Any chosen allies that use their reaction to immediately {@action Stride|PC1} as part of you {@feat Lead the Way|LOKL|Leading the Way} can end their {@action Stride|PC1} anywhere within 10 feet of you."
+			]
+		},
+		{
+			"name": "Preternatural Polish",
+			"source": "CotT",
+			"remaster": true,
+			"page": 112,
+			"level": 16,
+			"traits": [
+				"archetype",
+				"exploration",
+				"skill"
+			],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}, legendary in {@skill Crafting|PC1}",
+			"entries": [
+				"Armor you polish shines with righteous grace. You can take 10 minutes to recite prayers or oaths while polishing a suit of heavy armor that you or a willing creature is wearing. If you do, attempt a DC 35 {@skill Crafting|PC1} check with the following results. The armor then becomes temporarily immune to this ability until your next daily preparations.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"Once in the next hour, the creature wearing the polished armor can use a reaction to shine majestically. This reaction is triggered when they would be affected by a spell or ability with the {@trait darkness} trait. The creature attempts a counteract check against the triggering effect using your {@skill Crafting|PC1} modifier. Additionally, the creature wearing the polished armor gains an additional reaction at the start of each of their turns that can be only used for this reaction."
+						],
+						"Success": [
+							"As critical success, but the creature wearing the polished armor doesn't gain an additional reaction at the start of each of their turns."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Body Barrier",
+			"source": "CotT",
+			"remaster": true,
+			"page": 112,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 18,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Knight Vigilant Dedication|LOCG}",
+			"trigger": "You and at least one ally are in the area of an effect that requires a Reflex save.",
+			"entries": [
+				"When your allies are in danger, you don't hesitate to take the brunt of the blow for them. You grant all allies in the area standard cover against the triggering effect, and you gain weakness to all damage against the triggering effect equal to twice the number of allies that gain cover in this way."
+			]
+		},
+		{
+			"name": "Spirit of Vigil",
+			"source": "CotT",
+			"remaster": true,
+			"page": 112,
+			"level": 18,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat No Stranger to Death|LOKL}",
+			"entries": [
+				"Though the city of Vigil itself has been destroyed, you will carry on its warrior spirit to the end of your days. The value of your {@condition dying|PC1} condition at which you die increases by 1 (normally to {@condition dying|PC1|dying 5}, or {@condition dying|PC1|dying 6} if you have {@feat Diehard|PC1}), and the reduction to your maximum {@condition dying|PC1} value from the {@condition doomed|PC1} condition is 1 less severe (to a minimum of 0)."
+			]
+		},
+		{
+			"name": "Uncanny Vitae",
+			"source": "CotT",
+			"remaster": true,
+			"page": 112,
+			"level": 18,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Lastwall Sentry Dedication|LOWG}",
+			"entries": [
+				"Your warrior spirit is infused with a potent vital essence that imbues your gear. Any shield you wield treats its Hardness as 5 higher against damage dealt by {@trait undead} creatures."
+			]
+		},
+		{
+			"name": "Cenotaph Stance",
+			"source": "CotT",
+			"remaster": true,
+			"page": 113,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 20,
+			"traits": [
+				"archetype",
+				"stance"
+			],
+			"prerequisites": "{@feat Lastwall Warden|LOWG}",
+			"requirements": "You're wielding a shield.",
+			"entries": [
+				"You take on a stance that marks your location as a place where none will fall. When you enter this stance and at the beginning of each of your turns while in Cenotaph Stance, you gain 10 temporary Hit Points that last until the start of your next turn. If you move or are forced to move, you automatically leave Cenotaph Stance. While in Cenotaph Stance, you're treated as always having the required shield raised. In addition, you can use your {@feat Shield Block|PC1} reaction when an ally within 15 feet of you takes physical damage, in addition to its normal trigger, thus preventing the ally from taking damage instead of you. Finally, you gain an additional reaction at the start of each of your turns that can be used only for {@feat Shield Block|PC1}."
+			],
+			"special": [
+				"If you can use {@feat Shield Block|PC1} to reduce damage that isn't physical damage (for instance, if you have the {@feat Bless Shield|LOKL} or {@feat Necromantic Bulwark|LOKL} feat), you can use your {@feat Shield Block|PC1} reaction when an ally within 15 feet of you takes damage that you could prevent with {@feat Shield Block|PC1}."
+			]
+		},
+		{
+			"name": "Adept Storyteller",
+			"source": "CotT",
+			"remaster": true,
+			"page": 113,
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Uzunjati Storytelling|LOCG}, master in a {@action Recall Knowledge|PC1} skill",
+			"entries": [
+				"Your ability to tell stories rivals those of the finest bards. You can use your proficiency rank in any skill that can be used to {@action Recall Knowledge|PC1} to meet the requirements of skill feats that require a particular rank in {@skill Performance|PC1}. You gain two {@skill Performance|PC1} skill feats of 7th level or lower that you meet the prerequisites for."
+			]
+		},
+		{
+			"name": "Cautious Word",
+			"source": "CotT",
+			"remaster": true,
+			"page": 113,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"level": 12,
+			"traits": [
+				"archetype"
+			],
+			"prerequisites": "{@feat Uzunjati Storytelling|LOCG}, ability to cast {@spell shield|PC1}",
+			"frequency": {
+				"number": 1,
+				"unit": "round"
+			},
+			"trigger": "An enemy hits you with a {@action Strike|PC1}.",
+			"requirements": "You're currently unable to cast {@spell shield|PC1} because you used Shield Block with it.",
+			"entries": [
+				"You let your words defend you, just as your allies in the Vellumis Scholars defend through knowledge. You immediately cast {@spell shield|PC1} and gain its bonus to AC even though you normally couldn't cast it, and you become {@condition slowed|PC1|slowed 1} for 1 round."
+			]
+		},
+		{
+			"name": "Crusader's Masquerade",
+			"source": "CotT",
+			"remaster": true,
+			"page": 113,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 14,
+			"traits": [
+				"archetype",
+				"concentrate",
+				"skill"
+			],
+			"prerequisites": "{@feat Mask Familiar|LOCG}, expert in {@skill Stealth|PC1}",
+			"requirements": "You're wearing your mask familiar in its mask form, and it has the {@familiarAbility skilled|PC1} ({@skill Religion|PC1}) familiar ability.",
+			"entries": [
+				"Your mask can hide you from the {@trait undead}. You become {@condition concealed} to {@trait undead} using vision or lifesense, allowing you to {@action Hide|PC1} and {@action Sneak|PC1} without other sources of cover or concealment. This effect lasts only as long as you continue to take no actions other than to {@action Hide|PC1}, {@action Sneak|PC1}, {@action Recall Knowledge|PC1}, {@action Command an Animal|PC1} to direct your mask familiar, or other surreptitious actions. The GM determines which actions end the effect, but attacking, casting spells, activating items, and the like always do."
+			]
+		},
+		{
+			"name": "Faith in the Fallen",
+			"source": "CotT",
+			"remaster": true,
+			"page": 113,
+			"level": 16,
+			"traits": [
+				"uncommon",
+				"archetype"
+			],
+			"prerequisites": "{@feat Magaambyan Attendant Dedication|LOCG}",
+			"access": "You're a member of the Vellumis Scholars.",
+			"entries": [
+				"The Gravelands are full of fallen spirits seeking to move on, and you consider it your obligation to assist in that regard. You gain the ability to store spirit wisps in your body, becoming a living spirit dwelling (see the {@archetype Exorcist|BotD} archetype). Each day during your daily preparations, your spirit dwelling attracts a spirit wisp who comes to dwell inside. If your spirit dwelling contains no wisps, you can spend 10 minutes in a minor ritual to cast your spirit dwelling around an area and attract another wisp. Additionally, you gain a spirit wisp when a haunt or incorporeal {@trait undead} creature is destroyed within 30 feet of you.",
+				"You gain the Spirit Sanctification action.",
+				{
+					"type": "ability",
+					"name": "Spirit Sanctification",
+					"activity": {
+						"number":1,
+						"unit":"action"
+					},
+					"traits": [
+						"concentrate",
+						"spellshape"
+					],
+					"cost": "1 spirit wisp",
+					"entries": [
+						"You immediately purify a spirit, which grants you a protective blessing before it departs. If your next action is to cast a halcyon spell, you gain a +1 status bonus to saving throws as well as resistance to void damage equal to the rank of the halcyon spell. These effects last for 1 round."
+					]
+				},
+				"Every day before your daily preparations, any spirit wisps remaining within your spirit dwelling from the previous day are purified and can continue along the River of Souls."
+			]
+		},
+		{
+			"name": "I Knew the Heroes",
+			"source": "CotT",
+			"remaster": true,
+			"page": 113,
+			"level": 18,
+			"traits": [
+				"archetype",
+				"skill"
+			],
+			"prerequisites": "{@feat Uzunjati Recollection|LOCG}, legendary in a {@action Recall Knowledge|PC1} skill",
+			"entries": [
+				"Your stories aren't mere tales passed down from elder to youth or teacher to student. They're the lived experiences of those you've met, and they're the stuff of legend. When you use {@feat Uzunjati Recollection|LOCG}, if you're legendary in the skill you use to {@action Recall Knowledge|PC1}, you gain a +1 circumstance bonus to the {@action Recall Knowledge|PC1} check, and the circumstance bonus to {@feat Uzunjati Storytelling|LOCG} increases to +2."
+			]
+		}
+	]
+}

@@ -1,6 +1,184 @@
 {
 	"action": [
 		{
+			"name": "Prepare the Defenses",
+			"page": 87,
+			"source": "CotT",
+			"remaster": true,
+			"traits": [
+				"exploration"
+			],
+			"entries": [
+				"You bolster Dortrot Ranch’s defenses against the impending attack. Attempt a DC 36 Athletics, Crafting, or Warfare Lore check to reinforce the gate or palisade, a DC 38 Arcana, Nature, Occultism, or Religion check to cleanse the area of necromantic energy, or a DC 40 Diplomacy, Intimidation, or Performance check to coordinate the ranchers’ efforts or bolster their resolve.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The heroes gain 2 Preparation Points."
+						],
+						"Success": [
+							"The heroes gain 1 Preparation Point."
+						],
+						"Failure": [
+							"The heroes gain no Preparation Points."
+						],
+						"Critical Failure": [
+							"The heroes lose 1 Preparation Point."
+						]
+					}
+				}
+			],
+			"footers": [
+				{
+					"name": "6+ PP",
+					"entries": [
+						"Dortrot Ranch is as solid as a fortress, and the ranchers are prepared to repel the undead. The heroes gain a +3 circumstance bonus to initiative during the first wave, a +2 circumstance bonus to initiative during the second wave, and a +1 circumstance bonus to initiative in the final wave."
+					]
+				},
+				{
+					"name": "4–3 PP",
+					"entries": [
+						"The ranch’s defenses are sound. The heroes gain a +1 circumstance bonus to initiative during the first wave."
+					]
+				},
+				{
+					"name": "2–1 PP",
+					"entries": [
+						"The defenses are haphazard, and the ranchers’ morale is poor."
+					]
+				},
+				{
+					"name": "0 PP",
+					"entries": [
+						"The ranchers are still scrambling to prepare the defenses when the undead arrive. The heroes take a \u22121 circumstance penalty to initiative during the first wave."
+					]
+				}
+			]
+		},
+		{
+			"name": "Perform Funerary Rites",
+			"page": 77,
+			"source": "CotT",
+			"remaster": true,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"linguistic"
+			],
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"entries": [
+				"You calm the spirits of the last guard by reciting prayers for the dead. Attempt a DC 36 {@skill Lore|PC1|Arazni Lore} or {@skill Lore|PC1|Iomedae Lore} check, a DC 43 {@skill Deception|PC1} check, a DC 40 {@skill Performance|PC1} check, or a DC 38 {@skill Religion|PC1} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The last guard becomes {@condition stunned|PC1|stunned 3}, and the heroes gain 2 Funerary Successes.",
+						"Success": "The last guard becomes {@condition stunned|PC1|stunned 1}, and the heroes gain 1 Funerary Success.",
+						"Failure": "The last guard is unaffected.",
+						"Critical Failure": "The last guard is unaffected, and the heroes lose 1 Funerary Success."
+					}
+				}
+			]
+		},
+		{
+			"name": "Follow a Ranger",
+			"page": 43,
+			"traits": [
+				"exploration"
+			],
+			"source": "CotT",
+			"remaster": true,
+			"entries": [
+				"You follow a member of the Chernasardo Rangers as they make their way through the Southern Fangwood. Attempt a DC 28 {@skill Stealth|PC1} check to {@action Sneak|PC1} or a DC 27 {@skill Survival|PC1} check to {@action Track|PC1}. This activity takes 1 hour.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, except you draw close enough to the rangers to hear them speak a code phrase (“Odra San Rehc”) before opening the door.",
+						"Success": "You follow the rangers to Fort Ozem and watch them enter the fort through a secret entrance in the fort’s outer wall (see the general description of Fort Ozem on page 44).",
+						"Failure": "You lose track of the rangers, wasting 1 hour and gaining no useful information.",
+						"Critical Failure": "The rangers notice someone is following them and set an ambush for you and your companions. During the encounter, the rangers gain a +1 circumstance bonus to initiative."
+					}
+				}
+			]
+		},
+		{
+			"name": "Research",
+			"source": "CotT",
+			"page": 42,
+			"remaster": true,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"entries": [
+				"You peruse the Flayed Files to learn more about the topic at hand. Choose your section of the library and attempt a skill check. The skills to use and the DC for the check depend on the choice you made.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain 2 RP.",
+						"Success": "You gain 1 RP.",
+						"Critical Failure": "You make a false discovery and lose 1 RP."
+					}
+				}
+			]
+		},
+		{
+			"name": "Evade the Undead",
+			"source": "CotT",
+			"page": 23,
+			"remaster": true,
+			"traits": [
+				"exploration",
+				"move"
+			],
+			"entries": [
+				"While exploring the ruins of Yua's Hope, you move from one location to another while evading the undead that roam the town. Attempt a DC 10 {@skill Stealth|PC1} check to {@action Sneak|PC1} past the undead or a DC 13 {@skill Acrobatics|PC1} or {@skill Athletics|PC1} check to move so quickly that the undead lose track of your position. Alternatively, you can attempt a DC 15 {@skill Society|PC1} check to {@action Recall Knowledge|PC1} and plot the most efficient route to your destination.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain 1 EP.",
+						"Success": "You don't gain or lose EP.",
+						"Failure": "You lose 1 EP.",
+						"Critical Failure": "You lose 2 EP."
+					}
+				}
+			],
+			"footers": [
+				{
+					"name": "11+ EP",
+					"entries": [
+						"The PCs remain out of sight. While the group's EP total remains at this level, PCs gain a +1 circumstance bonus to checks made to Evade the Undead."
+					]
+				},
+				{
+					"name": "10\u20136 EP",
+					"entries": [
+						"The PCs spot a lone zombie or skeleton shambling about, but they can avoid it by keeping quiet and staying on the move. If the PCs decide to engage the creature, they gain a +2 circumstance bonus to initiative."
+					]
+				},
+				{
+					"name": "5\u20133 EP",
+					"entries": [
+						"The party spots a group of four {@creature zombie shambler|MC1|zombie shamblers}. Unless the PCs keep moving, the zombies eventually catch up to them and attack."
+					]
+				},
+				{
+					"name": "2\u20131 EP",
+					"entries": [
+						"Six {@creature zombie shambler|MC1|zombie shamblers} attack the PCs. The zombies descend on the party in groups of two, each pair from a different direction, cutting off obvious escape routes."
+					]
+				},
+				{
+					"name": "0 EP",
+					"entries": [
+						"A {@creature shambler troop|B3} corners the survivors in an alleyway or surrounds a building as the PCs search it. The troop gains a +2 circumstance bonus to initiative. If the PCs survive the attack, reset the group's EP to 5, but any subsequent failure to Evade the Undead is treated as a critical failure until the PCs regain at least 1 EP."
+					]
+				}
+			]
+		},
+		{
 			"name": "Refocus",
 			"source": "PC1",
 			"remaster": true,
