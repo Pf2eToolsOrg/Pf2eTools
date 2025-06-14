@@ -31,7 +31,7 @@ class PageFilterDeities extends PageFilter {
 		});
 		this._skillFilter = new Filter({header: "Divine Skill", displayFn: StrUtil.toTitleCase});
 		this._weaponFilter = new Filter({header: "Favored Weapon", displayFn: StrUtil.toTitleCase});
-		this._domainFilter = new Filter({header: "Domain", displayFn: StrUtil.toTitleCase});
+		this._domainFilter = new Filter({header: "Domain"});
 		this._0Filter = new Filter({"header": "Cantrips", displayFn: StrUtil.toTitleCase});
 		this._1Filter = new Filter({"header": "1st", displayFn: StrUtil.toTitleCase});
 		this._2Filter = new Filter({"header": "2nd", displayFn: StrUtil.toTitleCase});
@@ -74,11 +74,13 @@ class PageFilterDeities extends PageFilter {
 		if (g.divineAbility) g._fAbility = g.divineAbility.abilities.map(a => a.toTitleCase());
 		if (g.divineSkill) g._fSkill = g.divineSkill.skills;
 		if (g.favoredWeapon) g._fWeapon = g.favoredWeapon.weapons.map(w => w.split("|")[0]);
-		if (g.domains) g._fDomains = g.domains || [VeCt.STR_NONE];
-		if (g.alternateDomains) g._fDomains = g._fDomains.concat(g.alternateDomains);
+		if (g.domains) {
+			g._fDomains = [...g.domains, ...(g.alternateDomains ?? [])]
+				.map((str) => str.split("|")[0].toTitleCase())
+				.sort(SortUtil.ascSort);
+		}
 		if (g.spells) g._fSpells = [...Array(11).keys()].map(l => (g.spells[l] || []).map(s => s.split("|")[0]));
 		if (g.avatar) g._fMisc.push("Has Battle Form");
-		if (g.domains) g._fDomains.sort(SortUtil.ascSort);
 		if (g.remaster) g._fMisc.push("Remaster");
 	}
 

@@ -4811,7 +4811,7 @@ Renderer.deity = {
 		const renderer = Renderer.get().setFirstSection(true);
 		const renderStack = [
 			Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES),
-			Renderer.utils.getNameDiv(deity, { type: deity.category === "Philosophy" || deity.category === "Pantheon" ? deity.category : "Deity", ...opts }),
+			Renderer.utils.getNameDiv(deity, { type: deity.category === "Philosophy" || deity.category === "Pantheon" || deity.category === "Covenant" ? deity.category : "Deity", ...opts }),
 			Renderer.utils.getDividerDiv(),
 		];
 
@@ -4824,8 +4824,22 @@ Renderer.deity = {
 				}).join(", "),
 			);
 			renderStack.push(`<p class="pf2-stat__section"><strong>Pantheon Members&nbsp;</strong>${pantheon}</p>`);
-			renderStack.push(Renderer.utils.getDividerDiv());
 		}
+
+		// Covenant block
+		if (deity.covenantMembers) {
+			const covenant = renderer.render(
+				deity.covenantMembers
+					.map((m) => {
+						const [name, src] = m.split("|");
+						return `{@deity ${name}|${src ?? "CRB"}}`;
+					})
+					.join(", "),
+			);
+			renderStack.push(`<p class="pf2-stat__section"><strong>Covenant Members&nbsp;</strong>${covenant}</p>`);
+		}
+
+		if (deity.pantheonMembers || deity.covenantMembers) renderStack.push(Renderer.utils.getDividerDiv());
 
 		// Morality block
 		if (deity.alignment) renderStack.push(Renderer.deity.getAlignment(deity.alignment));
@@ -4853,9 +4867,23 @@ Renderer.deity = {
 				)}</p>`,
 			);
 		}
-		if (deity.alternateDomains) renderStack.push(`<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(deity.alternateDomains.map(it => `{@filter ${it}|spells||domains=${it}}`).join(", "))}</p>`);
+		if (deity.alternateDomains) {
+			renderStack.push(
+				`<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(
+					deity.alternateDomains
+						.map(
+							(it) =>
+								`{@filter ${it.split("|")[0]}|spells||domains=${
+									it.split("|").length === 1 ? it : `${it.split("|")[0]} (${it.split("|")[1]})`
+								}}`,
+						)
+						.join(", "),
+				)}</p>`,
+			);
+		}
 		if (deity.spells) renderStack.push(`<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(deity.spells))}</p>`);
 		if (deity.favoredWeapon) renderStack.push(`<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(deity.favoredWeapon.entry ? deity.favoredWeapon.entry : deity.favoredWeapon.weapons.map(w => `{@item ${w}}`).join(", "))}</p>`);
+		if (deity.religiousSymbol) renderStack.push(`<p class="pf2-stat__section"><strong>Religious Symbol&nbsp;</strong>${renderer.render(deity.religiousSymbol)}</p>`);
 
 		if (deity.entries) renderer.recursiveRender(deity.entries, renderStack, { pf2StatFix: true });
 
