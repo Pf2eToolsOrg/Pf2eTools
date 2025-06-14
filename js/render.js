@@ -6132,7 +6132,7 @@ Renderer.settlement = {
 	getSubHeadBot (it) {
 		const renderer = Renderer.get()
 		const renderStack = []
-		if (it.settlementData.religions) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Religions&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.religions)}</p>`)
+		if (it.settlementData.religions) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Religions&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.religions)}${it.settlementData.prohibitedReligions ? `; <strong>Prohibited&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.prohibitedReligions)}` : ""}</p>`)
 		if (it.settlementData.threats) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Threats&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.threats)}</p>`)
 		if (it.settlementData.features) renderStack.push(renderer.render(Renderer.nation.getFeatures(it.settlementData)))
 		return renderStack.join("")

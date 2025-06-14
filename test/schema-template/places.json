@@ -126,31 +126,17 @@
 							"religions": {
 								"type": "array",
 								"items": {
-									"type": [
-										"string",
-										"object"
-									],
-									"properties": {
-										"type": {
-											"type": "string",
-											"enum": [
-												"Prohibited"
-											]
-										},
-										"religions": {
-											"type": "array",
-											"items": {
-												"type": "string"
-											},
-											"uniqueItems": true,
-											"minItems": 1
-										}
-									},
-									"additionalProperties": false,
-									"required": [
-										"type",
-										"religions"
-									]
+									"type": "string",
+									"minLength": 1
+								},
+								"uniqueItems": true,
+								"minItems": 1
+							},
+							"prohibitedReligions": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"minLength": 1
 								},
 								"uniqueItems": true,
 								"minItems": 1
