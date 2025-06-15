@@ -1637,6 +1637,7 @@ SRC_HStR = "HStR";
 SRC_LOACLO = "LOACLO";
 SRC_LOAG = "LOAG";
 SRC_LOCG = "LOCG";
+SRC_LODM = "LODM";
 SRC_LOGM = "LOGM";
 SRC_LOGMWS = "LOGMWS";
 SRC_LOHh = "LOHh";
@@ -1772,6 +1773,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_HStR] = "HStR";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOACLO] = "ACLO";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOAG] = "LOAG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
+Parser.SOURCE_JSON_TO_ABV[SRC_LODM] = "LODM";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOGM] = "LOGM";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOGMWS] = "LOGMWS";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOHh] = "LOHh";
@@ -1907,6 +1909,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_HStR] = "2021-10-21";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOACLO] = "2021-12-22";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOAG] = "2021-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOCG] = "2019-10-16";
+Parser.SOURCE_JSON_TO_DATE[SRC_LODM] = "2024-11-20";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOGM] = "2020-01-29";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOGMWS] = "2020-01-29";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOHh] = "2023-06-28";
@@ -2042,6 +2045,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_HStR] = "Head-Shot the Rot";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOACLO] = "Lost Omens: Absalom, City of Lost Omens";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOAG] = "Lost Omens: Ancestry Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_LODM] = "Lost Omens: Divine Mysteries";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods & Magic";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOGMWS] = "Lost Omens: Gods & Magic Web Supplement";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOHh] = "Lost Omens: Highhelm";
@@ -2178,6 +2182,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_HStR] = "https://paizo.com/products/btq02anr";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOACLO] = "https://paizo.com/products/btq02ap2";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOAG] = "https://paizo.com/products/btq026k5";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOCG] = "https://paizo.com/products/btq01zt4";
+Parser.SOURCE_JSON_TO_STORE[SRC_LODM] = "https://paizo.com/products/btq02oal";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGM] = "https://paizo.com/products/btq021wf";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGMWS] =
 	"https://paizo-images.s3-us-west-2.amazonaws.com/image/download/PZO9303+Gods+%26+Magic+Web+Supplement.pdf";
@@ -2424,6 +2429,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_LOACLO,
 	SRC_LOAG,
 	SRC_LOCG,
+	SRC_LODM,
 	SRC_LOGM,
 	SRC_LOGMWS,
 	SRC_LOHh,
