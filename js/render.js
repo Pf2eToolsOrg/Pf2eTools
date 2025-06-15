@@ -6115,7 +6115,7 @@ Renderer.settlement = {
 		renderStack.push(Renderer.settlement.getSubHeadTop(it));
 		if (it.settlementData && (it.religions || it.threats || it.features || it.residents)) renderStack.push(Renderer.utils.getDividerDiv());
 		renderStack.push(Renderer.settlement.getSubHeadBot(it));
-		if ((it.religions || it.threats || it.features) && it.residents) renderStack.push(Renderer.utils.getDividerDiv());
+		if (it.settlementData && (it.settlementData.religions || it.settlementData.threats || it.settlementData.features) && it.residents) renderStack.push(Renderer.utils.getDividerDiv());
 		renderStack.push(Renderer.nation.getResidents(it));
 		renderStack.push(Renderer.utils.getPageP(it));
 		return renderStack.join("");
@@ -6123,7 +6123,13 @@ Renderer.settlement = {
 	getSubHeadTop (it) {
 		const renderer = Renderer.get()
 		const renderStack = []
-		if (it.description) renderStack.push(`<p class="pf2-stat pf2-stat__section">${it.description}</p>`)
+		if (it.description) {
+			if (typeof it.description === "string") {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section">${it.description}</p>`)
+			} else if (Array.isArray(it.description)) {
+				renderer.recursiveRender(it.description, renderStack, { pf2StatFix: true });
+			}
+		}
 		if (it.settlementData.government) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Government&nbsp;</strong>${it.settlementData.government}</p>`)
 		if (it.settlementData.population) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Population&nbsp;</strong>${Renderer.settlement.getPopulation(it.settlementData.population)}</p>`)
 		if (it.settlementData.languages) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Languages&nbsp;</strong>${renderer.renderJoinCommaOrSemi(it.settlementData.languages)}</p>`)
