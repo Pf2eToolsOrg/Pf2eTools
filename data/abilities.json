@@ -1,6 +1,108 @@
 {
 	"ability": [
 		{
+			"name": "Broken Mindscape",
+			"source": "LOSK",
+			"page": 181,
+			"remaster": true,
+			"traits": [
+				"aura",
+				"illusion",
+				"incapacitation",
+				"mental"
+			],
+			"entries": [
+				"30 feet. A creature entering the aura or starting its turn in the aura must attempt a Will save. Use the moderate spell DC for the failed prophet’s level.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected and becomes immune to broken mindscape for 1 minute.",
+						"Success": "The creature is {@condition stunned|PC1|stunned 1} as disjointed visions of the failed prophet’s mindscape assail its senses.",
+						"Failure": "The creature’s mind is pulled into the failed prophet’s mindscape. It’s {@condition paralyzed|PC1} for 1 round. While {@condition paralyzed|PC1}, the creature can take any actions with the {@trait mental} or {@trait spirit} traits, or that deal mental or spirit damage, as though those actions were purely {@trait mental}. Such actions only have line of effect to the originating failed prophet and other creatures currently {@condition paralyzed|PC1} by broken mindscape, though they treat all such creatures as though they were adjacent.",
+						"Critical Failure": "As failure, but the duration is 1 minute or until the failed prophet is destroyed, whichever happens first."
+					}
+				}
+			]
+		},
+		{
+			"name": "Wealthsense",
+			"source": "LOSK",
+			"page": 180,
+			"remaster": true,
+			"entries": [
+				"The failed prophet can detect concentrations of coinage and other valuables as an imprecise sense with a range of 60 feet. The failed prophet detects any creature carrying coins and treasure totaling at least the average cost of a consumable item of the failed prophet’s level."
+			]
+		},
+		{
+			"name": "Taboos",
+			"source": "LOSK",
+			"page": 181,
+			"remaster": true,
+			"entries": [
+				"Despite the failed prophet’s transformed body, a lifelong adherence to the strictures of the Prophecies of Kalistrade has ingrained the philosophical prohibitions into their soul. Whenever a failed prophet is critically hit by an unarmed attack, is critically hit by or critically fails a save against a touch spell, or is exposed to a {@trait disease} or {@trait poison} effect (even though immune), they take a −2 status penalty to their AC, attack bonuses, DCs, {@skill Perception|PC1}, saving throws, and skill modifiers for 1 minute. Breaking other Kalistocratic taboos can also trigger this penalty at the GM’s discretion."
+			]
+		},
+		{
+			"name": "This Is My Reality!",
+			"source": "LOSK",
+			"page": 181,
+			"remaster": true,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"concentrate"
+			],
+			"entries": [
+				"The failed prophet exerts control over their crumbling mindscape to inflict harm upon those trapped within. This can take the form of falling debris, natural disasters, or anything else the failed prophet can imagine. No matter the form, each creature currently {@condition paralyzed|PC1} by the failed prophet’s broken mindscape takes spirit damage with a basic Will save. The save DC uses the high spell DC for the failed prophet’s level and the unlimited use area damage for the failed prophet’s level."
+			]
+		},
+		{
+			"name": "Greedy Grab",
+			"source": "LOSK",
+			"page": 181,
+			"remaster": true,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"requirements": "The failed prophet’s last action was a successful fist {@action Strike|PC1} that dealt damage",
+			"entries": [
+				"The failed prophet attempts a {@skill Thievery|PC1} check against the target’s Reflex DC. On a success, the failed prophet pilfers coins and gems from the target with a total value as indicated in the table, to a maximum of what the target is carrying. Valuables in unlocked containers on the target’s person can be taken just as easily as those carried. On a critical success, the failed prophet steals double that amount. The failed prophet gains a number of temporary Hit Points equal to the value stolen that last for 1 minute.",
+				{
+					"type": "table",
+					"source": "LOSK",
+					"colStyles": [
+						"text-center",
+						"text-center"
+					],
+					"rows": [
+						[
+							"Level",
+							"Value Stolen"
+						],
+						[
+							"10–12",
+							"{@dice 5d10} gp"
+						],
+						[
+							"13–15",
+							"{@dice 6d10} gp"
+						],
+						[
+							"16–18",
+							"{@dice 7d10} gp"
+						],
+						[
+							"19–20",
+							"{@dice 8d10} gp"
+						]
+					]
+				}
+			]
+		},
+		{
 			"name": "Tap Planar Gate",
 			"page": 85,
 			"source": "WoW2",

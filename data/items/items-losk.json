@@ -1,0 +1,1084 @@
+{
+	"item": [
+		{
+			"name": "Breath of Freedom",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 52,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"consumable",
+				"magical",
+				"talisman"
+			],
+			"price": {
+				"amount": 18,
+				"coin": "gp"
+			},
+			"usage": "affixed to armor",
+			"bulk": "\u2014",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "reaction"
+				},
+				"traits": [
+					"concentrate"
+				]
+			},
+			"category": "Talisman",
+			"entries": [
+				"This delicate feather ornament looks fragile but is solid as stone. When you Activate the talisman, you can immediately attempt to {@action Escape|PC1}."
+			],
+			"trigger": "You become {@condition grabbed|PC1}, {@condition immobilized|PC1}, or {@condition restrained|PC1} ",
+			"requirements": "You're an expert in Reflex saves."
+		},
+		{
+			"name": "Crimson Godsblood Serum",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 52,
+			"type": "Item",
+			"level": "6+",
+			"traits": [
+				"rare",
+				"consumable",
+				"magical",
+				"potion"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"traits": [
+					"manipulate"
+				]
+			},
+			"category": "Potion",
+			"entries": [
+				"Though it contains but a tiny drop of {@deity Gorum|PC1}'s blood, drinking this thick, swirling potion fills the user with divine wrath and resilience. While under the effect of the potion, you gain a status bonus to physical damage rolls for 1 minute. The first time during that minute you're reduced to 0 Hit Points but not immediately killed, you avoid being knocked out, regain the listed amount of Hit Points, and become {@condition confused|PC1}  for 1 round, and your {@condition wounded|PC1}  condition increases by 1."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "lesser",
+					"level": 6,
+					"price": {
+						"amount": 50,
+						"coin": "gp"
+					},
+					"entries": [
+						"The potion grants a +2 status bonus and restores {@dice 2d8+5} Hit Points."
+					]
+				},
+				{
+					"variantType": "moderate",
+					"level": 12,
+					"price": {
+						"amount": 400,
+						"coin": "gp"
+					},
+					"entries": [
+						"The potion grants a +3 status bonus and restores {@dice 3d8+10} Hit Points."
+					]
+				},
+				{
+					"variantType": "greater",
+					"level": 18,
+					"price": {
+						"amount": 5000,
+						"coin": "gp"
+					},
+					"entries": [
+						"The potion grants a +4 status bonus and restores {@dice 6d8+20} Hit Points."
+					]
+				}
+			]
+		},
+		{
+			"name": "Godrending Ammunition",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 52,
+			"type": "Item",
+			"level": "13+",
+			"traits": [
+				"rare",
+				"consumable",
+				"magical"
+			],
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"traits": [
+					"manipulate"
+				]
+			},
+			"ammunition": [
+				"any"
+			],
+			"category": "Consumable",
+			"entries": [
+				"Embedded in this piece of ammunition is a shining sliver of a warshard. When an activated {@i godrending ammunition} hits a target, the body of the struck creature attempts to tear itself apart, causing nauseating pain. Instead of its normal damage, the ammunition deals {@damage 10d8} slashing damage. The target can attempt a DC 30 Fortitude saving throw; it takes a \u20132 circumstance penalty to this save if the {@action Strike|PC1}  was a critical hit.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The foe takes the normal damage from the ammunition, instead of the {@damage 10d8} slashing damage."
+						],
+						"Success": [
+							"The foe takes half damage."
+						],
+						"Failure": [
+							"The foe takes full damage and is {@condition sickened|PC1|sickened 1}."
+						],
+						"Critical Failure": [
+							"The foe takes double damage and is {@condition sickened|PC1|sickened 2}."
+						]
+					}
+				},
+				"A creature reduced to 0 HP from this damage is ripped limb from limb, and it instantly dies; its gear remains."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"variantType": "godrending ammunition",
+					"name": "Godrending Ammunition",
+					"level": 13,
+					"price": {
+						"amount": 440,
+						"coin": "gp"
+					}
+				},
+				{
+					"variantType": "greater godrending ammunition",
+					"name": "Greater godrending Ammunition",
+					"level": 18,
+					"price": {
+						"amount": 3300,
+						"coin": "gp"
+					},
+					"entries": [
+						"The damage is {@dice 15d8}, and the save DC is 38."
+					]
+				}
+			]
+		},
+		{
+			"name": "Screaming Pinion",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 52,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"rare",
+				"magical"
+			],
+			"price": {
+				"amount": 3000,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": 1,
+			"category": "Held",
+			"entries": [
+				"This +2 greater striking flintlock musket is an innovation of the Platinum Wing, and possession of one by a civilian is a high crime in Andoran. The gun's secret is the chip of a warshard used as the hammer in the striking mechanism.",
+				{
+					"name": "Activate\u2014Transcendent Shot",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"requirements": "The {@i screaming pinion} is unloaded",
+					"entries": [
+						"You call on the power of the warshard to load the {@i screaming pinion} with a bullet made of divine fury. The next attack from the gun deals spirit damage, rather than its typical type, and on a critical hit, the target is subject to the weapon's critical specialization effect. If the gun isn't fired before the end of your next turn, the bullet disappears, and the gun becomes unloaded."
+					],
+					"type": "ability"
+				},
+				{
+					"name": "Activate\u2014Eagle's Cry",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"manipulate",
+						"sonic"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The musket unleashes a piercing sound wave in a 70-foot line. Each creature in the area takes {@damage 8d10} sonic damage with a DC 30 basic Fortitude save. A creature that critically fails its save is also {@condition deafened|PC1}. If the {@i screaming pinion} has a +3 potency rune, the DC increases to 35, and the damage increases to {@dice 10d10}."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Twilight Tattoo",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 52,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical",
+				"tattoo"
+			],
+			"access": "You're a member of the Twilight Talons.",
+			"price": {
+				"amount": 125,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Tattoo",
+			"entries": [
+				"This tattoo of a black eagle gripping a sword and arrows in its talons identifies the bearer as a member of the Twilight Talons. Agents typically keep the tattoo hidden unless they need to prove their identity to another member. The bearer gains a +1 item bonus to {@skill Deception|PC1} checks.",
+				{
+					"type": "ability",
+					"name": "Activate\u2014Fade",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"illusion"
+					],
+					"entries": [
+						"You hide your tattoo from view. The tattoo is invisible for 1 day and can’t be detected by effects such as {@spell detect magic|PC1} and {@spell read aura|PC1}. You can {@action Dismiss|PC1} this effect."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Activate\u2014Inscribe",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"illusion",
+						"manipulate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You lay your hand on a piece of text, and your tattoo makes a perfect copy of it, storing it as a ring of swirling letters surrounding the design. The tattoo can hold text equivalent to two pages of a book, a single scroll, or a similar area of other surfaces, though it doesn’t replicate any magical effect or other special properties of the original words. You can {@action Dismiss|PC1} this effect, and when you {@action Dismiss|PC1} it, the tattoo copies the original text onto a blank writing surface you’re touching."
+					]
+				}
+			]
+		},
+		{
+			"name": "Emperor's Peak Quartz Bracelet",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 100,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"While most residents of\u2014and travelers to\u2014the Five Kings Mountains live underground, a significant number of people explore the regions' awe-inspiring peaks. Among their many discoveries on Emperor's Peak is a deposit of rainbow-colored rock crystal quartz with inherent magical properties that aid in survival, especially in the mountains. Dwarven artisans fashion chunks of this translucent quartz into fashionable bracelets.",
+				"Wearing such a bracelet grants you a +1 item bonus to {@skill Survival|PC1} checks to {@action Sense Direction|PC1} and {@action Subsist|PC1}. This bonus increases to +3 when in mountainous terrain. If you attempt a {@skill Survival|PC1} check to {@action Subsist|PC1} after 8 hours or less of exploration, you take only a \u22122 penalty instead of a \u22125 penalty."
+			]
+		},
+		{
+			"name": "Keep Stone Amulet",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 101,
+			"type": "Item",
+			"level": 19,
+			"traits": [
+				"rare",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 38000,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"The superior adamantine-lead alloy known as keep stone is as highly prized as it is expensive, and for good reason: keep stone combines the Hardness and durability of the finest metal with inherent magical protection. Not only does the metal itself resist {@trait magical} effects, but anyone in proximity to a large amount of it also enjoys a degree of protection from divination magic. Dwarven crafters have attempted to make this extra protection more portable and more affordable in the form of keep stone amulets. Each amulet is unique in its exact shape, size, thickness, and decorations, but typically, a keep stone amulet is roughly palm-sized and engraved with clan symbols, holy aphorisms, or a favorite line of poetry.",
+				"While wearing a keep stone amulet, if you're the target of a spell with the {@trait detection} or {@trait scrying} trait, the caster must succeed at a DC {@flatDC 5} flat check or lose the spell.",
+				{
+					"name": "Activate\u2014Rebuff Magic",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"concentrate",
+						"misfortune"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "You're the target of a spell with a spell attack roll",
+					"entries": [
+						"The caster must roll the spell attack roll twice and take the worse result."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Memory Ribbon",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 101,
+			"type": "Item",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"consumable",
+				"magical"
+			],
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Consumable",
+			"entries": [
+				"The time-honored tradition of weaving beautiful, embroidered glory ribbons throughout one's hair and beard remains an important cultural practice among some dwarven clans, with the choice of colors and style of presentation representing status, achievements, and other significant aspects of someone's position. Magical versions also exist that help enhance the wearer's memory. These magical ribbons are especially popular when someone has been invited to serve as a toastmaster at a guild banquet or as a master of ceremonies at an important festival. Their use in final oral exams for high positions is, however, hotly debated.",
+				{
+					"name": "Activate\u2014Read the Ribbon's Story",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"trigger": "You attempt a skill check to {@action Recall Knowledge|PC1} but haven't rolled yet",
+					"entries": [
+						"The memory ribbon grants you a +2 item bonus to the triggering skill check to {@action Recall Knowledge|PC1}. Afterward, the ribbon becomes non-magical."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Bolka's Blessing",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 101,
+			"type": "Rune",
+			"level": "5+",
+			"traits": [
+				"uncommon",
+				"divine",
+				"magical"
+			],
+			"category": "Rune",
+			"entries": [
+				"This filigree grants you a +1 item bonus to {@skill Diplomacy|PC1} checks and to {@skill Perception|PC1} checks to {@action Sense Motive|PC1}. Additionally, once per day, the filigree symbol can be activated for a {@trait healing} effect.",
+				{
+					"type": "ability",
+					"name": "Activate—Gift of Life",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"healing",
+						"vitality"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You regain {@dice 3d10} Hit Points."
+					]
+				},
+				"{@note This item is implied to only be inscribable on a {@item clan dagger|PC1}.}"
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "Bolka's Blessing",
+					"variantType": "Bolka's blessing",
+					"level": 5,
+					"price": {
+						"amount": 160,
+						"coin": "gp"
+					}
+				},
+				{
+					"variantType": "greater Bolka's blessing",
+					"name": "Greater Bolka's Blessing",
+					"level": 11,
+					"price": {
+						"amount": 1400,
+						"coin": "gp"
+					},
+					"entries": [
+						"The bonuses increase to +2, and the healing increases to {@damage 6d10}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Kols's Oath",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 101,
+			"type": "Rune",
+			"level": "5+",
+			"traits": [
+				"uncommon",
+				"divine",
+				"magical"
+			],
+			"category": "Rune",
+			"entries": [
+				"This filigree grants you, as the {@item clan dagger|PC1|clan dagger's} owner, a +1 item bonus to {@skill Society|PC1} checks and to {@skill Diplomacy|PC1} checks to {@action Request|PC1}. Additionally, once per day, the filigree symbol can be activated to compel an enemy to act.",
+				{
+					"name": "Activate\u2014Vow Unbreakable",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"concentrate",
+						"linguistic",
+						"mental"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You command a creature within 30 feet to {@action Stride|PC1} away from you, drop {@condition prone|PC1}, or release one item it's holding. The creature can choose to perform that action as the first action on its next turn; if it doesn't, it takes {@damage 4d6} mental damage (DC 20 basic Will save)."
+					],
+					"type": "ability"
+				},
+				"{@note This item is implied to only be inscribable on a {@item clan dagger|PC1}."
+			],
+			"variants": [
+				{
+					"name": "Kol's oath",
+					"variantType": "Kols's oath",
+					"level": 5,
+					"price": {
+						"amount": 160,
+						"coin": "gp"
+					}
+				},
+				{
+					"variantType": "greater",
+					"level": 11,
+					"price": {
+						"amount": 1400,
+						"coin": "gp"
+					},
+					"entries": [
+						"The bonuses increase to +2, the damage increases to {@dice 8d6}, and the DC increases to 28."
+					]
+				}
+			]
+		},
+		{
+			"name": "Trudd's Strength",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 101,
+			"type": "Rune",
+			"level": "5+",
+			"traits": [
+				"uncommon",
+				"divine",
+				"magical"
+			],
+			"category": "Rune",
+			"entries": [
+				"This filigree depiction of a warhammer in front of a kiteshaped shield grants you a +1 item bonus to {@skill Athletics|PC1} checks and to {@skill Intimidation|PC1} checks to {@action Coerce|PC1}. Additionally, once per day, the filigree symbol can be activated to protect your allies.",
+				{
+					"type": "ability",
+					"name": "Activate—Protect the Clan!",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Protective energy releases in a 10-foot emanation, granting a +1 status bonus to Armor Class to all allies within the area. The bonus lasts for 1 minute."
+					]
+				},
+				"{@note This item is implied to only be inscribable on a {@item clan dagger|PC1}."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"name": "Trudd's Strength",
+					"variantType": "Trudd's strength",
+					"level": 5,
+					"price": {
+						"amount": 160,
+						"coin": "gp"
+					}
+				},
+				{
+					"name": "Greater Trudd's Strength",
+					"variantType": "greater Trudd's strenght",
+					"level": 11,
+					"price": {
+						"amount": 1400,
+						"coin": "gp"
+					},
+					"entries": [
+						"The bonuses to skills and AC increase to +2."
+					]
+				}
+			]
+		},
+		{
+			"name": "Jorngarl's Harm",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 124,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"occult"
+			],
+			"category": "Weapon",
+			"entries": [
+				"This oversized {@item greataxe|PC1}, infamous for the chilling laughter it emits whenever it takes a life, was crafted by the frost giant sorcerer Jorngarl from the {@item final blade|LOWG} named Toothy Morris after it was stolen in an attack on a Gray Gardener convoy. It functions as a +3 major striking vorpal greataxe that retains the unique properties of a {@item final blade|LOWG}, trapping the souls of any it slays and preventing them from being returned to life by any means short of divine intervention, even a {@ritual wish|PC1} ritual or similar magic."
+			]
+		},
+		{
+			"name": "Splinter of Finality",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 124,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"rare",
+				"artifact",
+				"invested",
+				"occult"
+			],
+			"category": "Artifact",
+			"entries": [
+				"The sharpness of this dark metal splinter never dulls. By plunging it into your neck, you anchor your soul to the fragment, granting you protection from those that would harm it at the cost of weakening your body. You take a \u20131 status penalty to saving throws against effects that would give you the {@condition clumsy|PC1}, {@condition drained|PC1}, or {@condition enfeebled|PC1} condition. At 10th level, the penalty increases to \u20132. However, you gain spirit resistance equal to your level and a +2 status bonus to saving throws against {@trait spirit||spirits} or {@trait haunt||haunts} and effects that would give you the {@condition confused|PC1}, {@condition controlled|PC1}, {@condition doomed|PC1}, or {@condition stupefied|PC1} conditions."
+			],
+			"destruction": [
+				"All 13 {@i splinters of finality} must be gathered and used to reconstruct Silent Lenore, which must then be destroyed by means of the {@ritual blunt the final blade|NGD} ritual."
+			]
+		},
+		{
+			"name": "Resonating Crystal Boots",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 149,
+			"type": "Item",
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 475,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"These supple leather boots are studded with tiny crystals.",
+				{
+					"name": "Activate\u2014Chiming Steps",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"concentrate",
+						"sonic"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"{@action Stride|PC1} up to half your Speed. The crystals ring out with pleasant-sounding chimes that reverberate painfully in the ears of others. Each creature that you pass adjacent to during your {@action Stride|PC1} takes {@damage 4d8} sonic damage (DC 24 basic Fortitude save); a creature takes this damage only once. A creature who critically fails the save is also {@condition deafened|PC1} for 1 minute."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Shawl of Seasons",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 149,
+			"type": "Item",
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 150,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"This woven shawl changes its color, material, and abilities with the seasons. In its usual state, it reflects the current season of the environment the wearer is in. The handsome embroidery grants you a +2 item bonus to {@skill Diplomacy|PC1} checks to {@action Make an Impression|PC1}.",
+				{
+					"name": "Activate\u2014Change of Seasons",
+					"activity": {
+						"number": 10,
+						"unit": "minute"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You arrange the shawl on your shoulders to gain the benefits of a season of your choice until your next daily preparations. If the season you choose is the current season, you also gain a +1 item bonus to Fortitude saving throws.",
+						{
+							"type": "list",
+							"items": [
+								{
+									"type": "item",
+									"name": "Spring",
+									"entries": [
+										"The shawl becomes smooth silk covered in delicate flowers. You gain a +5-foot item bonus to your Speed."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Summer",
+									"entries": [
+										"The shawl becomes light cotton with the hues of fresh grass. You're protected from the effects of severe heat."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Fall",
+									"entries": [
+										"The shawl becomes thin leather with an ombre of red and orange leaves. You treat falls as 10 feet shorter."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Winter",
+									"entries": [
+										"The shawl becomes warm wool as white as snow. You're protected from the effects of severe cold."
+									]
+								}
+							]
+						}
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Fan Buckler",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 172,
+			"type": "Item",
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"magical"
+			],
+			"access": "You're a member of the Lion Blades.",
+			"price": {
+				"amount": 50,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"When collapsed, a {@i fan buckler} appears to be no more than an elegant wooden fan. Any attempts to discern that there's more to the item require a successful {@skill Perception|PC1} check against the {@skill Deception|PC1} DC of the wielder.",
+				{
+					"name": "Activate\u2014Unfurl Fan",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"You transform the fan into a wooden {@item buckler|PC1} (Hardness 3, HP 6, BT 3) or vice versa."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Lion's Call",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 173,
+			"type": "Item",
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"magical"
+			],
+			"access": "You're a member of the Lion Blades.",
+			"price": {
+				"amount": 900,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"Given only to highly trusted agents by the grand princes back when Lion Blades protected the Primogen Crown, these historic +1 striking authorized shortswords allow a Lion Blade wielder to locate resources.",
+				{
+					"type": "ability",
+					"name": "Activate—Find the Pride",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"arcane",
+						"concentrate",
+						"manipulate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You cast {@spell locate|PC1} at 5th rank to learn the location of one of the following of your choice: the nearest Lion Blade safe house, shadow school, Lion Blade agent, Lion Blade kith, or a person other than yourself who’s in possession of a {@i lion’s call}."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Activate—Echo the Call",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"concentrate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "A creature locates you using another {@i lion's call}",
+					"entries": [
+						"You immediately learn the location and appearance of the triggering creature. You can communicate telepathically with the triggering creature while you remain within 1 mile of each other for the next hour."
+					]
+				}
+			]
+		},
+		{
+			"name": "Lion's Pelt",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 173,
+			"type": "Item",
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical"
+			],
+			"access": "You're a member of the Lion Blades.",
+			"usage": "worn armor",
+			"bulk": 1,
+			"category": "Armor",
+			"entries": [
+				"Laurisa Tromaine ordered these as prototype uniforms. The fur-lined pauldrons bear the insignia of a lion with a blade in its mouth. The type of blade indicates which bard school one graduated from. When you disguise the armor via its raiment rune, you can choose whether to conceal this symbol or not. You can also use the rune's activation to quickly display or hide the insignia.",
+				{
+					"name": "Activate\u2014Contact Ally",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"arcane",
+						"concentrate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You cast {@spell message|PC1} at 1st rank to a target that you know is also wearing a {@i lion's pelt} uniform. If you and the target share an insignia, the spell is heightened to 3rd rank."
+					],
+					"type": "ability"
+				}
+			],
+			"variants": [
+				{
+					"variantType": "lion's pelt (leather)",
+					"name": "Lion's Pelt (Leather)",
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"entries": [
+						"The armor is a +1 raiment leather armor."
+					]
+				},
+				{
+					"variantType": "lion's pelt (chain)",
+					"name": "Lion's Pelt (Chain)",
+					"price": {
+						"amount": 250,
+						"coin": "gp"
+					},
+					"entries": [
+						"The armor is a +1 raiment chain armor."
+					]
+				}
+			],
+			"generic": "G"
+		},
+		{
+			"name": "Taldogis Badge",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 173,
+			"type": "Item",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 28,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"This badge depicting a hunting dog is used by Eutropia's supporters to indicate their allegiances.",
+				{
+					"type": "ability",
+					"name": "Activate—Bark",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"manipulate",
+						"subtle"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"The hunting dog makes a single bark that only you and a single target of your choice within 30 feet can hear. If the target is a supporter of Eutropia, you gain a +2 circumstance bonus to {@skill Diplomacy|PC1} checks against them for the next minute."
+					]
+				}
+			]
+		},
+		{
+			"name": "Jaws of the Grogrisant",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 173,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"unique",
+				"apex",
+				"invested",
+				"primal"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn circlet",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"The teeth that fell off the Mantle of the Grogrisant were given to the scholars of Houses Fahlspar, Lotheed, Nicodemius, and Zespire, who\u2014after much heated discussion\u2014created this regal circlet. You gain a +3 item bonus to {@skill Diplomacy|PC1} and {@skill Intimidation|PC1} skill checks and {@action Sense Motive|PC1} checks against creatures that have the {@trait primal} trait. When you invest in the headband, you either increase your Wisdom modifier by 1 or increase it to +4, whichever would give you a higher value.",
+				{
+					"name": "Activate\u2014Primal Empathy",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"mental"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You gain the ability to communicate with nature as if you were a part of it. You cast {@spell telepathy|PC1} at 6th rank, which can only be used to communicate with creatures that have the {@trait primal} trait."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "Paws of the Grogrisant",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 173,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"unique",
+				"apex",
+				"invested",
+				"primal"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn shoes",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"Princess Eutropia commissioned Taldor's Imperial College of Heralds to preserve the paws that fell off the Mantle of the Grogrisant. A few weeks later, the college presented this pair of boots. You gain a +3 item bonus to {@skill Athletics|PC1} checks and saves against forced movement. When you invest in the boots, you either increase your Strength modifier by 1 or increase it to +4, whichever would give you a higher value.",
+				{
+					"name": "Activate\u2014Grogrisant Leap",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The Grogrisant's legendary strength and reflexes empower your movement. You {@action Leap|PC1}, doubling the vertical and horizontal distance of your {@action Leap|PC1} action. If you land adjacent to a creature, you can {@action Strike|PC1} that creature once as part of this action."
+					],
+					"type": "ability"
+				}
+			]
+		},
+		{
+			"name": "The Dancers' Song",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 173,
+			"type": "Item",
+			"level": 7,
+			"traits": [
+				"rare",
+				"alchemical",
+				"consumable",
+				"ingested",
+				"poison"
+			],
+			"price": {
+				"amount": 50,
+				"coin": "gp"
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": [
+					"{@action Interact|PC1}"
+				]
+			},
+			"category": "Poison",
+			"entries": [
+				"A pair of conjoined sahkils known as The Dancers created this poison for the Ninth Army. While {@condition stupefied|PC1} by this poison, a creature can't treat any creature as its ally.",
+				{
+					"type": "affliction",
+					"DC": 23,
+					"savingThrow": "Fortitude",
+					"onset": "1 minute",
+					"maxDuration": "6 days",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 2d8} poison damage and {@condition stupefied|PC1|stupefied 1}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 3d8} poison damage and {@condition stupefied|PC1|stupefied 2}",
+							"duration": "2 days"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 4d8} poison damage and {@condition stupefied|PC1|stupefied 4}",
+							"duration": "3 days"
+						}
+					]
+				}
+			]
+		}
+	]
+}

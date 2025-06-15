@@ -1650,6 +1650,7 @@ SRC_LOTG = "LOTG";
 SRC_LOTGB = "LOTGB";
 SRC_LOTXWG = "LOTXWG";
 SRC_LORA = "LORA";
+SRC_LOSK = "LOSK";
 SRC_LOWG = "LOWG";
 SRC_LTiBA = "LTiBA";
 SRC_Mal = "Mal";
@@ -1784,6 +1785,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_LOTG] = "LOTG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOTGB] = "LOTGB";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOTXWG] = "LOTXWG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LORA] = "LORA";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOSK] = "LOSK";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOWG] = "LOWG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LTiBA] = "LTiBA";
 Parser.SOURCE_JSON_TO_ABV[SRC_Mal] = "Mal";
@@ -1918,6 +1920,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_LOTG] = "2022-08-31";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOTGB] = "2021-10-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOTXWG] = "2024-04-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_LORA] = "2025-03-05";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOSK] = "2025-06-04";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOWG] = "2019-08-31";
 Parser.SOURCE_JSON_TO_DATE[SRC_LTiBA] = "2020-07-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_Mal] = "2021-07-07";
@@ -2052,6 +2055,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LOTG] = "Lost Omens: Travel Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOTGB] = "Lost Omens: The Grand Bazaar";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOTXWG] = "Lost Omens: Tian Xia World Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LORA] = "Lost Omens: Rival Academies";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOSK] = "Lost Omens: Shining Kingdoms";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOWG] = "Lost Omens: World Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LTiBA] = "Little Trouble in Big Absalom";
 Parser.SOURCE_JSON_TO_FULL[SRC_Mal] = "Malevolence";
@@ -2188,6 +2192,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_LOTG] = "https://paizo.com/products/btq02c20";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOTGB] = "https://paizo.com/products/btq027kc";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOTXWG] = "https://paizo.com/products/btq02ex6";
 Parser.SOURCE_JSON_TO_STORE[SRC_LORA] = "https://paizo.com/products/btq05yck";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOSK] = "https://paizo.com/products/btq08pw5";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOWG] = "https://paizo.com/products/btq01zoj";
 Parser.SOURCE_JSON_TO_STORE[SRC_LTiBA] = "https://paizo.com/products/btq024ys";
 Parser.SOURCE_JSON_TO_STORE[SRC_Mal] = "https://paizo.com/products/btq027qf";
@@ -2432,6 +2437,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_LOTGB,
 	SRC_LOTXWG,
 	SRC_LORA,
+	SRC_LOSK,
 	SRC_LOWG,
 	SRC_PC1,
 	SRC_PC2,

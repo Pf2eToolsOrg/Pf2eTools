@@ -1,6 +1,512 @@
 {
 	"place": [
 		{
+			"name": "Oppara",
+			"level": 16,
+			"category": "Settlement",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 165,
+			"traits": [
+				"metropolis"
+			],
+			"description": [
+				"Historic capital of Taldor and headquarters of the Lion Blades",
+				"Historic Capital of the Taldan Empire"
+			],
+			"settlementData": {
+				"government": "Grand Princess (Eutropia)",
+				"population": {
+					"total": 114744,
+					"ancestries": {
+						"humans": 90,
+						"halflings": 5,
+						"other": 5
+					}
+				},
+				"languages": [
+					"{@language Common|PC1} (Taldane)",
+					"{@language Dwarven|PC1}",
+					"{@language Elven|PC1}",
+					"{@language Gnomish|PC1}",
+					"{@language Halfling|PC1}",
+					"{@language Hallit|PC1}",
+					"Kellish"
+				],
+				"religions": [
+					"{@deity Abadar|PC1}",
+					"{@deity Cayden Cailean|PC1}",
+					"{@deity Iomedae|PC1}",
+					"{@deity Norgorber|PC1}",
+					"{@deity Sarenrae|PC1}",
+					"{@deity Shelyn|PC1}",
+					"{@deity Thamir|LODM}"
+				],
+				"threats": [
+					"border tensions",
+					"government corruption",
+					"magical wild beasts",
+					"treasonous schemes"
+				],
+				"features": [
+					{
+						"name": "Capital Wealth",
+						"entries": [
+							"Oppara is a center of trade for Taldor, importing and exporting only the finest goods. With the right connections, you can consider the settlement level of Oppara to be level 20 when you {@action Earn Income|PC1} and for determining access to items."
+						]
+					},
+					{
+						"name": "Imperial Pride",
+						"entries": [
+							"The citizens of Oppara are eager to talk about the storied history and accomplishments of Taldor. You gain a +2 circumstance bonus to checks to {@action Gather Information|PC1} about Taldor in Oppara."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Carrius II",
+					"descriptor": "gentle",
+					"gender": "m",
+					"ancestry": "{@ancestry human|PC1}",
+					"position": "prince",
+					"bond": "Eutropia’s younger brother, revived during the War for the Crown"
+				},
+				{
+					"name": "Grand Princess Eutropia Stavian I",
+					"descriptor": "progressive",
+					"gender": "f",
+					"ancestry": "{@ancestry human|PC1}",
+					"position": "empress",
+					"bond": "Ruler or Taldor"
+				},
+				{
+					"name": "Baron Olar Vinmark",
+					"descriptor": "loyal",
+					"gender": "m",
+					"ancestry": "{@ancestry human|PC1}",
+					"position": "mayor",
+					"bond": "Former Ulfen Guard, appointed mayor of Oppara by Stavian III"
+				}
+			]
+		},
+		{
+			"name": "Iadara",
+			"level": 14,
+			"category": "Settlement",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 141,
+			"traits": [
+				"metropolis"
+			],
+			"description": "Ancient city serving as a hub of elven culture and home of the {@i Sovyrian Stone}.",
+			"settlementData": {
+				"government": "Monarchy",
+				"population": {
+					"total": 61982,
+					"ancestries": {
+						"aiuvarin": 20,
+						"elves": 70,
+						"other": 10
+					}
+				},
+				"languages": [
+					"{@language Common|PC1}",
+					"{@language Elven|PC1}"
+				],
+				"religions": [
+					"{@deity Alseta|LODM}",
+					"{@deity Calistria|PC1}",
+					"{@deity Desna|PC1}",
+					"{@deity Findeladlara|LODM}",
+					"{@deity Ketephys|LODM}",
+					"{@deity Nethys|PC1}",
+					"{@deity Yuelral|LODM}"
+				],
+				"threats": [
+					"political dissidents",
+					"spies"
+				],
+				"features": [
+					{
+						"name": "Elven Craft",
+						"entries": [
+							"{@trait Uncommon} {@trait elf} items, including magic items, are {@trait common} in Iadara, and magic items up to level 17 are available."
+						]
+					},
+					{
+						"name": "Masters of Gates",
+						"entries": [
+							"Iadara has a high concentration of {@i aiudara} and mages who have studied them. Including one of these individuals as a secondary caster in a {@trait teleportation} ritual decreases the ritual’s DC by 2."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Anbatha Lor",
+					"descriptor": "silver-tongued",
+					"gender": "f",
+					"ancestry": "{@ancestry elf|PC1}",
+					"position": "cleric of {@deity Calistria|PC1}",
+					"bond": "High Priestess of Calistria, Dagger of Trickery, and member of the Council of Sanctity"
+				},
+				{
+					"name": "Telandia Edasseril",
+					"descriptor": "diplomatic",
+					"gender": "f",
+					"ancestry": "{@ancestry elf|PC1}",
+					"position": "wizard",
+					"bond": "Queen and ruler of Kyonin"
+				},
+				{
+					"name": "Opheli Wisternine",
+					"descriptor": "curious",
+					"gender": "f",
+					"ancestry": "{@versatileHeritage aiuvarin|PC1} {@ancestry human|PC1}",
+					"position": "historian",
+					"bond": "Founder of the Aiulor and member of the Council of Sanctity"
+				},
+				{
+					"name": "Vedlon Taragid",
+					"descriptor": "belligerent",
+					"gender": "m",
+					"ancestry": "{@ancestry elf|PC1}",
+					"position": "activist",
+					"bond": "Head of the en-Aiudeen, a vocal minority faction"
+				}
+			]
+		},
+		{
+			"name": "Isarn",
+			"level": 12,
+			"category": "Settlement",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 117,
+			"traits": [
+				"metropolis"
+			],
+			"description": "Capital of Galt and seat of the Reconciliation Council",
+			"settlementData": {
+				"government": "Citizens' council headed by chairperson",
+				"population": {
+					"total": 46320,
+					"ancestries": {
+						"humans": 91,
+						"halflings": 4,
+						"elves": 2,
+						"gnomes": 1,
+						"other": 2
+					}
+				},
+				"languages": [
+					"{@language Common|PC1}"
+				],
+				"religions": [
+					"{@deity Calistria|PC1}",
+					"{@deity Cayden Cailean|PC1}",
+					"{@deity Milani|LODM}",
+					"{@deity Norgorber|PC1}",
+					"{@deity Shelyn|PC1}"
+				],
+				"threats": [
+					"economic instability",
+					"insurgent activity",
+					"urban decay"
+				],
+				"features": [
+					{
+						"name": "Anonymity",
+						"entries": [
+							"LThanks to decades of administrative negligence and a deeply entrenched reluctance on the part of its citizens to cooperate with authority, Isarn is an excellent place to disappear or become someone else. By spending 24 hours and bribes totaling at least 100 gp per character level (increased at the GM’s discretion as appropriate), you can obtain forged documents and pay off the right locals necessary to create a new social identity, with the effects of the {@feat vigilante archetype dedication|PC2}, except that the identity can only be used within Isarn. If you’re a vigilante, you can create a separate social identity here as well as the one granted by your archetype. If this social identity is exposed to the public, you immediately lose all its benefits and can’t create another one until 3 months have passed."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Armand Gravelstout",
+					"descriptor": "dutiful",
+					"gender": "m",
+					"ancestry": "{@ancestry dwarf|PC1}",
+					"position": "watch commander",
+					"bond": "Commander of the newly formed City Watch"
+				},
+				{
+					"name": "Camilia Drannoch",
+					"descriptor": "tenacious",
+					"gender": "f",
+					"ancestry": "{@ancestry human|PC1}",
+					"position": "politician",
+					"bond": "First Citizen of the Reconciliation Council"
+				},
+				{
+					"name": "Korran Goss",
+					"descriptor": "vindictive",
+					"gender": "m",
+					"ancestry": "{@ancestry human|PC1}",
+					"position": "demagogue",
+					"bond": "Deposed First Citizen of the Revolutionary Council, currently imprisoned in the Monolith"
+				},
+				{
+					"name": "Margaux Delacourt",
+					"descriptor": "scheming",
+					"gender": "f",
+					"ancestry": "{@versatileHeritage aiuvarin|PC1} {@ancestry human|PC1}",
+					"position": "senator",
+					"bond": "Vice Speaker of the Galtan Senate"
+				}
+			]
+		},
+		{
+			"name": "Larrad",
+			"level": 9,
+			"category": "Settlement",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 93,
+			"traits": [
+				"metropolis",
+				"dwarf",
+				"religious"
+			],
+			"description": "Unique holy city in the Five Kings Mountains that draws large numbers of pilgrims and tourists to its bustling caverns.",
+			"settlementData": {
+				"government": "Governing council (appointed)",
+				"population": {
+					"total": 18930
+				},
+				"languages": [
+					"{@language Dwarven|PC1}",
+					"{@language Common|PC1}"
+				],
+				"religions": [
+					"{@deity Dwarven pantheon|LODM}",
+					"{@deity Rivethun|LODM}"
+				],
+				"prohibitedReligions": [
+					"{@deity Droskar|LODM}"
+				],
+				"threats": [
+					"demonic forces from Tanglebriar",
+					"secret cultists of {@deity Droskar|LODM}",
+					"strife between traditionalists and modernists",
+					"undead from the city’s vast necropolis"
+				],
+				"features": [
+					{
+						"name": "Holy City",
+						"entries": [
+							"Larrad draws pilgrims and travelers from throughout the Inner Sea Region and beyond who desire to experience its sacred spaces. Magic items of up to 10th level abound, especially low-level and single-use ones, and even relics can be found—but some are fakes."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Besta Grimeye",
+					"descriptor": "dedicated",
+					"gender": "f",
+					"ancestry": "{@versatileHeritage duskwalker|PC2} {@ancestry dwarf|PC1}",
+					"position": "high priest",
+					"bond": "leader of the Temple of the Taskmaster, current king of the governing council, and Larrad’s representative to the national Gathering Council"
+				},
+				{
+					"name": "Magnissen Strongarm",
+					"descriptor": "narcissistic",
+					"gender": "m",
+					"ancestry": "{@ancestry dwarf|PC1}",
+					"position": "athlete",
+					"bond": "high priest of the Cathedral of Might and ambitious rival to Besta Grimeye as he seeks to become the next king of Larrad"
+				},
+				{
+					"name": "Polbar Trueye",
+					"descriptor": "thoughtful",
+					"gender": "a",
+					"ancestry": "{@ancestry dwarf|PC1}",
+					"position": "visionary",
+					"bond": "High Seeker of the Court of One Thousand, the headquarters of the Rivethun collective"
+				},
+				{
+					"name": "Quist Andalon",
+					"descriptor": "amiable",
+					"gender": "gf",
+					"ancestry": "{@ancestry halfling|PC1}",
+					"position": "larcenist",
+					"bond": "charismatic proprietor of the Savories and Sundries Inn; former Pathfinder with several valuable, stolen magic items from the Pathfinder Society"
+				}
+			]
+		},
+		{
+			"name": "Kerse",
+			"level": 10,
+			"category": "Settlement",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 69,
+			"traits": [
+				"metropolis"
+			],
+			"description": "A wealthy city on the shores of Lake Encarthan that operates largely under the influence of the Kalistocrats",
+			"settlementData": {
+				"government": "Chief Administrator (appointed leader)",
+				"population": {
+					"total": 20056,
+					"ancestries": {
+						"humans": 71,
+						"dwarves": 16,
+						"halflings": 5,
+						"other": 8
+					}
+				},
+				"languages": [
+					"{@language Common|PC1}",
+					"{@language Dwarven|PC1}",
+					"{@language Halfling|PC1}"
+				],
+				"religions": [
+					"{@deity Abadar|PC1}",
+					"{@deity The Prophecies of Kalistrade|LODM}"
+				],
+				"prohibitedReligions": [
+					"Razmir"
+				],
+				"threats": [
+					"Jelhegi dissidents",
+					"The Whispering Tyrant"
+				],
+				"features": [
+					{
+						"name": "Market of Many Worlds",
+						"entries": [
+							"Unique and valuable items from across Golarion and beyond flow through Kerse. Visitors can often find {@trait uncommon} or even {@trait rare} items specific to regions beyond Druma and the Inner Sea."
+						]
+					},
+					{
+						"name": "Trusted Traders",
+						"entries": [
+							"Drumans consider haggling a signal the buyer doesn’t trust the seller’s ability to appraise the worth of their goods or services. When players attempt checks to reduce the price of a purchase, apply the hard DC adjustment (+2)."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Fabrinia Novellus",
+					"descriptor": "contemplative",
+					"gender": "f",
+					"ancestry": "{@ancestry human|PC1}",
+					"position": "Kalistocrat",
+					"bond": "unofficial government consultant"
+				},
+				{
+					"name": "Rambert Armbrudder",
+					"descriptor": "fearless",
+					"gender": "m",
+					"ancestry": "{@ancestry dwarf|PC1}",
+					"position": "bureaucrat",
+					"bond": "chief administrator of Kerse"
+				}
+			]
+		},
+		{
+			"name": "Almas",
+			"level": 13,
+			"category": "Settlement",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 45,
+			"traits": [
+				"metropolis"
+			],
+			"description": "Capital of Andoran and headquarters of the Eagle Knights",
+			"settlementData": {
+				"government": "Mayor and citizens' council (elected leaders)",
+				"population": {
+					"total": 88500,
+					"ancestries": {
+						"humans": 65,
+						"halflings": 10,
+						"dwarves": 5,
+						"elves": 5,
+						"gnomes": 5,
+						"aiuvarin": 5,
+						"other": 5
+					}
+				},
+				"languages": [
+					"{@language Common|PC1}",
+					"{@language Dwarven|PC1}",
+					"{@language Elven|PC1}",
+					"{@language Gnomish|PC1}",
+					"{@language Halfling|PC1}"
+				],
+				"religions": [
+					"{@deity Abadar|PC1}",
+					"{@deity Calistria|PC1}",
+					"{@deity Cayden Cailean|PC1}",
+					"{@deity Desna|PC1}",
+					"{@deity Erastil|PC1}",
+					"{@deity Iomedae|PC1}",
+					"{@deity Irori|PC1}",
+					"{@deity Nethys|PC1}",
+					"{@deity Pharasma|PC1}",
+					"{@deity Sarenrae|PC1}",
+					"{@deity Shelyn|PC1}",
+					"{@deity Torag|PC1}"
+				],
+				"threats": [
+					"anti-democratic sentiment",
+					"militarization",
+					"political unrest"
+				],
+				"features": [
+					{
+						"name": "Effective Bureaucracy",
+						"entries": [
+							"Almas is home to a well-organized central government. With {@dice 1d4} hours, you can secure an audience with a knowledgeable public official from a government agency. This NPC begins with an attitude of {@condition friendly|PC1} and can answer basic questions about Almas and their governmental agency. Conversing with the NPC provides you with a +2 circumstance bonus to checks to {@action Recall Knowledge|PC1} about the city."
+						]
+					}
+				]
+			},
+			"residents": [
+				{
+					"name": "Andira Maruseek",
+					"descriptor": "dauntless",
+					"gender": "f",
+					"ancestry": "{@ancestry human|PC1}",
+					"position": "eagle Knight",
+					"bond": "Supreme Elect of the People's Council"
+				},
+				{
+					"name": "Fior Trace",
+					"descriptor": "meticulous",
+					"gender": "f",
+					"ancestry": "{@ancestry halfling|PC1}",
+					"position": "judge",
+					"bond": "Grand Magistrate and head of the city watch"
+				},
+				{
+					"name": "Lowell Kaplan",
+					"descriptor": "sadistic",
+					"gender": "m",
+					"ancestry": "{@ancestry dwarf|PC1}",
+					"position": "enforcer",
+					"bond": "Lumber Consortium bully and boss of the Timberfell district"
+				},
+				{
+					"name": "Ries Cuprianas",
+					"descriptor": "valiant",
+					"gender": "m",
+					"ancestry": "{@ancestry human|PC1}",
+					"position": "retired commando",
+					"bond": "Eagle Knight Commander"
+				}
+			]
+		},
+		{
 			"name": "Vellumis",
 			"level": 7,
 			"category": "Settlement",

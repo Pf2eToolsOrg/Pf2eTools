@@ -1,0 +1,1148 @@
+{
+	"spell": [
+		{
+			"name": "Avenging Wildwood",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 53,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"plant",
+				"wood"
+			],
+			"traditions": [
+				"primal"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"A Medium tree sprouts in an unoccupied square within range, its branches capable of striking out at your foes. This animated tree uses your spell attack modifier for its attack rolls and your spell DC for its AC. Its saving throw modifiers are equal to your spell DC \u2212 10, and it has 20 Hit Points. Other creatures can't occupy its space, but allies can pass through its space. When you Cast the Spell and each time you {@action Sustain|PC1} it, you can have the tree make a branches {@action Strike|PC1}  against a creature within 15 feet of it, dealing {@damage 2d8} bludgeoning, piercing, or slashing damage. You choose the damage type each time.",
+				"If the tree is in soil and survives to the end of the spell's duration, it remains as an ordinary, non-magical tree and continues to grow and thrive. The GM might determine that the tree disappears immediately in certain inhospitable situations."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The animated tree has 10 additional Hit Points, and its branches {@action Strike|PC1}  deals {@damage 1d8} additional damage."
+					]
+				}
+			}
+		},
+		{
+			"name": "Eagle's Cry",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 53,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"auditory",
+				"concentrate",
+				"manipulate",
+				"sonic"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "30-foot cone",
+				"types": [
+					"Cone"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"entries": [
+				"You let out the mighty cry of a majestic eagle that pierces eardrums. This cry deals {@damage 4d8} sonic damage. Each creature in the area must attempt a Fortitude saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature takes half damage and is {@condition frightened|PC1|frightened 1}."
+						],
+						"Failure": [
+							"The creature takes full damage and is {@condition frightened|PC1|frightened 2}."
+						],
+						"Critical Failure": [
+							"The creature takes double damage, is {@condition frightened|PC1|frightened 2}, and is {@condition fleeing|PC1} for 1 round."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The damage increases by {@damage 3d8}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Equal Footing",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 53,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"curse",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"occult",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature with a land Speed greater than yours",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You level the field between yourself and another creature, hampering its movements if it's quicker than you. The target attempts a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition clumsy|PC1|clumsy 1} and takes a \u221210-foot status penalty to all its Speeds until the end of your next turn."
+						],
+						"Failure": [
+							"The target is {@condition clumsy|PC1|clumsy 1} and takes a \u221215-foot status penalty to all its Speeds for 1 minute. During this time, it can't benefit from bonuses to its Speeds or take other penalties to its Speeds."
+						],
+						"Critical Failure": [
+							"The target is {@condition clumsy|PC1|clumsy 2} and takes a \u221215-foot status penalty to all its Speeds for 1 minute. During this time, it can't benefit from bonuses to its Speeds or take other penalties to its Speeds."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Radiant Globe",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 53,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"light",
+				"manipulate"
+			],
+			"traditions": [
+				"arcane",
+				"divine"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "10-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You create a dome of brilliant light that destroys projectiles attempting to pass through it. Ammunition from physical ranged attacks\u2014such as arrows, bolts, sling bullets, and other objects of similar size\u2014is destroyed in a flash of light when it passes into or out of the globe's area. Attackers targeting creatures or objects through the globe's surface with physical ranged attacks must succeed at a Fortitude save or become {@condition dazzled|PC1} for 1 round ({@condition blinded|PC1} for 1 round on a critical failure)."
+			]
+		},
+		{
+			"name": "Unexpected Windfall",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 75,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"metal",
+				"wizard"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"Coins, trinkets carved from heavy stone, and other cumbersome treasures rain down upon a foe. The target must attempt a Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target is {@condition encumbered} for 1 round."
+						],
+						"Failure": [
+							"The target is {@condition encumbered} for the duration of the spell."
+						],
+						"Critical Failure": [
+							"As failure, but the extra weight also knocks the target {@condition prone}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Capital Dividend",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 75,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You would be reduced to 0 Hit Points but not immediately killed.",
+			"entries": [
+				"Through diet and other strict regimens, you've fortified your body as Kalistrade's teachings have fortified your mind. You remain at 1 Hit Point, and your skin takes on a slight warm glow.",
+				"For the next minute, any time you would regain Hit Points from a {@trait healing} effect, this magic amplifies the effect, and you regain an additional 8 Hit Points."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The additional healing increases by 2 Hit Points."
+					]
+				}
+			}
+		},
+		{
+			"name": "Attacked from Within",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 98,
+			"level": 7,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"spirit"
+			],
+			"traditions": [
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You assert your power over the target's own spirit as you reach deep into its soul in order to discover a moment of excruciating anguish, debilitating humiliation, or abject despair. The target takes {@damage 12d8} spirit damage and must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target takes no damage, with a brief sensation of pain followed by a pleasant memory."
+						],
+						"Success": [
+							"The target takes half damage and is {@condition frightened|PC1|frightened 1}."
+						],
+						"Failure": [
+							"The target takes full damage and is {@condition frightened|PC1|frightened 2}."
+						],
+						"Critical Failure": [
+							"The target takes double damage and is {@condition frightened|PC1|frightened 2} and {@condition off-guard|PC1} for 1 round."
+						]
+					}
+				}
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 2d8}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Defended by Spirits",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 98,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"spirit"
+			],
+			"traditions": [
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 ally and 1 enemy",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You entreat a spirit or the spiritual energies in your location to surround and protect an ally from an certain foe. Each time the enemy attacks and damages the ally, the enemy takes {@damage 1d6} spirit damage. The enemy is aware of these spirits and has a general sense that attacking the ally will draw the spirits' ire."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The damage increases by {@damage 1d6}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Manifestation of Spirits",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 98,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulation",
+				"mental"
+			],
+			"traditions": [
+				"divine",
+				"primal"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 creature",
+			"savingThrow": {
+				"type": [
+					"W"
+				]
+			},
+			"duration": {
+				"unit": "unknown",
+				"entry": "varies"
+			},
+			"entries": [
+				"You open the target's eyes to the plethora of spirits surrounding it\u2014and it sees all these spirits as menacing and powerful. The target must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target is unaffected."
+						],
+						"Success": [
+							"The target believes every spirit it sees is an imminent threat. It's {@condition stupefied|PC1|stupefied 3} for 1 round."
+						],
+						"Failure": [
+							"As success, but the effect lasts 1 minute."
+						],
+						"Critical Failure": [
+							"As failure, and the target becomes {@condition confused|PC1} for 1 round"
+						]
+					}
+				}
+			],
+			"heightened": {
+				"X": {
+					"6": [
+						"You can target up to 5 creatures"
+					]
+				}
+			}
+		},
+		{
+			"name": "Pain of Ages",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 99,
+			"level": 6,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"spirit"
+			],
+			"traditions": [
+				"divine"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "30-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"W"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You sense a spiritual resonance of deep anguish in the earth beneath your feet, the walls surrounding you, or the fragments of souls left behind in a place of calamity. You draw on this reservoir of pain and unleash its force against your enemies, dealing {@damage 8d8} spirit damage. On a critical failure, the creature is also {@condition stunned|PC1} for 1 round as it reels from the impact of so much anguish."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The damage increases by {@damage 2d8}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Spirit Ward",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 99,
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"manipulate"
+			],
+			"traditions": [
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"unit": "varies",
+				"entry": "{@as 1} to {@as 3}"
+			},
+			"range": {
+				"unit": "varies",
+				"entry": "varies"
+			},
+			"targets": "1 creature",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You draw on nearby spiritual energy or on echoes of the spirits you've invoked throughout your life to temporarily ward living flesh against dangerous spirits. You grant the target a +1 status bonus to saving throws against spells and effects caused by creatures that have the {@trait spirit} trait and haunts. The number of actions you spend when Casting this Spell determines its targets, range, area, and other parameters.",
+				{
+					"type": "pf2-options",
+					"noColon": true,
+					"items": [
+						{
+							"type": "item",
+							"name": "{@as 1}",
+							"entries": [
+								"The spell has a range of touch."
+							]
+						},
+						{
+							"type": "item",
+							"name": "{@as 2}",
+							"entries": [
+								"({@trait concentrate}) The spell has a range of 30 feet. If you target a living creature, the bonus increases to +2."
+							]
+						},
+						{
+							"type": "item",
+							"name": "{@as 3}",
+							"entries": [
+								"({@trait concentrate}) You create a ward in a 30-foot emanation. This targets you and all your allies in the burst."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Spiritual Renewal",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 99,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"healing",
+				"manipulate",
+				"vitality"
+			],
+			"traditions": [
+				"divine"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "touch"
+			},
+			"targets": "1 living creature",
+			"duration": {
+				"number": 4,
+				"unit": "round"
+			},
+			"entries": [
+				"You draw upon the restorative power of the spirits around you. The target gains fast healing 8."
+			],
+			"heightened": {
+				"plusX": {
+					"1": [
+						"The fast healing increases by 2."
+					]
+				}
+			}
+		},
+		{
+			"name": "Spiritual Transport",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 99,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"teleportation"
+			],
+			"traditions": [
+				"divine"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 240
+			},
+			"entries": [
+				"You call upon the spiritual energies surrounding you to teleport you to an unoccupied space within range that you can see. Any items you're wearing and holding come with you. Your familiar or animal companion, if you have one that's sharing your space or adjacent to your space, is transported with you, but any other creature sharing your space remains in that space."
+			],
+			"heightened": {
+				"X": {
+					"7": [
+						"The range increases to 1 mile. You don't need to be able to see your destination, as long as you have been there in the past and know its relative direction from you."
+					]
+				}
+			}
+		},
+		{
+			"name": "Veil of Spirits",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 99,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"spirit"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 3,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 120
+			},
+			"area": {
+				"entry": "20-foot burst",
+				"types": [
+					"Burst"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You draw on the essence of spiritual energy surrounding you to manifest a misty veil. When a creature that isn't immune to spirit damage begins its turn within the area, it must attempt a Reflex save. You can {@action Dismiss|PC1} the veil.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature is unaffected."
+						],
+						"Success": [
+							"The creature is {@condition dazzled|PC1} until the beginning of its next turn."
+						],
+						"Failure": [
+							"The creature is {@condition dazzled|PC1} and gains a weakness to spirit damage equal to half your level until the beginning of its next turn as spiritual energy clings to it. A creature with spiritsense can't use that imprecise sense while it's {@condition dazzled|PC1} in this way."
+						],
+						"Critical Failure": [
+							"As failure, but the weakness is equal to your level."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Menacing Lament",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 147,
+			"type": "Focus",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"auditory",
+				"concentrate",
+				"emotion",
+				"focus",
+				"mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"types": [
+					"Emanation"
+				],
+				"entry": "30-foot emanation"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You wail a dirge for your enemies. Enemies in the area are {@condition off-guard|PC1} against your attacks and gain no benefits from flanking you for the duration."
+			]
+		},
+		{
+			"name": "Valiant Anthem",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 147,
+			"type": "Focus",
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"auditory",
+				"concentrate",
+				"emotion",
+				"focus",
+				"mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"types": [
+					"Emanation"
+				],
+				"entry": "30-foot emanation"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You chant a rallying cry to bolster your allies. Your allies in the area gain a +10-foot status bonus to all Speeds and a +1 status bonus to attack rolls."
+			]
+		},
+		{
+			"name": "Elemental Sheath",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 147,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"concentrate",
+				"focus",
+				"manipulate"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You coat yourself in nature's power. Choose {@trait air}, {@trait earth}, {@trait fire}, {@trait metal}, {@trait water}, or {@trait wood}; the spell gains that trait. You become completely covered by armor formed from that element, gaining a +1 circumstance bonus to AC and resistance 5 to two types of damage based on the element you choose.",
+				"{@b Air} bludgeoning and electricity; {@b Earth} bludgeoning and poison; {@b Fire} fire and slashing; {@b Metal} acid and slashing; {@b Water} cold and piercing; {@b Wood} piercing and void."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The resistance increases by 5."
+					]
+				}
+			}
+		},
+		{
+			"name": "Vicious Howl",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 147,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"archetype",
+				"concentrate",
+				"focus"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"duration": {
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You howl with passion for your cause, empowering yourself to push beyond your limits. You gain a number of temporary Hit Points equal to your level and a +4 circumstance bonus to damage. If you reduce a {@trait fiend} to 0 Hit Points during this duration, you regain a number of Hit Points equal to the creature's level."
+			]
+		},
+		{
+			"name": "Friendly Push",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 148,
+			"type": "Focus",
+			"level": 1,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"focus",
+				"manipulate",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 willing creature",
+			"duration": {
+				"sustained": true,
+				"number": 1,
+				"unit": "minute"
+			},
+			"entries": [
+				"You exert magical force to propel a willing creature up to 10 feet in a straight line, including upward, though if they aren't on solid ground or have another way to maintain their height (such as a fly Speed) when the movement ends, they fall. When you {@action Sustain|PC1} the spell, you can move them again or choose a new target within range and move them instead. You can cast this spell on an {@condition unconscious|PC1} ally, and if you do, the movement from this spell doesn't trigger reactions."
+			],
+			"heightened": {
+				"X": {
+					"4": [
+						"The distance increases to 20 feet."
+					],
+					"7": [
+						"The distance increases to 30 feet."
+					]
+				}
+			}
+		},
+		{
+			"name": "Rapid Retreat",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 148,
+			"type": "Focus",
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"focus",
+				"teleportation",
+				"wizard"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You take damage from an attack or spell.",
+			"range": {
+				"unit": "feet",
+				"number": 20
+			},
+			"entries": [
+				"You know how to swiftly escape from harm. You instantly teleport out of danger into an unoccupied space within range, and you gain resistance to all damage against the triggering damage equal to your level. You can't Cast this Spell if there's no space to move into."
+			]
+		},
+		{
+			"name": "Echo Jump",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 148,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"force",
+				"manipulate",
+				"teleportation"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"area": {
+				"entry": "10-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"savingThrow": {
+				"type": [
+					"R"
+				],
+				"basic": true
+			},
+			"entries": [
+				"You teleport to an unoccupied space within range, leaving behind a faint echo of your form that explodes with magical force. Each creature within a 10-foot emanation from your previous location takes {@damage 4d8} force damage."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The range increases by 10 feet, and the damage increases by {@damage 3d8}."
+					]
+				}
+			}
+		},
+		{
+			"name": "Forest of Gates",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 148,
+			"level": 9,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"teleportation"
+			],
+			"traditions": [
+				"arcane",
+				"primal"
+			],
+			"cast": {
+				"number": 10,
+				"unit": "minute"
+			},
+			"range": {
+				"unit": "mile",
+				"number": 0
+			},
+			"targets": "you and up to 6 willing creatures touched",
+			"duration": {
+				"number": 1,
+				"unit": "hour"
+			},
+			"entries": [
+				"You transport yourself and your allies to a peaceful extraplanar realm of towering trees, each of which holds a misty gateway to another location. When you Cast this Spell, you choose a specific destination within 1,000 miles that you can identify by its position relative to your starting position and by its appearance (or other identifying features). Incorrect knowledge of the location causes the spell to fail. You and your allies walk for 1 hour through the forest, and each of you regains Hit Points and reduces the value of any {@condition doomed|PC1} or {@condition drained|PC1} condition as if you'd taken a full night's rest. At the end of the journey, you attempt a DC 40 {@skill Arcana|PC1} or {@skill Nature|PC1} check to find the correct gate to your desired location.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"You and your allies arrive within 1,000 feet of your desired location."
+						],
+						"Success": [
+							"You and your allies arrive within 1 mile of your desired location."
+						],
+						"Failure": [
+							"You and your allies arrive within 10 miles of your desired location."
+						],
+						"Critical Failure": [
+							"You and your allies exit the forest within 1 mile of your original location."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "King's Castle",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 149,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"teleportation"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 willing creature",
+			"entries": [
+				"You and a willing creature swap places. You appear in the target's former space, and the target appears in your former space. You and your target must each be able to fit in the new spaces within range; otherwise, the spell fails."
+			]
+		},
+		{
+			"name": "Sudden Transposition",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 149,
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"teleportation"
+			],
+			"traditions": [
+				"arcane",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"area": {
+				"entry": "60-foot emanation",
+				"types": [
+					"Emanation"
+				]
+			},
+			"targets": "up to 2 creatures",
+			"savingThrow": {
+				"type": [
+					"F"
+				]
+			},
+			"entries": [
+				"You wrench the targets off their feet, forcefully teleporting them within the area. The creatures must each be able to fit in their new space, and their positions must be unoccupied, entirely within the area, and in your line of sight. Each target attempts a Fortitude save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The target can teleport if it wants, but it chooses the destination within the area."
+						],
+						"Success": [
+							"The target is unaffected."
+						],
+						"Failure": [
+							"You teleport the target and choose its destination; the target takes {@damage 10d10} bludgeoning damage."
+						],
+						"Critical Failure": [
+							"You teleport the target and choose its destination; the target takes {@damage 20d10} bludgeoning damage and is knocked {@condition prone|PC1}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Trade Items",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 149,
+			"level": 3,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"teleportation"
+			],
+			"traditions": [
+				"arcane",
+				"divine",
+				"occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"unit": "feet",
+				"number": 60
+			},
+			"targets": "1 item you're holding and 1 item in another creature's possession you can see, each no more than light Bulk",
+			"savingThrow": {
+				"type": [
+					"R"
+				]
+			},
+			"entries": [
+				"You magically swap an item you're holding for another that someone else has. The second item appears in the hand you were holding the first item (or it falls to the ground in your square if you're unable to hold it), and the first item appears in the same place on the other creature's possession where the second item was (held in a hand or attached to a belt, for instance). If the second item is in the possession of a creature unwilling to relinquish it, they can prevent the transposition with a successful Reflex save."
+			],
+			"heightened": {
+				"X": {
+					"5": [
+						"Each object's maximum Bulk increases to 1. If one of the items is 1 Bulk and the other isn't, an unwilling creature gains a +2 circumstance bonus to their saving throw."
+					]
+				}
+			}
+		},
+		{
+			"name": "Warping Pull",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 149,
+			"level": 2,
+			"traits": [
+				"uncommon",
+				"concentrate",
+				"manipulate",
+				"teleportation"
+			],
+			"traditions": [
+				"arcane"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "An effect would deal damage to an ally within range.",
+			"range": {
+				"unit": "feet",
+				"number": 30
+			},
+			"targets": "1 willing creature that would take damage from the triggering effect",
+			"entries": [
+				"You get an ally out of danger with a teleporting pull. You teleport the target to an unoccupied square up to 10 feet closer to you. The target gains resistance 5 to all damage against the triggering effect."
+			],
+			"heightened": {
+				"plusX": {
+					"2": [
+						"The resistance increases by 5."
+					]
+				}
+			}
+		}
+	]
+}

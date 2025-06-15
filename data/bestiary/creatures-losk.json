@@ -1,0 +1,2254 @@
+{
+	"creature": [
+		{
+			"name": "Aurosrath",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 176,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"large",
+				"metal",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 13
+				},
+				"intimidation": {
+					"std": 12
+				},
+				"mercantile lore": {
+					"std": 12
+				},
+				"stealth": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 2,
+				"con": 4,
+				"int": 0,
+				"wis": 1,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 19
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 14
+					},
+					"ref": {
+						"std": 9
+					},
+					"will": {
+						"std": 13
+					}
+				},
+				"hp": [
+					{
+						"hp": 95,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "slashing",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "electricity",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "fist",
+					"attack": 15,
+					"damage": "{@damage 2d6+5} bludgeoning plus Grab"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Smeltable",
+						"entries": [
+							"If an aurosrath takes 5 or more fire damage from a single attack, the precious metals within their body enter a molten state until the end of their next turn. While in this state, the aurosrath takes a \u221210-foot status penalty to their Speeds, and their strikes deal an extra {@damage 1d6} fire damage. They also lose their weakness to slashing damage and their resistance to electricity damage. Finally, any creature currently {@condition grabbed|PC1} or {@condition restrained|PC1} by the aurosrath loses 1 round of air if it's holding its breath."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Fetters of Debt",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"curse",
+							"linguistic",
+							"mental",
+							"occult"
+						],
+						"frequency": {
+							"number": 1,
+							"interval": 10,
+							"unit": "minute"
+						},
+						"entries": [
+							"The aurosrath bellows a plea for gold, remarking that their foes are overladen. Creatures in a 15-foot emanation must succeed at a DC 19 Will save or become {@condition encumbered|PC1} for 1 minute. The creature is aware that it can immediately end the condition by giving the aurosrath items or treasure worth at least 20 gp. Handing a held item to the aurosrath is a single {@action Interact|PC1} action. If the aurosrath's hands are full, the item falls in their space, but the condition still ends."
+						]
+					},
+					{
+						"name": "Suffocating Wealth",
+						"entries": [
+							"As the aurosrath holds their victim, the victim is smothered in a stream of phantom coins. A creature who begins its turn {@condition grabbed|PC1} or {@condition restrained|PC1} by an aurosrath can't speak and must hold its breath or it begins to suffocate. The coins produced are ephemeral and melt away to nothing when removed from the aurosrath's presence for more than 1 round."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Beiran Frosthunt",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 177,
+			"level": 3,
+			"traits": [
+				"gargantuan",
+				"cold",
+				"fey",
+				"troop"
+			],
+			"perception": {
+				"std": 12
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 10
+				},
+				"athletics": {
+					"std": 8
+				},
+				"deception": {
+					"std": 8
+				},
+				"diplomacy": {
+					"std": 8
+				},
+				"stealth": {
+					"std": 10
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 4,
+				"con": 0,
+				"int": 1,
+				"wis": 1,
+				"cha": 3
+			},
+			"defenses": {
+				"ac": {
+					"std": 18
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 6
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 54,
+						"notes": [
+							"4 segments"
+						]
+					}
+				],
+				"thresholds": [
+					{
+						"squares": 3,
+						"value": 36
+					},
+					{
+						"squares": 2,
+						"value": 18
+					}
+				],
+				"immunities": [
+					"cold"
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 5
+					},
+					{
+						"name": "cold iron",
+						"amount": 5
+					},
+					{
+						"name": "splash damage",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 30,
+				"abilities": [
+					"troop movement"
+				]
+			},
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 17,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "frostbite",
+									"source": "PC1"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "chilling spray",
+									"amount": 3,
+									"source": "pc2"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Troop Defenses"
+					},
+					{
+						"name": "Unseasonable Cold",
+						"traits": [
+							"aura",
+							"cold",
+							"primal"
+						],
+						"entries": [
+							"Wherever the frosthunt goes, winter follows. The temperature within a quarter mile of a frosthunt drops to mild cold, then to severe cold within 500 feet, and extreme cold within 50 feet."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Icy Japes",
+						"activity": {
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"traits": [
+							"cold"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The beirans descend on their prey, biting and clawing at each enemy in a 5-foot emanation, with a DC 17 basic Reflex save. The damage depends on the number of actions.",
+							{
+								"type": "pf2-options",
+								"noColon": true,
+								"items": [
+									{
+										"name": "{@as 1}",
+										"entries": [
+											"{@damage 1d6} slashing damage plus 1 cold damage"
+										]
+									},
+									{
+										"name": "{@as 2}",
+										"entries": [
+											"{@damage 2d6+2} slashing damage plus {@damage 1d4} cold damage"
+										]
+									},
+									{
+										"name": "{@as 3}",
+										"entries": [
+											"{@damage 2d6+5} cold damage plus {@damage 1d4} cold damage"
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Corbayrant",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 178,
+			"level": 16,
+			"traits": [
+				"rare",
+				"huge",
+				"beast",
+				"fey",
+				"plant"
+			],
+			"perception": {
+				"std": 28
+			},
+			"senses": [
+				{
+					"name": "blindsight",
+					"type": "precise",
+					"range": 100
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"fey",
+					"muan"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 33
+				},
+				"nature": {
+					"std": 29
+				},
+				"stealth": {
+					"std": 27,
+					"in forests": 31
+				},
+				"survival": {
+					"std": 27
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 5,
+				"con": 6,
+				"int": 4,
+				"wis": 5,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 38
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 27
+					},
+					"will": {
+						"std": 27
+					}
+				},
+				"hp": [
+					{
+						"hp": 295,
+						"abilities": [
+							"regeneration 20 (deactivated by {@trait cold})"
+						]
+					}
+				],
+				"immunities": [
+					"blinded",
+					"visual"
+				],
+				"weaknesses": [
+					{
+						"name": "cold",
+						"amount": 15
+					}
+				],
+				"resistances": [
+					{
+						"name": "fire",
+						"amount": 10
+					},
+					{
+						"name": "piercing",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fangs",
+					"attack": 32,
+					"damage": "{@damage 3d12+18} piercing plus Grab"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <15 feet>"
+					],
+					"name": "stinger",
+					"attack": 32,
+					"damage": "{@damage 3d10+15} piercing plus corbayrant venom"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"propulsive",
+						"range increment <40 feet>"
+					],
+					"name": "spine",
+					"attack": 32,
+					"damage": "{@damage 3d6+15} piercing plus thorn paralysis"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Thorny Hide",
+						"entries": [
+							"A corbayrant's body is covered in jagged spines. Adjacent creatures that hit them with a melee attack, as well as creatures that touch them or hit them with an unarmed attack, take {@damage 4d6} piercing damage and are exposed to thorn paralysis."
+						]
+					},
+					{
+						"name": "Vitriolic Miasma",
+						"traits": [
+							"aura"
+						],
+						"entries": [
+							"30 feet. Non-corbayrants take a \u22122 circumstance penalty to saves against {@trait poison} effects and gain weakness 10 to poison damage while within the aura."
+						]
+					},
+					{
+						"name": "Reactive Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						}
+					}
+				],
+				"bot": [
+					{
+						"type": "affliction",
+						"name": "Corbayrant Venom",
+						"traits": [
+							"poison"
+						],
+						"DC": 37,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 8d6} poison damage",
+								"duration": "1 round"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 9d6} poison damage",
+								"duration": "1 round"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 9d6} poison damage and {@condition drained|PC1|drained 1}",
+								"duration": "1 round"
+							}
+						]
+					},
+					{
+						"name": "Spine Volley",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The corbayrant makes four spine {@action Strike|PC1|Strikes}, each against a different target. These attacks all count toward the corbayrant's multiple attack penalty, but the penalty doesn't increase until after the corbayrant makes their attacks."
+						]
+					},
+					{
+						"name": "Swallow Whole",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"Large, {@damage 9d6} piercing plus thorn paralysis, Rupture 30"
+						]
+					},
+					{
+						"name": "Thorn Paralysis",
+						"traits": [
+							"incapacitation",
+							"poison"
+						],
+						"entries": [
+							"The corbayrant's spines are covered in a paralyzing toxin that cause verdurous thorns to sprout from their victim's body. When a non-corbayrant creature is exposed, it attempts a DC 37 Fortitude save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected."
+									],
+									"Success": [
+										"The creature sprouts spines like those of the corbayrant. For 1 minute, the creature gains the corbayrant's thorny hide ability.",
+										"Allies attempting to aid the victim with touch-range spells and abilities run the risk of becoming infected themselves. At the end of the duration, the spines fall off harmlessly."
+									],
+									"Failure": [
+										"As success, but the creature is also {@condition paralyzed|PC1} for 1 minute. It can attempt another Fortitude save at the end of each turn to end the paralysis, but not the spines."
+									],
+									"Critical Failure": [
+										"As failure, but the creature doesn't receive a save at the end of its turn to end the paralysis."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Bibliodaemon",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 179,
+			"level": 8,
+			"traits": [
+				"uncommon",
+				"medium",
+				"daemon",
+				"fiend",
+				"unholy"
+			],
+			"perception": {
+				"std": 18
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "thoughtsense",
+					"type": "imprecise",
+					"range": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"daemonic"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"deception": {
+					"std": 18
+				},
+				"diplomacy": {
+					"std": 16
+				},
+				"intimidation": {
+					"std": 16
+				},
+				"legal lore": {
+					"std": 18
+				},
+				"society": {
+					"std": 18
+				},
+				"stealth": {
+					"std": 16
+				}
+			},
+			"abilityMods": {
+				"str": 2,
+				"dex": 3,
+				"con": 2,
+				"int": 6,
+				"wis": 2,
+				"cha": 4
+			},
+			"items": [
+				"gavel (as +1 striking light mace)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 26
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 16
+					},
+					"will": {
+						"std": 19
+					}
+				},
+				"hp": [
+					{
+						"hp": 130
+					}
+				],
+				"immunities": [
+					"death effects"
+				],
+				"weaknesses": [
+					{
+						"name": "holy",
+						"amount": 10
+					}
+				],
+				"resistances": [
+					{
+						"name": "mental",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"finesse",
+						"magical"
+					],
+					"name": "gavel",
+					"attack": 18,
+					"damage": "{@damage 2d4+8} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "claw",
+					"attack": 18,
+					"damage": "{@damage 2d8+8} slashing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 26,
+					"attack": 18,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "detect magic",
+									"source": "PC1"
+								},
+								{
+									"name": "divine lance",
+									"source": "PC1"
+								},
+								{
+									"name": "sigil",
+									"source": "PC1"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "command",
+									"source": "PC1"
+								},
+								{
+									"name": "enfeeble",
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "dispel magic",
+									"source": "PC1"
+								},
+								{
+									"name": "silence",
+									"source": "PC1"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "crisis of faith",
+									"source": "PC1"
+								},
+								{
+									"name": "dispel magic",
+									"source": "PC1"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "dull ambition",
+									"source": "PC2"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Thoughtsense",
+						"traits": [
+							"mental"
+						],
+						"entries": [
+							"The bibliodaemon is aware of non-mindless creatures within 60 feet as an imprecise sense."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Red Tape",
+						"traits": [
+							"aura",
+							"divine"
+						],
+						"entries": [
+							"30 feet. When a non-daemon enters or begins its turn within the aura, it must attempt a DC 23 Will save. On a failure, it takes a \u22122 status penalty to saving throws against {@trait linguistic} effects for 1 round."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"polymorph"
+						],
+						"entries": [
+							"The bibliodaemon can take on the appearance of any {@trait Small} or {@trait Medium} humanoid. This doesn't change their Speed or their attack and damage modifiers with their {@action Strike|PC1|Strikes}, but it might change the damage type their claw {@action Strike|PC1|Strikes} deal (typically to bludgeoning)."
+						]
+					},
+					{
+						"name": "Death by 1,000 Papercuts",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine"
+						],
+						"entries": [
+							"The bibliodaemon launches a torrent of sharp papers from the sleeves of their robes. All creatures in a 15-foot cone take {@damage 9d6} slashing damage (DC 23 basic Reflex save). Creatures that fail their save also take {@damage 2d4} {@condition persistent damage|PC1|persistent bleed damage}. The bibliodaemon can't use Death by 1,000 Papercuts again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Inevitable Delays",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"concentrate",
+							"divine",
+							"linguistic",
+							"mental"
+						],
+						"requirements": "The bibliodaemon's last action was a successful {@action Strike|PC1} that dealt damage",
+						"entries": [
+							"The bibliodaemon intuits the next actions the creature they just damaged will take and explains how it doesn't have the proper clearance to perform those actions. The creature must succeed at a DC 23 Will save or become {@condition slowed|PC1|slowed 1}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Failed Prophet",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 181,
+			"level": 10,
+			"traits": [
+				"rare",
+				"medium",
+				"construct"
+			],
+			"perception": {
+				"std": 20
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "wealthsense",
+					"type": "imprecise",
+					"range": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"dwarven"
+				]
+			},
+			"skills": {
+				"diplomacy": {
+					"std": 20
+				},
+				"mercantile lore": {
+					"std": 26
+				},
+				"occultism": {
+					"std": 23
+				},
+				"thievery": {
+					"std": 23
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 3,
+				"con": 5,
+				"int": 5,
+				"wis": 7,
+				"cha": 6
+			},
+			"defenses": {
+				"ac": {
+					"std": 30
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 17
+					},
+					"will": {
+						"std": 23
+					}
+				},
+				"hp": [
+					{
+						"hp": 175
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious",
+					"vitality",
+					"void"
+				],
+				"weaknesses": [
+					{
+						"name": "spirit",
+						"amount": 10
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 10
+					},
+					{
+						"name": "electricity",
+						"amount": 10
+					},
+					{
+						"name": "physical",
+						"amount": 10,
+						"note": "except magical bludgeoning"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach <10 feet>"
+					],
+					"name": "fist",
+					"attack": 24,
+					"damage": "{@damage 2d10+11} bludgeoning plus"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Spontaneous",
+					"DC": 27,
+					"attack": 19,
+					"entry": {
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "daze",
+									"source": "PC1"
+								},
+								{
+									"name": "figment",
+									"source": "PC1"
+								},
+								{
+									"name": "shield",
+									"source": "PC1"
+								},
+								{
+									"name": "telekinetic hand",
+									"source": "PC1"
+								},
+								{
+									"name": "telekinetic projectile",
+									"source": "PC1"
+								}
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "ill omen",
+									"source": "PC1"
+								},
+								{
+									"name": "item facade",
+									"source": "PC1"
+								},
+								{
+									"name": "phantasmal minion",
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "paranoia",
+									"source": "PC1"
+								},
+								{
+									"name": "stupefy",
+									"source": "PC1"
+								},
+								{
+									"name": "telekinetic maneuver",
+									"source": "PC1"
+								}
+							]
+						},
+						"3": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "force barrage",
+									"source": "PC1"
+								},
+								{
+									"name": "locate",
+									"source": "PC1"
+								},
+								{
+									"name": "paralyze",
+									"source": "PC1"
+								}
+							]
+						},
+						"4": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "confusion",
+									"source": "PC1"
+								},
+								{
+									"name": "translocate",
+									"source": "PC1"
+								},
+								{
+									"name": "vision of death",
+									"source": "PC1"
+								}
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "invoke spirits",
+									"source": "PC1"
+								},
+								{
+									"name": "shadow blast",
+									"source": "PC1"
+								},
+								{
+									"name": "telekinetic haul",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Wealthsense",
+						"entries": [
+							"150 gp"
+						],
+						"generic": {
+							"source": "LOSK",
+							"tag": "ability"
+						}
+					}
+				],
+				"mid": [
+					{
+						"name": "Broken Mindscape",
+						"traits": [
+							"aura",
+							"illusion",
+							"incapacitation",
+							"mental"
+						],
+						"entries": [
+							"30 feet, DC 27"
+						],
+						"generic": {
+							"source": "LOSK",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Taboos",
+						"generic": {
+							"source": "LOSK",
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Greedy Grab",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"generic": {
+							"source": "LOSK",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "This Is My Reality!",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"{@damage 6d6} spirit, DC 30"
+						],
+						"generic": {
+							"source": "LOSK",
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Goldpebble",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 182,
+			"level": 5,
+			"traits": [
+				"large",
+				"aquatic",
+				"beast"
+			],
+			"perception": {
+				"std": 9
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "wavesense",
+					"type": "imprecise",
+					"range": 60
+				}
+			],
+			"languages": {
+				"notes": [
+					"Common (can't speak any language)"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 12
+				},
+				"athletics": {
+					"std": 12,
+					"to Swim": 16
+				},
+				"stealth": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 3,
+				"con": 4,
+				"int": -3,
+				"wis": 1,
+				"cha": 1
+			},
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 12
+					},
+					"will": {
+						"std": 9
+					}
+				},
+				"hp": [
+					{
+						"hp": 90
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "electricity",
+						"amount": 5
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"swim": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fangs",
+					"attack": 15,
+					"damage": "{@damage 1d8+5} piercing plus {@damage 1d8} cold and pebblefang poison"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <10 feet>"
+					],
+					"name": "tail",
+					"attack": 13,
+					"damage": "{@damage 2d6+5} bludgeoning plus Grab"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Chilling Currents",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"A goldpebble can cause the temperature of all water within a 30-foot emanation centered on itself to plummet for 1 minute. Any creature that starts its turn or enters the affected water takes {@damage 2d6} cold damage (DC 19 basic Fortitude save).",
+							{
+								"type": "affliction",
+								"name": "Pebblefang Poison",
+								"traits": [
+									"poison"
+								],
+								"DC": 21,
+								"savingThrow": "Fortitude",
+								"maxDuration": "6 rounds",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@damage 1d6} cold damage",
+										"duration": "2 rounds"
+									},
+									{
+										"stage": 2,
+										"entry": "{@damage 2d6} cold damage",
+										"duration": "2 rounds"
+									},
+									{
+										"stage": 3,
+										"entry": "{@damage 2d6} cold damage and {@condition drained|PC1|drained 1}"
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Lamp Blighter",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 183,
+			"level": 6,
+			"traits": [
+				"small",
+				"fey"
+			],
+			"perception": {
+				"std": 15
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"fey"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 15
+				},
+				"deception": {
+					"std": 13
+				},
+				"intimidation": {
+					"std": 13
+				},
+				"nature": {
+					"std": 13
+				},
+				"stealth": {
+					"std": 15
+				}
+			},
+			"abilityMods": {
+				"str": 1,
+				"dex": 5,
+				"con": 1,
+				"int": 2,
+				"wis": 3,
+				"cha": 2
+			},
+			"items": [
+				"+1 shortbow (60 arrows)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 23
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 17
+					},
+					"will": {
+						"std": 14
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 75
+					}
+				],
+				"immunities": [
+					"blinded"
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 5
+					},
+					{
+						"name": "fire",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 15,
+				"fly": 45
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"name": "claw",
+					"attack": 16,
+					"damage": "{@damage 2d4+7} slashing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"deadly <d10>",
+						"magical",
+						"range increment <60 feet>",
+						"reload <0>"
+					],
+					"name": "shortbow",
+					"attack": 17,
+					"damage": "{@damage 1d6+6} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 24,
+					"attack": 16,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "detect magic",
+									"source": "PC1"
+								},
+								{
+									"name": "ignition",
+									"source": "PC1"
+								},
+								{
+									"name": "prestidigitation",
+									"source": "PC1"
+								},
+								{
+									"name": "shield",
+									"source": "PC1"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "floating flame",
+									"amount": 2,
+									"source": "PC1"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "blindness",
+									"source": "PC1"
+								},
+								{
+									"name": "dispel magic",
+									"source": "PC1"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "darkness",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Eye Pluck",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"requirements": "The lamp blighter's last action was a successful claw {@action Strike|PC1} against a creature with eyes",
+						"entries": [
+							"The lamp blighter attempts to pluck out one of the required creature's eyes. The target must attempt a DC 21 Fortitude save. On a failure, the target takes 4 {@condition persistent damage|PC1|persistent bleed damage} and is {@condition dazzled|PC1} for 1 round. On a critical failure, the target's eye is also severely damaged, taking a \u22124 circumstance penalty on all sight-based {@skill Perception|PC1} checks until the target returns to full Hit Points or the wound is otherwise healed (by magic such as {@spell sound body|PC1} or {@spell regenerate|PC1}). If all a creature's eyes are severely damaged in this way, that creature is {@condition blinded|PC1} for the same duration."
+						]
+					},
+					{
+						"name": "Fear the Darkness",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"emotion",
+							"fear",
+							"mental",
+							"primal"
+						],
+						"requirements": "The lamp blighter must be in an area of darkness",
+						"entries": [
+							"The lamp blighter evokes the terror of being unable to see in the dark. Each creature within a 20-foot emanation that doesn't have darkvision must succeed at a DC 23 Will save or become {@condition frightened|PC1|frightened 2}."
+						]
+					},
+					{
+						"name": "Snuff the Light",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"fire",
+							"primal"
+						],
+						"entries": [
+							"The lamp blighter extinguishes light sources in a 10-foot emanation. They extinguish all non-magical light sources automatically and attempt to extinguish magical light sources with a +16 counteract modifier and a counteract rank of 3. If the lamp blighter successfully extinguishes any light, their next successful claw or shortbow {@action Strike|PC1} deals {@damage 1d6} {@condition persistent damage|PC1|persistent fire damage}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Shroudwing",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 184,
+			"level": 4,
+			"traits": [
+				"medium",
+				"beast"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				],
+				"notes": [
+					"Necril (can't speak any language)"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 12
+				},
+				"athletics": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 4,
+				"con": 3,
+				"int": -3,
+				"wis": 1,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 12
+					},
+					"ref": {
+						"std": 13
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 60
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "beak",
+					"attack": 12,
+					"damage": "{@damage 2d8+5} piercing plus Knockdown"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "talon",
+					"attack": 12,
+					"damage": "{@damage 2d6+5} piercing plus grave blight"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Death Rattle",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"The shroudwing emits a guttural, haunting call that instills a sense of fear almost impossible to shake. Each non-shroudwing creature within a 30-foot emanation must attempt a DC 18 Will save. Regardless of the result, creatures are then temporarily immune to Death Rattle for 1 minute.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected."
+									],
+									"Success": [
+										"The creature is {@condition off-guard|PC1} until the start of the shroudwing's next turn."
+									],
+									"Failure": [
+										"The creature is {@condition frightened|PC1|frightened 1}."
+									],
+									"Critical Failure": [
+										"The creature is {@condition frightened|PC1|frightened 2}."
+									]
+								}
+							}
+						]
+					},
+					{
+						"type": "affliction",
+						"name": "Grave Blight",
+						"traits": [
+							"disease"
+						],
+						"DC": 18,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 1d6} {@condition persistent damage|PC1|persistent poison damage} every hour, {@condition sickened|PC1|sickened 1}, and can't reduce the value of the {@condition sickened|PC1} condition while taking {@condition persistent damage|PC1|persistent poison damage}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 2d6} {@condition persistent damage|PC1|persistent poison damage} every hour, {@condition sickened|PC1|sickened 2}, and can't reduce the value of the {@condition sickened|PC1} condition while taking {@condition persistent damage|PC1|persistent poison damage}",
+								"duration": "1 day"
+							}
+						]
+					},
+					{
+						"name": "Soul Feeding",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"death",
+							"divine",
+							"manipulate"
+						],
+						"requirements": "The shroudwing is adjacent to a {@condition dying|PC1} creature",
+						"entries": [
+							"The shroudwing attempts to devour the {@condition dying|PC1} creature's soul. The creature must attempt a DC 18 Will save or their {@condition dying|PC1} condition increases by 1 and the shroudwing regains {@dice 2d8} Hit Points."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Torn Quartet",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 185,
+			"level": 13,
+			"traits": [
+				"uncommon",
+				"medium",
+				"undead"
+			],
+			"perception": {
+				"std": 23
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				],
+				"notes": [
+					"Necril (can't speak any language)"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 27
+				},
+				"athletics": {
+					"std": 27
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 8,
+				"con": 2,
+				"int": -2,
+				"wis": 4,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 33
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 23
+					}
+				},
+				"hp": [
+					{
+						"hp": 240,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "slashing",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 10,
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"reach <15 feet>"
+					],
+					"name": "limb",
+					"attack": 25,
+					"damage": "{@damage 3d8+13} bludgeoning plus"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Bound Limbs",
+						"entries": [
+							"A torn quartet ordinarily has four severed limbs tethered to a central point by near-incorporeal ropes. A limb is essentially cut away from the central point and rendered nonfunctional each time the torn quartet loses 60 Hit Points (so at 180 Hit Points, the torn quartet has three functional limbs, at 120 Hit Points, it has two functional limbs, and so on). Each functioning limb can {@action Grapple|PC1} separate creatures within reach, or multiple functioning limbs can {@action Grapple|PC1} the same creature; for each additional limb used to {@action Grapple|PC1} a creature, the {@action Escape|PC1} DC increases by 2."
+						]
+					},
+					{
+						"name": "Replacement Parts",
+						"entries": [
+							"A torn quartet can spend 1 minute tearing apart the corpse of a {@trait humanoid} creature that was killed within the last hour to regain 60 Hit Points and restore one of its nonfunctioning limbs. A torn quartet can't have more than four limbs."
+						]
+					},
+					{
+						"name": "Split Reactions",
+						"entries": [
+							"A torn quartet has a number of reactions per round equal to its number of still-functioning limbs, which it can use only to make {@action Reactive Strike|PC1|Reactive Strikes}. It can't use more than 1 reaction on the same triggering action, even if a creature leaves several squares within its reach, and the torn quartet must use a different limb for each {@action Reactive Strike|PC1} it makes. Whenever one of the torn quartet's limbs is rendered nonfunctional, the torn quartet loses one of its reactions."
+						]
+					},
+					{
+						"name": "Reactive Strike",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"See Split Reactions."
+						],
+						"generic": {
+							"tag": "action",
+							"source": "PC1"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Improved Grab"
+					},
+					{
+						"name": "Flurry of Limbs",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The torn quartet makes a number of limb Strikes up to its number of functioning limbs, each against a different target. These attacks count toward the torn quartet's multiple attack penalty, but the multiple attack penalty doesn't increase until after the torn quartet makes all its attacks."
+						]
+					},
+					{
+						"name": "Tear Asunder",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The torn quartet has a creature grappled or {@condition restrained|PC1} by at least two limbs",
+						"entries": [
+							"The creature takes {@damage 5d6} slashing damage for each limb currently {@condition grabbed|PC1|grabbing} or {@condition restrained|PC1|restraining} it (maximum {@dice 15d6}), with a DC 30 basic Fortitude save. On a critical failure, the creature also loses a random body part, and one of the torn quartet's limbs is now no longer {@condition grabbed|PC1|grabbing} or {@condition restrained|PC1|restraining} it."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Vorvorak",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 186,
+			"level": 10,
+			"traits": [
+				"huge",
+				"beast"
+			],
+			"perception": {
+				"std": 19
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "low-light vision"
+				}
+			],
+			"languages": {
+				"notes": [
+					"Common (can't speak any language)"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 22
+				},
+				"intimidation": {
+					"std": 19
+				},
+				"stealth": {
+					"std": 15,
+					"when submerged in mud or water": 19
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 2,
+				"con": 5,
+				"int": 1,
+				"wis": 3,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 29
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 18
+					},
+					"will": {
+						"std": 16
+					},
+					"abilities": [
+						"+2 status vs. fear effects"
+					]
+				},
+				"hp": [
+					{
+						"hp": 200
+					}
+				],
+				"immunities": [
+					"poison"
+				],
+				"weaknesses": [
+					{
+						"name": "cold",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 30,
+				"swim": 30,
+				"abilities": [
+					"canal walker"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 23,
+					"damage": "{@damage 2d4+13} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "claw",
+					"attack": 21,
+					"damage": "{@damage 2d8+13} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <15 feet>"
+					],
+					"name": "tail",
+					"attack": 21,
+					"damage": "{@damage 2d6+13} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"range increment <60 feet>"
+					],
+					"name": "spit",
+					"attack": 17,
+					"damage": "{@damage 2d12+6} acid plus vorvorak bile"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 26,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "mist",
+									"source": "PC1"
+								},
+								{
+									"name": "vanishing tracks",
+									"source": "PC1"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "aqueous orb",
+									"source": "PC1"
+								},
+								{
+									"name": "slow",
+									"source": "PC1"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "hydraulic torrent",
+									"source": "PC1"
+								},
+								{
+									"name": "mirage",
+									"source": "PC1"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "control water",
+									"source": "PC1"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Sweeping Tail",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within reach of the vorvorak's tail uses a move action or leaves a square during a move action it's using",
+						"entries": [
+							"The vorvorak attempts a tail {@action Strike|PC1} against the triggering creature. If the attack is a critical hit, the vorvorak disrupts the action."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Canal Walker",
+						"entries": [
+							"A vorvorak ignores difficult terrain caused by swamp terrain features."
+						]
+					},
+					{
+						"type": "affliction",
+						"name": "Vorvorak Bile",
+						"traits": [
+							"poison"
+						],
+						"DC": 28,
+						"savingThrow": "Fortitude",
+						"maxDuration": "6 rounds",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@damage 2d8} poison and {@condition sickened|PC1|sickened 1}",
+								"duration": "2 rounds"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 3d8} poison and {@condition sickened|PC1|sickened 2}",
+								"duration": "2 rounds"
+							},
+							{
+								"stage": 3,
+								"entry": "{@damage 4d8} poison and {@condition sickened|PC1|sickened 3}",
+								"duration": "2 rounds"
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Walcofinde",
+			"source": "LOSK",
+			"remaster": true,
+			"page": 187,
+			"level": 2,
+			"traits": [
+				"medium",
+				"undead",
+				"unholy"
+			],
+			"perception": {
+				"std": 5
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "tremorsense",
+					"type": "imprecise",
+					"range": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"necril"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 8
+				},
+				"stealth": {
+					"std": 11
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 1,
+				"con": 3,
+				"int": 2,
+				"wis": 1,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 17
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 10
+					},
+					"ref": {
+						"std": 4
+					},
+					"will": {
+						"std": 7
+					}
+				},
+				"hp": [
+					{
+						"hp": 35,
+						"abilities": [
+							"void healing"
+						]
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"sleep",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "vitality",
+						"amount": 5
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"abilities": [
+					"Wall Glide"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "claw",
+					"attack": 9,
+					"damage": "{@damage 1d8+3} slashing plus Grab"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Sneak Attack",
+						"entries": [
+							"A walcofinde deals an additional {@damage 1d6} precision damage to {@condition offguard|PC1} creatures."
+						]
+					},
+					{
+						"name": "Structural Possession",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"manipulate",
+							"morph"
+						],
+						"entries": [
+							"A walcofinde can merge themself with any wall they can touch within their sealed chamber and can create a manifestation of themself through any part of that wall on either side within 100 feet. This manifestation appears as the rotting upper half of the walcofinde protruding from the wall, but their skin is patterned as if they were the same structural material as the wall they're emerging from. While manifested, the walcofinde's claw attack gains a {@trait reach} of 10 feet, but they can move only by using Wall Glide. Any damage done to the manifestation affects the walcofinde themself. A walcofinde can {@action Dismiss|PC1} their structural possession to retreat back into their sealed chamber."
+						]
+					},
+					{
+						"name": "Wall Blend",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"requirements": "The walcofinde is manifested using Structural Possession and isn't {@condition observed|PC1} by any enemies",
+						"entries": [
+							"Until the next time they act, the walcofinde's manifestation changes their visual appearance to match the surrounding wall. They have an automatic result of 31 on their {@skill Stealth|PC1} checks to {@action Hide|PC1}."
+						]
+					},
+					{
+						"name": "Wall Glide",
+						"traits": [
+							"concentrate"
+						],
+						"activity": {
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 2}"
+						},
+						"requirements": "The walcofinde is manifested using Structural Possession",
+						"entries": [
+							"The walcofinde's manifestation {@action Stride|PC1|Strides}, submerging into the wall and reemerging from the wall at the end of their movement. If the walcofinde takes 2 actions to Wall Glide, their manifestation can {@action Stride|PC1} twice before reemerging. In either case, they can move only within walls that are within 100 feet of their sealed chamber."
+						]
+					}
+				]
+			}
+		}
+	]
+}

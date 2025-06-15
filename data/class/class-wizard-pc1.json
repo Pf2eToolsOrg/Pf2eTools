@@ -284,6 +284,28 @@
 					"subclassFeatures": [
 						"Arcane School|Wizard|PC1|Rooted Wisdom|LORA|1"
 					]
+				},
+				{
+					"name": "School of Kalistrade",
+					"type": "Arcane School",
+					"shortName": "Kalistrade",
+					"source": "LOSK",
+					"remaster": true,
+					"page": 75,
+					"subclassFeatures": [
+						"Arcane School|Wizard|PC1|Kalistrade|LOSK|1"
+					]
+				},
+				{
+					"name": "School of Gates",
+					"type": "Arcane School",
+					"shortName": "Gates",
+					"source": "LOSK",
+					"remaster": true,
+					"page": 148,
+					"subclassFeatures": [
+						"Arcane School|Wizard|PC1|Gates|LOSK|1"
+					]
 				}
 			],
 			"classFeaturesIntro": [
@@ -1044,6 +1066,78 @@
 		}
 	],
 	"subclassFeature": [
+		{
+			"name": "Arcane School",
+			"page": 148,
+			"source": "LOSK",
+			"remaster": true,
+			"className": "Wizard",
+			"classSource": "PC1",
+			"subclassShortName": "Gates",
+			"subclassSource": "LOSK",
+			"level": 1,
+			"entries": [
+				{
+					"name": "School of Gates ({@trait Uncommon})",
+					"type": "pf2-h4",
+					"entries": [
+						"Some are content to stay in place and let the world shape them, but you prefer to move at your own pace. You’ve studied the ancient aiudara and other structures to learn the magic of transposition, using your knowledge to move across great distances and even planes. With knowledge as your path and magic as your key, there’s no door you can’t open, and no world you won’t explore.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Curriculum",
+									"entry": "cantrips: {@spell message|PC1}, {@spell telekinetic hand|PC1}; 1st: {@spell fleet step|PC1}, {@spell lock|PC1}, {@spell thoughtful gift|PC2}; 2nd: {@spell knock|PC1}, {@spell warping pull|LOSK}{@sup U}; 3rd: {@spell echo jump|LOSK}{@sup U}, {@spell trade items|LOSK}{@sup U}; 4th: {@spell flicker|PC1}, {@spell translocate|PC1}; 5th: {@spell king’s castle|LOSK}{@sup U}, {@spell magic passage|PC1}{@sup U}; 6th: {@spell collective transposition|PC2}, {@spell teleport|PC1}{@sup U}; 7th: {@spell interplanar teleport|PC1}{@sup U}, {@spell planar seal|PC1}{@sup U}; 8th: {@spell quandary|PC1}, {@spell sudden transposition|LOSK}{@sup U}; 9th {@spell forest of gates|LOSK}{@sup U}"
+								},
+								{
+									"type": "item",
+									"name": "School Spells",
+									"entry": "initial: {@spell friendly push|LOSK}{@sup U}; advanced: {@spell rapid retreat|LOSK}{@sup U}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Arcane School",
+			"page": 32,
+			"source": "LOSK",
+			"remaster": true,
+			"className": "Wizard",
+			"classSource": "PC1",
+			"subclassShortName": "Kalistrade",
+			"subclassSource": "LOSK",
+			"level": 1,
+			"entries": [
+				{
+					"name": "School of Kalistrade ({@trait Uncommon})",
+					"type": "pf2-h4",
+					"entries": [
+						"Power and money are closely intertwined, and you recognize the potential for magic to assist in your pursuit of wealth and influence. Though you might study this school without joining the Prophets of Kalistrade, most who do so are either a part of the organization or local to Kerse and therefore used to the customs and culture of the Kalistocrats. You deploy magic to help you see through the illusions and trickery of others. At the same time, you push boundaries and exploit loopholes to get ahead of your competitors.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Curriculum",
+									"entry": "cantrips: {@spell prestidigitation|PC1}, {@spell read aura|PC1}; 1st: {@spell alarm|PC1}, {@spell charm|PC1}, {@spell item facade|PC1}, 2nd: {@spell ghostly carrier|PC1}, {@spell invisibility|PC1}; 3rd: {@spell clairaudience|PC1}, {@spell veil of privacy|PC1}; 4th: {@spell outcast’s curse|PC1}, {@spell suggestion|PC1}; 5th: {@spell imaginary lockbox|PC2}, {@spell subconscious suggestion|PC1}; 6th: {@spell repulsion|PC1}, {@spell scrying|PC1}; 7th: {@spell project image|PC1}, {@spell retrocognition|PC1}; 8th: {@spell disappearance|PC1}, {@spell hidden mind|PC1}; 9th: {@spell resplendent mansion|PC2}"
+								},
+								{
+									"type": "item",
+									"name": "School Spells",
+									"entry": "initial: {@spell unexpected windfall|LOSK}; advanced: {@spell capital dividend|LOSK}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
 		{
 			"name": "Arcane School",
 			"page": 198,

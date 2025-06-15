@@ -1,6 +1,103 @@
 {
 	"creatureTemplate": [
 		{
+			"source": "LOSK",
+			"page": 180,
+			"type": "Template",
+			"name": "Failed Prophet",
+			"entries": [
+				"Following the teachings of Kalistrade is a lifelong commitment. It requires studious adherence to the strictures and taboos laid out in the Prophecies. The ultimate reward for the devout is the promise of a personalized afterlife, filled with a lifetime of wealth and free of {@deity Pharasma|PC1|Pharasma’s} judgment. Not all who learn of these final revelations are up to the task, however. For the fortunate ones, a simple death is the only consequence for botching the ritual. For the less fortunate, the outcome is an undying half-life of torment. Caught between a twisted mockery of their imagined afterlife and the mortal Universe, a failed prophet will know no peace until their body is destroyed.",
+				"A failed prophet resembles the skinless corpse of a humanoid ancestry covered in glowing, golden veinlike cracks. On closer inspection, the organs and musculature are unnaturally smooth and shiny, like cured and buffed leather."
+			],
+			"abilities": {
+				"entries": [
+					{
+						"type": "pf2-h3",
+						"name": "Creating a Failed Prophet",
+						"entries": [
+							"To create a failed prophet, apply the following steps to any living creature of at least 10th level that has failed to properly perform the Kalistocrat death ritual.",
+							{
+								"type": "list",
+								"items": [
+									"They gain the {@trait construct} trait.",
+									"Increase the creature’s {@skill Thievery|PC1} modifier to a high skill bonus of the failed prophet’s level unless it was already higher.",
+									"Increase the creature’s AC, attack bonuses, DCs, {@skill Perception|PC1}, saving throws, and skill modifiers by 1."
+								]
+							}
+						]
+					},
+					{
+						"type": "pf2-h4",
+						"name": "Failed Prophet Abilities",
+						"entries": [
+							"Failed prophets gain the following abilities. If the base creature has any abilities that specifically come from it being a living creature, it loses them. It also loses any traits that represented its life prior to the transformation, such as {@trait human} or {@trait humanoid}."
+						]
+					}
+				],
+				"abilities": [
+					{
+						"name": "Wealthsense",
+						"generic": {
+							"source": "LOSK",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Immunities",
+						"entries": [
+							"bleed, death effects, disease, doomed, drained, fatigued, healing, nonlethal attacks, paralyzed, poison, sickened, unconscious, vitality, void"
+						]
+					},
+					{
+						"name": "Weakness",
+						"entries": [
+							"spirit 10; this weakness increases to 15 at 15th level."
+						]
+					},
+					{
+						"name": "Resistances",
+						"entries": [
+							"cold 10, electricity 10, and physical 10 (except magical bludgeoning); these resistances increase to 15 at 15th level"
+						]
+					},
+					{
+						"name": "Broken Mindscape",
+						"generic": {
+							"source": "LOSK",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Taboos",
+						"generic": {
+							"source": "LOSK",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Fists",
+						"entries": [
+							"Failed prophets have a fist unarmed {@action Strike|PC1} that deals bludgeoning damage. This attack has the {@trait magical} trait, {@trait reach} 5 feet longer than the base creature, and triggers Greedy Grab. Use the high {@action Strike|PC1} attack bonus and moderate {@action Strike|PC1} damage of the failed prophet’s level."
+						]
+					},
+					{
+						"name": "Greedy Grab",
+						"generic": {
+							"source": "LOSK",
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "This Is My Reality!",
+						"generic": {
+							"source": "LOSK",
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
 			"source": "WoW2",
 			"page": 85,
 			"type": "Adjustment",
