@@ -127,7 +127,7 @@ class DiceTag {
 		str = str.replace(/{@dice ([-+0-9d ]*)}( (?:persistent )?[a-z]+ damage)/gi, (...m) => {
 			return `{@damage ${m[1]}}${m[2]}`;
 		});
-		str = str.replace(/{@dice ([-+0-9d ]*)}( (?:persistent )?(?:bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision|vitality|void))/gi, (...m) => {
+		str = str.replace(/{@dice ([-+0-9d ]*)}( (?:persistent )?(?:bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision|vitality|void|spirit))/gi, (...m) => {
 			return `{@damage ${m[1]}}${m[2]}`;
 		});
 		str = str.replace(/{@dice ([-+0-9d ]*)}( {@condition persistent)/gi, (...m) => {
@@ -141,7 +141,7 @@ class DiceTag {
 			return `deal {@damage ${m[1]}} damage`;
 		});
 		if (lastKey === "damage") {
-			str = str.replace(/{@dice ([-+0-9d ]*)} (bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision|vitality|void)/gi, (...m) => {
+			str = str.replace(/{@dice ([-+0-9d ]*)} (bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision|vitality|void|spirit)/gi, (...m) => {
 				return `{@damage ${m[1]}} ${m[2]}`;
 			});
 		}
@@ -219,7 +219,7 @@ class ConditionTag {
 				return `{@condition ${m[1]}${source ? `|${source}` : ""}}`;
 			})
 			.replace(
-				/persistent ((damage)|(?:bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision|void|vitality)(?: damage)?)/gi,
+				/persistent ((damage)|(?:bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|positive|negative|force|chaotic|evil|good|lawful|mental|poison|bleed|precision|void|vitality|spirit)(?: damage)?)/gi,
 				(...m) => `{@condition persistent damage${m[2] ? "" : `||persistent ${m[1]}`}}`,
 			);
 	}
