@@ -59,6 +59,14 @@
 						"type": "integer",
 						"minimum": 1
 					},
+					"hpAbilities": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"minLength": 1
+						},
+						"minItems": 1
+					},
 					"skill": {
 						"type": "string",
 						"$ref": "utils.json#/definitions/skillName"
