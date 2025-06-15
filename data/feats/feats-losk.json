@@ -376,7 +376,17 @@
 				"archetype": [
 					"Prophet of Kalistrade"
 				]
-			}
+			},
+			"leadsTo": [
+				"Basic Prophet Spellcasting|LOSK",
+				"Prolific Prophet Spellcasting|LOSK",
+				"Expert Prophet Spellcasting|LOSK",
+				"Master Prophet Spellcasting|LOSK",
+				"Smile at Failure|LOSK",
+				"Fortune's Favor|LOSK",
+				"Prophet's Lockbox|LOSK",
+				"Master Merchant|LOSK"
+			]
 		},
 		{
 			"name": "Basic Prophet Spellcasting",
@@ -395,7 +405,12 @@
 				"archetype": [
 					"Prophet of Kalistrade"
 				]
-			}
+			},
+			"leadsTo": [
+				"Prolific Prophet Spellcasting|LOSK",
+				"Expert Prophet Spellcasting|LOSK",
+				"Master Prophet Spellcasting|LOSK"
+			]
 		},
 		{
 			"name": "Smile at Failure",
@@ -499,7 +514,10 @@
 				"archetype": [
 					"Prophet of Kalistrade"
 				]
-			}
+			},
+			"leadsTo": [
+				"Master Prophet Spellcasting|LOSK"
+			]
 		},
 		{
 			"name": "Master Merchant",
@@ -560,6 +578,15 @@
 			},
 			"entries": [
 				"You have entered the ranks of the Mercenary League and now wear the black uniform that's the source of the organization's popular epithet. You become trained in {@skill Intimidation|PC1}; if you were already trained, you become an expert instead. You gain the {@feat Additional Lore|PC1} skill feat for {@skill Lore|PC1|Warfare Lore}; if you were already trained in {@skill Lore|PC1|Warfare Lore}, you also become trained in a {@skill Lore|PC1} skill of your choice. While wearing medium or heavy armor, you gain a +1 circumstance bonus to {@skill Intimidation|PC1} checks."
+			],
+			"leadsTo": [
+				"Belay That!|LOSK",
+				"Mercenary Motivation|LOSK",
+				"Nothing Personal|LOSK",
+				"Close Contract|LOSK",
+				"Battlefield Agility|LOSK",
+				"Lead by Example|LOSK",
+				"Opportune Opening|LOSK"
 			]
 		},
 		{
@@ -609,6 +636,10 @@
 				"{@b Active Plan} You can have only one course of action planned at a time. If you use Mercenary Motivation to plan a second course of action, you no longer receive the bonus to checks related to the first course of action.",
 				"{@b On the Job} Whenever you attempt a {@skill Perception|PC1} check or skill check that will advance your course of action, you gain a +1 circumstance bonus to the check. The exact checks this bonus applies to depend on your current job and are determined by the GM.",
 				"{@b Finishing a Plan} When you complete the course of action you planned to do, you don't lose the bonus or other benefits until you make a different plan with Mercenary Motivation or voluntarily {@action Dismiss|PC1} the current plan."
+			],
+			"leadsTo": [
+				"Nothing Personal|LOSK",
+				"Close Contract|LOSK"
 			]
 		},
 		{
@@ -758,6 +789,9 @@
 			"requirements": "You're in {@action Tenacious Stance|LOHh}.",
 			"entries": [
 				"As a stalwart defender, you rely on your martial training and your tried-and-true armor to face any danger without flinching. Your mountain-like resilience and courage draw strength from the centuries-old traditions of dwarven song. You bring to mind\u2014and possibly give voice to\u2014a cherished dwarven song of inspiring heroism, granting you a +2 circumstance bonus to the saving throw."
+			],
+			"leadsTo": [
+				"Stalwart Chant|LOSK"
 			]
 		},
 		{
@@ -812,6 +846,12 @@
 					],
 					"type": "ability"
 				}
+			],
+			"leadsTo": [
+				"Fling Head|LOSK",
+				"Haunting Memories|LOSK",
+				"Klingegeist|LOSK",
+				"Ghostly Condemnation|LOSK"
 			]
 		},
 		{
@@ -964,6 +1004,15 @@
 				"By touching the {@item splinter of finality|LOSK} in your neck, you conjure a {@i spectral dagger} into your hand that resembles the splinter wrapped in a crude hilt. This weapon acts like a +1 ghost touch dagger, and each successful {@action Strike|PC1} with it deals 1 additional spirit damage. If the attack is a critical hit, this damage increases to {@damage 1d6}.",
 				"If the {@i spectral dagger} ever leaves your hand, it vanishes and you must spend an action to conjure it again. If this occurs as the result of you making a ranged thrown {@action Strike|PC1} with the dagger, you resolve the attack before the weapon vanishes.",
 				"You can increase the power of your {@i spectral dagger} with runes like you can other weapons, transferring the rune from a runestone or other weapon by meditating over the rune as a {@trait downtime} activity that takes 1 day."
+			],
+			"leadsTo": [
+				"Dread Blade|LOSK",
+				"Soul Bleed|LOSK",
+				"Lethal Edge|LOSK",
+				"Instrument of Death|LOSK",
+				"Hungry Blade|LOSK",
+				"Guillotine Blade|LOSK",
+				"Soul Oubliette|LOSK"
 			]
 		},
 		{
@@ -1054,6 +1103,9 @@
 						"The target is {@condition enfeebled|PC1|enfeebled 1}."
 					]
 				}
+			],
+			"leadsTo": [
+				"Instrument of Death|LOSK"
 			]
 		},
 		{
@@ -1209,6 +1261,15 @@
 			"entries": [
 				"You're primed to face off against threats from the Outer Rifts. You gain the {@feat Additional Lore|PC1} skill feat for {@skill Lore|PC1|Demon Lore}. If you were already trained in {@skill Lore|PC1|Demon Lore}, you also become trained in a {@skill Lore|PC1} skill of your choice. You gain a +1 circumstance bonus to initiative rolls in encounters against {@trait fiend||fiends}, and if you tie with a {@trait fiend||fiend's} initiative roll, you go first.",
 				"Certain wylderheart feats give you {@trait focus} spells. When you gain your first wylderheart {@trait focus} spell, you become trained in the spell attack modifier and spell DC statistics. Your key spellcasting attribute for the wylderheart {@trait archetype} spells is Wisdom, and they're {@trait primal} spells. You can {@action Refocus|PC1} by celebrating life or spending time in nature."
+			],
+			"leadsTo": [
+				"Demon-Hunting Companion|LOSK",
+				"Wyldsinger|LOSK",
+				"Primal Guardian|LOSK",
+				"Blessed Sentinel|LOSK",
+				"Wild Dance|LOSK",
+				"Fiend Slayer|LOSK",
+				"Sacred Weapon|LOSK"
 			]
 		},
 		{
@@ -1250,6 +1311,9 @@
 			],
 			"special": [
 				"You can take this feat a second time, gaining the {@trait focus} spell you didn't gain the first time."
+			],
+			"leadsTo": [
+				"Primal Guardian|LOSK"
 			]
 		},
 		{
@@ -1441,6 +1505,18 @@
 			"entries": [
 				"Your Lion Blade spy training helps you conceal yourself and your identity. You become trained in your choice of {@skill Deception|PC1} or {@skill Stealth|PC1}; if you were already trained in that skill, you become an expert instead. You also gain the {@feat Additional Lore|PC1} skill feat for {@skill Lore|PC1|Espionage Lore}. If you were already trained in {@skill Lore|PC1|Espionage Lore}, you also become trained in a {@skill Lore|PC1} skill of your choice.",
 				"You never take circumstance penalties for attempting to take a disguise of a different ancestry, age, and so on, as long as the disguised form is appropriate for your size."
+			],
+			"leadsTo": [
+				"Inspiring Recitation|LOSK",
+				"Lost in the Crowd|LOSK",
+				"Crowd Mastery|LOSK",
+				"Interposing Crowd|LOSK",
+				"Expeditious Advance|LOSK",
+				"Lion's Magic|LOSK",
+				"Spy's Countermeasures|LOSK",
+				"Flickering Twirl|LOSK",
+				"Slowing Strike|LOSK",
+				"Stunning Surprise|LOSK"
 			]
 		},
 		{
@@ -1490,6 +1566,10 @@
 			"prerequisites": "{@feat Lion Blade Dedication|LOSK}",
 			"entries": [
 				"You've learned how to move as one with crowds and hide among them, vanishing into a busy street in the flicker of an eye. You move at full Speed in crowds and can use cover from crowds to {@action Hide|PC1} and {@action Sneak|PC1}, gaining a +2 circumstance bonus to your {@skill Stealth|PC1} checks when in a crowd of at least 10 creatures and a +4 circumstance bonus to your {@skill Stealth|PC1} checks when in a crowd of at least 100 creatures."
+			],
+			"leadsTo": [
+				"Crowd Mastery|LOSK",
+				"Interposing Crowd|LOSK"
 			]
 		},
 		{
@@ -1733,6 +1813,14 @@
 						"Choose an ally you can see, who becomes your designated ally. For the next minute, whenever your designated ally is adjacent to you and you're conscious, they gain a +2 circumstance bonus to AC and Reflex saving throws. You can have only one designated ally at a time, and if you designate a new ally, the previous ally loses any benefits."
 					]
 				}
+			],
+			"leadsTo": [
+				"Defender's Grit|LOSK",
+				"Guard's Fury|LOSK",
+				"Guarded Mind|LOSK",
+				"Wounded Party|LOSK",
+				"Tight Follower|LOSK",
+				"Protective Strike|LOSK"
 			]
 		},
 		{
