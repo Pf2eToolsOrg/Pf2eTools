@@ -1,6 +1,56 @@
 {
 	"ritual": [
 		{
+			"name": "Blunt the FinaL Blade",
+			"level": 9,
+			"source": "NGD",
+			"page": 63,
+			"traits": [
+				"rare",
+				"death",
+				"necromancy"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day"
+			},
+			"cost": "powdered mithral and rare grave dirt worth 10,000 gp",
+			"secondaryCasters": {
+				"number": 3
+			},
+			"primaryCheck": {
+				"skills": [
+					"Occultism",
+					"Religion"
+				],
+				"prof": "legendary"
+			},
+			"secondaryCheck": {
+				"skills": [
+					"Arcana",
+					"Crafting",
+					"Society"
+				],
+				"entry": "{@skill Arcana|PC1}, {@skill Crafting|PC1}, {@skill Society|PC1}, and the other skill not used in the primary check"
+			},
+			"range": {
+				"type": "touch"
+			},
+			"targets": "1 {@item final blade|LOWG}",
+			"entries": [
+				"You anoint the {@item final blade|LOWG} with powdered mithral and grave dirt while speaking softly and carefully to the souls trapped within it. You create a mystical pathway for the souls to escape through and urge them to draw out the magic of the {@item final blade|LOWG} with them as they depart.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "As success, and the souls also grant a boon; the primary and secondary casters gain a +2 status bonus to saves against {@trait death} and {@trait fear} effects for the next year.",
+						"Success": "The souls escape the {@item final blade|LOWG} and peacefully pass on to their eternal rewards, as appropriate for each soul. The {@item final blade|LOWG} is no longer magical; it can’t store anymore souls and can be destroyed as a normal guillotine.",
+						"Failure": "The ritual has no effect.",
+						"Critical Failure": "The ritual goes horribly wrong. The souls within the {@item final blade|LOWG} are released in a furious rush as a {@creature gray death|NGD} that does its best to slay the ritual’s casters and run amok among the living. The {@item final blade|LOWG} retains it abilities and can continue to store souls."
+					}
+				}
+			]
+		},
+		{
 			"name": "Retreat Among the Rains",
 			"source": "LORA",
 			"page": 78,
