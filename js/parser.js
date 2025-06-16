@@ -1520,6 +1520,8 @@ SoT_PREFIX = "Strength of Thousands: ";
 SoT_PREFIX_SHORT = "SoT: ";
 WoW_PREFIX = "Wardens of Wildwood: ";
 WoW_PREFIX_SHORT = "WoW: ";
+MS_PREFIX = "Myth-Speaker: ";
+MS_PREFIX_SHORT = "MS: ";
 
 Parser.COMPACT_PREFIX_MAP = [
 	{ re: /Abomination Vaults #(\d): /, replaceWith: "AV$1: " },
@@ -1530,6 +1532,7 @@ Parser.COMPACT_PREFIX_MAP = [
 	{ re: /Extinction Curse #(\d): /, replaceWith: "EC$1: " },
 	{ re: /Fists of the Ruby Phoenix #(\d): /, replaceWith: "FRP$1: " },
 	{ re: /Gatewalkers #(\d): /, replaceWith: "Gw$1: " },
+	{ re: /Myth-Speaker #(\d): /, replaceWith: "MS$1: " },
 	{ re: /Outlaws of Alkenstar #(\d): /, replaceWith: "OoA$1: " },
 	{ re: /Quest for the Frozen Flame #(\d): /, replaceWith: "QFF$1: " },
 	{ re: /Season of Ghosts #(\d): /, replaceWith: "SoG$1: " },
@@ -1561,6 +1564,7 @@ Parser.SOURCE_PREFIX_TO_SHORT[SevenDfS_PREFIX] = SevenDfS_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[SF_PREFIX] = SF_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[WoW_PREFIX] = WoW_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[CC_PREFIX] = CC_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[MS_PREFIX] = MS_PREFIX_SHORT;
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_ABV = {};
@@ -1657,6 +1661,7 @@ SRC_LTiBA = "LTiBA";
 SRC_Mal = "Mal";
 SRC_MotM = "MotM";
 SRC_NGD = "NGD";
+SRC_MS0 = "MS0";
 SRC_OoA0 = "OoA0";
 SRC_OoA1 = "OoA1";
 SRC_OoA2 = "OoA2";
@@ -1793,6 +1798,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_LTiBA] = "LTiBA";
 Parser.SOURCE_JSON_TO_ABV[SRC_Mal] = "Mal";
 Parser.SOURCE_JSON_TO_ABV[SRC_MotM] = "MotM";
 Parser.SOURCE_JSON_TO_ABV[SRC_NGD] = "NGD";
+Parser.SOURCE_JSON_TO_ABV[SRC_MS0] = "MS0";
 Parser.SOURCE_JSON_TO_ABV[SRC_OoA0] = "OoA0";
 Parser.SOURCE_JSON_TO_ABV[SRC_OoA1] = "OoA1";
 Parser.SOURCE_JSON_TO_ABV[SRC_OoA2] = "OoA2";
@@ -1929,6 +1935,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_LTiBA] = "2020-07-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_Mal] = "2021-07-07";
 Parser.SOURCE_JSON_TO_DATE[SRC_MotM] = "2022-02-23";
 Parser.SOURCE_JSON_TO_DATE[SRC_NGD] = "2021-10-13";
+Parser.SOURCE_JSON_TO_DATE[SRC_MS0] = "2025-06-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_OoA0] = "2022-03-28";
 Parser.SOURCE_JSON_TO_DATE[SRC_OoA1] = "2022-04-27";
 Parser.SOURCE_JSON_TO_DATE[SRC_OoA2] = "2022-05-25";
@@ -2065,6 +2072,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LTiBA] = "Little Trouble in Big Absalom";
 Parser.SOURCE_JSON_TO_FULL[SRC_Mal] = "Malevolence";
 Parser.SOURCE_JSON_TO_FULL[SRC_MotM] = "Mark of the Mantis";
 Parser.SOURCE_JSON_TO_FULL[SRC_NGD] = "Night of the Gray Death";
+Parser.SOURCE_JSON_TO_FULL[SRC_MS0] = "Myth-Speaker Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_OoA0] = "Outlaws of Alkenstar Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_OoA1] = "Outlaws of Alkenstar #1: Punks in a Powder Keg";
 Parser.SOURCE_JSON_TO_FULL[SRC_OoA2] = "Outlaws of Alkenstar #2: Cradle of Quartz";
@@ -2204,6 +2212,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_Mal] = "https://paizo.com/products/btq027qf";
 Parser.SOURCE_JSON_TO_STORE[SRC_MotM] = "https://paizo.com/products/btq02c32";
 Parser.SOURCE_JSON_TO_STORE[SRC_NGD] = "https://paizo.com/products/btq027o0";
 Parser.SOURCE_JSON_TO_STORE[SRC_OoA0] = "https://paizo.com/community/blog/v5748dyo6si08";
+Parser.SOURCE_JSON_TO_STORE[SRC_MS0] = "https://downloads.paizo.com/Myth-Speaker_Players-Guide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_OoA1] = "https://paizo.com/products/btq02ajl";
 Parser.SOURCE_JSON_TO_STORE[SRC_OoA2] = "https://paizo.com/products/btq02am3";
 Parser.SOURCE_JSON_TO_STORE[SRC_OoA3] = "https://paizo.com/products/btq02aot";
@@ -2313,6 +2322,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_Mal,
 	SRC_MotM,
 	SRC_NGD,
+	SRC_MS0,
 	SRC_OoA0,
 	SRC_OoA1,
 	SRC_OoA2,
@@ -2511,6 +2521,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_Mal,
 	SRC_MotM,
 	SRC_NGD,
+	SRC_MS0,
 	SRC_OoA0,
 	SRC_OoA1,
 	SRC_OoA2,
