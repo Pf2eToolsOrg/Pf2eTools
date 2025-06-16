@@ -2174,13 +2174,13 @@ Parser.SOURCE_JSON_TO_STORE[SRC_EC4] = "https://paizo.com/products/btq0216l";
 Parser.SOURCE_JSON_TO_STORE[SRC_EC5] = "https://paizo.com/products/btq021by";
 Parser.SOURCE_JSON_TO_STORE[SRC_EC6] = "https://paizo.com/products/btq021f4";
 Parser.SOURCE_JSON_TO_STORE[SRC_FoP] = "https://paizo.com/products/btq01zoh";
-Parser.SOURCE_JSON_TO_STORE[SRC_FRP0] = "https://paizo.com/community/blog/v5748dyo6shmo";
+Parser.SOURCE_JSON_TO_STORE[SRC_FRP0] = "https://paizo-images.s3-us-west-2.amazonaws.com/image/download/Fists+of+the+Ruby+Phoenix+Player's+Guide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_FRP1] = "https://paizo.com/products/btq027qd";
 Parser.SOURCE_JSON_TO_STORE[SRC_FRP2] = "https://paizo.com/products/btq027sp";
 Parser.SOURCE_JSON_TO_STORE[SRC_FRP3] = "https://paizo.com/products/btq027sq";
 Parser.SOURCE_JSON_TO_STORE[SRC_GMG] = "https://paizo.com/products/btq022c1";
 Parser.SOURCE_JSON_TO_STORE[SRC_GnG] = "https://paizo.com/products/btq026mw";
-Parser.SOURCE_JSON_TO_STORE[SRC_GW0] = "https://paizo.com/community/blog/v5748dyo6si7s";
+Parser.SOURCE_JSON_TO_STORE[SRC_GW0] = "https://downloads.paizo.com/GatewalkersPlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_GW1] = "https://paizo.com/products/btq02dsq";
 Parser.SOURCE_JSON_TO_STORE[SRC_GW2] = "https://paizo.com/products/btq02dw1";
 Parser.SOURCE_JSON_TO_STORE[SRC_GW3] = "https://paizo.com/products/btq02ef2";
@@ -2192,8 +2192,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_LOAG] = "https://paizo.com/products/btq026k5";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOCG] = "https://paizo.com/products/btq01zt4";
 Parser.SOURCE_JSON_TO_STORE[SRC_LODM] = "https://paizo.com/products/btq02oal";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGM] = "https://paizo.com/products/btq021wf";
-Parser.SOURCE_JSON_TO_STORE[SRC_LOGMWS] =
-	"https://paizo-images.s3-us-west-2.amazonaws.com/image/download/PZO9303+Gods+%26+Magic+Web+Supplement.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOGMWS] = "https://paizo-images.s3-us-west-2.amazonaws.com/image/download/PZO9303+Gods+%26+Magic+Web+Supplement.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOHh] = "https://paizo.com/products/btq02e6p";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOIL] = "https://paizo.com/products/btq02dxx";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOKL] = "https://paizo.com/products/btq02c3a";
@@ -2211,17 +2210,16 @@ Parser.SOURCE_JSON_TO_STORE[SRC_LTiBA] = "https://paizo.com/products/btq024ys";
 Parser.SOURCE_JSON_TO_STORE[SRC_Mal] = "https://paizo.com/products/btq027qf";
 Parser.SOURCE_JSON_TO_STORE[SRC_MotM] = "https://paizo.com/products/btq02c32";
 Parser.SOURCE_JSON_TO_STORE[SRC_NGD] = "https://paizo.com/products/btq027o0";
-Parser.SOURCE_JSON_TO_STORE[SRC_OoA0] = "https://paizo.com/community/blog/v5748dyo6si08";
 Parser.SOURCE_JSON_TO_STORE[SRC_MS0] = "https://downloads.paizo.com/Myth-Speaker_Players-Guide.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_OoA0] = "https://downloads.paizo.com/Outlaws+of+Alkenstar+Player's+Guide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_OoA1] = "https://paizo.com/products/btq02ajl";
 Parser.SOURCE_JSON_TO_STORE[SRC_OoA2] = "https://paizo.com/products/btq02am3";
 Parser.SOURCE_JSON_TO_STORE[SRC_OoA3] = "https://paizo.com/products/btq02aot";
 Parser.SOURCE_JSON_TO_STORE[SRC_PC1] = "https://paizo.com/products/btq02ej2";
 Parser.SOURCE_JSON_TO_STORE[SRC_PC2] = "https://paizo.com/products/btq02ej5";
-Parser.SOURCE_JSON_TO_STORE[SRC_PFUM] =
-	"https://www.kickstarter.com/projects/dynamiteent/pathfinder-fumbus?ref=Pf2eTools";
+Parser.SOURCE_JSON_TO_STORE[SRC_PFUM] = "https://www.kickstarter.com/projects/dynamiteent/pathfinder-fumbus?ref=Pf2eTools";
 Parser.SOURCE_JSON_TO_STORE[SRC_POS1] = "https://paizo.com/products/btq027oe";
-Parser.SOURCE_JSON_TO_STORE[SRC_QFF0] = "https://paizo.com/community/blog/v5748dyo6shx3";
+Parser.SOURCE_JSON_TO_STORE[SRC_QFF0] = "https://downloads.paizo.com/QuestfortheFrozenFlame_PlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_QFF1] = "https://paizo.com/products/btq02asv";
 Parser.SOURCE_JSON_TO_STORE[SRC_QFF2] = "https://paizo.com/products/btq029ud";
 Parser.SOURCE_JSON_TO_STORE[SRC_QFF3] = "https://paizo.com/products/btq029wg";
@@ -2258,14 +2256,10 @@ Parser.SOURCE_JSON_TO_STORE[SRC_WoW1] = "https://paizo.com/products/btq02ev4";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW2] = "https://paizo.com/products/btq02ewl";
 Parser.SOURCE_JSON_TO_STORE[SRC_WoW3] = "https://paizo.com/products/btq02ez1";
 Parser.SOURCE_JSON_TO_STORE[SRC_WtD1] = "https://paizo.com/products/btq02eic";
-Parser.SOURCE_JSON_TO_STORE[SRC_WtD2] =
-	"https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022202011";
-Parser.SOURCE_JSON_TO_STORE[SRC_WtD3] =
-	"https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022203011";
-Parser.SOURCE_JSON_TO_STORE[SRC_WtD4] =
-	"https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022204011";
-Parser.SOURCE_JSON_TO_STORE[SRC_WtD5] =
-	"https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022205011";
+Parser.SOURCE_JSON_TO_STORE[SRC_WtD2] = "https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022202011";
+Parser.SOURCE_JSON_TO_STORE[SRC_WtD3] = "https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022203011";
+Parser.SOURCE_JSON_TO_STORE[SRC_WtD4] = "https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022204011";
+Parser.SOURCE_JSON_TO_STORE[SRC_WtD5] = "https://www.dynamite.com/htmlfiles/viewProduct.html?PRO=C72513033022205011";
 
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_7DfS0,
