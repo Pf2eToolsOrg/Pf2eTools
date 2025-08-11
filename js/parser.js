@@ -1678,6 +1678,9 @@ SRC_RoE = "RoE";
 SRC_Rust = "Rust";
 SRC_SaS = "SaS";
 SRC_SF0 = "SF0";
+SRC_SF1 = "SF1";
+SRC_SF2 = "SF2";
+SRC_SF3 = "SF3";
 SRC_SKT0 = "SKT0";
 SRC_Sli = "Sli";
 SRC_SoB0 = "SoB0";
@@ -1815,6 +1818,9 @@ Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
 Parser.SOURCE_JSON_TO_ABV[SRC_Rust] = "Rust";
 Parser.SOURCE_JSON_TO_ABV[SRC_SaS] = "SaS";
 Parser.SOURCE_JSON_TO_ABV[SRC_SF0] = "SF0";
+Parser.SOURCE_JSON_TO_ABV[SRC_SF1] = "SF1";
+Parser.SOURCE_JSON_TO_ABV[SRC_SF2] = "SF2";
+Parser.SOURCE_JSON_TO_ABV[SRC_SF3] = "SF3";
 Parser.SOURCE_JSON_TO_ABV[SRC_SKT0] = "SKT0";
 Parser.SOURCE_JSON_TO_ABV[SRC_Sli] = "Sli";
 Parser.SOURCE_JSON_TO_ABV[SRC_SoB0] = "SoB0";
@@ -1952,6 +1958,9 @@ Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_Rust] = "2023-10-18";
 Parser.SOURCE_JSON_TO_DATE[SRC_SaS] = "2022-05-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_SF0] = "2023-04-13";
+Parser.SOURCE_JSON_TO_DATE[SRC_SF1] = "2023-04-26";
+Parser.SOURCE_JSON_TO_DATE[SRC_SF2] = "2023-05-24";
+Parser.SOURCE_JSON_TO_DATE[SRC_SF3] = "2023-06-28";
 Parser.SOURCE_JSON_TO_DATE[SRC_SKT0] = "2023-07-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_Sli] = "2020-07-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_SoB0] = "2025-03-27";
@@ -2089,6 +2098,9 @@ Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
 Parser.SOURCE_JSON_TO_FULL[SRC_Rust] = "Rusthenge";
 Parser.SOURCE_JSON_TO_FULL[SRC_SaS] = "Shadows at Sundown";
 Parser.SOURCE_JSON_TO_FULL[SRC_SF0] = "Stolen Fate Player's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_SF1] = "Stolen Fate #1: The Choosing";
+Parser.SOURCE_JSON_TO_FULL[SRC_SF2] = "Stolen Fate #2: The Destiny War";
+Parser.SOURCE_JSON_TO_FULL[SRC_SF3] = "Stolen Fate #3: Worst of All Possible Worlds";
 Parser.SOURCE_JSON_TO_FULL[SRC_SKT0] = "Sky King's Tomb Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_Sli] = "The Slithering";
 Parser.SOURCE_JSON_TO_FULL[SRC_SoB0] = "Shades of Blood Player's Guide";
@@ -2227,6 +2239,9 @@ Parser.SOURCE_JSON_TO_STORE[SRC_RoE] = "https://paizo.com/products/btq02eal";
 Parser.SOURCE_JSON_TO_STORE[SRC_Rust] = "https://paizo.com/products/btq02epv";
 Parser.SOURCE_JSON_TO_STORE[SRC_SaS] = "https://paizo.com/products/btq02d7e";
 Parser.SOURCE_JSON_TO_STORE[SRC_SF0] = "https://downloads.paizo.com/StolenFatePlayersGuide.pdf";
+Parser.SOURCE_JSON_TO_STORE[SRC_SF1] = "https://paizo.com/products/btq02e0v";
+Parser.SOURCE_JSON_TO_STORE[SRC_SF2] = "https://paizo.com/products/btq02e51";
+Parser.SOURCE_JSON_TO_STORE[SRC_SF3] = "https://paizo.com/products/btq02e6r";
 Parser.SOURCE_JSON_TO_STORE[SRC_SKT0] = "https://downloads.paizo.com/SkyKingsTombPlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_Sli] = "https://paizo.com/products/btq023hg";
 Parser.SOURCE_JSON_TO_STORE[SRC_SoB0] = "https://downloads.paizo.com/ShadesOfBlood_PlayersGuide.pdf";
@@ -2329,6 +2344,9 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_Rust,
 	SRC_SaS,
 	SRC_SF0,
+	SRC_SF1,
+	SRC_SF2,
+	SRC_SF3,
 	SRC_SKT0,
 	SRC_Sli,
 	SRC_SoB0,
@@ -2528,6 +2546,9 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_Rust,
 	SRC_SaS,
 	SRC_SF0,
+	SRC_SF1,
+	SRC_SF2,
+	SRC_SF3,
 	SRC_SKT0,
 	SRC_Sli,
 	SRC_SoB0,
