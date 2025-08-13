@@ -41,6 +41,7 @@ class PageFilterBackgrounds extends PageFilter {
 				"Grants Situational Benefit",
 				"Has Drawback",
 				"GM Influence",
+				"Remaster",
 			],
 		});
 	}
@@ -70,6 +71,7 @@ class PageFilterBackgrounds extends PageFilter {
 				default: return "FILTER ERROR";
 			}
 		});
+		if (bg.remaster) bg._fMisc.push("Remaster");
 	}
 
 	addToFilters (bg, isExcluded) {
