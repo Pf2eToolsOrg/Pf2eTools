@@ -324,7 +324,9 @@ class ConverterUi extends BaseComponent {
 		$(`<option/>`, {val: "_divider", text: `\u2014`, disabled: true}).appendTo($selSource);
 
 		Object.keys(Parser.SOURCE_JSON_TO_FULL)
-			.forEach(src => $(`<option/>`, {val: src, text: Parser.sourceJsonToFull(src)}).appendTo($selSource));
+			.map(src => ({ json: src, full: Parser.sourceJsonToFull(src) }))
+			.sort((a, b) => a.full.localeCompare(b.full))
+			.forEach(src => $(`<option/>`, {val: src.json, text: src.full}).appendTo($selSource));
 
 		$$`<div class="w-100 mb-2 split-v-center"><div class="pr-2">Source</div>${$selSource}</div>`.appendTo($wrp);
 
