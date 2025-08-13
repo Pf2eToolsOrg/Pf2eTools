@@ -2410,9 +2410,9 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@familiarAbility":
-						fauxEntry.href.path = UrlUtil.PG_COMPANIONS_FAMILIARS;
+						fauxEntry.href.path = UrlUtil.PG_FAMILIAR_ABILITIES;
 						fauxEntry.href.hover = {
-							page: UrlUtil.PG_COMPANIONS_FAMILIARS,
+							page: UrlUtil.PG_FAMILIAR_ABILITIES,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -4174,8 +4174,7 @@ Renderer.familiar = {
 	},
 
 	getRenderedFamiliarAbility (it, opts) {
-		// TODO:
-		return `${Renderer.utils.getNameDiv(it, { type: `${it.type} Ability` })}
+		return `${Renderer.utils.getNameDiv(it, { type: `${it.type} Ability`, ...opts })}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(it.traits)}
 			${Renderer.generic.getRenderedEntries(it)}
@@ -7532,7 +7531,9 @@ Renderer.hover = {
 			case UrlUtil.PG_FEATS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/feats/", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "companionAbility", "familiar", "familiarAbility", "eidolon"]);
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "companionAbility", "familiar", "eidolon"]);
+			case UrlUtil.PG_FAMILIAR_ABILITIES:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["familiarAbility"]);
 			case UrlUtil.PG_ANCESTRIES:
 				return Renderer.hover._pCacheAndGet_pLoadAncestries(page, source, hash, opts);
 			case UrlUtil.PG_DEITIES:
@@ -8202,6 +8203,8 @@ Renderer.hover = {
 				return Renderer.feat.getRenderedString;
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.companionfamiliar.getRenderedString;
+			case UrlUtil.PG_FAMILIAR_ABILITIES:
+				return Renderer.familiar.getRenderedFamiliarAbility;
 			case UrlUtil.PG_ANCESTRIES:
 				// FIXME: heritage rendering
 				return Renderer.ancestry.getRenderedString;

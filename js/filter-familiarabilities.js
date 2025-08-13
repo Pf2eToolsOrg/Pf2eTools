@@ -1,0 +1,37 @@
+"use strict";
+
+class PageFilterFamiliarAbilities extends PageFilter {
+	constructor () {
+		super();
+
+		this._sourceFilter = new SourceFilter();
+		this._typeFilter = new Filter({
+			header: "Type",
+		});
+		this._miscFilter = new Filter({
+			header: "Miscellaneous",
+			items: ["Remaster"],
+		});
+	}
+	mutateForFilters (it) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
+
+		it._fMisc = [];
+		if (it.remaster) it._fMisc.push("Remaster");
+	}
+
+	addToFilters (it, isExcluded) {
+		if (isExcluded) return;
+		this._sourceFilter.addItem(it._fSources);
+		this._typeFilter.addItem(it.type);
+		this._miscFilter.addItem(it._fMisc);
+	}
+
+	async _pPopulateBoxOptions (opts) {
+		opts.filters = [this._sourceFilter, this._typeFilter, this._miscFilter];
+	}
+
+	toDisplay (values, it) {
+		return this._filterBox.toDisplay(values, it._fSources, it.type, it._fMisc);
+	}
+}

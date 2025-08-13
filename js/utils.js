@@ -2012,6 +2012,7 @@ UrlUtil.PG_GM_SCREEN = "gmscreen.html";
 UrlUtil.PG_CHANGELOG = "changelog.html";
 UrlUtil.PG_PLACES = "places.html";
 UrlUtil.PG_EVENTS = "events.html";
+UrlUtil.PG_FAMILIAR_ABILITIES = "familiarabilities.html";
 UrlUtil.PG_RELICGIFTS = "relicgifts.html";
 UrlUtil.PG_OPTIONAL_FEATURES = "optionalfeatures.html";
 UrlUtil.PG_SEARCH = "search.html";
@@ -2028,6 +2029,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS] = (it) => UrlUtil.encodeForHa
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_AFFLICTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_COMPANIONS_FAMILIARS] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FAMILIAR_ABILITIES] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ARCHETYPES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIANTRULES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -2094,6 +2096,7 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_GM_SCREEN] = "GM Screen";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_CHANGELOG] = "Changelog";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_PLACES] = "Planes and Places";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_EVENTS] = "Events";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_FAMILIAR_ABILITIES] = "Familiar Abilities";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_OPTIONAL_FEATURES] = "Optional Features";
 
 UrlUtil.CAT_TO_PAGE = {};
@@ -2136,6 +2139,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DEITY] = UrlUtil.PG_DEITIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLACE] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_EVENT] = UrlUtil.PG_EVENTS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FAMILIAR_ABILITY] = UrlUtil.PG_FAMILIAR_ABILITIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLANE] = UrlUtil.PG_PLACES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ORGANIZATION] = UrlUtil.PG_ORGANIZATIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURETEMPLATE] = UrlUtil.PG_CREATURETEMPLATE;
@@ -4651,6 +4655,8 @@ BrewUtil = {
 				return ["language"];
 			case UrlUtil.PG_EVENTS:
 				return ["event"];
+			case UrlUtil.PG_FAMILIAR_ABILITIES:
+				return ["familiarAbility"];
 			case UrlUtil.PG_PLACES:
 				return ["place"];
 			case UrlUtil.PG_ORGANIZATIONS:
@@ -5018,6 +5024,7 @@ BrewUtil = {
 			case UrlUtil.PG_LANGUAGES:
 			case UrlUtil.PG_PLACES:
 			case UrlUtil.PG_EVENTS:
+			case UrlUtil.PG_FAMILIAR_ABILITIES:
 			case UrlUtil.PG_ORGANIZATIONS:
 			case UrlUtil.PG_CREATURETEMPLATE:
 			case UrlUtil.PG_RITUALS:

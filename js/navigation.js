@@ -62,6 +62,7 @@ class NavBar {
 		this._addElement_divider(NavBar._CAT_PLAYER);
 		this._addElement_li(NavBar._CAT_PLAYER, "archetypes.html", "Archetypes");
 		this._addElement_li(NavBar._CAT_PLAYER, "companionsfamiliars.html", "Companions & Familiars");
+		this._addElement_li(NavBar._CAT_PLAYER, "familiarabilities.html", "Familiar Abilities");
 		this._addElement_li(NavBar._CAT_PLAYER, "optionalfeatures.html", "Optional Features");
 
 		this._addElement_dropdown(null, NavBar._CAT_GAME_MASTER);
