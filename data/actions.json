@@ -1,6 +1,106 @@
 {
 	"action": [
 		{
+			"name": "Enter the Harrow Court",
+			"page": 69,
+			"source": "SF1",
+			"traits": [
+				"concentrate",
+				"conjuration",
+				"exploration",
+				"manipulate",
+				"occult",
+				"teleportation"
+			],
+			"entries": [
+				"You concentrate on a card from the {@i Deck of Destiny} that you have invested, focusing on it as if you were looking through a window rather than at a piece of artwork. After 1 minute, a stationary portal appears in the air in front of you, its edges resembling the quick riffling of a thick deck of cards. You and any other creatures you designate can pass through this portal to enter {@plane the Harrow Court|SF1}, arriving in a fortress at the center of the demiplane known as the Harrowheart. (As you continue to epitomize more cards within {@plane the Harrow Court|SF1}, you unlock new areas into which you can potentially arrive as well—but in this adventure, that ability won’t yet be granted.) Once created, the portal persists for up to 1 minute or until you take an action with the envision trait to close the portal.",
+				"A character in {@plane the Harrow Court|SF1} can use this activity to open a portal out of the demiplane, but this portal always leads to the same point in the multiverse they were at when they previously entered {@plane the Harrow Court|SF1} (unless certain cards have been epitomized to allow more options)."
+			]
+		},
+		{
+			"name": "Activate Karzoug's Glare",
+			"source": "SF1",
+			"page": 54,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"entries": [
+				"You touch the crystal within its siccatite frame and take 1 fire damage from the contact with the searing hot surface. You can then discharge the energy within the crystal (consuming the crystal in the process) to fire a beam of fiery energy from the tip of that statue’s polearm, targeting any location aboveground on the Storval Stairs or within 400 feet of its bottommost step. An explosion of fire fills a 20-foot-burst at that location; all creatures in the area must attempt a DC 30 Reflex save. The transparency of the interior of the room ends at the end of your turn.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature takes {@damage 6d6} fire damage.",
+						"Failure": "The creature takes {@damage 12d6} fire damage and is knocked {@condition prone}.",
+						"Critical Failure": "The creature takes {@damage 20d6} fire damage, takes {@damage 4d6} {@condition persistent damage||persistent fire damage}, and is knocked {@condition prone}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Swing to the Stage",
+			"source": "SF1",
+			"page": 44,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"entries": [
+				"You find one of the hanging ropes from the opera house’s rigging and swing onto the burning stage. Attempt a DC 30 {@skill Acrobatics} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You swing the distance with style and land anywhere on stage that you choose.",
+						"Success": "You swing down to the stage, landing anywhere adjacent to the fire that you choose, but take {@damage 4d6} fire damage in the process (DC 30 basic Reflex save).",
+						"Failure": "You swing down to the stage, landing in the square of fire that’s closest to the point you swung from. You take {@damage 6d6} fire damage (DC 30 basic Reflex save).",
+						"Critical Failure": "Your grip on the rope slips, and you fall into the orchestra pit, taking {@damage 4d6} bludgeoning damage and {@damage 6d6} fire damage (DC 30 basic Reflex save). A DC 20 {@skill Athletics} check allows you to clamber up from the orchestra pit onto the stage."
+					}
+				}
+			]
+		},
+		{
+			"name": "Aid Rice Ritual",
+			"source": "SF1",
+			"page": 37,
+			"traits": [
+				"concentrate",
+				"exploration"
+			],
+			"entries": [
+				"A character spends the last few hours before sundown aiding the Scaleseeds in preparing the ring of rice plants by attempting a DC 23 {@skill Lore||Farming Lore} or {@skill Survival} check, a DC 28 {@skill Nature} check, or a DC 30 {@skill Religion} check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The PCs gain 2 Rice Ritual Points.",
+						"Success": "The PCs gain 1 Rice Ritual Point.",
+						"Critical Failure": "The PCs lose 1 Rice Ritual Point."
+					}
+				}
+			]
+		},
+		{
+			"source": "SF1",
+			"page": 17,
+			"name": "Run the Obstacle Course",
+			"traits": [
+				"exploration",
+				"move"
+			],
+			"entries": [
+				"You attempt to navigate the obstacle course Clemeth set up in the Reclaimed Paradise Scrapyard. Attempt a DC 26 {@skill Acrobatics} check, a DC 26 {@skill Athletics} check, then a DC 28 check using your choice of {@skill Acrobatics}, {@skill Athletics}, or {@skill Perception}. Regardless of the check, each is a 1-minute activity. You successfully navigate the obstacle course once you earn 3 Obstacle Course Points without taking a break between checks. If you attempt this activity more than 4 times in a row, you become {@condition fatigued}.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You earn 2 Obstacle Course Points and gain a +2 circumstance bonus to your next check to Run the Obstacle Course.",
+						"Success": "You push forward on the course and gain 1 Obstacle Course Point.",
+						"Failure": "You earn no Obstacle Course Points and must attempt a DC 28 Reflex save. If you fail, you wrench a muscle or otherwise hurt yourself and become {@condition enfeebled||enfeebled 1} for 1 hour.",
+						"Critical Failure": "You lose 1 Obstacle Course Point and twist an ankle or otherwise seriously hurt yourself, becoming {@condition enfeebled||enfeebled 2} (a successful DC 28 Reflex save reduces this to {@condition enfeebled||enfeebled 1})."
+					}
+				}
+			]
+		},
+		{
 			"name": "Call Companion",
 			"page": 160,
 			"source": "APG",

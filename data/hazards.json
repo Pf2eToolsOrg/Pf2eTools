@@ -1,6 +1,127 @@
 {
 	"hazard": [
 		{
+			"name": "Falling Stars Trap",
+			"source": "SF1",
+			"page": 59,
+			"level": 15,
+			"traits": [
+				"uncommon",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 40,
+				"minProf": "master"
+			},
+			"description": [
+				"Pressure plates in the floor cause crystal‑tipped spikes to rain down into the room and explode."
+			],
+			"disable": {
+				"entries": [
+					"DC 40 {@skill Thievery} (master) to disable enough pressure plates so the trap won't trigger"
+				]
+			},
+			"actions": [
+				{
+					"name": "Rain of Stars",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Each time a non‑flying creature enters a square in this room, roll a secret DC {@flatDC 6} flat check. On a failure, the trap triggers as the character steps on a pressure plate\u2014the trap automatically triggers if a creature steps on either square just west of the hallway leading to {@b H12}",
+					"entries": [
+						"The trap makes a crystal spike {@action Strike} against all creatures in the room, then each creature in the room takes {@damage 6d10} piercing damage as the spikes explode (DC 36 basic Reflex save)."
+					]
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "crystal spike",
+					"attack": 34,
+					"damage": "{@damage 2d12+26} piercing"
+				}
+			],
+			"reset": [
+				"The trap's supply of spikes magically replenishes, and the trap resets after 1 hour."
+			]
+		},
+		{
+			"name": "Guardian Mural",
+			"source": "SF1",
+			"page": 56,
+			"level": 15,
+			"traits": [
+				"unique",
+				"magical",
+				"trap"
+			],
+			"stealth": {
+				"dc": 40
+			},
+			"description": [
+				"One of the carvings on the mural suddenly animates and clambers out of the painting to become a real creature in the middle of the chamber."
+			],
+			"disable": {
+				"entries": [
+					"DC 35 {@skill Thievery} (to deface the mural in precisely the right way to render it inoperable), or {@spell dispel magic} (7th level; counteract DC 34) to counteract the mural"
+				]
+			},
+			"actions": [
+				{
+					"name": "Summon Mukradi",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature attempts to open the door to area H7",
+					"entries": [
+						"A living {@creature mukradi} manifests in the 20‑foot‑square space indicated by the dotted outline on the map. Any other creatures in this area are knocked {@condition prone} and pushed out of this square\u2014those who succeed at a DC 40 Reflex save can choose to be pushed north or south, while those who fail are pushed west, out of the room entirely down a 200‑foot fall. These creatures can {@action Grab an Edge||Grab the Edge} with a successful DC 36 Reflex save. The {@creature mukradi} then rolls initiative but vanishes completely after 1 minute."
+					]
+				}
+			],
+			"reset": [
+				"24 hours"
+			]
+		},
+		{
+			"name": "Stage Fire",
+			"source": "SF1",
+			"page": 45,
+			"level": 12,
+			"traits": [
+				"uncommon",
+				"complex",
+				"environmental",
+				"fire"
+			],
+			"stealth": {
+				"bonus": 0,
+				"notes": "(initiative modifier is {@d20 +28})"
+			},
+			"description": [
+				"Flames engulf the opera house's stage."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Survival} DC 27 to extinguish two adjacent squares of fire (with a critical success extinguishing four adjacent squares); any {@trait water} spell (such as from {@spell create water} or {@spell hydraulic push}) cast at the fire extinguishes two squares automatically, or {@dice 2d4} adjacent squares if the caster of the spell achieves a DC 30 result with a spell attack roll; {@spell quench|APG} instantly extinguishes all fire within its 20‑foot burst."
+				]
+			},
+			"actions": [
+				{
+					"name": "Erupt in Flame",
+					"entries": [
+						"When this encounter begins, the fire erupts in a ring that encircles the entire stage, as shown by the dotted outline on the map. The stage fire then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"On its turn, the stage fire expands inward and outward by 5 feet, filling all adjacent squares with fire. Creatures within these squares take {@damage 4d6} fire damage (DC 30 basic Reflex save), as do any creatures that enter a burning square. This fire damage can be inflicted on a creature only once per turn.",
+				"In addition, a creature that ends its turn in a burning square takes {@damage 8d6} fire damage (DC 30 basic Reflex save); on a failed save, that creature also takes {@damage 1d6} {@condition persistent damage||persistent fire damage}."
+			]
+		},
+		{
 			"name": "Twist of Fate",
 			"source": "CotT",
 			"remaster": true,
