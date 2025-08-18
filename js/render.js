@@ -963,6 +963,7 @@ function Renderer () {
 			if (entry.DC != null) textStack[0] += `DC ${renderer.render(entry.DC)}`
 			if (entry.DC != null && entry.savingThrow != null) textStack[0] += " "
 			if (entry.savingThrow != null) textStack[0] += `${renderer.render(entry.savingThrow)}`
+			if (entry.savingThrowNote) textStack[0] += ` (${entry.savingThrowNote})`;
 			textStack[0] += "; "
 		}
 		if (entry.onset != null) textStack[0] += `<strong>Onset</strong> ${renderer.render(entry.onset)}; `;
