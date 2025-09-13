@@ -1,0 +1,1291 @@
+{
+	"item": [
+		{
+			"name": "Deck of Harrowed Tales",
+			"source": "SF2",
+			"page": 71,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"conjuration",
+				"magical"
+			],
+			"usage": "held in 2 hands",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"The {@i Deck of Harrowed Tales} is a unique deck connected to a unique demiplane known as {@plane the Harrowed Realm|SF2}.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"If on a plane other than {@plane the Harrowed Realm|SF2}, the deck creates a gate to {@plane the Harrowed Realm|SF2}."
+					]
+				}
+			],
+			"destruction": [
+				"The {@i Deck of Harrowed Tales} can be destroyed by completing a mythical series of 54 quests tied to each of the cards within. Only then can the final 55th quest be revealed, upon the completion of which the deck vanishes."
+			]
+		},
+		{
+			"name": "Guardian Aluum Charm",
+			"source": "SF2",
+			"page": 71,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"rare",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 2800,
+				"coin": "gp"
+			},
+			"usage": "worn amulet",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"A {@i guardian aluum charm} grants control over powerful aluums\u2014metal and stone constructs created by the Pactmasters to help maintain order in the city of Katapesh. As long as you wear a {@creature guardian aluum|SF2|guardian aluum's} linked {@i guardian aluum charm}, that aluum follows your verbal commands.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The charm grants you control over an aluum you can see within 60 feet, as long as the target aluum is level 13 or less. This has the effect of dominate and allows a DC 28 Will save. If the aluum is currently under the control of someone wearing its linked charm, its saving throw is one degree higher than what is rolled. You can control only one aluum at a time with this activation, and controlling a new aluum ends the effect for one you had previously affected."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Lens of the Outreaching Eye",
+			"source": "SF2",
+			"page": 71,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"divination",
+				"invested",
+				"magical",
+				"scrying"
+			],
+			"usage": "worn necklace",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"As long as you have the {@i Lens of the Outreaching Eye} invested, {@plane the harrowed realm|SF2|the Harrowed Realm's} impediments to magic don't apply to you, and you gain a +3 item bonus on all checks made to resolve {@trait divination} effects.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 10,
+						"unit": "minute"
+					},
+					"components": [
+						"command",
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"By peering through the {@i Lens of the Outreaching Eye}, for one hour you can treat the {@item Deck of Harrowed Tales|SF2} as the source of your hearing and vision, no matter the deck's location in the multiverse. You can see in all directions from the deck and hear from it as if using your normal visual senses. You can {@action Dismiss} the activation."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 10,
+						"unit": "minute"
+					},
+					"components": [
+						"command",
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The {@i Lens of the Outreaching Eye} casts discern location on the {@item Deck of Harrowed Tales|SF2}."
+					]
+				}
+			],
+			"destruction": [
+				"The {@i Lens of the Outreaching Eye} is destroyed if the {@item Deck of Harrowed Tales|SF2} is destroyed."
+			]
+		},
+		{
+			"name": "Witchwyrd Beacon",
+			"source": "SF2",
+			"page": 71,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"rare",
+				"conjuration",
+				"magical"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "held in 2 hands",
+			"bulk": 3,
+			"category": "Held",
+			"entries": [
+				"Made of djezet, orichalcum, and luminous, resonant crystal, a {@i witchwyrd beacon} looks like a series of concentric rings mounted on rods that allow the rings to rotate independently of each other. These potent items are used by the Pactmasters of Katapesh to facilitate swift travel and are only rarely entrusted to others.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 10,
+						"unit": "minute"
+					},
+					"components": [
+						"command",
+						"envision",
+						"{@action Interact}"
+					],
+					"entries": [
+						"By touching the {@i witchwyrd beacon} and focusing on it for 10 minutes, you attune yourself to it. Up to four creatures can be attuned to a single {@i witchwyrd beacon} at any one time\u2014to attune another creature, one of the previous four must become unattuned. You can break your attunement to a {@i witchwyrd beacon} by {@action Dismiss||Dismissing} the effect. The attunement automatically ends if the attuned creature dies or if the attuned creature attunes themselves to a different {@i witchwyrd beacon}. The effect can also be dispelled normally. You can sense whenever the {@i witchwyrd beacon} you are attuned to is activated in any way."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 10,
+						"unit": "minute"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"requirements": "you are attuned to the {@i witchwyrd beacon}",
+					"entries": [
+						"You place the {@i witchwyrd beacon} on a flat, stable, and immobile surface, then adjust its rings to link it to the site. Once linked, any creature can use a {@trait teleportation} effect to target the {@i witchwyrd beacon} directly, regardless of line of sight. You can {@spell dimension door} or {@spell gate} to the beacon as if you could see its location, and if you travel to it via an effect like {@ritual plane shift}, the beacon eliminates the imprecision of the spell. The beacon doesn't change the range of effects, only their accuracy. Once the beacon is used in this manner, it loses its link and must be reactivated again to grant this benefit to attuned creatures."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Bear",
+			"source": "SF2",
+			"page": 72,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"harrow court",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Hammers (Str)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral"
+				}
+			],
+			"entries": [
+				"{@i The Bear} represents brute force applied to solve unusual problems. As long as you have {@i The Bear} invested, you can use {@skill Athletics} checks to {@action Tumble Through} or {@action Squeeze}.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"requirements": "Your last action was a successful melee {@action Strike}",
+					"entries": [
+						"You attempt to {@action Grapple}, {@action Shove}, or {@action Trip} the creature you hit with the successful {@action Strike}, even if you have no hand free. You gain a +2 status bonus to your check. If you {@action Grapple} using a weapon, you can {@action Strike} with the weapon only if it has the {@trait grapple} trait and you {@action Strike} the {@condition grabbed} target, or if you cease {@action Grab||Grabbing} with the weapon. After the effect of the initial {@action Grapple} ends, you can’t keep a target {@condition grabbed} with a weapon that lacks the {@trait grapple} trait. The status bonus increases to +3 if you’re at least 17th level."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"A forested courtyard appears in Harrowheart, and an unusually intelligent and curious bear moves in. The bear enjoys philosophical conversations about the balance between the natural world and the urban world (the bear is annoyed at the use of the phrase “civilized world” and often points out that people in cities are more self-destructive than any group of wild animals). They also know several magical rituals and can teach the following rituals to the PCs if they wish: {@ritual awaken animal}, {@ritual commune with nature}, and {@ritual primal call}. While the bear can’t serve as a primary or secondary caster for these rituals, its presence grants a +2 item bonus to any skill checks made to cast these rituals here."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Beating",
+			"source": "SF2",
+			"page": 72,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"invested",
+				"magical",
+				"necromancy"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Hammers (Str)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral evil"
+				}
+			],
+			"entries": [
+				"{@i The Beating} symbolizes attack from all sides. If you have {@i The Beating} invested, whenever you and an ally are flanking a foe, your melee {@action Strike||Strikes} gain a +2 item bonus to damage. This increases to a +3 item bonus at 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You wave the card to conjure up dozens of violent ghostly figures; you cast {@spell pernicious poltergeist|SoM}, and the area of the spell is treated as difficult terrain in addition to its normal effects. The level of the spell is one-half your level, rounded down (minimum 6th level), and the save DC is your class DC."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"A small group of soldiers set up training grounds in the village surrounding Harrowheart. A PC who spends Downtime training here can {@action retraining||Retrain} feats, skills, and class features, provided the new feat, skill, or class feature is combat-themed. Feats and skill increases retrained here take only 5 days. Class features retrained here take only 3 weeks."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Cyclone",
+			"source": "SF2",
+			"page": 73,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"evocation",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Hammers (Str)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "chaotic evil"
+				}
+			],
+			"entries": [
+				"{@i The Cyclone} represents tumultuous evil plots. As long as it is invested, {@i The Cyclone} bolsters you with helpful winds that grant you a +2 item bonus to {@skill Athletics} checks made to {@action Climb}, {@action High Jump}, {@action Long Jump}, and {@action Disarm}. This increases to a +3 item bonus if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You cast {@spell whirlwind|SoM}. You do not treat the squares in the whirlwind as difficult terrain, but all other creatures do. The level of the spell is one-half your level, rounded down (minimum 8th level), and the save DC is your class DC."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Cyclone}, assign it to a point of interest in the mountains. This marks the location of a peak that is constantly assailed by blustery winds. Leering, sinister faces made of roiling vapor constantly form and melt away in these winds, and the feeling of the gusts tugging at clothing and flesh feels eerily like the clutching of long-fingered claws. A perpetual cyclone is visible at the mountain’s peak. Nonetheless, any PC who visits this location feels a strong urge to attempt an ascent of the wind-wracked mountain. A PC who wishes to attempt the dangerous climb must spend 8 hours of downtime, then attempt a DC 35 {@skill Athletics} check to {@action Climb}.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The PC reaches the mountain’s peak! The PC gains the ability to {@action cast a spell} as a primal innate spell, choosing from {@spell fly} (once per day), {@spell gust of wind} (at will), {@spell wall of wind} (three times per day), or {@spell wind walk} (once per day). In order to choose a spell, the spell’s level must be equal to or less than half the PC’s level (rounded up). The spell is automatically heightened to half the PC’s level, rounded up, and uses the PC’s class DC if needed. A PC can change the innate spell they gain by successfully climbing the mountain again.",
+								"Success": "The PC makes progress, but hasn’t quite reached the peak. The PC becomes {@condition fatigued}. The PC can either abandon the attempt and end their eight hours back at the mountain’s base, or they can continue the ascent either by sheltering in place for eight hours or attempting another eight hour activity at a {@action Climb} check to reach the peak. Successfully sheltering in place requires a DC 35 {@skill Survival} check—success removes the {@condition fatigued} condition, but failure does not, and also makes the PC {@condition enfeebled||enfeebled 1} (or increases the value of a current {@condition enfeebled||enfeebled} condition by 1, to a maximum of {@condition enfeebled||enfeebled 5}). A character who fails 3 {@skill Survival} checks when attempting to shelter fails the attempt to ascend the mountain and is forced to retreat to the mountain’s base (see Failure, below).",
+								"Failure": "The PC falls, taking {@damage 10d10} bludgeoning damage from falls and pummeling wind. The PC is {@condition fatigued}.",
+								"Critical Failure": "As failure, but the PC also suffers a fall near the end of their descent, taking an additional 50 points of falling damage along the way."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Demon's Lantern",
+			"source": "SF2",
+			"page": 73,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"evocation",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Keys (Dex)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "chaotic evil"
+				}
+			],
+			"entries": [
+				"{@i The Demon’s Lantern} represents trickery and feats of legerdemain. As long as you have {@i The Demon’s Lantern} invested, you gain a +2 item bonus to checks made to {@action Conceal an Object}, {@action Palm an Object}, or {@action Steal}. This increases to a +3 item bonus if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "A creature hits you with a melee attack",
+					"entries": [
+						"You release a flash of lights and attempt a Reflex saving throw. If your saving throw is higher than the attack roll for the triggering attack, it misses. If the attack misses, the attacker is {@condition dazzled} until the end of your next turn."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Demon’s Lantern}, assign it to a point of interest in the swamp. This indicates a region that has become infested with will-o’-wisps. A PC who travels here must wait until nightfall for the wisps to come out. At this point, they can spend 8 hours of the night pursuing the will-o’-wisps through the overgrown swamp by attempting a DC 35 {@skill Acrobatics} check, after which no one may chase the wisps again for 1 week.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "You catch up to the will-o’-wisps. The wisps are startled and vanish in a panic, leaving behind a treasure for you to claim. Choose from among the following: antimagic armor rune, greater shock weapon rune, a wand of continuation ({@spell blink}, heightened to 6th level), or a wand of regenerate. At the GM’s discretion, other 15th-level permanent magic items could be included in this list. The wisps now know that you can catch them and avoid you—you can never attempt this activity again.",
+								"Success": "You come close enough to a wisp to hear its delighted giggles at being chased but fail to catch up to it. The next time you perform this activity, you gain a +4 circumstance check on your {@skill Acrobatics} check.",
+								"Failure": "You fail to catch up to the wisps.",
+								"Critical Failure": "You become entangled. The wisps descend upon you and drain away some of your health before they flit away, giggling cruelly as they go. You become {@condition clumsy||clumsy 3} for 1 week or until the condition is removed via an effect like {@spell restoration}."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Desert",
+			"source": "SF2",
+			"page": 74,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"evocation",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Shields (Con)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "chaotic good"
+				}
+			],
+			"entries": [
+				"{@i The Desert} signifies enduring passage through trying circumstances. As long as {@i The Desert} is invested, you are immune to the effects of temperatures ranging from extreme cold to extreme heat, and can hold your breath and go without food and water for twice as long as normal.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You wave the card in the air to create desert winds that blast sand so scouring it strips flesh from bone. The sand created by this effect vanishes an instant later, but the effects on those caught in the area linger. Creatures in a 60-foot cone take {@damage 7d6} piercing damage and {@damage 7d6} fire damage (with a basic Fortitude save equal to your class DC). A creature who fails this save also becomes {@condition fatigued} and {@condition enfeebled} for 1 minute, and a creature who critically fails this save becomes {@condition enfeebled||enfeebled 2} for 1 minute and {@condition fatigued} until they get a night’s rest (or the fatigue is removed by other means). The damage increases to {@damage 8d6} piercing and {@damage 8d6} fire if you’re at least 15th level, to {@damage 9d6} piercing and {@damage 9d6} fire if you’re at least 17th level, and to {@damage 10d6} piercing and {@damage 10d6} fire if you’re at least 19th level."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Desert}, assign it to a point of interest in the desert. A strange magic in this region allows a willing character to turn themselves over to the desert to have their body be consumed and then reborn into something new. This eight hour period of meditation and introspection is dangerous—the PC must attempt a DC 35 Fortitude saving throw.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "Your body transforms into a new adult body of an ancestry of your choice, subject to GM approval. Replace your ancestry Hit Points, size, Speeds, ability boosts, ability flaws, traits, and special abilities with those of the new ancestry. You lose your heritage and ancestry feats, and must select replacements from the new ancestry. Your background, class features, and known languages remain unaltered. You can never again benefit from The Desert in this way.",
+								"Success": "As critical success, except the process leaves you feeling awkward in your new body, leaving you {@condition clumsy||clumsy 2}, {@condition drained||drained 2}, and {@condition enfeebled||enfeebled 2} for 1 week; these conditions can’t be removed or reduced by any means until the week has passed.",
+								"Failure": "You fail to be remade and instead are {@condition fatigued}.",
+								"Critical Failure": "Not only do you fail to be remade, you become {@condition fatigued} and {@condition drained||drained 3}. You cannot attempt to be remade in the desert again for 1 month."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Forge",
+			"source": "SF2",
+			"page": 74,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Hammers (Str)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful neutral"
+				}
+			],
+			"entries": [
+				"{@i The Forge} denotes strength through diversity. As long as you have {@i The Forge} invested, you can carry more than normal—increase your maximum and encumbered Bulk limits by 2.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You pass the card over an adjacent broken (but not destroyed) object (magical or otherwise) of up to 4 Bulk, and restore the object to its full Hit Point total, removing the broken condition in the process."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"One of Harrowheart’s workshops transforms into a forge. The quality of the tools now found here increase that workshop’s item bonus to {@skill Crafting} checks made within to a +2. When {@i The Forge} is first epitomized, 10,000 gp of raw materials suitable for use in crafting metal items manifests in the workshop. These raw materials can be used to create items or even simply harvested and sold for a profit, as they do not vanish if taken out of {@plane the Harrow Court|SF1}. Once these raw materials are used or sold, they do not replenish.",
+						"However, additional materials do manifest periodically within the workshop. Their appearances are linked to the party’s level, manifesting as soon as {@i The Forge} is epitomized or (if {@i The Forge} is already epitomized) as soon as the PCs attain the respective level.",
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "17th-level:",
+									"entries": [
+										"13,500 gp of cold iron"
+									]
+								},
+								{
+									"type": "item",
+									"name": "18th-level:",
+									"entries": [
+										"18,000 gp of mithral"
+									]
+								},
+								{
+									"type": "item",
+									"name": "19th-level:",
+									"entries": [
+										"18,000 gp of adamantine"
+									]
+								},
+								{
+									"type": "item",
+									"name": "20th-level:",
+									"entries": [
+										"30,000 gp of orichalcum"
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Hidden Truth",
+			"source": "SF2",
+			"page": 75,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"abjuration",
+				"artifact",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Books (Int)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful good"
+				}
+			],
+			"entries": [
+				"{@i The Hidden Truth} represents the act of observing something beyond the obvious to gain obscure lore. As long as this card is invested, you gain a +2 item bonus to {@skill Lore} checks made to {@action Recall Knowledge}, and to all checks made to Research while using the {@variantRule Research|GMG} subsystem. This increases to a +3 bonus if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You cast {@spell true seeing}. The level of the spell is one-half your level, rounded down (minimum 6th level). If you’re at least 17th-level, you can affect up to three adjacent willing targets with this spell at the same time as you cast it."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"A group of mysterious scholars establishes libraries and study halls in the village surrounding Harrowheart. A PC who spends Downtime training with these scholars can {@action retraining||Retrain} feats, skills, and class features, provided the new feat, skill, or class feature is magic-themed. Feats and skill increases retrained here take only 5 days, while class features retrained here take only 3 weeks."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Keep",
+			"source": "SF2",
+			"page": 75,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"conjuration",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Hammers (Str)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral good"
+				}
+			],
+			"entries": [
+				"{@i The Keep} represents steadfastness and being unshakable to threats. As long as {@i The Keep} is invested, you gain a +2 item bonus to saving throws against {@trait fear} effects. Whenever you become {@condition frightened}, reduce the condition value by 1 (to a minimum of 0). If you are 20th level, the item bonus increases to +3.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You cast {@spell magnificent mansion}. The level of the spell is one-half your level, rounded down (minimum 7th level), and the interior of the mansion appears to be the inside of a resplendent keep made of stone."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Keep}, assign it to a point of interest in the farmland. A small, fortified keep springs up here. Its interior is a complex maze of locked rooms and barricaded hallways—exploring this keep can be an exhausting ordeal, but a character who does so can be rewarded by discovering a hidden armory. A character who wishes to seek out this armory must spend 8 hours {@action Force Open||Forcing Open} doors, portcullises, and barricades with a DC 35 {@skill Athletics} check, after which no one may search for the armory again for 1 week.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "You make it to one of the armories and discover a suit of +2 greater resilient armor. The type of armor is up to you, but it must be a common type of armor. For you, {@i The Keep}’s armories are now forever empty, and you can never attempt this activity again.",
+								"Success": "You spend time pushing your way through the maze but don’t quite reach your goal. The next time you perform this activity, you gain a +4 circumstance check to your {@skill Stealth} check.",
+								"Failure": "You fail to reach the hidden armory.",
+								"Critical Failure": "You fail to reach the hidden armory and strain your muscles in an attempt to wrench open a barrier. You become {@condition clumsy||clumsy 3} for 1 week, or until the condition is removed via an effect like {@spell restoration}."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Lost",
+			"source": "SF2",
+			"page": 76,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"abjuration",
+				"artifact",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Stars (Wis)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "chaotic evil"
+				}
+			],
+			"entries": [
+				"{@i The Lost} symbolizes loss of identity and a life filled with emptiness. As long as {@i The Lost} is invested, you gain resistance to mental damage equal to your level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "you fail a saving throw against a {@trait mental} effect",
+					"entries": [
+						"You reflexively flood your mind with emptiness, stripping away any element of identity that the {@trait mental} effect might be trying to affect. Increase the result of your failed saving throw by one degree of success."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"Some areas in Harrowheart’s village become strangely quiet and deserted looking. A character can spend eight hours in Downtime here to focus on this loss and emptiness, taking those realities into themselves to emerge changed, with entirely new memories—be they old memories recovered for the first time or newly created memories. At the end of these eight hours, the PC can instantly {@action retraining||Retrain} a single feat, skill, or class feature, as if they had spent the normal amount of time required for that downtime activity. All the other normal restrictions for retraining apply. A PC can only use {@i The Lost} to retrain in this way once per level."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Marriage",
+			"source": "SF2",
+			"page": 76,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Crowns (Cha)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful neutral"
+				}
+			],
+			"entries": [
+				"{@i The Marriage} symbolizes a union of body, mind, spirit, or any of the three. When {@i The Marriage} is invested, you gain a +2 item bonus to attempts made to {@action Request}. This increases to a +3 item bonus at 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Choose one adjacent willing creature. By brushing {@i The Marriage} against their body, you form a magical bond with that creature that persists until you activate {@i The Marriage} again to form a bond with a different creature. While the bond persists, you and the other creature can communicate via telepathy to a distance of 120 feet. As long as you and the target are on the same plane of existence and are both alive, you each remain aware of the other’s state—you know the other’s direction from you, distance from you, and any conditions affecting them. If your bonded target becomes {@condition blinded}, {@condition confused}, {@condition controlled}, {@condition fascinated}, {@condition frightened}, {@condition slowed}, or {@condition stunned}, you can use a reaction to attempt to counter the condition affecting the target, which also ends the bond between you and the target. The modifier on this counter check is equal to your class DC – 10. If you fail to counter the condition, that condition also afflicts you, and the bond with the other still ends."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Marriage}, a chapel appears in the village surrounding Harrowheart, run by a pleasant priest who pays homage to all of the faiths the PCs follow. The priest knows the {@ritual atone} and {@ritual heartbond|APG} rituals, and can teach them to the PCs. Skill checks attempted at the chapel to perform either of these rituals gain a +2 item bonus."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Midwife",
+			"source": "SF2",
+			"page": 76,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"invested",
+				"magical",
+				"necromancy"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Stars (Wis)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful neutral"
+				}
+			],
+			"entries": [
+				"{@i The Midwife} represents the arrival of new life or new information, particularly via the aid of another. As long as you have {@i The Midwife} invested, it grants a +2 item bonus to {@skill Medicine} checks. This increases to a +3 bonus if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "A creature you can sense within 60 feet would due or be destroyed",
+					"entries": [
+						"You prevent the target from dying or being destroyed and restore to the target {@dice 6d8+24} Hit Points. This effect can prevent a {@trait death} effect or disintegrate from slaying a target. The amount of healing granted increases to {@dice 7d8+28} if you’re at least 15th level, {@dice 8d8+32} if you’re at least 17th level, and {@dice 9d8+36} if you’re at least 19th level."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"A pleasant and very skilled healer moves into Harrowheart. Their presence bolsters the effect of long-term rest. When a PC uses this downtime activity in Harrowheart, they recover Hit Points equal to their Constitution modifier (minimum 1) multiplied by three times their level. They can also reduce the value of one condition of their choice from the following list: {@condition clumsy}, {@condition drained}, {@condition enfeebled}, or {@condition stupefied}, and gain a +2 item bonus to any saving throws they attempt against diseases they are currently afflicted by."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Owl",
+			"source": "SF2",
+			"page": 76,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Stars (Wis)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral"
+				}
+			],
+			"entries": [
+				"{@i The Owl} represents the wisdom of nature and the natural order. As long as you have {@i The Owl} invested, it grants a +2 item bonus to {@skill Perception} checks made to Sense Motive, Survival checks to {@action Subsist} in the wild, and {@skill Nature} checks made when you activate this card. This increases to a +3 bonus if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"components": [
+						"command",
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"After spending an hour meditating, you can ask one question of the region’s spirits, as if you had just performed a {@ritual commune with nature} ritual. Attempt a DC 30 {@skill Nature} check to determine the result."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Owl}, assign it to a point of interest in the forest. This region becomes the home of an unusually large owl. A PC who travels to this region can spend 8 hours observing the owl and pondering the many worlds it has gazed upon by attempting a DC 30 {@skill Nature} check. With a success, the owl hoots in delight, and the woodlands in the region shift and change to match those of a woodland or jungle that the PC is familiar with. From this point on, the PCs can use the {@action Enter the Harrow Court|SF1} activity here to open a one-way portal to that forest or jungle, arriving at a location of import or particular familiarity within the region as determined by the GM. Switching to a new woodland requires another DC 30 {@skill Nature} check and familiarity with that region. A PC who {@action Enter the Harrow Court|SF1|Enters the Harrow Court} can now choose to arrive in the demiplane at this point of interest rather than in Harrowheart’s great hall."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Sickness",
+			"source": "SF2",
+			"page": 77,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"invested",
+				"magical",
+				"necromancy"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Shields (Con)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral evil"
+				}
+			],
+			"entries": [
+				"{@i The Sickness} represents disease of the body or soul. As long as {@i The Sickness} is invested, it grants you a +2 item bonus to saving throws against {@trait disease}. If you roll a success on a save against a {@trait disease}, you get a critical success instead. If you are 20th-level, the item bonus increases to +3.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You flick a corner of the card, as if casting aside a tiny pest or fleck of filth from its surface; you cast {@spell Abyssal plague}. If you are at least 15th-level, you can instead choose to cast {@spell spiritual epidemic}. Regardless of which spell you cast, the level of the spell is half your level, rounded down (minimum 6th level), and the save DC is equal to your class DC."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Sickness}, a sprawling cemetery manifests near Harrowheart. A sickly, unpleasant caretaker tends to this cemetery. This caretaker knows the {@ritual blight}, {@ritual call spirit}, and {@ritual create undead} rituals, and can teach them to the PCs. Skill checks attempted at the cemetery to perform any of these rituals gain a +2 item bonus."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Survivor",
+			"source": "SF2",
+			"page": 77,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"invested",
+				"magical",
+				"necromancy"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Shields (Con)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral good"
+				}
+			],
+			"entries": [
+				"{@i The Survivor} represents rebirth through ordeal. When you have {@i The Survivor} invested, you gain {@feat Diehard} as a bonus feat. If you already possess this feat, you gain a +2 item bonus to all recovery checks. This item bonus increases to +3 if you are at least 17th-level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "you are reduced to 0 Hit Points",
+					"entries": [
+						"You somehow manage to survive what could have been a fatal blow. Instead of being reduced to 0 Hit Points, you drop to 1 Hit Point instead and immediately restore an additional {@dice 4d8+16} Hit Points. The amount of Hit Point restored increases to 5d8+20 if you are at least 15th level, {@dice 6d8+24} if you’re at least 17th level, and {@dice 7d8+28} if you’re at least 19th level."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Survivor}, assign it to a point of interest in the lake, where a small island manifests. This island features a small hovel and a rickety wooden pier, beside which leans wooden post with a blank wooden sign. The island is inhabited by a single hermit who’s taken a vow of silence. A PC can spend 8 hours describing to the hermit any coastal settlement of level 6 or lower or any noteworthy coastal fortress or landmark on Golarion by attempting a DC 30 {@skill Society} check. With a success, the hermit nods eagerly at the end of the discussion and carves the name of that location onto the blank sign. From this point on, the PCs can use the {@action Enter the Harrow Court|SF1} activity here to open a one-way portal to that location. Switching to a new location requires another DC 30 {@skill Society} check and familiarity with that location. A PC who {@action Enter the Harrow Court|SF1|Enters the Harrow Court} can now choose to arrive in the demiplane at this point of interest rather than in Harrowheart’s great hall."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Tangled Briar",
+			"source": "SF2",
+			"page": 78,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"conjuration",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Shields (Con)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful evil"
+				}
+			],
+			"entries": [
+				"{@i The Tangled Briar} signifies the return of ancient triumphs. As long as you have {@i The Tangled Briar} invested, you gain {@feat Toughness} as a bonus feat. If you already possess this feat, increase your maximum Hit Points by twice your level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You raise the card up above your head and invoke the thorns and briars of the tangled parts of the world; you cast {@spell wall of thorns}. The level of the spell is half your level, rounded down (minimum 6th level). The brambles within this particular {@spell wall of thorns} are treated as greater difficult terrain."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Tangled Briar}, small patches of tangled undergrowth spring up throughout {@plane the Harrow Court|SF1}—blackberries and thistles in the farmlands, stinging nettles in the forests and swamps, spiky leafless shrubs in the desert and mountains, and strange spiny seaweed in the lake. These tangles serve as spiritual conduits for ancient spirits associated with the harrow to influence {@plane the Harrow Court|SF1}. These spirits help to guide souls through the realm, and as a result, all skill checks made to resolve the casting of {@ritual astral projection|APG}, {@ritual call spirit}, {@ritual reincarnate|APG}, and {@ritual resurrect||resurrection} gain a +2 item bonus. The presence of the spirits helps to lessen the cost involved when casting {@ritual reincarnate|APG} and {@ritual resurrect||resurrection} as well, halving the final gp cost of performing the ritual as long as it takes place in {@plane the Harrow Court|SF1}."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Tyrant",
+			"source": "SF2",
+			"page": 78,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Crowns (Cha)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful evil"
+				}
+			],
+			"entries": [
+				"As long as you have {@i The Tyrant} invested, you gain a +2 item bonus to {@skill Intimidation} checks made to {@action Demoralize}. This bonus increases to +3 if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You hold the card up to your lips and exhale onto it; you cast {@spell dragon form}. The level of the spell is half your level, rounded down (minimum 6th level)."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When {@i The Tyrant} is epitomized, an immense blue dragon manifests in {@plane the Harrow Court|SF1}. The dragon has no name, but gracefully accepts any the PCs offer them. The blue dragon is not hostile to the PCs, but their personality is tinged with arrogance and condescension. As with the other partially real simulacra of {@plane the Harrow Court|SF1}, the dragon has no agency of their own and cannot take part in encounter mode play, but they can be called upon to aid with their skills or to cast (or teach) spells. Treat the dragon as a typical spellcasting {@creature ancient blue dragon} for the purposes of its skill modifiers and what spells they can cast or teach, but one that also knows the {@ritual legend lore} ritual. A PC who impresses the dragon with their own imperious attitude (with a successful DC 35 {@skill Intimidation} check) can convince the dragon to carry them to any location in {@plane the Harrow Court|SF1}, once per successful check. The dragon keeps a lair in a large cavern below Harrowheart, where they spend their time counting their (illusory) hoard, sleeping, or plotting nefarious schemes they will never actually enact."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Uprising",
+			"source": "SF2",
+			"page": 79,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"conjuration",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Hammers (Str)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "chaotic neutral"
+				}
+			],
+			"entries": [
+				"When you have {@i The Uprising} invested, you gain a +2 item bonus to all saving throws against affects that attempt to {@condition controlled||control} you or {@condition restrained||restrain} you. This item bonus increases to +3 if you are 20th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"The card calls forth a mob of shadowy figures who batter and hinder your enemies. Target a 20-foot burst at any point on solid ground with 120 feet, and the mob of figures rises up from the ground, persisting for 1 minute. Make an unarmed {@action Strike} against the Fortitude DC of any number of creatures in this burst (you can choose to not attack some creatures in the area if you wish). Any creature you succeed against is {@condition grabbed} and takes {@damage 3d6} bludgeoning damage. Whenever a creature ends its turn in the area, the figures attempt to {@action Grab} that creature if they haven’t already, and they deal {@damage 1d6} bludgeoning damage to any creature already {@condition grabbed}. The mob’s {@action Escape} DC is equal to your class DC. A creature can attack a figure in an attempt to release its grip. It’s AC is equal to your class DC, and it’s destroyed if it takes 12 or more damage. Even if destroyed, additional figures continue to rise up in the area until the effect’s duration ends. You can {@action Dismiss} this effect. If you are at least 15th level, you can use a two-action activity, which has the {@trait concentrate} trait, to move the burst up to 30 feet, which causes any currently {@condition grabbed} creatures to be released and left behind. If part of the burst appears or moves into an area that can’t support it on the ground, that portion of the burst disappears until it is supported."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"A guild of thieves sets up secret hideouts in the village surrounding Harrowheart. These thieves do not prey upon the PCs or the citizens of {@plane the Harrow Court|SF1}, preferring instead to focus on self-improvement. A PC who spends Downtime training with these thieves can {@action retrain||Retrain} feats, skills, and class features, provided the new feat, skill, or class feature is neither combat- nor magic-themed. Feats and skill increases retrained here take only 5 days, while class features retrained here take only 3 weeks."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Waxworks",
+			"source": "SF2",
+			"page": 79,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"invested",
+				"magical",
+				"necromancy"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Shields (Con)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "chaotic evil"
+				}
+			],
+			"entries": [
+				"{@i The Waxworks} represents helplessness and entropy. As long as you have this card invested, you gain a +2 item bonus to saving throws against effects that render you {@condition clumsy}, {@condition doomed}, {@condition drained}, {@condition enfeebled}, or {@condition fatigued}. The item bonus increases to +3 if you are 20th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You cause two 30-foot lines of hot wax to extend out of the card as you present it. The two lines must both start at you and extend in different directions. If you are at least 15th level, you can create a third line, and if you’re at least 19th level you can create a fourth line. All creatures in the area must attempt a Fortitude save against your class DC.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes {@damage 2d6} {@condition persistent damage||persistent fire damage} and {@damage 2d6} {@condition persistent damage||persistent mental damage}. An affected creature or adjacent ally can reduce both of these values by {@damage 1d6} by spending an Interact action to scrape off the goo. Until the damage is reduced to {@damage 1d6} per type, the affected creature is also confused (this is an emotion and mental effect).",
+								"Failure": "As success, but {@damage 4d6} {@condition persistent damage||persistent fire damage} and {@damage 4d6} {@condition persistent damage||persistent mental damage}.",
+								"Critical Failure": "As success, but {@damage 6d6} {@condition persistent damage||persistent fire damage} and {@damage 6d6} {@condition persistent damage||persistent mental damage}, and the creature’s speed is slowed 1 until the damage is reduced to {@damage 1d6} per type."
+							}
+						}
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When {@i The Waxworks} is epitomized, an unsettling laboratory comes into being in the dungeons below Harrowheart. Here, bubbling cauldrons of wax sputter and smoke, while metal molds containing the likenesses of the PCs and significant NPCs from their past stand unnervingly along the walls. The laboratory is attended by a sallow-complexioned tiefling who is always way too excited and polite to visiting PCs. This tiefling knows the rituals for {@ritual clone|APG} and {@ritual simulacrum|APG}, and can teach them to the PCs. Skill checks attempted in the laboratory to perform either of these rituals gain a +2 item bonus."
+					]
+				}
+			]
+		}
+	]
+}

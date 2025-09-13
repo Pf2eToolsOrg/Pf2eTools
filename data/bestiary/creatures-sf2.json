@@ -1,0 +1,7217 @@
+{
+	"_meta": {
+		"dependencies": {
+			"creature": [
+				"B2"
+			]
+		},
+		"internalCopies": [
+			"creature"
+		]
+	},
+	"creature": [
+		{
+			"name": "Fate's Prophet",
+			"source": "SF2",
+			"page": 9,
+			"description": "Female {@creature succubus}",
+			"level": 14,
+			"traits": [
+				"unique",
+				"ce",
+				"medium",
+				"demon",
+				"fiend"
+			],
+			"perception": {
+				"std": 25
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "true seeing"
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"celestial",
+					"common",
+					"draconic",
+					"elven",
+					"gnomish",
+					"varisian"
+				],
+				"abilities": [
+					"telepathy 100 feet",
+					"tongues"
+				]
+			},
+			"skills": {
+				"abyss lore": {
+					"std": 25
+				},
+				"acrobatics": {
+					"std": 25
+				},
+				"deception": {
+					"std": 30
+				},
+				"diplomacy": {
+					"std": 28
+				},
+				"intimidation": {
+					"std": 28
+				},
+				"religion": {
+					"std": 25
+				},
+				"stealth": {
+					"std": 25,
+					"to Conceal an Object": 27
+				},
+				"thievery": {
+					"std": 25,
+					"to Palm an Object or Steal": 27
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 5,
+				"con": 4,
+				"int": 5,
+				"wis": 5,
+				"cha": 8
+			},
+			"items": [
+				"The Demon's Lantern",
+				"+2 striking hand crossbow (10 bolts, all poisoned with shadow essence)",
+				"bejeweled belt worth 3,000 gp"
+			],
+			"defenses": {
+				"ac": {
+					"std": 35
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 24
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 27
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 255
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 15
+					},
+					{
+						"name": "good",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"evil",
+						"finesse",
+						"magical"
+					],
+					"name": "claw",
+					"attack": 27,
+					"damage": "{@damage 3d8+10} slashing plus {@damage 1d6} evil"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"magical"
+					],
+					"name": "hand crossbow",
+					"attack": 28,
+					"damage": "{@damage 2d6} piercing plus shadow essence"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 34,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "charm",
+									"amount": "at will"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "detect alignment",
+									"amount": "at will"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "mind reading",
+									"amount": "at will"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								},
+								{
+									"name": "suggestion",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "dominate"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "warp mind"
+								}
+							]
+						},
+						"constant": {
+							"7": {
+								"spells": [
+									{
+										"name": "tongues"
+									},
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"DC": 34,
+					"tradition": "divine",
+					"rituals": [
+						{
+							"name": "abyssal pact",
+							"source": "B1"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Rejection Vulnerability",
+						"entries": [
+							"As succubus, but {@damage 4d6} mental damage."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"As {@creature succubus}."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Grab Attention",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Fate's Prophet attempts to {@action Grapple} a creature using {@skill Deception} instead of {@skill Athletics}. If the creature is willing, she grapples it automatically."
+						]
+					},
+					{
+						"name": "Passionate Kiss",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"emotion",
+							"enchantment",
+							"mental"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"As succubus, but {@damage 5d6} negative damage and a DC 34 Will save."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Torgral",
+			"source": "SF2",
+			"page": 10,
+			"level": 15,
+			"description": "Male {@creature ghalzarokh|SF2}",
+			"perception": {
+				"std": 28
+			},
+			"_copy": {
+				"name": "Ghalzarokh",
+				"source": "SF2",
+				"_mod": {
+					"items": {
+						"mode": "appendArr",
+						"items": "{@item The Uprising|SF2}"
+					}
+				}
+			}
+		},
+		{
+			"name": "Ghalzarokh",
+			"source": "SF2",
+			"page": 80,
+			"level": 15,
+			"traits": [
+				"uncommon",
+				"ce",
+				"large",
+				"demon",
+				"fiend"
+			],
+			"perception": {
+				"std": 28
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 60
+				},
+				{
+					"name": "see invisibility"
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"celestial",
+					"draconic"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 26
+				},
+				"athletics": {
+					"std": 27
+				},
+				"intimidation": {
+					"std": 30
+				},
+				"religion": {
+					"std": 28
+				},
+				"stealth": {
+					"std": 24
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 3,
+				"con": 6,
+				"int": 4,
+				"wis": 5,
+				"cha": 7
+			},
+			"defenses": {
+				"ac": {
+					"std": 36
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 29
+					},
+					"ref": {
+						"std": 24
+					},
+					"will": {
+						"std": 26
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 330
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 15
+					},
+					{
+						"name": "good",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"evil",
+						"magical",
+						"reach <10 feet>"
+					],
+					"name": "jaws",
+					"attack": 30,
+					"damage": "{@damage 3d12+14} piercing plus {@damage 1d6} evil"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"evil",
+						"magical",
+						"reach <10 feet>"
+					],
+					"name": "claw",
+					"attack": 30,
+					"damage": "{@damage 3d8+14} slashing plus {@damage 1d6} evil"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 36,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "charm",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "command",
+									"amount": "at will"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "dominate"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "suggestion"
+								}
+							]
+						},
+						"constant": {
+							"8": {
+								"spells": [
+									{
+										"name": "see invisibility"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"DC": 36,
+					"rituals": [
+						{
+							"name": "abyssal pact",
+							"source": "B1"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Defiance Vulnerability",
+						"entries": [
+							"Defiance causes a ghalzarokh anguish. If a creature scores a critical success on a saving throw to resist the ghalzarokh's {@spell charm}, {@spell command}, {@spell dominate} or {@spell suggestion} spells or Project Blame, the demon takes {@damage 4d6} mental damage. The demon takes the same damage if it rolls a critical failure on an {@skill Intimidation} check."
+						]
+					},
+					{
+						"name": "Project Blame",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divine",
+							"emotion",
+							"enchantment",
+							"mental"
+						],
+						"trigger": "A creature succeeds or critically succeeds at a saving throw against one of the ghalzarokh's spells or Abyssal Spew, or the ghalzarokh misses a creature with a melee {@action Strike}",
+						"entries": [
+							"The creature must attempt a DC 36 Will saving throw.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is temporarily immune to Project Blame for 24 hours, and the ghalzarokh suffers from its defiance vulnerability."
+									],
+									"Success": [
+										"The creature's {@condition stupefied} condition increases by 1 (if they succeeded on a saving throw) or its {@condition clumsy} condition increases by 1 (if the demon missed them with a {@action Strike}). This increase in value lasts until the end of the creature's next turn but can't increase either condition beyond a value of 3."
+									],
+									"Failure": [
+										"As success, but the duration changes to 1 minute. A creature can attempt a DC 36 Will save at the end of its turn to remove the effect early."
+									],
+									"Critical Failure": [
+										"As failure, but for 24 hours."
+									]
+								}
+							}
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Abyssal Spew",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"acid",
+							"divine",
+							"evocation",
+							"fire"
+						],
+						"entries": [
+							"The ghalzarokh spews corrosive flame that deals {@damage 8d6} acid damage and {@damage 8d6} fire damage in a 40-foot cone (DC 36 basic Reflex save). The ghalzarokh can't use Abyssal Spew again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Rend",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"claw"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Demongate Colossus",
+			"source": "SF2",
+			"page": 12,
+			"description": "Variant {@creature radiant warden|B3}",
+			"level": 14,
+			"traits": [
+				"unique",
+				"ce",
+				"gargantuan",
+				"construct"
+			],
+			"perception": {
+				"std": 24
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal"
+				]
+			},
+			"skills": {
+				"abyss lore": {
+					"std": 27
+				},
+				"arcana": {
+					"std": 25
+				},
+				"athletics": {
+					"std": 26
+				},
+				"occultism": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 5,
+				"con": 4,
+				"int": 5,
+				"wis": 4,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 35
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 27
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 22
+					}
+				},
+				"hp": [
+					{
+						"hp": 240
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "mental",
+						"amount": 15
+					},
+					{
+						"name": "physical",
+						"amount": 10,
+						"note": "except adamantine"
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach <15 feet>",
+						"shove"
+					],
+					"name": "hammer",
+					"attack": 30,
+					"damage": "{@damage 3d8+14} bludgeoning plus corrupted radiant blow"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"range <15 feet>"
+					],
+					"name": "corrupted radiant beam",
+					"attack": 27,
+					"damage": "{@damage 3d6} force plus {@damage 3d6} evil"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 34,
+					"entry": {
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "collective transposition"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "dimensional lock"
+								},
+								{
+									"name": "prismatic spray"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Abyssal Link",
+						"entries": [
+							"The Demongate Colossus is built around a seething, churning mass of Abyssal energy that looks like a sphere of electrified red mist encompassing a single floating harrow card at its center\u2014{@item The Survivor|SF2}. The Abyssal link is obscured until the Demongate Colossus is reduced to fewer than 120 Hit Points, at which point glimpses of it become visible through tears and holes in its leathery \"flesh.\" The potent magic drawn from this card, combined with the radiant warden's gatewarper aura, is what allowed the Prince of Wolves to invade {@plane the harrow court|SF1|Harrow Court}. Once the Abyssal link is revealed, a character can attempt to counter the Abyssal link with a {@spell dispel magic} (7th level; counteract DC 34), or can attempt to {@action Steal} the card with a DC 35 {@skill Thievery} (master) check (on a failure, a thief attempting to {@action Steal} the card takes {@damage 5d10} chaotic and {@damage 5d10} evil damage\u2014this damage is doubled on a critical failure). Either success causes a link collapse (see below)."
+						]
+					},
+					{
+						"name": "Gatewarper Aura",
+						"traits": [
+							"abjuration",
+							"aura",
+							"occult"
+						],
+						"entries": [
+							"60 feet. A creature that uses a {@trait teleportation} ability within the aura's emanation or enters the emanation via a {@trait teleportation} ability must succeed at a DC 31 Fortitude save or become {@condition drained||drained 1} ({@condition drained||drained 2} on a critical failure) as its body warps and distorts painfully, and have its destination changed to a point of the radiant warden's choosing within the emanation."
+						]
+					},
+					{
+						"name": "Link Collapse",
+						"entries": [
+							"If the Demongate Colossus is destroyed or its belly portal is deactivated, {@trait demon||demons} that used the colossus's portal within a 40-foot emanation take {@damage 7d10} good damage (basic DC 30 Fortitude save). A creature that takes full or double damage is {@condition enfeebled||enfeebled 2} for 1 minute. If the Demongate Colossus is still active when it suffers a link collapse, it becomes {@condition stunned||stunned 3} and loses its gatewarper aura."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Corrupted Radiant Blast",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"evil",
+							"evocation",
+							"force",
+							"occult"
+						],
+						"entries": [
+							"The Demongate Colossus releases a 50-foot cone of crimson energy that deals {@damage 4d12} force damage and {@damage 4d12} evil damage (DC 34 basic Reflex save). The Demongate Colossus can't use Corrupted Radiant Blast again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Corrupted Radiant Blow",
+						"traits": [
+							"evil"
+						],
+						"entries": [
+							"When a non-evil creature is hit by the Demongate Colossus's hammer {@action Strike}, a red flash of Abyssal energy attempts to infuse the target with evil. The creature must attempt a DC 34 Will save; on a failure, the creature can't use any {@trait teleportation} effects for 1 minute. On a critical failure, the creature is also {@condition enfeebled||enfeebled 2}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "The Shadow Prince",
+			"source": "SF2",
+			"page": 13,
+			"description": "Variant {@creature brainchild|B3}",
+			"level": 11,
+			"traits": [
+				"rare",
+				"ce",
+				"large",
+				"illusion",
+				"mental"
+			],
+			"abilityMods": {
+				"str": 4,
+				"dex": 5,
+				"con": 4,
+				"int": 2,
+				"wis": 3,
+				"cha": 7
+			},
+			"perception": {
+				"std": 18
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"notes": [
+					"telepathy 100 feet",
+					"universal language"
+				]
+			},
+			"skills": {
+				"deception": {
+					"std": 22
+				},
+				"intimidation": {
+					"std": 24
+				},
+				"occultism": {
+					"std": 21
+				},
+				"society": {
+					"std": 21
+				},
+				"stealth": {
+					"std": 20
+				}
+			},
+			"defenses": {
+				"ac": {
+					"std": 30
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 22
+					},
+					"will": {
+						"std": 18
+					}
+				},
+				"hp": [
+					{
+						"hp": 200
+					}
+				],
+				"immunities": [
+					"death effects",
+					"detection",
+					"diseased",
+					"doomed",
+					"emotion effects",
+					"necromancy",
+					"scrying"
+				],
+				"weaknesses": [
+					{
+						"name": "mental",
+						"amount": 10
+					}
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 10,
+						"note": "except silver"
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"illusion",
+						"mental",
+						"occult"
+					],
+					"name": "illusory weapon",
+					"attack": 24,
+					"damage": "{@damage 4d6+10} mental plus {@damage 1d6} {@condition persistent damage||persistent bleed}"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 30,
+					"entry": {
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "shield"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": 2
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "phantasmal killer",
+									"amount": 3
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"100 feet, DC 28."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Universal Language",
+						"entries": [
+							"Anything spoken by the Shadow Prince is perceived by the listener in its native language."
+						]
+					},
+					{
+						"name": "Urban Legend",
+						"entries": [
+							"As {@creature brainchild|B3}. The Shadow Prince's illusory abilities granted by its urban legend include its immunity to {@trait emotion} effects, its resistance to physical damage, its frightful presence, and the {@condition persistent damage||persistent bleed} caused by its melee Strikes."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Alchemical Blob",
+			"level": 14,
+			"page": 23,
+			"source": "SF2",
+			"traits": [
+				"n",
+				"large",
+				"mindless",
+				"ooze"
+			],
+			"description": "Elite {@creature carnivorous blob|B2}",
+			"perception": {
+				"std": 25
+			},
+			"_copy": {
+				"name": "Carnivorous Blob",
+				"source": "B2",
+				"applyTemplate": "elite"
+			}
+		},
+		{
+			"name": "Crystal Sentinel",
+			"source": "SF2",
+			"page": 23,
+			"description": "Variant {@creature glass golem|B2}",
+			"level": 13,
+			"traits": [
+				"rare",
+				"n",
+				"large",
+				"construct",
+				"golem",
+				"mindless"
+			],
+			"perception": {
+				"std": 19
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"acrobatics": {
+					"std": 23
+				},
+				"athletics": {
+					"std": 27
+				},
+				"stealth": {
+					"std": 23
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 4,
+				"con": 5,
+				"int": -5,
+				"wis": 0,
+				"cha": -5
+			},
+			"defenses": {
+				"ac": {
+					"std": 34
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 24
+					},
+					"ref": {
+						"std": 22
+					},
+					"will": {
+						"std": 18
+					}
+				},
+				"hp": [
+					{
+						"hp": 235
+					}
+				],
+				"immunities": [
+					"bleed",
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"magic (see Golem Antimagic below)",
+					"mental",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "physical",
+						"amount": 15,
+						"note": "except adamantine or bludgeoning"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"versatile <P>"
+					],
+					"name": "bladed limb",
+					"attack": 27,
+					"damage": "{@damage 3d6+14} slashing plus {@damage 1d6} bleed"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Golem",
+						"entries": [
+							"Antimagic harmed by sonic ({@dice 6d10}, {@dice 2d8} from areas or {@condition persistent damage}); healed by fire (area {@dice 2d10} HP); {@condition slowed} by cold"
+						]
+					},
+					{
+						"name": "Vulnerable to Shatter",
+						"entries": [
+							"A crystal sentinel is affected by the {@spell shatter} spell as though it were an unattended object."
+						]
+					},
+					{
+						"name": "Spell Reflection",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"abjuration",
+							"arcane"
+						],
+						"trigger": "The crystal golem is targeted by a spell",
+						"entries": [
+							"As {@creature glass golem|B2}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Dazzling Brilliance",
+						"traits": [
+							"evocation",
+							"light",
+							"visual"
+						],
+						"entries": [
+							"The crystal sentinel creates waves of scintillating luminosity that cast bright light in a 120-foot emanation (and dim light for the next 120 feet). The light lasts until the start of the crystal sentinel's next turn, after which the crystal sentinel can't use Dazzling Brilliance for {@dice 1d4} rounds. A creature caught within the bright light or that enters the bright light must attempt a DC 33 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Success": [
+										"The creature is unaffected."
+									],
+									"Failure": [
+										"The creature is {@condition dazzled} for 1 round."
+									],
+									"Critical Failure": [
+										"The creature is {@condition blinded} for 1 round, and then {@condition dazzled} for an additional 4 rounds. While the creature remains {@condition dazzled}, it's also {@condition confused} (this additional effect has the {@trait emotion} and {@trait mental} traits)."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Trexima Butoi",
+			"source": "SF2",
+			"page": 28,
+			"description": "Male human {@creature lich} wizard",
+			"perception": {
+				"std": 26
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"level": 16,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"undead"
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"daemonic",
+					"draconic",
+					"mwangi",
+					"necril",
+					"osiriani",
+					"undercommon"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 31
+				},
+				"crafting": {
+					"std": 29,
+					"note": "can craft magic items"
+				},
+				"deception": {
+					"std": 29
+				},
+				"intimidation": {
+					"std": 27
+				},
+				"nature": {
+					"std": 27
+				},
+				"stealth": {
+					"std": 27
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 5,
+				"con": 4,
+				"int": 7,
+				"wis": 5,
+				"cha": 5
+			},
+			"items": [
+				"greater staff of necromancy",
+				"The Tangled Briar",
+				"wand of {@spell necrotize|SoM} (7th level)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 37
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 28
+					},
+					"will": {
+						"std": 30
+					},
+					"abilities": [
+						"+1 status to all saves vs. positive"
+					]
+				},
+				"hp": [
+					{
+						"hp": 290,
+						"abilities": [
+							"negative healing",
+							"rejuvenation"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 15
+					},
+					{
+						"name": "physical",
+						"amount": 15,
+						"note": "except magic bludgeoning"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"two-hand <d8>"
+					],
+					"name": "staff",
+					"attack": 23,
+					"damage": "{@damage 1d4+6} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"finesse",
+						"magical"
+					],
+					"name": "hand",
+					"attack": 30,
+					"damage": "{@damage 5d8} negative plus paralyzing touch"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "arcane",
+					"type": "Prepared",
+					"DC": 37,
+					"attack": 29,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "ray of frost"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "fear"
+								},
+								{
+									"name": "fleet step"
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "mirror image"
+								},
+								{
+									"name": "resist energy"
+								},
+								{
+									"name": "see invisibility"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "magic missile"
+								},
+								{
+									"name": "paralyze"
+								},
+								{
+									"name": "stinking cloud"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": 2
+								},
+								{
+									"name": "freedom of movement"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "grim tendrils"
+								},
+								{
+									"name": "illusory object"
+								},
+								{
+									"name": "wall of ice"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "cloudkill"
+								},
+								{
+									"name": "mislead"
+								},
+								{
+									"name": "purple worm sting"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "eclipse burst"
+								},
+								{
+									"name": "fly"
+								},
+								{
+									"name": "spell turning"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "horrid wilting"
+								},
+								{
+									"name": "polar ray"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"rituals": [
+						{
+							"name": "create undead"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Drain Phylactery",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"As {@creature lich}."
+						]
+					},
+					{
+						"name": "Siphon Life",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"necromancy"
+						],
+						"trigger": "Trexima deals damage with his hand {@action Strike}",
+						"entries": [
+							"Trexima regains Hit Points equal to half the damage dealt."
+						]
+					},
+					{
+						"name": "Steady Spellcasting",
+						"entries": [
+							"If a reaction would disrupt Trexima's spellcasting action, he attempts a DC {@flatDC 15} flat check. On a success, the action isn't disrupted."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Quoppopak Mummy",
+			"source": "SF2",
+			"page": 34,
+			"description": "{@creature mummy guardian||Pathfinder Bestiary 240}, {@creature quoppopak|B2|Pathfinder Bestiary 2 219}",
+			"level": 13,
+			"traits": [
+				"rare",
+				"ne",
+				"large",
+				"mummy",
+				"undead"
+			],
+			"perception": {
+				"std": 24
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 27,
+					"to {@action Escape}": 30
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 2,
+				"con": 6,
+				"int": -2,
+				"wis": 5,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 32
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 26
+					},
+					"ref": {
+						"std": 21
+					},
+					"will": {
+						"std": 24
+					}
+				},
+				"hp": [
+					{
+						"hp": 260,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 10,
+				"swim": 35,
+				"water glide": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "beak",
+					"attack": 27,
+					"damage": "{@damage 3d10+14} piercing plus oil rot"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <15 feet>"
+					],
+					"name": "tentacle",
+					"attack": 27,
+					"damage": "{@damage 3d8+14} bludgeoning plus Grab and oil rot"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "ventral tube",
+					"attack": 27,
+					"damage": "{@damage 3d6+14} slashing plus {@damage 1d6} {@condition persistent damage||persistent bleed} and oil rot"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Despair",
+						"traits": [
+							"aura",
+							"divine",
+							"emotion",
+							"enchantment",
+							"fear",
+							"incapacitation",
+							"mental"
+						],
+						"entries": [
+							"30 feet. As {@creature mummy guardian||mummy}, but DC 30."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"Tentacle only."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Ignite Oil",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "The quoppopak mummy takes fire damage while it is above water",
+						"entries": [
+							"The oil coating the mummy ignites. This fire does no additional damage to the mummy but does cause its melee {@action Strike||Strikes} to inflict an additional {@damage 1d6} fire damage. At the end of its turn, the mummy attempts a DC {@flatDC 10} flat check; on a success, the fire goes out. The fire also goes out immediately if the mummy submerges in water."
+						]
+					},
+					{
+						"name": "Oil Rot",
+						"type": "affliction",
+						"traits": [
+							"curse",
+							"disease",
+							"divine",
+							"necromancy"
+						],
+						"note": "This disease and any damage from it can't be healed until this curse is removed. As the disease progresses, the creature's flesh grows leathery, while a foul-smelling oily layer spreads from painful splits in the dried skin. A creature killed by oil rot melts into a puddle of foul-smelling oil and can be resurrected only by a 7th-level {@ritual resurrect} ritual or similar magic;",
+						"DC": 33,
+						"savingThrow": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no ill effect",
+								"duration": "1 minute"
+							},
+							{
+								"stage": 2,
+								"entry": "{@damage 10d6} negative damage and {@condition clumsy||clumsy 2}",
+								"duration": "1 day"
+							}
+						]
+					},
+					{
+						"name": "Tentacle Stab",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"As {@creature quoppopak|B2}."
+						]
+					},
+					{
+						"name": "Water Glide",
+						"entries": [
+							"As {@creature quoppopak|B2}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Aquatic Viper Vine",
+			"source": "SF2",
+			"page": 36,
+			"level": 13,
+			"traits": [
+				"rare",
+				"n",
+				"large",
+				"aquatic",
+				"plant"
+			],
+			"initiative": {
+				"stealth": {
+					"std": 24
+				}
+			},
+			"description": "Variant {@creature viper vine|B2}",
+			"speed": {
+				"walk": 20,
+				"swim": 20
+			},
+			"_copy": {
+				"name": "Viper Vine",
+				"source": "B2"
+			}
+		},
+		{
+			"name": "Markish Aghayarea",
+			"source": "SF2",
+			"page": 37,
+			"description": "Male {@creature marid} {@creature devourer|B2}",
+			"level": 15,
+			"traits": [
+				"unique",
+				"ne",
+				"large",
+				"undead"
+			],
+			"perception": {
+				"std": 29
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "detect alignment"
+				},
+				{
+					"name": "detect magic"
+				},
+				{
+					"name": "wavesense",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"aquan",
+					"common",
+					"necril",
+					"shadowtongue"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 29
+				},
+				"athletics": {
+					"std": 28,
+					"to {@action Swim}": 32
+				},
+				"deception": {
+					"std": 28
+				},
+				"intimidation": {
+					"std": 30
+				},
+				"occultism": {
+					"std": 29
+				},
+				"society": {
+					"std": 27
+				},
+				"stealth": {
+					"std": 29
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 4,
+				"con": 5,
+				"int": 6,
+				"wis": 4,
+				"cha": 5
+			},
+			"items": [
+				"{@item The Beating|SF2}",
+				"jewelry worth 2,000 gp",
+				"+2 greater striking shock thundering trident"
+			],
+			"defenses": {
+				"ac": {
+					"std": 37
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 28
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 27
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 250,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"spell deflection",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "fire",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 30,
+				"swim": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"thrown <20 feet>"
+					],
+					"name": "trident",
+					"attack": 30,
+					"damage": "{@damage 3d8+15} piercing plus {@damage 1d6} electricity and {@damage 1d6} sonic"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <10 feet>"
+					],
+					"name": "claw",
+					"attack": 28,
+					"damage": "{@damage 3d8+15} slashing plus drain life"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "arcane",
+					"type": "Innate",
+					"DC": 36,
+					"attack": 29,
+					"entry": {
+						"6": {
+							"spells": [
+								{
+									"name": "blur"
+								},
+								{
+									"name": "hydraulic push",
+									"amount": "at will"
+								},
+								{
+									"name": "illusory object"
+								},
+								{
+									"name": "solid fog"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "cone of cold",
+									"amount": "at will"
+								},
+								{
+									"name": "control water",
+									"amount": "at will"
+								},
+								{
+									"name": "plane shift",
+									"amount": "at will",
+									"notes": [
+										"to Astral Plane, Elemental Planes, or Material Plane only"
+									]
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "hallucinatory terrain"
+								},
+								{
+									"name": "hydraulic torrent"
+								},
+								{
+									"name": "illusory creature",
+									"amount": 2
+								}
+							]
+						},
+						"constant": {
+							"8": {
+								"spells": [
+									{
+										"name": "detect magic"
+									},
+									{
+										"name": "detect alignment",
+										"notes": [
+											"evil or good only"
+										]
+									}
+								]
+							}
+						}
+					}
+				},
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 36,
+					"note": "see Soul Spells below",
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "harm"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "death knell"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "bind undead"
+								},
+								{
+									"name": "paralyze"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion"
+								},
+								{
+									"name": "suggestion"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "feeblemind"
+								},
+								{
+									"name": "true seeing"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "warp mind"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "maze"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"rituals": [
+						{
+							"name": "create undead"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Spell Deflection",
+						"traits": [
+							"abjuration",
+							"divine"
+						],
+						"entries": [
+							"As {@creature devourer|B2}."
+						]
+					},
+					{
+						"name": "Vortex",
+						"traits": [
+							"aura",
+							"water"
+						],
+						"entries": [
+							"40 feet. As {@creature marid}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Devour Soul",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"death",
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"Markish touches a creature within reach, dealing {@damage 12d6} negative damage (DC 36 basic Fortitude save). If a creature is slain by this ability, the creature's soul becomes trapped within Markish. While its soul is trapped, a creature can't be resurrected except by powerful magic such as a {@spell wish} spell. Destroying Markish or successfully counteracting Devour Soul (see Spell Deflection) releases the soul. Markish can hold only one soul at a time. A soul has 5 soul charges per level of the originating creature (see Soul Spells below). The devourer can expend these charges to cast spells. If the soul is freed and the creature returns to life, the creature is {@condition drained||drained 1} for every 5 soul charges expended. If reduced to 0 soul charges, the soul is consumed and can be restored to life only by wish or similar magic."
+						]
+					},
+					{
+						"name": "Drain Life",
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When Markish damages a living creature with his claw {@action Strike}, he gains 15 temporary Hit Points and the creature must succeed at a DC 36 Fortitude save or become {@condition drained||drained 1}. Further damage Markish deals increases the condition value by 1 on a failed save, to a maximum of {@condition drained||drained 4}."
+						]
+					},
+					{
+						"name": "Grant Wish",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"divination"
+						],
+						"frequency": {
+							"number": 3,
+							"unit": "year"
+						},
+						"entries": [
+							"Markish casts {@spell wish} as an {@trait arcane} spell to grant a wish to a mortal or {@trait undead} creature (excluding himself), but he does his best to warp the effects of the wish to cause suffering or interprets the wish's wording in a way to torment the one who asks for it."
+						]
+					},
+					{
+						"name": "Rush of Shadows",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"necromancy",
+							"water"
+						],
+						"entries": [
+							"Markish releases a jet of shadowy water in a 60-foot line, dealing {@damage 9d6} bludgeoning damage and {@damage 6d6} negative damage (DC 36 basic Reflex save). A creature who critically fails its save is also pushed 10 feet (20 feet on a critical failure) and is {@condition enfeebled||enfeebled 1} ({@condition enfeebled||enfeebled 2} on a critical failure). Markish can't use Rush of Shadows for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Soul Spells",
+						"entries": [
+							"To cast occult innate spells, Markish must expend a number of soul charges equal to the spell's level. He can heighten any {@trait occult} spell to a maximum of 8th level by expending more charges as he {@action Cast a Spell||Casts the Spell}. Markish starts this combat with a trapped soul that has 16 soul charges."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Xiuli Cachu",
+			"source": "SF2",
+			"page": 40,
+			"description": "Female {@creature morlock|b2} priest of {@deity Lamashtu}",
+			"level": 13,
+			"traits": [
+				"unique",
+				"ce",
+				"medium",
+				"humanoid"
+			],
+			"perception": {
+				"std": 25
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"undercommon"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 24
+				},
+				"athletics": {
+					"std": 23,
+					"Climbing": 25
+				},
+				"religion": {
+					"std": 27
+				},
+				"stealth": {
+					"std": 24
+				},
+				"survival": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 5,
+				"con": 5,
+				"int": 2,
+				"wis": 6,
+				"cha": 5
+			},
+			"items": [
+				"bone symbol of {@deity Lamashtu}",
+				"+1 striking wounding falchion",
+				"{@item The Lost|SF2}",
+				"material component pouch",
+				"+1 resilient studded leather armor"
+			],
+			"defenses": {
+				"ac": {
+					"std": 34
+				},
+				"hp": [
+					{
+						"hp": 235
+					}
+				],
+				"savingThrows": {
+					"fort": {
+						"std": 24
+					},
+					"ref": {
+						"std": 22
+					},
+					"will": {
+						"std": 25
+					},
+					"abilities": [
+						"+2 status to all saves vs. disease and poison"
+					]
+				},
+				"resistances": [
+					{
+						"name": "mental",
+						"amount": 13
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"forceful",
+						"magical",
+						"sweep"
+					],
+					"name": "falchion",
+					"attack": 24,
+					"damage": "{@damage 2d10+10} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "jaws",
+					"attack": 25,
+					"damage": "{@damage 3d4+10} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 33,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "confusion"
+								}
+							]
+						}
+					}
+				},
+				{
+					"tradition": "divine",
+					"type": "Prepared",
+					"DC": 33,
+					"attack": 25,
+					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "bullhorn",
+									"source": "som"
+								},
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "bane"
+								},
+								{
+									"name": "protection"
+								},
+								{
+									"name": "sanctuary"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "darkness"
+								},
+								{
+									"name": "death knell"
+								},
+								{
+									"name": "see invisibility"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "air walk"
+								},
+								{
+									"name": "divine wrath"
+								},
+								{
+									"name": "outcast's curse"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "drop dead"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "shadow blast"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "repulsion"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "divine vessel"
+								},
+								{
+									"name": "harm",
+									"amount": 4
+								},
+								{
+									"name": "regenerate"
+								}
+							]
+						}
+					}
+				},
+				{
+					"focus": true,
+					"name": "Cleric Domain Spells",
+					"DC": 33,
+					"fp": 2,
+					"entry": {
+						"7": {
+							"spells": [
+								{
+									"name": "shared nightmare"
+								},
+								{
+									"name": "waking nightmare"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Light Blindness",
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Instinctual Tinker",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"As {@creature morlock|B2}."
+						]
+					},
+					{
+						"name": "Frenetic Casting",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Xiuli {@action Stride||Strides} up to her speed. At any point during her movement, Xiuli can {@action Cast a Spell} that normally takes two actions or fewer to cast."
+						]
+					},
+					{
+						"name": "Sneak Attack",
+						"entries": [
+							"Xiuli deals an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Swarming Stance",
+						"entries": [
+							"As {@creature morlock|B2}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Crystalline Sentinel",
+			"source": "SF2",
+			"page": 42,
+			"description": "Variant {@creature xorn}",
+			"level": 11,
+			"traits": [
+				"rare",
+				"n",
+				"medium",
+				"earth",
+				"elemental"
+			],
+			"perception": {
+				"std": 20
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "tremorsense",
+					"type": "imprecise"
+				},
+				{
+					"name": "60",
+					"unit": "feet"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"terran"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 22
+				},
+				"geology lore": {
+					"std": 19
+				},
+				"stealth": {
+					"std": 22
+				},
+				"survival": {
+					"std": 22
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 3,
+				"con": 5,
+				"int": 0,
+				"wis": 5,
+				"cha": 0
+			},
+			"defenses": {
+				"ac": {
+					"std": 30,
+					"abilities": "all-around vision"
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 18
+					},
+					"will": {
+						"std": 22
+					}
+				},
+				"hp": [
+					{
+						"hp": 195
+					}
+				],
+				"immunities": [
+					"bleed",
+					"paralyzed",
+					"poison",
+					"sleep"
+				],
+				"weaknesses": [
+					{
+						"name": "bludgeoning",
+						"amount": 10
+					},
+					{
+						"name": "sonic",
+						"amount": 10
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 10
+					},
+					{
+						"name": "electricity",
+						"amount": 10
+					},
+					{
+						"name": "fire",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"burrow": 20,
+				"abilities": [
+					"earth glide"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly <d10>"
+					],
+					"name": "jaw",
+					"attack": 24,
+					"damage": "{@damage 2d12+13} piercing plus crystal corruption"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "claw",
+					"attack": 24,
+					"damage": "{@damage 2d8+13} slashing plus crystal corruption"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Claw Frenzy",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"As {@creature xorn}."
+						]
+					},
+					{
+						"name": "Crystal Corruption",
+						"traits": [
+							"arcane",
+							"curse",
+							"incapacitation",
+							"transmutation"
+						],
+						"entries": [
+							"Creatures afflicted by this curse slowly turn to solid crystal. This affliction's {@condition sickened}, {@condition slowed}, and {@condition paralyzed} conditions can't be removed until the affliction itself is removed. Creatures with both the {@trait earth} and {@trait elemental} traits instead become carriers and suffer no ill effects aside from gaining the weakness to sonic.",
+							{
+								"type": "affliction",
+								"DC": 30,
+								"savingThrow": "Fortitude",
+								"stages": [
+									{
+										"stage": 1,
+										"entry": "{@condition sickened||sickened 1}",
+										"duration": "1 hour"
+									},
+									{
+										"stage": 2,
+										"entry": "weakness 5 to sonic and {@condition sickened||sickened 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 3,
+										"entry": "weakness 5 to sonic and {@condition slowed||slowed 1}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 4,
+										"entry": "weakness 10 to sonic and {@condition paralyzed}",
+										"duration": "1 day"
+									},
+									{
+										"stage": 5,
+										"entry": "weakness 10 to sonic, and the creature is permanently {@condition petrified}."
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Crystal Splinter",
+						"entries": [
+							"On a critical hit with a claw {@action Strike}, the crystalline sentinel inflicts {@damage 2d6} {@condition persistent damage||persistent bleed damage}."
+						]
+					},
+					{
+						"name": "Earth Glide",
+						"entries": [
+							"As {@creature xorn}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Arzuu",
+			"source": "SF2",
+			"page": 42,
+			"description": "Variant {@creature xorn}",
+			"level": 13,
+			"traits": [
+				"unique",
+				"ne",
+				"large",
+				"earth",
+				"elemental"
+			],
+			"perception": {
+				"std": 24
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "tremorsense",
+					"type": "imprecise"
+				},
+				{
+					"name": "60",
+					"unit": "feet"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"terran"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 26
+				},
+				"geology lore": {
+					"std": 25
+				},
+				"stealth": {
+					"std": 24
+				},
+				"survival": {
+					"std": 24
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 5,
+				"con": 6,
+				"int": 4,
+				"wis": 5,
+				"cha": 6
+			},
+			"defenses": {
+				"ac": {
+					"std": 34,
+					"abilities": "all-around vision"
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 24
+					},
+					"will": {
+						"std": 22
+					}
+				},
+				"hp": [
+					{
+						"hp": 240
+					}
+				],
+				"immunities": [
+					"bleed",
+					"paralyzed",
+					"poison",
+					"sleep"
+				],
+				"weaknesses": [
+					{
+						"name": "bludgeoning",
+						"amount": 15
+					},
+					{
+						"name": "sonic",
+						"amount": 15
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 15
+					},
+					{
+						"name": "electricity",
+						"amount": 15
+					},
+					{
+						"name": "fire",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 20,
+				"burrow": 20,
+				"abilities": [
+					"earth glide"
+				]
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly <d10>"
+					],
+					"name": "jaw",
+					"attack": 26,
+					"damage": "{@damage 3d10+13} piercing plus crystal corruption"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "claw",
+					"attack": 26,
+					"damage": "{@damage 3d6+13} slashing plus crystal corruption"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Claw Frenzy",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"As xorn."
+						]
+					},
+					{
+						"name": "Crystal Corruption",
+						"traits": [
+							"arcane",
+							"curse",
+							"incapacitation",
+							"transmutation"
+						],
+						"entries": [
+							"As {@creature crystalline sentinel|SF2}, but DC 33."
+						]
+					},
+					{
+						"name": "Earth Glide",
+						"entries": [
+							"As {@creature xorn}."
+						]
+					},
+					{
+						"name": "Sneak Attack",
+						"entries": [
+							"Arzuu deals an additional {@damage 1d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"generic": {
+							"tag": "feat"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Vehanezhad",
+			"source": "SF2",
+			"page": 44,
+			"description": "Variant {@creature ancient crystal dragon|B2} great wyrm",
+			"level": 18,
+			"traits": [
+				"unique",
+				"le",
+				"gargantuan",
+				"dragon",
+				"earth",
+				"elemental"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 60
+				},
+				{
+					"name": "tremorsense",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"auran",
+					"common",
+					"draconic",
+					"infernal"
+				],
+				"notes": [
+					"Jotun",
+					"Mwangi",
+					"Terran"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 32
+				},
+				"arcana": {
+					"std": 32
+				},
+				"deception": {
+					"std": 34
+				},
+				"diplomacy": {
+					"std": 34
+				},
+				"intimidation": {
+					"std": 34
+				},
+				"society": {
+					"std": 32
+				},
+				"stealth": {
+					"std": 32
+				},
+				"survival": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 6,
+				"con": 7,
+				"int": 6,
+				"wis": 6,
+				"cha": 8
+			},
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 30
+					},
+					"will": {
+						"std": 30
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 335
+					}
+				],
+				"immunities": [
+					"paralyzed",
+					"sleep"
+				],
+				"weaknesses": [
+					{
+						"name": "sonic",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 60,
+				"burrow": 40,
+				"fly": 140
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach <20 feet>"
+					],
+					"name": "jaws",
+					"attack": 35,
+					"damage": "{@damage 3d8+17} slashing plus {@damage 4d6} piercing plus crystal corruption"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"reach <15 feet>"
+					],
+					"name": "claw",
+					"attack": 35,
+					"damage": "{@damage 3d10+17} slashing plus crystal corruption"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach <25 feet>"
+					],
+					"name": "tail",
+					"attack": 33,
+					"damage": "{@damage 2d12+17} bludgeoning plus crystal corruption"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "arcane",
+					"type": "Innate",
+					"DC": 43,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "ghost sound"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "create water"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "project image"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "hallucinatory terrain",
+									"amount": "at will"
+								},
+								{
+									"name": "ventriloquism",
+									"amount": "at will"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "illusory creature",
+									"amount": "at will"
+								},
+								{
+									"name": "illusory object",
+									"amount": "at will"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"90 feet, DC 37."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Scintillating Aura",
+						"traits": [
+							"arcane",
+							"aura",
+							"evocation",
+							"incapacitation",
+							"visual"
+						],
+						"entries": [
+							"30 feet. As {@creature ancient crystal dragon|B2}, but DC 37."
+						]
+					},
+					{
+						"name": "Reflect Spell",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Vehanezhad is targeted by a ranged spell attack roll",
+						"entries": [
+							"Vehanezhad adjusts a wing and gains a +4 circumstance bonus to AC against the triggering attack. If the attack misses, the spell reflects at the caster, who must roll a second ranged spell attack roll against their own AC to determine if the spell hits them instead."
+						]
+					},
+					{
+						"name": "Twisting Tail",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"entries": [
+							"As {@creature young crystal dragon|B2}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Breath Weapon",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"evocation",
+							"primal"
+						],
+						"entries": [
+							"Vehanezhad breathes a flurry of piercing crystals that deals {@damage 19d6} piercing damage in a 60-foot cone (DC 40 basic Reflex save). A creature who takes damage from this breath weapon is exposed to crystal corruption. Vehanezhad can't use Breath Weapon again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Crystal Corruption",
+						"traits": [
+							"arcane",
+							"curse",
+							"incapacitation",
+							"transmutation"
+						],
+						"entries": [
+							"As {@creature crystalline sentinel|SF2}, but DC 40."
+						]
+					},
+					{
+						"name": "Crystallize Flesh",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"traits": [
+							"primal",
+							"transmutation"
+						],
+						"frequency": {
+							"number": "three",
+							"unit": "day"
+						},
+						"entries": [
+							"As {@creature adult crystal dragon|B2}, but DC 40."
+						]
+					},
+					{
+						"name": "Draconic Frenzy",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Vehanezhad makes two claw {@action Strike||Strikes} and one tail {@action Strike} in any order."
+						]
+					},
+					{
+						"name": "Draconic",
+						"entries": [
+							"Momentum Vehanezhad recharges her Breath Weapon whenever she critically hits with a {@action Strike}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Voricose",
+			"source": "SF2",
+			"page": 52,
+			"description": "Male variant velstrac {@creature interlocutor|B2}",
+			"level": 15,
+			"traits": [
+				"unique",
+				"le",
+				"large",
+				"fiend",
+				"velstrac"
+			],
+			"perception": {
+				"std": 28
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				},
+				{
+					"name": "painsight"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"infernal",
+					"jotun",
+					"shadowtongue"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 31
+				},
+				"brewing lore": {
+					"std": 24
+				},
+				"crafting": {
+					"std": 24,
+					"sculpting flesh": 28
+				},
+				"intimidation": {
+					"std": 28
+				},
+				"medicine": {
+					"std": 30
+				},
+				"religion": {
+					"std": 24
+				},
+				"torture lore": {
+					"std": 26
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 4,
+				"con": 6,
+				"int": 3,
+				"wis": 7,
+				"cha": 6
+			},
+			"items": [
+				"+3 greater striking greater frost whip"
+			],
+			"defenses": {
+				"ac": {
+					"std": 37
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 27
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 28
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 275,
+						"abilities": [
+							"regeneration 20 (deactivated by good or silver)"
+						]
+					}
+				],
+				"immunities": [
+					"cold"
+				],
+				"weaknesses": [
+					{
+						"name": "good",
+						"amount": 15
+					},
+					{
+						"name": "silver",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"disarm",
+						"finesse",
+						"magical",
+						"nonlethal",
+						"reach",
+						"trip"
+					],
+					"name": "whip",
+					"attack": 31,
+					"damage": "{@damage 3d4+15} slashing plus {@damage 1d6} cold"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"deadly <2d10>",
+						"evil",
+						"magical",
+						"reach <10 feet>"
+					],
+					"name": "claw",
+					"attack": 28,
+					"damage": "{@damage 3d8+15} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 36,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "stabilize"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "breath of life"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "restoration",
+									"amount": 2
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "regenerate"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "heal",
+									"amount": 2
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Painsight",
+						"traits": [
+							"divination",
+							"divine"
+						],
+						"entries": [
+							"As {@creature interlocutor|B2}."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Glimpse of Stolen Flesh",
+						"traits": [
+							"aura",
+							"divine",
+							"enchantment",
+							"fear",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"30 feet. As {@creature interlocutor|B2}, but DC 33."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Focus Gaze",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"enchantment",
+							"fear",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"As {@creature interlocutor|B2}."
+						]
+					},
+					{
+						"name": "Surgical Rend",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"As {@creature interlocutor|B2}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Ticktock",
+			"source": "SF2",
+			"page": 53,
+			"description": "Male storykin variant {@creature sacristan|B2} velstrac",
+			"level": 16,
+			"traits": [
+				"unique",
+				"le",
+				"small",
+				"fiend",
+				"velstrac"
+			],
+			"perception": {
+				"std": 27
+			},
+			"senses": [
+				{
+					"name": "echolocation ",
+					"range": {
+						"unit": "feet",
+						"number": 120
+					}
+				},
+				{
+					"name": "no vision"
+				},
+				{
+					"name": "painsense"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"infernal",
+					"shadowtongue"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 32
+				},
+				"athletics": {
+					"std": 30
+				},
+				"crafting": {
+					"std": 31
+				},
+				"thievery": {
+					"std": 30
+				},
+				"torture lore": {
+					"std": 29
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 8,
+				"con": 6,
+				"int": 5,
+				"wis": 3,
+				"cha": 0
+			},
+			"items": [
+				"The Forge"
+			],
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 28
+					},
+					"ref": {
+						"std": 30
+					},
+					"will": {
+						"std": 25
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 275,
+						"abilities": [
+							"regeneration 15 (deactivated by good or silver)"
+						]
+					}
+				],
+				"immunities": [
+					"blinded",
+					"cold"
+				],
+				"weaknesses": [
+					{
+						"name": "good",
+						"amount": 15
+					},
+					{
+						"name": "silver",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"evil",
+						"magical",
+						"versatile <S>"
+					],
+					"name": "tool fingers",
+					"attack": 32,
+					"damage": "{@damage 3d4+14} piercing plus {@damage 1d6} evil and {@damage 2d6} {@condition persistent damage||persistent bleed}"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 37,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "fear"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "chilling darkness"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Echolocation",
+						"entries": [
+							"Ticktock can use his hearing as a precise sense at the listed range."
+						]
+					},
+					{
+						"name": "Painsense",
+						"traits": [
+							"divination",
+							"divine"
+						],
+						"entries": [
+							"Ticktock automatically knows whether a creature he hears has any of the {@condition doomed}, {@condition dying}, or {@condition wounded} conditions, as well as the value of those conditions."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Tick Tock Tick Tock",
+						"traits": [
+							"auditory",
+							"aura",
+							"divine",
+							"enchantment",
+							"mental",
+							"sonic"
+						],
+						"entries": [
+							"30 feet. When a creature ends its turn in the aura, the constant clicking and ticking sounds coming from Ticktock worm into its thoughts and fill the listener with the sense that time is speeding up for everyone but itself. The creature must succeed at a DC 34 Will save or become {@condition slowed||slowed 1} (or {@condition slowed||slowed 2} on a critical failure) until the end of its next turn."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Shadow Scream",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"aura",
+							"concentrate",
+							"darkness",
+							"divine",
+							"evocation",
+							"mental",
+							"sonic"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "hour"
+						},
+						"entries": [
+							"Although the sound of this attack is more akin to a series of thunderous clicking sounds than a scream, it still functions as detailed for Ticktock, but with a DC 37 Will save."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Blood-Pear Tree",
+			"source": "SF2",
+			"page": 55,
+			"description": "Variant {@creature corpseroot|BotD}",
+			"level": 17,
+			"traits": [
+				"unique",
+				"ne",
+				"huge",
+				"undead"
+			],
+			"perception": {
+				"std": 29
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"arboreal",
+					"necril"
+				],
+				"notes": [
+					"Sylvan (can't speak any language)"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 32
+				},
+				"stealth": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 5,
+				"con": 6,
+				"int": -2,
+				"wis": 6,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 38
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 31
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 27
+					}
+				},
+				"hp": [
+					{
+						"hp": 350,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "axe vulnerability"
+					},
+					{
+						"name": "fire",
+						"amount": 15
+					}
+				],
+				"resistances": [
+					{
+						"name": "bludgeoning",
+						"amount": 15
+					},
+					{
+						"name": "piercing",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <15 feet>"
+					],
+					"name": "branch",
+					"attack": 34,
+					"damage": "{@damage 3d12+17} bludgeoning"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <20 feet>",
+						"trip"
+					],
+					"name": "root",
+					"attack": 34,
+					"damage": "{@damage 3d8+17} bludgeoning plus Grab"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"range increment <20 feet>",
+						"splash"
+					],
+					"name": "bloody pear",
+					"attack": 30,
+					"damage": "{@damage 2d6+12} bludgeoning plus {@damage 2d6} {@condition persistent damage||bleed} {@trait splash} damage"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Plant",
+						"entries": [
+							"As {@creature corpseroot|BotD}."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Axe Vulnerability",
+						"entries": [
+							"The Blood-Pear Tree takes 15 additional damage from axes."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Take Root",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"necromancy",
+							"primal"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"requirements": "The Blood-Pear Tree has a creature {@condition grabbed} or {@condition restrained}",
+						"entries": [
+							"The Blood-Pear Tree buries its roots into the creature, dealing {@damage 2d6+17} piercing damage (DC 38 basic Fortitude save). On a failure, the creature is {@condition enfeebled||enfeebled 1} (or increases the value by 1 if already {@condition enfeebled}), and the corpseroot regains 15 HP. If this would make a creature {@condition enfeebled||enfeebled 5}, the creature dies."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Sonnorae",
+			"source": "SF2",
+			"page": 61,
+			"description": "Female velstrac {@creature precentor|AoA3}",
+			"level": 18,
+			"traits": [
+				"unique",
+				"le",
+				"medium",
+				"fiend",
+				"velstrac"
+			],
+			"perception": {
+				"std": 31
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "detect magic"
+				},
+				{
+					"name": "painsight"
+				},
+				{
+					"name": "true"
+				},
+				{
+					"name": "seeing"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"draconic",
+					"goblin",
+					"infernal",
+					"jotun",
+					"shadowtongue",
+					"sylvan"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 32
+				},
+				"athletics": {
+					"std": 31
+				},
+				"deception": {
+					"std": 36
+				},
+				"diplomacy": {
+					"std": 34
+				},
+				"intimidation": {
+					"std": 36
+				},
+				"performance": {
+					"std": 34
+				},
+				"religion": {
+					"std": 31
+				},
+				"stealth": {
+					"std": 34
+				},
+				"torture lore": {
+					"std": 32
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 8,
+				"con": 5,
+				"int": 6,
+				"wis": 7,
+				"cha": 8
+			},
+			"items": [
+				"Lens of the Outreaching Eye",
+				"{@i The Tyrant|SF2}"
+			],
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 27
+					},
+					"ref": {
+						"std": 32
+					},
+					"will": {
+						"std": 31
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 335,
+						"abilities": [
+							"regeneration 25 (deactivated by good or silver)"
+						]
+					}
+				],
+				"immunities": [
+					"cold"
+				],
+				"weaknesses": [
+					{
+						"name": "good",
+						"amount": 20
+					},
+					{
+						"name": "silver",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"reach <10 feet>"
+					],
+					"name": "claw",
+					"attack": 34,
+					"damage": "{@damage 3d6+15} slashing plus {@damage 2d6} {@condition persistent damage||persistent bleed}"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 40,
+					"attack": 32,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "sigil"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "invisibility",
+									"amount": "at will",
+									"notes": [
+										"self only"
+									]
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "command"
+								},
+								{
+									"name": "crushing despair"
+								},
+								{
+									"name": "sound burst"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "mind blank"
+								},
+								{
+									"name": "plane shift",
+									"amount": "at will",
+									"notes": [
+										"to {@plane the Harrowed Realm|SF2}, Material Plane, or Shadow Plane only"
+									]
+								},
+								{
+									"name": "spiritual epidemic"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "synesthesia"
+								},
+								{
+									"name": "wail of the banshee"
+								}
+							]
+						},
+						"constant": {
+							"8": {
+								"spells": [
+									{
+										"name": "detect magic"
+									},
+									{
+										"name": "fly"
+									},
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Painsight",
+						"traits": [
+							"divination",
+							"divine"
+						],
+						"entries": [
+							"As {@creature augur|B2} velstrac."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Final Spite",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Sonnorae is reduced to 0 Hit Points",
+						"entries": [
+							"Sonnorae casts {@spell wail of the banshee}, if it's available, before {@condition dying}. Otherwise, she makes one {@action Strike}."
+						]
+					},
+					{
+						"name": "Unnerving Gaze",
+						"traits": [
+							"aura",
+							"divine",
+							"enchantment",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"30 feet. When a creature ends its turn in the aura, it must succeed at a DC 37 Will save or become {@condition doomed||doomed 1}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Assemble Choir",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Sonnorae adds a creature that is affected by her Spirit-Flensing Touch and is within 100 feet to her choir of screams. Sonnorae can have any number of creatures in her choir, although a creature no longer affected by Spirit-Flensing Touch leaves the choir immediately. Creatures in Sonnorae's choir of screams are {@condition fascinated} by each other and Sonnorae, and they can't use {@condition hostile} actions toward each other or Sonnorae.",
+							"If Sonnorae uses a {@condition hostile} action toward a creature in her choir, it immediately leaves the choir. When Sonnorae casts an innate {@trait divine} spell, she can cause the effect to originate from any member of her choir instead of herself, using her saving throw DC and attack bonus."
+						]
+					},
+					{
+						"name": "Focus Gaze",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"enchantment",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"Sonnorae stares at a creature she can see within 30 feet. The target must attempt a Will save against Sonnorae's unnerving gaze. In addition, if the creature was already {@condition doomed}, on a failed save, it sees the skin of its body peel back, making it {@condition confused} for as long as it remains {@condition doomed}. After attempting this save, the creature is then temporarily immune until the start of Sonnorae's next turn."
+						]
+					},
+					{
+						"name": "Spirit-Flensing Touch",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"mental",
+							"necromancy"
+						],
+						"entries": [
+							"Sonnorae touches a creature within 10 feet. The target's spirit tears through its organs and flesh and must attempt a DC 40 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected, and is temporarily immune for 24 hours."
+									],
+									"Success": [
+										"The creature takes {@damage 4d6} slashing damage."
+									],
+									"Failure": [
+										"The creature takes {@dice 9d6} damage and is {@condition sickened||sickened 1} and {@condition stupefied||stupefied 1}. As long as the creature remains {@condition sickened}, it must use one action on its turn to scream in agony."
+									],
+									"Critical Failure": [
+										"The creature takes {@dice 18d6} damage and is {@condition sickened||sickened 2} and {@condition stupefied||stupefied 2}. As long as the creature remains {@condition sickened}, it must use two actions on its turn to scream in agony."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Ixerari",
+			"source": "SF2",
+			"initiative": {
+				"perception": {
+					"std": 31
+				},
+				"stealth": {
+					"std": 31
+				}
+			},
+			"_copy": {
+				"name": "Katpaskir",
+				"source": "SF2",
+				"_mod": {
+					"items": {
+						"mode": "appendArr",
+						"items": "greater breastplate of command"
+					}
+				}
+			}
+		},
+		{
+			"name": "Mogaran",
+			"source": "SF2",
+			"page": 68,
+			"description": "Male weakened {@creature vavakia|EC6}",
+			"level": 17,
+			"traits": [
+				"unique",
+				"ce",
+				"huge",
+				"demon",
+				"fiend"
+			],
+			"perception": {
+				"std": 30
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "true seeing"
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"celestial",
+					"draconic"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 33
+				},
+				"deception": {
+					"std": 30
+				},
+				"intimidation": {
+					"std": 30
+				},
+				"religion": {
+					"std": 28
+				},
+				"stealth": {
+					"std": 28
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 3,
+				"con": 5,
+				"int": 3,
+				"wis": 5,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 38
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 30
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 325
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 15
+					},
+					{
+						"name": "good",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach <15 feet>"
+					],
+					"name": "jaws",
+					"attack": 33,
+					"damage": "{@damage 3d6+14} piercing plus {@damage 1d6} evil, {@damage 2d8} {@condition persistent damage||persistent bleed}, and smoking wound"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"reach <15 feet>"
+					],
+					"name": "claw",
+					"attack": 33,
+					"damage": "{@damage 3d10+14} slashing plus {@damage 1d6} evil"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"backswing",
+						"magical",
+						"reach <20 feet>"
+					],
+					"name": "tail",
+					"attack": 33,
+					"damage": "{@damage 3d12+14} bludgeoning plus {@damage 1d6} evil and stunning tail"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 38,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "divine aura"
+								},
+								{
+									"name": "divine wrath",
+									"amount": "at will"
+								},
+								{
+									"name": "earthquake"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "massacre"
+								},
+								{
+									"name": "power word stun"
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Crystal Implant",
+						"traits": [
+							"divine",
+							"enchantment",
+							"mental"
+						],
+						"entries": [
+							"The wolf-head shaped crystal implanted in Mogaran's brow pulses with shadowy energy at the start of each of his turns. Any PC who's legendary in {@skill Arcana}, {@skill Occultism}, or {@skill Religion} and sees this can attempt a DC 36 check using one of those skills on a success, they realize the crystal is manipulating Mogaran's actions in some way. If the crystal is destroyed or deactivated, Mogaran regains control of his actions (with repercussions as detailed on page 68). The crystal functions as a 19th-level magic item for the purposes of dispel magic, but it can also be destroyed by specifically targeting it (AC 40; Hardness 20; HP 90). Alternately, a character can pry the crystal from Mogaran's brow with a successful DC 36 {@skill Athletics} check, which takes an {@action Interact} action, but only if Mogaran is {@condition immobilized}."
+						]
+					},
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"60 feet, DC 35. This aura is suppressed as long as Mogaran's crystal implant is functioning."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Restoration Vulnerability ",
+						"entries": [
+							"Mogaran is repulsed by the restoration of souls. He takes {@damage 3d10+10} mental damage the first time each round a creature within 100 feet of him is restored to life or loses the {@condition doomed} condition."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Smoking Wound",
+						"entries": [
+							"A creature damaged by Mogaran's jaws is {@condition sickened||sickened 1} from the rank smell of vapors from the wound."
+						]
+					},
+					{
+						"name": "Soulfire Breath",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"death",
+							"divine",
+							"necromancy",
+							"negative"
+						],
+						"entries": [
+							"Mogaran exhales ghostly green fire in a 60-foot cone. Living creatures in the area take {@damage 18d6} negative damage (DC 38 basic Reflex save). A {@trait good} creature that fails this save becomes {@condition stupefied||stupefied 2} for 1 minute ({@condition stupefied||stupefied 4} on a critical failure). A creature slain by Soulfire Breath can't be resurrected except by powerful magic such as a {@spell wish} spell. Mogaran can't use Soulfire Breath again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Soulfire Inhalation",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"healing",
+							"necromancy"
+						],
+						"requirements": "Mogaran's last action was Soulfire Breath",
+						"entries": [
+							"Mogaran inhales and regains 10 Hit Points for each creature damaged by his Soulfire Breath. Any excess healing is gained as temporary Hit Points, which remain for 1 minute."
+						]
+					},
+					{
+						"name": "Stunning Tail",
+						"traits": [
+							"incapacitation"
+						],
+						"entries": [
+							"If Mogaran critically hits with his tail {@action Strike}, the target must succeed at a DC 38 Fortitude save or be {@condition stunned} for 1 round ({@dice 1d4} rounds on a critical failure)."
+						]
+					},
+					{
+						"name": "Trample",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"Large or smaller, claw, DC 38"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Katpaskir",
+			"source": "SF2",
+			"page": 81,
+			"level": 18,
+			"traits": [
+				"uncommon",
+				"ce",
+				"medium",
+				"demon",
+				"fiend"
+			],
+			"perception": {
+				"std": 31
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "see invisibility"
+				},
+				{
+					"name": "warp sense"
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"aklo",
+					"celestial",
+					"common",
+					"draconic"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 31
+				},
+				"arcana": {
+					"std": 35
+				},
+				"deception": {
+					"std": 31
+				},
+				"occultism": {
+					"std": 33
+				},
+				"religion": {
+					"std": 32
+				},
+				"stealth": {
+					"std": 31
+				},
+				"thievery": {
+					"std": 31
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 5,
+				"con": 9,
+				"int": 7,
+				"wis": 6,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 41
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 35
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 30
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 415
+					}
+				],
+				"immunities": [
+					"poison"
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 15
+					},
+					{
+						"name": "good",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 35,
+				"burrow": 15,
+				"fly": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"evil",
+						"magical"
+					],
+					"name": "claw",
+					"attack": 34,
+					"damage": "{@damage 3d12+14} slashing plus {@damage 1d6} evil"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"evil",
+						"magical"
+					],
+					"name": "talon",
+					"attack": 34,
+					"damage": "{@damage 3d8+14} slashing plus {@damage 1d6} evil"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 40,
+					"attack": 32,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "dimensional anchor",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								},
+								{
+									"name": "prying eye",
+									"amount": "at will"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "plane shift"
+								},
+								{
+									"name": "teleport"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "banishment",
+									"amount": 3
+								},
+								{
+									"name": "blink"
+								},
+								{
+									"name": "disintegrate"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "summon fiend",
+									"notes": [
+										"{@trait demon||demons} only"
+									]
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "freedom of movement"
+									},
+									{
+										"name": "see invisibility"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"DC": 40,
+					"rituals": [
+						{
+							"name": "abyssal pact",
+							"source": "B1"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Breach Planar Wards",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"trigger": "An effect (save only for those of items with the {@trait artifact} trait) attempts to prevent the katpaskir from using a {@trait teleportation} effect or from casting {@spell summon fiend}",
+						"entries": [
+							"The katpaskir attempts to counteract the triggering effect (counteract modifier of {@d20 +29})."
+						]
+					},
+					{
+						"name": "Distortion Field",
+						"traits": [
+							"aura"
+						],
+						"entries": [
+							"30 feet. Reality bends and warps on the level of all senses without displacing the katpaskir's actual location. Creatures of the katpaskir's choice who start their turn in the aura must succeed at a DC 37 Will save or treat the area as greater difficult terrain and uneven ground (DC 20). A creature who succeeds still treats the area as difficult terrain. For such creatures, the distance through the aura is doubled for determining range penalty."
+						]
+					},
+					{
+						"name": "Mirrored Summons",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within 30 feet that the katpaskir is aware of uses magic to summon or otherwise conjure a good-aligned creature",
+						"entries": [
+							"The katpaskir casts {@spell summon fiend}, regaining the daily ability to do so if needed. This effect is automatically sustained as long as the triggering summoning is sustained, for up to 1 minute."
+						]
+					},
+					{
+						"name": "Warp Sense",
+						"entries": [
+							"The katpaskir senses changes in the planar fabric within 1 mile, including any {@trait teleportation} effect, sensing the direction and distance to the disturbance. If it senses such a disturbance within 500 feet, the katpaskir can cast {@spell prying eye} to observe the area without needing line of sight to the location."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Dimensional Ambush",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"divine",
+							"teleportation"
+						],
+						"entries": [
+							"The katpaskir casts {@spell dimension door}, then makes a melee {@action Strike} that deals three extra dice of damage. This {@action Strike} counts as two attacks when calculating the katpaskir's multiple attack penalty."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Demonic Rabble",
+			"source": "SF2",
+			"page": 82,
+			"level": 13,
+			"traits": [
+				"rare",
+				"ce",
+				"gargantuan",
+				"demon",
+				"fiend",
+				"troop"
+			],
+			"perception": {
+				"std": 23
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"celestial",
+					"draconic"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 25
+				},
+				"intimidation": {
+					"std": 25
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 4,
+				"con": 5,
+				"int": 0,
+				"wis": 4,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 33
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 21
+					},
+					"will": {
+						"std": 21
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 260,
+						"notes": [
+							"16 squares"
+						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 173,
+						"squares": 12
+					},
+					{
+						"value": 87,
+						"squares": 8
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 15
+					},
+					{
+						"name": "cold iron",
+						"amount": 10
+					},
+					{
+						"name": "good",
+						"amount": 10
+					},
+					{
+						"name": "splash damage",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"abilities": {
+				"mid": [
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"30 feet, DC 30"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Serenity Vulnerability",
+						"entries": [
+							"A demonic rabble thrives on mayhem, and when members of the throng find themselves facing moments of calm, however brief or temporary, the throng suffers. Whenever the demonic rabble fails a saving throw against an affect that would normally {@condition fascinated||fascinate}, {@condition fatigued||fatigue}, {@condition paralyzed||paralyze}, {@condition restrained||restrain}, or {@condition slowed||slow} at least four creatures, the troop takes {@damage 3d6} mental damage."
+						]
+					},
+					{
+						"name": "Troop Defenses",
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Claws, Fangs, and Horns",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The throng rips and tears at each enemy within its squares and within 5 feet (DC 33 Reflex save). Damage depends on the number of actions.",
+							{
+								"type": "pf2-options",
+								"noColon": true,
+								"items": [
+									{
+										"type": "item",
+										"name": "{@as 1} Damage",
+										"skipSort": true,
+										"entries": [
+											"{@damage 1d10+12} slashing plus {@damage 1d6} evil"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 2} Damage",
+										"entries": [
+											"{@damage 2d10+12} slashing plus {@damage 1d6} evil"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 3} Damage",
+										"entries": [
+											"{@damage 3d10+12} slashing plus {@damage 1d6} evil"
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Demonic Tide",
+						"entries": [
+							"A demonic rabble is less organized and more vicious than most troops. They can move into other creatures' spaces, and other creatures can move into their spaces. Their spaces are difficult terrain to non-{@trait demon} creatures. The first time during a turn that a creature hostile to the throng willingly moves into their space, that creature is subjected to the one-action version of Claws, Fangs, and Horns."
+						]
+					},
+					{
+						"name": "Form Up",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						}
+					},
+					{
+						"name": "Hurl Debris",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The throng hurls debris, creating a 10-foot burst within 30 feet (DC 25 basic Reflex save). When the throng is reduced to 8 or fewer squares, this area decreases to a 5-foot burst. Damage depends on the number of actions.",
+							{
+								"type": "pf2-options",
+								"skipSort": true,
+								"noColon": true,
+								"items": [
+									{
+										"type": "item",
+										"name": "{@as 1} Damage",
+										"entries": [
+											"{@damage 2d10} bludgeoning"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 2} Damage",
+										"entries": [
+											"{@damage 4d10} bludgeoning"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 3} Damage",
+										"entries": [
+											"{@damage 6d10} bludgeoning"
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Troop Movement",
+						"entries": [
+							"Whenever the rabble {@action Stride||Strides}, they first {@ability Form Up|B3} as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to their Speed."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Wrath Riot",
+			"source": "SF2",
+			"page": 83,
+			"level": 16,
+			"traits": [
+				"rare",
+				"ce",
+				"gargantuan",
+				"demon",
+				"fiend",
+				"troop"
+			],
+			"perception": {
+				"std": 28
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"celestial",
+					"draconic"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 29
+				},
+				"intimidation": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 5,
+				"con": 6,
+				"int": 5,
+				"wis": 6,
+				"cha": 6
+			},
+			"defenses": {
+				"ac": {
+					"std": 39
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 27
+					},
+					"will": {
+						"std": 26
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 300
+					}
+				],
+				"thresholds": [
+					{
+						"value": 200,
+						"squares": 12
+					},
+					{
+						"value": 100,
+						"squares": 8
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 20
+					},
+					{
+						"name": "cold iron",
+						"amount": 15
+					},
+					{
+						"name": "good",
+						"amount": 15
+					},
+					{
+						"name": "splash damage",
+						"amount": 15
+					}
+				],
+				"resistances": [
+					{
+						"name": "electricity",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 35
+			},
+			"abilities": {
+				"mid": [
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"30 feet, DC 34"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Serenity Vulnerability",
+						"entries": [
+							"As {@creature demonic rabble|SF2}, but {@damage 3d6+10} mental damage."
+						]
+					},
+					{
+						"name": "Spores of Wrath",
+						"traits": [
+							"aura",
+							"disease",
+							"poison"
+						],
+						"entries": [
+							"5 feet. Non-{@trait demon||demons} that start their turn in the aura take {@damage 4d8} poison damage. Each creature damaged this way must succeed at a DC 34 Fortitude save or take {@damage 2d8} {@condition persistent damage||persistent piercing damage} as the spores penetrate its skin and grow into thick, green vines. The vines cease growing after 10 rounds, and they wither away in {@dice 1d4} days if not shaved off before then. The vines can be destroyed if the creature is affected by a {@trait good} spell or if holy water is applied to the vines (with an {@action Interact} action)."
+						]
+					},
+					{
+						"name": "Troop Defenses",
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Beaks, Claws, and Talons",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The throng furiously tears at each enemy within its squares and within 5 feet (DC 37 Reflex save). Damage depends on the number of actions.",
+							{
+								"type": "pf2-options",
+								"skipSort": true,
+								"noColon": true,
+								"items": [
+									{
+										"name": "{@as 1} Damage",
+										"entries": [
+											"{@damage 1d12+14} slashing plus {@damage 1d6} evil"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 2} Damage",
+										"entries": [
+											"{@damage 2d12+14} slashing plus {@damage 1d6} evil"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 3} Damage",
+										"entries": [
+											"{@damage 3d12+14} slashing plus {@damage 1d6} evil"
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Demonic Tide",
+						"entries": [
+							"As {@creature demonic rabble|SF2}, but with Beaks, Claws, and Talons."
+						]
+					},
+					{
+						"name": "Festival of Ruin",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"Each non-{@trait demon} creature in the throng or within a 20-foot emanation from it takes damage based on the number of actions used (DC 37 basic Reflex save). Damage depends on the number of actions.",
+							{
+								"type": "pf2-options",
+								"skipSort": true,
+								"noColon": true,
+								"items": [
+									{
+										"type": "item",
+										"name": "{@as 1} Damage",
+										"entries": [
+											"{@damage 4d6} electricity"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 2} Damage",
+										"entries": [
+											"{@damage 8d6} electricity"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 3} Damage",
+										"entries": [
+											"{@damage 12d6} electricity"
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Form Up",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						}
+					},
+					{
+						"name": "Troop Movement",
+						"entries": [
+							"As {@creature demonic rabble|SF2}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Derhii",
+			"source": "SF2",
+			"page": 84,
+			"level": 5,
+			"traits": [
+				"uncommon",
+				"n",
+				"large",
+				"humanoid"
+			],
+			"perception": {
+				"std": 12
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"auran",
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 11
+				},
+				"athletics": {
+					"std": 13
+				},
+				"survival": {
+					"std": 11
+				}
+			},
+			"abilityMods": {
+				"str": 5,
+				"dex": 2,
+				"con": 3,
+				"int": 0,
+				"wis": 2,
+				"cha": 0
+			},
+			"items": [
+				"falchion",
+				"javelin (6)",
+				"studded leather"
+			],
+			"defenses": {
+				"ac": {
+					"std": 21
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 13
+					},
+					"ref": {
+						"std": 11
+					},
+					"will": {
+						"std": 11
+					}
+				},
+				"hp": [
+					{
+						"hp": 80
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25,
+				"fly": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"forceful",
+						"reach <10 feet>",
+						"sweep"
+					],
+					"name": "falchion",
+					"attack": 14,
+					"damage": "{@damage 1d10+7} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <10 feet>"
+					],
+					"name": "fist",
+					"attack": 14,
+					"damage": "{@damage 2d6+7} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"thrown <30 feet>"
+					],
+					"name": "javelin",
+					"attack": 14,
+					"damage": "{@damage 1d6+8} piercing"
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Booming Voice",
+						"traits": [
+							"auditory",
+							"evocation",
+							"primal"
+						],
+						"entries": [
+							"A derhii can use its voice as a signal. The sound can be heard up to 12 miles away as a thrumming in the air that conveys 20 words of information over the course of 5 minutes."
+						]
+					},
+					{
+						"name": "Critical Knockdown",
+						"entries": [
+							"When a derhii scores a critical hit with a melee {@action Strike}, the target also falls {@condition prone}."
+						]
+					},
+					{
+						"name": "Power Dive",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"The derhii {@action Stride||Strides} twice while flying, then makes a {@action Strike} with a manufactured weapon. If the derhii moved at least 20 feet from their starting position, the {@action Strike}'s damage is increases by one die, such as increasing falchion damage to {@dice 2d10+7}. With a melee attack, the derhii can forgo the extra damage to force the target to fall {@condition prone}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Hadi Mob",
+			"source": "SF2",
+			"page": 85,
+			"level": 15,
+			"traits": [
+				"rare",
+				"ne",
+				"gargantuan",
+				"humanoid",
+				"ratfolk",
+				"troop"
+			],
+			"perception": {
+				"std": 25
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"daemonic"
+				],
+				"abilities": [
+					"ratspeak"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 27,
+					"to Climb or Swim": 29
+				},
+				"stealth": {
+					"std": 29
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 8,
+				"con": 6,
+				"int": 4,
+				"wis": 4,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 37
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 27
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 23
+					}
+				},
+				"hp": [
+					{
+						"hp": 270,
+						"notes": [
+							"16 squares"
+						]
+					}
+				],
+				"thresholds": [
+					{
+						"value": 180,
+						"squares": 12
+					},
+					{
+						"value": 90,
+						"squares": 8
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "area damage",
+						"amount": 15
+					},
+					{
+						"name": "splash damage",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 10
+			},
+			"abilities": {
+				"top": [
+					{
+						"name": "Ratspeak",
+						"entries": [
+							"A hadi mob can communicate with rodents."
+						],
+						"generic": {
+							"tag": "feat",
+							"source": "APG"
+						}
+					}
+				],
+				"mid": [
+					{
+						"name": "Troop Defenses",
+						"entries": [],
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Gnaw and Chew",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"entries": [
+							"The hadi mob bites and tears into the flesh of each enemy adjacent to the troop (DC 33 basic Reflex save). The damage depends on the number of actions.",
+							{
+								"type": "pf2-options",
+								"noColon": true,
+								"skipSort": true,
+								"items": [
+									{
+										"type": "item",
+										"name": "{@as 1}",
+										"entries": [
+											"{@damage 2d8+8} slashing damage plus hadi pestilence"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 2}",
+										"entries": [
+											"{@damage 4d8+12} slashing damage plus hadi pestilence"
+										]
+									},
+									{
+										"type": "item",
+										"name": "{@as 3}",
+										"entries": [
+											"{@damage 6d8+12} slashing damage plus hadi pestilence"
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Hadi Pestilence",
+						"traits": [
+							"disease",
+							"divine",
+							"evil",
+							"necromancy"
+						],
+						"type": "affliction",
+						"savingThrow": "Fortitude",
+						"DC": 19,
+						"note": "The daemonic disease turns the victim into a hadi.",
+						"endnote": "For a PC, the best way to model this is to replace ancestry Hit Points, size, Speeds, ability boosts, ability flaws, traits, and special abilities with those of the {@ancestry ratfolk|APG} ancestry. The character loses previous ancestry feats, selecting replacements from the {@ancestry ratfolk|APG} ancestry.",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition sickened||sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition drained||drained 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@condition drained||drained 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "{@condition drained||drained 3}",
+								"duration": "1 week"
+							},
+							{
+								"stage": 6,
+								"entry": "transform into a hadi",
+								"duration": "1 year"
+							}
+						]
+					},
+					{
+						"name": "Form Up",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"generic": {
+							"tag": "ability",
+							"source": "B3"
+						}
+					},
+					{
+						"name": "Troop Movement",
+						"entries": [
+							"Whenever the hadi mob {@action Stride||Strides}, they first {@ability Form Up|B3} as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to their Speed. This works just like a {@trait Gargantuan} creature moving; for instance, if any square of the troop enters difficult terrain, the extra movement cost applies to the whole troop."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Ephialtes",
+			"source": "SF2",
+			"page": 86,
+			"level": 16,
+			"traits": [
+				"uncommon",
+				"le",
+				"huge",
+				"fiend",
+				"velstrac"
+			],
+			"perception": {
+				"std": 30
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				},
+				{
+					"name": "painsight"
+				},
+				{
+					"name": "true seeing"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"infernal",
+					"shadowtongue"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 31
+				},
+				"deception": {
+					"std": 30
+				},
+				"intimidation": {
+					"std": 32
+				},
+				"medicine": {
+					"std": 30
+				},
+				"religion": {
+					"std": 30
+				},
+				"survival": {
+					"std": 28
+				},
+				"torture lore": {
+					"std": 29
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 5,
+				"con": 6,
+				"int": 5,
+				"wis": 6,
+				"cha": 6
+			},
+			"defenses": {
+				"ac": {
+					"std": 39
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 25
+					},
+					"will": {
+						"std": 28
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 299,
+						"abilities": [
+							"regeneration 20 (deactivated by good or silver)"
+						]
+					}
+				],
+				"immunities": [
+					"cold",
+					"fear"
+				],
+				"weaknesses": [
+					{
+						"name": "good",
+						"amount": 15
+					},
+					{
+						"name": "silver",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"evil",
+						"magical",
+						"reach <15 feet>"
+					],
+					"name": "jaws",
+					"attack": 33,
+					"damage": "{@damage 3d6+13} piercing plus {@damage 2d6} {@condition persistent damage||persistent bleed}"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"disarm",
+						"evil",
+						"magical",
+						"reach <15 feet>",
+						"trip"
+					],
+					"name": "chain",
+					"attack": 33,
+					"damage": "{@damage 3d6+13} piercing plus {@damage 2d6} {@condition persistent damage||persistent bleed} and Grab"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 37,
+					"entry": {
+						"6": {
+							"spells": [
+								{
+									"name": "darkness"
+								},
+								{
+									"name": "dimensional anchor",
+									"amount": "at will"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "blur"
+								},
+								{
+									"name": "plane shift",
+									"notes": [
+										"self only"
+									]
+								},
+								{
+									"name": "silence",
+									"notes": [
+										"3/day"
+									]
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "chilling darkness"
+								},
+								{
+									"name": "discern location"
+								},
+								{
+									"name": "shadow walk"
+								}
+							]
+						},
+						"constant": {
+							"8": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Painsight",
+						"traits": [
+							"divination",
+							"divine"
+						],
+						"entries": [
+							"As {@creature augur|B2|augur velstrac}."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Nowhere to Run",
+						"traits": [
+							"aura",
+							"divine",
+							"enchantment",
+							"fear",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"30 feet. When a creature ends its turn in the aura, it feels a powerful sensation of hopelessness. The creature must succeed at a DC 34 Will save or become {@condition slowed||slowed 1} ({@condition slowed||slowed 2} on a critical failure) for 1 round."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Constrict",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 2d4+13} slashing, DC 37"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Exhale Chains",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"divine"
+						],
+						"entries": [
+							"The ephialtes exhales a tangle of barbed chains. All creatures in a 50-foot cone must attempt a DC 37 Reflex save. The ephialtes can't Exhale Chains for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected."
+									],
+									"Success": [
+										"It takes {@damage 8d6} piercing damage."
+									],
+									"Failure": [
+										"It takes {@damage 15d6} piercing damage, {@damage 2d6} {@condition persistent damage||persistent bleed damage}, and is {@condition flat-footed} for 1 round."
+									],
+									"Critical Failure": [
+										"As failure, but {@damage 30d6} piercing damage, {@damage 2d6} {@condition persistent damage||persistent bleed damage}, and is {@condition restrained} until they escape (DC 37)."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Focus Gaze",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"enchantment fear",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"The ephialtes stares at a creature they can see within 30 feet. The creature must attempt a Will save against the nowhere to run aura. If it was already {@condition slowed}, on a failed save its speed is reduced by 10 feet until the end of its next turn. After attempting this save, the targeted creature is then temporarily immune to Focus Gaze until the start of the ephialtes's next turn."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Vincuvicar",
+			"source": "SF2",
+			"page": 87,
+			"level": 18,
+			"traits": [
+				"uncommon",
+				"le",
+				"medium",
+				"fiend",
+				"velstrac"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				},
+				{
+					"name": "painsight"
+				},
+				{
+					"name": "true seeing"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"infernal",
+					"shadowtongue"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 31
+				},
+				"athletics": {
+					"std": 35
+				},
+				"crafting": {
+					"std": 29
+				},
+				"deception": {
+					"std": 32
+				},
+				"intimidation": {
+					"std": 34
+				},
+				"medicine": {
+					"std": 32
+				},
+				"religion": {
+					"std": 30
+				},
+				"stealth": {
+					"std": 31
+				},
+				"survival": {
+					"std": 30
+				},
+				"torture lore": {
+					"std": 31
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 6,
+				"con": 6,
+				"int": 5,
+				"wis": 6,
+				"cha": 6
+			},
+			"items": [
+				"+2 greater striking war flail",
+				"+2 greater resilient full plate",
+				"6 manacles"
+			],
+			"defenses": {
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 28
+					},
+					"will": {
+						"std": 30
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 333,
+						"abilities": [
+							"regeneration 25 (deactivated by good or silver)"
+						]
+					}
+				],
+				"immunities": [
+					"cold",
+					"fear"
+				],
+				"weaknesses": [
+					{
+						"name": "good",
+						"amount": 20
+					},
+					{
+						"name": "silver",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"disarm",
+						"sweep",
+						"trip"
+					],
+					"name": "war flail",
+					"attack": 35,
+					"damage": "{@damage 3d10+17} bludgeoning plus {@damage 2d6} {@condition persistent damage||persistent bleed}"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"magic",
+						"range increment <20 feet>"
+					],
+					"name": "animated manacles",
+					"attack": 32,
+					"damage": "{@damage 3d8+8} piercing plus {@damage 2d6} {@condition persistent damage||persistent bleed}"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 40,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "sigil"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "command"
+								},
+								{
+									"name": "mind blank"
+								},
+								{
+									"name": "mind probe"
+								},
+								{
+									"name": "teleport"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "darkness",
+									"amount": "at will"
+								},
+								{
+									"name": "divine wrath",
+									"notes": [
+										"lawful"
+									]
+								},
+								{
+									"name": "prying eye"
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "discern lies"
+									},
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "divine",
+					"DC": 40,
+					"rituals": [
+						{
+							"name": "imprisonment"
+						}
+					]
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Painsight",
+						"traits": [
+							"divination",
+							"divine"
+						],
+						"entries": [
+							"As {@creature augur|B2|augur velstrac}."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Alone and Forgotten",
+						"traits": [
+							"aura",
+							"divine",
+							"enchantment",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"30 feet. When a creature ends its turn in the aura, it feels imprisoned and must succeed at a DC 37 Will save or become {@condition enfeebled||enfeebled 1} and {@condition slowed||slowed 1} for 1 round."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Institutionalized",
+						"entries": [
+							"A vincuvicar forms a bond with an institution that holds prisoners. This takes 1 day and ends any previous bond the vincuvicar had. While within the area of the prison, the vincuvicar gains a +2 status bonus to skill checks and {@skill Perception} checks."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Focus Gaze",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"divine",
+							"enchantment",
+							"fear",
+							"mental",
+							"visual"
+						],
+						"entries": [
+							"The vincuvicar stares at a creature they can see within 30 feet. The creature must attempt a Will save against the alone and forgotten aura. If the creature was already {@condition enfeebled} and {@condition slowed}, on a failed save, its hopelessness causes it to be {@condition enfeebled||enfeebled 2} and unable to take the {@action Escape} action as long as they remain {@condition enfeebled}. After attempting this save, the creature is then temporarily immune until the start of the vincuvicar's next turn."
+						]
+					},
+					{
+						"name": "Shackle",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "A creature within 60 feet is damaged by the vincuvicar's animated manacles {@action Strike}",
+						"entries": [
+							"The creature must attempt a DC 40 Reflex save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature avoids being manacled."
+									],
+									"Success": [
+										"The manacles distract the creature, causing it to become {@condition flat-footed} until the end of its next turn."
+									],
+									"Failure": [
+										"The manacles fuse in place and bind the creature's legs and arms (Core Rulebook 290) until it {@action Escape||Escapes} (DC 40) or the manacles are destroyed."
+									],
+									"Critical Failure": [
+										"As failure, but the creature is also {@condition restrained}."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "All-Seeing Hajeck",
+			"source": "SF2",
+			"page": 88,
+			"description": "Variant {@creature lamia matriarch}",
+			"level": 12,
+			"traits": [
+				"unique",
+				"cn",
+				"large",
+				"beast"
+			],
+			"perception": {
+				"std": 22
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"varisian"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 21
+				},
+				"deception": {
+					"std": 25
+				},
+				"diplomacy": {
+					"std": 23
+				},
+				"fortune-telling lore": {
+					"std": 25
+				},
+				"occultism": {
+					"std": 23
+				},
+				"performance": {
+					"std": 23
+				},
+				"society": {
+					"std": 21
+				},
+				"thievery": {
+					"std": 21
+				}
+			},
+			"abilityMods": {
+				"str": 4,
+				"dex": 5,
+				"con": 5,
+				"int": 5,
+				"wis": 4,
+				"cha": 7
+			},
+			"items": [
+				"harrow deck"
+			],
+			"defenses": {
+				"ac": {
+					"std": 31
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 23
+					},
+					"will": {
+						"std": 22
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 215
+					}
+				],
+				"immunities": [
+					"controlled"
+				],
+				"resistances": [
+					{
+						"name": "mental",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30,
+				"swim": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "claw",
+					"attack": 22,
+					"damage": "{@damage 3d8+10} slashing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 32,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "ventriloquism",
+									"amount": "at will"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "illusory disguise",
+									"amount": "at will"
+								},
+								{
+									"name": "illusory object",
+									"amount": "at will"
+								},
+								{
+									"name": "mirror image"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "glibness"
+								},
+								{
+									"name": "sleep"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "charm",
+									"amount": 3
+								},
+								{
+									"name": "suggestion",
+									"amount": 3
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Harrowbound",
+						"entries": [
+							"Hajeck can only exist in {@plane the Harrow Court|SF1}. If she leaves the plane, either willingly or by succumbing to an effect that forces her into a different plane, she instead immediately reappears somewhere in Harrowheart and becomes {@condition drained||drained 2}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"occult",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"All-Seeing Hajeck can take on the appearance of a Varisian woman\u2014her appearance from her previous life. This doesn't change her Speed or her attack and damage modifiers, but does prevent her from using Hajeck's Caress."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Hajeck's Caress",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"curse",
+							"enchantment",
+							"mental",
+							"occult"
+						],
+						"entries": [
+							"Hajeck touches a creature, who must succeed at a DC 32 Will save or become {@condition stupefied||stupefied 1} ({@condition stupefied||stupefied 2} on a critical failure). If the target fails additional saves against this ability, the condition value increases by 2 (to a maximum of {@condition stupefied||stupefied 4}). This condition value decreases by 1 every 24 hours."
+						]
+					},
+					{
+						"name": "Harrowing Vision",
+						"traits": [
+							"concentration",
+							"divination",
+							"fortune",
+							"occult"
+						],
+						"entries": [
+							"Hajeck can use any harrow deck to perform a potent divination that taps into the surrounding magic provided by the Deck of Destiny's otherworldly creation. A Harrowing Vision takes an hour to perform, but most of that time consists of Hajeck and her chosen subject meditating and clearing their minds in a secluded area, culminating in an intense harrow reading that itself takes only a few minutes to complete. The target of a Harrowing Vision must remain adjacent to Hajeck for the entire hour, after which Hajeck shuffles her harrow deck and lays out seven cards, face down\u2014one in the center (the future), two to either side (the present), and four more at the top, bottom, left, and right surrounding the central three (the past).",
+							"When the harrowing takes place, the target flips over the four cards from the past, followed by the two present cards, and then finally the central card. This method of harrowing symbolizes how the choices a person made in their past often present them with an either/or decision in the now, and that their decision on that subject will lock in a future result. When All-Seeing Hajeck performs this reading for a PC, try to interpret the four cards from the past as representing events from that character's history\u2014be it their background or references to events that took place during the Stolen Fate Adventure Path. For the two cards representing the present, try to interpret them as symbols of questions, events, or mysteries the PC is currently facing.",
+							"Only the card representing the future has an actual game effect. When this central, final card is revealed, all of the PCs' potential futures suddenly flash in their mind in an overwhelming, chaotic vision. The PC must attempt a DC 32 Will save (note that as a PC grows more powerful and their Will save increases, they're more likely to achieve a better result from a Harrowing Vision, since they're that much closer to their ultimate destiny and are bolstered by the weight of their previous choices and decisions). If the suit of the card revealed for the PCs' future matches the PC's key ability from their class, they gain a +1 status bonus on this Will save. If the alignment of the card revealed matches the PC's alignment, they gain a +2 status bonus to this will save. If both match, these bonuses stack to a +3 status bonus, and the actual result of the save is improved by one degree of success. If neither the suit or alignment match the PC, they reduce the actual result of the save by one degree of success. Regardless of the result, that character cannot receive another Harrowing Vision until they gain a level, at which point any lingering effects from the Harrowing Vision end.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The character experiences a vision of a specific future success, only to forget it an instant later. Once only as long as this effect persists when the character is affected by a critical failure for any roll they make or a critical success with any roll a foe makes, the character can change that roll into a Success or a Failure, as they see fit. In addition, the character gains the Success benefit detailed below."
+									],
+									"Success": [
+										"The character experiences several overlapping potential successes in their future. As long as this effect persists (typically until the character gains a level), the maximum size of their hand for investing cards from the {@i Deck of Destiny} increases by 1 to six cards."
+									],
+									"Failure": [
+										"The vision is confusing and frightening, but has no lasting effect."
+									],
+									"Critical Failure": [
+										"Not only is the vision confusing and frightening, but the character becomes obsessed with worst-case scenarios, becomes {@condition doomed||doomed 1}, and becomes cursed\u2014they can no longer gain the benefit of their best possible futures. As long as this curse persists, the character treats all critical successes as regular successes. This is a {@trait misfortune} effect."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "The Prince of Wolves",
+			"source": "SF2",
+			"page": 90,
+			"description": "Male {@versatileHeritage beastkin|LOAG} ranger",
+			"level": 19,
+			"traits": [
+				"unique",
+				"ce",
+				"medium",
+				"beast",
+				"beastkin",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "low-light vision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 30
+				}
+			],
+			"languages": {
+				"languages": [
+					"abyssal",
+					"celestial",
+					"common",
+					"draconic",
+					"necril",
+					"varisian"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 33
+				},
+				"athletics": {
+					"std": 36,
+					"to Climb": 39
+				},
+				"deception": {
+					"std": 33
+				},
+				"intimidation": {
+					"std": 36
+				},
+				"occultism": {
+					"std": 33
+				},
+				"performance": {
+					"std": 33
+				},
+				"religion": {
+					"std": 32
+				},
+				"society": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 5,
+				"con": 6,
+				"int": 3,
+				"wis": 5,
+				"cha": 6
+			},
+			"items": [
+				"+2 greater resilient full plate",
+				"+2 greater striking wounding morningstar",
+				"+2 greater striking gloom blade",
+				"{@item The Cyclone|SF2}",
+				"{@item The Keep|SF2}",
+				"{@item The Waxworks|SF2}"
+			],
+			"defenses": {
+				"hp": [
+					{
+						"hp": 400
+					}
+				],
+				"ac": {
+					"std": 42
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 35
+					},
+					"ref": {
+						"std": 30
+					},
+					"will": {
+						"std": 32
+					},
+					"abilities": [
+						"+1 to all saves vs. magic",
+						"+2 item to saves vs. {@trait fear} and effects that render him {@condition clumsy}, {@condition doomed}, {@condition drained}, {@condition enfeebled}, or {@condition fatigued}"
+					]
+				}
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"versatile <P>"
+					],
+					"name": "morningstar",
+					"attack": 36,
+					"damage": "{@damage 3d6+15} bludgeoning plus {@damage 1d6} {@condition persistent damage||persistent bleed}"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile <S>"
+					],
+					"name": "gloom blade",
+					"attack": 36,
+					"damage": "{@damage 3d6+13} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"name": "jaws",
+					"attack": 33,
+					"damage": "{@damage 3d6+13} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 38,
+					"attack": 30,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "shield"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "true seeing"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "fly"
+								},
+								{
+									"name": "paralyze"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "dimension door"
+								},
+								{
+									"name": "suggestion"
+								},
+								{
+									"name": "teleport"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "phantasmal killer"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "HP",
+						"entries": [
+							"400"
+						]
+					},
+					{
+						"name": "Rejuvenation",
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When the Prince of Wolves dies, his soul immediately travels to the crystalline shadow stele in his Den (see page 63). His body rejuvenates over 24 hours, emerging fully formed from the shadow stele. He can be permanently slain only if the shadow stele is destroyed."
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"polymorph",
+							"primal",
+							"transmutation"
+						],
+						"entries": [
+							"The Prince changes into his humanoid shape, hybrid shape, or wolf shape. While in hybrid shape, he gains a jaws {@action Strike}. While in animal shape, he gains the effects of a 5th-level casting of {@spell animal form} to become a canine. He prefers fighting in hybrid shape."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Hunt Prey",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate"
+						],
+						"entries": [
+							"The Prince designates one or two targets he can see or hear as his prey. He gains a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} and {@action Track} his prey. If he uses {@action Hunt Prey} against a third creature when he already has two designated, a prior creature of his choice loses the designation. His designation lasts until his next daily preparations."
+						],
+						"generic": {
+							"tag": "action"
+						}
+					},
+					{
+						"name": "Pack Tactics",
+						"entries": [
+							"If an enemy is within reach of the Prince and at least two of his allies, that enemy is {@condition flat-footed||flat footedundefined} against him."
+						],
+						"generic": {
+							"tag": "feat",
+							"source": "LOAG"
+						}
+					},
+					{
+						"name": "Skirmish Strike",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The Prince either {@action Step||Steps} and then {@action Strike||Strikes}, or {@action Strike||Strikes} and then {@action Step||Steps}."
+						],
+						"generic": {
+							"tag": "feat",
+							"add_hash": "Ranger"
+						}
+					},
+					{
+						"name": "Sneak Attack",
+						"entries": [
+							"The Prince deals an extra {@damage 4d6} precision damage to {@condition flat-footed} creatures."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Tear Fate",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"curse",
+							"enchantment",
+							"mental",
+							"misfortune",
+							"occult"
+						],
+						"requirements": "The Prince of Wolves' previous action was a successful melee {@action Strike}",
+						"entries": [
+							"The Prince of Wolves twists his weapon in the wounds inflicted on the creature he just struck, then rips the weapon free. As he does so, he tears free fragments of that creature's fate, leaving them with ill fortune. The creature takes {@damage 12d6} mental damage (DC 38 basic Will save); on a failure, the creature also becomes {@condition doomed||doomed 1} ({@condition doomed||doomed 2} on a critical failure). The creature is thereafter immune to Tear Fate."
+						]
+					},
+					{
+						"name": "Twin Parry",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The Prince is wielding two melee weapons, each in a different hand",
+						"entries": [
+							"The Prince gains a +1 circumstance bonus to AC until the start of his next turn, as long as he continues to meet this ability's requirement."
+						]
+					},
+					{
+						"name": "Twin Takedown",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"requirements": "The Prince is wielding two melee weapons, each in a different hand",
+						"entries": [
+							"The Prince makes two {@action Strike||Strikes} against his hunted prey, one with each of the required weapons. If both hit the same hunted prey, combine their damage for the purpose of its resistances and weaknesses. Apply his multiple attack penalty to each {@action Strike} normally."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Usilket",
+			"source": "SF2",
+			"page": 92,
+			"description": "Genderfluid {@creature witchwyrd|B2} monk",
+			"level": 13,
+			"traits": [
+				"unique",
+				"lg",
+				"medium",
+				"humanoid"
+			],
+			"perception": {
+				"std": 24
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"draconic",
+					"gnoll",
+					"kelish",
+					"mwangi",
+					"osiriani",
+					"vudrani"
+				],
+				"abilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 24
+				},
+				"athletics": {
+					"std": 22
+				},
+				"diplomacy": {
+					"std": 25
+				},
+				"katapesh lore": {
+					"std": 26
+				},
+				"medicine": {
+					"std": 24
+				},
+				"mercantile lore": {
+					"std": 24
+				},
+				"performance": {
+					"std": 23
+				},
+				"society": {
+					"std": 26
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 5,
+				"con": 1,
+				"int": 3,
+				"wis": 5,
+				"cha": 4
+			},
+			"items": [
+				"+1 striking handwraps of mighty blows",
+				"{@item guardian aluum charm|SF2}",
+				"greater hat of disguise"
+			],
+			"defenses": {
+				"ac": {
+					"std": 34
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 20
+					},
+					"ref": {
+						"std": 24
+					},
+					"will": {
+						"std": 24
+					}
+				},
+				"hp": [
+					{
+						"hp": 238
+					}
+				],
+				"resistances": [
+					{
+						"name": "force",
+						"amount": 10
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"nonlethal",
+						"unarmed"
+					],
+					"name": "fist",
+					"attack": 25,
+					"damage": "{@damage 3d10+9} bludgeoning plus Grab"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "arcane",
+					"type": "Innate",
+					"DC": 33,
+					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "detect magic"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "floating disk",
+									"amount": "at will"
+								},
+								{
+									"name": "unseen servant",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								},
+								{
+									"name": "mirror image"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "resilient sphere"
+								},
+								{
+									"name": "suggestion"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "resist energy",
+									"amount": 2
+								}
+							]
+						},
+						"constant": {
+							"7": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						}
+					}
+				},
+				{
+					"type": "Focus",
+					"name": "Monk Focus Spells",
+					"DC": 32,
+					"attack": 25,
+					"fp": 3,
+					"entry": {
+						"7": {
+							"spells": [
+								{
+									"name": "abundant step"
+								},
+								{
+									"name": "ki blast"
+								},
+								{
+									"name": "ki rush"
+								},
+								{
+									"name": "ki strike"
+								},
+								{
+									"name": "wholeness of body"
+								},
+								{
+									"name": "wind jump"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Absorb Force",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"arcane",
+							"evocation",
+							"force"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "round"
+						},
+						"trigger": "A {@spell magic missile} is fired at Usilket, and they are aware of it and have a free hand",
+						"entries": [
+							"Usilket \"catches\" the missile, absorbing it and causing that hand to glow while it holds this energy. A hand that's holding energy can only be used for Force Bolt. The energy lasts for 6 rounds or until it is released."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Flurry of Blows",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"flourish"
+						],
+						"entries": [
+							"Usilket makes two {@action Strike||Strikes} with their fist or with a monk weapon. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses."
+						],
+						"generic": {
+							"tag": "action"
+						}
+					},
+					{
+						"name": "Force Bolt",
+						"activity": {
+							"number": 1,
+							"unit": "varies",
+							"entry": "{@as 1} to {@as 3}"
+						},
+						"traits": [
+							"arcane",
+							"evocation",
+							"force"
+						],
+						"entries": [
+							"Usilket fires two {@spell magic missile||magic missiles} per action spent, dealing {@damage 1d4+1} force damage each. They can't spend more actions on this ability than they have free hands. If they use a hand that has Absorbed Force, that hand hurls three missiles instead of two, expending the held energy."
+						]
+					},
+					{
+						"name": "Meditative Therapy",
+						"traits": [
+							"healing",
+							"necromancy"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"One of Usilket's most unusual abilities is a technique they learned during a long visit to Jalmeray. Usilket enters a trancelike state for 10 minutes, during which they can attempt to remove a {@trait disease} or one of the following conditions: {@condition clumsy}, {@condition drained}, {@condition enfeebled}, or {@condition stupefied}. To remove the {@trait disease} or condition, Usilket must counteract the {@trait disease} or condition with a {@skill Medicine} check. Usilket can attempt to counteract a {@trait disease} or condition present in another creature, as long as that creature remains adjacent to the witchwyrd during the entire meditation."
+						]
+					},
+					{
+						"name": "Powerful",
+						"entries": [
+							"Fists Usilket's fist {@action Strike||Strikes} are treated as cold iron and silver and don't take penalties when making lethal attacks."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Guardian Aluum",
+			"source": "SF2",
+			"page": 93,
+			"description": "Variant {@creature aluum enforcer|AoA5|aluum}",
+			"level": 13,
+			"traits": [
+				"uncommon",
+				"n",
+				"large",
+				"construct",
+				"mindless"
+			],
+			"perception": {
+				"std": 22
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"skills": {
+				"athletics": {
+					"std": 26
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 4,
+				"con": 5,
+				"int": -5,
+				"wis": 3,
+				"cha": -5
+			},
+			"defenses": {
+				"ac": {
+					"std": 34
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 24
+					},
+					"will": {
+						"std": 21
+					}
+				},
+				"hp": [
+					{
+						"hp": 210
+					}
+				],
+				"immunities": [
+					"bleed",
+					"disease",
+					"death effects",
+					"doomed",
+					"drained",
+					"fatigued",
+					"magic (see below)",
+					"mental",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "10 physical (except adamantine)"
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical"
+					],
+					"name": "fist",
+					"attack": 26,
+					"damage": "{@damage 3d12+13} bludgeoning plus paralyzing force"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Aluum Antimagic",
+						"entries": [
+							"Guardian aluums are immune to spells and magical abilities, with two exceptions. A {@trait negative} spell or magical ability grants an aluum the {@condition quickened} condition until the end of its next turn instead of its normal effects. A {@trait positive} spell or ability makes an aluum {@condition slowed||slowed 1} until the end of its next turn instead of its normal effects."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Paralyzing Force",
+						"traits": [
+							"arcane",
+							"incapacitation",
+							"necromancy"
+						],
+						"entries": [
+							"A creature damaged by the aluum's fist {@action Strike} must succeed at a DC 33 Fortitude save or become {@condition paralyzed} for 1 round. On a critical failure, the creature is {@condition paralyzed} for {@dice 1d4} minutes and falls {@condition prone}."
+						]
+					},
+					{
+						"name": "Soul Shriek",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"arcane",
+							"auditory",
+							"evocation",
+							"mental",
+							"sonic"
+						],
+						"entries": [
+							"The aluum emits a keening wail in a 15-foot cone that deals {@damage 12d6} sonic damage (DC 33 basic Fortitude save). A creature that fails its save is {@condition stunned||stunned 1}, or {@condition stunned||stunned 3} on a critical failure. The aluum can't use Soul Shriek again for {@dice 1d4} rounds."
+						]
+					}
+				]
+			}
+		}
+	]
+}
