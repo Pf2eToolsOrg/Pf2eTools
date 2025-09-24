@@ -4378,8 +4378,8 @@ Renderer.creature = {
 			});
 			let notes = cr.skills["notes"] || [];
 
-			renderStack.push(skills.sort().join("<span>, </span>"))
-			renderStack.push(notes.length !== 0 ? `<span>, </span>${notes.join("<span>, </span>")}` : "")
+			renderStack.push(skills.sort().join("</span>, <span>"))
+			renderStack.push(notes.length !== 0 ? `</span>; <span>${notes.join("</span>, <span>")}` : "")
 			renderStack.push(`</p>`)
 
 			return renderStack.join("")
