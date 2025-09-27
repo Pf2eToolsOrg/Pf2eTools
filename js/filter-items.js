@@ -135,7 +135,15 @@ class PageFilterItems extends PageFilter {
 			nest: it.category,
 		}) : null;
 
-		it._fGroup = [it.group, it._fweaponData.group, it._fcomboWeaponData.group, it._farmorData.group, it._fshieldData.group].filter(Boolean);
+		it._fGroup = [
+			it.group,
+			it._fweaponData.group,
+			it._fcomboWeaponData.group,
+			it._farmorData.group,
+			it._fshieldData.group,
+		]
+			.filter(Boolean)
+			.map((str) => str.split("|")[0]);
 		it._fWeaponRange = []
 		if (it._fweaponData && Object.keys(it._fweaponData).length !== 0) it._fWeaponRange.push(it._fweaponData.range ? "Ranged" : "Melee")
 		if (it._fcomboWeaponData && Object.keys(it._fcomboWeaponData).length !== 0) it._fWeaponRange.push(it._fcomboWeaponData.range ? "Ranged" : "Melee")
