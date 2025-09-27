@@ -1,0 +1,5863 @@
+{
+	"_meta": {
+		"dependencies": {
+			"creature": [
+				"B2"
+			]
+		},
+		"internalCopies": [
+			"creature"
+		]
+	},
+	"creature": [
+		{
+			"name": "Obcisidaemon",
+			"source": "SF3",
+			"page": 80,
+			"level": 19,
+			"traits": [
+				"uncommon",
+				"ne",
+				"gargantuan",
+				"daemon",
+				"fiend"
+			],
+			"perception": {
+				"std": 35
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "true seeing"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"daemonic"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 33
+				},
+				"athletics": {
+					"std": 39
+				},
+				"deception": {
+					"std": 34
+				},
+				"intimidation": {
+					"std": 36
+				},
+				"religion": {
+					"std": 32
+				},
+				"warfare lore": {
+					"std": 36
+				}
+			},
+			"abilityMods": {
+				"str": 10,
+				"dex": 4,
+				"con": 8,
+				"int": 4,
+				"wis": 5,
+				"cha": 7
+			},
+			"items": [
+				"+3 major striking halberd"
+			],
+			"defenses": {
+				"ac": {
+					"std": 43
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 35
+					},
+					"ref": {
+						"std": 29
+					},
+					"will": {
+						"std": 32
+					},
+					"abilities": [
+						"+1 status to all saves vs. magic"
+					]
+				},
+				"hp": [
+					{
+						"hp": 425
+					}
+				],
+				"immunities": [
+					"death effects"
+				],
+				"weaknesses": [
+					{
+						"name": "good",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 50
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"evil",
+						"magical",
+						"reach",
+						"versatile <S>"
+					],
+					"name": "halberd",
+					"attack": 36,
+					"damage": "{@damage 4d10+18} slashing plus {@damage 1d6} evil"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"evil",
+						"magical",
+						"reach <15 feet>"
+					],
+					"name": "jaws",
+					"attack": 36,
+					"damage": "{@damage 4d6+18} piercing plus {@damage 1d6} evil and Grab"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 38,
+					"attack": 30,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "detect alignment",
+									"amount": "at will",
+									"notes": [
+										"good only"
+									]
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "cloudkill"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "paralyze"
+								},
+								{
+									"name": "spell turning"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "disintegrate"
+								},
+								{
+									"name": "meteor swarm"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "massacre"
+								}
+							]
+						},
+						"constant": {
+							"10": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Cloak of Souls",
+						"entries": [
+							"An obcisidaemon is shrouded at all times in a cloak of captured souls. It can hold a number of souls equal to the daemon's Charisma modifier. Destroying the daemon frees the souls, though this doesn't return the deceased creatures to life. A creature whose soul is trapped within this cloak can't be resurrected except by a 9th-level {@ritual resurrect} ritual or similarly powerful magic."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Scorched Earth",
+						"traits": [
+							"aura",
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"60 feet. Any creature who dies within the aura and isn't drawn into the obcisidaemon's Cloak of Souls via Inherit Soul must attempt a DC 38 Fortitude save. On a failure, the creature's body (but not its gear) is immediately reduced to a fine smear of ashes."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Consume Soul",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"The obcisidaemon consumes a soul from its cloak to gain one of the following effects. A consumed soul in this way can't be resurrected except by wish or a similarly powerful effect.",
+							{
+								"type": "pf2-options",
+								"skipSort": true,
+								"noColon": true,
+								"items": [
+									{
+										"type": "item",
+										"name": "Empower Spell",
+										"entries": [
+											"The obcisidaemon gains a +2 status bonus to its spell DCs and spell attack rolls until the end of its next turn."
+										]
+									},
+									{
+										"type": "item",
+										"name": "Empower Weapon",
+										"entries": [
+											"The obcisidaemon's weapon gains the effects of a {@item greater flaming}, {@item greater frost}, {@item greater shock}, or {@item wounding} rune until the end of its next turn."
+										]
+									},
+									{
+										"type": "item",
+										"name": "Healing",
+										"entries": [
+											"The daemon gains the benefit of a two-action, 8th-level {@spell heal} spell."
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "Inherit Soul",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divine",
+							"incapacitation",
+							"necromancy"
+						],
+						"trigger": "The obcisidaemon slays a creature",
+						"entries": [
+							"The obcisidaemon attempts to draw the creature's soul into its cloak of souls. The triggering creature must attempt a DC 38 Fortitude save. On a failure, its soul is consumed and added to the cloak of souls. If the obcisidaemon's cloak can't hold any more souls, the daemon can release one of the souls as a free action; otherwise, the soul isn't absorbed."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Phasmadaemon",
+			"source": "SF3",
+			"page": 81,
+			"level": 17,
+			"traits": [
+				"ne",
+				"large",
+				"daemon",
+				"fiend"
+			],
+			"perception": {
+				"std": 29
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "true seeing"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"daemonic"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 31
+				},
+				"deception": {
+					"std": 31
+				},
+				"intimidation": {
+					"std": 33
+				},
+				"religion": {
+					"std": 29
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 8,
+				"con": 6,
+				"int": 3,
+				"wis": 4,
+				"cha": 6
+			},
+			"defenses": {
+				"ac": {
+					"std": 39
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 31
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 31
+					}
+				},
+				"hp": [
+					{
+						"hp": 340
+					}
+				],
+				"immunities": [
+					"death effects",
+					"fear"
+				],
+				"weaknesses": [
+					{
+						"name": "good",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"evil",
+						"magical",
+						"reach <10 feet>"
+					],
+					"name": "jaws",
+					"attack": 33,
+					"damage": "{@damage 3d10+16} piercing plus {@damage 1d6} evil and Grab"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"evil",
+						"magical",
+						"reach <10 feet>"
+					],
+					"name": "claw",
+					"attack": 33,
+					"damage": "{@damage 3d8+16} slashing plus {@damage 1d6} evil"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 38,
+					"attack": 30,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "detect alignment",
+									"amount": "at will",
+									"notes": [
+										"good only"
+									]
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								},
+								{
+									"name": "nightmare",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								},
+								{
+									"name": "shadow siphon",
+									"amount": 2
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "shadow blast",
+									"amount": 2
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "phantasmal killer"
+								},
+								{
+									"name": "shadow blast"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "mask of terror"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "duplicate foe"
+								},
+								{
+									"name": "weird"
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Frightful Presence",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"60 feet, DC 35"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Unending Terror",
+						"entries": [
+							"Escaping fear near a phasmadaemon is no simple task. Creatures don't automatically reduce their {@condition frightened} condition while they are within the phasmadaemon's Frightful Presence aura. Instead, they must attempt a Will save at the end of their turn against the DC of the effect that caused the condition. On a success, the creature's {@condition frightened} condition is reduced by 1."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Constrict",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"{@damage 3d10+6} bludgeoning plus {@damage 1d6} evil, DC 35"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Consume Fear",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"requirements": "The phasmadaemon has a creature {@condition grabbed}",
+						"entries": [
+							"The phasmadaemon feeds on the creature's mortality and innate terror, dealing {@damage 6d8} mental damage. The creature must attempt a DC 38 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature takes no damage and manages to break free from the phasmadaemon's grab."
+									],
+									"Success": [
+										"The creature takes half damage."
+									],
+									"Failure": [
+										"The creature takes full damage and increases their {@condition frightened} conditioned by 1, to a maximum of {@condition frightened||frightened 4}."
+									],
+									"Critical Failure": [
+										"The creature takes double damage and increases their {@condition frightened} condition by 2, to a maximum of {@condition frightened||frightened 4}. If the creature is already {@condition frightened||frightened 4}, it must attempt a DC 38 Fortitude saving throw. If it fails, it is reduced to 0 Hit Points and dies. This effect has the {@trait death} and {@trait incapacitation} traits."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Inescapable Form",
+						"entries": [
+							"The phasmadaemon can {@action Squeeze} through tight spaces as if it were a {@trait Small} creature. While {@action Squeeze||Squeezing}, it can move at its full Speed. The phasmadaemon can even {@action Squeeze} through spaces that typically fit only a {@trait Tiny} creature, but does so at the standard speed for {@action Squeeze||Squeezing}."
+						]
+					},
+					{
+						"name": "Rend",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"claw"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Simple Harrowkin",
+			"source": "SF3",
+			"page": 82,
+			"level": 4,
+			"traits": [
+				"uncommon",
+				"n",
+				"small",
+				"construct"
+			],
+			"perception": {
+				"std": 10
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 12
+				},
+				"athletics": {
+					"std": 9
+				},
+				"deception": {
+					"std": 11
+				},
+				"stealth": {
+					"std": 12
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 4,
+				"con": 1,
+				"int": 0,
+				"wis": 0,
+				"cha": 3
+			},
+			"items": [
+				"harrow cards (53; function as darts)",
+				"shortsword"
+			],
+			"defenses": {
+				"ac": {
+					"std": 20
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 11
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 8
+					}
+				},
+				"hp": [
+					{
+						"hp": 60
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"misfortune",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile <P>"
+					],
+					"name": "shortsword",
+					"attack": 12,
+					"damage": "{@damage 1d6+5} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"name": "fist",
+					"attack": 12,
+					"damage": "{@damage 1d4+5} bludgeoning plus Grab"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"magical",
+						"range increment <20 feet>",
+						"thrown"
+					],
+					"name": "harrow card",
+					"attack": 12,
+					"damage": "{@damage 1d4+3} piercing"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Harrowkin Suit",
+						"entries": [
+							"any"
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Shuffle the Deck",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"generic": {
+							"tag": "ability",
+							"source": "SF3"
+						}
+					},
+					{
+						"name": "Sneak Attack",
+						"entries": [
+							"The harrowkin deals {@dice 1d6} extra precision damage to {@condition flat-footed} creatures."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Storied Harrowkin",
+			"source": "SF3",
+			"page": 83,
+			"level": 10,
+			"traits": [
+				"uncommon",
+				"n",
+				"medium",
+				"construct"
+			],
+			"perception": {
+				"std": 17
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 20
+				},
+				"athletics": {
+					"std": 22
+				},
+				"intimidation": {
+					"std": 21
+				},
+				"occultism": {
+					"std": 17
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 4,
+				"con": 5,
+				"int": 1,
+				"wis": 1,
+				"cha": 5
+			},
+			"items": [
+				"+1 striking battle axe",
+				"+1 chainmail",
+				"harrow cards (53; function as darts)",
+				"lesser sturdy shield (Hardness 10, Hit Points 80, BT 40)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 30
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 21
+					},
+					"ref": {
+						"std": 18
+					},
+					"will": {
+						"std": 17
+					}
+				},
+				"hp": [
+					{
+						"hp": 180
+					}
+				],
+				"immunities": [
+					"as {@creature simple harrowkin|SF3}"
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"sweep"
+					],
+					"name": "battle axe",
+					"attack": 23,
+					"damage": "{@damage 2d8+12} slashing"
+				},
+				{
+					"range": "Melee",
+					"name": "shield bash",
+					"attack": 22,
+					"damage": "{@damage 1d4+12} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"magical",
+						"range increment <20 feet>",
+						"thrown"
+					],
+					"name": "harrow card",
+					"attack": 21,
+					"damage": "{@damage 2d4+9} piercing"
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Harrowkin Suit",
+						"entries": [
+							"any"
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Defensive Suit",
+						"generic": {
+							"tag": "ability",
+							"source": "SF3"
+						}
+					},
+					{
+						"name": "Shield Block",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Hit 'Em While They're Down",
+						"entries": [
+							"The harrowkin wildly attacks a {@condition prone} target. They deal an additional {@dice 2d6} points of damage with their melee Strikes against {@condition prone} targets. This damage is equal to the damage type of the {@action Strike}."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Fabled Harrowkin",
+			"source": "SF3",
+			"page": 83,
+			"level": 17,
+			"traits": [
+				"rare",
+				"n",
+				"medium",
+				"construct"
+			],
+			"perception": {
+				"std": 29
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 30
+				},
+				"athletics": {
+					"std": 32
+				},
+				"diplomacy": {
+					"std": 32
+				},
+				"occultism": {
+					"std": 29
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 5,
+				"con": 7,
+				"int": 2,
+				"wis": 4,
+				"cha": 9
+			},
+			"items": [
+				"+2 greater striking greatsword",
+				"harrow deck (53 cards; function as darts when thrown by a harrowkin)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 30
+					},
+					"will": {
+						"std": 27
+					}
+				},
+				"hp": [
+					{
+						"hp": 315
+					}
+				],
+				"immunities": [
+					"as {@creature simple harrowkin|SF3}"
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"versatile <P>"
+					],
+					"name": "greatsword",
+					"attack": 32,
+					"damage": "{@damage 3d12+15} slashing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"magical",
+						"range increment <20 feet>",
+						"thrown"
+					],
+					"name": "harrow card",
+					"attack": 30,
+					"damage": "{@damage 3d6+15} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 35,
+					"attack": 27,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "ill omen",
+									"source": "LOGM",
+									"amount": "at will"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "augury"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "visions of danger"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "uncontrollable dance"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Harrowkin Suit",
+						"entries": [
+							"any"
+						]
+					},
+					{
+						"name": "Read the Cards",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"generic": {
+							"tag": "ability",
+							"source": "SF3"
+						}
+					}
+				],
+				"mid": [
+					{
+						"name": "Defensive Suit",
+						"generic": {
+							"tag": "ability",
+							"source": "SF3"
+						}
+					},
+					{
+						"name": "Twist Fate",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divination",
+							"fortune",
+							"occult"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "minute"
+						},
+						"trigger": "A creature critically hits the harrowkin",
+						"entries": [
+							"The harrowkin manipulates fortune in their favor. The triggering attack becomes a regular hit."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Nornhound",
+			"source": "SF3",
+			"page": 84,
+			"level": 18,
+			"traits": [
+				"rare",
+				"ln",
+				"gargantuan",
+				"fey"
+			],
+			"perception": {
+				"std": 32
+			},
+			"senses": [
+				{
+					"name": "detect magic"
+				},
+				{
+					"name": "greater darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "precise",
+					"unit": "feet",
+					"number": 120
+				},
+				{
+					"name": "true"
+				},
+				{
+					"name": "seeing"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"jotun",
+					"sylvan"
+				],
+				"abilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 30
+				},
+				"athletics": {
+					"std": 35
+				},
+				"deception": {
+					"std": 31
+				},
+				"diplomacy": {
+					"std": 31
+				},
+				"intimidation": {
+					"std": 33
+				},
+				"occultism": {
+					"std": 30
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 4,
+				"con": 8,
+				"int": 4,
+				"wis": 6,
+				"cha": 5
+			},
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 34
+					},
+					"ref": {
+						"std": 28
+					},
+					"will": {
+						"std": 30
+					}
+				},
+				"hp": [
+					{
+						"hp": 421,
+						"abilities": [
+							"regeneration 15 (deactivated by cold iron)"
+						]
+					}
+				],
+				"immunities": [
+					"negative"
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical"
+					],
+					"name": "jaws",
+					"attack": 35,
+					"damage": "{@damage 3d12+17} piercing damage plus Improved Grab"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"reach <15 feet>"
+					],
+					"name": "tail",
+					"attack": 35,
+					"damage": "{@damage 3d8+17} bludgeoning plus Knockdown"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"evocation",
+						"magical",
+						"range increment <120 feet>"
+					],
+					"name": "temporal blast",
+					"attack": 33,
+					"damage": "{@damage 6d8} force"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 37,
+					"entry": {
+						"6": {
+							"spells": [
+								{
+									"name": "slow"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "inevitable disaster",
+									"source": "som"
+								},
+								{
+									"name": "teleport",
+									"notes": [
+										"self only"
+									],
+									"amount": "at will"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "cast into time",
+									"source": "som"
+								}
+							]
+						},
+						"constant": {
+							"10": {
+								"spells": [
+									{
+										"name": "detect magic"
+									},
+									{
+										"name": "tongues"
+									},
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Sense Fate",
+						"traits": [
+							"fortune"
+						],
+						"entries": [
+							"A nornhound automatically rolls a 20 when it rolls initiative."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Beyond Fate",
+						"entries": [
+							"A nornhound can ignore any {@trait fortune} or {@trait misfortune} effects that affect them. If they're forced to roll twice as part of such an effect, they can take whichever die result they prefer, even if the effect would normally force them to choose one of the results."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Breath Weapon",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divination",
+							"mental",
+							"primal"
+						],
+						"entries": [
+							"The nornhound unleashes a blast of temporal energy in a 30-foot cone that deals {@damage 15d8} mental damage (DC 40 basic Will save). Creatures that fail their save become {@condition confused} for 1 round. The nornhound can't use Breath Weapon again for {@dice 1d4} rounds."
+						]
+					},
+					{
+						"name": "Follow the Thread",
+						"entries": [
+							"A nornhound is permanently {@condition quickened}. It can use its extra action only to {@action Step} or {@action Stride}."
+						]
+					},
+					{
+						"name": "Pack Attack",
+						"entries": [
+							"The nornhound's Strikes deal {@damage 1d6} extra damage to creatures within reach of at least two of its allies."
+						]
+					},
+					{
+						"name": "Swallow Whole",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Huge, {@damage 3d12+10} bludgeoning, Rupture 36"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Time Bound",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"entries": [
+							"The nornhound jumps into the air, releasing multiple blasts of temporal energy. The nornhound leaps to a point within 60 feet. It can make up to three temporal blast Strikes at any point during this movement, each against a different target. These attacks count toward the nornhound's multiple attack penalty, but the multiple attack penalty doesn't increase until after all the attacks."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Suvarden",
+			"source": "SF3",
+			"page": 85,
+			"level": 7,
+			"traits": [
+				"rare",
+				"n",
+				"large",
+				"beast"
+			],
+			"perception": {
+				"std": 17
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"sylvan"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 16
+				},
+				"athletics": {
+					"std": 16
+				},
+				"diplomacy": {
+					"std": 17
+				},
+				"lore": {
+					"note": "any one",
+					"std": 15
+				},
+				"nature": {
+					"std": 15
+				},
+				"occultism": {
+					"std": 15
+				},
+				"society": {
+					"std": 13
+				}
+			},
+			"abilityMods": {
+				"str": 3,
+				"dex": 5,
+				"con": 4,
+				"int": 2,
+				"wis": 4,
+				"cha": 6
+			},
+			"defenses": {
+				"ac": {
+					"std": 24
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 15
+					},
+					"ref": {
+						"std": 14
+					},
+					"will": {
+						"std": 17
+					}
+				},
+				"hp": [
+					{
+						"hp": 125,
+						"abilities": [
+							"all-around vision"
+						]
+					}
+				],
+				"immunities": [
+					"confused",
+					"controlled",
+					"misfortune"
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 20,
+				"fly": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "antler",
+					"attack": 16,
+					"damage": "{@damage 2d12+6} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "hoof",
+					"attack": 16,
+					"damage": "{@damage 2d8+6} bludgeoning"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 25,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "know direction"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "true strike",
+									"amount": 3
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "augury",
+									"amount": 2
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "hypercognition"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Reweave Fate",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divination",
+							"primal"
+						],
+						"trigger": "A non-suvarden creature within 30 feet of the suvarden attempts an attack roll, skill check, or saving throw",
+						"entries": [
+							"The suvarden interferes with the triggering creature's action, pushing it toward a specific outcome. The suvarden decides on a favorable or an unfavorable outcome. With a favorable outcome, the creature rolls the triggering check a second time and takes the higher result; this is a {@trait fortune} effect. With an unfavorable outcome, the creature rolls the triggering check a second time and takes the lower result; this is a {@trait misfortune} effect. Regardless of the outcome, the triggering creature becomes immune to Reweave Fate for 1 day."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Web of Fate",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divination",
+							"primal"
+						],
+						"entries": [
+							"The suvarden creates a web spun from the threads of fate in a 10-foot burst within 30 feet. The squares filled with the web are difficult terrain. Each square can be cleared of the web by a single attack or effect that deals at least 5 slashing damage or 1 fire damage. A square has AC 5, and it automatically fails its saving throws. Each time a creature in the web begins to use a move action or enters the web during a move action, it must attempt a DC 25 Will save.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected and doesn't need to attempt further saving throws against the web."
+									],
+									"Success": [
+										"The creature is momentarily baffled by glimpses of possible futures and is {@condition flat-footed} for 1 round."
+									],
+									"Failure": [
+										"Possibilities spun throughout the web overwhelm the creature. It becomes {@condition confused} for 1 round."
+									],
+									"Critical Failure": [
+										"As critical failure, but the duration is 1 minute and the creature is {@condition sickened||sickened 1} while it's {@condition confused}."
+									]
+								}
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Fabrina the Spinster",
+			"source": "SF3",
+			"page": 86,
+			"description": "Female {@creature norn|B2}",
+			"traits": [
+				"unique",
+				"ln",
+				"large",
+				"fey"
+			],
+			"level": 20,
+			"_copy": {
+				"name": "Norn",
+				"source": "B2",
+				"_mod": {
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Declare Fate",
+								"activity": {
+									"number": 1,
+									"unit": "action"
+								},
+								"traits": [
+									"divination",
+									"misfortune",
+									"occult",
+									"prediction"
+								],
+								"entries": [
+									"Fabrina quickly consults her thread about a creature within 60 feet. Roll a {@dice d20} and note the result. Until the start of her next turn, whenever the target is about to attempt a check (but before the roll is made), Fabrina can use a reaction to force the creature to use the noted result instead. If she doesn’t or is unable to force the creature to use the result by the start of her next turn, the noted result is lost and Fabrina takes {@damage 6d6} mental damage from the strain that the unfulfilled fate creates. Regardless of whether or not Fabrina can substitute her result, the creature becomes temporarily immune to Declare Fate for 1 minute."
+								]
+							},
+							{
+								"name": "Undo Fate",
+								"activity": {
+									"number": 1,
+									"unit": "reaction"
+								},
+								"generic": {
+									"source": "SF3",
+									"tag": "ability"
+								}
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Hala the Rod",
+			"source": "SF3",
+			"page": 86,
+			"description": "Female {@creature norn|B2}",
+			"traits": [
+				"unique",
+				"ln",
+				"large",
+				"fey"
+			],
+			"level": 20,
+			"_copy": {
+				"name": "Norn",
+				"source": "B2",
+				"_mod": {
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Declare Fate",
+								"activity": {
+									"number": 2,
+									"unit": "action"
+								},
+								"traits": [
+									"divination",
+									"incapacitation",
+									"mental",
+									"occult"
+								],
+								"entries": [
+									"Hala pulls back a portion of golden thread related to a creature within 100 feet. As the thread frays, the creature is forced to relive that instant of their life. The targeted creature attempts a DC 42 Will save. It then becomes temporarily immune to Reel Thread for 1 minute.",
+									{
+										"type": "successDegree",
+										"entries": {
+											"Critical Success": "The target is unaffected.",
+											"Success": "The target is momentarily distracted as the moment replays in their mind. They become {@condition stupefied||stupefied 1} until the end of their turn.",
+											"Failure": "The target is compelled to relive their most recent moments. Whatever actions the target uses on their next turn, they must repeat on their following turn. The actions must be repeated in the same order and as close to the same specifics as possible. For example, if the target makes an attack, they must repeat the attack against the same creature, if possible, and if the target moves, they must move the same distance and direction, if possible, on their next turn. If the target can’t repeat an action, such as {@action Cast a Spell||Casting a Spell} that has been exhausted or needing to target a creature that has died, they can act as they choose for that action but become {@condition stupefied||stupefied 1} until the end of their turn.",
+											"Critical Failure": "As failure, except the creature takes a −2 circumstance penalty to all checks they attempts when they repeats their actions."
+										}
+									}
+								]
+							},
+							{
+								"name": "Undo Fate",
+								"activity": {
+									"number": 1,
+									"unit": "reaction"
+								},
+								"generic": {
+									"source": "SF3",
+									"tag": "ability"
+								}
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Diskrasia the Sharp",
+			"source": "SF3",
+			"page": 87,
+			"description": "Female {@creature norn|B2}",
+			"traits": [
+				"unique",
+				"ln",
+				"large",
+				"fey"
+			],
+			"level": 20,
+			"_copy": {
+				"name": "Norn",
+				"source": "B2",
+				"_mod": {
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Shred Thread",
+								"activity": {
+									"number": 1,
+									"unit": "action"
+								},
+								"traits": [
+									"divination",
+									"occult"
+								],
+								"requirements": "Diskrasia's previous action this turn was to Snip Thread",
+								"entries": [
+									"Diskrasia takes the cut portion of thread and further ravages it, causing the creature’s mind to fall into disarray as they lose sight of their future. The target of Diskrasia’s Snip Thread must attempt a DC 42 Will save.",
+									{
+										"type": "successDegree",
+										"entries": {
+											"Critical Success": "The target is unaffected.",
+											"Success": "The target’s mind reels momentarily. They become {@condition stunned||stunned 1}.",
+											"Failure": "The target’s mind becomes clouded. They become {@condition stunned||stunned 2}, {@condition stupefied||stupefied 1}, and {@condition confused}.",
+											"Critical Failure": "The shock of the suddenly muddled future overwhelms the target. They become {@condition stunned||stunned 3}, {@condition stupefied||stupefied 2}, and {@condition confused}."
+										}
+									}
+								]
+							},
+							{
+								"name": "Undo Fate",
+								"activity": {
+									"number": 1,
+									"unit": "reaction"
+								},
+								"generic": {
+									"source": "SF3",
+									"tag": "ability"
+								}
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Raven Nicoletta",
+			"source": "SF3",
+			"page": 89,
+			"description": "Female human sorcerer",
+			"level": 20,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"human",
+				"humanoid"
+			],
+			"perception": {
+				"std": 33
+			},
+			"languages": {
+				"languages": [
+					"common",
+					"daemonic",
+					"skald",
+					"varisian"
+				]
+			},
+			"skills": {
+				"arcana": {
+					"std": 31
+				},
+				"deception": {
+					"std": 41
+				},
+				"diplomacy": {
+					"std": 37
+				},
+				"fortune-telling lore": {
+					"std": 33
+				},
+				"intimidation": {
+					"std": 35
+				},
+				"occultism": {
+					"std": 33
+				},
+				"performance": {
+					"std": 31
+				},
+				"society": {
+					"std": 31
+				}
+			},
+			"abilityMods": {
+				"str": 0,
+				"dex": 5,
+				"con": 2,
+				"int": 3,
+				"wis": 5,
+				"cha": 9
+			},
+			"items": [
+				"bracers of armor type III",
+				"circlet of persuasion",
+				"Deck of Destiny"
+			],
+			"defenses": {
+				"ac": {
+					"std": 44
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 30
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 35
+					}
+				},
+				"hp": [
+					{
+						"hp": 370
+					}
+				]
+			},
+			"speed": {
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal",
+						"unarmed"
+					],
+					"name": "fist",
+					"attack": 31,
+					"damage": "{@damage 1d4+8} bludgeoning"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Spontaneous",
+					"DC": 42,
+					"attack": 34,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic",
+									"starred": true
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "color spray"
+								},
+								{
+									"name": "ill omen",
+									"source": "LOGM",
+									"starred": true
+								},
+								{
+									"name": "ray of enfeeblement"
+								},
+								{
+									"name": "true strike"
+								}
+							]
+						},
+						"2": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "augury",
+									"starred": true
+								},
+								{
+									"name": "blur"
+								},
+								{
+									"name": "hideous laughter"
+								},
+								{
+									"name": "mirror image"
+								}
+							]
+						},
+						"3": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "hypnotic pattern"
+								},
+								{
+									"name": "paralyze"
+								},
+								{
+									"name": "wanderer's guide",
+									"starred": true
+								}
+							]
+						},
+						"4": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "blink"
+								},
+								{
+									"name": "confusion"
+								},
+								{
+									"name": "phantasmal killer"
+								},
+								{
+									"name": "suggestion",
+									"starred": true
+								}
+							]
+						},
+						"5": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "cloak of colors"
+								},
+								{
+									"name": "shadow blast"
+								},
+								{
+									"name": "shadow siphon",
+									"starred": true
+								},
+								{
+									"name": "synesthesia"
+								}
+							]
+						},
+						"6": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "feeblemind"
+								},
+								{
+									"name": "spirit blast"
+								},
+								{
+									"name": "teleport"
+								},
+								{
+									"name": "true seeing",
+									"starred": true
+								}
+							]
+						},
+						"7": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "fly"
+								},
+								{
+									"name": "prismatic spray"
+								},
+								{
+									"name": "retrocognition",
+									"starred": true
+								},
+								{
+									"name": "warp mind"
+								}
+							]
+						},
+						"8": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "discern location"
+								},
+								{
+									"name": "maze"
+								},
+								{
+									"name": "uncontrollable dance"
+								},
+								{
+									"name": "unrelenting observation",
+									"starred": true
+								}
+							]
+						},
+						"9": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "foresight"
+								},
+								{
+									"name": "wail of the banshee"
+								},
+								{
+									"name": "weird",
+									"starred": true
+								}
+							]
+						},
+						"10": {
+							"slots": 2,
+							"spells": [
+								{
+									"name": "alter reality"
+								},
+								{
+									"name": "gate"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Reclaimed Fate",
+						"entries": [
+							"Raven has eerie control over her immediate future. She can ignore any {@trait fortune} or {@trait misfortune} effects that affect her. If she is forced to roll twice as part of a {@trait fortune} and {@trait misfortune} effect, she can take whichever die result she prefers, even if the effect would normally force her to choose one of the results. Finally, when rolling initiative, Raven can choose not to roll initiative and instead have a result of 16 + her initiative modifier."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Bloodline Magic When",
+						"entries": [
+							"Raven casts a bloodline spell (marked with an asterisk), she gains {@condition concealed||concealment} for 1 round, but can't use it to {@action Hide}."
+						]
+					},
+					{
+						"name": "Harrow Burst",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"evocation",
+							"occult"
+						],
+						"entries": [
+							"Raven unleashes a mass of magical harrow cards, dealing {@damage 15d8} slashing damage in a 30-foot emanation (DC 42 basic Reflex save). A creature that fails its save rolls {@dice 1d6} to determine a suit of cards: 1 = hammers (Strength), 2 = keys (Dexterity), 3 = shields (Constitution), 4 = books (Intelligence), 5 = stars (Wisdom), 6 = crowns (Charisma). The creature takes a \u22121 status penalty to all checks related to that ability score for 1 round (\u22122 status penalty on a critical failure). Raven can't use Harrow Burst again for {@dice 1d4} rounds."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Zellara Esmeranda",
+			"source": "SF3",
+			"page": 91,
+			"description": "Female human {@creature ghost}",
+			"level": 14,
+			"traits": [
+				"unique",
+				"cg",
+				"medium",
+				"ghost",
+				"incorporeal",
+				"spirit",
+				"undead"
+			],
+			"perception": {
+				"std": 27
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "harrow sense"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"shoanti",
+					"varisian"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 26
+				},
+				"diplomacy": {
+					"std": 28
+				},
+				"fortune-telling lore": {
+					"std": 26
+				},
+				"occultism": {
+					"std": 28
+				},
+				"performance": {
+					"std": 26
+				}
+			},
+			"abilityMods": {
+				"str": -5,
+				"dex": 6,
+				"con": 2,
+				"int": 4,
+				"wis": 5,
+				"cha": 6
+			},
+			"defenses": {
+				"ac": {
+					"std": 36
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 22
+					},
+					"ref": {
+						"std": 28
+					},
+					"will": {
+						"std": 25
+					}
+				},
+				"hp": [
+					{
+						"hp": 195,
+						"abilities": [
+							"negative healing",
+							"rejuvenation"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"precision",
+					"unconscious"
+				],
+				"resistances": [
+					{
+						"name": "all damage",
+						"amount": 15,
+						"note": "except force, ghost touch, or positive; double resistance vs. nonmagical"
+					}
+				]
+			},
+			"speed": {
+				"fly": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"name": "ghostly hand",
+					"attack": 26,
+					"damage": "{@damage 3d12+8} negative"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"magical",
+						"range increment <60 feet>"
+					],
+					"name": "ghostly harrow card",
+					"attack": 26,
+					"damage": "{@damage 3d8+8} negative"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 34,
+					"attack": 26,
+					"entry": {
+						"0": {
+							"level": 7,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "command"
+								},
+								{
+									"name": "mindlink"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "augury"
+								},
+								{
+									"name": "telekinetic maneuver"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "hypercognition"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion"
+								},
+								{
+									"name": "read omens"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "crushing despair"
+								},
+								{
+									"name": "sending"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "teleport",
+									"amount": "at will",
+									"notes": [
+										"self only"
+									]
+								},
+								{
+									"name": "true seeing"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "plane shift"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Boundless Spirit",
+						"entries": [
+							"Unlike other {@creature ghost||ghosts}, Zellara is not bound to a specific site or object. She can freely manifest wherever she likes."
+						]
+					},
+					{
+						"name": "Harrow Sense",
+						"entries": [
+							"Zellara can detect the presence of harrow cards as an imprecise sense out to 1 mile. She can detect harrow cards as a precise sense out to 120 feet."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Rejuvenation",
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"When Zellara is destroyed, she re-forms after {@dice 2d4} days at the site of her destruction, fully healed. If she is bound to a harrow deck or harrow card, Zellara can manifest near the bound item instead. Once her ex-student Raven has been defeated, Zellara will return to the {@plane Boneyard|GMG} to face her final judgment."
+						],
+						"generic": {
+							"tag": "ability",
+							"add_hash": "Ghost"
+						}
+					},
+					{
+						"name": "Unbound Fate",
+						"entries": [
+							"Zellara's connection to the harrow and fortune-telling in life have given her full control of her fate in the afterlife. She can ignore any {@trait fortune} or {@trait misfortune} effects that affect her. If she is forced to roll twice as part of a {@trait fortune} and {@trait misfortune} effect, she can take whichever die result she prefers, even if the effect would normally force her to choose one of the results."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Flurry of Cards",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Zellara unleashes a barrage of harrow cards that deals {@damage 7d6} negative damage in a 30-foot cone (DC 34 basic Reflex save)."
+						]
+					},
+					{
+						"name": "Harrow Binding",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"divination",
+							"occult"
+						],
+						"requirements": "Zellara is within 120 feet of a harrow card or harrow deck",
+						"entries": [
+							"Zellara intentionally binds herself to a harrow card or deck she can sense. While bound in this way, she grants her Stack the Deck ability to anyone carrying the bound card or deck. The trigger and effect for Stack the Deck changes to affect the creature carrying the bound item. She can still Stack the Deck for herself while bound. Zellara can unbind herself from the item as an action, which has the {@trait concentrate} trait."
+						]
+					},
+					{
+						"name": "Stack the Deck",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divine",
+							"fortune",
+							"occult"
+						],
+						"trigger": "Zellara is about to attempt a saving throw",
+						"entries": [
+							"Zellara looks to her immediate future and determines the most favorable outcome for her. She gains a +4 circumstance bonus to the triggering saving throw. If she rolls a critical failure on her saving throw, she can reroll the check, but does so without the bonus."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "The Trader",
+			"source": "SF3",
+			"page": 6,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 35,
+					"attack": 27,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "ill omen",
+									"source": "LOGM",
+									"amount": "at will"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "augury"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "plane shift",
+									"notes": [
+										"self only"
+									]
+								},
+								{
+									"name": "visions of danger"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "teleport",
+									"notes": [
+										"self only"
+									]
+								},
+								{
+									"name": "uncontrollable dance"
+								}
+							]
+						}
+					}
+				}
+			],
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"items": {
+						"mode": "appendArr",
+						"items": "strange map of Golarion"
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"type": "ability",
+							"name": "Check the Stock",
+							"traits": [
+								"concentrate",
+								"conjuration",
+								"teleport"
+							],
+							"entries": [
+								"The Trader travels into an extradimensional storeroom which houses a nearly unlimited stock of merchandise for sale. He spends 1 minute within the storeroom and emerges with a single item in hand. The storeroom typically has all {@trait common} items of 15th level or lower available, which he can sell at a normal price. Given enough time—usually 1 week—he can find any {@trait common} item of up to 20th level to add to his storeroom, or an {@trait uncommon} item of up to 12th level, at the GM’s discretion. The Trader is the only creature able to enter his storeroom; all attempts by other creatures to travel there automatically fail."
+							]
+						}
+					},
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Books"
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Peacock",
+			"source": "SF3",
+			"page": 13,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Keys"
+							]
+						}
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"type": "ability",
+							"name": "Color-Draining Plumage Display",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"enchantment",
+								"occult"
+							],
+							"entries": [
+								"The Peacock opens it plumage in an attempt to drain the color and mobility from others. Creatures within 30 feet of the Peacock must attempt a DC 36 Will save. On a failure, creatures become {@condition slowed||slowed 1} for 1 round ({@condition slowed||slowed 2} on a critical failure) as color drains from their bodies and they endure the sensation of being slowly petrified."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Winged Serpent",
+			"source": "SF3",
+			"page": 13,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Stars"
+							]
+						}
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"type": "ability",
+							"name": "Interpose Tail",
+							"activity": {
+								"number": 1,
+								"unit": "reaction"
+							},
+							"trigger": "A creature within 15 feet uses a {@trait move} action or leaves a square during a {@trait move} action it’s using",
+							"entries": [
+								"The Winged Serpent uses its tail to attempt to {@action Trip} the triggering creature. On a success, the triggering movement is disrupted and the creature is {@action Trip||Tripped} as normal."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Crows",
+			"source": "SF3",
+			"page": 13,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Keys"
+							]
+						}
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"type": "ability",
+							"name": "Rowdy Tussle",
+							"activity": {
+								"number": 1,
+								"unit": "action"
+							},
+							"entries": [
+								"The Crows begin to roughhouse and knock about all creatures around them. They attempt a single {@skill Athletics} check to {@action Shove} all adjacent creatures. The result of this roll is determined against the creatures’ Fortitude DCs."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Cricket",
+			"source": "SF3",
+			"page": 16,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Keys"
+							]
+						}
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"type": "ability",
+							"name": "Cricket Step",
+							"activity": {
+								"number": 1,
+								"unit": "action"
+							},
+							"frequency": {
+								"number": 1,
+								"unit": "round"
+							},
+							"entries": [
+								"The Cricket bounds without a care. He {@action Stride||Strides} and doesn’t trigger reactions due to movement as part of this {@action Stride}. If he ends his movement next to a creature, he can {@action Strike} that creature."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Inquisitor",
+			"source": "SF3",
+			"page": 17,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Books"
+							]
+						}
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"type": "ability",
+							"name": "Silencing Strike",
+							"activity": {
+								"number": 1,
+								"unit": "action"
+							},
+							"traits": [
+								"enchantment",
+								"occult"
+							],
+							"frequency": {
+								"number": 1,
+								"unit": "round"
+							},
+							"entries": [
+								"The Inquisitor attacks a foe with the intent of putting an end to their words. He makes a {@action Strike}. On a hit, the creature becomes magically silenced for 1 round. Any attempts to use an {@trait auditory} action or a verbal component requires a successful DC {@flatDC 10} flat check or the action is lost. If the Inquisitor’s {@action Strike} was a critical hit, the DC is {@flatDC 15}."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Teamster",
+			"source": "SF3",
+			"page": 17,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Shields"
+							]
+						}
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"type": "ability",
+							"name": "Bite Them!",
+							"activity": {
+								"number": 1,
+								"unit": "action"
+							},
+							"frequency": {
+								"number": 1,
+								"unit": "round"
+							},
+							"entries": [
+								"The Teamster commands his two phantasmal geckos to come to his aid and attack a foe within 30 feet that the Teamster can see. The geckos attempt two {@action Strike||Strikes} against the same target. These {@action Strike||Strikes} resolve using the Teamster’s greatsword melee {@action Strike}, and use the Teamster’s normal multiple attack penalty, but combine their damage for the purposes of resistances and weaknesses."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Wanderer",
+			"source": "SF3",
+			"page": 17,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": [
+						{
+							"mode": "replaceArr",
+							"replace": "Harrowkin Suit",
+							"items": {
+								"name": "Harrowkin Suit",
+								"entries": [
+									"Books"
+								]
+							}
+						},
+						{
+							"mode": "appendArr",
+							"items": {
+								"type": "ability",
+								"name": "Heavy Lifter",
+								"entries": [
+									"The Wanderer can carry up to twice the normal amount of Bulk before becoming {@condition encumbered}."
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Sickened Doprillu",
+			"source": "SF3",
+			"page": 19,
+			"description": "Variant {@creature doprillu|B3}",
+			"initiative": {
+				"perception": {
+					"std": 20
+				}
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "see invisibility"
+				}
+			],
+			"level": 14,
+			"traits": [
+				"ne",
+				"medium",
+				"aberration"
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"undercommon"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 24
+				},
+				"athletics": {
+					"std": 28
+				},
+				"intimidation": {
+					"std": 20
+				},
+				"stealth": {
+					"std": 22
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 6,
+				"con": 7,
+				"int": 1,
+				"wis": 4,
+				"cha": 2
+			},
+			"defenses": {
+				"ac": {
+					"std": 34
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 25
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 22
+					},
+					"abilities": [
+						"+2 status to all saves vs. fear"
+					]
+				},
+				"hp": [
+					{
+						"hp": 260,
+						"abilities": [
+							"regeneration 20 (deactivated by cold)"
+						]
+					}
+				],
+				"immunities": [
+					"enfeebled (while wearing its mask)",
+					"slowed (while wearing its mask)"
+				],
+				"resistances": [
+					{
+						"name": "fire",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"name": "fist",
+					"attack": 28,
+					"damage": "{@dice 3d8+16} plus {@damage 2d6} fire and Improved Grab"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 26,
+					"entry": {
+						"constant": {
+							"6": {
+								"spells": [
+									{
+										"name": "see invisibility"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Mask of Power",
+						"entries": [
+							"A doprillu's unique wooden mask is the source of its power. A doprillu deprived of its mask loses its regeneration and its immunity to {@condition enfeebled} and {@condition slowed}, and it immediately becomes {@condition enfeebled||enfeebled 1}. The {@condition enfeebled} value increases by 1 at the start of each of the doprillu's turns, to a maximum of {@condition enfeebled||enfeebled 4}. If the mask is put back on, the doprillu immediately regains its abilities and loses the {@condition enfeebled} condition. A creature can pull off the mask with a successful DC 34 {@skill Athletics} check to {@action Force Open}."
+						]
+					},
+					{
+						"name": "Volcanic Veins",
+						"traits": [
+							"fire"
+						],
+						"entries": [
+							"Fiery magma runs through the doprillu's veins. A creature that starts its turn {@condition grabbed} by the doprillu takes {@damage 7d6} fire damage."
+						]
+					},
+					{
+						"name": "Deflect Arrow",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "The doprillu is the target of a physical ranged attack",
+						"requirements": "The doprillu is aware of the attack, isn't {@condition flat-footed} against it, and has a hand free",
+						"entries": [
+							"The doprillu gains a +4 circumstance bonus to its AC against the triggering attack."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Body Strike",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"requirements": "The doprillu has a creature {@condition grabbed}",
+						"entries": [
+							"The doprillu swings the {@condition grabbed} creature as a weapon. This {@action Strike} has a +28 attack modifier and deals {@damage 3d8+16} bludgeoning damage. The {@action Strike} is magical and has a reach of 10 feet. On a hit, the {@condition grabbed} creature takes half the damage dealt to the target."
+						]
+					},
+					{
+						"name": "Whirlwind Throw",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"requirements": "The doprillu has a creature {@condition grabbed}",
+						"entries": [
+							"The doprillu whirls the {@condition grabbed} creature about, making a Body {@action Strike} against each creature in reach. After that {@action Strike}, the doprillu can hurl the {@condition grabbed} creature up to 50 feet as a ranged {@action Strike}. This {@action Strike} has the same attack modifier and damage as Body {@action Strike}, but has the thrown 20 feet weapon trait."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Mighty Bul-Gae",
+			"source": "SF3",
+			"page": 20,
+			"description": "Variant {@creature bul-gae|FRP3}",
+			"level": 17,
+			"traits": [
+				"rare",
+				"ln",
+				"large",
+				"beast",
+				"cold",
+				"fire"
+			],
+			"perception": {
+				"std": 30
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise"
+				},
+				{
+					"name": "60",
+					"unit": "feet"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 32
+				},
+				"intimidation": {
+					"std": 29
+				},
+				"stealth": {
+					"std": 30
+				},
+				"survival": {
+					"std": 32
+				}
+			},
+			"abilityMods": {
+				"str": 9,
+				"dex": 5,
+				"con": 8,
+				"int": 5,
+				"wis": 7,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 40
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 26
+					},
+					"will": {
+						"std": 30
+					}
+				},
+				"hp": [
+					{
+						"hp": 310
+					}
+				],
+				"resistances": [
+					{
+						"name": "cold",
+						"amount": 15
+					},
+					{
+						"name": "fire",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "jaws",
+					"attack": 32,
+					"damage": "{@damage 3d8+17} piercing plus {@damage 2d6} cold or fire and Improved Knockdown"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Eclipse Aura",
+						"traits": [
+							"aura",
+							"darkness",
+							"occult"
+						],
+						"entries": [
+							"100 feet. Light and shadows morph strangely around the bul-gae. A creature attempting to create a {@trait light} effect within the aura must attempt a DC {@flatDC 5} flat check. On a failure, the attempt fails, the effect is lost, and the DC to counteract {@trait darkness} effects within the aura is increased by 1."
+						]
+					},
+					{
+						"name": "Solar Flare",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"evocation",
+							"fire",
+							"occult"
+						],
+						"trigger": "The bul-gae takes damage",
+						"entries": [
+							"The bul-gae releases a solar flare in a 30-foot emanation. Each creature in the area takes {@damage 6d8} fire damage (DC 38 basic Reflex save). On a critical failure, a creature also takes {@damage 2d10} {@condition persistent damage||persistent fire damage}. After using this ability, the bul-gae's flames cool and they can't use Solar Flare again until after they have used Lunar Burst."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Lunar Burst",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"cold",
+							"evocation",
+							"occult"
+						],
+						"entries": [
+							"The bul-gae releases a blast of otherworldly frost that deals {@damage 6d8} cold damage to each creature in a 10-foot emanation (DC 38 basic Reflex save). On a critical failure, a creature also becomes {@condition slowed||slowed 2}. After using this ability, the bul-gae's flames heat up and they can't use Lunar Burst again until after they have used Solar Flare."
+						]
+					},
+					{
+						"name": "Shadow Leap",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"occult",
+							"shadow",
+							"teleportation"
+						],
+						"requirements": "The bul-gae is in dim light or darkness",
+						"entries": [
+							"The bul-gae dives into a shadow and reappears from another shadow within 40 feet."
+						]
+					},
+					{
+						"name": "Thermal Mastery",
+						"entries": [
+							"The bul-gae has total control over the powers of cold and fire. Each time they attack with their jaws, they can choose either cold or fire for the additional damage."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "The Courtesan",
+			"source": "SF3",
+			"page": 24,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Crowns"
+							]
+						}
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"type": "ability",
+							"name": "Change Faces",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"illusion",
+								"occult"
+							],
+							"entries": [
+								"The Courtesan removes their mask and replaces it with one depicting a specific person. This grants the Courtesan the effects of an 8th-level {@spell illusory disguise}. The Courtesan doesn’t need to have seen the individual person depicted on the mask."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Queen Mother",
+			"source": "SF3",
+			"page": 24,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"huge",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Stars"
+							]
+						}
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"type": "ability",
+							"name": "Summon Servants",
+							"activity": {
+								"number": 3,
+								"unit": "action"
+							},
+							"frequency": {
+								"number": 1,
+								"unit": "day"
+							},
+							"traits": [
+								"conjuration",
+								"occult"
+							],
+							"entries": [
+								"The Queen Mother calls forth dozens of her servants. These servants can speak the same languages as the Queen Mother. She can command her servants as a free action, and they can undertake the same basic actions as an {@spell unseen servant}. On the Queen’s command, the servants can gather into a troop to protect their queen in a process that takes 1 round (use statistics for a {@creature terra-cotta garrison|B3}). The servant troop fights to the death to defend their queen."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Unicorn",
+			"source": "SF3",
+			"page": 24,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"large",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 35,
+					"attack": 27,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "ill omen",
+									"source": "LOGM",
+									"amount": "at will"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "augury"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "heal",
+									"amount": 3
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "heal",
+									"amount": 2
+								},
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "heal"
+								},
+								{
+									"name": "visions of danger"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "uncontrollable dance"
+								}
+							]
+						}
+					}
+				}
+			],
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Stars"
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Dance",
+			"source": "SF3",
+			"page": 28,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": [
+						{
+							"mode": "replaceArr",
+							"replace": "Harrowkin Suit",
+							"items": {
+								"name": "Harrowkin Suit",
+								"entries": [
+									"Keys"
+								]
+							}
+						},
+						{
+							"mode": "appendArr",
+							"items": {
+								"name": "Graceful Steps",
+								"entries": [
+									"The Dance doesn’t provoke reactions due to her movement whenever she {@action Stride||Strides}."
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "The Fool",
+			"source": "SF3",
+			"page": 28,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": [
+						{
+							"mode": "replaceArr",
+							"replace": "Harrowkin Suit",
+							"items": {
+								"name": "Harrowkin Suit",
+								"entries": [
+									"Books"
+								]
+							}
+						},
+						{
+							"mode": "appendArr",
+							"items": {
+								"name": "Overly Trusting",
+								"entries": [
+									"The Fool naively assumes a lack of ill intent from everyone they meet. They take a −4 penalty to their Will DC against checks to {@action Coerce}, {@action Demoralize}, {@action Make an Impression}, and {@action Request}."
+								]
+							}
+						}
+					],
+					"defenses.immunities": {
+						"mode": "appendArr",
+						"items": [
+							"controlled",
+							"stupefied"
+						]
+					},
+					"defenses.resistances": {
+						"mode": "appendArr",
+						"items": {
+							"name": "mental",
+							"amount": 20
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Joke",
+			"source": "SF3",
+			"page": 24,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 35,
+					"attack": 27,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "ill omen",
+									"source": "LOGM",
+									"amount": "at will"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "augury"
+								},
+								{
+									"name": "hideous laughter",
+									"amount": 3
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "visions of danger"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "uncontrollable dance"
+								}
+							]
+						}
+					}
+				}
+			],
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Crowns"
+							]
+						}
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"type": "ability",
+							"name": "Distressing Joke",
+							"activity": {
+								"number": 2,
+								"unit": "action"
+							},
+							"traits": [
+								"auditory",
+								"enchantment",
+								"linguistic",
+								"occult"
+							],
+							"entries": [
+								"The Joke shares a wisecrack with a particularly torturous punchline. All non-harrowkin within 30 feet that hear the joke must attempt a DC 36 Will save. On a failure, the creature is so upset by the joke that they grow physically ill, becoming {@condition slowed||slowed 1} ({@condition slowed||slowed 2} on a critical failure) for 1 minute. The Joke can’t use Distressing Joke again for {@dice 1d4} rounds."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "The Twin",
+			"source": "SF3",
+			"page": 24,
+			"level": 17,
+			"traits": [
+				"unique",
+				"n",
+				"medium",
+				"construct"
+			],
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"initiative": {
+				"perception": {
+					"std": 29
+				}
+			},
+			"_copy": {
+				"name": "Fabled Harrowkin",
+				"source": "SF3",
+				"_mod": {
+					"abilities.top": {
+						"mode": "replaceArr",
+						"replace": "Harrowkin Suit",
+						"items": {
+							"name": "Harrowkin Suit",
+							"entries": [
+								"Crowns"
+							]
+						}
+					},
+					"abilities.bot": {
+						"mode": "appendArr",
+						"items": {
+							"type": "ability",
+							"name": "Help Themselves",
+							"activity": {
+								"number": 3,
+								"unit": "action"
+							},
+							"frequency": {
+								"number": 1,
+								"unit": "minute"
+							},
+							"entries": [
+								"The Twin tasks its other half to aid themselves in combat. Until the start of their next turn, the Twins work together, providing flanking for themselves against all enemies within their reach. Flanking with themselves in this way is the same as flanking with an ally and so is subject to effects like {@ability all-around vision} or the {@classFeature deny advantage|rogue||3} class feature."
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Ildamir",
+			"source": "SF3",
+			"page": 35,
+			"description": "Variant {@creature suvarden|SF3}",
+			"level": 20,
+			"traits": [
+				"unique",
+				"n",
+				"large",
+				"beast"
+			],
+			"perception": {
+				"std": 36
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"druidic",
+					"sylvan"
+				],
+				"abilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 37
+				},
+				"athletics": {
+					"std": 34
+				},
+				"diplomacy": {
+					"std": 37
+				},
+				"nature": {
+					"std": 34
+				},
+				"norn lore": {
+					"std": 36
+				},
+				"occultism": {
+					"std": 32
+				},
+				"society": {
+					"std": 32
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 7,
+				"con": 6,
+				"int": 4,
+				"wis": 6,
+				"cha": 9
+			},
+			"defenses": {
+				"ac": {
+					"std": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 35
+					},
+					"ref": {
+						"std": 33
+					},
+					"will": {
+						"std": 36
+					}
+				},
+				"hp": [
+					{
+						"hp": 375,
+						"abilities": [
+							"all-around vision"
+						]
+					}
+				],
+				"immunities": [
+					"confused",
+					"controlled",
+					"misfortune"
+				]
+			},
+			"speed": {
+				"walk": 50,
+				"climb": 20,
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "antler",
+					"attack": 36,
+					"damage": "{@damage 4d12+16} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"reach <10 feet>"
+					],
+					"name": "hoof",
+					"attack": 36,
+					"damage": "{@damage 4d10+16} bludgeoning"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 42,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "know direction"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "augury",
+									"amount": 2
+								},
+								{
+									"name": "mindlink",
+									"amount": "at will"
+								},
+								{
+									"name": "true strike",
+									"amount": 3
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "hypercognition"
+								},
+								{
+									"name": "teleport",
+									"notes": [
+										"self only"
+									]
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "plane shift",
+									"notes": [
+										"self only"
+									]
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Reweave Fate",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divination",
+							"primal"
+						],
+						"entries": [
+							"As {@creature suvarden|SF3}."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Web of Fate",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divination",
+							"primal"
+						],
+						"entries": [
+							"As {@creature suvarden|SF3}, but DC 42."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Bolti Sorrinson",
+			"source": "SF3",
+			"page": 38,
+			"description": "Variant male {@creature draugr|B2}",
+			"level": 20,
+			"traits": [
+				"unique",
+				"cn",
+				"medium",
+				"undead",
+				"water"
+			],
+			"perception": {
+				"std": 34
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"skald"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 38
+				},
+				"intimidation": {
+					"std": 36
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 4,
+				"con": 7,
+				"int": 2,
+				"wis": 6,
+				"cha": 6
+			},
+			"items": [
+				"Icefang (+3 major striking greater frost greataxe)",
+				"+2 greater resilient leather armor"
+			],
+			"defenses": {
+				"ac": {
+					"std": 44
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 35
+					},
+					"ref": {
+						"std": 30
+					},
+					"will": {
+						"std": 34
+					}
+				},
+				"hp": [
+					{
+						"hp": 399,
+						"abilities": [
+							"negative healing"
+						]
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"paralyzed",
+					"poison",
+					"unconscious"
+				],
+				"weaknesses": [
+					{
+						"name": "positive",
+						"amount": 20
+					}
+				],
+				"resistances": [
+					{
+						"name": "fire",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"swim": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"sweep"
+					],
+					"name": "Icefang",
+					"attack": 39,
+					"damage": "{@damage 4d12+16} slashing plus {@damage 1d6} cold and Grotesque Gift"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "fist",
+					"attack": 36,
+					"damage": "{@damage 4d8+16} bludgeoning plus Grotesque Gift"
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "The Sea's Revenge",
+						"traits": [
+							"curse",
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"A creature that slays Bolti is subjected to a {@spell mariner's curse} spell (heightened to 10th level, DC 42). The {@trait curse} ends if the cursed victim slays Trygve, or after 1 year passes."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Grotesque Gift",
+						"traits": [
+							"olfactory"
+						],
+						"entries": [
+							"Bolti's attacks spatter his targets with rancid flesh and clotted blood. A creature damaged by one of Bolti's {@action Strike||Strikes} must succeed at a DC 39 Fortitude save or become {@condition sickened||sickened 1} ({@condition sickened||sickened 2} on a critical failure)."
+						]
+					},
+					{
+						"name": "Great Swipe",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Bolti makes a melee {@action Strike} and compares the attack roll result to the AC of up to three foes, each of whom must be within his melee reach and adjacent to each other. Roll damage only once and apply it to each creature hit. A Great Swipe counts as three attacks for Bolti's multiple attack penalty."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "The Keeper",
+			"source": "SF3",
+			"page": 40,
+			"description": "Variant female {@creature vilderavn|B3}",
+			"level": 21,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"fey"
+			],
+			"perception": {
+				"std": 36
+			},
+			"senses": [
+				{
+					"name": "greater darkvision"
+				},
+				{
+					"name": "true seeing"
+				}
+			],
+			"languages": {
+				"languages": [
+					"aklo",
+					"common",
+					"infernal",
+					"sylvan"
+				],
+				"abilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 37
+				},
+				"athletics": {
+					"std": 39
+				},
+				"deception": {
+					"std": 39
+				},
+				"heraldry lore": {
+					"std": 34
+				},
+				"society": {
+					"std": 36
+				},
+				"stealth": {
+					"std": 35
+				},
+				"warfare lore": {
+					"std": 36
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 6,
+				"con": 6,
+				"int": 5,
+				"wis": 5,
+				"cha": 8
+			},
+			"items": [
+				"+2 greater resilient full plate",
+				"+3 greater striking greatsword"
+			],
+			"defenses": {
+				"ac": {
+					"std": 47
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 37
+					},
+					"ref": {
+						"std": 35
+					},
+					"will": {
+						"std": 32
+					}
+				},
+				"hp": [
+					{
+						"hp": 385
+					}
+				],
+				"immunities": [
+					"curses",
+					"death effects",
+					"drained",
+					"fear"
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"fly": 120
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"versatile <P>"
+					],
+					"name": "greatsword",
+					"attack": 40,
+					"damage": "{@damage 4d12+16} slashing plus bloodbird"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"magical"
+					],
+					"name": "jaws",
+					"attack": 37,
+					"damage": "{@damage 4d6+16} piercing plus bloodbird"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical"
+					],
+					"name": "talon",
+					"attack": 37,
+					"damage": "{@damage 4d6+16} slashing plus bloodbird"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 41,
+					"entry": {
+						"7": {
+							"spells": [
+								{
+									"name": "outcast's curse",
+									"amount": "at will"
+								},
+								{
+									"name": "suggestion",
+									"amount": "at will"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "crushing despair",
+									"amount": "at will"
+								},
+								{
+									"name": "modify memory"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "ethereal jaunt"
+								},
+								{
+									"name": "suggestion"
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "tongues"
+									},
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Aura of Disquietude",
+						"traits": [
+							"aura",
+							"emotion",
+							"fear",
+							"mental"
+						],
+						"entries": [
+							"As {@creature vilderavn|B3}, but DC 41."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Maintain Fate",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"abjuration",
+							"occult"
+						],
+						"trigger": "The Keeper would be subjected to a {@trait misfortune} effect, become {@condition slowed}, or become {@condition stunned}",
+						"entries": [
+							"The Keeper manipulates reality to maintain control of her own destiny and twists the fate of those that dared tamper with her own. The Keeper disrupts the triggering effect and becomes {@condition quickened} until the end of her next turn. She can use the extra action to {@action Fly}, {@action Step}, {@action Stride}, or {@action Strike}. If the effect originated from a creature, such as an enemy casting {@spell slow} on the Keeper, that creature is targeted with an {@spell ill omen|PAPG} spell. The creature must attempt a DC 44 Will save to determine the effects of the spell."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Bloodbird",
+						"traits": [
+							"curse",
+							"occult"
+						],
+						"entries": [
+							"As {@creature vilderavn|B3}, but DC 41."
+						]
+					},
+					{
+						"name": "Change Shape",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"concentrate",
+							"occult",
+							"polymorph",
+							"transmutation"
+						],
+						"entries": [
+							"As {@creature vilderavn|B3}."
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Souleater",
+						"traits": [
+							"necromancy",
+							"occult"
+						],
+						"entries": [
+							"As {@creature vilderavn|B3}, but DC 44."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Svarýr Soldier",
+			"source": "SF3",
+			"page": 42,
+			"description": "Variant {@creature einherji|B3}",
+			"level": 16,
+			"traits": [
+				"rare",
+				"cn",
+				"medium",
+				"aesir",
+				"monitor"
+			],
+			"perception": {
+				"std": 30
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"skald",
+					"jotun"
+				],
+				"abilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 32
+				},
+				"crafting": {
+					"std": 25
+				},
+				"intimidation": {
+					"std": 29
+				}
+			},
+			"abilityMods": {
+				"str": 8,
+				"dex": 5,
+				"con": 7,
+				"int": 1,
+				"wis": 3,
+				"cha": 5
+			},
+			"items": [
+				"+2 greater striking returning dagger",
+				"+2 greater striking longsword",
+				"greater sturdy shield (Hardness 15, HP 120, BT 60)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 39
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 31
+					},
+					"ref": {
+						"std": 27
+					},
+					"will": {
+						"std": 25,
+						"vs. fear": 29
+					}
+				},
+				"hp": [
+					{
+						"hp": 295
+					}
+				],
+				"resistances": [
+					{
+						"name": "piercing",
+						"amount": 15
+					}
+				]
+			},
+			"speed": {
+				"walk": 40,
+				"fly": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"versatile <P>"
+					],
+					"name": "longsword",
+					"attack": 34,
+					"damage": "{@damage 3d8+16} slashing plus {@damage 2d6} mental"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile"
+					],
+					"name": "fist",
+					"attack": 32,
+					"damage": "{@damage 3d6+16} bludgeoning"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"magical",
+						"thrown <10 feet>",
+						"versatile <S>"
+					],
+					"name": "dagger",
+					"attack": 31,
+					"damage": "{@damage 3d4+16} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"focus": true,
+					"name": "Champion Devotion Spells",
+					"fp": 3,
+					"DC": 34,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "lay on hands"
+								},
+								{
+									"name": "weapon surge"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "word of freedom"
+								},
+								{
+									"name": "zeal for battle"
+								}
+							]
+						}
+					}
+				},
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 34,
+					"entry": {
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Shield Block",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Challenge Foe",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The soldier challenges one creature they can see to single combat, attempting to {@action Demoralize} that target. This target remains the soldier's foe until it's defeated, it flees, or the encounter ends. The soldier gains a circumstance bonus to damage equal to their number of weapon damage dice against their designated foe but takes an equivalent circumstance penalty to damage against any other creature. If the soldier is defeated by their challenged foe, the shame causes them to lose use of their champion devotion spells for 1 week or until they challenge the same foe again and emerge victorious, whichever comes first."
+						]
+					},
+					{
+						"name": "Defender of Svarýr",
+						"entries": [
+							"The soldier's melee {@action Strike||Strikes} with a longsword become infused with the convictions of their duty, and deal an additional {@damage 2d6} mental damage against foes they fight while in Svarýr (listed above)."
+						]
+					},
+					{
+						"name": "Instant Repair",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"The soldier {@action Repair||Repairs} their shield. They can't use this ability if the shield is completely destroyed."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Svarýr Commander",
+			"source": "SF3",
+			"page": 43,
+			"description": "Variant {@creature valkyrie|B3}",
+			"level": 19,
+			"traits": [
+				"rare",
+				"cn",
+				"medium",
+				"aesir",
+				"monitor"
+			],
+			"perception": {
+				"std": 33
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"jotun"
+				],
+				"abilities": [
+					"ravenspeaker",
+					"tongues"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 34
+				},
+				"athletics": {
+					"std": 38
+				},
+				"diplomacy": {
+					"std": 34
+				},
+				"intimidation": {
+					"std": 34
+				},
+				"religion": {
+					"std": 33
+				}
+			},
+			"abilityMods": {
+				"str": 10,
+				"dex": 7,
+				"con": 7,
+				"int": 3,
+				"wis": 6,
+				"cha": 7
+			},
+			"items": [
+				"+2 greater resilient breastplate",
+				"+2 greater striking returning spear"
+			],
+			"defenses": {
+				"ac": {
+					"std": 44
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 34
+					},
+					"ref": {
+						"std": 32
+					},
+					"will": {
+						"std": 31
+					}
+				},
+				"hp": [
+					{
+						"hp": 330
+					}
+				],
+				"resistances": [
+					{
+						"name": "electricity",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical"
+					],
+					"name": "spear",
+					"attack": 38,
+					"damage": "{@damage 3d6+17} piercing plus {@damage 2d12} electricity"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"magical",
+						"thrown <20 feet>"
+					],
+					"name": "spear",
+					"attack": 36,
+					"damage": "{@damage 3d6+17} piercing plus {@damage 2d12} electricity"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "divine",
+					"type": "Innate",
+					"DC": 38,
+					"attack": 30,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "augury"
+								},
+								{
+									"name": "sanctified ground"
+								},
+								{
+									"name": "status"
+								},
+								{
+									"name": "wanderer's guide"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "disrupting weapons"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "heroism"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "heal"
+								},
+								{
+									"name": "plane shift",
+									"notes": [
+										"self and mount only"
+									]
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "heal"
+								},
+								{
+									"name": "weapon of judgment"
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Claimer of the Heroic Dead",
+						"traits": [
+							"divine",
+							"necromancy"
+						],
+						"entries": [
+							"Svarýr commanders can detect the souls of those recently dead. A commander spends 10 minutes praying over the body of a creature who has been dead for no more than 12 hours; if that creature is worthy of becoming an {@creature einherji|B3} and of the appropriate alignment, the commander transforms that creature into a {@creature Svarýr soldier|SF3}."
+						]
+					},
+					{
+						"name": "Ravenspeaker",
+						"traits": [
+							"divination",
+							"divine"
+						],
+						"entries": [
+							"As {@creature valkyrie|B3}."
+						]
+					}
+				],
+				"mid": [
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Recall the Fallen",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divine",
+							"healing",
+							"necromancy"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"trigger": "An allied creature within 60 feet who isn't a {@trait construct} or {@trait undead} is reduced to 0 Hit Points and their {@condition dying} value is 2 or less",
+						"entries": [
+							"The commander restores {@dice 8d10} Hit Points to the target."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Storm of Battle",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"divine",
+							"electricity",
+							"evocation"
+						],
+						"entries": [
+							"The commander hurls their spear into the air, creating a massive storm in a 100-foot burst. Spears of lightning rain down upon enemies in the area, dealing {@damage 5d12} electricity damage (DC 41 basic Reflex save)."
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "Gegnir",
+			"source": "SF3",
+			"page": 44,
+			"description": "Variant {@creature jotund troll|B2}",
+			"level": 20,
+			"traits": [
+				"unique",
+				"n",
+				"huge",
+				"giant",
+				"mutant",
+				"troll"
+			],
+			"perception": {
+				"std": 35
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"jotun"
+				],
+				"abilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"athletics": {
+					"std": 38
+				},
+				"fortune-telling lore": {
+					"std": 35
+				},
+				"intimidation": {
+					"std": 37
+				},
+				"occultism": {
+					"std": 35
+				}
+			},
+			"abilityMods": {
+				"str": 10,
+				"dex": 4,
+				"con": 10,
+				"int": 2,
+				"wis": 7,
+				"cha": 4
+			},
+			"defenses": {
+				"ac": {
+					"std": 44,
+					"abilities": [
+						"all-around vision"
+					]
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 38
+					},
+					"ref": {
+						"std": 30
+					},
+					"will": {
+						"std": 33
+					}
+				},
+				"hp": [
+					{
+						"hp": 470,
+						"abilities": [
+							"regeneration 40 (deactivated by acid or fire)"
+						]
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"reach <15 feet>"
+					],
+					"name": "jaws",
+					"attack": 38,
+					"damage": "{@damage 4d12+18} piercing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <15 feet>"
+					],
+					"name": "claw",
+					"attack": 38,
+					"damage": "{@damage 4d8+18} slashing"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"reach <30 feet>"
+					],
+					"name": "intestine",
+					"attack": 38,
+					"damage": "{@damage 4d4+10} bludgeoning plus Intestinal Tether"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 39,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "read aura"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "augury",
+									"amount": "at will"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "confusion"
+								},
+								{
+									"name": "mind reading"
+								},
+								{
+									"name": "true strike",
+									"amount": 3
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "foresight"
+								},
+								{
+									"name": "true seeing"
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"mid": [
+					{
+						"name": "Head Rerowth",
+						"entries": [
+							"Gegnir has nine heads, and he can use {@ability regeneration} to regrow a head that is severed from an effect like a vorpal weapon. After regaining Hit Points from {@ability regeneration}, the jotund troll attempts a DC {@flatDC 8} flat check. On a success, one missing head is fully restored; on a critical success, two missing heads are fully restored. If Gegnir loses his last remaining head, he dies immediately."
+						]
+					},
+					{
+						"name": "Multiple Opportunities",
+						"entries": [
+							"A jotund troll gains an extra reaction per round for each of their heads beyond the first, which they can use only to make {@action Attack of Opportunity||Attacks of Opportunity} with their jaws or to Fast Swallow. They can't use more than 1 reaction for the same triggering action, even if a creature leaves several squares within their reach, and the jotund troll must use a different head for each {@action Attack of Opportunity} they make. Whenever one of Gegnir's heads is severed, he loses 1 of his extra reactions per round."
+						]
+					},
+					{
+						"name": "Attack of Opportunity",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Catch Rock",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				],
+				"bot": [
+					{
+						"name": "Cacophonous Roar",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"traits": [
+							"auditory",
+							"emotion",
+							"enchantment",
+							"incapacitation",
+							"mental",
+							"primal"
+						],
+						"entries": [
+							"Gegnir emits a cacophonous roar from all his heads with a mystical power that distorts the listener's mind. Each non-{@trait troll} creature within 100 feet must attempt a DC 42 Will save. Gegnir can't use Cacophonous Roar for {@dice 1d4} rounds.",
+							{
+								"type": "successDegree",
+								"entries": {
+									"Critical Success": [
+										"The creature is unaffected and is temporarily immune to Cacophonous Roar for 24 hours."
+									],
+									"Success": [
+										"The creature is {@condition stupefied||stupefied 1} for 1 round."
+									],
+									"Failure": [
+										"The creature is {@condition confused} for 1 round."
+									],
+									"Critical Failure": [
+										"The creature is {@condition confused} for {@dice 1d4} rounds."
+									]
+								}
+							}
+						]
+					},
+					{
+						"name": "Fast Swallow",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"trigger": "Gegnir {@ability Grab||Grabs} a creature with his jaws",
+						"entries": [
+							"Gegnir uses {@ability Swallow Whole}."
+						]
+					},
+					{
+						"name": "Gut Tug",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Gegnir's intestines slither back into his body, pulling a creature {@condition grabbed} by his intestines toward himself. Gegnir rolls an {@skill Athletics} check against the creature's Fortitude DC. With a success, he pulls the creature into an adjacent space, and if he critically succeeds he can also make a jaws {@action Strike} against the creature after the pull."
+						]
+					},
+					{
+						"name": "Intestinal Tether",
+						"entries": [
+							"A creature hit by Gegnir's intestine becomes {@condition grabbed}. The creature isn't {@condition immobilized}, but it can't move beyond the reach of Gegnir's intestine. A creature can sever the intestine with a successful {@action Strike} against AC 41 that deals at least 20 slashing damage. This deals no damage to Gegnir but prevents him from using his intestine {@action Strike} until he regrows his intestine, which takes 1 minute."
+						]
+					},
+					{
+						"name": "Ravenous Jaws",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"entries": [
+							"Gegnir makes a number of jaws {@action Strike||Strikes} up to his number of heads, each against a different target. These attacks count toward the troll's multiple attack penalty, but the penalty doesn't increase until after he makes all of these attacks."
+						]
+					},
+					{
+						"name": "Rend",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"entries": [
+							"claw"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					},
+					{
+						"name": "Swallow Whole",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"attack"
+						],
+						"entries": [
+							"Medium, {@damage 4d12+10} bludgeoning, Rupture 40"
+						],
+						"generic": {
+							"tag": "ability"
+						}
+					}
+				]
+			}
+		},{
+			"name": "Speaker of Svarýr",
+			"source": "SF3",
+			"page": 46,
+			"description": "Variant female {@creature huldra|B3}",
+			"level": 20,
+			"traits": [
+				"unique",
+				"cn",
+				"medium",
+				"fey"
+			],
+			"perception": {
+				"std": 34
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				},
+				{
+					"name": "scent",
+					"type": "imprecise",
+					"unit": "feet",
+					"number": 60
+				}
+			],
+			"languages": {
+				"languages": [
+					"common",
+					"sylvan"
+				],
+				"abilities": [
+					"speak with plants",
+					"tongues"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 34
+				},
+				"athletics": {
+					"std": 34
+				},
+				"deception": {
+					"std": 36,
+					"to {@action Impersonate} a human version of herself": 40
+				},
+				"diplomacy": {
+					"std": 38
+				},
+				"intimidation": {
+					"std": 36
+				},
+				"nature": {
+					"std": 34
+				}
+			},
+			"abilityMods": {
+				"str": 6,
+				"dex": 6,
+				"con": 5,
+				"int": 4,
+				"wis": 6,
+				"cha": 8
+			},
+			"defenses": {
+				"ac": {
+					"std": 44
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 31
+					},
+					"ref": {
+						"std": 36
+					},
+					"will": {
+						"std": 33
+					}
+				},
+				"hp": [
+					{
+						"hp": 380,
+						"abilities": [
+							"regeneration 30 (deactivated by acid or fire)"
+						]
+					}
+				],
+				"weaknesses": [
+					{
+						"name": "cold iron",
+						"amount": 20
+					},
+					{
+						"name": "fire",
+						"amount": 20
+					}
+				]
+			},
+			"speed": {
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"versatile <S>"
+					],
+					"name": "fist",
+					"attack": 36,
+					"damage": "{@damage 4d10+14} bludgeoning plus {@damage 2d8} mental"
+				},
+				{
+					"range": "Melee",
+					"traits": [
+						"agile",
+						"magical",
+						"backswing"
+					],
+					"name": "tail",
+					"attack": 36,
+					"damage": "{@damage 4d6+14} bludgeoning plus {@damage 2d10} mental and Befuddling Lash"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "primal",
+					"type": "Innate",
+					"DC": 42,
+					"attack": 34,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "light"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "chain lightning",
+									"amount": 3
+								},
+								{
+									"name": "slow"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "cloudkill"
+								},
+								{
+									"name": "fly"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "heal"
+								},
+								{
+									"name": "mask of terror"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "disjunction"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "chain lightning"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"constant": {
+							"10": {
+								"spells": [
+									{
+										"name": "speak with plants"
+									},
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilities": {
+				"bot": [
+					{
+						"name": "Befuddling Lash",
+						"traits": [
+							"curse",
+							"enchantment",
+							"mental"
+						],
+						"entries": [
+							"When the Speaker damages a creature with her tail, a wave of befuddlement clouds the target's thoughts. The creature must succeed at a DC 42 Will save or become {@condition stupefied||stupefied 1} ({@condition stupefied||stupefied 2} on a critical failure) for 1 minute."
+						]
+					},
+					{
+						"name": "Manipulate Luck",
+						"activity": {
+							"number": 1,
+							"unit": "action"
+						},
+						"traits": [
+							"curse",
+							"primal"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "day"
+						},
+						"entries": [
+							"The huldra touches another creature to manipulate the creature's luck. The creature must attempt a DC 42 Will save. On a failure, the huldra chooses good luck or bad luck. If the huldra chooses good luck, the affected creature can roll twice on one {@dice d20} roll within the next minute and use the higher result; this is a {@trait fortune} effect. If the huldra chooses bad luck, the creature must roll twice and use the lower result on its next {@dice d20} roll; this is a {@trait misfortune} effect."
+						]
+					}
+				]
+			}
+		},{
+			"name": "The Betrayal",
+			"source": "SF3",
+			"page": 57,
+			"description": "Variant {@creature fabled harrowkin|SF3}",
+			"level": 20,
+			"traits": [
+				"unique",
+				"ne",
+				"medium",
+				"construct"
+			],
+			"perception": {
+				"std": 33
+			},
+			"senses": [
+				{
+					"name": "darkvision"
+				}
+			],
+			"languages": {
+				"languages": [
+					"common"
+				]
+			},
+			"skills": {
+				"acrobatics": {
+					"std": 35
+				},
+				"athletics": {
+					"std": 35
+				},
+				"deception": {
+					"std": 38
+				},
+				"diplomacy": {
+					"std": 38
+				},
+				"occultism": {
+					"std": 33
+				}
+			},
+			"abilityMods": {
+				"str": 7,
+				"dex": 7,
+				"con": 7,
+				"int": 2,
+				"wis": 3,
+				"cha": 10
+			},
+			"items": [
+				"harrow deck (53 cards; function as darts)"
+			],
+			"defenses": {
+				"ac": {
+					"std": 45
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 33
+					},
+					"ref": {
+						"std": 35
+					},
+					"will": {
+						"std": 31
+					}
+				},
+				"hp": [
+					{
+						"hp": 360
+					}
+				],
+				"immunities": [
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued",
+					"healing",
+					"misfortune",
+					"necromancy",
+					"nonlethal attacks",
+					"paralyzed",
+					"poison",
+					"sickened",
+					"unconscious"
+				]
+			},
+			"speed": {
+				"walk": 25,
+				"fly": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"traits": [
+						"magical",
+						"versatile <P>"
+					],
+					"name": "claws",
+					"attack": 37,
+					"damage": "{@damage 4d12+15} slashing"
+				},
+				{
+					"range": "Ranged",
+					"traits": [
+						"agile",
+						"magical",
+						"range increment <20 feet>",
+						"thrown"
+					],
+					"name": "harrow card",
+					"attack": 37,
+					"damage": "{@damage 4d6+15} piercing"
+				}
+			],
+			"spellcasting": [
+				{
+					"tradition": "occult",
+					"type": "Innate",
+					"DC": 42,
+					"attack": 34,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "color spray"
+								},
+								{
+									"name": "ill omen"
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "augury"
+								},
+								{
+									"name": "hideous laughter"
+								},
+								{
+									"name": "mirror image"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "hypnotic pattern"
+								},
+								{
+									"name": "paralyze"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion"
+								},
+								{
+									"name": "phantasmal killer"
+								},
+								{
+									"name": "suggestion"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "shadow blast"
+								},
+								{
+									"name": "shadow siphon"
+								},
+								{
+									"name": "synesthesia"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "feeblemind"
+								},
+								{
+									"name": "spirit blast"
+								},
+								{
+									"name": "true seeing"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "prismatic spray"
+								},
+								{
+									"name": "visions of danger"
+								},
+								{
+									"name": "warp mind"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "discern location"
+								},
+								{
+									"name": "maze"
+								},
+								{
+									"name": "uncontrollable dance"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "foresight"
+								},
+								{
+									"name": "wail of the banshee"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilities": {
+				"top": [
+					{
+						"name": "Harrowkin Suit",
+						"entries": [
+							"Crowns"
+						]
+					},
+					{
+						"name": "Read the Cards",
+						"activity": {
+							"number": 1,
+							"unit": "free"
+						},
+						"entries": [
+							"As {@creature fabled harrowkin|SF3}."
+						],
+						"generic": {
+							"tag": "ability",
+							"source": "SF3"
+						}
+					}
+				],
+				"mid": [
+					{
+						"name": "Defensive Suit",
+						"entries": [
+							"As {@creature fabled harrowkin|SF3}."
+						],
+						"generic": {
+							"tag": "ability",
+							"source": "SF3"
+						}
+					},
+					{
+						"name": "Twist Fate",
+						"activity": {
+							"number": 1,
+							"unit": "reaction"
+						},
+						"traits": [
+							"divination",
+							"fortune",
+							"occult"
+						],
+						"frequency": {
+							"number": 1,
+							"unit": "minute"
+						},
+						"trigger": "A creature critically hits the Betrayal",
+						"entries": [
+							"The Betrayal manipulates fortune in her favor. The triggering attack becomes a hit instead."
+						]
+					}
+				],
+				"bot": [
+					{
+						"name": "Shuffle the Deck",
+						"activity": {
+							"number": 2,
+							"unit": "action"
+						},
+						"generic": {
+							"tag": "ability",
+							"source": "SF3"
+						}
+					},
+					{
+						"name": "Shift Reality",
+						"activity": {
+							"number": 3,
+							"unit": "action"
+						},
+						"traits": [
+							"conjuration",
+							"occult",
+							"teleportation"
+						],
+						"entries": [
+							"If the Betrayal is in the Harrowing Room, she vanishes and then reappears at any location she chooses in Sonnorae's Library. If she's in the library, she vanishes and reappears in a space of her choice in the Harrowing Room."
+						]
+					}
+				]
+			}
+		}
+	]
+}

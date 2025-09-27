@@ -1,5 +1,138 @@
 {
-	"hazard": [{
+	"hazard": [
+		{
+			"name": "The Eclipse",
+			"source": "SF3",
+			"page": 22,
+			"level": 19,
+			"traits": [
+				"unique",
+				"complex",
+				"environmental"
+			],
+			"stealth": {
+				"bonus": 0,
+				"minProf": "trained"
+			},
+			"description": [
+				"The Eclipse is located high in the sky, manifesting as an eclipsed sun."
+			],
+			"disable": {
+				"entries": [
+					"reduce the Eclipse to 0 HP, or {@spell dispel magic} (10th level; counteract DC 39) to counteract the Eclipse (once it's in range)"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"std": 46
+				},
+				"savingThrows": {
+					"fort": {
+						"std": 32
+					},
+					"ref": {
+						"std": 38
+					}
+				},
+				"hardness": {
+					"std": 32
+				},
+				"hp": {
+					"std": 124
+				},
+				"bt": {
+					"std": 62
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"actions": [
+				{
+					"name": "Herald the End",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The PCs arrive at the island",
+					"entries": [
+						"A fiery point of light appears in the sky at the center of the Eclipse, swiftly growing in size as it becomes apparent that a meteor is hurtling toward the island. The Eclipse rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The Eclipse heals 50 points of damage, retreats upward from PCs if any have approached (as determined by its Distance Score), then unleashes a meteor down on the island below. The meteor explodes upon striking the island, creating a 30-foot radius burst that inflicts {@damage 8d6} fire and {@damage 4d6} bludgeoning damage (DC 41 basic Reflex save) to all creatures caught in the blast. The eclipse targets these strikes to catch as many PCs in the blast as it can each time\u2014while it doesn't seek to damage a {@creature bul-gae|FRP3}, it won't worry about catching one or both in the area of effect if that spot is the most advantageous to striking the most possible PCs."
+			]
+		},
+		{
+			"name": "The Avalanche",
+			"source": "SF3",
+			"page": 11,
+			"level": 19,
+			"traits": [
+				"unique",
+				"complex",
+				"environmental"
+			],
+			"stealth": {
+				"bonus": 37,
+				"minProf": "master"
+			},
+			"description": [
+				"{@item The Avalanche|SF3} rests as a gem on a stone pedestal, continually unleashing natural disasters in the nearby area."
+			],
+			"disable": {
+				"entries": [
+					"Two DC 41 {@skill Athletics} or DC 43 {@skill Survival} checks to approach the pedestal, resisting the quaking earth and other hazards and eventually holding strong enough to take the gem from the pedestal; a creature who can approach the pedestal without touching the ground, such as by jumping or flying, can simply snatch the gem and end the Avalanche's assault"
+				]
+			},
+			"actions": [
+				{
+					"name": "Shuddering Boom",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"earth",
+						"evocation",
+						"incapacitation"
+					],
+					"trigger": "The PCs reach the area depicted on the Trial of the Avalanche map",
+					"entries": [
+						"The Avalanche shudders, causing a thunderous boom to fill the area. All creatures without the {@trait Earth} trait in the area must succeed at a DC 39 Fortitude save or become {@condition stunned||stunned 1} ({@condition stunned||stunned 3} on a critical failure). The Avalanche then rolls initiative."
+					]
+				}
+			],
+			"routine": [
+				"(1 action) The Avalanche releases its fury at a point within 120 feet, affecting all creatures within its area. Each creature must attempt a DC 41 Reflex save to hold their ground or avoid the incoming danger. The amount and type of damage dealt are based on the nature of the natural disaster the Avalanche unleashes, and certain types of disasters impose additional effects. The Avalanche can't unleash the same type of disaster twice in a row. The {@creature sturzstromer|B3} is immune to these effects.",
+				"{@b Earthquake} The ground in a 20-foot burst violently shakes and launches rubble in the area, dealing {@damage 3d12+20} bludgeoning damage. On a failure, the creature also stumbles back 5 feet, away from the Avalanche. On a critical failure, the creature stumbles back 10 feet and is knocked {@condition prone}.",
+				"{@b Fire Rain} A hail of burning rock rains down in a 20-foot-burst, dealing {@damage 3d12+20} fire damage. Creatures that fail their save catch on fire and take {@damage 2d6} {@condition persistent damage||persistent fire damage} (double on a critical failure).",
+				"{@b Landslide} A mass of rubble falls in a 10-foot-burst, dealing {@damage 9d8} bludgeoning damage. Creatures that critically fail their save become trapped under this rubble as if it were an avalanche (Core Rulebook 518), except a creature can attempt to {@action Escape} from beneath the rubble (DC 40).",
+				"{@b Lava Channel} A burst of molten rock violently spews forth in a 30-foot-long and 10-foot-wide line, dealing {@damage 9d8} fire damage. Creatures that fail their Reflex save are swept 15 feet away by the lava (30 feet on a critical failure). The lava cools almost instantly, allowing creatures to walk over its path immediately after resolving the effects of the disaster.",
+				"{@b Powerful Winds} A massive burst of wind travels in a 60-foot line, kicking up dust and dealing {@damage 3d12+20} slashing damage. Creatures that fail their Reflex save become {@condition dazzled} for 1 round and also fall {@condition prone} on a critical failure.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": [
+							"The creature takes no damage."
+						],
+						"Success": [
+							"The creature takes half damage."
+						],
+						"Failure": [
+							"The creature takes full damage."
+						],
+						"Critical Failure": [
+							"The creature takes double damage."
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Maggot Pit",
 			"source": "SF2",
 			"page": 65,

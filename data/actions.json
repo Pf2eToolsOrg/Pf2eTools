@@ -1,6 +1,77 @@
 {
 	"action": [
 		{
+			"name": "Debate the Harrowing Three",
+			"source": "SF3",
+			"page": 50,
+			"traits": [
+				"auditory",
+				"concentrate",
+				"linguistic",
+				"mental"
+			],
+			"entries": [
+				"You spend several minutes arguing your points with the Harrowing Three to convince them of the error of their beliefs. Select one of the key skills associated with the argument you made and attempt a check with that skill—the required DC depends on the skill used, as indicated in the Arguments against Destiny section below.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your argument is particularly well-presented or resonates with the norns. The party gains 2 Argument Points.",
+						"Success": "The norns understand your point. The party gains gain 1 Argument Point.",
+						"Failure": "Your argument is unconvincing.",
+						"Critical Failure": "You manage to undermine your own argument or even argue on behalf of the norns for a moment. The party loses 1 Argument Point."
+					}
+				}
+			]
+		},
+		{
+			"name": "Read the Stars",
+			"source": "SF3",
+			"page": 22,
+			"traits": [
+				"concentrate"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"frequency": {
+				"number": 1,
+				"unit": "round"
+			},
+			"entries": [
+				"You focus on the night sky to determine where the Eclipse currently is, either by attempting a {@skill Perception} check to focus on the Eclipse’s actual location, a Nature check (or with the GM’s approval, an appropriate {@skill Lore} check such as {@skill Lore||Astronomy Lore}) to estimate where on Golarion the view might be from, or a {@skill Society} check to recognize a landmark. The DCs of each check depend on the view presented.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You recognize the location and bring the Eclipse into sharper focus, reducing its Distance Score by 1. You also gain a hint about where the Eclipse might go next, granting you and your allies a +2 circumstance bonus to checks to Read the Stars until the start of your next turn.",
+						"Success": "As critical success, except you gain no bonus.",
+						"Failure": "You’re unable to determine the Eclipse’s location.",
+						"Critical Failure": "You misunderstand a crucial detail, and the confusion prevents you from attempting to Read the Stars on your next turn."
+					}
+				}
+			]
+		},
+		{
+			"name": "Enjoy Desert Drink",
+			"page": 17,
+			"source": "SF3",
+			"traits": [
+				"manipulate"
+			],
+			"entries": [
+				"You spend a few rounds to drink an entire cup of desert drink. While it tastes wonderful, desert drink is particularly strong and requires a DC 38 Fortitude save. Any effects that you receive from Enjoying a Desert Drink can’t be reduced or mitigated and remain active until you complete the Test of Destiny. Desert drink is a {@trait poison}, which means that abilities and effects that interact with {@trait poison} are relevant. You can Enjoy Desert Drink even if you are {@condition sickened}. Note that since the {@creatureTemplate harrowkin|SF3} believe they’re living creatures as far as the Test of Destiny and the desert drink are concerned, they are not immune to the {@condition drained} or {@condition sickened} conditions caused by this activity.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Somehow, the desert drink makes you feel great. You gain 10 temporary Hit Points and reduce your {@condition drained} and {@condition sickened} conditions by 1.",
+						"Success": "You’re able to hold your drink, and suffer no effect.",
+						"Failure": "That’s a rough drink! You become {@condition drained||drained 1} and {@condition sickened||sickened 1}, or increase your values for both of those conditions by 1.",
+						"Critical Failure": "The desert drink burns, and not in a good way! You become {@condition drained||drained 2} and {@condition sickened||sickened 2}, or increase your values for both of those conditions by 2."
+					}
+				}
+			]
+		},
+		{
 			"name": "Enter the Harrow Court",
 			"page": 69,
 			"source": "SF1",

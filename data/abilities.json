@@ -1,6 +1,134 @@
 {
 	"ability": [
 		{
+			"source": "SF3",
+			"page": 86,
+			"creature": [
+				"Norn"
+			],
+			"name": "Undo Fate",
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"traits": [
+				"divination",
+				"occult"
+			],
+			"frequency": {
+				"number": 1,
+				"unit": "day"
+			},
+			"trigger": "The norn critically fails a check or a creature critically hits the norn",
+			"entries": [
+				"The norn lightly frays the golden thread of fate she holds, tampering with the fate at hand. If the triggering check was the norn’s critical failure, she gets a failure instead. If the triggering check was a critical hit on the norn, it becomes a hit."
+			]
+		},
+		{
+			"source": "SF3",
+			"page": 82,
+			"creature": [
+				"Harrowkin"
+			],
+			"name": "Defensive Suit",
+			"entries": [
+				"When the harrowkin attempts a saving throw connected to its suit—that is, Fortitude (Hammers or Shields), Reflex (Keys or Books), or Will (Stars or Crowns)—if they roll a success, they get a critical success instead."
+			]
+		},
+		{
+			"source": "SF3",
+			"page": 82,
+			"creature": [
+				"Harrowkin"
+			],
+			"name": "Read the Cards",
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"divination",
+				"occult"
+			],
+			"trigger": "The harrowkin is about to roll initiative",
+			"entries": [
+				"The harrowkin attempts to rewrite destiny. Roll {@dice 1d6} to determine a suit. The harrowkin gains the effects of the suit for 1 minute. If the suit matches the harrowkin’s suit, the value is doubled.",
+				{
+					"type": "pf2-options",
+					"skipSort": true,
+					"noColon": true,
+					"items": [
+						{
+							"type": "item",
+							"name": "Hammers",
+							"entries": [
+								"The harrowkin gains a +2 status bonus to damage rolls."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Keys",
+							"entries": [
+								"The harrowkin gains a +1 status bonus to AC."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Shields",
+							"entries": [
+								"The harrowkin gains fast healing 5."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Books",
+							"entries": [
+								"The harrowkin gains a +1 status bonus to skill checks."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Stars",
+							"entries": [
+								"The harrowkin gains a +1 status bonus to saving throws."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Crown",
+							"entries": [
+								"The harrowkin can reroll 1 check within the next minute and take the higher result. This is a fortune effect."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"source": "SF3",
+			"page": 82,
+			"creature": [
+				"Harrowkin"
+			],
+			"name": "Shuffle the Deck",
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"divination",
+				"occult"
+			],
+			"frequency": {
+				"number": 1,
+				"unit": "day"
+			},
+			"requirements": "The harrowkin has rolled initiative",
+			"entries": [
+				"At the end of the current round, all creatures currently in initiative reroll their initiative, using the same modifiers as their original initiative roll, and use the new initiative values for all following rounds."
+			]
+		},
+		{
 			"name": "Broken Mindscape",
 			"source": "LOSK",
 			"page": 181,

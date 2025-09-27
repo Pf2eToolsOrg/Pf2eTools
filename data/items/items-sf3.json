@@ -1,0 +1,1507 @@
+{
+	"item": [
+		{
+			"name": "Bangles of Crowns",
+			"source": "SF3",
+			"page": 69,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"rare",
+				"apex",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"This pair of silver bangles is engraved with images of crowns. While wearing the bangles, you are filled with an overwhelming sense of assertiveness and a more commanding presence. You gain a +3 item bonus to {@skill Intimidation} checks. When you invest the bangles, you either increase your Charisma score by 2 or increase it to 18, whichever is higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"entries": [
+						"You cast a 3rd-level {@trait fear} spell (DC 38)."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"trigger": "An enemy within 60 feet becomes {@condition frightened}",
+					"entries": [
+						"You become emboldened by your enemy's fear. You gain a +1 circumstance bonus to checks against the triggering creature for 1 round. You also gain 15 temporary Hit Points. You lose any remaining temporary Hit Points after 1 minute."
+					]
+				}
+			]
+		},
+		{
+			"name": "Racers of Hammers",
+			"source": "SF3",
+			"page": 69,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"rare",
+				"apex",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn bracers",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"These brilliant golden bracers feature a hammer motif as part of their engravings. While wearing them, your body surges with strength and you gain a +3 item bonus to {@skill Athletics} checks and a +1 circumstance bonus to {@skill Athletics} checks to {@action Disarm} and {@action Trip}. If you succeed, but not critically succeed, at your check to {@action Disarm} a creature, the effects of your check last until the start of your next turn, instead until the start of the target's turn. If you succeed at a check to {@action Trip} a creature, it takes {@damage 1d6} bludgeoning damage or {@damage 4d6} bludgeoning damage on a critical success.",
+				"When you invest the bracers, you either increase your Strength score by 2 or increase it to 18, whichever would give you a higher score.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You reach for a foe and attempt to topple them with a powerful flip. Attempt an {@skill Athletics} check to {@action Trip} a creature within reach. On a success, the creature is knocked {@condition prone} and takes {@damage 10d6} bludgeoning damage (double on a critical hit). If you knock the creature {@condition prone}, it must also attempt a DC 35 Reflex save. On a failure, it drops any items it's holding."
+					]
+				}
+			]
+		},
+		{
+			"name": "Coronet of Stars",
+			"source": "SF3",
+			"page": 69,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"rare",
+				"apex",
+				"invested",
+				"magical",
+				"necromancy"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn headwear",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"This short golden crown bears a number of gems, each placed in the center of an engraving of a star. While wearing the crown, you are overcome with a nurturing instinct and understand the best ways to help others. You gain a +3 item bonus to {@skill Medicine} checks.",
+				"When you invest the crown, you either increase your Wisdom score by 2 or increase it to 18, whichever would give you a higher score.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "A living creature within 60 feet would die",
+					"entries": [
+						"You reach out to the creature with a lifeline. The triggering creature receives the effects of {@spell breath of life}, except they recover {@dice 7d8} Hit Points."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"trigger": "An ally within 60 feet fails a non-{@trait secret} check",
+					"entries": [
+						"You call out to your ally and offer a reassurance. The triggering ally rerolls the failed check and takes the higher result. This is a {@trait fortune} effect."
+					]
+				}
+			]
+		},
+		{
+			"name": "Cowl of Keys",
+			"source": "SF3",
+			"page": 70,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"rare",
+				"apex",
+				"conjuration",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn cloak",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"This simple, tattered cloak is a faded green and features small, stylized keys sewn throughout its length. While wearing the cloak, you fade into the shadows and gain a +3 item bonus to {@skill Stealth} checks. When you invest the cloak, you either increase your Dexterity score by 2 or increase it to 18, whichever would give you a higher score.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"entries": [
+						"You brush your hand against the cloak and your fingers transform into picks, tension wrenches, skeleton keys, and any other tools, providing you with a full set of {@item thieves' tools}. This transformation doesn't otherwise hamper the normal use of your fingers or hands. These tools never break when you critically fail your check to {@action Pick a Lock}. You can {@action Activate an Item} the cloak again to revert your fingers to normal."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You place your hand against a wall, floor, or ceiling. You create a magical doorway within the surface that a creature can move through, as if the door had always been there. The doorway can penetrate up to 10 feet of material; particularly thick material, such as heavy stone walls, can cause this effect to fail, expending its use for the day. You can use an {@action Interact} action on the door to remove it from the surface and return it to its previous shape."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sash of Books",
+			"source": "SF3",
+			"page": 70,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"rare",
+				"apex",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn garment",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"This elegant black sash features stylized crimson books embroidered at either end and a set of simple tassels. While wearing the sash, you feel as if you have a better understanding of the people and life around you. You gain a +3 item bonus to {@skill Society} checks.",
+				"When you invest the sash, you either increase your Intelligence score by 2 or increase it to 18, whichever would give you a higher score.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"entries": [
+						"You focus on a creature you can see and attempt to gain an instinctual understanding of the creature. You attempt a check to {@action Recall Knowledge} about the creature, rolling twice and taking the higher result. If you roll a critical failure on this check, you get a failure instead. Regardless of the result, you gain a +1 circumstance bonus to attack rolls against the creature and to your AC and saving throws against attacks and effects from the creature for 1 minute. This bonus increases to +2 if you critically succeeded your check to {@action Recall Knowledge}."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You become keenly aware of your surroundings and become able to anticipate dangers. You gain the effects of {@spell foresight}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Scapular of Shields",
+			"source": "SF3",
+			"page": 70,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"rare",
+				"abjuration",
+				"apex",
+				"invested",
+				"magical"
+			],
+			"price": {
+				"amount": 15000,
+				"coin": "gp"
+			},
+			"usage": "worn garment",
+			"bulk": "L",
+			"category": "Apex",
+			"entries": [
+				"This fine scapular features the image of an ornate shield. While wearing the cloak, you feel protected and capable of withstanding even the deadliest blows. Each time you're critically hit while wearing the scapular, attempt a DC {@flatDC 17} flat check. On a success, it becomes a normal hit. When you invest the scapular, you either increase your Constitution score by 2 or increase it to 18, whichever would give you a higher score.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "minute"
+					},
+					"trigger": "You're critically hit with an attack",
+					"entries": [
+						"The shield on your scapular glows with light, helping reduce the effectiveness of the attack. You take normal damage from the triggering attack as if the attack were a normal hit instead. Other effects that trigger with critical hits such as the {@trait deadly} weapon trait, additional conditions, and so on still occur."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "You would take damage from an attack",
+					"entries": [
+						"The shield on your scapular animates and intercedes on the attack. You gain 20 resistance to all damage against the triggering damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Deck of Destiny",
+			"source": "SF3",
+			"page": 71,
+			"type": "Item",
+			"level": 25,
+			"traits": [
+				"unique",
+				"artifact",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"Composed of 54 cards that are powerful in their own right, the {@i Deck of Destiny} epitomizes the powers of the harrow and divination. The deck only has its full suite of abilities while complete. Completing the deck requires all 54 cards to be placed together and shuffled into their complete state over the span of 1 minute; the cards merely being in proximity of each other is not enough to complete the deck. Once complete, the deck can be invested normally.",
+				"While the complete deck is on your person or in hand and invested, you gain a natural insight into events to be. Any {@trait divination} effects you create become heightened to 10th level for the purpose of determining their counteract level. Additionally, {@trait divination} effects you create gain a +4 item bonus to their DC and to spell attack rolls. The deck also helps you maintain control of your own fate, granting you immunity to {@trait fortune} and {@trait misfortune} effects, though you can be affected by such effects if you wish.",
+				"{@b Activate} envision (daily preparations); When you perform your daily preparations, you can share the {@i Deck of Destiny} with your companions, allowing them to invest a hand of up to 5 cards each as if they carried the cards. When one of your companions activates one of their invested cards, an illusory image of the card appears in their hand, but the card's effects are otherwise unaltered. This lasts until the next time you perform your daily preparations.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"trigger": "A creature you can see within 60 feet is about to attempt a check",
+					"entries": [
+						"You quickly draw a card to alter the triggering creature's fate. Choose either weal or woe. With weal (a {@trait fortune} effect), the triggering creature rolls twice and takes the better result on their check. With woe (a {@trait misfortune} effect), the triggering creature is forced to roll twice and take the worse result. If the card you drew is related to the check, such as drawing a card from the suit of shields for a Fortitude saving throw or a card from the suit of crowns for a {@skill Deception} check, the creature is affected further. When choosing weal, the creature gains a +4 circumstance bonus to the triggering check. When faced with woe, the triggering creature takes a \u22124 circumstance penalty to the triggering check. Regardless of whether they faced weal or woe, the triggering creature becomes temporarily immune to this ability for 24 hours."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"entries": [
+						"You call upon the deck in an attempt to put an end to a creature's life by visiting upon them a particularly grisly fate. Choose a creature within 60 feet. The deck casts {@spell phantasmal killer} (DC 50, heightened to 10th level) on that creature. This effect doesn't have the {@trait emotion}, {@trait fear}, {@trait illusion}, or {@trait mental} traits, as it actually alters reality to rewrite a creature's doom. Regardless of the results, the creature becomes temporarily immune to this effect for 1 week."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "hour"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "year"
+					},
+					"entries": [
+						"You attempt to undo a creature's untimely death and return them to life. The deck performs a 10th-level {@ritual resurrect} ritual. This ritual doesn't have any cost and doesn't require any secondary casters. Instead, you are the primary caster and must attempt a DC 50 {@skill Occultism} check to complete the ritual as you perform a harrowing, perform that same harrowing in reverse in an attempt to pull back the threads of fate, and perform one final harrowing to \"rewrite\" the target's destiny."
+					]
+				}
+			],
+			"destruction": [
+				"The {@i Deck of Destiny} is inherently connected to the fate of Golarion. If the deck is used in a harrow reading to determine the destiny of the entire planet, or if the planet itself is destroyed or removed from this reality, the cards crumble to dust after the harrowing is complete or the planet is gone."
+			]
+		},
+		{
+			"name": "The Avalanche",
+			"source": "SF3",
+			"page": 71,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"evocation",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Keys (Dex)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful evil"
+				}
+			],
+			"entries": [
+				"{@i The Avalanche} represents unmitigated disasters, destruction that overruns all in its path. As long as {@i The Avalanche} is invested, you gain a +1 item bonus to damage rolls with {@action Strike||Strikes} that inflict bludgeoning damage. This increases to a +2 item bonus if you’re at least 14th level, and a +3 item bonus if you’re at least 18th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You wave the card in the air and hurl staggering volumes of ice, snow, and rocks out into the world. This magical avalanche buries your foes. Choose up to 4 creatures within 60 feet, each of whom must attempt a Reflex save against your class DC. Regardless of their saving throw, the creature’s space becomes greater difficult terrain from the mounds of ice, snow, and rubble.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes {@damage 5d8} bludgeoning damage and is pushed into an adjacent space of its choice.",
+								"Failure": "The creature takes {@damage 10d8} bludgeoning damage, is knocked {@condition prone}, and is {@condition restrained}.",
+								"Critical Failure": "The creature takes {@damage 20d8} bludgeoning damage, is knocked {@condition prone}, and is {@condition immobilized}."
+							}
+						}
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Avalanche}, assign it to a point of interest in the mountains. Avalanches of tremendous scope occur here with great frequency. A PC who travels to this region can spend 8 hours and attempt a DC 30 {@skill Athletics} check to clamber onto a perfect mountainside ledge to observe these breathtaking natural disasters. On a success, the mountains shift and change to match those of a mountain range that the PC is familiar with. From this point on, any PC can use the {@activity Enter the Harrow Court|SF1} activity here to open a one-way portal to that mountain range, arriving at a location of import or particular familiarity within the region as determined by the GM. Switching to a new mountain range requires another DC 30 {@skill Athletics} check and familiarity with that region. A PC who {@action Enter the Harrow Court|SF1|Enters the Harrow Court} can now arrive in the demiplane at this point of interest rather than in Harrowheart’s great hall."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Betrayal",
+			"source": "SF3",
+			"page": 72,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Crowns (Cha)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral evil"
+				}
+			],
+			"entries": [
+				"{@i The Betrayal} represents selfishness and envy, twisting outcomes toward unfavorable or even devastating results. As long as {@i The Betrayal} is invested, you become more adept at hiding who you really are and tricking targets into positions of vulnerability. You gain a +2 item bonus on {@skill Deception} checks made to {@action Impersonate} or {@action Feint}. This increases to a +3 bonus if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You turn the tables on your foes, bringing one of them into your ranks and compelling them to attack their allies. You cast {@spell dominate} on a creature, but can only issue commands to attack or otherwise harm, betray, or inconvenience its allies. The level of the spell is one-half your level, rounded down (minimum 6th level), and the save DC is your class DC."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"Somewhere in the dungeons below Harrowheart, a room manifests such that those who enter see a chamber as they themselves might have decorated it, had they lived an entirely different life. Once, a PC can spend 8 hours of downtime here to study these choices and grow envious of how their lives might have been different, if not outright better, had they made different choices in their past. The next time the PC {@action retraining||retrains} a feat, skill, or class feature, it takes half as long as it otherwise would to retrain. A PC can benefit from this room only once per level."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Courtesan",
+			"source": "SF3",
+			"page": 72,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"illusion",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Crowns (Cha)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "chaotic neutral"
+				}
+			],
+			"entries": [
+				"{@i The Courtesan} represents political intrigue and social niceties. As long as {@i The Courtesan} is invested, you gain a +2 item bonus to {@skill Diplomacy} checks to {@action Make an Impression}. This increases to a +3 item bonus if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You pass the card over your face and become exactly who you need to be; you cast {@spell illusory disguise}. The level of the spell is one-half your level, rounded down (minimum 6th level). You can change your appearance again at any time during the duration by using a three-action activity, which has the {@trait concentrate} trait. While under these effects, your {@skill Deception} checks to {@action Impersonate} are one degree of success greater when you use them against a creature that is a lower level than yourself."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"A simulacrum of a doppelganger moves into a boudoir in one of Harrowheart’s towers. This doppelganger reflexively shifts their appearance to become an attractive romantic partner to whomever they speak with. {@i The Courtesan} can grant a character who visits them for at least 8 hours a special charm the character can carry on their person. The charm casts {@spell contingency} on the character, with the level of the spell being one-half their level, rounded down (minimum 7th level), and allows the character to select any {@trait common} {@trait arcane} spell of the appropriate level for the triggered spell. The trigger under which the spell would be cast in this case is always “grasping the charm as an {@action Interact} action.” This {@spell contingency} effect lasts until it is triggered, but a character may only have one charm from {@i The Courtesan} active at any one time, and can only receive a charm once per level."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Cricket",
+			"source": "SF3",
+			"page": 73,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Keys (Dex)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral good"
+				}
+			],
+			"entries": [
+				"{@i The Cricket} represents speed and quick passage. As long as {@i The Cricket} is invested, it grants you a +10-foot item bonus to all your Speeds. This increases to a +20-foot item bonus if you are at least 19th level or higher.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"Your feet begin to glow and shimmer as if they were vibrating. {@action Stride} up to three times your Speed. You can {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride||Striding} if you have the corresponding movement type. This movement doesn’t trigger reactions and you can move through creatures’ spaces as if they weren’t there during this movement."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"A {@trait Medium} anthropomorphic cricket simulacrum moves into a previously empty building at the edge of the village surrounding Harrowheart. The cricket spends most of their time playing their fiddle or eating fruit, but a PC can visit them to secure swift passage to another area within {@plane the harrow court|sf1|Harrow Court}. Once per day, the cricket can transport any number of PCs, but only to one location in {@plane the harrow court|sf1|Harrow Court}—the transportation happens in only a few seconds, regardless of the distance traveled. The cricket remains at that location until the next day, during which time they can transport the PCs back to the village. In addition, the cricket can teach powerful but {@trait uncommon} travel spells, including {@spell gate}, {@spell plane shift}, {@spell teleport}, and {@spell tree stride}."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Crows",
+			"source": "SF3",
+			"page": 73,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"conjuration",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Keys (Dex)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral evil"
+				}
+			],
+			"entries": [
+				"{@i The Crows} represent taking things through violence or force, particularly when done through agility and swiftness rather than brawn. As long as {@i The Crows} is invested, you can attempt to {@action Grapple} targets with {@skill Acrobatics} checks, and if you’re at least trained in {@skill Thievery}, to {@action Disarm} with {@skill Thievery} checks. When you do so, you gain a +2 item bonus on the attempt, or a +3 item bonus if you’re at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"traits": [
+						"teleportation"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You hold the card in your hand, and with a flick of the wrist it vanishes, only to be replaced by an object of your choice within 30 feet. The object must be 2 Bulk or less. If that object is unattended, it teleports into your hand automatically. If the object is attended by a creature, you must make a {@skill Thievery} check against the creature’s Reflex DC.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The object teleports into your hand.",
+								"Success": "The object vanishes from the target’s possession and lands on the ground at a point at a midway point between you two.",
+								"Failure": "The object does not vanish, but the creature’s grip on it falters and if it doesn’t spend an {@action Interact} action on its next turn to grip the item, it drops to the ground.",
+								"Critical Failure": "You fail to manipulate the object entirely."
+							}
+						}
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Crows}, a murder of crow simulacrums takes up residence among the highest towers and battlements of Harrowheart. These crows do not speak, but they are both incredibly intelligent and, unlike most who dwell in {@plane the harrow court|SF1|Harrow Court}, can travel between worlds to visit Golarion. A character can visit the crows and ask them to fly into Golarion to steal {@trait consumable} magic items from somewhere on the planet—where the crows find and snatch these items from is never apparent. The character can request any {@trait Common} {@trait consumable} item of a level equal to or less than their own level, whereupon the crows take wing and vanish from {@plane the harrow court|SF1|Harrow Court}. The next time that PC wakes after sleeping in {@plane the harrow court|SF1|Harrow Court}, the requested consumable is sitting nearby, along with a few stray crow feathers. If the requested item is more than 4 levels lower than the PCs’ level, the crows deliver four of the items instead of one. A character can request items only once per level; further attempts to request items of the Crows fails as if the PC were speaking to a normal murder."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Dance",
+			"source": "SF3",
+			"page": 73,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Keys (Dex)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful good"
+				}
+			],
+			"entries": [
+				"{@i The Dance} represents the delicately balanced rhythms of the universe and the ability stay in step with existence. As long as {@i The Dance} is invested, you gain a +2 item bonus on {@skill Performance} checks. This increases to a +3 item bonus if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "You are about to roll initiative",
+					"entries": [
+						"Your body begins to move with anticipation, creating a trail of afterimages for a moment. You can roll initiative with a {@skill Performance} check. Regardless of what skill you use to roll for initiative, roll the check three times and take the result of your choice. This is a {@trait fortune} effect."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"A ballroom appears in Harrowheart, and it’s always populated by a gala of dancers, performers, and partygoers. While these are all simulacra, the air of entertainment and delight is as real as any event that might take place on Golarion. A character can spend a glorious 8 hours relaxing, dancing, performing, and entertaining in the ballroom. The time spent carousing allows the character to restore their inner harmony and purge a {@trait disease} they may be suffering from. The character attempts to counter one {@trait disease} using a {@skill Performance} check against the disease’s DC. On a success, the {@trait disease} is removed, while on a critical success, the character becomes immune to that {@trait disease} for 1 year.",
+						"In addition, some of those who attend the gala know of potent rituals that allow for ease of movement. A character can spend time here to learn either of the following rituals: {@ritual freedom} or {@ritual word of recall|APG}. If either of these rituals are later performed in the ballroom, all casters gain a +2 item bonus on checks made to perform the rituals."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Eclipse",
+			"source": "SF3",
+			"page": 74,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"evocation",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Stars (Wis)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful evil"
+				}
+			],
+			"entries": [
+				"{@i The Eclipse} represents self-doubt and loss of purpose, as well as a loss of faith. As long as {@i The Eclipse} is invested, you gain a +2 item bonus on {@skill Religion} checks. This increases to a +3 bonus if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"traits": [
+						"mental"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"trigger": "A foe that you’re aware of and who is within 60 feet achieves a critical success on a saving throw or a {@action Strike}",
+					"entries": [
+						"You produce an aura of doubt that overwhelms all foes in a 30-foot emanation and reduces bright light in that area to dim light, as if the region were under an eclipse. The triggering creature’s critical success is reduced to a regular success. All further saving throws or {@action Strike||Strikes} attempted by enemies within the emanation suffer a \u22122 item penalty; saving throws or {@action Strike||Strikes} attempted by the triggering enemy suffer a \u22123 penalty instead. You can sustain this aura of doubt for up to 1 minute."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Eclipse}, assign it to a point of interest in the desert. This indicates a region of wasteland where the sun above always seems to be in a full eclipse, plunging the region into darkness at all hours of the day; this causes the temperatures in this hex to always function as if it were night. A PC who travels to this region feels increasingly overwhelmed with doubt and a growing conviction that all they’ve accomplished in their life so far is for naught, but by spending 8 hours in the region contemplating these destructive emotions, it’s possible to come out the other side more confident. A character who spends 8 hours of downtime here must attempt a DC 38 Will saving throw.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "You face your doubts and crush them, emerging from the desert a better and more confident person. You gain a permanent boost to one ability score of your choice, increasing that ability by 2 (or by 1 if the ability score is already 18 or higher). You can never again benefit from this activity, as you have banished all the self-doubts {@i The Eclipse} can help you come to terms with.",
+								"Success": "Your attempt to face your own doubts did not result in you conquering your inner demons, but you’re encouraged by your progress. The next time you perform this activity, you gain a +4 circumstance bonus on your Will saving throw.",
+								"Failure": "You fail to defeat your doubts, and cannot attempt this activity again for 1 week.",
+								"Critical Failure": "Not only do you fail to defeat your doubts, but they take root in your mind and grow. You cannot attempt this activity again for 1 month, and become {@condition stupefied||stupefied 3} for 1 week (or until the condition is removed via an effect like {@spell restoration})."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Fool",
+			"source": "SF3",
+			"page": 75,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Books (Int)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral evil"
+				}
+			],
+			"entries": [
+				"{@i The Fool} represents grave foolishness, grand naivete, and exceptional greed. As long as you have {@i The Fool} invested, anytime you gain the {@condition stupefied} condition, reduce its value by 1. You also gain a +2 item bonus to all saving throws against effects that cause the {@condition stupefied} condition. This bonus increases to +3 if you’re at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"traits": [
+						"mental"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You display {@i The Fool} to your foes in a clumsy, awkward, and embarrassing way. Choose up to four creatures within 60 feet. These four creatures must attempt a Will save against your class DC.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is distracted by your antics and is {@condition stupefied||stupefied 1} until the start of your next turn.",
+								"Failure": "The creature is {@condition stupefied||stupefied 2}.",
+								"Critical Failure": "The creature is {@condition stupefied||stupefied 3}. In addition, for 1 minute, the creature is {@condition confused}."
+							}
+						}
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Fool}, assign it to a point of interest in the lake. This indicates the approximate location of a tiny deserted island that measures no more than 20 feet in diameter. While most don’t believe the rumors of a vast pirate treasure hidden on this island, the more people explain that it’s ridiculous (if only because there are no pirates in {@plane the Harrow Court|SF1}), the more convinced one might grow that there’s a kernel of truth to the story. A character can spend 8 hours searching for this hidden treasure by utilizing an array of ridiculous inventions and homemade rafts meant to provide a quick solution to the task of tracking down the treasure. To do so, attempt a DC 38 {@skill Crafting} check.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "You find the island, and there, sitting in the middle of it, is a treasure chest! You were right all along! The chest contains coins, gems, jewels, and art objects worth a total of 5,000 gp. Unlike most objects that appear in {@plane the harrow court|SF1|Harrow Court}, these treasures are very real and can be brought elsewhere to be sold or flaunted as you desire. You can never again benefit from this activity, as you have recovered all the treasure that {@i The Fool} can help you discover.",
+								"Success": "Your attempt to track down the island makes progress, but you still don’t know exactly where the site is located. The next time you perform this activity, you gain a +4 circumstance bonus on your {@skill Crafting} check.",
+								"Failure": "You fail to discover the treasure island.",
+								"Critical Failure": "Not only do you fail to discover the treasure island, but you become obsessed with your failures, believing that bad luck kept you from success, not your own foolish choices and impractical treasure-hunting inventions. You become {@condition stupefied||stupefied 3} for 1 week (or until the condition is removed via an effect like {@spell restoration})."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Inquisitor",
+			"source": "SF3",
+			"page": 75,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"enchantment",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Books (Int)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful neutral"
+				}
+			],
+			"entries": [
+				"{@i The Inquisitor} represents the search for the truth and the power to see through lies. As long as you have {@i The Inquisitor} invested, the results of your {@skill Perception} checks to {@action Sense Motive} against targets that are equal to or lower than your level are increased by one degree of success. Against targets that are higher level than you, you instead gain a +2 item bonus to your check. This bonus increases to +3 if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"traits": [
+						"linguistic",
+						"mental"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You swipe the card over the head of an adjacent creature to delve into their thoughts. You cast {@spell mind probe}, but as a two-action spell rather than one that takes 1 minute to cast. The level of the spell is one-half your level, rounded down (minimum 5th level), and the save DC is your class DC."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"A research library manifests on the ground floor of Harrowheart. The contents of this library update automatically and constantly change, so as to always be relevant for whatever mystery or topic of research you’re looking into. You can spend 4 hours in the library to {@action Gather Information} about any topic, and can use an appropriate {@skill Lore} skill check instead of {@skill Diplomacy} to determine success. In addition, folios and tomes in the library contain all the information one needs to learn the rituals for {@ritual call spirit} or {@ritual legend lore}. Performing either of these rituals in the research library grants a +2 item bonus to skill checks made to cast the ritual. This increases to a +3 bonus if you are at least 17th level."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Joke",
+			"source": "SF3",
+			"page": 75,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Books (Int)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "chaotic good"
+				}
+			],
+			"entries": [
+				"{@i The Joke} represents solving a problem not with strength, but with cleverness or artifice. As long as you have {@i The Joke} invested, you can attempt an appropriate Lore check instead of an {@skill Athletics} check made to {@action Climb}, {@action Force Open}, {@action Grapple}, {@action High Jump}, {@action Long Jump}, or {@action Swim}. For example, you could make a {@skill Lore||Mountain Lore} check to climb a cliff in the mountains, or {@skill Lore||Sailing Lore} check to climb the rigging on a ship.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You perform a quick but amusing card trick with {@i The Joke} meant to distract others. You cast {@spell hideous laughter} on up to 10 creatures in range of the spell. The level of the spell is one-half your level rounded down (minimum 6th level), and the save DC is your class DC."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"One of Harrowheart’s workshops becomes staffed by amusing and witty assistants. These assistants, apart from being a delight to work with, help to prioritize and organize projects to be more efficient. {@skill Crafting} checks made in this workshop gain a +2 item bonus (or +3 if you’re at least 17th level), and you only need to spend 2 days at work before you attempt your {@skill Crafting} check to determine initial success. In addition, the assistants can teach you how to cast the following rituals (with the expectation that you’ll use these rituals at least some of the time for humorous shenanigans): {@ritual animate object}, {@ritual awaken object|SoM}, and {@ritual fantastic façade|APG}."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Peacock",
+			"source": "SF3",
+			"page": 76,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Keys (Dex)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral"
+				}
+			],
+			"entries": [
+				"{@i The Peacock} represents a sudden shift in attitude or societal change, often represented by a colorful but ugly creature that serves as a reminder as to what happens if something beautiful refuses to change with the times. As long as you have {@i The Peacock} invested, you can react to sudden changes more swiftly, and gain {@feat Incredible Initiative} as a bonus feat. If you already possess this feat, you gain a +2 item bonus on all initiative checks. This item bonus increases to +3 if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You freeze your appearance as it exists in this very moment by tapping {@i The Peacock} to your lips. You cast {@spell stoneskin} on yourself, but with a duration of 30 minutes instead of 20 minutes. The level of the spell is one-half your level rounded down (minimum 6th level)."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Peacock}, assign it to a point of interest in the swamp. This indicates the territory of a strangely colorful but unusual and potentially dangerous fey creature—a gremlin queen who wears a colorful robe made of cockatrice plumes. The nameless gremlin queen has infested her swampy domain with countless traps, snares, and hazards, all to protect one of her greatest treasures. A PC can attempt to navigate this morass of nooses, tripwires, spiked logs, and disguised quicksand patches by attempting a DC 38 {@skill Thievery} check to {@action Disable a Device}—this check covers the disarming of a few hundred different traps over the course of 8 hours. Once the attempt is made, the gremlin queen dismantles her traps and goes into hiding; this activity cannot be attempted again for 1 week.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "You navigate all of the gremlin queen’s traps, and surprise her on her throne of twigs and mud and stolen treasure. She’s impressed with your skills and offers you one of the greatest treasures she used to build her throne. Choose from among the following magic items: {@item greater fortification} armor rune, {@item greater brilliant|SoM} weapon rune, a set of {@item major goggles of night}, or a {@item greater ring of maniacal devices}. At the GM’s option, other 18th-level permanent magic items could be included in this list. In any case, the gremlin queen won’t grace you with a gift another time—you can never attempt this activity again.",
+								"Success": "You come close enough to the gremlin queen’s throne to hear her panicked squeals as she packs up her treasures and flees into hiding—she’s gone except for a few colorful feathers she left behind by the time you reach the heart of her domain. The next time you perform this activity, you gain a +4 circumstance check on your {@skill Thievery} check.",
+								"Failure": "You fall victim to enough humiliating and distracting traps that by the time you reach the heart of the gremlin queen’s domain, she’s long gone.",
+								"Critical Failure": "You not only fail to make it to the gremlin queen, but one of her traps inflicts a particularly grievous wound on you. You become {@condition clumsy||clumsy 3} for 1 week, or until the condition is removed via an effect like {@spell restoration}."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Queen Mother",
+			"source": "SF3",
+			"page": 76,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Stars (Wis)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful neutral"
+				}
+			],
+			"entries": [
+				"{@i The Queen Mother} is knowledge manifest, but she only shares this knowledge with loyal subjects. When you first invest {@i The Queen Mother}, choose a {@skill Lore} skill in which you have no proficiency. As long as you continue to have {@i The Queen Mother} invested, you treat that {@skill Lore} skill as if your proficiency rank with it were a master. If you’re at least 15th level, you treat that {@skill Lore} skill as if you were legendary with it instead. You can change your selected {@skill Lore} once per day as part of your daily preparations, as long as you have {@i The Queen Mother} invested.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You call upon a loyal subject to aid you by holding {@i The Queen Mother} out and asking her to send help. You cast {@spell summon animal} or {@spell summon construct}, but with a range of 90 feet. The level of the spell is one-half your level rounded down."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Queen Mother}, an immense queen ant manifests in a large chamber in Harrowheart’s basement. This queen ant is intelligent and pragmatic, and enjoys long complicated debates and discussions about all topics—particularly those associated with the natural world. Once per day you can visit her to pose a question; she uses {@skill Nature} {@d20 +32} to attempt to {@action Recall Knowledge} and offer an answer. Yet her greatest gift is that of restoring life to her fallen children—the queen ant can teach the following rituals: {@ritual reincarnate|APG} and {@ritual resurrect}."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Teamster",
+			"source": "SF3",
+			"page": 77,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"abjuration",
+				"artifact",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Shields (Con)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral"
+				}
+			],
+			"entries": [
+				"{@i The Teamster} represents the driving force to push on, no matter the circumstance. As long as you have {@i The Teamster} invested, all single-target effects that target you and require a saving throw gain the {@trait incapacitation} trait. If the effect originates from a creature or effect of a level higher than yours, it doesn’t gain the {@trait incapacitation} trait in this way.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"trigger": "you are affected by an ongoing condition",
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You push through your largest hindrance. Select one of the following conditions currently affecting you: {@condition blinded}, {@condition clumsy}, {@condition confused}, {@condition controlled}, {@condition dazzled}, {@condition deafened}, {@condition doomed}, {@condition drained}, {@condition dying}, {@condition enfeebled}, {@condition fascinated}, {@condition fatigued}, {@condition frightened}, {@condition grappled}, {@condition immobilized}, {@condition paralyzed}, {@condition persistent damage}, {@condition petrified}, {@condition restrained}, {@condition sickened}, {@condition slowed}, {@condition stunned}, {@condition stupefied}, {@condition unconscious}, or {@condition wounded}. If the source of the condition is more than 4 levels lower than your current level, {@i The Teamster} automatically counters the condition. Otherwise, {@i The Teamster} attempts to counter the condition, with a counteract modifier of {@d20 +31}."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Teamster}, numerous teams of livestock drivers manifest in the village surrounding Harrowheart, along with a large number of draft animals and riding horses. These resources can be called upon by the PCs to ease their travels throughout {@plane the Harrow Court|SF1}. Travel in the desert and forest are now treated as normal terrain, while travel in the mountains or swamp is now treated as difficult terrain (rather than greater difficult terrain)."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Trader",
+			"source": "SF3",
+			"page": 77,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Books (Int)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral"
+				}
+			],
+			"entries": [
+				"{@i The Trader} represents trades and exchanges of information. As long as you have {@i The Trader} invested, you gain a +2 item bonus to {@skill Diplomacy} checks made to {@action Gather Information}. This increases to a +3 item bonus if you are at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"{@i The Trader} allows you to make an exchange with yourself. Press the card to your brow, and then select two skills. Your proficiency rank with those two skills swaps for 1 hour. For example, if you were a master in {@skill Athletics} and untrained in {@skill Crafting}, you would become untrained in {@skill Athletics} and a master in {@skill Crafting}. If making this swap would break prerequisites to feats, you lose access to those feats until your skill proficiencies change back in an hour."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"A strange merchant sets up shop in the village surrounding Harrowheart. The merchant’s shop contains a wealth of peculiar shelves and cabinets and nooks and crannies, such that any {@trait Common} item of up to 15th level can be found here for purchase at regular prices. Items bought here are real items, and can exist outside of {@plane the harrow court|SF1|Harrow Court}. At the GM’s discretion, {@trait Uncommon} or {@trait Rare} items might be found for purchase here as well. If the PCs allied with {@creature the Trader|SF3} harrowkin, then he becomes this merchant instead, and can offer trade through his shop or his Check the Stock ability."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Twin",
+			"source": "SF3",
+			"page": 77,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"illusion",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Crowns (Cha)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral"
+				}
+			],
+			"entries": [
+				"{@i The Twin} represents a duality of purpose or identity. As long as you have {@i The Twin} invested, it helps to defend you against damage to your mind or your body. When you invest {@i The Twin}, the card’s artwork changes to look like you, and as you are exposed to afflictions, your card twin helps to protect you by absorbing them into itself. You gain a +1 item bonus to saves against {@trait curse||curses}, {@trait disease||diseases}, {@trait poison}, and {@trait transmutation} effects. This bonus increases to +2 if you’re at least 14th level, and to +3 if you’re 20th level. As you resist these afflictions, they begin to manifest on one of the twins depicted on the card art.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You twirl {@i The Twin} between your fingers and create a shadowy duplicate of yourself that mirrors your actions. The duplicate appears adjacent to you and has the same statistics as you do when you activate the card. You can sustain this effect for up to one minute. When you sustain the effect, your twin gains 2 actions. It always acts immediately after your turn, and must use identical actions to the ones you used, in exactly the same order. However, it can use the actions differently, such as {@action Stride||Striding} to a different position or selecting a different target for a {@action Strike}. If the twin is unable to mimic an action, it attempts the action without result and the action is wasted. The duplicate can’t use any actions that can be used only a limited number of times per day (including casting any spell other than a cantrip). The duplicate isn’t truly alive and can’t be healed in any way. If the duplicate ever reaches 0 Hit Points, it is instantly destroyed and the effect immediately ends, and you take {@damage 10d6} mental damage (DC 38 basic Will save)."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize The Twin, assign it to a point of interest in the farmland. This indicates a location where a strange group of people moves into a small hovel. Each of these people is the identical twin of one of the PCs in your party—if these PCs change, the number and appearance of the twins who dwell in this hovel change to match. Once per level, a PC may travel to this hovel to meet with their twin; when they arrive, that twin is the only one present at the hovel. By spending 8 hours talking with your twin, you can compare notes on how your lives went on separate trajectories. Attempt a DC 38 {@skill Deception}, {@skill Diplomacy}, or {@skill Intimidation} check.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "Your twin reveals to you that they would have chosen a different ability had they lived your life. You can immediately {@action Retraining||Retrain} a feat, skill increase, or class feature, as if you had spent the normal time and effort to do so.",
+								"Success": "Your twin reveals to you that they would have chosen a different ability, based on the skill you used to speak to them. If you used {@skill Deception}, you can immediately {@action Retraining||Retrain} a skill increase. If you used {@skill Diplomacy}, you can immediately {@action Retraining||Retrain} a class feature. If you used {@skill Intimidation}, you can immediately {@action Retraining||Retrain} a feat.",
+								"Failure": "Your conversation with your twin is depressing and yields no benefit.",
+								"Critical Failure": "Your conversation with your twin is depressing and affects you in a physical way. If you used {@skill Deception}, you become {@condition clumsy||clumsy 3}. If you used {@skill Diplomacy}, you become {@condition stupefied||stupefied 3}. If you used {@skill Intimidation}, you become {@condition enfeebled||enfeebled 3}. The condition lasts for 1 week, or until the condition is removed via an effect like {@spell restoration}."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Unicorn",
+			"source": "SF3",
+			"page": 78,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"invested",
+				"magical",
+				"transmutation"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Crowns (Cha)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "chaotic good"
+				}
+			],
+			"entries": [
+				"{@i The Unicorn} represents finding what one seeks. As long as you have {@i The Unicorn} invested, you gain a +2 item bonus on {@skill Perception} checks to {@action Seek}. This increases to a +3 item bonus if you’re at least 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You pass {@i The Unicorn} across an adjacent closed container and then open the container. Inside, you’ll find a {@trait Common} {@trait consumable} {@trait alchemical} or magic item you need to solve a problem or deal with a situation close at hand. For example, if you’re badly wounded, you might find a {@item greater healing potion}. If you’ve been poisoned, you could discover a {@item panacea}. If you’re faced with a written clue in a language you don’t understand, the container might hold a {@item comprehension elixir (generic)||comprehension elixir}. The GM always decides what consumable item is discovered, and it must be equal to or lower than your level. If the consumable isn’t used within 1 minute of being discovered, the item vanishes. If there’s no appropriate item to solve your situation, the GM can rule that no object is found; in this case, the daily use of {@i The Unicorn} is not expended."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Unicorn}, assign it to a point of interest in the forest. This indicates a region of idyllic woodland that has become the home of an enigmatic unicorn. A PC can travel to this location in the forest, and the unicorn automatically emerges from the far side of a clearing to curiously greet the PC. The PC can then spend 8 hours in pleasant discourse with the unicorn to convince it of their good intentions and worthiness by attempting a DC 38 {@skill Diplomacy} check, after which no one may speak with the unicorn again for 1 week.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "You impress the unicorn with your words, and it leaves the clearing for a few moments. When it returns, it has a gift for you balanced on its horn; the unicorn approaches and bequeaths this treasure to you. Choose from among the following magic items: a {@item greater maestro's instrument}, a {@item possibility tome}, a {@item major staff of nature's vengeance|APG}, or a {@item greater thurible of revelation}. At the GM’s option, other 18th-level permanent magic items could be included in this list. In any case, this is the only gift the unicorn will ever have for you—you can never attempt this activity again.",
+								"Success": "Your words appeal somewhat to the unicorn, but fail to truly capture its trust. The next time you perform this activity, you gain a +4 circumstance check on your {@skill Diplomacy} check.",
+								"Failure": "You fail to impress the unicorn, and it returns to hiding in the forest.",
+								"Critical Failure": "You end up embarrassing yourself, insulting the unicorn, or generally coming off as crass and unpleasant. The unicorn abandons you, leaving you wracked with shame and embarrassment. You become {@condition stupefied||stupefied 3} for 1 week, or until the condition is removed via an effect like {@spell restoration}."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Wanderer",
+			"source": "SF3",
+			"page": 79,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"conjuration",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Books (Int)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "neutral good"
+				}
+			],
+			"entries": [
+				"{@i The Wanderer} represents the art of collecting and finding the value in even the simplest items. As long as {@i The Wanderer} is invested, you don’t trigger reactions when you {@action Interact} to draw or use an item.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You do a quick bit of legerdemain with {@i The Wanderer}. As the card appears to disappear from your hand, it’s immediately replaced by an object of Light bulk in your hand. The object can be any {@trait Common} permanent magic item, weapon, or piece of gear of a level no higher than your level −2. The item exists for 1 minute, or until it is no longer attended by you, at which point the item vanishes and {@i The Wanderer} reappears in your possession."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Wanderer}, a mysterious wandering centaur simulacrum manifests in the farmlands of {@plane the harrow court|SF1|Harrow Court}. They visit the village at the center of the farmlands every evening, and are always looking to purchase items and objects. You can sell any item to the Wanderer when they visit and receive real gold coinage in return (these gold pieces do not vanish when you leave {@plane the harrow court|SF1|Harrow Court}). Once {@i The Wanderer} is epitomized, you can also {@action Earn Income} with {@skill Crafting} or {@skill Lore} checks by selling the fruits of your labors to them. If you do so, you gain a +2 item bonus to your {@skill Crafting} or {@skill Lore} check made to {@action Earn Income}; this bonus increases to +3 if you’re at least 17th level."
+					]
+				}
+			]
+		},
+		{
+			"name": "The Winged Serpent",
+			"source": "SF3",
+			"page": 79,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"unique",
+				"artifact",
+				"divination",
+				"invested",
+				"magical"
+			],
+			"usage": "carried",
+			"bulk": "\u2014",
+			"category": "Artifact",
+			"topText": [
+				{
+					"name": "Suit",
+					"entry": "Stars (Wis)"
+				},
+				{
+					"name": "Alignment",
+					"entry": "lawful good"
+				}
+			],
+			"entries": [
+				"{@i The Winged Serpent} represents the wisdom of knowing when to act. As long as you have {@i The Winged Serpent} invested, you gain a +2 item bonus on initiative checks made with sight-based {@skill Perception} checks. This bonus increases to +3 if you are 17th level.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"{@action Interact}"
+					],
+					"frequency": {
+						"number": 1,
+						"unit": "day"
+					},
+					"entries": [
+						"You swipe {@i The Winged Serpent} across your eyes to gain insight on when to strike. You cast {@spell foresight} on yourself, but the duration is only 10 minutes. If you’re at least 17th level, the duration extends to 1 hour and you can cast {@spell foresight} on another creature by touch. The level of this spell is one-half your level rounded down (minimum 9th)."
+					]
+				}
+			],
+			"footers": [
+				{
+					"name": "Epitome",
+					"entries": [
+						"When you epitomize {@i The Winged Serpent}, a glorious, colorful statue of an immense couatl appears in a large meditation chamber in Harrowheart. Closer inspection of the statue reveals the countless fine etchings that adorn the couatl’s scaly length. These carvings can be studied to learn how to cast the ritual {@ritual commune}. More importantly, this chamber is now an ideal place to perform this ritual—when you cast {@ritual commune} in this chamber, you gain a +3 item bonus on all skill checks made to cast the ritual, and it allows you to ask up to ten questions rather than seven."
+					]
+				}
+			]
+		}
+	]
+}
