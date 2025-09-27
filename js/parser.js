@@ -1522,6 +1522,8 @@ WoW_PREFIX = "Wardens of Wildwood: ";
 WoW_PREFIX_SHORT = "WoW: ";
 MS_PREFIX = "Myth-Speaker: ";
 MS_PREFIX_SHORT = "MS: ";
+RotR_PREFIX = "Revenge of the Runelords: ";
+RotR_PREFIX_SHORT = "RotR: ";
 
 Parser.COMPACT_PREFIX_MAP = [
 	{ re: /Abomination Vaults #(\d): /, replaceWith: "AV$1: " },
@@ -1535,6 +1537,7 @@ Parser.COMPACT_PREFIX_MAP = [
 	{ re: /Myth-Speaker #(\d): /, replaceWith: "MS$1: " },
 	{ re: /Outlaws of Alkenstar #(\d): /, replaceWith: "OoA$1: " },
 	{ re: /Quest for the Frozen Flame #(\d): /, replaceWith: "QFF$1: " },
+	{ re: /Revenge of the Runeords #(\d): /, replaceWith: "RotR$1: " },
 	{ re: /Season of Ghosts #(\d): /, replaceWith: "SoG$1: " },
 	{ re: /Seven Dooms for Sandpoint #(\d): /, replaceWith: "7DfS$1: " },
 	{ re: /Shades of Blood #(\d): /, replaceWith: "SoB$1: " },
@@ -1565,6 +1568,7 @@ Parser.SOURCE_PREFIX_TO_SHORT[SF_PREFIX] = SF_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[WoW_PREFIX] = WoW_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[CC_PREFIX] = CC_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[MS_PREFIX] = MS_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[RotR_PREFIX] = RotR_PREFIX_SHORT;
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_ABV = {};
@@ -1677,6 +1681,7 @@ SRC_QFF3 = "QFF3";
 SRC_RoE = "RoE";
 SRC_Rust = "Rust";
 SRC_SaS = "SaS";
+SRC_RotR0 = "RotR0";
 SRC_SF0 = "SF0";
 SRC_SF1 = "SF1";
 SRC_SF2 = "SF2";
@@ -1817,6 +1822,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_QFF3] = "QFF3";
 Parser.SOURCE_JSON_TO_ABV[SRC_RoE] = "RoE";
 Parser.SOURCE_JSON_TO_ABV[SRC_Rust] = "Rust";
 Parser.SOURCE_JSON_TO_ABV[SRC_SaS] = "SaS";
+Parser.SOURCE_JSON_TO_ABV[SRC_RotR0] = "RotR0";
 Parser.SOURCE_JSON_TO_ABV[SRC_SF0] = "SF0";
 Parser.SOURCE_JSON_TO_ABV[SRC_SF1] = "SF1";
 Parser.SOURCE_JSON_TO_ABV[SRC_SF2] = "SF2";
@@ -1957,6 +1963,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_QFF3] = "2021-03-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_RoE] = "2023-08-02";
 Parser.SOURCE_JSON_TO_DATE[SRC_Rust] = "2023-10-18";
 Parser.SOURCE_JSON_TO_DATE[SRC_SaS] = "2022-05-25";
+Parser.SOURCE_JSON_TO_DATE[SRC_RotR0] = "2025-09-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_SF0] = "2023-04-13";
 Parser.SOURCE_JSON_TO_DATE[SRC_SF1] = "2023-04-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_SF2] = "2023-05-24";
@@ -2097,6 +2104,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_QFF3] = "Quest for the Frozen Flame #3: Burning T
 Parser.SOURCE_JSON_TO_FULL[SRC_RoE] = "Rage of Elements";
 Parser.SOURCE_JSON_TO_FULL[SRC_Rust] = "Rusthenge";
 Parser.SOURCE_JSON_TO_FULL[SRC_SaS] = "Shadows at Sundown";
+Parser.SOURCE_JSON_TO_FULL[SRC_RotR0] = "Revenge of the Runelords Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_SF0] = "Stolen Fate Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_SF1] = "Stolen Fate #1: The Choosing";
 Parser.SOURCE_JSON_TO_FULL[SRC_SF2] = "Stolen Fate #2: The Destiny War";
@@ -2238,6 +2246,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_QFF3] = "https://paizo.com/products/btq029wg";
 Parser.SOURCE_JSON_TO_STORE[SRC_RoE] = "https://paizo.com/products/btq02eal";
 Parser.SOURCE_JSON_TO_STORE[SRC_Rust] = "https://paizo.com/products/btq02epv";
 Parser.SOURCE_JSON_TO_STORE[SRC_SaS] = "https://paizo.com/products/btq02d7e";
+Parser.SOURCE_JSON_TO_STORE[SRC_RotR0] = "https://downloads.paizo.com/RevengeoftheRunelord_PlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_SF0] = "https://downloads.paizo.com/StolenFatePlayersGuide.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_SF1] = "https://paizo.com/products/btq02e0v";
 Parser.SOURCE_JSON_TO_STORE[SRC_SF2] = "https://paizo.com/products/btq02e51";
@@ -2343,6 +2352,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_QFF3,
 	SRC_Rust,
 	SRC_SaS,
+	SRC_RotR0,
 	SRC_SF0,
 	SRC_SF1,
 	SRC_SF2,
@@ -2545,6 +2555,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	SRC_QFF3,
 	SRC_Rust,
 	SRC_SaS,
+	SRC_RotR0,
 	SRC_SF0,
 	SRC_SF1,
 	SRC_SF2,
