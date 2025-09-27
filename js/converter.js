@@ -77,11 +77,7 @@ class Converter {
 	}
 
 	_preprocessString (string) {
-		string = string.replaceAll(/\r/g, "");
-		string = string.replaceAll(/]+/g, "]");
-		string = string.replaceAll(/\[+/g, "[");
-		string += "\n\n\n";
-		return string;
+		return `${string.replaceAll(/\r/g, "").replaceAll(/]+/g, "]").replaceAll(/\[+/g, "[").replaceAll(/‑/g, "-")}\n\n\n`;
 	}
 
 	parse (string, opts) {
