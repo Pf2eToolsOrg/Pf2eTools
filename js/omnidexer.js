@@ -949,6 +949,18 @@ class IndexableFileCompanions extends IndexableFile {
 	}
 }
 
+class IndexableFileFamiliarAbilities extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_FAMILIARABILITY,
+			file: "companionsfamiliars.json",
+			listProp: "familiarAbility",
+			baseUrl: "familiarabilities.html",
+			isHover: true,
+		});
+	}
+}
+
 class IndexableFileFamiliars extends IndexableFile {
 	constructor () {
 		super({
@@ -1036,6 +1048,7 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileLanguages(),
 	new IndexableFileTraits(),
 	new IndexableFileCompanions(),
+	new IndexableFileFamiliarAbilities(),
 	new IndexableFileFamiliars(),
 	new IndexableFileEidolons(),
 	new IndexableFileAdventures(),

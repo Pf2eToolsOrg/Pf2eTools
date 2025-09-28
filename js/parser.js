@@ -972,6 +972,7 @@ Parser.CAT_ID_RELICGIFT = 73;
 Parser.CAT_ID_TRAIT = 4;
 Parser.CAT_ID_ORGANIZATION = 72;
 Parser.CAT_ID_EVENT = 74;
+Parser.CAT_ID_FAMILIARABILITY = 75;
 
 Parser.CAT_ID_PAGE = 99;
 
@@ -996,6 +997,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCHETYPE] = "Archetype";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] = "Feat";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_COMPANION] = "Companion";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FAMILIAR] = "Familiar";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FAMILIARABILITY] = "Familiar Ability";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_EIDOLON] = "Eidolon";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OPTIONAL_FEATURE] = "Optional Feature";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OPTIONAL_FEATURE_LESSON] = "Lesson";
@@ -1051,6 +1053,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCHETYPE] = "archetype";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FEAT] = "feat";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_COMPANION] = "companion";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FAMILIAR] = "familiar";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FAMILIARABILITY] = "familiarAbility";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_EIDOLON] = "eidolon";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OPTIONAL_FEATURE] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OPTIONAL_FEATURE_LESSON] =
