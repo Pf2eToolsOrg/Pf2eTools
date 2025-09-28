@@ -96,6 +96,19 @@
 						},
 						"minItems": 2
 					},
+					"covenantMembers": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"pattern": "^[^\\|]+\\|[^\\|]+$",
+							"description": "A deity identifier in the form of `Name|Source`, e.g. `Abadar|CRB`"
+						},
+						"minItems": 2
+					},
+					"religiousSymbol": {
+						"type": "string",
+						"minLength": 1
+					},
 					"areasOfConcern": {
 						"type": "array",
 						"items": {
