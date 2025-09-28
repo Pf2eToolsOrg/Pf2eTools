@@ -29,6 +29,7 @@
 		"build:deploy:prod:cdn": "bash build/deploy-prep-prod--cdn.sh",
 		"build:data:prod": "node node/prepare-data-prod.js",
 		"build:seo": "node node/generate-seo.js",
+		"delete-seo": "node node/delete-seo.js",
 		"build:sw": "node node/build-sw.mjs",
 		"build:sw:prod": "node node/build-sw.mjs prod",
 		"build:sources": "npm run build:schema:sources && node node/update-sources.js",
