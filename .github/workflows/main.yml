@@ -36,8 +36,13 @@ jobs:
               run: bash ./.github/generate-release-notes.sh ${{ env.RELEASE_VERSION }} | tee RELEASE_NOTES.md
 
             - name: Archive Release
+              continue-on-error: true
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
                   zip -r Pf2eTools-${{ env.RELEASE_VERSION }}.zip . -x '*.git*' '*node_modules*' '*.github*' '*.editorconfig*' '*CNAME*' 'RELEASE_NOTES.md'
+                  hub release create -a Pf2eTools-${{ env.RELEASE_VERSION }}.zip -F RELEASE_NOTES.md ${{ env.RELEASE_VERSION }}
+                  rm Pf2eTools-${{ env.RELEASE_VERSION }}.zip
 
             - name: Set Deployed Flag
               run: |
@@ -79,14 +84,6 @@ jobs:
               with:
                   branch: prod
                   folder: .
-
-            - name: Upload Release
-              continue-on-error: true
-              # Add the files one-by-one in an effort to avoid timeouts
-              run: |
-                  hub release create -a Pf2eTools-${{ env.RELEASE_VERSION }}.zip -F RELEASE_NOTES.md ${{ env.RELEASE_VERSION }}
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             # region See: https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-ghcrio
             - name: Build Image
