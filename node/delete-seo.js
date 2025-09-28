@@ -9,11 +9,11 @@ const toDelete = [
 	"spells",
 	"bestiary",
 	"items",
-	"sitemap.xml"
+	"sitemap.xml",
 	// TODO expand this as required, see generate-seo.js
 ];
 
-async function main() {
+async function main () {
 	for (const dir of toDelete) {
 		const path = `./${dir}`;
 		if (fs.existsSync(path)) {
